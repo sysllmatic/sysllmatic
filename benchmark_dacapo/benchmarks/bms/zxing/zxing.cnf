@@ -1,0 +1,20 @@
+benchmark zxing
+  class org.dacapo.harness.Zxing
+  thread-model per_cpu
+  jars "javase-3.3.4-SNAPSHOT-jar-with-dependencies.jar";
+
+size small args "${DATA}/zxing/benchmark"
+  output  stdout digest 0x04f4a7b47096581eb50cee952eef21eacf609a22,
+          stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+  
+size default args "${DATA}/zxing"
+  output  stdout digest 0x4d8f1787b6f99db19a391449fe5284ffc7a75541,
+          stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+description
+  short		"multi-format 1D/2D barcode image processing library",
+  long		"Zxing is a multi-format 1D/2D barcode image processing library.",
+  copyright	"ZXing authors",
+  license	"Apache License, Version 2.0",
+  url		"https://github.com/zxing/zxing",
+  threads   "Explicitly multi-threaded, scaled to available processors.",

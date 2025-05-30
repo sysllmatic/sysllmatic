@@ -1,0 +1,216 @@
+<!--
+ * Copyright (c) 2009 The Australian National University.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0.
+ * You may obtain the license at
+ * 
+ *    http://www.opensource.org/licenses/apache2.0.php
+ -->
+<project name="common">
+	<import file="../util.xml"/>
+	<import file="../libs/libs.xml"/>
+
+	<tstamp>
+		<format property="build.time" pattern="yyyyMMdd-hhmm"/>
+	</tstamp>
+
+	<property file="dacapo.properties"/>
+	<property file="default.properties"/>
+
+	<property name="bm-files" value="${basedir}/bms/${bm-name}"/>
+	<property name="bm-build-dir" value="${bm-files}/build"/>
+	<property name="bm-output-dir" value="${bm-files}/dist"/>
+	<property name="bm-output-doc-dir" value="${bm-output-dir}/doc"/>
+	<property name="bm-output-harness-dir" value="${bm-files}/dist"/>
+	<property name="bm-output-benchmark-dir" value="${bm-files}/dist/benchmark"/>
+	<property name="bm-deps-output-dir" value="${bm-files}/deps"/>
+	<property name="bm-jars" value="${bm-files}/data/jar/${bm-name}"/>
+	<property name="bm-data" value="${bm-files}/data/dat/${bm-name}"/>
+
+	<available file="${bm-data}" property="bm-data-exists" type="dir"/>
+	<property name="bm-src-dir" value="${bm-files}/src"/>
+	<property name="bm-src-harness-dir" value="${bm-files}/harness/src"/>
+	<property name="bm-src-benchmark-dir" value="${bm-files}/benchmark"/>
+	<property name="bm-downloads" value="${bm-files}/downloads"/>
+	<property name="bm-out-jar" value="${build.target-jars}/${bm-name}"/>
+	<property name="bm-out-dat" value="${build.target-data}/${bm-name}"/>
+
+	<property name="bm-dat" value="${bm-out-dat}"/>
+	<property name="bm-cnf" value="${bm-output-dir}/META-INF/cnf"/>
+	<property name="bm-md5" value="${bm-output-dir}/META-INF/md5"/>
+	<property name="bm-yml" value="${bm-output-dir}/META-INF/yml"/>
+
+	<property name="harness-classpath" value="harness/dist/"/>
+
+	<target name="all" depends="source,svn-source,cvs-source,hg-source,git-source,pre-build,build,complete"/>
+
+	<target name="incremental">
+		<property name="incremental-build" value="true"/>
+		<antcall target="all"/>
+	</target>
+
+	<target name="source" if="bm-url">
+		<antcall target="check-source">
+			<param name="target-dir" value="${bm-downloads}"/>
+			<param name="target-url" value="${bm-url}"/>
+			<param name="target-file" value="${bm-src}"/>
+		</antcall>
+	</target>
+
+	<target name="svn-source" if="bm-svn-url">
+		<condition property="fail-on-error" value="no" else="yes">
+			<isset property="bm-ignore-failure"/>
+		</condition>
+		<antcall target="check-svn-source">
+			<param name="target-dir" value="${bm-downloads}"/>
+			<param name="svn-url" value="${bm-svn-url}"/>
+			<param name="svn-revision" value="${bm-svn-revision}"/>
+			<param name="target-file" value="${bm-src}"/>
+			<param name="fail-on-error" value="${bm-fail-on-error}"/>
+		</antcall>
+	</target>
+
+	<target name="cvs-source" if="bm-cvs-root">
+		<condition property="fail-on-error" value="no" else="yes">
+			<isset property="bm-ignore-failure"/>
+		</condition>
+		<antcall target="check-cvs-source">
+			<param name="target-dir" value="${bm-downloads}"/>
+			<param name="cvs-root" value="${bm-cvs-root}"/>
+			<param name="cvs-package" value="${bm-cvs-package}"/>
+			<param name="cvs-date" value="${bm-cvs-date}"/>
+			<param name="target-file" value="${bm-src}"/>
+		</antcall>
+	</target>
+
+	<target name="hg-source" if="bm-hg-url">
+		<condition property="fail-on-error" value="no" else="yes">
+			<isset property="bm-ignore-failure"/>
+		</condition>
+		<antcall target="check-hg-source">
+			<param name="target-dir" value="${bm-downloads}"/>
+			<param name="hg-url" value="${bm-hg-url}"/>
+			<param name="hg-revision" value="${bm-hg-revision}"/>
+			<param name="target-file" value="${bm-src}"/>
+			<param name="fail-on-error" value="${bm-fail-on-error}"/>
+		</antcall>
+	</target>
+
+	<target name="git-source" if="bm-git-url">
+		<condition property="fail-on-error" value="no" else="yes">
+			<isset property="bm-ignore-failure"/>
+		</condition>
+		<antcall target="check-git-source">
+			<param name="target-dir" value="${bm-downloads}"/>
+			<param name="git-url" value="${bm-git-url}"/>
+			<param name="git-commit" value="${bm-git-commit}"/>
+			<param name="target-file" value="${bm-src}"/>
+			<param name="fail-on-error" value="${bm-fail-on-error}"/>
+		</antcall>
+	</target>
+
+	<target name="pre-build" depends="clean, init, unpack"/>
+
+	<target name="clean">
+		<delete dir="${bm-output-dir}"/>
+		<delete dir="${bm-build-dir}"/>
+		<delete dir="${bm-deps-output-dir}"/>
+		<delete dir="${bm-files}/data/"/>
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${bm-build-dir}"/>
+		<mkdir dir="${bm-output-dir}"/>
+		<mkdir dir="${bm-output-harness-dir}"/>
+		<mkdir dir="${bm-dat}"/>
+		<mkdir dir="${bm-cnf}"/>
+		<mkdir dir="${bm-data}"/>
+	</target>
+
+	<target name="unpack"/>
+
+	<target name="build" depends="dacapo-harness, benchmark, config, yml, harness"/>
+
+	<target name="data-copy-checksum" depends="data">
+		<property name="bm-md5-tmp" value="${bm-files}/data/md5"/>
+		<!-- create checksum -->
+		<delete dir="${bm-md5-tmp}"/>
+		<checksum pattern="{0} {3}" todir="${bm-md5-tmp}">
+        	<fileset dir="${bm-files}/data" />
+    	</checksum>
+    	<concat destfile="${bm-md5}/${bm-name}.MD5">
+        	<fileset dir="${bm-md5-tmp}" />
+    	</concat>
+		<replace file="${bm-md5}/${bm-name}.MD5" token=" bms/${bm-name}/data/" value=" "/>
+
+		<!-- copy files -->
+	    <copy todir="${bm-dat}/..">
+            <fileset dir="${bm-data}/.."/>
+        </copy>
+		<copy todir="${bm-out-jar}/..">
+            <fileset dir="${bm-jars}/.."/>
+        </copy>
+
+		<!-- ensure files are read only -->
+		<chmod perm="ugo-w" type="both">
+			<fileset dir="${bm-dat}"/>
+		</chmod>
+	</target>
+
+	<target name="benchmark" depends="bm-build, jar, data-copy-checksum, data-perms"/>
+
+	<target name="data-perms"/>
+
+	<target name="bm-build"/>
+
+	<target name="yml">
+		<copy file="${bm-files}/stats-nominal.yml" tofile="${bm-yml}/${bm-name}.yml"/>
+	</target>
+
+	<target name="config">
+		<copy file="${bm-files}/${bm-name}.cnf" todir="${bm-cnf}"/>
+		<concat destfile="${bm-cnf}/${bm-name}.cnf" append="true">  version "${bm-version-str}";</concat>
+	</target>
+
+	<target name="harness" depends="bm-harness-with,bm-harness-without"/>
+
+	<target name="bm-harness-without" unless="bm-harness-classpath">
+		<javac srcdir="${bm-src-harness-dir}" classpath="${harness-classpath}" destdir="${bm-output-harness-dir}"
+			includes="org/dacapo/harness/**"
+			debug="true" debuglevel="lines,vars,source"/>
+		<javadoc sourcepath="${bm-src-harness-dir}" classpath="${harness-classpath}" destdir="${bm-output-doc-dir}"/>
+	</target>
+
+	<target name="bm-harness-with" if="bm-harness-classpath">
+		<javac srcdir="${bm-src-harness-dir}" classpath="${harness-classpath}:${bm-harness-classpath}" destdir="${bm-output-harness-dir}"
+			includes="org/dacapo/harness/**"
+			debug="true" debuglevel="lines,vars,source"/>
+		<javadoc sourcepath="${bm-src-harness-dir}" classpath="${harness-classpath}:${bm-harness-classpath}" destdir="${bm-output-doc-dir}"/>
+	</target>
+
+	<target name="dacapo-harness" unless="incremental-build">
+		<ant antfile="harness/build.xml"/>
+	</target>
+
+	<target name="patch">
+		<patch patchfile="${bm-files}/${bm-name}.patch" dir="${bm-build-dir}" strip="0" ignorewhitespace="yes" failonerror="true"/>
+	</target>
+
+	<target name="untar" depends="build-init">
+		<untar src="${bm-downloads}/${bm-src}" dest="${bm-build-dir}/" compression="gzip"/>
+	</target>
+
+	<target name="unzip" depends="build-init">
+		<unzip src="${bm-downloads}/${bm-src}" dest="${bm-build-dir}/"/>
+	</target>
+
+	<target name="build-init">
+		<mkdir dir="${bm-build-dir}"/>
+	</target>
+
+	<target name="jar"/>
+
+	<target name="complete">
+		<jar jarfile="${build.target-jar}" basedir="${bm-output-dir}" update="true"/>
+	</target>
+</project>

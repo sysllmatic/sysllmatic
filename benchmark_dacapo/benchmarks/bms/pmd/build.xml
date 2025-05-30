@@ -1,0 +1,117 @@
+<!--
+ * Copyright (c) 2009 The Australian National University.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0.
+ * You may obtain the license at
+ * 
+ *    http://www.opensource.org/licenses/apache2.0.php
+ -->
+<project name="pmd" default="all" basedir="../..">
+    <description>DaCapo pmd benchmark</description>
+    <property file="local.properties"/>
+    <property file="dacapo.properties"/>
+
+    <property name="bm-name" value="pmd"/>
+    <property name="bm-version" value="6.55.0"/> <!-- Be sure to update the git-commit when updating verison! -->
+    <property name="bm-version-str" value="pmd ${bm-version}"/>
+
+    <property name="bm-src" value="${bm-name}-src-${bm-version}.tar.gz"/>
+    <property name="bm-git-url" value="${github.url}/${bm-name}/${bm-name}"/>
+    <property name="bm-git-commit" value="ef3455348603aa25f86894b9930f05f141f44d20"/>
+
+    <!-- use eclipse JDT as input to large tests -->
+    <property name="jdt-url" value="${dacapo.src.url}"/>
+    <property name="jdt-src" value="eclipse.jdt.core-I20200703-1800.zip"/>
+
+
+    <import file="../common.xml"/>
+
+    <target name="source" depends="common.source">
+        <antcall target="check-source">
+            <param name="target-dir" value="${bm-downloads}"/>
+            <param name="target-url" value="${jdt-url}"/>
+            <param name="target-file" value="${jdt-src}"/>
+        </antcall>
+    </target>
+
+    <property name="bm-build-top" value="${bm-build-dir}"/>
+
+    <condition property="mvn-exe" value="${bm-build-top}/mvnw.cmd">
+        <os family="windows"/>
+    </condition>
+    <property name="mvn-exe" value="${bm-build-top}/mvnw"/>
+
+    <target name="unpack" depends="untar, patch"/>
+
+    <target name="bm-build" depends="xerces">
+        <!-- build JUnit -->
+        <ant antfile="libs/junit/build.xml"/>
+
+        <antcall target="make-executable">
+            <param name="target-filename" value="${mvn-exe}"/>
+        </antcall>
+
+        <exec executable="${mvn-exe}" dir="${bm-build-top}">
+            <env key="JAVA_HOME" value="${jdk.11.home}"/>
+            <arg value="clean"/>
+            <arg value="verify"/>
+            <arg value="-DskipTests"/>
+        </exec>
+
+        <!-- unpacks produced zip file -->
+        <property name="pmd-dist-target" value="${bm-build-top}/pmd-dist/target/pmd-bin-${bm-version}"/>
+        <unzip src="${pmd-dist-target}.zip" dest="${bm-build-top}/pmd-dist/target"/>
+    </target>
+
+    <target name="jar" depends="libs">
+        <copy todir="${bm-jars}">
+            <resources>
+                <file file="${pmd-dist-target}/lib/pmd-core-${bm-version}.jar"/>
+                <file file="${pmd-dist-target}/lib/pmd-java-${bm-version}.jar"/>
+            </resources>
+        </copy>
+    </target>
+
+    <target name="data">
+        <!-- inputs for small and default -->
+        <copy todir="${bm-data}">
+            <fileset dir="${bm-build-top}">
+                <include name="pmd-core/**/*.java"/>
+                <exclude name="**/file_with_ISO-8859-1_encoding.java"/>
+                <exclude name="**/file_with_utf8_bom.java"/>
+            </fileset>
+        </copy>
+
+        <!-- inputs for large -->
+        <unzip src="${bm-downloads}/${jdt-src}" dest="${bm-data}/eclipse">
+            <patternset>
+                <include name="**/ASTConverte*Test*.java"/>
+                <include name="**/JavaSearchBugsTests.java"/>
+                <include name="**/MethodVerifyTest.java"/>
+                <include name="**/CompletionEngine.java"/>
+                <include name="**/NullReferenceTest.java"/>
+                <include name="**/CompletionTests_1_5.java"/>
+                <include name="**/NullTypeAnnotationTest.java"/>
+                <include name="**/CompletionTests.java"/>
+                <include name="**/GenericTypeTest.java"/>
+                <include name="**/FormatterRegressionTests.java"/>
+                <include name="**/XLargeTest.java"/>
+                <include name="**/StatementRecoveryTest.java"/>
+            </patternset>
+        </unzip>
+
+    </target>
+
+    <target name="libs">
+        <copy todir="${bm-jars}">
+            <fileset dir="${pmd-dist-target}/lib">
+                <include name="**/asm-*.jar"/>
+                <include name="**/commons-io-*.jar"/>
+                <include name="**/commons-lang3-*.jar"/>
+                <include name="**/jcommander-*.jar"/>
+                <include name="**/saxon-*.jar"/>
+                <include name="**/saxon-*-dom.jar"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

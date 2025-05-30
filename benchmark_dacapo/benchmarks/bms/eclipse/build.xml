@@ -1,0 +1,125 @@
+<!--
+ * Copyright (c) 2009 The Australian National University.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0.
+ * You may obtain the license at
+ * 
+ *    http://www.opensource.org/licenses/apache2.0.php
+ -->
+<project name="eclipse" default="all" basedir="../..">
+    <description>DaCapo eclipse benchmark</description>
+    <property file="local.properties"/>
+    <property file="dacapo.properties"/>
+
+    <property name="bm-name" value="eclipse"/>
+    <property name="bm-version" value="4.27"/> <!-- Note: 4.27 is last that works with JDK11. --> <!-- Must update bundles-*.lst, plugin.xml, eclipse.patch, and references in plugin/build.xml when updating versions -->
+    <property name="bm-version-str" value="eclipse ${bm-version}"/>
+    <property name="bm-drop" value="202303020300"/>
+    <property name="bm-url" value="http://archive.eclipse.org/eclipse/downloads/drops4/R-${bm-version}-${bm-drop}"/>
+    <property name="bm-src" value="eclipse-SDK-${bm-version}-macosx-cocoa-x86_64.tar.gz"/>
+    <property name="osgi-bootstrap-jar" value="org.eclipse.osgi_3.18.300.v20230220-1352.jar"/> <!-- this value must be consistent with constant in org.dacapo.harness.Eclipse.java -->
+    <import file="../common.xml"/>
+    <property name="eclipse-top" value="${bm-build-dir}/eclipse"/>
+    <property name="bm-src-at" value="eclipse-Automated-Tests-${bm-version}.zip"/>
+
+    <property name="workspace-full" value="full-source-R3_0"/>
+    <property name="workspace-default" value="${workspace-full}-default"/>
+    <property name="workspace-large" value="${workspace-full}-large"/>
+
+    <target name="clean" depends="common.clean">
+        <delete dir="${bm-files}/@dot"/>
+    </target>
+
+    <target name="source" depends="common.source">
+        <antcall target="check-source">
+            <param name="target-dir" value="${bm-downloads}"/>
+            <param name="target-url" value="${bm-url}"/>
+            <param name="target-file" value="${bm-src-at}"/>
+        </antcall>
+        <antcall target="check-source">
+            <param name="target-dir" value="${bm-downloads}"/>
+            <param name="target-url" value="${dacapo.src.url}"/>
+            <param name="target-file" value="dummyjre.zip"/>
+        </antcall>
+    </target>
+
+    <target name="move-eclipse">
+        <copy todir="${bm-build-dir}/eclipse/">
+            <fileset dir="${bm-build-dir}/Eclipse.app/Contents/Eclipse"/>
+        </copy>
+        <delete dir="${bm-build-dir}/Eclipse.app"/>
+    </target>
+
+    <target name="unpack" depends="untar,move-eclipse,patch"/>
+
+    <target name="workspace-zips">
+        <!-- Unravel the source zip -->
+        <unzip src="${bm-downloads}/${bm-src-at}" dest="${bm-build-dir}">
+            <patternset>
+                <include name="eclipse-testing/eclipse-junit-tests-*.zip"/>
+            </patternset>
+        </unzip>
+        <unzip dest="${bm-build-dir}/eclipse-testing/eclipse">
+            <fileset dir="${bm-build-dir}/eclipse-testing">
+                <include name="eclipse-junit-tests-*.zip"/>
+            </fileset>
+            <patternset>
+                <include name="plugins/org.eclipse.jdt.core.tests.binaries*"/>
+            </patternset>
+        </unzip>
+        <unzip dest="${bm-build-dir}/eclipse-testing/eclipse" >
+            <fileset dir="${bm-build-dir}/eclipse-testing/eclipse/plugins"/>
+        </unzip>
+        <unzip dest="${bm-build-dir}/eclipse-testing/workspace">
+            <fileset dir="${bm-build-dir}/eclipse-testing/eclipse">
+                <include name="**/${workspace-full}.zip"/>
+            </fileset>
+        </unzip>
+
+        <!-- Create two complimentary zips for default and large workspaces -->
+        <zip destfile="${bm-data}/${workspace-default}.zip" basedir="${bm-build-dir}/eclipse-testing/workspace">
+            <patternset includesfile="${bm-files}/bundles-default.lst"/>
+        </zip>
+        <zip destfile="${bm-data}/${workspace-large}.zip" basedir="${bm-build-dir}/eclipse-testing/workspace" excludes="**/HTMLParser.jj, **/javaBin/.classpath"/>
+        
+        <delete dir="${bm-build-dir}/eclipse-testing"/>
+    </target>
+
+    <!-- This is a bit ugly.  the osgi-bootstrap jar needs to be in the 
+         classpath at the start, but our harness only wants to deal with
+         files in the jar directory.  However we can't simply remove the
+         jar from the eclipse directory so for now we do the dumb thing
+         of duplicating the jar -->
+    <target name="jar" depends="unpack">
+        <copy file="${bm-build-dir}/eclipse/plugins/${osgi-bootstrap-jar}" tofile="${bm-jars}/eclipse.jar"/>
+    </target>
+
+    <!-- build the eclipse plugin, which is necessary to fire up eclipse from within our harness -->
+    <target name="plugin" depends="unpack">
+        <ant antfile="build.xml" dir="${bm-files}/plugin" inheritall="false">
+            <property name="plugin.destination" location="${bm-build-dir}/eclipse/plugins/"/>
+            <target name="clean"/>
+            <target name="build.update.jar"/>
+        </ant>
+    </target>
+
+    <target name="data" depends="plugin, workspace-zips">
+        <!--- This just contains jre/lib/rt.jar -->
+        <unzip dest="${bm-data}" src="${bm-downloads}/dummyjre.zip"/>
+
+        <!-- Install the eclipse runtime -->
+       <copy todir="${bm-data}">
+            <!-- The eclipse runtime.  We just include as little as we can, -->
+            <!-- using an empirically derived list of what we really need.  -->
+            <!-- Use scratch/configuration/*.log and/or scratch/workspace/.metadata/*.log --> 
+            <!--- to identify missing bundles.                                            -->
+            <fileset dir="${bm-build-dir}" includesfile="${bm-files}/bundles-required.lst"/>
+        </copy>
+        <copy todir="${bm-data}">
+            <fileset dir="${bm-build-dir}">
+                <!-- remove this exlusion to debug whether the above bundle lists are a problem-->
+               <exclude name="eclipse/plugins/**"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

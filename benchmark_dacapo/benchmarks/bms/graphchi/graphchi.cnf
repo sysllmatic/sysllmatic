@@ -1,0 +1,23 @@
+benchmark graphchi
+  class org.dacapo.harness.GraphChi
+  thread-model per_cpu;
+
+size small args "ALSMatrixFactorization", "${DATA}/graphchi/netflix_mm_10K", "2"
+  output stdout digest 0x6a08dea2a5b755413590be90c078c46371a918ba,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size default args "ALSMatrixFactorization", "${DATA}/graphchi/netflix_mm_1M", "2"
+  output stdout digest 0x126f6aeacab78c149301e53aad35bd5bfead5686,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size large args "ALSMatrixFactorization", "${DATA}/graphchi/netflix_mm", "4"
+  output stdout digest 0x22e79e51adda8d0c43debd137f3497d6cf9e5813,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+description
+  short	     "ALS matrix factorization with GraphChi.",
+  long       "The Netflix Challenge dataset is used to drive the GraphChi engine in its ALS matrix factorization mode.  The input data is pre-sharding (sharding is IO intensive, so is excluded from this workload).",
+  copyright  "Copyright 2012 Aapo Kyrola, Guy Blelloch, Carlos Guestrin / Carnegie Mellon University",
+  license    "Apache License, Version 2.0",
+  url        "https://github.com/GraphChi/graphchi-java",
+  threads    "Explicitly multi-threaded, scaled to available processors.",

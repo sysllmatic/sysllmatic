@@ -1,0 +1,764 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 3K of event 'cycles'
+# Event count (approx.): 172844708195
+#
+# Children      Self       Samples  Command  Shared Object         Symbol                                                                                                                                                                                                                                                            
+# ........  ........  ............  .......  ....................  ..................................................................................................................................................................................................................................................................
+#
+    99.90%     0.00%             0  main     libc.so.6             [.] __libc_start_call_main
+            |
+            ---__libc_start_call_main
+               main
+               my_function
+               |          
+               |--97.52%--shuffle_some_array
+               |          |          
+               |          |--91.64%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          |          
+               |          |          |--35.20%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+               |          |          |          |          
+               |          |          |          |--31.03%--std::swap<int>
+               |          |          |          |          |          
+               |          |          |          |           --0.97%--std::move<int&>
+               |          |          |          |          
+               |          |          |          |--1.20%--std::move<int&>
+               |          |          |          |          
+               |          |          |           --1.14%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+               |          |          |          
+               |          |          |--35.15%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          |          |          
+               |          |          |          |--24.03%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+               |          |          |          |          |          
+               |          |          |          |           --19.08%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+               |          |          |          |                     |          
+               |          |          |          |                      --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+               |          |          |          |          
+               |          |          |           --2.40%--std::uniform_int_distribution<unsigned long>::param_type::a
+               |          |          |          
+               |          |          |--3.54%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+               |          |          |          |          
+               |          |          |           --0.95%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+               |          |          |          
+               |          |          |--3.32%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+               |          |          |          |          
+               |          |          |           --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--2.91%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+               |          |          |          |          
+               |          |          |           --0.75%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--2.29%--std::uniform_int_distribution<unsigned long>::param_type::param_type
+               |          |          |          
+               |          |          |--1.68%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--0.81%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+               |          |          |          
+               |          |          |--0.80%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+               |          |          |          
+               |          |          |--0.65%--std::uniform_int_distribution<unsigned long>::param_type::a
+               |          |          |          
+               |          |          |--0.61%--std::swap<int>
+               |          |          |          
+               |          |           --0.53%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+               |          |          
+               |          |--1.48%--std::vector<int, std::allocator<int> >::push_back
+               |          |          |          
+               |          |           --1.32%--std::vector<int, std::allocator<int> >::emplace_back<int>
+               |          |                     |          
+               |          |                      --0.63%--std::vector<int, std::allocator<int> >::back
+               |          |          
+               |          |--0.83%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          
+               |          |--0.72%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+               |          |          
+               |          |--0.70%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+               |          |          
+               |           --0.64%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+               |          
+                --2.19%--__random
+
+    99.90%     0.00%             0  main     main                  [.] main
+            |
+            ---main
+               my_function
+               |          
+               |--97.52%--shuffle_some_array
+               |          |          
+               |          |--91.64%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          |          
+               |          |          |--35.20%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+               |          |          |          |          
+               |          |          |          |--31.03%--std::swap<int>
+               |          |          |          |          |          
+               |          |          |          |           --0.97%--std::move<int&>
+               |          |          |          |          
+               |          |          |          |--1.20%--std::move<int&>
+               |          |          |          |          
+               |          |          |           --1.14%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+               |          |          |          
+               |          |          |--35.15%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          |          |          
+               |          |          |          |--24.03%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+               |          |          |          |          |          
+               |          |          |          |           --19.08%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+               |          |          |          |                     |          
+               |          |          |          |                      --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+               |          |          |          |          
+               |          |          |           --2.40%--std::uniform_int_distribution<unsigned long>::param_type::a
+               |          |          |          
+               |          |          |--3.54%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+               |          |          |          |          
+               |          |          |           --0.95%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+               |          |          |          
+               |          |          |--3.32%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+               |          |          |          |          
+               |          |          |           --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--2.91%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+               |          |          |          |          
+               |          |          |           --0.75%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--2.29%--std::uniform_int_distribution<unsigned long>::param_type::param_type
+               |          |          |          
+               |          |          |--1.68%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--0.81%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+               |          |          |          
+               |          |          |--0.80%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+               |          |          |          
+               |          |          |--0.65%--std::uniform_int_distribution<unsigned long>::param_type::a
+               |          |          |          
+               |          |          |--0.61%--std::swap<int>
+               |          |          |          
+               |          |           --0.53%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+               |          |          
+               |          |--1.48%--std::vector<int, std::allocator<int> >::push_back
+               |          |          |          
+               |          |           --1.32%--std::vector<int, std::allocator<int> >::emplace_back<int>
+               |          |                     |          
+               |          |                      --0.63%--std::vector<int, std::allocator<int> >::back
+               |          |          
+               |          |--0.83%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          
+               |          |--0.72%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+               |          |          
+               |          |--0.70%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+               |          |          
+               |           --0.64%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+               |          
+                --2.19%--__random
+
+    99.90%     0.00%             0  main     main                  [.] my_function
+            |
+            ---my_function
+               |          
+               |--97.52%--shuffle_some_array
+               |          |          
+               |          |--91.64%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          |          
+               |          |          |--35.20%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+               |          |          |          |          
+               |          |          |          |--31.03%--std::swap<int>
+               |          |          |          |          |          
+               |          |          |          |           --0.97%--std::move<int&>
+               |          |          |          |          
+               |          |          |          |--1.20%--std::move<int&>
+               |          |          |          |          
+               |          |          |           --1.14%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+               |          |          |          
+               |          |          |--35.15%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          |          |          
+               |          |          |          |--24.03%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+               |          |          |          |          |          
+               |          |          |          |           --19.08%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+               |          |          |          |                     |          
+               |          |          |          |                      --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+               |          |          |          |          
+               |          |          |           --2.40%--std::uniform_int_distribution<unsigned long>::param_type::a
+               |          |          |          
+               |          |          |--3.54%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+               |          |          |          |          
+               |          |          |           --0.95%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+               |          |          |          
+               |          |          |--3.32%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+               |          |          |          |          
+               |          |          |           --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--2.91%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+               |          |          |          |          
+               |          |          |           --0.75%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--2.29%--std::uniform_int_distribution<unsigned long>::param_type::param_type
+               |          |          |          
+               |          |          |--1.68%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+               |          |          |          
+               |          |          |--0.81%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+               |          |          |          
+               |          |          |--0.80%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+               |          |          |          
+               |          |          |--0.65%--std::uniform_int_distribution<unsigned long>::param_type::a
+               |          |          |          
+               |          |          |--0.61%--std::swap<int>
+               |          |          |          
+               |          |           --0.53%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+               |          |          
+               |          |--1.48%--std::vector<int, std::allocator<int> >::push_back
+               |          |          |          
+               |          |           --1.32%--std::vector<int, std::allocator<int> >::emplace_back<int>
+               |          |                     |          
+               |          |                      --0.63%--std::vector<int, std::allocator<int> >::back
+               |          |          
+               |          |--0.83%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          |          
+               |          |--0.72%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+               |          |          
+               |          |--0.70%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+               |          |          
+               |           --0.64%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+               |          
+                --2.19%--__random
+
+    97.52%     0.16%             6  main     main                  [.] shuffle_some_array
+            |          
+             --97.36%--shuffle_some_array
+                       |          
+                       |--91.64%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                       |          |          
+                       |          |--35.20%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+                       |          |          |          
+                       |          |          |--31.03%--std::swap<int>
+                       |          |          |          |          
+                       |          |          |           --0.97%--std::move<int&>
+                       |          |          |          
+                       |          |          |--1.20%--std::move<int&>
+                       |          |          |          
+                       |          |           --1.14%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+                       |          |          
+                       |          |--35.15%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                       |          |          |          
+                       |          |          |--24.03%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+                       |          |          |          |          
+                       |          |          |           --19.08%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+                       |          |          |                     |          
+                       |          |          |                      --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+                       |          |          |          
+                       |          |           --2.40%--std::uniform_int_distribution<unsigned long>::param_type::a
+                       |          |          
+                       |          |--3.54%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+                       |          |          |          
+                       |          |           --0.95%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+                       |          |          
+                       |          |--3.32%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+                       |          |          |          
+                       |          |           --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+                       |          |          
+                       |          |--2.91%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+                       |          |          |          
+                       |          |           --0.75%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+                       |          |          
+                       |          |--2.29%--std::uniform_int_distribution<unsigned long>::param_type::param_type
+                       |          |          
+                       |          |--1.68%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+                       |          |          
+                       |          |--0.81%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+                       |          |          
+                       |          |--0.80%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+                       |          |          
+                       |          |--0.65%--std::uniform_int_distribution<unsigned long>::param_type::a
+                       |          |          
+                       |          |--0.61%--std::swap<int>
+                       |          |          
+                       |           --0.53%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+                       |          
+                       |--1.48%--std::vector<int, std::allocator<int> >::push_back
+                       |          |          
+                       |           --1.32%--std::vector<int, std::allocator<int> >::emplace_back<int>
+                       |                     |          
+                       |                      --0.63%--std::vector<int, std::allocator<int> >::back
+                       |          
+                       |--0.83%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                       |          
+                       |--0.72%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+                       |          
+                       |--0.70%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+                       |          
+                        --0.64%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+
+    92.60%     3.78%           142  main     main                  [.] std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          
+            |--88.82%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          
+            |          |--35.20%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+            |          |          |          
+            |          |          |--31.03%--std::swap<int>
+            |          |          |          |          
+            |          |          |           --0.97%--std::move<int&>
+            |          |          |          
+            |          |          |--1.20%--std::move<int&>
+            |          |          |          
+            |          |           --1.14%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+            |          |          
+            |          |--35.15%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          |          
+            |          |          |--24.03%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+            |          |          |          |          
+            |          |          |           --19.08%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+            |          |          |                     |          
+            |          |          |                      --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+            |          |          |          
+            |          |           --2.40%--std::uniform_int_distribution<unsigned long>::param_type::a
+            |          |          
+            |          |--3.54%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+            |          |          |          
+            |          |           --0.95%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+            |          |          
+            |          |--3.32%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+            |          |          |          
+            |          |           --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          |          
+            |          |--2.91%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+            |          |          |          
+            |          |           --0.75%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          |          
+            |          |--2.29%--std::uniform_int_distribution<unsigned long>::param_type::param_type
+            |          |          
+            |          |--1.68%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          |          
+            |          |--0.81%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+            |          |          
+            |          |--0.80%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+            |          |          
+            |          |--0.65%--std::uniform_int_distribution<unsigned long>::param_type::a
+            |          |          
+            |          |--0.61%--std::swap<int>
+            |          |          
+            |           --0.53%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+            |          
+             --3.78%--__libc_start_call_main
+                       main
+                       my_function
+                       shuffle_some_array
+                       |          
+                        --2.82%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+
+    36.88%     9.07%           341  main     main                  [.] std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          
+            |--27.81%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          
+            |          |--24.03%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+            |          |          |          
+            |          |           --19.08%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+            |          |                     |          
+            |          |                      --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+            |          |          
+            |           --2.40%--std::uniform_int_distribution<unsigned long>::param_type::a
+            |          
+             --9.07%--__libc_start_call_main
+                       main
+                       my_function
+                       shuffle_some_array
+                       |          
+                       |--8.33%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                       |          |          
+                       |          |--7.42%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                       |          |          
+                       |           --0.57%--std::uniform_int_distribution<unsigned long>::param_type::a
+                       |          
+                        --0.75%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+
+    36.23%     2.52%            94  main     main                  [.] std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+            |          
+            |--33.71%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+            |          |          
+            |          |--31.03%--std::swap<int>
+            |          |          |          
+            |          |           --0.97%--std::move<int&>
+            |          |          
+            |          |--1.20%--std::move<int&>
+            |          |          
+            |           --1.14%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+            |          
+             --2.52%--__libc_start_call_main
+                       main
+                       my_function
+                       shuffle_some_array
+                       |          
+                        --2.16%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                                  |          
+                                   --1.52%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+
+    32.59%    30.94%          1187  main     main                  [.] std::swap<int>
+            |          
+            |--30.94%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          
+            |          |--30.39%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+            |          |          |          
+            |          |          |--29.43%--std::swap<int>
+            |          |          |          
+            |          |           --0.96%--std::move<int&>
+            |          |          
+            |           --0.55%--std::swap<int>
+            |          
+             --1.65%--std::swap<int>
+                       |          
+                        --0.97%--std::move<int&>
+
+    25.12%     5.41%           203  main     main                  [.] std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+            |          
+            |--19.71%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+            |          |          
+            |           --19.08%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+            |                     |          
+            |                      --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+            |          
+             --5.41%--__libc_start_call_main
+                       main
+                       my_function
+                       shuffle_some_array
+                       std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                       |          
+                        --4.95%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                                  |          
+                                   --4.66%--std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+
+    19.66%    10.20%           384  main     main                  [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+            |          
+            |--10.20%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+            |          |          
+            |           --9.92%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+            |          
+             --9.46%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+                       |          
+                        --9.14%--std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+
+     9.14%     9.14%           343  main     main                  [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+            |
+            ---__libc_start_call_main
+               main
+               my_function
+               shuffle_some_array
+               std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               std::uniform_int_distribution<unsigned long>::_S_nd<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>, unsigned int>
+               std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()
+               std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand
+
+     4.41%     3.13%           118  main     main                  [.] __gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+            |          
+            |--3.13%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          |          
+            |          |--2.43%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          |          
+            |          |           --2.03%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+            |          |          
+            |           --0.70%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+            |          
+             --1.29%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+                       |          
+                        --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+
+     4.20%     3.11%           116  main     main                  [.] __gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+            |          
+            |--3.11%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          |          
+            |          |--2.46%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          |          
+            |          |          |--1.81%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+            |          |          |          
+            |          |           --0.65%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          |          
+            |           --0.64%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+            |          
+             --1.10%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+                       |          
+                        --0.75%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+
+     4.20%     2.56%            96  main     main                  [.] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+            |          
+            |--2.56%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          
+            |           --2.30%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+            |          
+             --1.64%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+                       |          
+                        --0.95%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+
+     4.04%     2.99%           112  main     main                  [.] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          
+            |--2.99%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          
+            |          |--1.29%--__gnu_cxx::operator-<int*, std::vector<int, std::allocator<int> > >
+            |          |          |          
+            |          |           --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          |          
+            |          |--1.07%--__gnu_cxx::operator!=<int*, std::vector<int, std::allocator<int> > >
+            |          |          |          
+            |          |           --0.75%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          |          
+            |           --0.64%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+            |          
+             --1.05%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::base
+
+     3.07%     2.48%            91  main     main                  [.] std::uniform_int_distribution<unsigned long>::param_type::a
+            |          
+            |--2.48%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |          |          
+            |           --2.40%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |                     |          
+            |                      --2.37%--std::uniform_int_distribution<unsigned long>::param_type::a
+            |          
+             --0.59%--std::uniform_int_distribution<unsigned long>::param_type::a
+
+     2.83%     1.87%            70  main     main                  [.] std::move<int&>
+            |          
+            |--1.87%--__libc_start_call_main
+            |          main
+            |          my_function
+            |          shuffle_some_array
+            |          |          
+            |           --1.84%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+            |                     std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+            |                     |          
+            |                      --1.60%--std::swap<int>
+            |                                |          
+            |                                 --0.97%--std::move<int&>
+            |          
+             --0.96%--std::move<int&>
+
+     2.80%     2.80%           105  main     main                  [.] std::uniform_int_distribution<unsigned long>::param_type::param_type
+            |
+            ---__libc_start_call_main
+               main
+               my_function
+               shuffle_some_array
+               |          
+                --2.32%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                          |          
+                           --2.29%--std::uniform_int_distribution<unsigned long>::param_type::param_type
+
+     2.21%     2.21%            34  main     libc.so.6             [.] __random
+            |
+            ---__libc_start_call_main
+               main
+               my_function
+               |          
+                --2.19%--__random
+
+     2.02%     1.70%            64  main     main                  [.] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+            |          
+             --1.70%--__libc_start_call_main
+                       main
+                       my_function
+                       shuffle_some_array
+                       |          
+                        --1.68%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                                  |          
+                                   --1.46%--std::iter_swap<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >
+                                             |          
+                                              --1.14%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator*
+
+     1.84%     1.84%            68  main     main                  [.] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+            |
+            ---__libc_start_call_main
+               main
+               my_function
+               shuffle_some_array
+               |          
+                --1.57%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                          |          
+                           --1.24%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator+
+                                     |          
+                                      --0.95%--__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::__normal_iterator
+
+     1.59%     0.16%             6  main     main                  [.] std::vector<int, std::allocator<int> >::push_back
+            |          
+             --1.43%--std::vector<int, std::allocator<int> >::push_back
+                       |          
+                        --1.32%--std::vector<int, std::allocator<int> >::emplace_back<int>
+                                  |          
+                                   --0.63%--std::vector<int, std::allocator<int> >::back
+
+     1.52%     1.07%            40  main     main                  [.] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+            |          
+             --1.07%--__libc_start_call_main
+                       main
+                       my_function
+                       shuffle_some_array
+                       |          
+                        --0.81%--std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+                                  __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator++
+
+     1.45%     0.16%             6  main     main                  [.] std::vector<int, std::allocator<int> >::emplace_back<int>
+            |          
+             --1.29%--std::vector<int, std::allocator<int> >::emplace_back<int>
+                       |          
+                        --0.63%--std::vector<int, std::allocator<int> >::back
+
+     1.39%     1.39%            52  main     main                  [.] std::uniform_int_distribution<unsigned long>::param_type::b
+            |
+            ---__libc_start_call_main
+               main
+               my_function
+               shuffle_some_array
+               std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+               |          
+                --0.96%--std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >
+
+     0.74%     0.18%             7  main     main                  [.] std::vector<int, std::allocator<int> >::back
+            |          
+             --0.56%--std::vector<int, std::allocator<int> >::back
+
+     0.31%     0.23%             9  main     main                  [.] __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >::operator-
+     0.30%     0.10%             4  main     main                  [.] std::vector<int, std::allocator<int> >::end
+     0.24%     0.21%             8  main     libc.so.6             [.] __memmove_evex_unaligned_erms
+     0.24%     0.00%             0  main     main                  [.] std::vector<int, std::allocator<int> >::_M_realloc_insert<int>
+     0.24%     0.00%             0  main     main                  [.] std::vector<int, std::allocator<int> >::_S_relocate
+     0.24%     0.00%             0  main     main                  [.] std::vector<int, std::allocator<int> >::_S_do_relocate
+     0.24%     0.00%             0  main     main                  [.] std::__relocate_a<int*, int*, std::allocator<int> >
+     0.21%     0.08%             3  main     main                  [.] std::allocator_traits<std::allocator<int> >::construct<int, int>
+     0.13%     0.03%             1  main     [kernel.kallsyms]     [k] asm_sysvec_apic_timer_interrupt
+     0.13%     0.00%             0  main     [kernel.kallsyms]     [k] asm_exc_page_fault
+     0.11%     0.03%             1  main     main                  [.] __gnu_cxx::new_allocator<int>::construct<int, int>
+     0.11%     0.00%             0  main     [kernel.kallsyms]     [k] sysvec_apic_timer_interrupt
+     0.11%     0.00%             0  main     [kernel.kallsyms]     [k] __sysvec_apic_timer_interrupt
+     0.11%     0.00%             0  main     [kernel.kallsyms]     [k] hrtimer_interrupt
+     0.08%     0.08%             3  main     libc.so.6             [.] __random_r
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] __hrtimer_run_queues
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] tick_sched_timer
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] entry_SYSCALL_64_after_hwframe
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] do_syscall_64
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] x64_sys_call
+     0.08%     0.00%             0  main     [unknown]             [k] 0000000000000000
+     0.08%     0.00%             0  main     libc.so.6             [.] __brk
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] __x64_sys_brk
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] __do_sys_brk
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] __do_munmap
+     0.08%     0.00%             0  main     [kernel.kallsyms]     [k] unmap_region
+     0.05%     0.05%             2  main     main                  [.] std::forward<int>
+     0.05%     0.00%             0  main     libc.so.6             [.] rand
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] exc_page_fault
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] do_user_addr_fault
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] handle_mm_fault
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] __handle_mm_fault
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] handle_pte_fault
+     0.05%     0.05%             2  main     [kernel.kallsyms]     [k] zap_pte_range
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] unmap_vmas
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] unmap_single_vma
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] unmap_page_range
+     0.05%     0.00%             0  main     [kernel.kallsyms]     [k] zap_pmd_range.isra.0
+     0.03%     0.03%             1  main     [kernel.kallsyms]     [k] native_irq_return_iret
+     0.03%     0.03%             1  main     main                  [.] operator new
+     0.03%     0.03%             1  main     [kernel.kallsyms]     [k] arch_asym_cpu_priority
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] tick_sched_handle
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] update_process_times
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] scheduler_tick
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] trigger_load_balance
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] nohz_balancer_kick
+     0.03%     0.03%             1  main     [kernel.kallsyms]     [k] free_unref_page_commit.constprop.0
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] tlb_finish_mmu
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] free_pages_and_swap_cache
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] release_pages
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] free_unref_page_list
+     0.03%     0.03%             1  main     [kernel.kallsyms]     [k] mem_cgroup_charge_statistics.constprop.0
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] do_anonymous_page
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] __mem_cgroup_charge
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] charge_memcg
+     0.03%     0.03%             1  main     main                  [.] 0x00000000000010f4
+     0.03%     0.03%             4  main     [kernel.kallsyms]     [k] native_write_msr
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] tick_program_event
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] clockevents_program_event
+     0.03%     0.03%             1  main     [kernel.kallsyms]     [k] ktime_get
+     0.03%     0.03%             1  main     [kernel.kallsyms]     [k] timekeeping_adjust.constprop.0
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] tick_sched_do_timer
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] tick_do_update_jiffies64
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] update_wall_time
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] timekeeping_advance
+     0.03%     0.00%             0  main     ld-linux-x86-64.so.2  [.] _dl_map_object
+     0.03%     0.03%             1  main     [kernel.kallsyms]     [k] next_uptodate_page
+     0.03%     0.00%             0  main     ld-linux-x86-64.so.2  [.] _dl_load_cache_lookup
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] do_fault
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] do_read_fault
+     0.03%     0.00%             0  main     [kernel.kallsyms]     [k] filemap_map_pages
+     0.00%     0.00%             1  main     [kernel.kallsyms]     [k] security_bprm_committing_creds
+     0.00%     0.00%             0  main     [unknown]             [k] 0x00007f262c83808b
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] __x64_sys_execve
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] do_execveat_common.isra.0
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] bprm_execve
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] bprm_execve.part.0
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] exec_binprm
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] search_binary_handler
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] load_elf_binary
+     0.00%     0.00%             0  main     ld-linux-x86-64.so.2  [.] __GI___open64_nocancel
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] __x64_sys_openat
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] do_sys_openat2
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] do_filp_open
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] path_openat
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] do_open
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] vfs_open
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] do_dentry_open
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] security_file_open
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] fsnotify_perm.part.0
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] __fsnotify_parent
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] dput
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] __cond_resched
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] __schedule
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] finish_task_switch.isra.0
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] __perf_event_task_sched_in
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] x86_pmu_enable
+     0.00%     0.00%             0  main     [kernel.kallsyms]     [k] intel_pmu_enable_all
+     0.00%     0.00%             1  main     [kernel.kallsyms]     [k] nmi_handle
+     0.00%     0.00%             3  perf-ex  [kernel.kallsyms]     [k] native_write_msr
+     0.00%     0.00%             0  perf-ex  [unknown]             [k] 0x00007f262c83808b
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] entry_SYSCALL_64_after_hwframe
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] do_syscall_64
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] x64_sys_call
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] __x64_sys_execve
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] do_execveat_common.isra.0
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] bprm_execve
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] bprm_execve.part.0
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] exec_binprm
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] search_binary_handler
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] load_elf_binary
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] begin_new_exec
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] perf_event_exec
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] ctx_resched
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] x86_pmu_enable
+     0.00%     0.00%             0  perf-ex  [kernel.kallsyms]     [k] intel_pmu_enable_all
+     0.00%     0.00%             1  perf-ex  [kernel.kallsyms]     [k] perf_event_nmi_handler
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

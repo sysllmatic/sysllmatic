@@ -1,0 +1,370 @@
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/build.xml ../build/cassandra-1ba458c-pre-5.1/build.xml
+--- ./cassandra-1ba458c-pre-5.1/build.xml	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/build.xml	2024-08-13 05:55:27.302848318 +0000
+@@ -44,7 +44,7 @@
+         The use of both CASSANDRA_USE_JDK11 and use-jdk11 is deprecated.
+     -->
+     <property name="java.default" value="11" />
+-    <property name="java.supported" value="11,17" />
++    <property name="java.supported" value="11,17,21" />
+ 
+     <!-- directory details -->
+     <property name="basedir" value="."/>
+@@ -150,7 +150,7 @@
+     <!-- When updating ASM, please, do consider whether you might need to update also FBUtilities#ASM_BYTECODE_VERSION
+       and the simulator InterceptClasses#BYTECODE_VERSION, in particular if we are looking to provide Cassandra support
+       for newer JDKs (CASSANDRA-17873). -->
+-    <property name="asm.version" value="9.4"/>
++    <property name="asm.version" value="9.5"/>
+     <property name="allocation-instrumenter.version" value="3.1.0"/>
+ 
+     <condition property="is.source.artifact">
+@@ -270,6 +270,56 @@
+         <equals arg1="${ant.java.version}" arg2="17"/>
+     </condition>
+ 
++    <resources id="_jvm21_arg_items">
++        <string>-Djdk.attach.allowAttachSelf=true</string>
++
++        <string>-XX:+UseG1GC</string>
++        <string>-XX:+ParallelRefProcEnabled</string>
++        <string>-XX:MaxTenuringThreshold=1</string>
++        <string>-XX:G1HeapRegionSize=16m</string>
++
++        <string>--add-exports java.base/jdk.internal.misc=ALL-UNNAMED</string>
++        <string>--add-exports java.base/jdk.internal.ref=ALL-UNNAMED</string>
++        <string>--add-exports java.base/sun.nio.ch=ALL-UNNAMED</string>
++        <string>--add-exports java.management.rmi/com.sun.jmx.remote.internal.rmi=ALL-UNNAMED</string>
++
++        <string>--add-exports java.rmi/sun.rmi.registry=ALL-UNNAMED</string>
++        <string>--add-exports java.rmi/sun.rmi.server=ALL-UNNAMED</string>
++        <string>--add-exports java.rmi/sun.rmi.transport.tcp=ALL-UNNAMED</string>
++        <string>--add-exports java.sql/java.sql=ALL-UNNAMED</string>
++        <string>--add-exports java.base/java.lang.ref=ALL-UNNAMED</string>
++        <string>--add-exports java.base/java.lang.reflect=ALL-UNNAMED</string>
++        <string>--add-exports jdk.unsupported/sun.misc=ALL-UNNAMED</string>
++        <string>--add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</string>
++
++        <string>--add-opens java.base/java.lang.module=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.net=ALL-UNNAMED</string>
++        <string>--add-opens java.base/jdk.internal.loader=ALL-UNNAMED</string>
++        <string>--add-opens java.base/jdk.internal.ref=ALL-UNNAMED</string>
++        <string>--add-opens java.base/jdk.internal.reflect=ALL-UNNAMED</string>
++        <string>--add-opens java.base/jdk.internal.math=ALL-UNNAMED</string>
++        <string>--add-opens java.base/jdk.internal.module=ALL-UNNAMED</string>
++        <string>--add-opens java.base/jdk.internal.util.jar=ALL-UNNAMED</string>
++        <string>--add-opens jdk.management/com.sun.management=ALL-UNNAMED</string>
++
++        <string>--add-opens java.base/sun.nio.ch=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.io=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.nio=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.util.concurrent=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.util=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.lang=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.math=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.lang.reflect=ALL-UNNAMED</string>
++        <string>--add-opens java.base/java.net=ALL-UNNAMED</string>
++
++        <string>--add-opens java.rmi/sun.rmi.transport.tcp=ALL-UNNAMED</string>
++    </resources>
++    <pathconvert property="_jvm21_args_concat" refid="_jvm21_arg_items" pathsep=" "/>
++    <condition property="java-jvmargs" value="${_jvm21_args_concat}" else="">
++        <equals arg1="${ant.java.version}" arg2="21"/>
++    </condition>
++
+     <!--
+       JVM arguments for tests.
+ 
+@@ -291,12 +341,20 @@
+         <string>-Dio.netty.tryReflectionSetAccessible=true</string>
+     </resources>
+     <pathconvert property="_jvm17_test_arg_items_concat" refid="_jvm17_test_arg_items" pathsep=" "/>
++    <resources id="_jvm21_test_arg_items">
++        <string>-Djava.security.manager=allow</string>
++        <string>-Dio.netty.tryReflectionSetAccessible=true</string>
++    </resources>
++    <pathconvert property="_jvm21_test_arg_items_concat" refid="_jvm21_test_arg_items" pathsep=" "/>
+     <condition property="_std-test-jvmargs" value="${_jvm11_test_arg_items_concat}">
+             <equals arg1="${ant.java.version}" arg2="11"/>
+     </condition>
+     <condition property="_std-test-jvmargs" value="${_jvm17_test_arg_items_concat}">
+         <equals arg1="${ant.java.version}" arg2="17"/>
+     </condition>
++    <condition property="_std-test-jvmargs" value="${_jvm21_test_arg_items_concat}">
++        <equals arg1="${ant.java.version}" arg2="21"/>
++    </condition>
+ 
+     <!-- needed to compile org.apache.cassandra.utils.JMXServerUtils -->
+     <!-- needed to compile org.apache.cassandra.distributed.impl.Instance-->
+@@ -1285,7 +1343,7 @@
+           <fileset file="${test.conf}/cassandra.yaml"/>
+           <fileset file="${test.conf}/storage_compatibility_mode_none.yaml"/>
+         </concat>
+-      <testmacrohelper inputdir="${test.dir}/${test.classlistprefix}" filelist="@{test.file.list}" 
++      <testmacrohelper inputdir="${test.dir}/${test.classlistprefix}" filelist="@{test.file.list}"
+                        exclude="**/*.java" timeout="${test.timeout}" testtag="oa">
+         <jvmarg value="-Dlegacy-sstable-root=${test.data}/legacy-sstables"/>
+         <jvmarg value="-Dinvalid-legacy-sstable-root=${test.data}/invalid-legacy-sstables"/>
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/conf/logback.xml ../build/cassandra-1ba458c-pre-5.1/conf/logback.xml
+--- ./cassandra-1ba458c-pre-5.1/conf/logback.xml	2024-08-13 04:03:47.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/conf/logback.xml	2024-08-13 05:55:27.302848318 +0000
+@@ -119,7 +119,7 @@
+     </filter>
+   </appender> -->
+ 
+-  <root level="INFO">
++  <root level="ERROR">
+     <appender-ref ref="SYSTEMLOG" />
+     <appender-ref ref="STDOUT" />
+     <appender-ref ref="ASYNCDEBUGLOG" /> <!-- Comment this line to disable debug.log -->
+@@ -131,5 +131,5 @@
+     -->
+   </root>
+ 
+-  <logger name="org.apache.cassandra" level="DEBUG"/>
++  <logger name="org.apache.cassandra" level="ERROR"/>
+ </configuration>
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPExecutor.java ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPExecutor.java
+--- ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPExecutor.java	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPExecutor.java	2024-08-13 06:00:53.911208716 +0000
+@@ -17,6 +17,7 @@
+  */
+ package org.apache.cassandra.concurrent;
+ 
++import java.lang.reflect.Method;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.concurrent.Callable;
+@@ -67,6 +68,10 @@
+     // TODO: see if other queue implementations might improve throughput
+     protected final ConcurrentLinkedQueue<Runnable> tasks = new ConcurrentLinkedQueue<>();
+ 
++    private final Object dacapoCallback;
++    private final Method taskStartMethod;
++    private final Method taskEndMethod;
++
+     SEPExecutor(SharedExecutorPool pool, int maximumPoolSize, MaximumPoolSizeListener maximumPoolSizeListener, String jmxPath, String name)
+     {
+         this.pool = pool;
+@@ -75,6 +80,23 @@
+         this.maximumPoolSize = new AtomicInteger(maximumPoolSize);
+         this.maximumPoolSizeListener = maximumPoolSizeListener;
+         this.permits.set(combine(0, maximumPoolSize));
++
++        Object callback = null;
++        Method start = null;
++        Method end = null;
++        try {
++            Class clazz = Class.forName("org.dacapo.harness.Callback");
++            Method getter = clazz.getMethod("getCallback");
++            callback = getter.invoke(getter, null);
++            start = clazz.getMethod("serverTaskStart");
++            end = clazz.getMethod("serverTaskEnd");
++        } catch (Exception e) {
++            System.err.println("Could not initialize DaCapo callbacks: "+e);
++        }
++        this.dacapoCallback = callback;
++        this.taskStartMethod = start;
++        this.taskEndMethod = end;
++
+         this.metrics = new ThreadPoolMetrics(this, jmxPath, name).register();
+         MBeanWrapper.instance.registerMBean(this, mbeanName);
+     }
+@@ -84,6 +106,25 @@
+         completedTasks.incrementAndGet();
+     }
+ 
++    protected void beforeExecute() {
++        try {
++            if (dacapoCallback != null)
++                taskStartMethod.invoke(dacapoCallback);
++        } catch (Exception e) {
++            System.err.println("Could not invoke DaCapo callbacks: "+e);
++        }
++    }
++
++    protected void afterExecute() {
++        try {
++            if (dacapoCallback != null)
++                taskEndMethod.invoke(dacapoCallback);
++        } catch (Exception e) {
++            System.err.println("Could not invoke DaCapo callbacks: "+e);
++        }
++
++    }
++
+     @Override
+     public int getMaxTasksQueued()
+     {
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPWorker.java ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPWorker.java
+--- ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPWorker.java	2024-08-13 04:03:47.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/concurrent/SEPWorker.java	2024-08-13 06:01:34.915753933 +0000
+@@ -134,6 +134,7 @@
+                 SEPExecutor.TakeTaskPermitResult status = null; // make sure set if shutdown check short circuits
+                 while (true)
+                 {
++                    assigned.beforeExecute();
+                     // before we process any task, we maybe schedule a new worker _to our executor only_; this
+                     // ensures that even once all spinning threads have found work, if more work is left to be serviced
+                     // and permits are available, it will be dealt with immediately.
+@@ -143,7 +144,7 @@
+                     task.run();
+                     assigned.onCompletion();
+                     task = null;
+-
++                    assigned.afterExecute();
+                     if (shutdown = assigned.shuttingDown)
+                         break;
+ 
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/AbstractPatriciaTrie.java ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/AbstractPatriciaTrie.java
+--- ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/AbstractPatriciaTrie.java	2024-08-13 04:03:47.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/AbstractPatriciaTrie.java	2024-08-13 05:55:27.302848318 +0000
+@@ -790,7 +790,7 @@
+      * This is implemented by going always to the left until
+      * we encounter a valid uplink. That uplink is the first key.
+      */
+-    TrieEntry<K, V> firstEntry()
++    public TrieEntry<K, V> firstEntry()
+     {
+         // if Trie is empty, no first node.
+         return isEmpty() ? null : followLeft(root);
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/PatriciaTrie.java ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/PatriciaTrie.java
+--- ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/PatriciaTrie.java	2024-08-13 04:03:47.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/index/sasi/utils/trie/PatriciaTrie.java	2024-08-13 05:55:27.302848318 +0000
+@@ -414,7 +414,7 @@
+      * <p>This is implemented by going always to the right until
+      * we encounter a valid uplink. That uplink is the last key.
+      */
+-    private TrieEntry<K, V> lastEntry()
++    public TrieEntry<K, V> lastEntry()
+     {
+         return followRight(root.left);
+     }
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/btree/BTreeSet.java ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/btree/BTreeSet.java
+--- ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/btree/BTreeSet.java	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/btree/BTreeSet.java	2024-08-13 05:55:27.302848318 +0000
+@@ -312,6 +312,41 @@
+         throw new UnsupportedOperationException();
+     }
+ 
++    public BTreeSet<V> reversed()
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    public V removeLast()
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    public V removeFirst()
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    public V getLast()
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    public V getFirst()
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    public void addLast(V v)
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    public void addFirst(V v)
++    {
++        throw new UnsupportedOperationException();
++    }
++
+     public static class BTreeRange<V> extends BTreeSet<V>
+     {
+         // both inclusive
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/Clock.java ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/Clock.java
+--- ./cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/Clock.java	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/src/java/org/apache/cassandra/utils/Clock.java	2024-08-13 05:55:27.302848318 +0000
+@@ -47,7 +47,7 @@
+          * implementation. Set <code>cassandra.clock</code> system property to a FQCN to use a
+          * different implementation instead.
+          */
+-        private static final Clock instance;
++        private static Clock instance;
+ 
+         static
+         {
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/InterceptClasses.java ../build/cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/InterceptClasses.java
+--- ./cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/InterceptClasses.java	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/InterceptClasses.java	2024-08-13 05:55:27.302848318 +0000
+@@ -48,7 +48,7 @@
+ // WARNING: does not implement IClassTransformer directly as must be accessible to bootstrap class loader
+ public class InterceptClasses implements BiFunction<String, byte[], byte[]>
+ {
+-    public static final int BYTECODE_VERSION = Opcodes.ASM7;
++    public static final int BYTECODE_VERSION = Opcodes.ASM9;
+ 
+     // TODO (cleanup): use annotations
+     private static final Pattern MONITORS = Pattern.compile( "org[/.]apache[/.]cassandra[/.]utils[/.]concurrent[/.].*" +
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/ShadowingTransformer.java ../build/cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/ShadowingTransformer.java
+--- ./cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/ShadowingTransformer.java	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/test/simulator/asm/org/apache/cassandra/simulator/asm/ShadowingTransformer.java	2024-08-13 05:55:27.302848318 +0000
+@@ -244,6 +244,12 @@
+     }
+ 
+     @Override
++    public void visitPermittedSubclass(String permittedSubclass)
++    {
++        super.visitPermittedSubclass(toShadowType(permittedSubclass));
++    }
++
++    @Override
+     public FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value)
+     {
+         return super.visitField(access, name, toShadowTypeDescriptor(descriptor), signature, value);
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/InterceptorOfGlobalMethods.java ../build/cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/InterceptorOfGlobalMethods.java
+--- ./cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/InterceptorOfGlobalMethods.java	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/InterceptorOfGlobalMethods.java	2024-08-13 05:55:27.306848372 +0000
+@@ -459,12 +459,14 @@
+             this.nextId = nextId;
+         }
+ 
+-        public synchronized int applyAsInt(Object value)
++        public int applyAsInt(Object value)
+         {
+             Integer id = saved.get(value);
+             if (id == null)
+             {
+-                id = nextId.getAsInt();
++                synchronized (nextId) {
++                    id = nextId.getAsInt();
++                }
+                 saved.put(value, id);
+             }
+             return id;
+diff '--color=auto' -ur ./cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/SimulatedTime.java ../build/cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/SimulatedTime.java
+--- ./cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/SimulatedTime.java	2024-08-13 04:03:48.000000000 +0000
++++ ../build/cassandra-1ba458c-pre-5.1/test/simulator/main/org/apache/cassandra/simulator/systems/SimulatedTime.java	2024-08-13 05:55:27.306848372 +0000
+@@ -49,7 +49,8 @@
+ // TODO (cleanup): when we encounter an exception and unwind the simulation, we should restore normal time to go with normal waits etc.
+ public class SimulatedTime
+ {
+-    private static final Pattern PERMITTED_TIME_THREADS = Pattern.compile("(logback|SimulationLiveness|Reconcile)[-:][0-9]+");
++    private static final Pattern PERMITTED_TIME_THREADS = Pattern.compile("(logback|SimulationLiveness|Reconcile|Reference-Reaper)[-:][0-9]+");
++    private static final Pattern PERMITTED_TIME_CLEANER_THREADS = Pattern.compile("(LocalPool-Cleaner[-a-z]+[-:][0-9]+|Common-Cleaner)");
+ 
+     @Shared(scope = Shared.Scope.SIMULATION)
+     public interface Listener
+@@ -148,7 +149,7 @@
+                 if (interceptibleThread.isIntercepting())
+                     return interceptibleThread.time();
+             }
+-            if (PERMITTED_TIME_THREADS.matcher(Thread.currentThread().getName()).matches())
++            if (PERMITTED_TIME_THREADS.matcher(Thread.currentThread().getName()).matches() || PERMITTED_TIME_CLEANER_THREADS.matcher(Thread.currentThread().getName()).matches())
+                 return disabled;
+             throw new IllegalStateException("Using time is not allowed during simulation");
+         }

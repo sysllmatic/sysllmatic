@@ -1,0 +1,38 @@
+benchmark tradesoap
+  class org.dacapo.harness.Tradesoap
+  thread-model per_cpu
+  jars "daytrader.jar";
+
+size small args "3", "12"
+  threads 1      // per available processor
+  thread-limit 8
+  output stdout  digest 0x11c54677664e32ab2f010629562f6380cf7273e6,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size default args "8", "25"
+  threads 1      // per available processor
+  thread-limit 128
+  output stdout  digest 0x730ae3383014534dd0acf0a36ef0051064062c9d,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size large args "12", "180"
+  threads 1      // per available processor
+  thread-limit 1024 // see <max-pool-size> in wildfly.patch
+  output stdout  digest 0x071ff7aaab548975d5033bbf0ff3df5d76bb16ab,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size vlarge args "13", "630"
+  threads 1      // per available processor
+  thread-limit 2048
+  output stdout  digest 0x2eea8995ccf754fa4665fccfc8be2c829741a65d,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+description
+  short		"Tradesoap SOAP Daytrader benchmark",
+  long		"Tradesoap a SOAP version of the Daytrader benchmark from Apache. It runs over the WildFly application server.",
+  copyright	"Copyright (C) The Apache Software Foundation",
+  author        "RedHat and Apache Geronimo, donated by IBM",
+  license       "Apache License, Version 2.0 and LGPL 2.1",
+  url           "http://geronimo.apache.org/",
+  threads       "Explicitly multi-threaded client, scaled to available processors.  Internally multi-threaded server.",
+  repeats	"Populates a database with stocks and users, and then perfoms a number of trader actions organized as packets (trade sesions).",

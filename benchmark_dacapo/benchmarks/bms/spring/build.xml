@@ -1,0 +1,68 @@
+<!--
+ * Copyright (c) 2019 The Australian National University.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0.
+ * You may obtain the license at
+ *
+ *    http://www.opensource.org/licenses/apache2.0.php
+ -->
+
+<project name="spring" default="all" basedir="../..">
+    <description>Dacapo Spring Benchmark</description>
+    <property file="local.properties"/>
+    <property file="dacapo.properties"/>
+
+    <property name="bm-name" value="spring"/>
+    <property name="bm-version" value="2.7.3"/>  <!-- last release before 3.0, where JDK 17 is MSV -->
+    <property name="bm-version-str" value="springboot ${bm-version} petclinic git-9ecdc11 h2 2.1.214 hibernate 5.6.10 tomcat 9.0.65"/>
+    <property name="bm-src" value="${bm-name}-${bm-version}-src.tgz"/>
+    <property name="git-group" value="spring-projects"/>
+    <property name="git-project" value="spring-petclinic"/>
+    <property name="bm-git-url" value="${github.url}/${git-group}/${git-project}"/>
+    <property name="bm-git-commit" value="89f7b4ee96b8dd354d56ff2211bb1ffe762ba24c"/>
+
+    <import file="../common.xml"/>
+
+    <target name="unpack" depends="untar, patch"/>
+
+    <property name="mvn-home" location="${toolsdir}/apache-maven-${mvn.version}/bin"/>
+    <property name="mvn-exe" value="${mvn-home}/mvn"/>
+    <condition property="mvn-exe" value="${mvn-home}/mvn.bat">
+        <os family="windows"/>
+    </condition>
+    <condition property="build-script" value="${bm-build-dir}/mvnw.cmd">
+        <os family="windows"/>
+    </condition>
+    <property name="build-script" value="${bm-build-dir}/mvnw"/>
+
+    <target name="bm-build" depends="commons-httpclient">
+        <antcall target="make-executable">
+            <param name="target-filename" value="${build-script}"/>
+        </antcall>
+        <exec executable="${build-script}" dir="${bm-build-dir}" failonerror="true">
+            <arg line="package"/>
+        </exec>
+    </target>
+
+    <target name="data">
+        <copy file="${bm-files}/workload/requests.txt" todir="${bm-data}"/>
+    </target>
+
+    <target name="jar">
+        <copy todir="${bm-jars}" flatten="true">
+            <fileset dir="${bm-build-dir}/" includes="**/*.jar"/>
+            <fileset file="${commons-httpclient-jar}"/>
+        </copy>
+
+        <javac srcdir="${bm-src-dir}"  destdir="${bm-build-dir}"
+               sourcepath="${bm-src-dir}"
+               classpath="${harness-classpath}:${commons-httpclient-jar}"
+               source="1.8">
+        </javac>
+        <jar destfile="${bm-jars}/dacapo-${bm-name}.jar" update="true">
+            <fileset dir="${bm-build-dir}">
+                <include name="org/dacapo/spring/**"/>
+            </fileset>
+        </jar>
+    </target>
+</project>

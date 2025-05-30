@@ -1,0 +1,39 @@
+RELEASE PROCEDURES
+
+0. Update and commit the release notes (ensure that they correctly reflect the upcoming release number)
+
+1. Make fresh git clone
+   	git clone https://github.com/dacapobench/dacapobench.git
+
+2. Determine a version number and optionally a nickname, specify that in dacapobench/benchmarks/dacapo.properties file
+	dacapo.version=23.11
+	dacapo.nickname=chopin
+
+3. Produce a source build and rename it:
+    cd dacapobench/benchmarks
+	ant -Dbuild.is-official=true source
+	mv dacapo-${dacapo.version}-${dacapo.nickname}-src.zip ../..
+	cd ../..
+
+4. Create a new directory and unzip the new source
+	mkdir release
+	cd release
+	unzip ../dacapo-${dacapo.version}-${dacapo.nickname}-src.zip
+
+5. Build the new source (using a proxy if necessary)
+	<set up local.properties>
+	export PATH=/usr/lib/jvm/java-8-openjdk-amd64/bin:$PATH
+    cd benchmarks
+	ant -Dbuild.is-official=true
+
+6. Test the resulting zip
+
+7. Upload files
+	- rclone copy -P --tpslimit=5 --s3-chunk-size=256M -vv dacapo-*.zip r2:dacapo/chopin 
+
+8. Ensure download is working, and update web page 
+
+9. Create a git tag and release
+    - git tag -a v23.11-chopin -m "23.11-chopin release"
+	- git push origin --tags
+	- go to github and create a release

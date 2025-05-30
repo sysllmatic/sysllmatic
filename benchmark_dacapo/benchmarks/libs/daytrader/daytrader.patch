@@ -1,0 +1,1214 @@
+diff '--color=auto' -ur daytrader/javaee6/assemblies/daytrader-ear/src/main/resources/META-INF/application.xml ../build/daytrader/javaee6/assemblies/daytrader-ear/src/main/resources/META-INF/application.xml
+--- daytrader/javaee6/assemblies/daytrader-ear/src/main/resources/META-INF/application.xml	2023-05-12 10:22:57.000000000 +0000
++++ ../build/daytrader/javaee6/assemblies/daytrader-ear/src/main/resources/META-INF/application.xml	2023-08-15 06:48:45.796761330 +0000
+@@ -1,14 +1,26 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+-  <application-name>daytrader</application-name>
+-  <description>DayTrader Stock Trading Performance Benchmark Sample</description>  
+-  <display-name>DayTrader EAR</display-name> 
+-  
++<!--
++    Licensed to the Apache Software Foundation (ASF) under one or more
++    contributor license agreements.  See the NOTICE file distributed with
++    this work for additional information regarding copyright ownership.
++    The ASF licenses this file to You under the Apache License, Version 2.0
++    (the "License"); you may not use this file except in compliance with
++    the License.  You may obtain a copy of the License at
++
++       http://www.apache.org/licenses/LICENSE-2.0
++
++    Unless required by applicable law or agreed to in writing, software
++    distributed under the License is distributed on an "AS IS" BASIS,
++    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++    See the License for the specific language governing permissions and
++    limitations under the License.
++-->
++<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd" version="5">
+   <module>
+     <web>
+       <web-uri>web.war</web-uri>
+-      <context-root>/daytrader</context-root>
++      <context-root>/daytrader/</context-root>
+     </web>
+   </module>
+- 
+-</application>
+\ No newline at end of file
++  <library-directory>lib</library-directory>
++</application>
+diff '--color=auto' -ur daytrader/javaee6/modules/entities/pom.xml ../build/daytrader/javaee6/modules/entities/pom.xml
+--- daytrader/javaee6/modules/entities/pom.xml	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/entities/pom.xml	2023-08-15 06:48:45.796761330 +0000
+@@ -1,4 +1,20 @@
+ <?xml version="1.0" encoding="UTF-8"?>
++<!--
++    Licensed to the Apache Software Foundation (ASF) under one or more
++    contributor license agreements.  See the NOTICE file distributed with
++    this work for additional information regarding copyright ownership.
++    The ASF licenses this file to You under the Apache License, Version 2.0
++    (the "License"); you may not use this file except in compliance with
++    the License.  You may obtain a copy of the License at
++
++       http://www.apache.org/licenses/LICENSE-2.0
++
++    Unless required by applicable law or agreed to in writing, software
++    distributed under the License is distributed on an "AS IS" BASIS,
++    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++    See the License for the specific language governing permissions and
++    limitations under the License.
++-->
+ <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <modelVersion>4.0.0</modelVersion>
+@@ -13,7 +29,7 @@
+   
+  <name>DayTrader :: Java EE 6 :: Modules - Entities</name>
+   <description>Daytrader Java EE 6 Entities Module</description>
+-  
++
+   <dependencies>
+         <dependency>
+             <groupId>org.apache.geronimo.daytrader.javaee6</groupId>
+@@ -80,7 +96,21 @@
+             <scope>provided</scope>
+         </dependency>
+         <!-- end OpenJPA PCEnhancer depends -->
+-    </dependencies>
++
++      <dependency>
++          <groupId>org.hibernate</groupId>
++          <artifactId>hibernate-entitymanager</artifactId>
++          <version>5.0.7.Final</version>
++          <scope>provided</scope>
++      </dependency>
++
++	<dependency>
++	<groupId>org.codehaus.plexus</groupId>
++	<artifactId>plexus-velocity</artifactId>
++	<version>1.1.8</version>
++	</dependency>
++
++  </dependencies>
+  
+   <build>
+         <resources>
+@@ -90,6 +120,23 @@
+             </resource>
+         </resources>
+ 
++	<plugins>
++
++         <plugin>
++            <groupId>org.apache.maven.plugins</groupId>
++            <artifactId>maven-remote-resources-plugin</artifactId>
++            <version>1.5</version>
++            <dependencies>
++              <dependency>
++                <groupId>org.apache.maven.shared</groupId>
++                <artifactId>maven-filtering</artifactId>
++                <version>1.2</version>
++              </dependency>
++            </dependencies>
++         </plugin>
++
++
++	</plugins>
+         <!--  <plugins>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+diff '--color=auto' -ur daytrader/javaee6/modules/entities/src/main/resources/META-INF/persistence.xml ../build/daytrader/javaee6/modules/entities/src/main/resources/META-INF/persistence.xml
+--- daytrader/javaee6/modules/entities/src/main/resources/META-INF/persistence.xml	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/entities/src/main/resources/META-INF/persistence.xml	2023-08-15 06:48:45.796761330 +0000
+@@ -1,4 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
++
+ <!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+@@ -15,37 +16,28 @@
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ -->
+-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
++<persistence xmlns="http://java.sun.com/xml/ns/persistence"
++   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"
++   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
++   http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+ 
+     <persistence-unit transaction-type="JTA" name="daytrader">
+-        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+-        <jta-data-source>jdbc/TradeDataSource</jta-data-source>  
+-        <non-jta-data-source>jdbc/NoTxTradeDataSource</non-jta-data-source> 
+-        
++        <provider>org.hibernate.ejb.HibernatePersistence</provider>
++
++               <jta-data-source>java:/jdbc/TradeDataSource</jta-data-source>
++
+         <class>org.apache.geronimo.daytrader.javaee6.entities.AccountDataBean</class>
+         <class>org.apache.geronimo.daytrader.javaee6.entities.AccountProfileDataBean</class>
+         <class>org.apache.geronimo.daytrader.javaee6.entities.HoldingDataBean</class>
+         <class>org.apache.geronimo.daytrader.javaee6.entities.OrderDataBean</class>
+         <class>org.apache.geronimo.daytrader.javaee6.entities.QuoteDataBean</class>
+         <exclude-unlisted-classes>true</exclude-unlisted-classes>
+-        
++
+         <properties>
+-            <property name="openjpa.jdbc.DBDictionary" value="derby" /> 
+-            <property name="openjpa.BrokerImpl" value="non-finalizing" />
+-            <!-- To enable OpenJPA to generate foreign key constraints, comment out this line -->
+-            <!-- <property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict,JoinForeignKeyDeleteAction=restrict"/> -->
+-            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+-            <property name="openjpa.Sequence" value="table(Table=OPENJPASEQ, Increment=100)"/>
+-
+-            <!--
+-            <property name="openjpa.jdbc.DBDictionary" value="derby" />
+-            <property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict,JoinForeignKeyDeleteAction=restrict"/> 
+-            <property name="openjpa.jdbc.UpdateManager" value="org.apache.openjpa.jdbc.kernel.OperationOrderUpdateManager(batchLimit=0)" />
+-            <property name="openjpa.ConnectionDriverName" value="org.apache.commons.dbcp.BasicDataSource"/>
+-            <property name="openjpa.ConnectionDriverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+-            <property name="openjpa.ConnectionURL" value="jdbc:derby:tradedb;create=true"/>
+-            <property name="openjpa.ConnectionProperties" value="DriverClassName=org.apache.derby.jdbc.EmbeddedDriver,Url=jdbc:derby:tradedb;create=true,MaxActive=50,MaxWait=10000,Username=,Password="/>
+-            -->
++          <property name="hibernate.transaction.auto_close_session" value="true"/>
++          <!-- <property name="hibernate.hbm2ddl.auto" value="update"/>   -->
++          <property name="hibernate.connection.autocommit" value="false"/>
++          <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+         </properties>
+     </persistence-unit>
+ </persistence>
+diff '--color=auto' -ur daytrader/javaee6/modules/utils/src/main/java/org/apache/geronimo/daytrader/javaee6/utils/TradeConfig.java ../build/daytrader/javaee6/modules/utils/src/main/java/org/apache/geronimo/daytrader/javaee6/utils/TradeConfig.java
+--- daytrader/javaee6/modules/utils/src/main/java/org/apache/geronimo/daytrader/javaee6/utils/TradeConfig.java	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/utils/src/main/java/org/apache/geronimo/daytrader/javaee6/utils/TradeConfig.java	2023-08-15 06:48:45.796761330 +0000
+@@ -80,7 +80,7 @@
+     public static int cachingType = NO_CACHING;
+     
+     /* Trade Database Scaling parameters*/
+-    private static int MAX_USERS = 500;
++    private static int MAX_USERS = 50;
+     private static int MAX_QUOTES = 1000;
+ 
+     /* Trade Database specific paramters */
+diff '--color=auto' -ur daytrader/javaee6/modules/web/pom.xml ../build/daytrader/javaee6/modules/web/pom.xml
+--- daytrader/javaee6/modules/web/pom.xml	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/pom.xml	2023-08-15 06:48:45.796761330 +0000
+@@ -1,4 +1,20 @@
+ <?xml version="1.0" encoding="UTF-8"?>
++<!--
++    Licensed to the Apache Software Foundation (ASF) under one or more
++    contributor license agreements.  See the NOTICE file distributed with
++    this work for additional information regarding copyright ownership.
++    The ASF licenses this file to You under the Apache License, Version 2.0
++    (the "License"); you may not use this file except in compliance with
++    the License.  You may obtain a copy of the License at
++
++       http://www.apache.org/licenses/LICENSE-2.0
++
++    Unless required by applicable law or agreed to in writing, software
++    distributed under the License is distributed on an "AS IS" BASIS,
++    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++    See the License for the specific language governing permissions and
++    limitations under the License.
++-->
+ <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <modelVersion>4.0.0</modelVersion>
+@@ -16,6 +32,7 @@
+   <packaging>war</packaging>
+   
+   <dependencies>
++    
+   <dependency>
+             <groupId>org.apache.myfaces.core</groupId>
+             <artifactId>myfaces-api</artifactId>
+@@ -39,6 +56,11 @@
+         </dependency>
+         <dependency>
+             <groupId>org.apache.geronimo.specs</groupId>
++            <artifactId>geronimo-jcdi_1.0_spec</artifactId>
++            <scope>provided</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.apache.geronimo.specs</groupId>
+             <artifactId>geronimo-ejb_3.1_spec</artifactId>
+             <scope>provided</scope>
+         </dependency>
+@@ -70,6 +92,7 @@
+         <dependency>
+                 <groupId>org.apache.taglibs</groupId>
+                 <artifactId>taglibs-standard-jstlel</artifactId>
++            <version>1.2.5</version>
+                 <scope>provided</scope>
+         </dependency>
+ 
+@@ -83,16 +106,31 @@
+         -->
+     </dependencies>
+     <build>
+-        <resources>
+-            <resource>
+-                <directory>${basedir}/src/main/resources</directory>
+-                <filtering>true</filtering>
+-            </resource>
+-        </resources>   
+         <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-resources-plugin</artifactId>
++                <version>2.7</version>
++                <dependencies>
++                    <dependency>
++                        <groupId>org.apache.maven.shared</groupId>
++                        <artifactId>maven-filtering</artifactId>
++                        <version>1.3</version>
++                    </dependency>
++                </dependencies>
++                <configuration>
++                    <resources>
++                        <resource>
++                            <directory>${basedir}/src/main/resources</directory>
++                            <filtering>true</filtering>
++                        </resource>
++                    </resources>
++                </configuration>
++            </plugin>
+         <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-war-plugin</artifactId>
++		<version>2.1</version>
+                 <configuration>                    
+                     <resources>
+                         <resource
+@@ -128,6 +166,31 @@
+                     </webResources>
+                 </configuration>
+             </plugin>   
++
++<!--
++            <plugin>
++            <groupId>org.apache.maven.plugins</groupId>
++            <artifactId>maven-ejb-plugin</artifactId>
++            <version>2.5.1</version>
++            <executions>
++                <execution>
++                    <id>JBossClient</id>
++                    <configuration>
++                        <ejbVersion>3.1</ejbVersion>
++                        <generateClient>true</generateClient>
++                        <clientIncludes>
++				<clientIncludes>/org/apache/geronimo/daytrader/**</clientIncludes>
++                        </clientIncludes>
++                    </configuration>
++                    <goals>
++                        <goal>ejb</goal>
++                    </goals>
++                </execution>
++            </executions>
++        </plugin>
++-->
++
++
+             </plugins> 
+     </build>
+ </project>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJDBCDirect.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJDBCDirect.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJDBCDirect.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJDBCDirect.java	2023-08-15 06:48:45.796761330 +0000
+@@ -60,7 +60,7 @@
+ 
+     private static String dsName = TradeConfig.DATASOURCE;
+ 
+-    private static @Resource DataSource datasource = null;
++    private static DataSource datasource = null;
+ 
+     private static BigDecimal ZERO = new BigDecimal(0.0);
+ 
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJEEDirect.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJEEDirect.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJEEDirect.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJEEDirect.java	2023-08-15 06:48:45.796761330 +0000
+@@ -19,7 +19,7 @@
+ import java.math.BigDecimal;
+ import java.util.Collection;
+ import java.util.ArrayList;
+-import javax.naming.InitialContext;
++import javax.naming.*;
+ import javax.transaction.UserTransaction;
+ import javax.annotation.Resource;
+ import javax.jms.*;
+@@ -66,7 +66,7 @@
+     private static String dsName = TradeConfig.DATASOURCE;
+     
+     
+-    private static @Resource DataSource datasource;
++    private static DataSource datasource;
+ 
+     
+ 
+@@ -540,7 +540,7 @@
+             conn = getConn();
+             cancelOrder(conn, orderID);
+             commit(conn);
+-
++      
+         } catch (Exception e) {
+             Log.error("TradeDirect:cancelOrder -- error cancelling order: " + orderID, e);
+             rollBack(conn, e);
+@@ -1328,6 +1328,7 @@
+                 + " new price = " + quoteData.getPrice());
+ 
+             producer.send(message);
++		System.out.println(message.getText());
+         } catch (Exception e) {
+             throw e; // pass exception back
+ 
+@@ -1440,7 +1441,7 @@
+                 Log.traceEnter("TradeDirect:register - inSession(" + this.inSession + ")");
+ 
+             conn = getConn();
+-            PreparedStatement stmt = getStatement(conn, createAccountSQL);
++            PreparedStatement stmt; // = getStatement(conn, createAccountSQL);
+ 
+             Integer accountID = KeySequenceDirect.getNextID(conn, "account", inSession, getInGlobalTxn());
+             BigDecimal balance = openBalance;
+@@ -1449,6 +1450,17 @@
+             int loginCount = 0;
+             int logoutCount = 0;
+ 
++            stmt = getStatement(conn, createAccountProfileSQL);
++            stmt.setString(1, userID);
++            stmt.setString(2, password);
++            stmt.setString(3, fullname);
++            stmt.setString(4, address);
++            stmt.setString(5, email);
++            stmt.setString(6, creditcard);
++            stmt.executeUpdate();
++            stmt.close();
++
++stmt = getStatement(conn, createAccountSQL);
+             stmt.setInt(1, accountID.intValue());
+             stmt.setTimestamp(2, creationDate);
+             stmt.setBigDecimal(3, openBalance);
+@@ -1460,6 +1472,7 @@
+             stmt.executeUpdate();
+             stmt.close();
+ 
++/*
+             stmt = getStatement(conn, createAccountProfileSQL);
+             stmt.setString(1, userID);
+             stmt.setString(2, password);
+@@ -1469,7 +1482,7 @@
+             stmt.setString(6, creditcard);
+             stmt.executeUpdate();
+             stmt.close();
+-
++*/
+             commit(conn);
+ 
+             accountData =
+@@ -1853,7 +1866,7 @@
+        if (datasource == null)
+             getDataSource();
+         conn = datasource.getConnection();
+-        conn.setAutoCommit(false);
++	//if (getInGlobalTxn() == false)        conn.setAutoCommit(false);
+         if (Log.doTrace()) {
+             synchronized (lock) {
+                 connCount++;
+@@ -2034,9 +2047,12 @@
+             TradeConfig.setPublishQuotePriceChange(false);
+         }
+ 
++
+         try {
+-            queue = (Queue) context.lookup("java:comp/env/jms/TradeBrokerQueue");
++
++            queue = (Queue) context.lookup("java:/queue/TradeBrokerQueue");
+         } catch (Exception e) {
++		e.printStackTrace();
+             Log
+                 .error("TradeDirect:init  Unable to locate TradeBrokerQueue.\n\t -- Asynchronous mode will not work correctly and Quote Price change publishing will be disabled");
+             TradeConfig.setPublishQuotePriceChange(false);
+@@ -2051,7 +2067,7 @@
+         }
+ 
+         try {
+-            streamerTopic = (Topic) context.lookup("java:comp/env/jms/TradeStreamerTopic");
++            streamerTopic = (Topic) context.lookup("java:/topic/TradeStreamerTopic");
+         } catch (Exception e) {
+             Log
+                 .error("TradeDirect:init  Unable to locate TradeStreamerTopic.\n\t -- Asynchronous mode will not work correctly and Quote Price change publishing will be disabled");
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJPADirect.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJPADirect.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJPADirect.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/core/direct/TradeJPADirect.java	2023-08-15 06:48:45.796761330 +0000
+@@ -717,8 +717,8 @@
+         Query query = entityManager.createNamedQuery("holdingejb.holdingsByUserID");
+         query.setParameter("userID", userID);
+ 
+-        entityManager.getTransaction().commit();
+         Collection<HoldingDataBean> holdings = query.getResultList();
++        entityManager.getTransaction().commit();
+         /*
+          * Inflate the lazy data memebers
+          */
+@@ -922,7 +922,7 @@
+         if (Log.doTrace())
+             Log.trace("TradeJPADirect:resetTrade", deleteAll);
+ 
+-        return(new TradeJDBCDirect(false)).resetTrade(deleteAll);
++        return(new TradeJDBCDirect(true)).resetTrade(deleteAll);
+     }
+ 
+     /*
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/DirectSLSBBean.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/DirectSLSBBean.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/DirectSLSBBean.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/DirectSLSBBean.java	2023-08-15 06:48:45.796761330 +0000
+@@ -27,7 +27,7 @@
+ import javax.ejb.*;
+ 
+ 
+-@Singleton
++@Stateless
+ @EJB(name="java:global/DirectSLSBBean", beanInterface=DirectSLSBRemote.class)
+ @TransactionAttribute(TransactionAttributeType.REQUIRED)
+ @TransactionManagement(TransactionManagementType.CONTAINER)
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/TradeSLSBBean.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/TradeSLSBBean.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/TradeSLSBBean.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/ejb3/TradeSLSBBean.java	2023-08-15 06:48:45.796761330 +0000
+@@ -43,14 +43,12 @@
+ import javax.ejb.*;
+ import javax.jms.*;
+ 
+-import javax.persistence.EntityManager;
+-import javax.persistence.PersistenceContext;
+-import javax.persistence.Query;
++import javax.persistence.*;
+ 
+ import javax.transaction.RollbackException;
+ 
+ 
+-@Singleton
++@Stateless
+ @EJB(name="java:global/TradeSLSBBean",beanInterface=TradeSLSBRemote.class)
+ @TransactionAttribute(TransactionAttributeType.REQUIRED)
+ @TransactionManagement(TransactionManagementType.CONTAINER)
+@@ -75,6 +73,7 @@
+     public TradeSLSBBean() {
+         if (Log.doTrace())
+             Log.trace("TradeSLSBBean:ejbCreate  -- JNDI lookups of EJB and JMS resources");
++
+     }
+ 
+     public MarketSummaryDataBean getMarketSummary() {
+@@ -599,7 +598,7 @@
+             profile.setAccount(account);
+             account.setProfile(profile);
+ 
+-            entityManager.persist(profile); 
++            entityManager.persist(profile);
+             entityManager.persist(account);
+         }
+         
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeAction.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeAction.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeAction.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeAction.java	2023-08-15 06:48:45.800761310 +0000
+@@ -86,6 +86,7 @@
+                     } catch (Exception ex) {
+                         Log.error("TradeAction:createTrade - Lookup of TradeSLSBRemote failed!!!");
+                         trade = (TradeServices) context.lookup("java:global/TradeSLSBBean");
++			System.out.println("found TradeSLSBBean");
+                     }
+                 }
+             }
+@@ -104,6 +105,7 @@
+                     } catch (Exception ex) {
+                         Log.error("TradeAction:createTrade - Lookup of DirectSLSBRemote failed!!!");
+                         trade = (TradeServices) context.lookup("java:global/DirectSLSBBean");
++			System.out.println("Got DirectDLSBBean");
+                     }
+                 }
+             }
+@@ -113,7 +115,7 @@
+             }
+         } else if (TradeConfig.runTimeMode == TradeConfig.DIRECT) {
+             try {
+-                trade = new TradeJEEDirect();
++                trade = new TradeJEEDirect(true);
+             }
+             catch (Exception e) {
+                 Log.error("TradeAction:TradeAction() Creation of Trade JDBC Direct failed\n" + e);
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeBuildDB.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeBuildDB.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeBuildDB.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeBuildDB.java	2023-08-15 06:48:45.800761310 +0000
+@@ -1,11 +1,32 @@
++/**
++ *  Licensed to the Apache Software Foundation (ASF) under one or more
++ *  contributor license agreements.  See the NOTICE file distributed with
++ *  this work for additional information regarding copyright ownership.
++ *  The ASF licenses this file to You under the Apache License, Version 2.0
++ *  (the "License"); you may not use this file except in compliance with
++ *  the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
+ package org.apache.geronimo.daytrader.javaee6.web;
+ 
++
++
+ import java.io.BufferedReader;
+ import java.io.File;
+ import java.io.FileReader;
+ import java.io.IOException;
+ import java.math.BigDecimal;
+ import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.List;
+ 
+ import org.apache.geronimo.daytrader.javaee6.core.api.*;
+ import org.apache.geronimo.daytrader.javaee6.core.direct.*;
+@@ -17,11 +38,11 @@
+ import org.apache.geronimo.daytrader.javaee6.utils.*;
+ 
+ /**
+- * TradeBuildDB uses operations provided by the TradeApplication to 
+- *   (a) create the Database tables 
+- *   (b) populate a DayTrader database without creating the tables. 
++ * TradeBuildDB uses operations provided by the TradeApplication to
++ *   (a) create the Database tables
++ *   (b) populate a DayTrader database without creating the tables.
+  * Specifically, a new DayTrader User population is created using
+- * UserIDs of the form "uid:xxx" where xxx is a sequential number 
++ * UserIDs of the form "uid:xxx" where xxx is a sequential number
+  * (e.g. uid:0, uid:1, etc.). New stocks are also created of the form "s:xxx",
+  * again where xxx represents sequential numbers (e.g. s:1, s:2, etc.)
+  */
+@@ -38,7 +59,7 @@
+     }
+ 
+     /**
+-     * Re-create the DayTrader db tables and populate them OR just populate a 
++     * Re-create the DayTrader db tables and populate them OR just populate a
+      * DayTrader DB, logging to the provided output stream
+      */
+     public TradeBuildDB(java.io.PrintWriter out, String warPath)
+@@ -60,7 +81,7 @@
+                 || (TradeConfig.getRunTimeMode() == TradeConfig.JPA)) {
+                 tradeDB = new TradeJDBCDirect();
+             } else {
+-                tradeDB = new TradeJEEDirect();
++                tradeDB = new TradeJEEDirect(true);
+             }
+ 
+             boolean success = false;
+@@ -97,13 +118,13 @@
+                     ddlFile = new File(warPath + File.separatorChar + "dbscripts"
+                         + File.separatorChar + "mysql" + File.separatorChar + "Table.ddl");
+                 } else if (dbProductName.startsWith("Informix Dynamic Server")) { // if the Db is Informix dynamic server
+-                    ddlFile = new File(warPath + File.separatorChar + "dbscripts" 
++                    ddlFile = new File(warPath + File.separatorChar + "dbscripts"
+                         + File.separatorChar + "informix" + File.separatorChar + "Table.ddl");
+                 } else if (dbProductName.startsWith("Microsoft SQL Server")) { // if the Db is Microsoft SQLServer
+-                    ddlFile = new File(warPath + File.separatorChar + "dbscripts" 
++                    ddlFile = new File(warPath + File.separatorChar + "dbscripts"
+                         + File.separatorChar + "sqlserver" + File.separatorChar + "Table.ddl");
+                 } else if (dbProductName.startsWith("PostgreSQL")) { // if the Db is PostgreSQL
+-                    ddlFile = new File(warPath + File.separatorChar + "dbscripts" 
++                    ddlFile = new File(warPath + File.separatorChar + "dbscripts"
+                             + File.separatorChar + "postgre" + File.separatorChar + "Table.ddl");
+                 } else { // Unsupported "Other" Database
+                     ddlFile = new File(warPath + File.separatorChar + "dbscripts"
+@@ -201,6 +222,30 @@
+                 }
+             }
+         }
++
++        // Create some Fake stocks
++        List<String> tickers = Arrays.asList(
++            "BABO",
++            "TODD",
++            "ACME",
++            "FALK",
++            "PETE",
++            "BURR",
++            "JIM",
++            "OCRL",
++            "RTH",
++            "IMB"
++        );
++        try {
++          for (String ticker : tickers) {
++            tradeAction.createQuote(ticker, ticker + " Inc.",
++                            new java.math.BigDecimal(TradeConfig.rndPrice()));
++            out.print("....." + ticker);
++          }
++        } catch (Exception e) {
++            Log.error(e, "Can't create fake stocks");
++        }
++
+         out.println("<BR>");
+         out.println("<BR>**** Registering " + TradeConfig.getMAX_USERS()
+             + " Users **** ");
+@@ -224,13 +269,13 @@
+                         email, creditcard, new BigDecimal(initialBalance));
+                 String results;
+                 if (accountData != null) {
+-                    if (i % 50 == 0) {
++                    if (i % 10 == 0) {
+                         out.print("<BR>Account# " + accountData.getAccountID()
+                             + " userID=" + userID);
+                     }
+ 
+                     // 0-MAX_HOLDING (inclusive), avg holdings per user = (MAX-0)/2
+-                    int holdings = TradeConfig.rndInt(TradeConfig.getMAX_HOLDINGS() + 1); 
++                    int holdings = TradeConfig.rndInt(TradeConfig.getMAX_HOLDINGS() + 1);
+                     double quantity = 0;
+                     OrderDataBean orderData;
+                     for (int j = 0; j < holdings; j++) {
+@@ -240,7 +285,7 @@
+                             tradeAction.buy(userID, symbol, quantity,
+                                 TradeConfig.orderProcessingMode);
+                     }
+-                    if (i % 50 == 0) {
++                    if (i % 10 == 0) {
+                         out.println(" has " + holdings + " holdings.");
+                         out.flush();
+                     }
+@@ -311,4 +356,3 @@
+ 
+     }
+ }
+-
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeConfigServlet.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeConfigServlet.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeConfigServlet.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeConfigServlet.java	2023-08-15 06:48:45.800761310 +0000
+@@ -23,13 +23,16 @@
+ 
+ import org.apache.geronimo.daytrader.javaee6.core.direct.*;
+ import org.apache.geronimo.daytrader.javaee6.core.beans.*;
++import org.apache.geronimo.daytrader.javaee6.dacapo.DaCapoClient;
++import org.apache.geronimo.daytrader.javaee6.dacapo.DaCapoDBBuilder;
+ import org.apache.geronimo.daytrader.javaee6.utils.*;
++import org.apache.geronimo.daytrader.javaee6.web.ejb3.TradeSLSBBean;
+ 
+ import java.io.IOException;
+ 
+ /**
+  * TradeConfigServlet provides a servlet interface to adjust DayTrader runtime parameters.
+- * TradeConfigServlet updates values in the {@link org.apache.geronimo.samples.daytrader.web.TradeConfig} JavaBean holding 
++ * TradeConfigServlet updates values in the {@link TradeConfig} JavaBean holding
+  * all configuration and runtime parameters for the Trade application
+  *
+  */
+@@ -126,7 +129,19 @@
+             } // If the value is bad, simply revert to current
+         }
+         currentConfigStr += "\t\tRunTimeMode:\t\t" + TradeConfig.runTimeModeNames[TradeConfig.getRunTimeMode()] + "\n";
+-        
++
++        String traceStr = req.getParameter("EnableTrace");
++        if (traceStr != null && traceStr.equalsIgnoreCase("on"))
++        {
++            TradeConfig.setTrace(true);
++            TradeConfig.setActionTrace(true);
++        } else {
++            TradeConfig.setTrace(false);
++            TradeConfig.setActionTrace(false);
++        }
++        currentConfigStr += "\t\tTrace:\t\t" + TradeConfig.getTrace() + "\n";
++
++
+         /* Add JPA layer choice to avoid some ugly Hibernate bugs */
+         String jpaLayerStr = req.getParameter("JPALayer");
+         if (jpaLayerStr != null)
+@@ -174,7 +189,7 @@
+         currentConfigStr += "\t\tOrderProcessingMode:\t" + TradeConfig.orderProcessingModeNames[TradeConfig.orderProcessingMode]  + "\n";        
+         
+         //String accessModeStr = req.getParameter("AcessMode");
+-        String accessModeStr = "Standard";
++        String accessModeStr = "0";
+         if (accessModeStr != null)
+         {
+             try
+@@ -384,6 +399,8 @@
+         throws ServletException, IOException {
+ 
+         String action = null;
++        String size;
++        String bean;
+         String result = "";
+         
+         resp.setContentType("text/html");
+@@ -416,6 +433,16 @@
+                 resp.setContentType("text/html");
+                 new TradeBuildDB(resp.getWriter(), getServletConfig().getServletContext().getRealPath("/"));
+             }
++            else if (action.equals("dacapoBuild"))
++            {
++                size = req.getParameter("size");
++                bean = req.getParameter("bean");
++                DaCapoClient.main(new String[] {"-i", "-s", size, bean});
++            } else if (action.equals("dacapoRun")){
++                size = req.getParameter("size");
++                bean = req.getParameter("bean");
++                DaCapoClient.main(new String[] {"-s", size, bean});
++            }
+             doConfigDisplay(req, resp, result + "Current DayTrader Configuration:");
+         }
+         catch (Exception e)
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeServletAction.java ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeServletAction.java
+--- daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeServletAction.java	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/TradeServletAction.java	2023-08-15 06:48:45.800761310 +0000
+@@ -30,6 +30,7 @@
+ import java.util.Collection;
+ import java.util.Iterator;
+ import java.util.ArrayList;
++import java.util.List;
+ import java.math.BigDecimal;
+ 
+ 
+@@ -90,7 +91,7 @@
+             AccountDataBean accountData = tAction.getAccountData(userID);
+             AccountProfileDataBean accountProfileData = tAction
+                     .getAccountProfileData(userID);
+-            ArrayList orderDataBeans = (TradeConfig.getLongRun() ? new ArrayList() : (ArrayList) tAction.getOrders(userID));
++            List orderDataBeans = (TradeConfig.getLongRun() ? new ArrayList() : (List)tAction.getOrders(userID));
+             
+             req.setAttribute("accountData", accountData);
+             req.setAttribute("accountProfileData", accountProfileData);
+@@ -323,7 +324,7 @@
+             // JavaEE we should catch a javax.ejb.FinderException while
+             // for non-JavaEE we should catch a RuntimeException
+             try {
+-                Class c = Class.forName("javax.ejb.FinderException");
++                Class c = javax.ejb.FinderException.class;
+                 javaee = true;
+                 if ((c != null) && (e instanceof javax.ejb.FinderException)) { // JavaEE container
+                     // this is a user error so I will
+@@ -340,7 +341,7 @@
+                         + "treating this as a user error and forwarding on to a new page",
+                         e);
+                 }
+-            } catch (ClassNotFoundException cnne) {
++            } catch (Exception cnne) {
+                 // ignore, for the non-JavaEE web-only assemblies
+             }
+             
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/resources/dbscripts/mysql/Table.ddl ../build/daytrader/javaee6/modules/web/src/main/resources/dbscripts/mysql/Table.ddl
+--- daytrader/javaee6/modules/web/src/main/resources/dbscripts/mysql/Table.ddl	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/resources/dbscripts/mysql/Table.ddl	2023-08-15 06:48:45.800761310 +0000
+@@ -15,12 +15,12 @@
+ 
+ -- Each SQL statement in this file should terminate with a semicolon (;)
+ -- Lines starting with the pound character (--) are considered as comments
+--- DROP TABLE holdingejb;
+--- DROP TABLE accountprofileejb;
+--- DROP TABLE quoteejb;
+--- DROP TABLE keygenejb;
+--- DROP TABLE accountejb;
+--- DROP TABLE orderejb;
++DROP TABLE holdingejb;
++DROP TABLE accountprofileejb;
++DROP TABLE quoteejb;
++DROP TABLE keygenejb;
++DROP TABLE accountejb;
++DROP TABLE orderejb;
+ 
+ CREATE TABLE holdingejb
+   (PURCHASEPRICE DECIMAL(14, 2),
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/resources/dbscripts/other/Table.ddl ../build/daytrader/javaee6/modules/web/src/main/resources/dbscripts/other/Table.ddl
+--- daytrader/javaee6/modules/web/src/main/resources/dbscripts/other/Table.ddl	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/resources/dbscripts/other/Table.ddl	2023-08-15 06:48:45.800761310 +0000
+@@ -93,13 +93,6 @@
+ ALTER TABLE ORDEREJB
+   ADD CONSTRAINT PK_ORDEREJB PRIMARY KEY (ORDERID);
+ 
+-ALTER TABLE HOLDINGEJB VOLATILE;
+-ALTER TABLE ACCOUNTPROFILEEJB VOLATILE;
+-ALTER TABLE QUOTEEJB VOLATILE;
+-ALTER TABLE KEYGENEJB VOLATILE;
+-ALTER TABLE ACCOUNTEJB VOLATILE;
+-ALTER TABLE ORDEREJB VOLATILE;
+-
+ CREATE INDEX ACCOUNT_USERID ON ACCOUNTEJB(PROFILE_USERID);
+ CREATE INDEX HOLDING_ACCOUNTID ON HOLDINGEJB(ACCOUNT_ACCOUNTID);
+ CREATE INDEX ORDER_ACCOUNTID ON ORDEREJB(ACCOUNT_ACCOUNTID);
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/account.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/account.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/account.jsp	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/account.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -40,7 +40,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10" colspan=5><B><FONT
+                 color="#ffffff">DayTrader Account</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+         <TR align="left">
+             <TD><B><A href="app?action=home">Home</A></B><B> </B></TD>
+@@ -58,6 +58,7 @@
+         <%
+ boolean showAllOrders = request.getParameter("showAllOrders") == null ? false
+                     : true;
++System.out.println("showAllOrders: " + showAllOrders);
+             Collection closedOrders = (Collection) request
+                     .getAttribute("closedOrders");
+             if ((closedOrders != null) && (closedOrders.size() > 0)) {
+@@ -191,8 +192,6 @@
+                                 <%Iterator it = orderDataBeans.iterator();
+             int count = 0;
+             while (it.hasNext()) {
+-                if ((showAllOrders == false) && (count++ >= 5))
+-                    break;
+                 OrderDataBean orderData = (OrderDataBean) it.next();
+ 
+                 %>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/dbscripts/mysql/Table.ddl ../build/daytrader/javaee6/modules/web/src/main/webapp/dbscripts/mysql/Table.ddl
+--- daytrader/javaee6/modules/web/src/main/webapp/dbscripts/mysql/Table.ddl	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/dbscripts/mysql/Table.ddl	2023-08-15 06:48:45.800761310 +0000
+@@ -15,12 +15,12 @@
+ 
+ # Each SQL statement in this file should terminate with a semicolon (;)
+ # Lines starting with the pound character (#) are considered as comments
+-DROP TABLE holdingejb;
+-DROP TABLE accountprofileejb;
+-DROP TABLE quoteejb;
+-DROP TABLE keygenejb;
+-DROP TABLE accountejb;
+-DROP TABLE orderejb;
++DROP TABLE IF EXISTS holdingejb;
++DROP TABLE IF EXISTS quoteejb;
++DROP TABLE IF EXISTS keygenejb;
++DROP TABLE IF EXISTS accountejb;
++DROP TABLE IF EXISTS orderejb;
++DROP TABLE IF EXISTS accountprofileejb;
+ 
+ CREATE TABLE holdingejb
+   (PURCHASEPRICE DECIMAL(14, 2),
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/dbscripts/other/Table.ddl ../build/daytrader/javaee6/modules/web/src/main/webapp/dbscripts/other/Table.ddl
+--- daytrader/javaee6/modules/web/src/main/webapp/dbscripts/other/Table.ddl	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/dbscripts/other/Table.ddl	2023-08-15 06:48:45.800761310 +0000
+@@ -93,13 +93,6 @@
+ ALTER TABLE ORDEREJB
+   ADD CONSTRAINT PK_ORDEREJB PRIMARY KEY (ORDERID);
+ 
+-ALTER TABLE HOLDINGEJB VOLATILE;
+-ALTER TABLE ACCOUNTPROFILEEJB VOLATILE;
+-ALTER TABLE QUOTEEJB VOLATILE;
+-ALTER TABLE KEYGENEJB VOLATILE;
+-ALTER TABLE ACCOUNTEJB VOLATILE;
+-ALTER TABLE ORDEREJB VOLATILE;
+-
+ CREATE INDEX ACCOUNT_USERID ON ACCOUNTEJB(PROFILE_USERID);
+ CREATE INDEX HOLDING_ACCOUNTID ON HOLDINGEJB(ACCOUNT_ACCOUNTID);
+ CREATE INDEX ORDER_ACCOUNTID ON ORDEREJB(ACCOUNT_ACCOUNTID);
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/header.html ../build/daytrader/javaee6/modules/web/src/main/webapp/header.html
+--- daytrader/javaee6/modules/web/src/main/webapp/header.html	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/header.html	2023-08-15 06:48:45.800761310 +0000
+@@ -20,6 +20,7 @@
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ </head>
+ <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
++	<jsp:include page="WEB-INF/hostname.jspf" />
+ <!-- ImageReady Slices (daytrader2_matts_mods.psd - Slices: 00, about, bottomRedBar, configuration, copyRight, dayTraderLogo.gif, daytrader2_matts_mods_14, faq, home, primitives, reports, topRedBar, tradingAndPortfolios) -->
+ <table id="Table_01" width="785" height="90" border="0" cellpadding="0" cellspacing="0">
+ 	<tr>
+@@ -42,7 +43,7 @@
+ 					<td width="1" height="29">
+ 						<img src="images/spacer.gif" width="1" height="29" alt=""></td>
+ 					<td>
+-						<a href="app" target="TradeMainContent"
++						<a href="app?action=home" target="TradeMainContent"
+ 							onmouseover="window.status='Select this tab to log on and trade portfolios.  Users are u:n and passwords are xxx';  return true;"
+ 							onmouseout="window.status='';  return true;">
+ 							<img src="images/tradingAndPortfolios.gif" width="140" height="29" border="0" alt=""></a></td>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/order.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/order.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/order.jsp	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/order.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -31,7 +31,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10" colspan=5><B><FONT
+                 color="#ffffff">DayTrader New Orders</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+         <TR align="left">
+             <TD><B><A href="app?action=home">Home</A></B><B> </B></TD>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/portfolio.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/portfolio.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/portfolio.jsp	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/portfolio.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -32,7 +32,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10" colspan=5><B><FONT
+                 color="#ffffff">DayTrader Portfolio</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+         <TR align="left">
+             <TD><B><A href="app?action=home">Home</A></B><B> </B></TD>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/quoteImg.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/quoteImg.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/quoteImg.jsp	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/quoteImg.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -33,7 +33,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10" colspan=5><B><FONT
+                 color="#ffffff">DayTrader Quotes</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+         <TR align="left">
+             <TD><A href="app?action=home"><IMG src="images/menuHome.gif" width="80"
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/quote.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/quote.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/quote.jsp	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/quote.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -31,7 +31,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10" colspan=5><B><FONT
+                 color="#ffffff">DayTrader Quotes</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+         <TR align="left">
+             <TD><B><A href="app?action=home">Home</A></B><B> </B></TD>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/register.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/register.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/register.jsp	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/register.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -38,7 +38,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10"><B><FONT
+                 color="#ffffff">DayTrader Register</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+     </TBODY>
+ </TABLE>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/tradehome.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/tradehome.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/tradehome.jsp	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/tradehome.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -37,7 +37,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10" colspan=5><B><FONT
+                 color="#ffffff">DayTrader Home</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+         <TR align="left">
+             <TD><B><A href="app?action=home">Home</A></B><B> </B></TD>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/WEB-INF/web.xml ../build/daytrader/javaee6/modules/web/src/main/webapp/WEB-INF/web.xml
+--- daytrader/javaee6/modules/web/src/main/webapp/WEB-INF/web.xml	2023-05-12 10:22:58.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/WEB-INF/web.xml	2023-08-15 06:48:45.800761310 +0000
+@@ -19,25 +19,22 @@
+ <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ 
++	<distributable/>
++
+     <display-name>DayTrader Web JDBC</display-name>
+-   <module-name>web</module-name>
+     <servlet>
+-        <display-name>register</display-name>
+         <servlet-name>register</servlet-name>
+         <jsp-file>/register.jsp</jsp-file>
+     </servlet>   
+     <servlet>
+-        <display-name>welcome</display-name>
+         <servlet-name>welcome</servlet-name>
+         <jsp-file>/welcome.jsp</jsp-file>
+     </servlet>
+     <servlet>
+-        <display-name>order</display-name>
+         <servlet-name>order</servlet-name>
+         <jsp-file>/order.jsp</jsp-file>
+     </servlet>
+     <servlet>
+-        <display-name>tradehome</display-name>
+         <servlet-name>tradehome</servlet-name>
+         <jsp-file>/tradehome.jsp</jsp-file>
+     </servlet>
+@@ -83,27 +80,37 @@
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+         <res-sharing-scope>Shareable</res-sharing-scope>
++	<lookup-name>java:/jdbc/TradeDataSource</lookup-name>
+     </resource-ref>
+-    <resource-ref>
+-        <res-ref-name>jdbc/NoTxTradeDataSource</res-ref-name>
+-        <res-type>javax.sql.DataSource</res-type>
+-        <res-auth>Container</res-auth>
+-        <res-sharing-scope>Shareable</res-sharing-scope>
+-    </resource-ref>
+-   <!--  <resource-ref>
++     <resource-ref>
+         <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+         <res-type>javax.jms.QueueConnectionFactory</res-type>
+-        <res-auth>Application</res-auth>
+-        <res-sharing-scope>Shareable</res-sharing-scope>
++        <res-auth>Container</res-auth>
++	<mapped-name>QueueConnectionFactory</mapped-name> 
++	<lookup-name>java:/ConnectionFactory</lookup-name>
+     </resource-ref>
+     <resource-ref>
+         <res-ref-name>jms/TopicConnectionFactory</res-ref-name>
+         <res-type>javax.jms.TopicConnectionFactory</res-type>
+-        <res-auth>Application</res-auth>
+-        <res-sharing-scope>Shareable</res-sharing-scope>
++        <res-auth>Container</res-auth>
++	<mapped-name>TopicConnectionFactory</mapped-name>
++	<lookup-name>java:/ConnectionFactory</lookup-name>
+     </resource-ref>   
+-   
+-    
++     <resource-ref>
++        <res-ref-name>jms/TradeBrokerQueue</res-ref-name>
++        <res-type>javax.jms.Queue</res-type>
++        <res-auth>Container</res-auth>
++        <lookup-name>java:/queue/TradeBrokerQueue</lookup-name>
++    </resource-ref>
++
++     <resource-ref>
++        <res-ref-name>jms/TradeStreamerTopic</res-ref-name>
++        <res-type>javax.jms.Topic</res-type>
++        <res-auth>Container</res-auth>
++        <lookup-name>java:/topic/TradeStreamerTopic</lookup-name>
++    </resource-ref>
++
++  <!-- 
+     
+    
+     <message-destination-ref>
+@@ -117,9 +124,8 @@
+         <message-destination-type>javax.jms.Topic</message-destination-type>
+         <message-destination-usage>Produces</message-destination-usage>
+         <message-destination-link>dt-ejb.jar#jms/TradeStreamerTopic</message-destination-link>
+-    </message-destination-ref>-->
+-    
+-    
++    </message-destination-ref>
++    -->
+     <!--  <service-ref>
+         <description>WSDL Service Trade</description>
+         <service-ref-name>service/Trade</service-ref-name>
+diff '--color=auto' -ur daytrader/javaee6/modules/web/src/main/webapp/welcome.jsp ../build/daytrader/javaee6/modules/web/src/main/webapp/welcome.jsp
+--- daytrader/javaee6/modules/web/src/main/webapp/welcome.jsp	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/modules/web/src/main/webapp/welcome.jsp	2023-08-15 06:48:45.800761310 +0000
+@@ -28,7 +28,7 @@
+             <TD bgcolor="#c93333" align="left" width="640" height="10"><B><FONT
+                 color="#ffffff">DayTrader Login</FONT></B></TD>
+             <TD align="center" bgcolor="#000000" width="100" height="10"><FONT
+-                color="#ffffff"><B>DayTrader</B></FONT></TD>
++                color="#ffffff"><B><%= java.net.InetAddress.getLocalHost().getHostName() %></B></FONT></TD>
+         </TR>
+     </TBODY>
+ </TABLE>
+diff '--color=auto' -ur daytrader/javaee6/pom.xml ../build/daytrader/javaee6/pom.xml
+--- daytrader/javaee6/pom.xml	2023-05-12 10:22:59.000000000 +0000
++++ ../build/daytrader/javaee6/pom.xml	2023-08-15 06:48:45.804761289 +0000
+@@ -1,4 +1,20 @@
+ <?xml version="1.0" encoding="UTF-8"?>
++<!--
++    Licensed to the Apache Software Foundation (ASF) under one or more
++    contributor license agreements.  See the NOTICE file distributed with
++    this work for additional information regarding copyright ownership.
++    The ASF licenses this file to You under the Apache License, Version 2.0
++    (the "License"); you may not use this file except in compliance with
++    the License.  You may obtain a copy of the License at
++
++       http://www.apache.org/licenses/LICENSE-2.0
++
++    Unless required by applicable law or agreed to in writing, software
++    distributed under the License is distributed on an "AS IS" BASIS,
++    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++    See the License for the specific language governing permissions and
++    limitations under the License.
++-->
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+@@ -19,4 +35,4 @@
+     <module>assemblies</module>
+     <module>plans</module>
+   </modules>
+-</project>
+\ No newline at end of file
++</project>
+diff '--color=auto' -ur daytrader/pom.xml ../build/daytrader/pom.xml
+--- daytrader/pom.xml	2023-05-12 10:22:57.000000000 +0000
++++ ../build/daytrader/pom.xml	2023-08-15 06:48:45.804761289 +0000
+@@ -20,8 +20,8 @@
+ 
+     <parent>
+         <groupId>org.apache.geronimo.genesis</groupId>
+-        <artifactId>genesis-java6-flava</artifactId>
+-        <version>2.0</version>
++        <artifactId>genesis-default-flava</artifactId>
++        <version>2.3</version>
+     </parent>
+ 
+     <groupId>org.apache.geronimo.daytrader</groupId>
+@@ -39,7 +39,7 @@
+     </scm>
+ 
+     <properties>        
+-        <geronimoVersion>3.0.1-SNAPSHOT</geronimoVersion>
++        <geronimoVersion>3.0.1</geronimoVersion>
+         <!-- set siteId to artifactId for any "top level" project rooting a website -->
+         <siteId>daytrader</siteId>
+         <openjpaVersion>2.1.0</openjpaVersion>
+@@ -262,7 +262,7 @@
+     </dependencyManagement>
+ 
+     <build>
+-        <pluginManagement>
++<!--         <pluginManagement>
+             <plugins>
+                 <plugin>
+                     <groupId>org.apache.geronimo.buildsupport</groupId>
+@@ -276,7 +276,7 @@
+                 
+             </plugins>
+         </pluginManagement>
+-
++ -->
+         <plugins>       
+ 
+             <!--<plugin>
+@@ -292,6 +292,19 @@
+ 
+     </build>
+ 
++    <repositories>
++<repository>
++    <id>codehaus.snapshots</id>
++    <url>whatever</url>
++    <snapshots>
++        <enabled>false</enabled>
++    </snapshots>
++    <releases>
++        <enabled>false</enabled>
++    </releases>
++</repository>
++</repositories>
++    
+     <pluginRepositories>
+         <!-- required for clean build unless you want to bootstrap the car-maven-plugin -->
+         <pluginRepository>
+@@ -322,7 +335,7 @@
+             <modules>
+                 <!-- Daytrader Java EE 6 -->
+                <module>javaee6</module>  
+-               <module>plugins</module> 
++           <!--    <module>plugins</module> --> 
+             </modules>
+         </profile>
+         <profile>
+@@ -394,4 +407,4 @@
+             </modules>
+         </profile>
+     </profiles> 
+-</project>
+\ No newline at end of file
++</project>

@@ -1,0 +1,39 @@
+Your goal is to identify optimization patterns from a catalog that can lead to significant performance improvements in the provided source code.
+Do not suggest patterns that provide only marginal benefits or are irrelevant to the code’s primary bottlenecks.
+
+Task Instructions:
+1. Analyze the provided code
+    - Review the code to find any inefficiencies or areas that can be improved.
+    - Look for:
+        - Algorithms that are slow (high time complexity)
+        - Use of complex or expensive operations
+        - Data dependencies that prevent instruction-level parallelism (ILP)
+        - Algorithms that use large amounts of memory (high space complexity)
+        - Unnecessary if-else or branching logic
+        - Memory that is used or allocated inefficiently
+2. Filter for High-Impact Patterns Only
+    - Using the optimization pattern catalog (including pattern descriptions, examples, and detection methods), identify only the patterns that are directly applicable to the code and are likely to lead to substantial performance gains if applied.
+    Ignore patterns with limited or negligible impact on the performance characteristics of this code.
+3. Rank Patterns by Expected Performance Impact. For the selected high-impact patterns:
+    - Rank them based on how much they are expected to improve the observed inefficiencies.
+    - Assign rank = 1 to the pattern with the highest expected performance gain.
+    - Provide a justification for each ranking, explaining why a pattern is expected to outperform others in improving this specific code.
+
+Output Requirements:
+    - For the applicable patterns: return the pattern name, description, example, detection method, rank, and reasoning for ranking.
+
+Here is the code to analyze:
+{{ code }}
+
+{% if ast %}
+Here is the AST of the source code:
+{{ ast }}
+{% endif %}
+
+{% if flame_report %}
+Here is a textual representation of the flame graph for the current source code:
+{{ flame_report }}
+{% endif %}
+
+Here are the optimization patterns to analyze:
+{{ patterns }}

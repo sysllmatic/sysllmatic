@@ -1,0 +1,512 @@
+diff -ur ./kafka-3.3.1-src/config/log4j.properties ../build/kafka-3.3.1-src/config/log4j.properties
+--- ./kafka-3.3.1-src/config/log4j.properties	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/config/log4j.properties	2023-09-28 07:45:35.897670292 +0000
+@@ -14,8 +14,8 @@
+ # limitations under the License.
+ 
+ # Unspecified loggers and loggers with additivity=true output to server.log and stdout
+-# Note that INFO only applies to unspecified loggers, the log level of the child logger is used otherwise
+-log4j.rootLogger=INFO, stdout, kafkaAppender
++# Note that ERROR only applies to unspecified loggers, the log level of the child logger is used otherwise
++log4j.rootLogger=ERROR, stdout, kafkaAppender
+ 
+ log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+ log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+@@ -58,34 +58,34 @@
+ log4j.appender.authorizerAppender.layout.ConversionPattern=[%d] %p %m (%c)%n
+ 
+ # Change the line below to adjust ZK client logging
+-log4j.logger.org.apache.zookeeper=INFO
++log4j.logger.org.apache.zookeeper=ERROR
+ 
+ # Change the two lines below to adjust the general broker logging level (output to server.log and stdout)
+-log4j.logger.kafka=INFO
+-log4j.logger.org.apache.kafka=INFO
++log4j.logger.kafka=ERROR
++log4j.logger.org.apache.kafka=ERROR
+ 
+-# Change to DEBUG or TRACE to enable request logging
+-log4j.logger.kafka.request.logger=WARN, requestAppender
++# Change to DEBUG or ERROR to enable request logging
++log4j.logger.kafka.request.logger=ERROR, requestAppender
+ log4j.additivity.kafka.request.logger=false
+ 
+-# Uncomment the lines below and change log4j.logger.kafka.network.RequestChannel$ to TRACE for additional output
++# Uncomment the lines below and change log4j.logger.kafka.network.RequestChannel$ to ERROR for additional output
+ # related to the handling of requests
+-#log4j.logger.kafka.network.Processor=TRACE, requestAppender
+-#log4j.logger.kafka.server.KafkaApis=TRACE, requestAppender
++#log4j.logger.kafka.network.Processor=ERROR, requestAppender
++#log4j.logger.kafka.server.KafkaApis=ERROR, requestAppender
+ #log4j.additivity.kafka.server.KafkaApis=false
+-log4j.logger.kafka.network.RequestChannel$=WARN, requestAppender
++log4j.logger.kafka.network.RequestChannel$=ERROR, requestAppender
+ log4j.additivity.kafka.network.RequestChannel$=false
+ 
+-log4j.logger.kafka.controller=TRACE, controllerAppender
++log4j.logger.kafka.controller=ERROR, controllerAppender
+ log4j.additivity.kafka.controller=false
+ 
+-log4j.logger.kafka.log.LogCleaner=INFO, cleanerAppender
++log4j.logger.kafka.log.LogCleaner=ERROR, cleanerAppender
+ log4j.additivity.kafka.log.LogCleaner=false
+ 
+-log4j.logger.state.change.logger=INFO, stateChangeAppender
++log4j.logger.state.change.logger=ERROR, stateChangeAppender
+ log4j.additivity.state.change.logger=false
+ 
+-# Access denials are logged at INFO level, change to DEBUG to also log allowed accesses
+-log4j.logger.kafka.authorizer.logger=INFO, authorizerAppender
++# Access denials are logged at ERROR level, change to DEBUG to also log allowed accesses
++log4j.logger.kafka.authorizer.logger=ERROR, authorizerAppender
+ log4j.additivity.kafka.authorizer.logger=false
+ 
+diff -ur ./kafka-3.3.1-src/config/server.properties ../build/kafka-3.3.1-src/config/server.properties
+--- ./kafka-3.3.1-src/config/server.properties	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/config/server.properties	2023-09-28 07:45:35.897670292 +0000
+@@ -59,7 +59,7 @@
+ ############################# Log Basics #############################
+ 
+ # A comma separated list of directories under which to store log files
+-log.dirs=/tmp/kafka-logs
++log.dirs=scratch/kafka-logs
+ 
+ # The default number of log partitions per topic. More partitions allow greater
+ # parallelism for consumption, but this will also result in more files across
+@@ -113,7 +113,10 @@
+ 
+ # The interval at which log segments are checked to see if they can be deleted according
+ # to the retention policies
+-log.retention.check.interval.ms=300000
++log.retention.check.interval.ms=10
++log.segment.delete.delay.ms = 10
++file.delete.delay.ms = 10
++log.cleaner.backoff.ms = 10
+ 
+ ############################# Zookeeper #############################
+ 
+diff -ur ./kafka-3.3.1-src/config/tools-log4j.properties ../build/kafka-3.3.1-src/config/tools-log4j.properties
+--- ./kafka-3.3.1-src/config/tools-log4j.properties	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/config/tools-log4j.properties	2023-09-28 07:45:35.897670292 +0000
+@@ -13,7 +13,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-log4j.rootLogger=WARN, stderr
++log4j.rootLogger=ERROR, stderr
+ 
+ log4j.appender.stderr=org.apache.log4j.ConsoleAppender
+ log4j.appender.stderr.layout=org.apache.log4j.PatternLayout
+diff -ur ./kafka-3.3.1-src/config/zookeeper.properties ../build/kafka-3.3.1-src/config/zookeeper.properties
+--- ./kafka-3.3.1-src/config/zookeeper.properties	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/config/zookeeper.properties	2023-09-28 07:45:35.897670292 +0000
+@@ -13,7 +13,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ # the directory where the snapshot is stored.
+-dataDir=/tmp/zookeeper
++dataDir=./scratch/zookeeper
+ # the port at which the clients will connect
+ clientPort=2181
+ # disable the per-ip limit on the number of connections since this is a non-production config
+diff -ur ./kafka-3.3.1-src/core/src/main/scala/kafka/admin/TopicCommand.scala ../build/kafka-3.3.1-src/core/src/main/scala/kafka/admin/TopicCommand.scala
+--- ./kafka-3.3.1-src/core/src/main/scala/kafka/admin/TopicCommand.scala	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/core/src/main/scala/kafka/admin/TopicCommand.scala	2023-09-28 07:45:35.897670292 +0000
+@@ -73,7 +73,8 @@
+         exitCode = 1
+     } finally {
+       topicService.close()
+-      Exit.exit(exitCode)
++      return
++      //Exit.exit(exitCode)
+     }
+   }
+ 
+diff -ur ./kafka-3.3.1-src/core/src/main/scala/kafka/log/LogManager.scala ../build/kafka-3.3.1-src/core/src/main/scala/kafka/log/LogManager.scala
+--- ./kafka-3.3.1-src/core/src/main/scala/kafka/log/LogManager.scala	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/core/src/main/scala/kafka/log/LogManager.scala	2023-09-28 07:45:35.897670292 +0000
+@@ -76,7 +76,7 @@
+   import LogManager._
+ 
+   val LockFile = ".lock"
+-  val InitialTaskDelayMs = 30 * 1000
++  val InitialTaskDelayMs = 10
+ 
+   private val logCreationOrDeletionLock = new Object
+   private val currentLogs = new Pool[TopicPartition, UnifiedLog]()
+diff -ur ./kafka-3.3.1-src/core/src/main/scala/kafka/server/BrokerMetadataCheckpoint.scala ../build/kafka-3.3.1-src/core/src/main/scala/kafka/server/BrokerMetadataCheckpoint.scala
+--- ./kafka-3.3.1-src/core/src/main/scala/kafka/server/BrokerMetadataCheckpoint.scala	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/core/src/main/scala/kafka/server/BrokerMetadataCheckpoint.scala	2023-09-28 07:45:35.897670292 +0000
+@@ -237,7 +237,7 @@
+         Some(Utils.loadProps(absolutePath))
+       } catch {
+         case _: NoSuchFileException =>
+-          warn(s"No meta.properties file under dir $absolutePath")
++          // warn(s"No meta.properties file under dir $absolutePath")
+           None
+         case e: Exception =>
+           error(s"Failed to read meta.properties file under dir $absolutePath", e)
+diff -ur ./kafka-3.3.1-src/tests/spec/simple_produce_bench.json ../build/kafka-3.3.1-src/tests/spec/simple_produce_bench.json
+--- ./kafka-3.3.1-src/tests/spec/simple_produce_bench.json	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/tests/spec/simple_produce_bench.json	2023-09-28 07:45:35.897670292 +0000
+@@ -23,16 +23,16 @@
+   "durationMs": 10000000,
+   "producerNode": "node0",
+   "bootstrapServers": "localhost:9092",
+-  "targetMessagesPerSec": 10000,
+-  "maxMessages": 50000,
++  "targetMessagesPerSec": 200000,
++  "maxMessages": 1000000,
+   "activeTopics": {
+-    "foo[1-3]": {
++    "dacapo-[1-2]": {
+       "numPartitions": 10,
+       "replicationFactor": 1
+     }
+   },
+   "inactiveTopics": {
+-    "foo[4-5]": {
++    "dacapo-[3-4]": {
+       "numPartitions": 10,
+       "replicationFactor": 1
+     }
+diff -ur ./kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/agent/Agent.java ../build/kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/agent/Agent.java
+--- ./kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/agent/Agent.java	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/agent/Agent.java	2023-09-28 07:45:35.897670292 +0000
+@@ -20,6 +20,7 @@
+ import com.fasterxml.jackson.databind.node.LongNode;
+ import com.fasterxml.jackson.databind.node.ObjectNode;
+ import net.sourceforge.argparse4j.ArgumentParsers;
++
+ import net.sourceforge.argparse4j.inf.ArgumentParser;
+ import net.sourceforge.argparse4j.inf.ArgumentParserException;
+ import net.sourceforge.argparse4j.inf.Namespace;
+@@ -31,6 +32,7 @@
+ import org.apache.kafka.trogdor.common.JsonUtil;
+ import org.apache.kafka.trogdor.common.Node;
+ import org.apache.kafka.trogdor.common.Platform;
++
+ import org.apache.kafka.trogdor.rest.AgentStatusResponse;
+ import org.apache.kafka.trogdor.rest.CreateWorkerRequest;
+ import org.apache.kafka.trogdor.rest.DestroyWorkerRequest;
+@@ -187,16 +189,16 @@
+             e.printStackTrace(out);
+             return false;
+         }
+-        out.println("Waiting for completion of task:" + JsonUtil.toPrettyJsonString(spec));
++        // out.println("Waiting for completion of task:" + JsonUtil.toPrettyJsonString(spec));
+         String error = future.get();
+         if (error == null || error.isEmpty()) {
+-            out.println("Task succeeded with status " +
+-                JsonUtil.toPrettyJsonString(workerManager.workerStates().get(EXEC_WORKER_ID).status()));
++            // out.println("Task succeeded with status " +
++            //    JsonUtil.toPrettyJsonString(workerManager.workerStates().get(EXEC_WORKER_ID).status()));
+             return true;
+         } else {
+-            out.println("Task failed with status " +
+-                JsonUtil.toPrettyJsonString(workerManager.workerStates().get(EXEC_WORKER_ID).status()) +
+-                " and error " + error);
++            // out.println("Task failed with status " +
++            //   JsonUtil.toPrettyJsonString(workerManager.workerStates().get(EXEC_WORKER_ID).status()) +
++            //    " and error " + error);
+             return false;
+         }
+     }
+@@ -250,7 +252,7 @@
+         final Agent agent = new Agent(platform, Scheduler.SYSTEM, restServer, resource);
+         restServer.start(resource);
+         Exit.addShutdownHook("agent-shutdown-hook", () -> {
+-            log.warn("Running agent shutdown hook.");
++            // log.warn("Running agent shutdown hook.");
+             try {
+                 agent.beginShutdown();
+                 agent.waitForShutdown();
+@@ -265,11 +267,15 @@
+             } catch (Exception e) {
+                 System.out.println("Unable to parse the supplied task spec.");
+                 e.printStackTrace();
+-                Exit.exit(1);
+-            }
+-            TaskSpec effectiveSpec = agent.rebaseTaskSpecTime(spec);
+-            Exit.exit(agent.exec(effectiveSpec, System.out) ? 0 : 1);
+-        }
++                agent.beginShutdown();                 
++                //Exit.exit(1);
++            }            
++            TaskSpec effectiveSpec = agent.rebaseTaskSpecTime(spec);            
++            agent.exec(effectiveSpec, System.out);            
++            agent.beginShutdown();
++            //Remove Exit.exit because the agent is executed in the Dacapo thread
++            //Exit.exit(agent.exec(effectiveSpec, System.out) ? 0 : 1);
++        }           
+         agent.waitForShutdown();
+     }
+ }
+diff -ur ./kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/common/WorkerUtils.java ../build/kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/common/WorkerUtils.java
+--- ./kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/common/WorkerUtils.java	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/common/WorkerUtils.java	2023-09-28 07:54:20.458881135 +0000
+@@ -106,6 +106,7 @@
+ 
+     private static final int ADMIN_REQUEST_TIMEOUT = 25000;
+     private static final int CREATE_TOPICS_CALL_TIMEOUT = 180000;
++    private static final int CREATE_TOPICS_CALL_WAITTIME = 100;
+     private static final int MAX_CREATE_TOPICS_BATCH_SIZE = 10;
+ 
+             //Map<String, Map<Integer, List<Integer>>> topics) throws Throwable {
+@@ -135,7 +136,7 @@
+         try (Admin adminClient
+                  = createAdminClient(bootstrapServers, commonClientConf, adminClientConf)) {
+             createTopics(log, adminClient, topics, failOnExisting);
+-        } catch (Exception e) {
++        } catch (Exception e) { 
+             log.warn("Failed to create or verify topics {}", topics, e);
+             throw e;
+         }
+@@ -180,6 +181,7 @@
+         long startMs = Time.SYSTEM.milliseconds();
+         int tries = 0;
+         List<String> existingTopics = new ArrayList<>();
++        boolean existingDeleted = false;
+ 
+         Map<String, NewTopic> newTopics = new HashMap<>();
+         for (NewTopic newTopic : topics) {
+@@ -205,7 +207,7 @@
+                 Future<Void> future = entry.getValue();
+                 try {
+                     future.get();
+-                    log.debug("Successfully created {}.", topicName);
++                    log.debug("Successfully created {}.", topicName);                    
+                 } catch (Exception e) {
+                     if ((e.getCause() instanceof TimeoutException)
+                         || (e.getCause() instanceof NotEnoughReplicasException)) {
+@@ -213,7 +215,8 @@
+                                  e.getCause().getMessage());
+                         topicsToCreate.add(topicName);
+                     } else if (e.getCause() instanceof TopicExistsException) {
+-                        log.info("Topic {} already exists.", topicName);
++                        log.info("Topic {} already exists.", topicName);                        
++                        topicsToCreate.add(topicName);
+                         existingTopics.add(topicName);
+                     } else {
+                         log.warn("Failed to create {}", topicName, e.getCause());
+@@ -224,12 +227,17 @@
+             if (topicsToCreate.isEmpty()) {
+                 break;
+             }
++            if (!existingTopics.isEmpty() && !existingDeleted) {
++                adminClient.deleteTopics(existingTopics);
++                existingDeleted = true;
++            }
+             if (Time.SYSTEM.milliseconds() > startMs + CREATE_TOPICS_CALL_TIMEOUT) {
+                 String str = "Unable to create topic(s): " +
+                              Utils.join(topicsToCreate, ", ") + "after " + tries + " attempt(s)";
+                 log.warn(str);
+                 throw new TimeoutException(str);
+             }
++            Thread.sleep(CREATE_TOPICS_CALL_WAITTIME);
+         }
+         return existingTopics;
+     }
+diff -ur ./kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/workload/ProduceBenchWorker.java ../build/kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/workload/ProduceBenchWorker.java
+--- ./kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/workload/ProduceBenchWorker.java	2022-09-29 19:03:49.000000000 +0000
++++ ../build/kafka-3.3.1-src/trogdor/src/main/java/org/apache/kafka/trogdor/workload/ProduceBenchWorker.java	2023-09-28 07:45:35.897670292 +0000
+@@ -27,6 +27,7 @@
+ import org.apache.kafka.clients.producer.ProducerRecord;
+ import org.apache.kafka.clients.producer.RecordMetadata;
+ import org.apache.kafka.common.TopicPartition;
++import org.apache.kafka.common.errors.TopicExistsException;
+ import org.apache.kafka.common.internals.KafkaFutureImpl;
+ import org.apache.kafka.common.serialization.ByteArraySerializer;
+ import org.apache.kafka.common.utils.ThreadUtils;
+@@ -55,6 +56,9 @@
+ import java.util.concurrent.atomic.AtomicBoolean;
+ import java.util.concurrent.atomic.AtomicLong;
+ 
++import java.lang.reflect.Method;
++import java.lang.reflect.InvocationTargetException;
++
+ public class ProduceBenchWorker implements TaskWorker {
+     private static final Logger log = LoggerFactory.getLogger(ProduceBenchWorker.class);
+     
+@@ -72,6 +76,14 @@
+ 
+     private KafkaFutureImpl<String> doneFuture;
+ 
++    Method dacapoStart;
++    Method dacapoEnd;
++    Method dacapoStarting;
++    Method dacapoFinished;
++    private int tx = 0;
++    private static int txCount = 0;
++    public static void setTxCount(int count) { txCount = count; }
++
+     public ProduceBenchWorker(String id, ProduceBenchSpec spec) {
+         this.id = id;
+         this.spec = spec;
+@@ -79,7 +91,7 @@
+ 
+     @Override
+     public void start(Platform platform, WorkerStatusTracker status,
+-                      KafkaFutureImpl<String> doneFuture) {
++                      KafkaFutureImpl<String> doneFuture) {       
+         if (!running.compareAndSet(false, true)) {
+             throw new IllegalStateException("ProducerBenchWorker is already running.");
+         }
+@@ -90,12 +102,32 @@
+             ThreadUtils.createThreadFactory("ProduceBenchWorkerThread%d", false));
+         this.status = status;
+         this.doneFuture = doneFuture;
+-        executor.submit(new Prepare());
++        executor.submit(new Prepare());        
++    }
++
++    public void dacapoStarting() {
++        try {
++            dacapoStarting.invoke(null);
++        } catch (IllegalAccessException e) {
++            System.err.println("Failed to invoke DaCapo latency reporter requestsStarting(): "+e);
++        } catch (InvocationTargetException e) {
++            System.err.println("Failed to invoke DaCapo latency reporter requestsStarting(): "+e);
++        }
++    }
++
++    public void dacapoFinished() {
++        try {
++            dacapoFinished.invoke(null);
++        } catch (IllegalAccessException e) {
++            System.err.println("Failed to invoke DaCapo latency reporter requestsFinished(): "+e);
++        } catch (InvocationTargetException e) {
++            System.err.println("Failed to invoke DaCapo latency reporter requestsFinished(): "+e);
++        }
+     }
+ 
+     public class Prepare implements Runnable {
+         @Override
+-        public void run() {
++        public void run() {            
+             try {
+                 Map<String, NewTopic> newTopics = new HashMap<>();
+                 HashSet<TopicPartition> active = new HashSet<>();
+@@ -119,8 +151,20 @@
+                 }
+                 status.update(new TextNode("Creating " + newTopics.keySet().size() + " topic(s)"));
+                 WorkerUtils.createTopics(log, spec.bootstrapServers(), spec.commonClientConf(),
+-                                         spec.adminClientConf(), newTopics, false);
++                    spec.adminClientConf(), newTopics, false);               
+                 status.update(new TextNode("Created " + newTopics.keySet().size() + " topic(s)"));
++                try {
++                    Class<?> clazz = Class.forName("org.dacapo.harness.LatencyReporter", true, ProduceBenchWorker.class.getClassLoader());
++                    dacapoStart = clazz.getMethod("start", int.class);
++                    dacapoEnd = clazz.getMethod("endIdx", int.class);
++                    dacapoStarting = clazz.getMethod("requestsStarting");
++                    dacapoFinished = clazz.getMethod("requestsFinished");
++                } catch (ClassNotFoundException e) {
++                    System.err.println("Failed to access DaCapo latency reporter: "+e);
++                } catch (NoSuchMethodException e) {
++                    System.err.println("Failed trying to create latency stats: "+e);
++                }
++                dacapoStarting(); 
+                 executor.submit(new SendRecords(active));
+             } catch (Throwable e) {
+                 WorkerUtils.abort(log, "Prepare", e, doneFuture);
+@@ -131,23 +175,61 @@
+     private static class SendRecordsCallback implements Callback {
+         private final SendRecords sendRecords;
+         private final long startMs;
++        private long lastStart;
++        private Method dacapoEnd;
++        private Method dacapoStart;
++        private int idx;
+ 
+-        SendRecordsCallback(SendRecords sendRecords, long startMs) {
++        SendRecordsCallback(SendRecords sendRecords, long startMs, int idx, Method dacapoEnd,  Method dacapoStart) {
+             this.sendRecords = sendRecords;
+             this.startMs = startMs;
++            this.lastStart = System.nanoTime();
++            this.dacapoEnd = dacapoEnd;
++            this.dacapoStart = dacapoStart;
++            this.idx = dacapoStart();
+         }
+ 
+         @Override
+         public void onCompletion(RecordMetadata metadata, Exception exception) {
+             long now = Time.SYSTEM.milliseconds();
+             long durationMs = now - startMs;
++            long start = System.nanoTime();
++            dacapoEnd(idx);
+             sendRecords.recordDuration(durationMs);
++            lastStart = System.nanoTime();
+             if (exception != null) {
+                 log.error("SendRecordsCallback: error", exception);
+             }
+         }
++        public int dacapoStart() {
++            int rtn = 0;
++            try {
++                rtn = (Integer) dacapoStart.invoke(null, 0);
++            } catch (IllegalAccessException e) {
++                System.err.println("Failed to invoke DaCapo latency reporter start(): "+e);
++                e.printStackTrace();
++            } catch (InvocationTargetException e) {
++                System.err.println("Failed to invoke DaCapo latency reporter start(): "+e);
++                e.printStackTrace();
++            }
++            return rtn;
++        }
++
++        public void dacapoEnd(int idx) {
++            try {
++                dacapoEnd.invoke(null, idx);
++            } catch (IllegalAccessException e) {
++                System.err.println("Failed to invoke DaCapo latency reporter end(): "+e);
++                e.printStackTrace();
++            } catch (InvocationTargetException e) {
++                System.err.println("Failed to invoke DaCapo latency reporter end(): "+e);
++                e.printStackTrace();
++            }
++        }
+     }
+ 
++
++
+     /**
+      * A subclass of Throttle which flushes the Producer right before the throttle injects a delay.
+      * This avoids including throttling latency in latency measurements.
+@@ -293,6 +375,7 @@
+         }
+ 
+         private void sendMessage() throws InterruptedException {
++            int idx = 0;// dacapoStart();
+             if (!partitionsIterator.hasNext())
+                 partitionsIterator = activePartitions.iterator();
+ 
+@@ -306,11 +389,18 @@
+                     partition.topic(), partition.partition(), keys.next(), values.next());
+             }
+             sendFuture = producer.send(record,
+-                new SendRecordsCallback(this, Time.SYSTEM.milliseconds()));
++                new SendRecordsCallback(this, Time.SYSTEM.milliseconds(), idx,dacapoEnd, dacapoStart));
+             throttle.increment();
+         }
+ 
+         void recordDuration(long durationMs) {
++            tx++;
++            int fivePercent = txCount / 20;
++            if (tx % fivePercent == 0) {
++                System.out.print("\r"+(5* tx / fivePercent)+"%");
++                if (tx == txCount)
++                    System.out.println();
++            }
+             histogram.add(durationMs);
+         }
+     }
+@@ -407,6 +497,8 @@
+ 
+     @Override
+     public void stop(Platform platform) throws Exception {
++        dacapoFinished();
++
+         if (!running.compareAndSet(true, false)) {
+             throw new IllegalStateException("ProduceBenchWorker is not running.");
+         }
+Only in .: kafka.patch

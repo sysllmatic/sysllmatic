@@ -1,0 +1,139 @@
+diff '--color=auto' -ur ./apache-tomcat-10.1.11-src/conf/catalina.properties ../build/apache-tomcat-10.1.11-src/conf/catalina.properties
+--- ./apache-tomcat-10.1.11-src/conf/catalina.properties	2023-07-06 13:45:39.000000000 +0000
++++ ../build/apache-tomcat-10.1.11-src/conf/catalina.properties	2024-03-05 23:32:07.680686983 +0000
+@@ -50,7 +50,7 @@
+ #       ${catalina.base} path or the ${catalina.home} path contains a comma.
+ #       Because double quotes are used for quoting, the double quote character
+ #       may not appear in a path.
+-common.loader="${catalina.base}/lib","${catalina.base}/lib/*.jar","${catalina.home}/lib","${catalina.home}/lib/*.jar"
++common.loader=${catalina.cl.repo}
+ 
+ #
+ # List of comma-separated paths defining the contents of the "server"
+diff '--color=auto' -ur ./apache-tomcat-10.1.11-src/conf/server.xml ../build/apache-tomcat-10.1.11-src/conf/server.xml
+--- ./apache-tomcat-10.1.11-src/conf/server.xml	2023-07-06 13:45:39.000000000 +0000
++++ ../build/apache-tomcat-10.1.11-src/conf/server.xml	2024-03-05 23:32:07.680686983 +0000
+@@ -65,7 +65,7 @@
+          AJP  Connector: /docs/config/ajp.html
+          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
+     -->
+-    <Connector port="8080" protocol="HTTP/1.1"
++    <Connector port="${dacapo.tomcat.port}" protocol="HTTP/1.1"
+                connectionTimeout="20000"
+                redirectPort="8443"
+                maxParameterCount="1000"
+diff '--color=auto' -ur ./apache-tomcat-10.1.11-src/conf/tomcat-users.xml ../build/apache-tomcat-10.1.11-src/conf/tomcat-users.xml
+--- ./apache-tomcat-10.1.11-src/conf/tomcat-users.xml	2023-07-06 13:45:39.000000000 +0000
++++ ../build/apache-tomcat-10.1.11-src/conf/tomcat-users.xml	2024-03-05 23:32:07.680686983 +0000
+@@ -46,11 +46,9 @@
+   examples web application, do not forget to remove the <!.. ..> that surrounds
+   them. You will also need to set the passwords to something appropriate.
+ -->
+-<!--
+-  <role rolename="tomcat"/>
+-  <role rolename="role1"/>
+-  <user username="tomcat" password="<must-be-changed>" roles="tomcat"/>
+-  <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
+-  <user username="role1" password="<must-be-changed>" roles="role1"/>
+--->
++<role rolename="manager-gui"/>
++<role rolename="manager-status"/>
++<role rolename="manager-script"/>
++<role rolename="manager-jmx"/>
++<user username="tomcat" password="s3cret" roles="manager-gui,manager-status,manager-script,manager-jmx"/>
+ </tomcat-users>
+diff '--color=auto' -ur ./apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/net/AbstractEndpoint.java ../build/apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/net/AbstractEndpoint.java
+--- ./apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/net/AbstractEndpoint.java	2023-07-06 13:45:39.000000000 +0000
++++ ../build/apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/net/AbstractEndpoint.java	2024-03-05 23:36:35.960390244 +0000
+@@ -803,7 +803,16 @@
+     }
+     public int getMaxThreads() {
+         if (internalExecutor) {
+-            return maxThreads;
++            String prop = System.getProperty("dacapo.tomcat.maxthreads");
++            int mt = maxThreads;
++            if (prop != null) {
++                try {
++                    mt = Integer.parseInt(prop);
++                } catch (Exception e) {
++                    System.err.println("Error parsing dacapo.tomcat.maxthreads, was '"+prop+"' "+e);
++                }
++            }
++            return mt;
+         } else {
+             return -1;
+         }
+diff '--color=auto' -ur ./apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/threads/ThreadPoolExecutor.java ../build/apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/threads/ThreadPoolExecutor.java
+--- ./apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/threads/ThreadPoolExecutor.java	2023-07-06 13:45:39.000000000 +0000
++++ ../build/apache-tomcat-10.1.11-src/java/org/apache/tomcat/util/threads/ThreadPoolExecutor.java	2024-03-06 00:17:19.398245927 +0000
+@@ -24,6 +24,7 @@
+  */
+ package org.apache.tomcat.util.threads;
+
++import java.lang.reflect.Method;
+ import java.util.ArrayList;
+ import java.util.ConcurrentModificationException;
+ import java.util.HashSet;
+@@ -607,6 +608,10 @@
+     private static final RuntimePermission shutdownPerm =
+         new RuntimePermission("modifyThread");
+
++    private final Object dacapoCallback;
++    private final Method taskStartMethod;
++    private final Method taskEndMethod;
++
+     /**
+      * Class Worker mainly maintains interrupt control state for
+      * threads running tasks, along with other minor bookkeeping.
+@@ -1367,6 +1372,21 @@
+         this.threadFactory = threadFactory;
+         this.handler = handler;
+
++        Object callback = null;
++        Method start = null;
++        Method end = null;
++        try {
++            Class clazz = Class.forName("org.dacapo.harness.Callback");
++            Method getter = clazz.getMethod("getCallback");
++            callback = getter.invoke(getter, null);
++            start = clazz.getMethod("serverTaskStart");
++            end = clazz.getMethod("serverTaskEnd");
++        } catch (Exception e) {
++            System.err.println("Could not initialize DaCapo callbacks: "+e);
++        }
++        this.dacapoCallback = callback;
++        this.taskStartMethod = start;
++        this.taskEndMethod = end;
+         prestartAllCoreThreads();
+     }
+
+@@ -2101,7 +2121,14 @@
+      * @param t the thread that will run task {@code r}
+      * @param r the task that will be executed
+      */
+-    protected void beforeExecute(Thread t, Runnable r) { }
++    protected void beforeExecute(Thread t, Runnable r) {
++        try {
++            if (dacapoCallback != null)
++                taskStartMethod.invoke(dacapoCallback);
++        } catch (Exception e) {
++            System.err.println("Could not invoke DaCapo callbacks: "+e);
++        }
++    }
+
+
+     /**
+@@ -2155,6 +2182,13 @@
+      * execution completed normally
+      */
+     protected void afterExecute(Runnable r, Throwable t) {
++        try {
++            if (dacapoCallback != null)
++                taskEndMethod.invoke(dacapoCallback);
++        } catch (Exception e) {
++            System.err.println("Could not invoke DaCapo callbacks: "+e);
++        }
++
+         // Throwing StopPooledThreadException is likely to cause this method to
+         // be called more than once for a given task based on the typical
+         // implementations of the parent class. This test ensures that

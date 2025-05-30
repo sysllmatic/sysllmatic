@@ -1,0 +1,150 @@
+<!--
+ * Copyright (c) 2009 The Australian National University.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0.
+ * You may obtain the license at
+ * 
+ *    http://www.opensource.org/licenses/apache2.0.php
+ -->
+<project name="daytrader" default="all" basedir="../..">
+    <description>daytrader application, required by tradebeans and tradesoap</description>
+    <property name="toolsdir" location="../tools"/>
+    <property environment="env"/>
+
+    <property file="./dacapo.properties"/>
+
+    <property name="lib-name" value="daytrader"/>
+    
+    <property name="apache-svn-url" value="http://svn.apache.org/repos/asf"/>
+
+    <property name="lib-svn-url" value="${apache-svn-url}/geronimo/daytrader/trunk"/>
+    <property name="lib-svn-revision" value="${daytrader-svn-revision}"/>
+    <property name="lib-version" value="svn-${lib-svn-revision}"/>
+    <property name="lib-src" value="daytrader-${lib-version}-src.tar.gz"/>
+ 
+    <property name="wildfly" value="wildfly-${wildfly-version}"/>
+    <!-- <property name="wildfly-from-src" value="true"/> --> <!-- Skip by default (it takes around 20 minutes, doubling the time for a full build of DaCapo) -->
+
+    <import file="../common.xml"/>
+
+    <property name="dt-build" location="${lib-build-dir}/daytrader"/>
+    <property name="wf-build" location="${lib-build-dir}/${wildfly}-src"/>
+
+    <property name="launcher-build" location="${lib-build-dir}/launcher"/>
+
+    <condition property="mvn-exe" value="mvn.bat">
+        <os family="windows"/>
+    </condition>
+    <property name="mvn-exe" value="mvn"/>
+
+    <target name="url-source">
+        <!-- get the binary -->
+        <antcall target="check-source">
+            <param name="target-dir" value="${lib-downloads}"/>
+            <param name="target-url" value="${github.url}/wildfly/wildfly/releases/download/${wildfly-version}"/>
+            <param name="target-file" value="${wildfly}.zip"/>
+        </antcall>
+        <!-- get the source -->
+        <antcall target="check-source">
+            <param name="target-dir" value="${lib-downloads}"/>
+            <param name="target-url" value="${github.url}/wildfly/wildfly/releases/download/${wildfly-version}"/>
+            <param name="target-file" value="${wildfly}-src.zip"/>
+        </antcall>
+    </target>
+
+    <target name="unpack">
+        <mkdir dir="${dt-build}"/>
+        <untar src="${lib-downloads}/${lib-src}" dest="${dt-build}/" compression="gzip"/>
+        <delete file="${dt-build}/javaee6/modules/web/src/main/java/org/apache/geronimo/daytrader/javaee6/web/prims/ejb3/PingServlet2Entity.java"/>
+        <copy file="${lib-data}/stocks.txt" todir="${dt-build}/javaee6/modules/web/src/main/resources/"/>
+        <copy file="${lib-data}/users.txt" todir="${dt-build}/javaee6/modules/web/src/main/resources/"/>
+        <copy file="${lib-data}/workload.txt" todir="${dt-build}/javaee6/modules/web/src/main/resources/"/>
+
+        <copy todir="${dt-build}">
+            <fileset dir="libs/${lib-name}/${lib-name}" />
+        </copy>
+
+        <patch patchfile="${lib-base}/${lib-name}/daytrader.patch" dir="${lib-build-dir}" ignorewhitespace="yes" strip="0" failonerror="yes"/>
+    </target>
+
+    <!-- build wildfly from source -->
+    <target name="wildfly.src" if="wildfly-from-src">
+        <unzip src="${lib-downloads}/${wildfly}-src.zip" dest="${lib-build-dir}/"/>
+
+        <!-- build widlfly -->
+        <exec executable="${mvn}" dir="${wf-build}">
+            <env key="JAVA_HOME" value="${jdk.11.home}"/>
+            <env key="MAVEN_OPTS" value="-Xms256m -Xmx512m -XX:MaxPermSize=128m"/>
+            <arg value="-Drat.ignoreErrors=true"/>
+            <arg value="clean"/>
+            <arg value="install"/>
+        </exec>
+
+        <copy todir="${lib-build-dir}/${wildfly}">
+            <fileset dir="${wf-build}/dist/target/${wildfly}" />
+        </copy>
+    </target>
+    <!-- use the wildfly binary distro -->
+    <target name="wildfly.bin" unless="wildfly-from-src">
+        <unzip src="${lib-downloads}/${wildfly}.zip" dest="${lib-build-dir}/"/>
+    </target>
+
+    <target name="wildfly.patch" depends="wildfly.src,wildfly.bin">
+        <patch patchfile="${lib-base}/${lib-name}/wildfly.patch" dir="${lib-build-dir}" ignorewhitespace="yes" strip="0" failonerror="yes"/>
+    </target>
+
+    <target name="jar" depends="build">
+        <jar destfile="${lib-jars}/${lib-name}.jar">
+            <fileset dir="${launcher-build}">
+                <include name="**/*.class"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="build" depends="build.init,data">
+        <mkdir dir="${launcher-build}/"/>
+        <javac fork="yes" executable="${jdk.11.home}/bin/javac" srcdir="${lib-src-dir}" destdir="${launcher-build}"
+                classpath="${lib-build-dir}/${wildfly}/jboss-modules.jar:${harness-classpath}"
+                debug="true" debuglevel="lines,vars,source"/>
+    </target>
+
+    <target name="build.init">
+        <property name="mvn-home" location="${toolsdir}/apache-maven-${mvn.version}/bin"/>
+        <property name="mvn" location="${mvn-home}/${mvn-exe}"/>
+    </target>
+
+    <target name="data" depends="build.init,wildfly.patch">
+        <!-- build daytrader -->
+        <exec executable="${mvn}" dir="${dt-build}">
+            <env key="JAVA_HOME" value="${jdk.11.home}"/>
+            <env key="MAVEN_OPTS" value="-Xms256m -Xmx512m -XX:MaxPermSize=128m"/>
+            <arg value="-Drat.ignoreErrors=true"/>
+            <arg value="clean"/>
+            <arg value="install"/>
+        </exec>
+
+        <copy todir="${lib-build-dir}/${wildfly}/standalone/deployments"
+              file="${dt-build}/javaee6/assemblies/daytrader-ear/target/daytrader-ear-3.0-SNAPSHOT.ear"/>
+
+        <copy todir="${lib-dat}">
+            <fileset dir="${lib-build-dir}">
+                <include name="${wildfly}/**"/>
+                <exclude name="${wildfly}/standalone/configuration/logging.properties"/>
+            </fileset>
+           <fileset dir="${lib-data}">
+              <include name="operations.csv"/>
+            </fileset>
+        </copy>
+        <delete file="${lib-dat}/${wildfly}/standalone/configuration/logging.properties"/>
+    </target>
+
+    <target name="data-perms">
+        <!-- ant unzip and copy tasks do not restore file permisions, so we need to do this explicitly -->
+        <chmod perm="755">
+            <fileset dir="${build.target-data}/lib/daytrader/${wildfly}/bin">
+                <include name="*.sh"/>
+            </fileset>
+        </chmod>
+    </target>
+
+</project>

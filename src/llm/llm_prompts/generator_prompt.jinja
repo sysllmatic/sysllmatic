@@ -1,0 +1,31 @@
+You are tasked with optimizing the following code to improve its performance. This involves reducing latency, reducing CPU cycles, minimizing memory access, and optimizing I/O operations. Please follow these steps and guidelines:
+
+Task Instructions:
+- Analyze the code: Examine the provided code in detail.
+- Analyze the optimization patterns:
+    - The provided optimization patterns were deemed relevant to the code, consider them when generating optimization strategies.
+- Choose the most effective optimization stategy.
+- Implement the chosen optimization strategy: Rewrite the code with the chosen optimization strategies, ensuring:
+    - The optimized code produces the same output as the original code for all valid inputs.
+- Output Requirements:
+    - Begin with a step-by-step analysis of the original code and identify inefficiencies.
+    - Implement the best optimization strategies directly into the code.
+    - Ensure the final code is efficient, correct in terms of functionality, and maintains same output formatting.
+
+Here is the code to optimize, follow the instruction to provide the optimized code WHILE STRICTLY MAINTAINING IT'S FUNCTIONAL EQUIVALENCE:
+{{ code }}
+
+{% if ast %}
+Here is the AST of the source code:
+{{ ast }}
+{% endif %}
+
+{% if flame_report %}
+Here is a textual representation of the flame graph for the current source code:
+{{ flame_report }}
+{% endif %}
+
+{% if optimization_patterns %}
+Here are some relevant optimization patterns:
+{{ optimization_patterns }}
+{% endif %}

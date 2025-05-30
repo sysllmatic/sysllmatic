@@ -1,0 +1,162 @@
+<project name="harness" default="all" basedir="..">
+    <description>DaCapo benchmark harness</description>
+
+    <import file="../util.xml"/>
+    <import file="../libs/libs.xml"/>
+
+    <property file="default.properties"/>
+    <property file="dacapo.properties"/>
+
+    <property name="base-dir" value="harness"/>
+    <property name="src" value="${base-dir}/src"/>
+    <property name="output-dir" value="${base-dir}/dist"/>
+    <property name="output-doc-dir" value="${output-dir}/doc/harness"/>
+    <property name="build-dir" value="${base-dir}/build"/>
+
+    <property name="harness-downloads" value="${base-dir}/downloads"/>
+
+    <property name="cli" value="commons-cli"/>
+    <property name="cli-version" value="1.5.0"/>
+    <property name="cli-url" value="${apache.dl.url}/commons/cli/binaries"/>
+    <property name="cli-basename" value="${cli}-${cli-version}"/>
+    <property name="cli-name" value="${cli-basename}-bin.tar.gz"/>
+
+    <property name="JavaBeans-Activation-version" value="1.2.0"/>
+    <property name="JavaBeans-Activation-url" value="${maven.url}/com/sun/activation/javax.activation/${JavaBeans-Activation-version}"/>
+    <property name="JavaBeans-Activation-name" value="javax.activation-${JavaBeans-Activation-version}.jar"/>
+
+    <property name="jaxb-version" value="2.3.0"/>
+    <property name="jaxb-url" value="${maven.url}/javax/xml/bind/jaxb-api/${jaxb-version}"/>
+    <property name="jaxb-name" value="jaxb-api-${jaxb-version}.jar"/>
+
+    <property name="jaxb-core-url" value="${maven.url}/com/sun/xml/bind/jaxb-core/${jaxb-version}"/>
+    <property name="jaxb-core-name" value="jaxb-core-${jaxb-version}.jar"/>
+
+    <property name="jaxb-impl-url" value="${maven.url}/com/sun/xml/bind/jaxb-impl/${jaxb-version}"/>
+    <property name="jaxb-impl-name" value="jaxb-impl-${jaxb-version}.jar"/>
+
+    <property name="hdrhistogram-version" value="2.1.12"/>
+    <property name="hdrhistogram-url" value="https://github.com/HdrHistogram/HdrHistogram/archive/refs/tags/"/>
+    <property name="hdrhistogram-name" value="HdrHistogram-${hdrhistogram-version}.zip"/>
+
+    <property name="allocation-instrumenter-version" value="3.3.4"/>
+    <property name="allocation-instrumenter-url" value="${maven.url}/com/google/code/java-allocation-instrumenter/java-allocation-instrumenter/${allocation-instrumenter-version}"/>
+    <property name="allocation-instrumenter-name" value="java-allocation-instrumenter-${allocation-instrumenter-version}.jar"/>
+
+    <property name="bm-out-jar" value="${base-dir}/tmp"/>
+
+    <target name="all" depends="clean,init,harness,jar"/>
+
+    <target name="clean">
+        <delete dir="${output-dir}"/>
+        <delete dir="${build-dir}"/>
+        <delete dir="${bm-out-jar}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${output-dir}"/>
+        <mkdir dir="${output-doc-dir}"/>
+        <mkdir dir="${build-dir}"/>
+    </target>
+
+    <target name="parser">
+        <javacc javacchome="${javacchome}" target="${src}/org/dacapo/parser/ConfigFile.jj"/>
+    </target>
+
+    <target name="dependency">
+        <!-- get commons-cli from apache -->
+        <antcall target="check-source">
+            <param name="target-dir" value="${harness-downloads}"/>
+            <param name="target-url" value="${cli-url}"/>
+            <param name="target-file" value="${cli-name}"/>
+        </antcall>
+
+        <antcall target="check-source">
+            <param name="target-dir" value="${harness-downloads}"/>
+            <param name="target-url" value="${jaxb-url}"/>
+            <param name="target-file" value="${jaxb-name}"/>
+        </antcall>
+
+        <antcall target="check-source">
+            <param name="target-dir" value="${harness-downloads}"/>
+            <param name="target-url" value="${JavaBeans-Activation-url}"/>
+            <param name="target-file" value="${JavaBeans-Activation-name}"/>
+        </antcall>
+
+        <antcall target="check-source">
+            <param name="target-dir" value="${harness-downloads}"/>
+            <param name="target-url" value="${jaxb-core-url}"/>
+            <param name="target-file" value="${jaxb-core-name}"/>
+        </antcall>
+
+        <antcall target="check-source">
+            <param name="target-dir" value="${harness-downloads}"/>
+            <param name="target-url" value="${jaxb-impl-url}"/>
+            <param name="target-file" value="${jaxb-impl-name}"/>
+        </antcall>
+
+        <antcall target="check-source">
+            <param name="target-dir" value="${harness-downloads}"/>
+            <param name="target-url" value="${allocation-instrumenter-url}"/>
+            <param name="target-file" value="${allocation-instrumenter-name}"/>
+        </antcall>
+
+        <!-- untar it into build -->
+        <untar src="${harness-downloads}/${cli-name}" dest="${build-dir}" compression="gzip"/>
+
+        <!-- unjar from commons-cli-<version>.jar org/apache/commons into ${output-dir} -->
+        <unjar src="${build-dir}/${cli-basename}/${cli-basename}.jar" dest="${output-dir}">
+            <fileset dir="/" includes="org/apache/commons/**" />
+        </unjar>
+
+        <!-- unjar from JavaBeans-Activation-<version>.jar into ${output-dir} -->
+        <unjar src="${harness-downloads}/${JavaBeans-Activation-name}" dest="${output-dir}"/>
+
+        <!-- unjar from jaxb-api-<version>.jar into ${output-dir} -->
+        <unjar src="${harness-downloads}/${jaxb-name}" dest="${output-dir}"/>
+
+        <!-- unjar from jaxb-core-<version>.jar into ${output-dir} -->
+        <unjar src="${harness-downloads}/${jaxb-core-name}" dest="${output-dir}"/>
+
+        <!-- unjar from jaxb-core-<version>.jar into ${output-dir} -->
+        <unjar src="${harness-downloads}/${jaxb-impl-name}" dest="${output-dir}"/>
+
+        <copy file="${harness-downloads}/${allocation-instrumenter-name}" todir="${build.target-jars}"/>
+
+        <delete file="${output-dir}/module-info.class"/>
+    </target>
+
+    <target name="hdrhist">
+        <antcall target="check-source">
+            <param name="target-dir" value="${harness-downloads}"/>
+            <param name="target-url" value="${hdrhistogram-url}"/>
+            <param name="target-file" value="${hdrhistogram-name}"/>
+        </antcall>
+
+        <unzip src="${harness-downloads}/${hdrhistogram-name}" dest="${build-dir}"/>
+
+        <property name="mvn-home" location="${toolsdir}/apache-maven-${mvn.version}/bin"/>
+        <property name="mvn-exe" value="${mvn-home}/mvn"/>
+        <condition property="mvn-exe" value="${mvn-home}/mvn.bat">
+            <os family="windows"/>
+        </condition>
+        <exec executable="${mvn-exe}" dir="${build-dir}/HdrHistogram-HdrHistogram-${hdrhistogram-version}" failonerror="yes">
+            <arg value="clean"/>
+            <arg value="package"/>
+            <arg value="-Dmaven.test.skip=true"/>
+        </exec>
+
+        <unjar src="${build-dir}/HdrHistogram-HdrHistogram-${hdrhistogram-version}/target/HdrHistogram-${hdrhistogram-version}.jar" dest="${output-dir}"/>
+    </target>
+
+    <target name="harness" depends="init,dependency,parser,hdrhist">
+        <javac srcdir="${src}" destdir="${output-dir}" debug="true" debuglevel="lines,vars,source" classpath="${output-dir}:${build.target-jars}/${allocation-instrumenter-name}"/>
+        <javadoc sourcepath="${src}" destdir="${output-doc-dir}" classpath="${output-dir}"
+                additionalparam="-Xdoclint:none"/>
+        <delete file="${bm-out-jar}"/>
+    </target>
+
+    <target name="jar">
+        <jar jarfile="${build.target-jar}" basedir="${output-dir}" update="true"/>
+    </target>
+</project>

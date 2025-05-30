@@ -1,0 +1,14 @@
+.env
+logs/
+__pycache__/
+benchmark_pie/merged_test_cases
+benchmark_pie/p*
+src/runtime_logs
+RAPL/main
+RAPL/*.o
+results/
+src/java_code_extraction/target
+benchmark_scimark/*/jnt/
+benchmark_human_eval/[0-9]
+**tmp**
+gccflags_final_config.*

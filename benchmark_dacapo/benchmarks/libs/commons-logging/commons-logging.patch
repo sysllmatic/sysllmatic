@@ -1,0 +1,38 @@
+--- commons-logging-1.2-src/build.xml	2014-07-06 04:11:36.000000000 +1000
++++ ../build-new.xml	2017-12-11 15:05:02.519781973 +1100
+@@ -223,14 +223,14 @@
+   <!--
+     - Running this target will download all the necessary dependencies into the "lib" subdirectory.
+     -->
+-  <property name="getlibs.base" value="http://repo1.maven.org/maven"/>
++  <property name="getlibs.base" value="https://repo.maven.apache.org/maven2"/>
+   <target name="getlibs">
+     <mkdir dir="lib"/>
+-    <get dest="lib/junit-3.8.1.jar" src="${getlibs.base}/junit/jars/junit-3.8.1.jar"/>
+-    <get dest="lib/logkit-1.0.1.jar" src="${getlibs.base}/logkit/jars/logkit-1.0.1.jar"/>
+-    <get dest="lib/avalon-framework-4.1.3.jar" src="${getlibs.base}/avalon-framework/jars/avalon-framework-4.1.3.jar"/>
+-    <get dest="lib/log4j-1.2.12.jar" src="${getlibs.base}/log4j/jars/log4j-1.2.12.jar"/>
+-    <get dest="lib/servletapi-2.3.jar" src="${getlibs.base}/servletapi/jars/servletapi-2.3.jar"/>
++    <get dest="lib/junit-3.8.1.jar" src="${getlibs.base}/junit/junit/3.8.1/junit-3.8.1.jar"/>
++    <get dest="lib/logkit-1.0.1.jar" src="${getlibs.base}/logkit/logkit/1.0.1/logkit-1.0.1.jar"/>
++    <get dest="lib/avalon-framework-4.1.3.jar" src="${getlibs.base}/avalon-framework/avalon-framework/4.1.3/avalon-framework-4.1.3.jar"/>
++    <get dest="lib/log4j-1.2.12.jar" src="${getlibs.base}/log4j/log4j/1.2.12/log4j-1.2.12.jar"/>
++    <get dest="lib/servletapi-2.3.jar" src="${getlibs.base}/servletapi/servletapi/2.3/servletapi-2.3.jar"/>
+   </target>
+ 
+   <target name="init"
+--- commons-logging-1.2-src/build.xml	2019-04-16 15:50:00.000000000 +1000
++++ build.xml	2019-04-16 15:49:46.000000000 +1000
+@@ -130,10 +130,10 @@
+ <!-- ========== Compiler Defaults ========================================= -->
+ 
+   <!-- Version of java class files to generate. -->
+-  <property name="target.version" value="1.2"/>
++  <property name="target.version" value="1.7"/>
+ 
+   <!-- Version of java source to accept -->
+-  <property name="source.version" value="1.2"/>
++  <property name="source.version" value="1.7"/>
+ 
+   <!-- Should Java compilations set the 'debug' compiler option? -->
+   <property name="compile.debug"           value="true"/>

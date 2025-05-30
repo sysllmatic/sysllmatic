@@ -1,0 +1,26 @@
+benchmark fop
+  class org.dacapo.harness.Fop
+  thread-model single;
+
+/*
+ * 'small' uses debug mode ("-d"), which puts current stats in the output,
+ * so we don't use stdout to validate small.
+ */
+
+size small args "${DATA}/fop/alignment.fo", "${SCRATCH}", "-pdf"
+  output stdout digest 0xa58b9f9e54d89f797a5b7c0e326352f114c4575c,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size default args "${DATA}/fop", "${SCRATCH}", "-pdf"
+  output stdout digest 0x3ce4135b1d51ec03b504a2fcea7ecd4b1803be20,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+description
+  short		"An output-independent print formatter",
+  long		"fop takes one or more XSL-FO file, parses it and formats it, generating a pdf file",
+  copyright	"Copyright (C) 1999-2020 The Apache Software Foundation",
+  author 	"Apache Software Foundation",
+  license	"Apache Public License",
+  url        "http://xmlgraphics.apache.org/fop/",
+  repeats	"Single iteration, renders a single XSL-FO file",
+  threads       "Single threaded",

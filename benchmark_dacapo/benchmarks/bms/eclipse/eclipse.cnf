@@ -1,0 +1,25 @@
+benchmark eclipse
+  class org.dacapo.harness.Eclipse
+  thread-model single;
+
+size small   args "setup"
+  output stdout digest 0x9d0460a842b72206720942a60581729eaed17d9f,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size default args "setup", "alltests"
+  output stdout digest 0x883c142aebf68c13c630dae7dcc488b32d565e3d,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size large   args "setup", "alltests"
+  output stdout digest 0xeb944ed9d5fa5c9d772cac9bc27d2981e19a2518,
+         stderr digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+description
+  short 	"An integrated development environment",
+  long  	"Run eclipse's jdt (non-gui) performance tests",
+  copyright	"Eclipse Foundation",
+  author	"Eclipse Foundation",
+  license	"Eclipse Public License",
+  url 		"http://www.eclipse.org/",
+  threads	"Externally single-threaded.  Internally multi-threaded.",
+  repeats	"Single iteration, performs multiple distinct Eclipse tasks",

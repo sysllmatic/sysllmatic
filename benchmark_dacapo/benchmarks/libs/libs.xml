@@ -1,0 +1,158 @@
+<!--
+ * Copyright (c) 2009 The Australian National University.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0.
+ * You may obtain the license at
+ *
+ *    http://www.opensource.org/licenses/apache2.0.php
+ -->
+<project name="libs">
+    <property name="lib-base" value="${basedir}/libs"/>
+
+    <!-- dacapo-digest -->
+    <target name="dacapo-digest">
+        <ant antfile="${lib-base}/dacapo-digest/build.xml"/>
+    </target>
+
+    <!-- bcel -->
+    <property name="bcel-jar" value="${lib-base}/bcel/dist/jar/bcel-5.2.jar"/>
+    <target name="bcel">
+        <ant antfile="${lib-base}/bcel/build.xml"/>
+    </target>
+
+    <!-- batik-->
+    <property name="batik-version" value="1.16"/>
+    <property name="batik-jar" value="${lib-base}/batik/dist/jar/batik-all-${batik-version}.jar"/>
+    <target name="batik">
+        <ant antfile="${lib-base}/batik/build.xml"/>
+    </target>
+
+    <!-- daytrader -->
+    <property name="daytrader-svn-revision" value="1904225"/>
+    <!-- note: 26.1.3 is the last WildFly before moving to EE10, a major change -->
+    <property name="wildfly-version" value="26.1.3.Final"/>  <!-- Any change here must be reflected in org.dacapo.daytrader.Launcher -->
+    <target name="daytrader">
+        <ant antfile="${lib-base}/daytrader/build.xml"/>
+    </target>
+
+    <!-- jpetstore -->
+    <property name="jpetstore-common" value="${lib-base}/jpetstore/dist/jar/ibatis-common-2.jar"/>
+    <property name="jpetstore-dao" value="${lib-base}/jpetstore/dist/jar/ibatis-dao-2.jar"/>
+    <property name="jpetstore-sqlmap" value="${lib-base}/jpetstore/dist/jar/ibatis-sqlmap-2.jar"/>
+    <property name="jpetstore-jakarta-oro" value="${lib-base}/jpetstore/dist/jar/jakarta-oro.jar"/>
+    <property name="jpetstore-struts" value="${lib-base}/jpetstore/dist/jar/struts.jar"/>
+    <property name="jpetstore-zip" value="${lib-base}/jpetstore/dist/jar/jpetstore.zip"/>
+    <target name="jpetstore">
+        <ant antfile="${lib-base}/jpetstore/build.xml"/>
+    </target>
+
+    <!-- jakarta commons HTTP client -->
+    <property name="commons-httpclient-jar" value="${lib-base}/commons-httpclient/dist/jar/commons-httpclient.jar"/>
+    <target name="commons-httpclient" depends="commons-logging,commons-codec">
+        <ant antfile="${lib-base}/commons-httpclient/build.xml"/>
+    </target>
+
+    <!-- jakarta commons logging -->
+    <property name="commons-logging-jar" value="${lib-base}/commons-logging/dist/jar/commons-logging.jar"/>
+    <target name="commons-logging">
+        <ant antfile="${lib-base}/commons-logging/build.xml"/>
+    </target>
+
+    <!-- jakarta commons codec -->
+    <property name="commons-codec-jar" value="${lib-base}/commons-codec/dist/jar/commons-codec.jar"/>
+    <target name="commons-codec">
+        <ant antfile="${lib-base}/commons-codec/build.xml"/>
+    </target>
+
+    <!-- janino -->
+    <property name="janino-jar" value="${lib-base}/janino/dist/jar/janino-2.5.15.jar"/>
+    <target name="janino">
+        <ant antfile="${lib-base}/janino/build.xml"/>
+    </target>
+
+    <!-- jdbcbench -->
+    <property name="jdbcbench-jar" value="${lib-base}/jdbcbench/dist/jar/jdbcbench.jar"/>
+    <target name="jdbcbench">
+        <ant antfile="${lib-base}/jdbcbench/build.xml"/>
+    </target>
+
+    <!-- derby -->
+    <property name="derby-version" value="10.15.2.0"/>
+    <property name="derby-jar" value="${lib-base}/derby/dist/jar/derby.jar"/>
+    <property name="derbyclient-jar" value="${lib-base}/derby/dist/jar/derbyclient.jar"/>
+    <property name="derbynet-jar" value="${lib-base}/derby/dist/jar/derbynet.jar"/>
+    <property name="derbytools-jar" value="${lib-base}/derby/dist/jar/derbytools.jar"/>
+    <property name="derbytesting-jar" value="${lib-base}/derby/dist/jar/derbyTesting.jar"/>
+    <target name="derby">
+        <ant antfile="${lib-base}/derby/build.xml"/>
+    </target>
+
+    <!-- junit -->
+    <property name="junit-jar" value="${lib-base}/junit/dist/jar/junit-4.12.jar"/>
+    <target name="junit">
+        <ant antfile="${lib-base}/junit/build.xml"/>
+    </target>
+
+    <!-- h2 -->
+    <property name="h2-version" value="2.2.220"/>
+    <property name="h2-jar" value="${lib-base}/h2/dist/jar/h2-${h2-version}.jar"/>
+    <target name="h2">
+        <ant antfile="${lib-base}/h2/build.xml"/>
+    </target>
+
+    <!-- lucene -->
+    <property name="lucene-major-version" value="9.10"/>
+    <property name="lucene-version" value="${lucene-major-version}.0"/>
+    <property name="lucene-version-snapshot" value="${lucene-version}-SNAPSHOT"/>
+    <property name="lucene-build-dir" value="${lib-base}/lucene/build/lucene-${lucene-version}"/>
+    <property name="lucene-jars" value="${lib-base}/lucene/dist/jar"/>
+    <property name="lucene-data" value="${lib-base}/lucene/dist/dat"/>
+    <property name="lucene-core-jar-name" value="lucene-core-${lucene-version-snapshot}.jar"/>
+    <property name="lucene-demos-jar-name" value="lucene-demo-${lucene-version-snapshot}.jar"/>
+    <property name="lucene-queryparser-jar-name" value="lucene-queryparser-${lucene-version-snapshot}.jar"/>
+    <target name="lucene">
+        <ant antfile="${lib-base}/lucene/build.xml"/>
+    </target>
+
+    <!-- xerces -->
+    <property name="xerces-jars" value="${lib-base}/xerces/dist/jar"/>
+    <property name="xerces-impl-jar-name" value="xercesImpl.jar"/>
+    <property name="xerces-api-jar-name" value="xml-apis.jar"/>
+    <target name="xerces">
+        <ant antfile="${lib-base}/xerces/build.xml"/>
+    </target>
+
+    <!-- asm -->
+    <property name="asm-verison" value="3.3"/>
+    <property name="asm-jar" value="${lib-base}/asm/dist/jar/asm-${asm-verison}.jar"/>
+    <property name="asm-commons-jar" value="${lib-base}/asm/dist/jar/asm-commons-${asm-verison}.jar"/>
+    <target name="asm">
+      <ant antfile="${lib-base}/asm/build.xml"/>
+    </target>
+
+    <!-- json -->
+    <property name="json-jar" value="${lib-base}/json/dist/jar/json-lib-2.4-jdk15.jar"/>
+    <target name="json">
+        <ant antfile="${lib-base}/json/build.xml"/>
+    </target>
+
+    <!-- commons-lang -->
+    <target name="commons-lang">
+        <ant antfile="${lib-base}/commons-lang/build.xml"/>
+    </target>
+
+    <!-- commons-beanutils -->
+    <target name="commons-beanutils">
+        <ant antfile="${lib-base}/commons-beanutils/build.xml"/>
+    </target>
+
+    <!-- commons-collections-->
+    <target name="commons-collections">
+        <ant antfile="${lib-base}/commons-collections/build.xml"/>
+    </target>
+
+    <!-- ezmorph-->
+    <target name="ezmorph">
+        <ant antfile="${lib-base}/ezmorph/build.xml"/>
+    </target>
+</project>

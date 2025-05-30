@@ -1,0 +1,39 @@
+<!--
+ * Copyright (c) 2009 The Australian National University.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License v2.0.
+ * You may obtain the license at
+ * 
+ *    http://www.opensource.org/licenses/apache2.0.php
+ -->
+<project name="h2" default="all" basedir="../..">
+    <description>DaCapo h2 benchmark</description>
+    <property file="local.properties"/>
+    <property file="dacapo.properties"/>
+
+    <property name="bm-name" value="h2"/>
+
+    <import file="../common.xml"/>
+    <property name="bm-version-str" value="h2 ${h2-version} derby ${derby-version}"/>
+
+    <target name="bm-build" depends="junit,h2,derby">
+        <javac srcdir="${bm-src-dir}"  destdir="${bm-build-dir}"
+                sourcepath="${bm-src-dir}"
+                source="1.8">
+            <classpath>
+                <pathelement location="${harness-classpath}"/>
+                <pathelement location="${derbytesting-jar}"/>
+                <pathelement location="${h2-jar}"/>
+                <pathelement location="${junit-jar}"/>
+            </classpath>
+        </javac>
+        <jar destfile="${bm-jars}/dacapo-${bm-name}.jar">
+            <fileset dir="${bm-build-dir}">
+                <include name="org/dacapo/h2/**"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="data"/>
+</project>
+

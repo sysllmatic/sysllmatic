@@ -1,0 +1,37 @@
+benchmark tradebeans
+  class org.dacapo.harness.Tradebeans
+  thread-model per_cpu;
+
+size small args "3", "11"
+  threads 1      // per available processor
+  thread-limit 32
+  output stdout  digest 0x05c1fe11d60395ec55f7353aee93099ab941cdf0,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size default args "10", "22"
+  threads 1      // per available processor
+  thread-limit 2048
+  output stdout  digest 0x5f07afb8346308139460f8807950c97af20bcc44,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size large args "14", "200"
+  threads 1      // per available processor
+  thread-limit 2048
+  output stdout  digest 0x568ce7e20ed1410c6430fd280a7858a8a242221c,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+size vlarge args "15", "600"
+  threads 1      // per available processor
+  thread-limit 2048
+  output stdout  digest 0x1246cfc2f24769e86a37fd26ddac7ba17f76ee51,
+         stderr  digest 0xda39a3ee5e6b4b0d3255bfef95601890afd80709;
+
+description
+  short		"Tradebeans EJB Daytrader benchmark",
+  long		"Tradebeans is an EJB container version of the Daytrader benchmark from Apache.  It runs over the WildFly application server.",
+  copyright	"Copyright (C) The Apache Software Foundation",
+  author	"RedHat and Apache Geronimo, donated by IBM",
+  license	"Apache License, Version 2.0 and LGPL 2.1",
+  url           "http://geronimo.apache.org/",
+  threads       "Explicitly multi-threaded client, scaled to available processors.  Internally multi-threaded server.",
+  repeats	"Populates a database with stocks and users, and then perfoms a number of trader actions organized as packets (trade sesions).",

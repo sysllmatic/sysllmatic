@@ -1,0 +1,6 @@
+[submodule "src/sandbox/flamegraph/FlameGraph"]
+	path = src/sandbox/flamegraph/FlameGraph
+	url = https://github.com/brendangregg/FlameGraph
+[submodule "async-profiler"]
+	path = async-profiler
+	url = https://github.com/async-profiler/async-profiler
