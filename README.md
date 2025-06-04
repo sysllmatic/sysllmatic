@@ -3,11 +3,12 @@
 This repository contains the artifacts for the project **SysLLMatic: Large Language Models are Software System Optimizers**. It includes implementation details, instructions to reproduce results, and experimental data.
 
 Our artifact includes the following
-Item | Description | Corresponding content in the paper | Path
-Pattern Catalog | The catalog including 43 performance optimization patterns | $4, Figure 2-3, Table 2 | [pattern_catalog](./pattern_catalog) |
-Implementation |  The implementation of SysLLMatic | $5, Figure 4 | [src](./src) |
-Benchmarks | The benchmarks we used in evaluation | $6-B | [humaneval](./benchmark_humaneval), [scimark](./benchmark_scimark), [dacapo](./benchmark_dacapo)  |
-Eval | The evaluation scripts and results | $7, Figure 5-9, Table 4-6 | [eval](./eval) |
+| Item             | Description                                         | Corresponding content in the paper         | Path                                                                                 |
+|------------------|-----------------------------------------------------|--------------------------------------------|--------------------------------------------------------------------------------------|
+| Pattern Catalog  | The catalog including 43 performance optimization patterns | §4, Figure 2-3, Table 2                   | [pattern_catalog](./pattern_catalog)                                                 |
+| Implementation   | The implementation of SysLLMatic                    | §5, Figure 4                               | [src](./src)                                                                         |
+| Benchmarks       | The benchmarks we used in evaluation                | §6-B                                      | [humaneval](./benchmark_humaneval), [scimark](./benchmark_scimark), [dacapo](./benchmark_dacapo) |
+| Eval             | The evaluation scripts and results                  | §7, Figure 5-9, Table 4-6                  | [eval](./eval)                                                                       |
 
 ## Table of Contents
 - [Environment Requirement](#environment-requirement)
