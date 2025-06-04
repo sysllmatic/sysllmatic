@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> common(vector<int> l1,vector<int> l2){\nvector<int> out={};\n    for (int i=0;i<l1.size();i++)\n        if (find(out.begin(),out.end(),l1[i])==out.end())\n            if (find(l2.begin(),l2.end(),l1[i])!=l2.end())\n                out.push_back(l1[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        85.509,
+        1.648,
+        6985905356.6,
+        21100.0,
+        0.607,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <unordered_set>\n#include <set>\nusing namespace std;\n\nvector<int> common(vector<int> l1, vector<int> l2) {\n    set<int> out; \n    unordered_set<int> l2_set(l2.begin(), l2.end()); \n    \n    for (int i = 0; i < l1.size(); i++) {\n        if (l2_set.find(l1[i]) != l2_set.end()) { \n            out.insert(l1[i]); \n        }\n    }\n    \n    return vector<int>(out.begin(), out.end()); \n}",
+        13.887,
+        10.977,
+        67.518,
+        0.999,
+        10.961,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <unordered_set>\n#include <omp.h>\nusing namespace std;\n\nvector<int> common(vector<int> l1, vector<int> l2) {\n    unordered_set<int> out; \n    unordered_set<int> l2_set(l2.begin(), l2.end()); \n    out.reserve(min(l1.size(), l2.size())); \n\n    \n    #pragma omp parallel for\n    for (int i = 0; i < l1.size(); i++) {\n        if (l2_set.find(l1[i]) != l2_set.end()) {\n            #pragma omp critical\n            out.insert(l1[i]); \n        }\n    }\n\n    \n    vector<int> result(out.begin(), out.end());\n    sort(result.begin(), result.end());\n    return result; \n}",
+        8.327,
+        10.087,
+        1.366,
+        1.003,
+        10.079,
+        27
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include <vector>\n#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fib4(int n){\nvector<int> f(n + 1, 0);\n    f[0]=0;\n    f[1]=0;\n    f[2]=2;\n    f[3]=0;\n    for (int i=4;i<=n;i++)\n    {\n        f[i]=f[i-1]+f[i-2]+f[i-3]+f[i-4];\n    }\n    return f[n];\n}",
+        5.116,
+        0.133,
+        6293372.0,
+        21178.4,
+        7.527,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n\nint fib4(int n) {\n    if (n < 4) {\n        return n == 2 ? 2 : 0;\n    }\n    int a = 0, b = 0, c = 2, d = 0, current = 0;\n    for (int i = 4; i <= n; i++) {\n        current = a + b + c + d;\n        a = b;\n        b = c;\n        c = d;\n        d = current;\n    }\n    return current;\n}\n\n\n",
+        1.193,
+        1.033,
+        2.042,
+        1.009,
+        1.031,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n\nint fib4(int n) {\n    if (n == 2) return 2;\n    if (n < 4) return 0;\n\n    \n    int prev1 = 0, prev2 = 0, prev3 = 2, prev4 = 0, current = 0;\n\n    \n    for (int i = 4; i <= n; i += 4) {\n        int temp1 = prev1 + prev2 + prev3 + prev4;\n        int temp2 = prev2 + prev3 + prev4 + temp1;\n        int temp3 = prev3 + prev4 + temp1 + temp2;\n        int temp4 = prev4 + temp1 + temp2 + temp3;\n\n        prev1 = temp1;\n        prev2 = temp2;\n        prev3 = temp3;\n        prev4 = temp4;\n\n        current = temp4;\n        \n        if (i + 1 > n) return temp1;\n        if (i + 2 > n) return temp2;\n        if (i + 3 > n) return temp3;\n    }\n    return current;\n}\n\n",
+        1.184,
+        1.131,
+        2.187,
+        1.003,
+        1.129,
+        30
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> get_positive(vector<float> l){\nvector<float> out={};\n    for (int i=0;i<l.size();i++)\n        if (l[i]>0) out.push_back(l[i]);\n    return out;\n}",
+        4.521,
+        0.135,
+        9266161.2,
+        21071.2,
+        7.413,
+        12
+    ],
+    "1": [
+        "#include <vector>\n#include <algorithm> \n\nusing namespace std;\n\nvector<float> get_positive(const vector<float>& l) {\n    vector<float> out;\n    out.reserve(l.size()); \n    \n    std::copy_if(l.begin(), l.end(), back_inserter(out), [](float val) {\n        return val > 0;\n    });\n    \n    return out;\n}",
+        0.968,
+        1.041,
+        0.862,
+        1.004,
+        1.039,
+        15
+    ],
+    "2": [
+        "#include <vector>\n#include <algorithm>\n#include <future>\n#include <iterator>\n#include <thread>\n\nusing namespace std;\n\nvector<float> get_positive(const vector<float>& l) {\n    \n    size_t num_threads = std::thread::hardware_concurrency();\n    size_t grain_size = l.size() / num_threads;\n    std::vector<std::future<vector<float>>> futures;\n\n    \n    for (size_t i = 0; i < num_threads; ++i) {\n        futures.push_back(std::async(std::launch::async, [&, i] {\n            vector<float> out;\n            auto start = l.begin() + i * grain_size;\n            auto end = (i == num_threads - 1) ? l.end() : start + grain_size;\n            std::copy_if(start, end, std::back_inserter(out), [](float val) {\n                return val > 0;\n            });\n            return out;\n        }));\n    }\n\n    \n    vector<float> result;\n    for (auto& fut : futures) {\n        vector<float> part = fut.get();\n        result.insert(result.end(), part.begin(), part.end());\n    }\n    return result;\n}",
+        0.922,
+        1.048,
+        0.236,
+        0.997,
+        1.046,
+        35
+    ]
+}

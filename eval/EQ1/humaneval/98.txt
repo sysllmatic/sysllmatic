@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint count_upper(string s){\nstring uvowel=\"AEIOU\";\n    int count=0;\n    for (int i=0;i*2<s.length();i++)\n    if (find(uvowel.begin(),uvowel.end(),s[i*2])!=uvowel.end())\n        count+=1;\n    return count;\n}",
+        4.525,
+        0.134,
+        4549136.6,
+        21032.8,
+        7.462,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <unordered_set>\nusing namespace std;\n\nint count_upper(const string& s) {\n    unordered_set<char> uvowel = {'A', 'E', 'I', 'O', 'U'};\n    int count = 0;\n    for (size_t i = 0; i < s.length(); i += 2) {\n        if (uvowel.find(s[i]) != uvowel.end()) {\n            count++;\n        }\n    }\n    return count;\n}\n\n\n\n",
+        1.005,
+        1.026,
+        0.928,
+        1.001,
+        1.025,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <immintrin.h>\n#include <thread>\n#include <vector>\n#include <atomic>\n\nusing namespace std;\n\nconst char vowels[] = {'A', 'E', 'I', 'O', 'U'};\n\nint count_vowels_simd(const char* str, size_t length) {\n    int count = 0;\n    size_t i = 0;\n    for (; i + 32 <= length; i += 32) {\n        \n        __m256i data = _mm256_loadu_si256((const __m256i*)(str + i));\n        for (char v : vowels) {\n            __m256i vowel_vector = _mm256_set1_epi8(v);\n            __m256i result = _mm256_cmpeq_epi8(data, vowel_vector);\n            int mask = _mm256_movemask_epi8(result);\n            count += __builtin_popcount(mask & 0xAAAAAAAA); \n        }\n    }\n    \n    for (; i < length; i += 2) {\n        for (char v : vowels) {\n            if (str[i] == v) {\n                count++;\n                break;\n            }\n        }\n    }\n    return count;\n}\n\nint count_upper(const string& s) {\n    size_t length = s.length();\n    atomic<int> total_count(0);\n    vector<thread> threads;\n    const size_t num_threads = thread::hardware_concurrency();\n    size_t chunk_size = length / num_threads;\n\n    auto worker = [&](size_t start, size_t end) {\n        int local_count = count_vowels_simd(s.c_str() + start, end - start);\n        total_count += local_count;\n    };\n\n    for (size_t i = 0; i < num_threads; ++i) {\n        size_t start = i * chunk_size;\n        size_t end = (i == num_threads - 1) ? length : start + chunk_size;\n        threads.emplace_back(worker, start, end);\n    }\n\n    for (auto& th : threads) {\n        if (th.joinable()) th.join();\n    }\n\n    return total_count.load();\n}\n\n\n\n",
+        0.96,
+        1.0,
+        0.202,
+        1.003,
+        0.999,
+        63
+    ]
+}

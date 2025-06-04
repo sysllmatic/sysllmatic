@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_prime(long long n){\nif (n<2) return false;\n    for (long long i=2;i*i<=n;i++)\n        if (n%i==0) return false;\n    return true;\n}",
+        4.923,
+        0.123,
+        2828951.0,
+        21083.2,
+        8.092,
+        11
+    ],
+    "1": [
+        "#include <stdio.h>\n\nbool is_prime(long long n) {\n    if (n < 2) return false;\n    if (n == 2) return true; \n    if (n % 2 == 0) return false; \n    for (long long i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\n\n",
+        0.76,
+        1.038,
+        0.985,
+        1.003,
+        1.042,
+        13
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n\nbool is_prime(long long n) {\n    if (n < 2) return false;\n    if (n == 2 || n == 3 || n == 5) return true;\n    if (n % 2 == 0 || n % 3 == 0 || n % 5 == 0) return false;\n    long long limit = sqrt(n);\n    for (long long i = 7; i <= limit; i += 2) {\n        if (n % i == 0) return false;\n        if (n % (i + 2) == 0) return false;\n        if (n % (i + 4) == 0) return false;\n        if (n % (i + 6) == 0) return false;\n        if (n % (i + 8) == 0) return false;\n        i += 4; \n    }\n    return true;\n}\n\n",
+        0.987,
+        1.018,
+        0.997,
+        1.005,
+        1.021,
+        19
+    ]
+}

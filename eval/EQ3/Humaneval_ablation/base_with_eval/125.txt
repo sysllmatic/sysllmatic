@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> split_words(string txt){\nint i;\n    string current=\"\";\n    vector<string> out={};\n    if (find(txt.begin(),txt.end(),' ')!=txt.end())\n    {\n        txt=txt+' ';\n        for (i=0;i<txt.length();i++)\n            if (txt[i]==' ') \n            {\n                if (current.length()>0)out.push_back(current); \n                current=\"\";\n            }\n            else current=current+txt[i];\n        return out;\n    }\n    if (find(txt.begin(),txt.end(),',')!=txt.end())\n    {\n        txt=txt+',';\n        for (i=0;i<txt.length();i++)\n            if (txt[i]==',') \n            {\n                if (current.length()>0)out.push_back(current); \n                current=\"\";\n            }\n            else current=current+txt[i];\n        return out;\n    }\n    int num=0;\n    for (i=0;i<txt.length();i++)\n        if (txt[i]>=97 and txt[i]<=122 and txt[i]%2==0)\n            num+=1;\n    return {to_string(num)};\n}",
+        14.795,
+        0.334,
+        802119060.8,
+        22066.4,
+        2.99,
+        41
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <cctype> \nusing namespace std;\n\nvector<string> split_words(const string& txt) {\n    string current = \"\";\n    vector<string> out;\n    out.reserve(txt.size() / 2); \n    char delimiter = ' ';\n    bool has_space = txt.find(' ') != string::npos;\n    bool has_comma = txt.find(',') != string::npos;\n\n    \n    if (has_space) {\n        delimiter = ' ';\n    } else if (has_comma) {\n        delimiter = ',';\n    }\n\n    \n    if (has_space || has_comma) {\n        for (size_t i = 0; i < txt.length(); ++i) {\n            if (txt[i] == delimiter) {\n                if (!current.empty()) out.push_back(current);\n                current.clear();\n            } else {\n                current.push_back(txt[i]);\n            }\n        }\n        \n        if (!current.empty()) out.push_back(current);\n        return out;\n    }\n\n    \n    int num = 0;\n    for (char c : txt) {\n        if (islower(c) && (c % 2 == 0)) {\n            ++num;\n        }\n    }\n    return {to_string(num)};\n}\n\n",
+        1.349,
+        1.24,
+        1.618,
+        1.049,
+        1.24,
+        47
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <cctype>\nusing namespace std;\n\nvector<string> split_words(const string& txt) {\n    vector<string> out;\n    char delimiter = 0;\n    bool has_space = false;\n    bool has_comma = false;\n\n    \n    for (char ch : txt) {\n        if (ch == ' ') {\n            has_space = true;\n            break;\n        }\n        if (ch == ',') {\n            has_comma = true;\n        }\n    }\n\n    if (has_space) {\n        delimiter = ' ';\n    } else if (has_comma) {\n        delimiter = ',';\n    }\n\n    \n    if (delimiter) {\n        stringstream ss(txt);\n        string item;\n        while (getline(ss, item, delimiter)) {\n            if (!item.empty()) {\n                out.push_back(item);\n            }\n        }\n        return out;\n    }\n\n    \n    int even_ascii_count = 0;\n    for (char c : txt) {\n        if (islower(c) && (c % 2 == 0)) {\n            ++even_ascii_count;\n        }\n    }\n    return {to_string(even_ascii_count)};\n}\n\n",
+        1.008,
+        1.031,
+        1.015,
+        1.053,
+        1.032,
+        52
+    ]
+}

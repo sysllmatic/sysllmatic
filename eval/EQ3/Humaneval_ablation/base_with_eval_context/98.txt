@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint count_upper(string s){\nstring uvowel=\"AEIOU\";\n    int count=0;\n    for (int i=0;i*2<s.length();i++)\n    if (find(uvowel.begin(),uvowel.end(),s[i*2])!=uvowel.end())\n        count+=1;\n    return count;\n}",
+        8.081,
+        0.122,
+        5140636.6,
+        20977.6,
+        8.17,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <stdlib.h>\n#include <string>\n\nint count_upper(const std::string &s) {\n    bool uvowel[256] = {false};\n    uvowel['A'] = uvowel['E'] = uvowel['I'] = uvowel['O'] = uvowel['U'] = true;\n    \n    int count = 0;\n    int len = s.length();\n    for (int i = 0; i < len; i += 2) {\n        if (uvowel[(unsigned char)s[i]]) {\n            count++;\n        }\n    }\n    return count;\n}\n\n",
+        0.91,
+        0.941,
+        1.041,
+        0.992,
+        0.943,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <stdlib.h>\n#include <string>\n\n\ninline int count_upper(const std::string &s) {\n    bool uvowel[256] = {false};\n    uvowel['A'] = uvowel['E'] = uvowel['I'] = uvowel['O'] = uvowel['U'] = true;\n    \n    int count = 0;\n    int len = s.length();\n    for (int i = 0; i < len; i += 2) {\n        if (uvowel[(unsigned char)s[i]]) {\n            count++;\n        }\n    }\n    return count;\n}\n\n\n\n\n",
+        0.863,
+        0.999,
+        1.058,
+        0.989,
+        1.001,
+        22
+    ]
+}

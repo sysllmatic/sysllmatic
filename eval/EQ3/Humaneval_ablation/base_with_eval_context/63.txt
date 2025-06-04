@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fibfib(int n){\nint ff[100];\n    ff[0]=0;\n    ff[1]=0;\n    ff[2]=1;\n    for (int i=3;i<=n;i++)\n        ff[i]=ff[i-1]+ff[i-2]+ff[i-3];\n    return ff[n];\n\n}",
+        5.568,
+        0.126,
+        2645866.0,
+        21009.6,
+        7.932,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n\nint fibfib(int n){\n    if (n < 0) return -1; \n    if (n == 0 || n == 1) return 0; \n    if (n == 2) return 1; \n\n    int a = 0, b = 0, c = 1, d;\n    for (int i = 3; i <= n; i++) {\n        d = a + b + c;\n        a = b;\n        b = c;\n        c = d;\n    }\n    return c;\n}\n\n\n",
+        1.25,
+        0.919,
+        1.025,
+        0.993,
+        0.919,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n\nint fibfib(int n) {\n    if (n < 0) return -1; \n    if (n == 0 || n == 1) return 0; \n    if (n == 2) return 1; \n\n    \n    int a = 0, b = 0, c = 1, d;\n    for (int i = 3; i <= n; i++) {\n        d = a + b + c;\n        a = b;\n        b = c;\n        c = d;\n    }\n    return c;\n}\n\n\n\n",
+        1.278,
+        1.109,
+        1.003,
+        1.001,
+        1.108,
+        20
+    ]
+}

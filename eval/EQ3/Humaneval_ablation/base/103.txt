@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring rounded_avg(int n,int m){\nif (n>m) return \"-1\";\n    int num=(m+n)/2;\n    string out=\"\";\n    while (num>0)\n    {\n        out=to_string(num%2)+out;\n        num=num/2;\n    }\n    return out;\n}",
+        4.72,
+        0.127,
+        4231956.2,
+        21084.8,
+        7.869,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <sstream>\nusing namespace std;\n\nstring rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    if (num == 0) return \"0\"; \n    \n    string out;\n    while (num > 0) {\n        out.insert(out.begin(), (num % 2) + '0'); \n        num /= 2;\n    }\n    return out;\n}\n\n",
+        1.062,
+        0.983,
+        0.964,
+        1.0,
+        0.982,
+        18
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint count_nums(vector<int> n){\nint num=0;\n    for (int i=0;i<n.size();i++)\n        if (n[i]>0) num+=1;\n        else\n        {\n            int sum=0;\n            int w;\n            w=abs(n[i]);\n            while (w>=10)\n            {\n                sum+=w%10;\n                w=w/10;\n            }\n            sum-=w;\n            if (sum>0) num+=1;\n        }\n    return num;\n}",
+        4.909,
+        0.13,
+        7664177.8,
+        21004.0,
+        7.688,
+        25
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <cmath> \nusing namespace std;\n\nint count_nums(vector<int> n) {\n    int num = 0;\n    for (int i = 0; i < n.size(); i++) {\n        int current_num = n[i];\n        if (current_num > 0) {\n            num += 1;\n        } else {\n            current_num = abs(current_num);\n            int sum = 0;\n            while (current_num >= 10) {\n                sum += current_num % 10;\n                current_num /= 10;\n            }\n            sum -= current_num;\n            if (sum > 0) num += 1;\n        }\n    }\n    return num;\n}",
+        1.087,
+        1.032,
+        1.008,
+        0.996,
+        1.031,
+        24
+    ],
+    "2": [
+        "#include <vector>\n#include <cmath>\n#include <functional>\n\nint count_nums(const std::vector<int>& n) {\n    int num = 0;\n    size_t size = n.size();\n\n    for (size_t i = 0; i < size; ++i) {\n        int current_num = n[i];\n        if (current_num > 0) {\n            num += 1;\n        } else {\n            current_num = std::abs(current_num);\n            int sum = 0;\n            while (current_num >= 10) {\n                sum += current_num % 10;\n                current_num /= 10;\n            }\n            sum -= current_num;\n            if (sum > 0) num += 1;\n        }\n    }\n    return num;\n}",
+        1.066,
+        0.993,
+        1.065,
+        0.991,
+        0.992,
+        25
+    ]
+}

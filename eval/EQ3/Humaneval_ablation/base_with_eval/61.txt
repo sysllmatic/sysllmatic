@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='(') level+=1;\n        if (brackets[i]==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        4.684,
+        0.132,
+        7320224.4,
+        21092.0,
+        7.583,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nbool correct_bracketing(const std::string& brackets) {\n    int level = 0;\n    for (size_t i = 0; i < brackets.size(); ++i) {\n        if (brackets[i] == '(') {\n            ++level;\n        } else if (brackets[i] == ')') {\n            if (--level < 0) {\n                return false;\n            }\n        }\n    }\n    return level == 0;\n}",
+        1.019,
+        0.983,
+        1.001,
+        1.005,
+        0.981,
+        16
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\n\nbool correct_bracketing(const std::string& brackets) {\n    int level = 0;\n    for (char ch : brackets) { \n        \n        if (ch != '(' && ch != ')') {\n            std::cerr << \"Invalid character detected: \" << ch << std::endl;\n            return false;\n        }\n        if (ch == '(') {\n            ++level; \n        } else if (ch == ')') {\n            if (--level < 0) { \n                return false; \n            }\n        }\n    }\n    return level == 0; \n}",
+        0.999,
+        1.105,
+        1.473,
+        1.0,
+        1.102,
+        22
+    ]
+}

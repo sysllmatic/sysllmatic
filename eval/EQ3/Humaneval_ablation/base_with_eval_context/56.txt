@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='<') level+=1;\n        if (brackets[i]=='>') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        5.876,
+        0.127,
+        7119068.0,
+        21021.6,
+        7.871,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nbool correct_bracketing(const std::string& brackets) {\n    int level = 0;\n    size_t n = brackets.length();\n    for (size_t i = 0; i < n; ++i) {\n        if (brackets[i] == '<') {\n            ++level;\n        } else if (brackets[i] == '>') {\n            --level;\n            if (level < 0) {\n                return false;\n            }\n        }\n    }\n    return level == 0;\n}\n\n",
+        0.64,
+        1.028,
+        1.127,
+        0.998,
+        1.027,
+        19
+    ],
+    "2": [
+        "#include <string>\n\nbool correct_bracketing(const std::string& brackets) {\n    int level = 0;\n    const char* begin = brackets.c_str();\n    const char* end = begin + brackets.length();\n    for (const char* ptr = begin; ptr != end; ++ptr) {\n        if (*ptr == '<') {\n            ++level;\n        } else if (*ptr == '>') {\n            --level;\n            if (level < 0) {\n                return false;\n            }\n        }\n    }\n    return level == 0;\n}",
+        1.219,
+        1.016,
+        1.173,
+        0.995,
+        1.015,
+        18
+    ]
+}

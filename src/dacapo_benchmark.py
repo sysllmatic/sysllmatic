@@ -51,9 +51,9 @@ class DaCapoBenchmark(Benchmark):
     def set_original_code(self):
         if self.program == 'fop':
             if self.namespace_name and self.namespace_name != "":
-                source_path = f"{fop_src_dir}/{self.class_name}.java"
-            else:
                 source_path = f"{fop_src_dir}/{self.namespace_name}/{self.class_name}.java"
+            else:
+                source_path = f"{fop_src_dir}/{self.class_name}.java"
         elif self.program == 'spring':
             source_path = f"{spring_src_dir}/{self.namespace_name}/{self.class_name}.java"
         elif self.program == 'biojava':
@@ -82,7 +82,13 @@ class DaCapoBenchmark(Benchmark):
                     code = file.read()
             except FileNotFoundError:
                 logger.error(f"File not found: {source_path}")
-                return
+                return      
+        if code is None:
+            logger.error(f"Failed to retrieve code for {self.class_name} in {self.program}.")
+            return
+        if len(code.splitlines()) >= 1000:
+            logger.error(f"Code has more than 1000 lines, skipping...")
+            return
         
         filtered_code = self.remove_java_comments(code)
         self.original_code = filtered_code
@@ -170,7 +176,6 @@ class DaCapoBenchmark(Benchmark):
             else:
                 destination_path = f"{pmd_src_dir}/{self.class_name}.java"
         elif self.program == 'graphchi':
-
             if self.namespace_name and self.namespace_name != "":
                 destination_path = f"{graphchi_src_dir}/{self.namespace_name}/{self.class_name}.java"
             else:
@@ -180,28 +185,14 @@ class DaCapoBenchmark(Benchmark):
     def compile(self, optimized_code):
         #write optimized code to file
         destination_path = self._get_destination_path_of_source_code()
-        
-        # save optimized code to optimized_java.txt first with the format { method_body }
-        # then replace the method body with the optimized code
-        def extract_block_only(optimized_code: str) -> str:
-            start = optimized_code.find("{")
-            end = optimized_code.rfind("}")
-            if start == -1 or end == -1 or start > end:
-                raise ValueError("Could not locate complete block braces in the method source.")
-            return optimized_code[start:end+1]
 
         if self.method_level:
-            # remove method signature from optimized code
-            try:
-                optimized_code = extract_block_only(optimized_code)
-            except ValueError as e:
-                logger.error(f"Error extracting block from optimized code: {e}")
-                return False
             with open(f"{USER_PREFIX}/src/runtime_logs/optimized_java.txt", "w") as file:
                 file.write(optimized_code)
             logger.info(f"optimized_code: {optimized_code}")
             replace_successfully = replace_method_body(destination_path, self.method_name)
             if not replace_successfully:
+                self.compilation_error = "Please provide Java code in the original method format"
                 return False
         else:
             with open(destination_path, "w") as file:
@@ -484,7 +475,7 @@ def get_valid_dacapo_classes(application_name):
         elif application_name == "graphchi":
             test_namespace = '/'.join(parts[3:-1])
             test_group = "test_group"
-            root_path = f"{graphchi_root_dir}/src/test/java/edu/cmu/graphchi"
+            root_path = f"{graphchi_root_dir}/test/edu/cmu/graphchi"
             unit_test_class_name = f"Test{test_class}"
 
         unit_tests = find_unit_test(root_path, unit_test_class_name, test_class)
@@ -525,32 +516,3 @@ def setup_makefile(application_name):
         makefile_template = open(f"{subfolder}/Makefile", "w")
         makefile_template.write(makefile_content)
         makefile_template.close()
-
-#just to test the code
-def main():
-
-
-    # ff = DaCapoBenchmark('PDFNumsArray', 'pdf', 'core', 'fop')
-    # ff.set_original_energy()
-    # status = ff.static_analysis(ff.original_code)
-    # print(f"Status: {status}")
-    # ff = DaCapoBenchmark('OwnerController', 'owner', 'none', 'spring')
-    # ff.set_original_energy()
-
-    # setup_makefile('spring')
-    # ff.static_analysis(ff.original_code)
-
-    # ff = DaCapoBenchmark('ChromosomeSequence', 'sequence', 'core', 'biojava')
-    # setup_makefile('biojava')
-    # ff.set_original_energy()
-    # status = ff.static_analysis(ff.original_code)
-
-    ff = DaCapoBenchmark('DocumentFile', 'document', 'core', 'pmd')
-    setup_makefile('pmd')
-    ff.set_original_energy()
-    status = ff.static_analysis(ff.original_code)
-    #[INFO] Running net.sourceforge.pmd.document.DocumentFileTest
-
-
-if __name__ == '__main__':
-    main()

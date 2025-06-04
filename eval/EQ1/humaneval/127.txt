@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring intersection( vector<int> interval1,vector<int> interval2){\nint inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n    if (l<2) return \"NO\";\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}",
+        4.715,
+        0.125,
+        4792930.4,
+        20991.2,
+        7.975,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring intersection(vector<int> interval1, vector<int> interval2) {\n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n\n    if (l < 2) return \"NO\";\n\n    if (l % 2 == 0) return (l == 2) ? \"YES\" : \"NO\";\n\n    for (int i = 3; i * i <= l; i += 2) {\n        if (l % i == 0) return \"NO\";\n    }\n\n    return \"YES\";\n}\n\n",
+        1.011,
+        0.915,
+        0.912,
+        0.999,
+        0.917,
+        22
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <cmath> \nusing namespace std;\n\nvector<bool> is_prime(10000, true);\n\nvoid preprocessPrimes() {\n    is_prime[0] = is_prime[1] = false;\n    for (int i = 2; i * i < is_prime.size(); ++i) {\n        if (is_prime[i]) {\n            for (int j = i * i; j < is_prime.size(); j += i) {\n                is_prime[j] = false;\n            }\n        }\n    }\n}\n\nstring intersection(vector<int> interval1, vector<int> interval2) {\n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n\n    if (l < 2) return \"NO\";\n\n    \n    if (l < is_prime.size()) {\n        return is_prime[l] ? \"YES\" : \"NO\";\n    }\n\n    \n    if (l == 4 || l == 6 || l == 8) return \"NO\";\n\n    \n    if (l % 2 == 0) return \"NO\";\n\n    int sqrt_l = static_cast<int>(sqrt(l));\n    for (int i = 3; i <= sqrt_l; i += 2) {\n        if (l % i == 0) return \"NO\";\n    }\n\n    return \"YES\";\n}\n\n\n\n",
+        1.022,
+        0.955,
+        0.959,
+        0.997,
+        0.957,
+        48
+    ]
+}

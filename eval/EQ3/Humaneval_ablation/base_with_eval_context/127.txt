@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring intersection( vector<int> interval1,vector<int> interval2){\nint inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n    if (l<2) return \"NO\";\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}",
+        4.619,
+        0.136,
+        4797849.2,
+        21065.6,
+        7.357,
+        17
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\n#include <algorithm>\n\nstd::string intersection(const std::vector<int>& interval1, const std::vector<int>& interval2) {\n    int inter1 = std::max(interval1[0], interval2[0]);\n    int inter2 = std::min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n\n    \n    if (l < 2) return \"NO\";\n\n    \n    if (l % 2 == 0 && l != 2) return \"NO\";\n\n    \n    for (int i = 3; i * i <= l; i += 2) {\n        if (l % i == 0) return \"NO\";\n    }\n\n    return \"YES\";\n}",
+        1.007,
+        0.985,
+        1.013,
+        0.996,
+        0.984,
+        22
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\n#include <algorithm>\n\n\nbool isPrime(int n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (int i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0) return false;\n    }\n    return true;\n}\n\nstd::string intersection(const std::vector<int>& interval1, const std::vector<int>& interval2) {\n    int inter1 = std::max(interval1[0], interval2[0]);\n    int inter2 = std::min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n\n    \n    if (l < 2) return \"NO\";\n    return isPrime(l) ? \"YES\" : \"NO\";\n}",
+        0.911,
+        1.148,
+        1.052,
+        0.995,
+        1.146,
+        24
+    ]
+}

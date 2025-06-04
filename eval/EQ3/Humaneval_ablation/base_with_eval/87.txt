@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<vector<int>> get_row(vector<vector<int>> lst, int x){\nvector<vector<int>> out={};\n    for (int i=0;i<lst.size();i++)\n    for (int j=lst[i].size()-1;j>=0;j-=1)\n    if (lst[i][j]==x) out.push_back({i,j});\n    return out;\n}",
+        7.295,
+        0.146,
+        76913752.2,
+        21019.2,
+        6.857,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\nusing namespace std;\n\nvector<vector<int>> get_row(const vector<vector<int>> &lst, int x) {\n    vector<vector<int>> out; \n    for (int i = 0; i < lst.size(); i++) {\n        for (int j = lst[i].size() - 1; j >= 0; j--) {\n            if (lst[i][j] == x) {\n                out.push_back({i, j});\n            }\n        }\n    }\n    return out;\n}\n\n\n",
+        1.338,
+        1.09,
+        1.059,
+        1.002,
+        1.087,
+        20
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> count_up_to(int n){\nvector<int> out={};\n    int i,j;\n    for (i=2;i<n;i++)\n        if (out.size()==0) {out.push_back(i);}\n        else\n        {\n            bool isp=true;\n            for (j=0;out[j]*out[j]<=i;j++)\n                if (i%out[j]==0) isp=false;\n            if (isp) out.push_back(i);\n        }\n    return out;\n}",
+        5.013,
+        0.148,
+        38305994.8,
+        21152.8,
+        6.762,
+        20
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> count_up_to(int n){\n    vector<bool> is_prime(n, true); \n    vector<int> primes;\n    \n    if (n <= 2) return primes; \n    \n    is_prime[0] = is_prime[1] = false; \n    \n    for (int i = 2; i < n; ++i) {\n        if (is_prime[i]) {\n            primes.push_back(i);\n            for (int j = i * i; j < n; j += i) {\n                is_prime[j] = false;\n            }\n        }\n    }\n    return primes;\n}\n\n\n",
+        1.088,
+        1.117,
+        1.941,
+        1.007,
+        1.115,
+        24
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <cmath> \n#include <omp.h> \nusing namespace std;\n\nvector<int> count_up_to(int n) {\n    vector<char> is_prime(n, true); \n    vector<int> primes;\n\n    if (n <= 2) return primes; \n\n    is_prime[0] = is_prime[1] = false; \n\n    int upper_limit = static_cast<int>(std::sqrt(n));\n\n    for (int i = 2; i <= upper_limit; ++i) {\n        if (is_prime[i]) {\n            primes.push_back(i);\n            for (int j = i * i; j < n; j += i) {\n                is_prime[j] = false;\n            }\n        }\n    }\n\n    \n    for (int i = upper_limit + 1; i < n; ++i) {\n        if (is_prime[i]) {\n            primes.push_back(i);\n        }\n    }\n\n    return primes;\n}\n\n\n\n\n",
+        1.068,
+        1.134,
+        6.156,
+        1.003,
+        1.132,
+        38
+    ]
+}

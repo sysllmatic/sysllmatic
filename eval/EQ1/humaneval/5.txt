@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> intersperse(vector<int> numbers, int delimeter){\nvector<int> out={};\n    if (numbers.size()>0) out.push_back(numbers[0]);\n    for (int i=1;i<numbers.size();i++)\n    {\n        out.push_back(delimeter);\n        out.push_back(numbers[i]);\n\n    }\n    return out;\n}",
+        4.742,
+        0.128,
+        11111866.4,
+        21137.6,
+        7.79,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\n\nvector<int> intersperse(vector<int> numbers, int delimiter) {\n    if (numbers.empty()) return {};\n    \n    \n    size_t outputSize = numbers.size() * 2 - 1;\n    vector<int> out;\n    out.reserve(outputSize);\n\n    \n    out.push_back(numbers[0]);\n\n    \n    for (size_t i = 1; i < numbers.size(); ++i) {\n        out.push_back(delimiter);\n        out.push_back(numbers[i]);\n    }\n\n    return out;\n}",
+        1.041,
+        0.952,
+        1.101,
+        1.001,
+        0.954,
+        26
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> intersperse(vector<int> numbers, int delimiter) {\n    if (numbers.empty()) return {};\n    \n    size_t outputSize = numbers.size() * 2 - 1;\n    vector<int> out(outputSize); \n\n    out[0] = numbers[0]; \n\n    for (size_t i = 1; i < numbers.size(); ++i) {\n        out[i * 2 - 1] = delimiter; \n        out[i * 2] = numbers[i];    \n    }\n\n    return out;\n}",
+        1.036,
+        0.91,
+        1.276,
+        1.006,
+        0.912,
+        19
+    ]
+}

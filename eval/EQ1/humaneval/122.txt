@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add_elements(vector<int> arr,int k){\nint sum=0;\n    for (int i=0;i<k;i++)\n        if( arr[i]>=-99 and arr[i]<=99)\n            sum+=arr[i];\n    return sum;\n}",
+        9.132,
+        0.213,
+        277044765.6,
+        21026.4,
+        4.682,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint add_elements(vector<int> arr, int k){\n    int sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0;\n    int limit = min(k, (int)arr.size());\n    int i = 0;\n    for (; i <= limit - 4; i += 4) {\n        sum1 += (arr[i] >= -99 && arr[i] <= 99) ? arr[i] : 0;\n        sum2 += (arr[i+1] >= -99 && arr[i+1] <= 99) ? arr[i+1] : 0;\n        sum3 += (arr[i+2] >= -99 && arr[i+2] <= 99) ? arr[i+2] : 0;\n        sum4 += (arr[i+3] >= -99 && arr[i+3] <= 99) ? arr[i+3] : 0;\n    }\n    for (; i < limit; ++i) {\n        sum1 += (arr[i] >= -99 && arr[i] <= 99) ? arr[i] : 0;\n    }\n    return sum1 + sum2 + sum3 + sum4;\n}\n\n",
+        1.091,
+        1.082,
+        0.997,
+        1.004,
+        1.084,
+        23
+    ],
+    "2": [
+        "#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\n\ninline bool inRange(int value) {\n    return value >= -99 && value <= 99;\n}\n\nint add_elements(const vector<int>& arr, int k) {\n    int sum = 0;\n    int limit = min(k, static_cast<int>(arr.size()));\n    \n    int i = 0;\n    for (; i <= limit - 4; i += 4) {\n        sum += inRange(arr[i]) ? arr[i] : 0;\n        sum += inRange(arr[i + 1]) ? arr[i + 1] : 0;\n        sum += inRange(arr[i + 2]) ? arr[i + 2] : 0;\n        sum += inRange(arr[i + 3]) ? arr[i + 3] : 0;\n    }\n    for (; i < limit; ++i) {\n        sum += inRange(arr[i]) ? arr[i] : 0;\n    }\n    return sum;\n}\n\n\n#include <cassert>\n\n\n\n\n",
+        1.084,
+        1.024,
+        1.002,
+        1.0,
+        1.026,
+        33
+    ]
+}

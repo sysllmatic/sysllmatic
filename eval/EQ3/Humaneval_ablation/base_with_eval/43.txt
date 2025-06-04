@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool pairs_sum_to_zero(vector<int> l){\nfor (int i=0;i<l.size();i++)\n    for (int j=i+1;j<l.size();j++)\n    if (l[i]+l[j]==0) return true;\n    return false;\n}",
+        17.233,
+        0.363,
+        993500037.0,
+        21056.0,
+        2.757,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <unordered_set>\n\nbool pairs_sum_to_zero(const std::vector<int>& l) {\n    std::unordered_set<int> seen;\n    for (const int& number : l) {\n        if (seen.count(-number)) {\n            return true;\n        }\n        seen.insert(number);\n    }\n    return false;\n}\n\n",
+        3.578,
+        2.471,
+        24.694,
+        0.998,
+        2.466,
+        15
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <unordered_set>\n\n\nbool pairs_sum_to_zero(const std::vector<int>& l) {\n    std::unordered_set<int> seen;\n    for (const int& number : l) {\n        \n        if (seen.count(-number)) {\n            return true;\n        }\n        \n        seen.insert(number);\n    }\n    return false;\n}\n\n\n\n\n\n",
+        3.58,
+        2.584,
+        24.615,
+        0.998,
+        2.578,
+        22
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nvector<string> sorted_list_sum(vector<string> lst){\nvector<string> out={};\n    for (int i=0;i<lst.size();i++)\n    if (lst[i].length()%2==0) out.push_back(lst[i]);\n    string mid;\n    sort(out.begin(),out.end());\n    for (int i=0;i<out.size();i++)\n    for (int j=1;j<out.size();j++)\n    if (out[j].length()<out[j-1].length())\n    {\n        mid=out[j];out[j]=out[j-1];out[j-1]=mid;\n    }\n    return out;\n}",
+        178.724,
+        3.188,
+        14109694118.8,
+        311992.8,
+        0.314,
+        21
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> sorted_list_sum(vector<string> lst) {\n    vector<string> out;\n    \n    std::copy_if(lst.begin(), lst.end(), std::back_inserter(out), [](const string &s) {\n        return s.length() % 2 == 0;\n    });\n    \n    std::sort(out.begin(), out.end());\n    \n    std::sort(out.begin(), out.end(), [](const string &a, const string &b) {\n        return a.length() < b.length();\n    });\n    return out;\n}",
+        10.575,
+        8.617,
+        14.582,
+        1.0,
+        8.604,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> sorted_list_sum(vector<string> lst) {\n    vector<string> out;\n    out.reserve(lst.size()); \n\n    std::copy_if(lst.begin(), lst.end(), std::back_inserter(out), [](const string &s) {\n        return s.length() % 2 == 0;\n    });\n\n    \n    std::sort(out.begin(), out.end(), [](const string &a, const string &b) {\n        if (a.length() == b.length()) return a < b; \n        return a.length() < b.length(); \n    });\n\n    return out;\n}",
+        12.762,
+        10.194,
+        19.042,
+        1.001,
+        10.177,
+        22
+    ]
+}

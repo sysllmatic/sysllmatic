@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> eat(int number,int need,int remaining){\nif (need>remaining) return {number+remaining, 0};\n    return {number+need,remaining-need};\n}",
+        4.438,
+        0.13,
+        4134176.0,
+        20988.0,
+        7.701,
+        10
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> eat(int number, int need, int remaining) {\n    if (need > remaining) {\n        return {number + remaining, 0};\n    }\n    return {number + need, remaining - need};\n}\n\n",
+        0.96,
+        1.025,
+        0.899,
+        0.995,
+        1.023,
+        11
+    ]
+}

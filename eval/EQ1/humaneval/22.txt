@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<boost/any.hpp>\n#include<list>\ntypedef std::list<boost::any> list_any;\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> filter_integers(list_any values){\nlist_any::iterator it;\n    boost::any anyone;\n    vector<int> out;\n    for (it=values.begin();it!=values.end();it++)\n    {\n         anyone=*it;\n        if( anyone.type() == typeid(int) )\n           out.push_back(boost::any_cast<int>(*it));\n    }\n    return out;\n}",
+        5.789,
+        0.16,
+        79448178.4,
+        21045.6,
+        6.254,
+        22
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <boost/any.hpp>\n#include <list>\n#include <typeinfo>\nusing namespace std;\n\ntypedef std::list<boost::any> list_any;\n\nvector<int> filter_integers(const list_any& values) {\n    vector<int> out;\n    for (auto it = values.begin(); it != values.end(); ++it) {\n        if (it->type() == typeid(int)) {\n            out.push_back(boost::any_cast<int>(*it));\n        }\n    }\n    return out;\n}\n\n\n\n\n",
+        1.136,
+        1.184,
+        1.697,
+        0.995,
+        1.181,
+        22
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <boost/any.hpp>\n#include <list>\n#include <typeinfo>\n#include <typeindex>\n\nusing namespace std;\n\ntypedef std::list<boost::any> list_any;\n\nvector<int> filter_integers(const list_any& values) {\n    vector<int> out;\n    out.reserve(values.size()); \n\n    const std::type_index int_type = std::type_index(typeid(int));\n\n    for (auto it = values.begin(); it != values.end(); ++it) {\n        if (std::type_index(it->type()) == int_type) {\n            out.push_back(boost::any_cast<int>(*it));\n        }\n    }\n\n    return out;\n}\n\n\n\n\n",
+        1.154,
+        1.141,
+        1.681,
+        1.005,
+        1.139,
+        29
+    ]
+}

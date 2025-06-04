@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encode_cyclic(string s){ \n    int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x.substr(1)+x[0];\n        output=output+x;\n    }\n    return output;\n}\n\n\nstring decode_cyclic(string s){ \n int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x[2]+x.substr(0,2);\n        output=output+x;\n    }\n    return output;\n}",
+        4.827,
+        0.139,
+        23760059.2,
+        20948.8,
+        7.185,
+        34
+    ],
+    "1": [
+        "#include <iostream>  \n#include <sstream>  \nusing namespace std;\n\nstring encode_cyclic(const string& s) {\n    int l = s.length();\n    ostringstream output;\n    for (int i = 0; i * 3 < l; i++) {\n        string x = s.substr(i * 3, 3);\n        if (x.length() == 3) x = x.substr(1) + x[0];\n        output << x;\n    }\n    return output.str();\n}\n\nstring decode_cyclic(const string& s) {\n    int l = s.length();\n    ostringstream output;\n    for (int i = 0; i * 3 < l; i++) {\n        string x = s.substr(i * 3, 3);\n        if (x.length() == 3) x = x[2] + x.substr(0, 2);\n        output << x;\n    }\n    return output.str();\n}\n\n",
+        1.084,
+        1.052,
+        2.633,
+        0.994,
+        1.052,
+        26
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nstring encode_cyclic(const string& s) {\n    int l = s.length();\n    string output;\n    output.reserve(l);  \n    for (int i = 0; i < l; i += 3) {\n        if (i + 2 < l) {\n            output += s[i + 1];\n            output += s[i + 2];\n            output += s[i];\n        } else {\n            output.append(s.begin() + i, s.end());\n        }\n    }\n    return output;\n}\n\nstring decode_cyclic(const string& s) {\n    int l = s.length();\n    string output;\n    output.reserve(l);  \n    for (int i = 0; i < l; i += 3) {\n        if (i + 2 < l) {\n            output += s[i + 2];\n            output += s[i];\n            output += s[i + 1];\n        } else {\n            output.append(s.begin() + i, s.end());\n        }\n    }\n    return output;\n}\n\n",
+        1.011,
+        1.113,
+        4.085,
+        0.998,
+        1.112,
+        36
+    ]
+}

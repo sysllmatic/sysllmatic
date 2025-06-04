@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint digitSum(string s){\nint sum=0;\n    for (int i=0;i<s.length();i++)\n        if (s[i]>=65 and s[i]<=90)\n            sum+=s[i];\n    return sum;\n}",
+        4.395,
+        0.129,
+        4582807.8,
+        21142.4,
+        7.733,
+        13
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nusing namespace std;\n\nint digitSum(const string &s) {\n    int sum = 0;\n    for (char c : s) {\n        \n        sum += (c >= 'A' && c <= 'Z') * c;\n    }\n    return sum;\n}\n\n",
+        0.979,
+        1.047,
+        0.996,
+        0.995,
+        1.048,
+        14
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <thread>\n#include <vector>\n#include <immintrin.h> \n\nusing namespace std;\n\nint digitSum(const string &s) {\n    int sum = 0;\n    int num_threads = std::thread::hardware_concurrency();\n    std::vector<std::thread> threads;\n    std::vector<int> partial_sums(num_threads, 0);\n\n    auto worker = [&](int start, int end, int index) {\n        int local_sum = 0;\n        for (int i = start; i < end; i += 8) {\n            __m256i chars = _mm256_loadu_si256((__m256i*)&s[i]);\n            __m256i mask = _mm256_and_si256(_mm256_cmpgt_epi8(chars, _mm256_set1_epi8('A' - 1)),\n                                            _mm256_cmpgt_epi8(_mm256_set1_epi8('Z' + 1), chars));\n            __m256i masked_chars = _mm256_and_si256(chars, mask);\n            \n            \n            alignas(32) char result[32];\n            _mm256_storeu_si256((__m256i*)result, masked_chars);\n            for (int j = 0; j < 8; ++j) {\n                local_sum += result[j];\n            }\n        }\n        partial_sums[index] = local_sum;\n    };\n\n    int chunk_size = s.size() / num_threads;\n    for (int i = 0; i < num_threads; ++i) {\n        int start = i * chunk_size;\n        int end = (i == num_threads - 1) ? s.size() : start + chunk_size;\n        threads.emplace_back(worker, start, end, i);\n    }\n\n    for (auto &t : threads) {\n        t.join();\n    }\n\n    for (int psum : partial_sums) {\n        sum += psum;\n    }\n\n    return sum;\n}\n\n",
+        1.007,
+        0.94,
+        0.906,
+        0.998,
+        0.942,
+        50
+    ]
+}

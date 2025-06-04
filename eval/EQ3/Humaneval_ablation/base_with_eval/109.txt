@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool move_one_ball(vector<int> arr){\nint num=0;\n    if (arr.size()==0) return true;\n    for (int i=1;i<arr.size();i++)\n        if (arr[i]<arr[i-1]) num+=1;\n    if (arr[arr.size()-1]>arr[0]) num+=1;\n    if (num<2) return true;\n    return false;\n}",
+        4.68,
+        0.129,
+        7613687.6,
+        21025.6,
+        7.72,
+        15
+    ],
+    "1": [
+        "#include<vector>\nusing namespace std;\n#include<algorithm>\n\nbool move_one_ball(vector<int> arr) {\n    int num = 0;\n    int size = arr.size();\n    if (size == 0) return true;\n    \n    for (int i = 1; i < size; i++) {\n        if (arr[i] < arr[i - 1]) num += 1;\n        if (num >= 2) return false; \n    }\n    \n    if (arr[size - 1] > arr[0]) num += 1;\n    \n    return num < 2;\n}\n\n",
+        0.888,
+        1.029,
+        1.074,
+        0.998,
+        1.032,
+        19
+    ],
+    "2": [
+        "#include<vector>\nusing namespace std;\n#include<algorithm>\n\nbool move_one_ball(const vector<int>& arr) {\n    int num = 0;\n    int size = arr.size();\n    if (size == 0) return true;\n    \n    for (int i = 1; i < size; i++) {\n        if (arr[i] < arr[i - 1]) {\n            num += 1;\n            if (num >= 2) return false; \n        }\n    }\n    \n    return (arr[size - 1] <= arr[0] || num < 2);\n}\n\n",
+        0.958,
+        1.015,
+        1.011,
+        0.997,
+        1.017,
+        19
+    ]
+}

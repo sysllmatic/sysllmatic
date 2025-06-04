@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nstring find_max(vector<string> words){\nstring max=\"\";\n    int maxu=0;\n    for (int i=0;i<words.size();i++)\n    {\n        string unique=\"\";\n        for (int j=0;j<words[i].length();j++)\n            if (find(unique.begin(),unique.end(),words[i][j])==unique.end())\n                unique=unique+words[i][j];\n        if (unique.length()>maxu or (unique.length()==maxu and words[i]<max))\n        {\n            max=words[i];\n            maxu=unique.length();\n        }\n    }\n    return max;\n}",
+        4.796,
+        0.129,
+        26620206.2,
+        20952.8,
+        7.759,
+        24
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <unordered_set>\n#include <algorithm>\nusing namespace std;\n\nstring find_max(vector<string> words) {\n    string max = \"\";\n    int maxu = 0;\n    for (const auto& word : words) {\n        unordered_set<char> unique_chars(word.begin(), word.end());\n        int unique_count = unique_chars.size();\n        if (unique_count > maxu || (unique_count == maxu && word < max)) {\n            max = word;\n            maxu = unique_count;\n        }\n    }\n    return max;\n}\n\n",
+        0.949,
+        0.922,
+        0.837,
+        0.994,
+        0.92,
+        21
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <bitset>\n#include <omp.h>\nusing namespace std;\n\nstring find_max(vector<string> words) {\n    string max = \"\";\n    int maxu = 0;\n    #pragma omp parallel\n    {\n        string local_max = \"\";\n        int local_maxu = 0;\n        #pragma omp for nowait\n        for (size_t i = 0; i < words.size(); ++i) {\n            std::bitset<128> unique_chars;\n            for (char c : words[i]) {\n                unique_chars.set(c);\n            }\n            int unique_count = unique_chars.count();\n            #pragma omp critical\n            {\n                if (unique_count > local_maxu || (unique_count == local_maxu && words[i] < local_max)) {\n                    local_max = words[i];\n                    local_maxu = unique_count;\n                }\n            }\n        }\n        #pragma omp critical\n        {\n            if (local_maxu > maxu || (local_maxu == maxu && local_max < max)) {\n                max = local_max;\n                maxu = local_maxu;\n            }\n        }\n    }\n    return max;\n}\n\n",
+        0.953,
+        0.936,
+        0.174,
+        1.0,
+        0.934,
+        40
+    ]
+}

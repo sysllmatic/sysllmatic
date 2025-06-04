@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\nstring key=\"2357BD\";\n    int out=0;\n    for (int i=0;i<num.length();i++)\n    if (find(key.begin(),key.end(),num[i])!=key.end()) out+=1;\n    return out;\n}",
+        7.706,
+        0.137,
+        14250740.8,
+        21130.4,
+        7.287,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\nusing namespace std;\n\nint hex_key(const string& num) {\n    \n    bool char_set[256] = {false};\n    \n    \n    char_set['2'] = true;\n    char_set['3'] = true;\n    char_set['5'] = true;\n    char_set['7'] = true;\n    char_set['B'] = true;\n    char_set['D'] = true;\n    \n    int out = 0;\n    for (char ch : num) {\n        if (char_set[ch]) {\n            out += 1;\n        }\n    }\n    return out;\n}",
+        0.993,
+        1.07,
+        2.299,
+        1.003,
+        1.07,
+        25
+    ],
+    "2": [
+        "#include <immintrin.h>  \n#include <string>\nusing namespace std;\n\nint hex_key(const string& num) {\n    \n    bool char_set[256] = {false};\n    char_set['2'] = true;\n    char_set['3'] = true;\n    char_set['5'] = true;\n    char_set['7'] = true;\n    char_set['B'] = true;\n    char_set['D'] = true;\n\n    int out = 0;\n    size_t i = 0;\n    size_t num_size = num.size();\n\n    \n    for (; i + 31 < num_size; i += 32) {\n        __m256i chars = _mm256_loadu_si256((const __m256i*)&num[i]);\n        char *char_ptr = (char*)&chars;\n\n        \n        for (int j = 0; j < 32; ++j) {\n            if (char_set[char_ptr[j]]) out += 1;\n        }\n    }\n\n    \n    for (; i < num_size; ++i) {\n        if (char_set[num[i]]) out += 1;\n    }\n    return out;\n}",
+        1.652,
+        1.087,
+        2.801,
+        0.997,
+        1.088,
+        35
+    ]
+}

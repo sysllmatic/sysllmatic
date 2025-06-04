@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring decimal_to_binary(int decimal){\nstring out=\"\";\n    if (decimal==0) return \"db0db\";\n    while (decimal>0)\n    {\n        out=to_string(decimal%2)+out;\n        decimal=decimal/2;\n    }\n    out=\"db\"+out+\"db\";\n    return out;\n}",
+        4.801,
+        0.111,
+        4781192.2,
+        21145.6,
+        9.006,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n\nstd::string decimal_to_binary(int decimal) {\n    if (decimal == 0) return \"db0db\";\n\n    std::string out;\n    while (decimal > 0) {\n        out.push_back('0' + (decimal % 2));\n        decimal /= 2;\n    }\n    std::reverse(out.begin(), out.end());\n    out = \"db\" + out + \"db\";\n    return out;\n}\n\n",
+        1.078,
+        0.838,
+        0.964,
+        0.997,
+        0.837,
+        17
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nstd::string decimal_to_binary(int decimal) {\n    if (decimal == 0) return \"db0db\";\n    \n    std::string out = \"db\";\n    bool leading = true;\n    for (unsigned int mask = 1U << (sizeof(int) * 8 - 1); mask > 0; mask >>= 1) {\n        if (decimal & mask) {\n            leading = false;\n            out.push_back('1');\n        } else if (!leading) {\n            out.push_back('0');\n        }\n    }\n    out.append(\"db\");\n    return out;\n}\n\n",
+        1.012,
+        0.91,
+        1.061,
+        1.002,
+        0.909,
+        20
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint x_or_y(int n,int x,int y){\nbool isp=true;\n    if (n<2) isp=false;\n    for (int i=2;i*i<=n;i++)\n    if (n%i==0) isp=false;\n    if (isp) return x;\n    return y;\n}",
+        4.877,
+        0.111,
+        2701366.4,
+        21045.6,
+        8.972,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n\nint x_or_y(int n, int x, int y) {\n    if (n < 2) return y;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return y;  \n    }\n    return x;  \n}",
+        1.068,
+        0.907,
+        0.967,
+        1.003,
+        0.91,
+        10
+    ],
+    "2": [
+        "#include <stdio.h>\n\nbool is_prime(int n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (int i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0) return false;\n    }\n    return true;\n}\n\nint x_or_y(int n, int x, int y) {\n    return is_prime(n) ? x : y;\n}",
+        1.123,
+        0.862,
+        0.988,
+        0.999,
+        0.865,
+        15
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool below_zero(vector<int> operations){\nint num=0;\n    for (int i=0;i<operations.size();i++)\n    {\n        num+=operations[i];\n        if (num<0) return true;\n    }\n    return false;\n}",
+        4.785,
+        0.126,
+        7417011.4,
+        21183.2,
+        7.91,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nbool below_zero(const vector<int>& operations) {\n    int num = 0;\n    for (const int& op : operations) { \n        num += op;\n        if (num < 0) return true;\n    }\n    return false;\n}",
+        0.956,
+        0.937,
+        0.99,
+        1.005,
+        0.939,
+        12
+    ],
+    "2": [
+        "#include <immintrin.h> \n#include <vector>\nusing namespace std;\n\nbool below_zero(const vector<int>& operations) {\n    int num = 0;\n    size_t i = 0;\n    size_t n = operations.size();\n    __m256i sum_vector = _mm256_setzero_si256();\n\n    \n    for (; i + 8 <= n; i += 8) {\n        __m256i ops_vector = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&operations[i]));\n        sum_vector = _mm256_add_epi32(sum_vector, ops_vector);\n    }\n\n    \n    int sums[8];\n    _mm256_storeu_si256(reinterpret_cast<__m256i*>(sums), sum_vector);\n    for (int j = 0; j < 8; ++j) {\n        num += sums[j];\n        if (num < 0) return true;\n    }\n\n    \n    for (; i < n; ++i) {\n        num += operations[i];\n        if (num < 0) return true;\n    }\n\n    return false;\n}",
+        0.999,
+        1.003,
+        1.122,
+        1.003,
+        1.005,
+        32
+    ]
+}

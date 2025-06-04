@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_palindrome(string text){\nstring pr(text.rbegin(),text.rend());\n    return pr==text;\n}",
+        4.551,
+        0.133,
+        8357793.2,
+        21039.2,
+        7.509,
+        10
+    ],
+    "1": [
+        "#include <string>\nusing namespace std;\n\nbool is_palindrome(const string& text) {\n    int left = 0;\n    int right = text.size() - 1;\n    while (left < right) {\n        if (text[left] != text[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    return true;\n}",
+        0.651,
+        1.013,
+        1.53,
+        1.002,
+        1.013,
+        15
+    ],
+    "2": [
+        "#include <string>\n#include <vector>\n#include <thread>\n#include <future>\nusing namespace std;\n\nbool is_palindrome(const string& text) {\n    int left = 0;\n    int right = text.size() - 1;\n    while (left < right) {\n        if (text[left] != text[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    return true;\n}\n\nvector<bool> check_multiple_palindromes(const vector<string>& texts) {\n    vector<future<bool>> futures;\n    vector<bool> results(texts.size());\n\n    \n    for (size_t i = 0; i < texts.size(); ++i) {\n        futures.push_back(async(launch::async, is_palindrome, cref(texts[i])));\n    }\n\n    \n    for (size_t i = 0; i < texts.size(); ++i) {\n        results[i] = futures[i].get();\n    }\n    return results;\n}\n",
+        0.998,
+        1.043,
+        1.482,
+        0.993,
+        1.043,
+        34
+    ]
+}

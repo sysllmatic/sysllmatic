@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> total_match(vector<string> lst1,vector<string> lst2){\nint num1,num2,i;\n    num1=0;num2=0;\n    for (i=0;i<lst1.size();i++)\n        num1+=lst1[i].length();\n    for (i=0;i<lst2.size();i++)\n        num2+=lst2[i].length();\n    if (num1>num2) return lst2;\n    return lst1;\n}",
+        6.854,
+        0.173,
+        172207745.6,
+        65389.6,
+        5.791,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> total_match(vector<string> lst1, vector<string> lst2) {\n    int num1 = 0, num2 = 0;\n    \n    for (size_t i = 0; i < lst1.size(); ++i) {\n        num1 += lst1[i].length();\n    }\n    \n    for (size_t i = 0; i < lst2.size(); ++i) {\n        num2 += lst2[i].length();\n    }\n    \n    return num1 > num2 ? lst2 : lst1;\n}\n\n\n",
+        0.929,
+        0.971,
+        0.835,
+        0.926,
+        0.968,
+        21
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <numeric> \nusing namespace std;\n\nvector<string> total_match(vector<string> lst1, vector<string> lst2) {\n    int num1 = std::accumulate(lst1.begin(), lst1.end(), 0,\n                              [](int sum, const string& s) { return sum + s.length(); });\n    \n    int num2 = std::accumulate(lst2.begin(), lst2.end(), 0,\n                              [](int sum, const string& s) { return sum + s.length(); });\n    \n    return num1 > num2 ? lst2 : lst1;\n}\n\n\n",
+        0.976,
+        0.917,
+        0.887,
+        0.927,
+        0.915,
+        17
+    ]
+}

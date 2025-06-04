@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nvector<string> sorted_list_sum(vector<string> lst){\nvector<string> out={};\n    for (int i=0;i<lst.size();i++)\n    if (lst[i].length()%2==0) out.push_back(lst[i]);\n    string mid;\n    sort(out.begin(),out.end());\n    for (int i=0;i<out.size();i++)\n    for (int j=1;j<out.size();j++)\n    if (out[j].length()<out[j-1].length())\n    {\n        mid=out[j];out[j]=out[j-1];out[j-1]=mid;\n    }\n    return out;\n}",
+        178.761,
+        3.17,
+        14081871591.6,
+        311924.8,
+        0.315,
+        21
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> sorted_list_sum(vector<string> lst) {\n    vector<string> out;\n    \n    for (const auto& str : lst) {\n        if (str.length() % 2 == 0) {\n            out.push_back(str);\n        }\n    }\n    \n    std::stable_sort(out.begin(), out.end(), [](const string& a, const string& b) {\n        if (a.length() == b.length()) return a < b; \n        return a.length() < b.length();\n    });\n    return out;\n}\n\n",
+        12.568,
+        9.628,
+        18.77,
+        0.998,
+        9.636,
+        22
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> sorted_list_sum(vector<string> lst) {\n    vector<string> out;\n    out.reserve(lst.size()); \n    for (const auto& str : lst) {\n        if (str.length() % 2 == 0) {\n            out.push_back(str);\n        }\n    }\n    \n    std::stable_sort(out.begin(), out.end(), [](const string& a, const string& b) {\n        if (a.length() == b.length()) return a < b; \n        return a.length() < b.length();\n    });\n    return out;\n}\n\n",
+        12.546,
+        9.782,
+        17.637,
+        0.998,
+        9.793,
+        22
+    ]
+}

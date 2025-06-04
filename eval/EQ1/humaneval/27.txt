@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring filp_case(string str){\nstring out=\"\";\n    for (int i=0;i<str.length();i++)\n    {\n        char w=str[i];\n        if (w>=97 and w<=122) {w-=32;}\n        else\n            if (w>=65 and w<=90){ w+=32;}\n        out=out+w;\n    }\n    return out;\n}",
+        4.942,
+        0.153,
+        53175218.8,
+        20950.4,
+        6.536,
+        18
+    ],
+    "1": [
+        "#include <iostream>  \n#include <string>\n#include <cctype>    \nusing namespace std;\n\nstring filp_case(string str) {\n    string out(str.length(), '\\0');  \n    for (size_t i = 0; i < str.length(); ++i) {\n        char w = str[i];\n        if (islower(w)) {\n            out[i] = toupper(w);\n        } else if (isupper(w)) {\n            out[i] = tolower(w);\n        } else {\n            out[i] = w;  \n        }\n    }\n    return out;\n}",
+        1.074,
+        1.12,
+        7.514,
+        0.996,
+        1.119,
+        19
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <cctype>\n#include <thread>\n#include <vector>\n\nusing namespace std;\n\nvoid flip_case_segment(const string& str, string& out, size_t start, size_t end) {\n    for (size_t i = start; i < end; ++i) {\n        char w = str[i];\n        if (islower(w)) {\n            out[i] = toupper(w);\n        } else if (isupper(w)) {\n            out[i] = tolower(w);\n        } else {\n            out[i] = w;\n        }\n    }\n}\n\nstring filp_case(string str) {\n    size_t length = str.length();\n    string out(length, '\\0');\n    size_t num_threads = thread::hardware_concurrency();\n    if (num_threads == 0) num_threads = 2; \n    vector<thread> threads;\n    size_t segment_size = length / num_threads;\n    size_t start = 0;\n    \n    for (size_t i = 0; i < num_threads - 1; ++i) {\n        threads.push_back(thread(flip_case_segment, cref(str), ref(out), start, start + segment_size));\n        start += segment_size;\n    }\n    \n    threads.push_back(thread(flip_case_segment, cref(str), ref(out), start, length));\n    \n    for (thread& t : threads) {\n        t.join();\n    }\n    return out;\n}\n\n",
+        0.953,
+        1.209,
+        1.922,
+        0.998,
+        1.207,
+        43
+    ]
+}

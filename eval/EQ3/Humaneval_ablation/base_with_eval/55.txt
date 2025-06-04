@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fib(int n){\nint f[1000];\n    f[0]=0;f[1]=1;\n    for (int i=2;i<=n; i++)\n    f[i]=f[i-1]+f[i-2];\n    return f[n];\n}",
+        4.438,
+        0.129,
+        2637294.6,
+        21144.8,
+        7.733,
+        12
+    ],
+    "1": [
+        "#include <iostream>\n\nint fib(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n\n    int prev1 = 0, prev2 = 1, current;\n    for (int i = 2; i <= n; ++i) {\n        current = prev1 + prev2;\n        prev1 = prev2;\n        prev2 = current;\n    }\n    return current;\n}\n\n\n",
+        0.996,
+        0.983,
+        0.541,
+        1.01,
+        0.984,
+        16
+    ],
+    "2": [
+        "#include <iostream>\n\nvoid multiply(int F[2][2], int M[2][2]) {\n    int x = F[0][0] * M[0][0] + F[0][1] * M[1][0];\n    int y = F[0][0] * M[0][1] + F[0][1] * M[1][1];\n    int z = F[1][0] * M[0][0] + F[1][1] * M[1][0];\n    int w = F[1][0] * M[0][1] + F[1][1] * M[1][1];\n\n    F[0][0] = x;\n    F[0][1] = y;\n    F[1][0] = z;\n    F[1][1] = w;\n}\n\nvoid power(int F[2][2], int n) {\n    if (n == 0 || n == 1) return;\n    int M[2][2] = {{1, 1}, {1, 0}};\n\n    power(F, n / 2);\n    multiply(F, F);\n\n    if (n % 2 != 0) multiply(F, M);\n}\n\nint fib(int n) {\n    if (n == 0) return 0;\n    int F[2][2] = {{1, 1}, {1, 0}};\n    power(F, n - 1);\n    return F[0][0];\n}\n\n",
+        0.946,
+        1.003,
+        0.554,
+        1.003,
+        1.004,
+        31
+    ]
+}

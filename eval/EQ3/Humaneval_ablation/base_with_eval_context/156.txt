@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring int_to_mini_romank(int number){\nstring current=\"\";\n    vector<string> rep={\"m\",\"cm\",\"d\",\"cd\",\"c\",\"xc\",\"l\",\"xl\",\"x\",\"ix\",\"v\",\"iv\",\"i\"};\n    vector<int> num={1000,900,500,400,100,90,50,40,10,9,5,4,1};\n    int pos=0;\n    while(number>0)\n    {\n        while (number>=num[pos])\n        {\n            current=current+rep[pos];\n            number-=num[pos];\n        }\n        if (number>0) pos+=1;\n    }\n    return current;\n}",
+        4.72,
+        0.12,
+        4561255.8,
+        21075.2,
+        8.287,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<array>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring int_to_mini_romank(int number){\n    string current;\n    current.reserve(15); \n    array<string, 13> rep = {\"m\",\"cm\",\"d\",\"cd\",\"c\",\"xc\",\"l\",\"xl\",\"x\",\"ix\",\"v\",\"iv\",\"i\"};\n    array<int, 13> num = {1000,900,500,400,100,90,50,40,10,9,5,4,1};\n    int pos = 0;\n\n    while(number > 0) {\n        while (number >= num[pos]) {\n            current.append(rep[pos]);\n            number -= num[pos];\n        }\n        pos += 1;\n    }\n    return current;\n}\n\n",
+        0.965,
+        0.863,
+        0.975,
+        1.005,
+        0.867,
+        25
+    ],
+    "2": [
+        "#include <string>\n#include <array>\nusing namespace std;\n\nstring int_to_mini_romank(int number) {\n    string current;\n    current.reserve(15); \n    constexpr array<pair<int, const char*>, 13> roman_map = {{\n        {1000, \"m\"}, {900, \"cm\"}, {500, \"d\"}, {400, \"cd\"},\n        {100, \"c\"}, {90, \"xc\"}, {50, \"l\"}, {40, \"xl\"},\n        {10, \"x\"}, {9, \"ix\"}, {5, \"v\"}, {4, \"iv\"}, {1, \"i\"}\n    }};\n    \n    for (const auto& [value, symbol] : roman_map) {\n        while (number >= value) {\n            current.append(symbol);\n            number -= value;\n        }\n    }\n    return current;\n}\n\n",
+        1.028,
+        0.885,
+        0.955,
+        0.998,
+        0.889,
+        22
+    ]
+}

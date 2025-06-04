@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool has_close_elements(vector<float> numbers, float threshold){\nint i,j;\n    \n    for (i=0;i<numbers.size();i++)\n    for (j=i+1;j<numbers.size();j++)\n    if (abs(numbers[i]-numbers[j])<threshold)\n    return true;\n\n    return false;\n}",
+        15.969,
+        0.344,
+        890118876.2,
+        20998.4,
+        2.902,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nbool has_close_elements(vector<float> numbers, float threshold) {\n    \n    sort(numbers.begin(), numbers.end());\n    \n    \n    for (size_t i = 0; i < numbers.size() - 1; ++i) {\n        if ((numbers[i + 1] - numbers[i]) < threshold) {\n            return true;\n        }\n    }\n    \n    return false;\n}",
+        3.417,
+        2.55,
+        66.415,
+        1.0,
+        2.551,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <cmath> \nusing namespace std;\n\nbool has_close_elements(const vector<float>& numbers, float threshold) {\n    size_t size = numbers.size();\n    for (size_t i = 0; i < size; ++i) {\n        for (size_t j = i + 1; j < size; ++j) {\n            if (fabs(numbers[j] - numbers[i]) < threshold) { \n                return true;\n            }\n        }\n    }\n    return false;\n}\n\n",
+        1.138,
+        1.044,
+        1.248,
+        0.995,
+        1.045,
+        17
+    ]
+}

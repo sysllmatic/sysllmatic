@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool has_close_elements(vector<float> numbers, float threshold){\nint i,j;\n    \n    for (i=0;i<numbers.size();i++)\n    for (j=i+1;j<numbers.size();j++)\n    if (abs(numbers[i]-numbers[j])<threshold)\n    return true;\n\n    return false;\n}",
+        15.952,
+        0.352,
+        889648032.0,
+        20931.2,
+        2.843,
+        16
+    ],
+    "1": [
+        "#include <vector>\n#include <algorithm>\n#include <cmath>\nusing namespace std;\n\nbool has_close_elements(vector<float> numbers, float threshold) {\n    \n    sort(numbers.begin(), numbers.end());\n    \n    \n    for (size_t i = 0; i < numbers.size() - 1; ++i) {\n        if (abs(numbers[i] - numbers[i + 1]) < threshold) {\n            return true;\n        }\n    }\n    return false;\n}",
+        2.726,
+        2.615,
+        63.969,
+        0.998,
+        2.61,
+        17
+    ],
+    "2": [
+        "#include <vector>\n#include <cmath>\n#include <set>\nusing namespace std;\n\nbool has_close_elements(vector<float> numbers, float threshold) {\n    set<float> active_set;\n    for (const float& num : numbers) {\n        \n        auto it = active_set.lower_bound(num - threshold);\n        if (it != active_set.end() && abs(*it - num) < threshold) {\n            return true;\n        }\n        \n        active_set.insert(num);\n    }\n    return false;\n}",
+        3.131,
+        2.398,
+        19.448,
+        0.986,
+        2.393,
+        18
+    ]
+}

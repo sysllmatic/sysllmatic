@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint max_fill(vector<vector<int>> grid,int capacity){\nint out=0;\n    for (int i=0;i<grid.size();i++)\n    {\n        int sum=0;\n        for (int j=0;j<grid[i].size();j++)\n            sum+=grid[i][j];\n        if (sum>0)  out+=(sum-1)/capacity+1;\n    }\n    return out;\n}",
+        4.557,
+        0.138,
+        6834874.0,
+        21037.6,
+        7.226,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nint max_fill(const vector<vector<int>>& grid, int capacity) {\n    int out = 0;\n    int grid_size = grid.size();  \n    \n    for (const auto& row : grid) {\n        int sum = 0;\n        for (int value : row) {\n            sum += value;\n        }\n        if (sum > 0) {\n            \n            out += (sum + capacity - 1) / capacity;\n        }\n    }\n    return out;\n}",
+        0.974,
+        1.074,
+        1.043,
+        0.992,
+        1.075,
+        21
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <immintrin.h>  \n#include <omp.h>        \nusing namespace std;\n\nint max_fill(const vector<vector<int>>& grid, int capacity) {\n    int out = 0;\n    \n    #pragma omp parallel for reduction(+:out) schedule(static)\n    for (size_t i = 0; i < grid.size(); ++i) {\n        int sum = 0;\n        const int* row_data = grid[i].data();\n        size_t row_size = grid[i].size();\n        size_t j = 0;\n        \n        __m256i vsum = _mm256_setzero_si256();\n        for (; j + 7 < row_size; j += 8) {\n            __m256i v = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(row_data + j));\n            vsum = _mm256_add_epi32(vsum, v);\n        }\n        alignas(32) int buffer[8];\n        _mm256_store_si256(reinterpret_cast<__m256i*>(buffer), vsum);\n        for (int k = 0; k < 8; ++k) {\n            sum += buffer[k];\n        }\n        for (; j < row_size; ++j) {\n            sum += row_data[j];\n        }\n        if (sum > 0) {\n            out += (sum + capacity - 1) / capacity;\n        }\n    }\n    return out;\n}",
+        0.951,
+        1.082,
+        0.104,
+        1.001,
+        1.083,
+        36
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool right_angle_triangle(float a,float b,float c){\nif (abs(a*a+b*b-c*c)<1e-4 or abs(a*a+c*c-b*b)<1e-4 or abs(b*b+c*c-a*a)<1e-4) return true;\n    return false;\n}",
+        5.281,
+        0.131,
+        2497471.6,
+        20944.0,
+        7.625,
+        9
+    ],
+    "1": [
+        "#include <math.h>\n\n\nbool right_angle_triangle(float a, float b, float c) {\n    \n    \n    if (fabs(a * a + b * b - c * c) < 1e-4) return true; \n    if (fabs(a * a + c * c - b * b) < 1e-4) return true; \n    if (fabs(b * b + c * c - a * a) < 1e-4) return true; \n\n    return false;\n}",
+        1.124,
+        0.975,
+        0.989,
+        0.992,
+        0.975,
+        12
+    ],
+    "2": [
+        "#include <math.h>\n\nbool right_angle_triangle(float a, float b, float c) {\n    \n    float a2 = a * a;\n    float b2 = b * b;\n    float c2 = c * c;\n    float epsilon = 1e-4;\n\n    \n    \n    return (fabs(a2 + b2 - c2) < epsilon) ||\n           (fabs(a2 + c2 - b2) < epsilon) ||\n           (fabs(b2 + c2 - a2) < epsilon);\n}\n",
+        1.074,
+        1.048,
+        0.97,
+        0.99,
+        1.048,
+        15
+    ]
+}

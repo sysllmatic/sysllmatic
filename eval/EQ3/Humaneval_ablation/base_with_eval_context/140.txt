@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring fix_spaces(string text){\nstring out=\"\";\n    int spacelen=0;\n    for (int i=0;i<text.length();i++)\n    if (text[i]==' ') spacelen+=1;\n    else\n    {\n        if (spacelen==1) out=out+'_';\n        if (spacelen==2) out=out+\"__\";\n        if (spacelen>2) out=out+'-';\n        spacelen=0;\n        out=out+text[i];\n    }\n    if (spacelen==1) out=out+'_';\n    if (spacelen==2) out=out+\"__\";\n    if (spacelen>2) out=out+'-';\n    return out;\n}",
+        7.756,
+        0.189,
+        229188343.8,
+        20964.8,
+        5.278,
+        24
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <sstream> \nusing namespace std;\n\nstring fix_spaces(const string& text) {\n    stringstream out;\n    int spacelen = 0;\n    int text_length = text.length(); \n    \n    for (int i = 0; i < text_length; ++i) {\n        if (text[i] == ' ') {\n            ++spacelen;\n        } else {\n            if (spacelen == 1) out << '_';\n            else if (spacelen == 2) out << \"__\";\n            else if (spacelen > 2) out << '-';\n            \n            spacelen = 0;\n            out << text[i];\n        }\n    }\n    \n    if (spacelen == 1) out << '_';\n    else if (spacelen == 2) out << \"__\";\n    else if (spacelen > 2) out << '-';\n\n    return out.str();\n}\n\n",
+        1.703,
+        1.429,
+        27.092,
+        0.993,
+        1.431,
+        30
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nstring fix_spaces(const string& text) {\n    string out;\n    out.reserve(text.length()); \n    int spacelen = 0;\n\n    for (char ch : text) {\n        if (ch == ' ') {\n            ++spacelen;\n        } else {\n            if (spacelen == 1) out += '_';\n            else if (spacelen == 2) out += \"__\";\n            else if (spacelen > 2) out += '-';\n\n            spacelen = 0;\n            out += ch;\n        }\n    }\n\n    \n    if (spacelen == 1) out += '_';\n    else if (spacelen == 2) out += \"__\";\n    else if (spacelen > 2) out += '-';\n\n    return out;\n}\n\n\n",
+        1.718,
+        1.355,
+        30.071,
+        0.997,
+        1.357,
+        31
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool below_threshold(vector<int>l, int t){\nfor (int i=0;i<l.size();i++)\n        if (l[i]>=t) return false;\n    return true;\n}",
+        4.573,
+        0.13,
+        7672985.4,
+        21094.4,
+        7.67,
+        11
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\n\nusing namespace std;\n\nbool below_threshold(const vector<int>& l, int t) {\n    for (auto it = l.begin(); it != l.end(); ++it) {\n        if (*it >= t) return false;\n    }\n    return true;\n}\n\n\n\n\n",
+        0.911,
+        1.055,
+        0.837,
+        0.998,
+        1.057,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\n#include <immintrin.h> \n#include <omp.h> \n\nusing namespace std;\n\nbool below_threshold(const vector<int>& l, int t) {\n    __m256i threshold = _mm256_set1_epi32(t);\n    size_t size = l.size();\n    size_t i = 0;\n\n    \n    for (; i + 8 <= size; i += 8) {\n        __m256i data = _mm256_loadu_si256((__m256i*)&l[i]);\n        __m256i cmp = _mm256_cmpgt_epi32(data, threshold);\n        if (!_mm256_testz_si256(cmp, cmp)) {\n            return false;\n        }\n    }\n\n    \n    for (; i < size; ++i) {\n        if (l[i] >= t) return false;\n    }\n    return true;\n}\n\nbool below_threshold_parallel(const vector<int>& l, int t) {\n    size_t size = l.size();\n    bool all_below = true;\n    \n    #pragma omp parallel for reduction(&&:all_below)\n    for (size_t i = 0; i < size; ++i) {\n        if (l[i] >= t) {\n            all_below = false;\n        }\n    }\n    return all_below;\n}\n\n",
+        0.929,
+        1.005,
+        0.984,
+        0.994,
+        1.007,
+        44
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> select_words(string s,int n){\nstring vowels=\"aeiouAEIOU\";\n    string current=\"\";\n    vector<string> out={};\n    int numc=0;\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n        if (s[i]==' ')\n        {\n            if (numc==n) out.push_back(current);\n            current=\"\";\n            numc=0;\n        }\n        else\n        {\n            current=current+s[i];\n            if ((s[i]>=65 and s[i]<=90) or (s[i]>=97 and s[i]<=122))\n            if (find(vowels.begin(),vowels.end(),s[i])==vowels.end())\n                numc+=1;\n        }\n    return out;\n}",
+        5.682,
+        0.153,
+        75387496.0,
+        21037.6,
+        6.537,
+        29
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <sstream>\n#include <unordered_set>\n#include <cctype>\nusing namespace std;\n\nvector<string> select_words(string s, int n) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    vector<string> out;\n    stringstream current;\n    int numc = 0;\n\n    for (size_t i = 0; i <= s.length(); ++i) {\n        if (i == s.length() || s[i] == ' ') {\n            if (numc == n) {\n                out.push_back(current.str());\n            }\n            current.str(\"\");  \n            current.clear();   \n            numc = 0;\n        } else {\n            current << s[i];\n            if (isalpha(s[i]) && vowels.find(s[i]) == vowels.end()) {\n                numc += 1;\n            }\n        }\n    }\n\n    return out;\n}",
+        1.16,
+        1.056,
+        2.615,
+        0.997,
+        1.055,
+        32
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\n#include <cctype>\nusing namespace std;\n\nvector<string> select_words(string s, int n) {\n    bool vowels[256] = {false};\n    for (char c : \"aeiouAEIOU\") vowels[c] = true;\n\n    vector<string> out;\n    string current;\n    int numc = 0;\n\n    for (size_t i = 0; i <= s.length(); ++i) {\n        if (i == s.length() || s[i] == ' ') {\n            if (numc == n) {\n                out.push_back(current);\n            }\n            current.clear();\n            numc = 0;\n        } else {\n            current += s[i];\n            if (isalpha(s[i]) && !vowels[s[i]]) {\n                numc += 1;\n            }\n        }\n    }\n\n    return out;\n}",
+        1.219,
+        1.191,
+        9.515,
+        1.002,
+        1.189,
+        30
+    ]
+}

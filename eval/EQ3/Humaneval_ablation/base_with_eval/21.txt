@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> rescale_to_unit(vector<float> numbers){\nfloat min=100000,max=-100000;\n    for (int i=0;i<numbers.size();i++)\n        {\n            if (numbers[i]<min) min=numbers[i];\n            if (numbers[i]>max) max=numbers[i];\n        }\n    for (int i=0;i<numbers.size();i++)\n        numbers[i]=(numbers[i]-min)/(max-min);\n    return numbers;\n}",
+        4.905,
+        0.135,
+        10768480.8,
+        20885.6,
+        7.415,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n\nvector<float> rescale_to_unit(vector<float> numbers) {\n    if (numbers.empty()) return numbers; \n    \n    float min = numbers[0], max = numbers[0];\n    \n    \n    for (int i = 0; i < numbers.size(); i++) {\n        if (numbers[i] < min) min = numbers[i];\n        if (numbers[i] > max) max = numbers[i];\n    }\n    \n    float range = max - min;\n    if (range == 0) return numbers; \n\n    for (int i = 0; i < numbers.size(); i++) {\n        numbers[i] = (numbers[i] - min) / range;\n    }\n    \n    return numbers;\n}\n\n",
+        1.077,
+        1.058,
+        0.992,
+        0.991,
+        1.056,
+        26
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<float> rescale_to_unit(vector<float> numbers) {\n    if (numbers.empty()) return numbers; \n\n    \n    auto minmax_iter = std::minmax_element(numbers.begin(), numbers.end());\n    float min = *minmax_iter.first;\n    float max = *minmax_iter.second;\n\n    float range = max - min;\n    if (range == 0) return numbers; \n\n    \n    for (auto& num : numbers) {\n        num = (num - min) / range;\n    }\n\n    return numbers;\n}\n\n",
+        1.067,
+        1.006,
+        0.829,
+        0.989,
+        1.004,
+        25
+    ]
+}

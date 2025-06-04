@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint choose_num(int x,int y){\nif (y<x) return -1;\n    if (y==x and y%2==1) return -1;\n    if (y%2==1) return y-1;\n    return y;\n}",
+        4.408,
+        0.121,
+        2689960.0,
+        20992.8,
+        8.227,
+        11
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <stdlib.h>\nusing namespace std;\n\nint choose_num(int x, int y) {\n    if (y < x || (y == x && y % 2 == 1)) return -1; \n    if (y % 2 == 1) return y - 1; \n    return y; \n}\n\n",
+        0.981,
+        0.939,
+        0.939,
+        0.994,
+        0.942,
+        10
+    ]
+}

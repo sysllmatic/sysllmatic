@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint skjkasdkd(vector<int> lst){\nint largest=0;\n    for (int i=0;i<lst.size();i++)\n        if (lst[i]>largest)\n        {\n            bool prime=true;\n            for (int j=2;j*j<=lst[i];j++)\n                if (lst[i]%j==0) prime=false;\n            if (prime) largest=lst[i];\n        }\n    int sum=0;\n    string s;\n    s=to_string(largest);\n    for (int i=0;i<s.length();i++)\n        sum+=s[i]-48;\n    return sum;\n}\n#undef NDEBUG\n#include<assert.h>",
+        157.963,
+        2.889,
+        12969573417.2,
+        21012.0,
+        0.346,
+        26
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nbool isPrime(int num) {\n    if (num < 2) return false;\n    if (num == 2) return true; \n    if (num % 2 == 0) return false; \n    for (int i = 3; i * i <= num; i += 2) {\n        if (num % i == 0) return false;\n    }\n    return true;\n}\n\nint sumOfDigits(int num) {\n    int sum = 0;\n    while (num > 0) {\n        sum += num % 10;\n        num /= 10;\n    }\n    return sum;\n}\n\nint skjkasdkd(const vector<int>& lst) {\n    int largestPrime = 0;\n    for (int num : lst) {\n        if (num > largestPrime && isPrime(num)) {\n            largestPrime = num;\n        }\n    }\n    return sumOfDigits(largestPrime);\n}\n\n",
+        4.114,
+        3.76,
+        4.37,
+        0.991,
+        3.76,
+        35
+    ]
+}

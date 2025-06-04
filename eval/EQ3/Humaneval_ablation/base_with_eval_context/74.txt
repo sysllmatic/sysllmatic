@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> total_match(vector<string> lst1,vector<string> lst2){\nint num1,num2,i;\n    num1=0;num2=0;\n    for (i=0;i<lst1.size();i++)\n        num1+=lst1[i].length();\n    for (i=0;i<lst2.size();i++)\n        num2+=lst2[i].length();\n    if (num1>num2) return lst2;\n    return lst1;\n}",
+        6.929,
+        0.161,
+        170896015.2,
+        65412.8,
+        6.213,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> total_match(vector<string> lst1, vector<string> lst2) {\n    int num1 = 0, num2 = 0;\n    auto it1 = lst1.begin(), it2 = lst2.begin();\n    while (it1 != lst1.end() || it2 != lst2.end()) {\n        if (it1 != lst1.end()) {\n            num1 += it1->length();\n            ++it1;\n        }\n        if (it2 != lst2.end()) {\n            num2 += it2->length();\n            ++it2;\n        }\n    }\n    return (num1 > num2) ? lst2 : lst1;\n}",
+        0.942,
+        0.806,
+        0.933,
+        0.927,
+        0.806,
+        21
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <omp.h>  \nusing namespace std;\n\nvector<string> total_match(vector<string> lst1, vector<string> lst2) {\n    int num1 = 0, num2 = 0;\n\n    #pragma omp parallel sections reduction(+:num1, num2)\n    {\n        #pragma omp section\n        {\n            for (const auto& str : lst1) {\n                num1 += str.length();\n            }\n        }\n        #pragma omp section\n        {\n            for (const auto& str : lst2) {\n                num2 += str.length();\n            }\n        }\n    }\n\n    return (num1 > num2) ? lst2 : lst1;\n}\n\n",
+        0.688,
+        0.81,
+        0.056,
+        0.918,
+        0.809,
+        29
+    ]
+}

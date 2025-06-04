@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool is_palindrome(string str){\n    string s(str.rbegin(),str.rend());\n    return s==str;\n}\nstring make_palindrome(string str){\nint i;\n   for (i=0;i<str.length();i++)\n   {\n        string rstr=str.substr(i);\n        if (is_palindrome(rstr))\n        {\n            string nstr;\n            nstr=str.substr(0,i);\n            string n2str(nstr.rbegin(),nstr.rend());\n            return str+n2str;\n        }\n   }\n   string n2str(str.rbegin(),str.rend());\n   return str+n2str;\n}",
+        6.305,
+        0.11,
+        4637160.4,
+        21037.6,
+        9.079,
+        26
+    ],
+    "1": [
+        "#include <string>\n\nbool is_palindrome(const std::string& str) {\n    int left = 0;\n    int right = str.length() - 1;\n    while (left < right) {\n        if (str[left] != str[right]) return false;\n        ++left;\n        --right;\n    }\n    return true;\n}\n\nstd::string make_palindrome(const std::string& str) {\n    for (int i = 0; i < str.length(); i++) {\n        int left = i;\n        int right = str.length() - 1;\n        bool is_palindrome = true;\n        while (left < right) {\n            if (str[left] != str[right]) {\n                is_palindrome = false;\n                break;\n            }\n            ++left;\n            --right;\n        }\n        if (is_palindrome) {\n            std::string nstr = str.substr(0, i);\n            std::string n2str(nstr.rbegin(), nstr.rend());\n            return str + n2str;\n        }\n    }\n    std::string n2str(str.rbegin(), str.rend());\n    return str + n2str;\n}\n\n",
+        0.727,
+        0.923,
+        0.999,
+        0.999,
+        0.923,
+        36
+    ]
+}

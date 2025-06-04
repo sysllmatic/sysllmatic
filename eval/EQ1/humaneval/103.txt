@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring rounded_avg(int n,int m){\nif (n>m) return \"-1\";\n    int num=(m+n)/2;\n    string out=\"\";\n    while (num>0)\n    {\n        out=to_string(num%2)+out;\n        num=num/2;\n    }\n    return out;\n}",
+        4.657,
+        0.13,
+        4100830.8,
+        21052.8,
+        7.699,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nstring rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    if (num == 0) return \"0\";\n\n    string out;\n    while (num > 0) {\n        out.insert(out.begin(), (num & 1) ? '1' : '0');\n        num >>= 1;  \n    }\n    return out;\n}",
+        1.043,
+        0.947,
+        1.006,
+        0.998,
+        0.945,
+        16
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>  \nusing namespace std;\n\nstring rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    if (num == 0) return \"0\";\n\n    string out;\n    while (num > 0) {\n        out += (num & 1) ? '1' : '0';  \n        num >>= 1;  \n    }\n    reverse(out.begin(), out.end());  \n    return out;\n}",
+        1.067,
+        0.958,
+        0.966,
+        1.003,
+        0.956,
+        18
+    ]
+}

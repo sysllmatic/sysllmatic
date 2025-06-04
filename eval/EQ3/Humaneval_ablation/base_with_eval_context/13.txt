@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nint greatest_common_divisor(int a, int b){\nint out,m;\n    while (true){\n        if (a<b) \n        {\n            m=a;a=b;b=m;\n        }\n        a=a%b;\n        if (a==0) return b;\n    }\n}",
+        4.495,
+        0.112,
+        2792213.0,
+        20996.8,
+        8.914,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n\nint greatest_common_divisor(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\n",
+        1.01,
+        0.917,
+        0.935,
+        0.999,
+        0.917,
+        11
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <omp.h> \n\nint greatest_common_divisor(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\nvoid batch_gcd(int *a_list, int *b_list, int *results, int n) {\n    #pragma omp parallel for\n    for (int i = 0; i < n; i++) {\n        results[i] = greatest_common_divisor(a_list[i], b_list[i]);\n    }\n}\n\n",
+        0.985,
+        0.892,
+        0.877,
+        0.993,
+        0.892,
+        19
+    ]
+}

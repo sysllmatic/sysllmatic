@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encode_shift(string s){\n    string out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+5-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}\nstring decode_shift(string s){\nstring out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+21-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}",
+        4.684,
+        0.134,
+        4391284.2,
+        20874.4,
+        7.448,
+        26
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nstring encode_shift(const string& s) {\n    string out;\n    out.reserve(s.size()); \n    for (char c : s) {\n        char shifted = (c - 'a' + 5) % 26 + 'a';\n        out.push_back(shifted);\n    }\n    return out;\n}\n\nstring decode_shift(const string& s) {\n    string out;\n    out.reserve(s.size()); \n    for (char c : s) {\n        char shifted = (c - 'a' + 21) % 26 + 'a';\n        out.push_back(shifted);\n    }\n    return out;\n}\n\n",
+        1.035,
+        1.018,
+        0.951,
+        0.987,
+        1.019,
+        24
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <omp.h>\nusing namespace std;\n\nstring encode_shift(const string& s) {\n    string out(s.size(), ' '); \n    #pragma omp parallel for\n    for (int i = 0; i < s.size(); ++i) {\n        out[i] = (s[i] - 'a' + 5) % 26 + 'a';\n    }\n    return out;\n}\n\nstring decode_shift(const string& s) {\n    string out(s.size(), ' '); \n    #pragma omp parallel for\n    for (int i = 0; i < s.size(); ++i) {\n        out[i] = (s[i] - 'a' + 21) % 26 + 'a';\n    }\n    return out;\n}\n\n",
+        1.021,
+        1.106,
+        0.845,
+        0.993,
+        1.106,
+        23
+    ]
+}

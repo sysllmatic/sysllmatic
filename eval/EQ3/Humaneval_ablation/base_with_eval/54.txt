@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool same_chars(string s0,string s1){\nfor (int i=0;i<s0.length();i++)\n    if (find(s1.begin(),s1.end(),s0[i])==s1.end())\n        return false;\n    for (int i=0;i<s1.length();i++)\n    if (find(s0.begin(),s0.end(),s1[i])==s0.end())\n        return false;\n    return true;   \n}",
+        56.067,
+        1.101,
+        4442705717.8,
+        20943.2,
+        0.908,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <unordered_set>\nusing namespace std;\n\nbool same_chars(string s0, string s1) {\n    unordered_set<char> set0(s0.begin(), s0.end());\n    unordered_set<char> set1(s1.begin(), s1.end());\n    return set0 == set1;\n}\n\n\n",
+        11.553,
+        7.894,
+        145.9,
+        0.994,
+        7.888,
+        12
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\nusing namespace std;\n\nbool same_chars(const string& s0, const string& s1) {\n    vector<bool> char_present(256, false);\n\n    \n    for (char c : s0) {\n        char_present[c] = true;\n    }\n\n    \n    for (char c : s1) {\n        if (!char_present[c]) {\n            return false;\n        }\n    }\n\n    \n    fill(char_present.begin(), char_present.end(), false);\n\n    for (char c : s1) {\n        char_present[c] = true;\n    }\n\n    for (char c : s0) {\n        if (!char_present[c]) {\n            return false;\n        }\n    }\n\n    return true;\n}\n\n",
+        11.986,
+        8.248,
+        142.057,
+        0.998,
+        8.239,
+        36
+    ]
+}

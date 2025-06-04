@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool check_if_last_char_is_a_letter(string txt){\nif (txt.length()==0) return false;\n    char chr=txt[txt.length()-1];\n    if (chr<65 or (chr>90 and chr<97) or chr>122) return false;\n    if (txt.length()==1) return true;\n    chr=txt[txt.length()-2];\n    if ((chr>=65 and chr<=90) or (chr>=97 and chr<=122)) return false;\n    return true;\n}",
+        4.403,
+        0.133,
+        5017424.6,
+        21154.4,
+        7.492,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <cctype> \nusing namespace std;\n\nbool check_if_last_char_is_a_letter(const string& txt) {\n    if (txt.empty()) return false;\n\n    char last_char = txt.back();\n    if (!isalpha(last_char)) return false; \n\n    if (txt.length() == 1) return true;\n\n    char second_last_char = txt[txt.length() - 2];\n    if (isalpha(second_last_char)) return false;\n\n    return true;\n}\n\n",
+        1.001,
+        1.013,
+        1.149,
+        1.001,
+        1.016,
+        19
+    ]
+}

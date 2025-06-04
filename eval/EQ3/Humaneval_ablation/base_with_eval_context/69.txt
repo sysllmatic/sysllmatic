@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint search(vector<int> lst){\nvector<vector<int>> freq={};\n    int max=-1;\n    for (int i=0;i<lst.size();i++)\n    {\n        bool has=false;\n        for (int j=0;j<freq.size();j++)\n            if (lst[i]==freq[j][0]) \n            {\n            freq[j][1]+=1;\n            has=true;\n            if (freq[j][1]>=freq[j][0] and freq[j][0]>max) max=freq[j][0];\n            }\n        if (not(has)) \n        {\n        freq.push_back({lst[i],1});\n        if (max==-1 and lst[i]==1) max=1;\n        }\n    }\n    return max;\n}",
+        46.176,
+        0.902,
+        3454902926.2,
+        21042.4,
+        1.109,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <unordered_map>\n#include <vector>\nusing namespace std;\n\nint search(vector<int> lst) {\n    unordered_map<int, int> freq;\n    int max = -1;\n\n    \n    for (int num : lst) {\n        freq[num]++;\n    }\n\n    \n    for (const auto& pair : freq) {\n        int num = pair.first;\n        int count = pair.second;\n        if (count >= num && num > max) {\n            max = num;\n        }\n    }\n\n    return max;\n}",
+        9.251,
+        6.478,
+        104.72,
+        0.997,
+        6.469,
+        25
+    ],
+    "2": [
+        "#include <iostream>\n#include <unordered_map>\n#include <vector>\n#include <omp.h>\nusing namespace std;\n\nint search(vector<int> lst) {\n    unordered_map<int, int> freq;\n    int max = -1;\n    int num_threads = omp_get_max_threads();\n\n    \n    freq.reserve(lst.size());\n\n    \n    vector<unordered_map<int, int>> local_freqs(num_threads);\n\n    \n    #pragma omp parallel\n    {\n        int thread_id = omp_get_thread_num();\n        auto& local_freq = local_freqs[thread_id];\n\n        #pragma omp for\n        for (size_t i = 0; i < lst.size(); ++i) {\n            local_freq[lst[i]]++;\n        }\n    }\n\n    \n    for (const auto& local_freq : local_freqs) {\n        for (const auto& pair : local_freq) {\n            freq[pair.first] += pair.second;\n        }\n    }\n\n    \n    for (const auto& pair : freq) {\n        int num = pair.first;\n        int count = pair.second;\n        if (count >= num && num > max) {\n            max = num;\n        }\n    }\n\n    return max;\n}",
+        7.824,
+        7.021,
+        3.905,
+        1.003,
+        7.012,
+        47
+    ]
+}

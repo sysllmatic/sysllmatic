@@ -1,0 +1,15 @@
+Correctness: 0.60
+
+% of programs with ≥1.1 improvement (out of all programs):
+  energy_improvement: 40.00%
+  runtime_improvement: 40.00%
+  cpu_cycles_improvement: 20.00%
+  peak_memory_improvement: 0.00%
+  mflops_improvement: 40.00%
+
+Average improvement:
+  energy_improvement: 2.253
+  runtime_improvement: 1.492
+  cpu_cycles_improvement: 0.775
+  peak_memory_improvement: 0.974
+  mflops_improvement: 1.251

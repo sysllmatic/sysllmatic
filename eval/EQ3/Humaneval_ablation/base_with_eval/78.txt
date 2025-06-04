@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\nstring key=\"2357BD\";\n    int out=0;\n    for (int i=0;i<num.length();i++)\n    if (find(key.begin(),key.end(),num[i])!=key.end()) out+=1;\n    return out;\n}",
+        5.728,
+        0.139,
+        14376030.6,
+        20900.0,
+        7.191,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <unordered_set>  \n\nint hex_key(const std::string& num) {\n    std::unordered_set<char> key = {'2', '3', '5', '7', 'B', 'D'};  \n    int out = 0;\n    for (char c : num) {  \n        if (key.find(c) != key.end()) {\n            out += 1;\n        }\n    }\n    return out;\n}\n\n",
+        1.255,
+        1.068,
+        0.921,
+        0.994,
+        1.067,
+        15
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <unordered_set>  \n\ninline int hex_key(const std::string& num) {\n    static const std::unordered_set<char> key = {'2', '3', '5', '7', 'B', 'D'};  \n    int out = 0;\n    for (char c : num) {  \n        if (key.find(c) != key.end()) {\n            out += 1;\n        }\n    }\n    return out;\n}\n\n",
+        1.235,
+        1.056,
+        0.907,
+        0.991,
+        1.055,
+        15
+    ]
+}

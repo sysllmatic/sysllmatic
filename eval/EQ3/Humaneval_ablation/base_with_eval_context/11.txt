@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring string_xor(string a,string b){\nstring output=\"\";\n    for (int i=0;(i<a.length() and i<b.length());i++)\n    {\n        if (i<a.length() and i<b.length())\n        {\n            if (a[i]== b[i]) \n            {\n                output+='0';\n            }  \n            else output+='1';\n        }\n        else\n        {\n            if (i>=a.length()) \n            {\n            output+=b[i];\n            }\n            else output+=a[i];\n        }\n    }\n    return output;\n}",
+        4.709,
+        0.128,
+        4317090.8,
+        21085.6,
+        7.776,
+        29
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring string_xor(const string& a, const string& b) {\n    string output;\n    size_t len_a = a.length();\n    size_t len_b = b.length();\n    size_t min_len = min(len_a, len_b);\n    \n    output.reserve(max(len_a, len_b));  \n    \n    \n    transform(a.begin(), a.begin() + min_len, b.begin(), back_inserter(output), [](char ac, char bc) {\n        return (ac == bc) ? '0' : '1';\n    });\n    \n    \n    if (len_a > min_len) {\n        output.append(a.substr(min_len));\n    } else if (len_b > min_len) {\n        output.append(b.substr(min_len));\n    }\n    \n    return output;\n}\n\n",
+        1.04,
+        1.071,
+        0.944,
+        1.001,
+        1.075,
+        28
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <immintrin.h>  \nusing namespace std;\n\nstring string_xor(const string& a, const string& b) {\n    size_t len_a = a.length();\n    size_t len_b = b.length();\n    size_t max_len = max(len_a, len_b);\n    string output(max_len, '0');  \n\n    size_t i = 0;\n    \n    const size_t simd_width = 16;  \n    size_t simd_len = min(len_a, len_b) / simd_width * simd_width;\n\n    for (; i < simd_len; i += simd_width) {\n        __m128i va = _mm_loadu_si128((__m128i*)&a[i]);\n        __m128i vb = _mm_loadu_si128((__m128i*)&b[i]);\n        __m128i result = _mm_xor_si128(va, vb);\n        char buffer[simd_width];\n        _mm_storeu_si128((__m128i*)buffer, result);\n        for (size_t j = 0; j < simd_width; ++j) {\n            output[i + j] = (buffer[j] == 0) ? '0' : '1';\n        }\n    }\n\n    \n    for (; i < min(len_a, len_b); ++i) {\n        output[i] = (a[i] == b[i]) ? '0' : '1';\n    }\n\n    \n    if (len_a > len_b) {\n        copy(a.begin() + i, a.end(), output.begin() + i);\n    } else if (len_b > len_a) {\n        copy(b.begin() + i, b.end(), output.begin() + i);\n    }\n\n    return output;\n}\n\n",
+        0.926,
+        0.991,
+        0.9,
+        0.993,
+        0.995,
+        43
+    ]
+}

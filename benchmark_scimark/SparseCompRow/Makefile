@@ -28,12 +28,12 @@ run_optimized:
 
 measure:
 	sudo modprobe msr
-	sudo ${USER_PREFIX}/RAPL/main "$(JAVA) $(MAIN_CLASS)" java SparseCompRow
+	sudo ${USER_PREFIX}/MEASURE/main "$(JAVA) $(MAIN_CLASS)" java SparseCompRow
 	sudo chmod -R 777 ${USER_PREFIX}/src/runtime_logs/java.csv
 
 measure_optimized:
 	sudo modprobe msr
-	sudo ${USER_PREFIX}/RAPL/main "$(JAVA) $(OPTIMIZED_CLASS)" java SparseCompRowOptimized
+	sudo ${USER_PREFIX}/MEASURE/main "$(JAVA) $(OPTIMIZED_CLASS)" java SparseCompRowOptimized
 	sudo chmod -R 777 ${USER_PREFIX}/src/runtime_logs/java.csv
 
 measure_mflops:

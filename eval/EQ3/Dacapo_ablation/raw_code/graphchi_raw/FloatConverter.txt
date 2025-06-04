@@ -1,0 +1,11 @@
+{
+    "0": [
+        "package edu.cmu.graphchi.datablocks;\n\n\n\n\npublic class FloatConverter implements  BytesToValueConverter<Float> {\n    public int sizeOf() {\n        return 4;\n    }\n\n    public Float getValue(byte[] array) {\n        int x = ((array[3]  & 0xff) << 24) + ((array[2] & 0xff) << 16) + ((array[1] & 0xff) << 8) + (array[0] & 0xff);\n        return Float.intBitsToFloat(x);\n    }\n\n    public void setValue(byte[] array, Float val) {\n        int x = Float.floatToIntBits(val);\n        array[3] = (byte) ((x >>> 24) & 0xff);\n        array[2] = (byte) ((x >>> 16) & 0xff);\n        array[1] = (byte) ((x >>> 8) & 0xff);\n        array[0] = (byte) ((x >>> 0) & 0xff);\n    }\n}"
+    ],
+    "1": [
+        "package edu.cmu.graphchi.datablocks;\n\nimport java.nio.ByteBuffer;\nimport java.nio.ByteOrder;\n\npublic class FloatConverter implements BytesToValueConverter<Float> {\n    public int sizeOf() {\n        return 4;\n    }\n\n    public Float getValue(byte[] array) {\n        return ByteBuffer.wrap(array).order(ByteOrder.LITTLE_ENDIAN).getFloat();\n    }\n\n    public void setValue(byte[] array, Float val) {\n        ByteBuffer.wrap(array).order(ByteOrder.LITTLE_ENDIAN).putFloat(val);\n    }\n}\n"
+    ],
+    "2": [
+        "package edu.cmu.graphchi.datablocks;\n\npublic class FloatConverter implements BytesToValueConverter<Float> {\n    public int sizeOf() {\n        return 4;\n    }\n\n    public Float getValue(byte[] array) {\n        int x = ((array[3] & 0xff) << 24)\n              | ((array[2] & 0xff) << 16)\n              | ((array[1] & 0xff) << 8)\n              | (array[0] & 0xff);\n        return Float.intBitsToFloat(x);\n    }\n\n    public void setValue(byte[] array, Float val) {\n        int x = Float.floatToIntBits(val);\n        array[3] = (byte) ((x >>> 24) & 0xff);\n        array[2] = (byte) ((x >>> 16) & 0xff);\n        array[1] = (byte) ((x >>> 8) & 0xff);\n        array[0] = (byte) (x & 0xff);\n    }\n}\n"
+    ]
+}

@@ -13,8 +13,3 @@ def get_patterns(file_path: str):
     filtered_data = [{k: v for k, v in entry.items() if k != "Reference"} for entry in data]
     res = json.dumps(filtered_data, indent=4)
     return res
-
-if __name__ == "__main__":
-    file_path = f"{USER_PREFIX}/pattern_catalog/energy_patterns.xlsx"
-    res = get_patterns(file_path=file_path)
-    print(res)

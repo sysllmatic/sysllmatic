@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint closest_integer(string value){\ndouble w;\n    w=atof(value.c_str());\n    return round(w);\n}",
+        4.56,
+        0.124,
+        4514097.8,
+        20995.2,
+        8.065,
+        11
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <cmath> \n\nint closest_integer(const std::string& value) {\n    double w = std::stod(value); \n    return static_cast<int>(std::round(w)); \n}\n\n",
+        0.938,
+        1.029,
+        0.933,
+        0.992,
+        1.028,
+        9
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <cmath>\n#include <unordered_map>\n#include <mutex>\n\nstd::unordered_map<std::string, int> cache;\nstd::mutex cache_mutex;\n\nint closest_integer(const std::string& value) {\n    \n    {\n        std::lock_guard<std::mutex> lock(cache_mutex);\n        auto it = cache.find(value);\n        if (it != cache.end()) {\n            return it->second;\n        }\n    }\n    \n    try {\n        double w = std::stod(value);  \n        int result = static_cast<int>(std::round(w));  \n\n        \n        {\n            std::lock_guard<std::mutex> lock(cache_mutex);\n            cache[value] = result;\n        }\n\n        return result;\n    } catch (const std::invalid_argument& ia) {\n        std::cerr << \"Invalid argument: \" << ia.what() << '\\n';\n        return 0; \n    } catch (const std::out_of_range& oor) {\n        std::cerr << \"Out of range: \" << oor.what() << '\\n';\n        return 0; \n    }\n}\n\n",
+        0.902,
+        0.949,
+        0.953,
+        0.992,
+        0.948,
+        39
+    ]
+}

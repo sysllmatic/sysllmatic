@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> factorize(int n){\nvector<int> out={};\n    for (int i=2;i*i<=n;i++)\n        if (n%i==0)\n        {\n            n=n/i;\n            out.push_back(i);\n            i-=1;\n        }\n    out.push_back(n);\n    return out;\n}",
+        4.733,
+        0.127,
+        4129924.6,
+        21092.0,
+        7.867,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> factorize(int n) {\n    vector<int> out;\n    out.reserve(16); \n    for (int i = 2; i * i <= n; ++i) {\n        while (n % i == 0) { \n            n /= i;\n            out.push_back(i);\n        }\n    }\n    if (n > 1) { \n        out.push_back(n);\n    }\n    return out;\n}",
+        1.045,
+        0.974,
+        0.913,
+        0.997,
+        0.974,
+        21
+    ],
+    "2": [
+        "#include <vector>\n#include <cmath>\nusing namespace std;\n\n\nvector<int> generate_small_primes(int limit) {\n    vector<bool> is_prime(limit + 1, true);\n    vector<int> primes;\n    for (int i = 2; i <= limit; ++i) {\n        if (is_prime[i]) {\n            primes.push_back(i);\n            for (int j = i * i; j <= limit; j += i) {\n                is_prime[j] = false;\n            }\n        }\n    }\n    return primes;\n}\n\nvector<int> factorize(int n) {\n    vector<int> out;\n    out.reserve(16);\n    \n    vector<int> small_primes = generate_small_primes(10000);\n    \n    for (int prime : small_primes) {\n        while (n % prime == 0) {\n            n /= prime;\n            out.push_back(prime);\n        }\n        if (prime * prime > n) break;\n    }\n    \n    for (int i = 101; i * i <= n; ++i) {\n        while (n % i == 0) {\n            n /= i;\n            out.push_back(i);\n        }\n    }\n    if (n > 1) {\n        out.push_back(n);\n    }\n    return out;\n}",
+        0.948,
+        0.938,
+        0.207,
+        1.005,
+        0.937,
+        44
+    ]
+}

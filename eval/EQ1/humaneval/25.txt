@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> factorize(int n){\nvector<int> out={};\n    for (int i=2;i*i<=n;i++)\n        if (n%i==0)\n        {\n            n=n/i;\n            out.push_back(i);\n            i-=1;\n        }\n    out.push_back(n);\n    return out;\n}",
+        4.78,
+        0.133,
+        4596525.0,
+        21060.0,
+        7.536,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <cmath>\nusing namespace std;\n\n\nvector<int> generate_primes(int limit) {\n    vector<bool> is_prime(limit + 1, true);\n    vector<int> primes;\n    for (int p = 2; p <= limit; p++) {\n        if (is_prime[p]) {\n            primes.push_back(p);\n            for (int i = p * p; i <= limit; i += p) {\n                is_prime[i] = false;\n            }\n        }\n    }\n    return primes;\n}\n\nvector<int> factorize(int n) {\n    vector<int> out;\n    int limit = sqrt(n);\n    vector<int> primes = generate_primes(limit);\n    for (int prime : primes) {\n        while (n % prime == 0) {\n            out.push_back(prime);\n            n /= prime;\n        }\n    }\n    if (n > 1) {\n        out.push_back(n); \n    }\n    return out;\n}\n\n\n\n",
+        0.99,
+        1.078,
+        0.559,
+        1.0,
+        1.074,
+        38
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <cmath>\n#include <thread>\nusing namespace std;\n\nvector<int> generate_primes(int limit) {\n    vector<char> is_prime(limit + 1, true); \n    vector<int> primes;\n    int sqrt_limit = sqrt(limit);\n    \n    auto sieve_task = [&](int start) {\n        for (int p = start; p <= sqrt_limit; p += 2) {\n            if (is_prime[p]) {\n                for (int i = p * p; i <= limit; i += p) {\n                    is_prime[i] = false;\n                }\n            }\n        }\n    };\n\n    \n    vector<thread> threads;\n    for (int i = 3; i <= sqrt_limit; i += 2) {\n        if (is_prime[i]) {\n            threads.emplace_back(sieve_task, i);\n        }\n    }\n\n    \n    for (auto& th : threads) {\n        if (th.joinable()) {\n            th.join();\n        }\n    }\n\n    \n    primes.push_back(2); \n    for (int p = 3; p <= limit; p += 2) {\n        if (is_prime[p]) {\n            primes.push_back(p);\n        }\n    }\n\n    return primes;\n}\n\nvector<int> factorize(int n) {\n    vector<int> out;\n    int limit = sqrt(n);\n    vector<int> primes = generate_primes(limit);\n    for (int prime : primes) {\n        while (n % prime == 0) {\n            out.push_back(prime);\n            n /= prime;\n        }\n    }\n    if (n > 1) {\n        out.push_back(n); \n    }\n    return out;\n}\n\n\n",
+        0.97,
+        1.029,
+        0.367,
+        1.005,
+        1.025,
+        64
+    ]
+}

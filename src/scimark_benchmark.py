@@ -87,7 +87,9 @@ class SciMarkBenchmark(Benchmark):
         
         mflops = mflops.split("make")[0]
 
-        self._run_rapl(optimized=False)
+        measure = self._run_rapl(optimized=False)
+        if not measure:
+            return False
 
         avg_energy, avg_latency, avg_cpu_cycles, avg_memory, throughput = self._compute_avg()
 
@@ -448,27 +450,6 @@ class SciMarkBenchmark(Benchmark):
         prof_lib = os.path.join(
             USER_PREFIX, "async-profiler", "build", "lib", "libasyncProfiler.so"
         )
-
-        # 1 allocation profile
-        alloc_cmd = [
-            "java",
-            "-cp", ".",     
-            f"-agentpath:{prof_lib}=start,event=alloc,flat=10,file=alloc_profile.txt",
-            main_class,
-        ]
-        logger.info(f"Running alloc profile: {' '.join(alloc_cmd)}")
-        try:
-            subprocess.run(
-                alloc_cmd,
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                text=True,
-                timeout=300,
-            )
-        except subprocess.CalledProcessError as e:
-            logger.error(f"Allocation profile failed:\n{e.stderr}")
-            raise
         
         # 2) CPU profile
         cpu_cmd = [
@@ -494,22 +475,13 @@ class SciMarkBenchmark(Benchmark):
         # clean up Flamegraph file
         os.remove(f"{self.program}Flamegraph.java")
 
-        # read them back
-        with open("alloc_profile.txt", "r") as f:
-            alloc_profile = f.read()
         with open("cpu_profile.txt", "r") as f:
             cpu_profile = f.read()
 
         # stash into our feedback map
-        self.evaluator_feedback_data["alloc_profile"] = alloc_profile
-        self.evaluator_feedback_data["cpu_profile"] = cpu_profile
-
-        profile = {
-            "alloc_profile": alloc_profile,
-            "cpu_profile": cpu_profile
-        }
+        self.evaluator_feedback_data["flame_report"] = cpu_profile
         
-        return profile["cpu_profile"]
+        return cpu_profile
 
     def dynamic_analysis(self, code):
         logger.info(f"Generating async-profiler profiles")

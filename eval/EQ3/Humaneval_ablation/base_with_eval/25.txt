@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> factorize(int n){\nvector<int> out={};\n    for (int i=2;i*i<=n;i++)\n        if (n%i==0)\n        {\n            n=n/i;\n            out.push_back(i);\n            i-=1;\n        }\n    out.push_back(n);\n    return out;\n}",
+        4.402,
+        0.133,
+        4508931.6,
+        21216.0,
+        7.531,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n\nvector<int> factorize(int n) {\n    vector<int> out;\n    for (int i = 2; i * i <= n; ++i) {\n        while (n % i == 0) {\n            out.push_back(i);\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        out.push_back(n);\n    }\n    return out;\n}",
+        0.948,
+        1.049,
+        0.989,
+        1.01,
+        1.045,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> factorize(int n) {\n    vector<int> out;\n    if (n <= 1) return out;\n\n    while (n % 2 == 0) { \n        out.push_back(2);\n        n /= 2;\n    }\n\n    for (int i = 3; i * i <= n; i += 2) { \n        while (n % i == 0) {\n            out.push_back(i);\n            n /= i;\n        }\n    }\n\n    if (n > 1) { \n        out.push_back(n);\n    }\n\n    return out;\n}",
+        0.886,
+        1.029,
+        1.004,
+        1.011,
+        1.026,
+        26
+    ]
+}

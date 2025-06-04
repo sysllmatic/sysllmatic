@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nbool simplify(string x,string n){\nint a,b,c,d,i;\n    for (i=0;i<x.size();i++)\n        if (x[i]=='/') \n        {\n            a=atoi(x.substr(0,i).c_str());\n            b=atoi(x.substr(i+1).c_str());\n        }\n    for (i=0;i<n.size();i++)\n        if (n[i]=='/') \n        {\n            c=atoi(n.substr(0,i).c_str());\n            d=atoi(n.substr(i+1).c_str());\n        }\n    if ((a*c)%(b*d)==0) return true;\n    return false;\n}",
+        4.6,
+        0.128,
+        4250493.8,
+        21004.8,
+        7.782,
+        23
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nbool simplify(const string& x, const string& n) {\n    size_t posX = x.find('/');\n    size_t posN = n.find('/');\n    \n    if (posX == string::npos || posN == string::npos) {\n        return false; \n    }\n\n    int a = stoi(x.substr(0, posX));\n    int b = stoi(x.substr(posX + 1));\n    int c = stoi(n.substr(0, posN));\n    int d = stoi(n.substr(posN + 1));\n\n    return (a * c) % (b * d) == 0;\n}\n\n",
+        0.965,
+        1.041,
+        0.891,
+        0.993,
+        1.044,
+        20
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <stdexcept>  \nusing namespace std;\n\nbool simplify(const string& x, const string& n) {\n    try {\n        size_t posX = x.find('/');\n        size_t posN = n.find('/');\n        \n        if (posX == string::npos || posN == string::npos) {\n            return false; \n        }\n\n        \n        int a = stoi(x.substr(0, posX));\n        int b = stoi(x.substr(posX + 1));\n        int c = stoi(n.substr(0, posN));\n        int d = stoi(n.substr(posN + 1));\n\n        \n        return (a * c) % (b * d) == 0;\n    } catch (const invalid_argument& e) {\n        \n        return false;\n    } catch (const out_of_range& e) {\n        \n        return false;\n    }\n}\n\n",
+        1.001,
+        0.931,
+        0.945,
+        0.998,
+        0.934,
+        31
+    ]
+}

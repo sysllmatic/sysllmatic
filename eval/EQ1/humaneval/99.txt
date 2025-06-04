@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint closest_integer(string value){\ndouble w;\n    w=atof(value.c_str());\n    return round(w);\n}",
+        4.455,
+        0.127,
+        4526683.2,
+        21092.8,
+        7.87,
+        11
+    ],
+    "1": [
+        "#include <string>\n#include <cmath>\n#include <stdexcept>\n\nint closest_integer(const std::string& value) {\n    try {\n        double w = std::stod(value);\n        return static_cast<int>(std::round(w));\n    } catch (const std::invalid_argument& e) {\n        \n        \n        return 0;\n    } catch (const std::out_of_range& e) {\n        \n        return 0;\n    }\n}",
+        0.997,
+        0.917,
+        0.999,
+        1.004,
+        0.916,
+        17
+    ],
+    "2": [
+        "#include <string>\n#include <cmath>\n#include <regex>\n\n\nbool is_valid_number(const std::string& s) {\n    \n    std::regex num_regex(\"^-?\\\\d+(\\\\.\\\\d+)?$\");\n    return std::regex_match(s, num_regex);\n}\n\nint closest_integer(const std::string& value) {\n    if (is_valid_number(value)) {\n        try {\n            double w = std::stod(value);\n            return static_cast<int>(std::round(w));\n        } catch (const std::out_of_range&) {\n            \n            return 0;\n        }\n    }\n    \n    return 0;\n}",
+        0.973,
+        0.972,
+        0.551,
+        1.0,
+        0.971,
+        24
+    ]
+}

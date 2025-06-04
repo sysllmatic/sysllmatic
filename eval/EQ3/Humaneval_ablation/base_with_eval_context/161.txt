@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring solve(string s){\nint nletter=0;\n    string out=\"\";\n    for (int i=0;i<s.length();i++)\n    {\n        char w=s[i];\n        if (w>=65 and w<=90) w=w+32;\n        else if (w>=97 and w<=122) w=w-32;\n        else nletter+=1;\n        out=out+w;\n    }\n    if (nletter==s.length())\n    {\n        string p(s.rbegin(),s.rend());\n        return p;\n    }\n    else return out;\n}",
+        6.78,
+        0.138,
+        58854434.6,
+        21172.0,
+        7.247,
+        24
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <sstream>\n\nusing namespace std;\n\n\n\nstring solve(const string &s) {\n    int nletter = 0;\n    int len = s.length();\n    string out;\n    out.reserve(len);  \n\n    for (int i = 0; i < len; ++i) {\n        char w = s[i];\n        if (w >= 'A' && w <= 'Z') {\n            w += 32;\n        } else if (w >= 'a' && w <= 'z') {\n            w -= 32;\n        } else {\n            nletter += 1;\n        }\n        out += w;  \n    }\n\n    if (nletter == len) {\n        reverse(out.begin(), out.end());\n    }\n\n    return out;\n}\n\n",
+        1.441,
+        1.058,
+        9.734,
+        1.007,
+        1.057,
+        34
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nstring solve(const string &s) {\n    int nletter = 0;\n    int len = s.length();\n    vector<char> out;\n    out.reserve(len);  \n\n    for (int i = 0; i < len; ++i) {\n        char w = s[i];\n        if (w >= 'A' && w <= 'Z') {\n            w += 32;  \n        } else if (w >= 'a' && w <= 'z') {\n            w -= 32;  \n        } else {\n            nletter += 1;  \n        }\n        out.push_back(w);  \n    }\n\n    if (nletter == len) {\n        reverse(out.begin(), out.end());  \n    }\n\n    return string(out.begin(), out.end());  \n}\n\n",
+        1.219,
+        1.033,
+        6.583,
+        1.004,
+        1.032,
+        32
+    ]
+}

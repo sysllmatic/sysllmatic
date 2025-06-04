@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint specialFilter(vector<int> nums){\nint num=0;\n    for (int i=0;i<nums.size();i++)\n    if (nums[i]>10)\n    {\n        string w=to_string(nums[i]);\n        if (w[0]%2==1 and w[w.length()-1]%2==1) num+=1;\n    }\n    return num;\n}",
+        4.75,
+        0.124,
+        10099031.0,
+        21077.6,
+        8.024,
+        17
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\nusing namespace std;\n\nint specialFilter(vector<int> nums) {\n    int num = 0;\n    for (int i = 0; i < nums.size(); i++) {\n        if (nums[i] > 10) {\n            int number = nums[i];\n            int lastDigit = number % 10;\n            while (number >= 10) {\n                number /= 10;\n            }\n            int firstDigit = number;\n            if (firstDigit % 2 == 1 && lastDigit % 2 == 1) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}",
+        0.996,
+        0.916,
+        1.223,
+        1.005,
+        0.92,
+        21
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\nusing namespace std;\n\nint specialFilter(const vector<int>& nums) {\n    int num = 0;\n    for (int n : nums) {\n        if (n > 10) {\n            string numStr = to_string(n);\n            int firstDigit = numStr[0] - '0';\n            int lastDigit = numStr[numStr.size() - 1] - '0';\n            if ((firstDigit % 2 == 1) && (lastDigit % 2 == 1)) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}",
+        0.986,
+        0.955,
+        0.928,
+        1.006,
+        0.958,
+        18
+    ]
+}

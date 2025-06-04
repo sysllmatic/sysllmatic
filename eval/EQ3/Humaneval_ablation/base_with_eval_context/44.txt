@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring change_base(int x,int base){\nstring out=\"\";\n    while (x>0)\n    {\n        out=to_string(x%base)+out;\n        x=x/base;\n    }\n    return out;\n}",
+        4.722,
+        0.136,
+        4291541.4,
+        21072.0,
+        7.336,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <string>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\nusing namespace std;\n\nstring change_base(int x, int base) {\n    if (x == 0) return \"0\";\n\n    vector<char> out;\n    const char digits[] = \"0123456789ABCDEF\"; \n    while (x > 0) {\n        out.push_back(digits[x % base]);\n        x = x / base;\n    }\n    reverse(out.begin(), out.end());\n    return string(out.begin(), out.end());\n}",
+        1.015,
+        0.985,
+        0.867,
+        0.998,
+        0.986,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <string>\nusing namespace std;\n\nstring change_base(int x, int base) {\n    if (x == 0) return \"0\";\n\n    \n    string out;\n    const char digits[] = \"0123456789ABCDEF\"; \n    while (x > 0) {\n        out.insert(out.begin(), digits[x % base]);\n        x /= base;\n    }\n    return out;\n}",
+        0.97,
+        1.029,
+        0.977,
+        0.995,
+        1.03,
+        17
+    ]
+}

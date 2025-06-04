@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring concatenate(vector<string> strings){\nstring out=\"\";\n    for (int i=0;i<strings.size();i++)\n        out=out+strings[i];\n    return out;\n}",
+        5.552,
+        0.142,
+        70287743.8,
+        21085.6,
+        7.03,
+        13
+    ],
+    "1": [
+        "#include <iostream>\n#include <numeric>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\nstring concatenate(const vector<string>& strings) {\n    return accumulate(strings.begin(), strings.end(), string());\n}\n\n",
+        1.031,
+        1.029,
+        1.047,
+        0.996,
+        1.029,
+        11
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\nstring concatenate(const vector<string>& strings) {\n    size_t total_length = 0;\n    for (const auto& str : strings) {\n        total_length += str.length();\n    }\n    string out;\n    out.reserve(total_length);\n    for (const auto& str : strings) {\n        out.append(str);\n    }\n    return out;\n}\n\n",
+        1.128,
+        1.106,
+        3.338,
+        1.003,
+        1.106,
+        19
+    ]
+}

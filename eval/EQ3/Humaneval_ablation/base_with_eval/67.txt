@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fruit_distribution(string s,int n){\nstring num1=\"\",num2=\"\";\n    int is12;\n    is12=0;\n    for (int i=0;i<s.size();i++)\n        \n        if (s[i]>=48 and s[i]<=57)\n        {\n            if (is12==0) num1=num1+s[i];\n            if (is12==1) num2=num2+s[i];\n        }\n        else\n          if (is12==0 and num1.length()>0) is12=1;\n    return n-atoi(num1.c_str())-atoi(num2.c_str());\n\n}",
+        4.98,
+        0.126,
+        4711025.0,
+        21023.2,
+        7.946,
+        22
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nint fruit_distribution(const std::string &s, int n) {\n    std::string num1 = \"\", num2 = \"\";\n    bool is12 = false;\n\n    for (char ch : s) {\n        if (std::isdigit(ch)) {\n            if (!is12) {\n                num1 += ch;\n            } else {\n                num2 += ch;\n            }\n        } else if (!is12 && !num1.empty()) {\n            is12 = true;\n        }\n    }\n\n    int num1Value = num1.empty() ? 0 : std::stoi(num1);\n    int num2Value = num2.empty() ? 0 : std::stoi(num2);\n    return n - num1Value - num2Value;\n}\n\n",
+        1.035,
+        0.95,
+        0.982,
+        1.002,
+        0.948,
+        24
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nint fruit_distribution(const std::string &s, int n) {\n    int num1Value = 0, num2Value = 0;\n    bool is12 = false;\n\n    for (char ch : s) {\n        if (std::isdigit(ch)) {\n            if (!is12) {\n                num1Value = num1Value * 10 + (ch - '0');\n            } else {\n                num2Value = num2Value * 10 + (ch - '0');\n            }\n        } else if (!is12 && num1Value > 0) {\n            is12 = true;\n        }\n    }\n\n    return n - num1Value - num2Value;\n}\n\n",
+        1.075,
+        0.957,
+        1.012,
+        1.006,
+        0.955,
+        22
+    ]
+}

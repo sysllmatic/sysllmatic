@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool will_it_fly(vector<int> q,int w){\nint sum=0;\n    for (int i=0;i<q.size();i++)\n    {\n        if (q[i]!=q[q.size()-1-i]) return false;\n        sum+=q[i];\n    }\n    if (sum>w) return false;\n    return true;\n}",
+        4.695,
+        0.137,
+        8233663.2,
+        21050.4,
+        7.303,
+        16
+    ],
+    "1": [
+        "#include <vector>\n\nbool will_it_fly(const std::vector<int>& q, int w) {\n    int size = q.size();\n    int sum = 0;\n    \n    \n    for (int i = 0; i < size / 2; ++i) {\n        if (q[i] != q[size - 1 - i]) {\n            return false;\n        }\n    }\n    \n    \n    for (int i = 0; i < size; ++i) {\n        sum += q[i];\n    }\n    \n    \n    return sum <= w;\n}",
+        0.986,
+        1.079,
+        1.137,
+        1.0,
+        1.077,
+        21
+    ],
+    "2": [
+        "#include <vector>\n\nbool will_it_fly(const std::vector<int>& q, int w) {\n    int size = q.size();\n    int sum = 0;\n    \n    for (int i = 0; i < size; ++i) {\n        \n        if (q[i] != q[size - 1 - i]) {\n            return false;\n        }\n        \n        sum += q[i];\n        \n        if (sum > w) {\n            return false;\n        }\n    }\n    return true;\n}",
+        1.032,
+        1.028,
+        1.157,
+        0.996,
+        1.026,
+        20
+    ]
+}

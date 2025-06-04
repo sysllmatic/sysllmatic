@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<float> sort_even(vector<float> l){\nvector<float> out={};\n    vector<float> even={};\n    for (int i=0;i*2<l.size();i++)\n        even.push_back(l[i*2]);\n    sort(even.begin(),even.end());\n    for (int i=0;i<l.size();i++)\n    {\n        if (i%2==0) out.push_back(even[i/2]);\n        if (i%2==1) out.push_back(l[i]);\n    }\n    return out;\n}",
+        4.501,
+        0.131,
+        6726472.2,
+        21025.6,
+        7.615,
+        19
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nvector<float> sort_even(vector<float> l) {\n    \n    size_t size = l.size();\n    vector<float> out(size);\n    vector<float> even(size / 2);\n    \n    \n    size_t evenIndex = 0;\n    for (size_t i = 0; i < size; ++i) {\n        if (i % 2 == 0) {\n            even[evenIndex++] = l[i];\n        }\n    }\n    \n    \n    sort(even.begin(), even.begin() + evenIndex);\n    \n    \n    evenIndex = 0;\n    for (size_t i = 0; i < size; ++i) {\n        if (i % 2 == 0) {\n            out[i] = even[evenIndex++];\n        } else {\n            out[i] = l[i];\n        }\n    }\n    \n    return out;\n}",
+        0.991,
+        1.045,
+        1.109,
+        0.997,
+        1.046,
+        36
+    ],
+    "2": [
+        "#include <algorithm>\n#include <vector>\n\nusing namespace std;\n\nvector<float> sort_even(vector<float> l) {\n    size_t size = l.size();\n    vector<float> even(size / 2);\n    size_t evenIndex = 0;\n    \n    \n    for (size_t i = 0; i < size; i += 2) {\n        even[evenIndex++] = l[i];\n    }\n\n    \n    std::sort(even.begin(), even.begin() + evenIndex);\n\n    \n    evenIndex = 0;\n    for (size_t i = 0; i < size; i += 2) {\n        l[i] = even[evenIndex++];\n    }\n\n    return l;\n}",
+        0.85,
+        1.005,
+        1.039,
+        1.0,
+        1.006,
+        26
+    ]
+}

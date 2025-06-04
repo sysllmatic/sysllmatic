@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring exchange(vector<int> lst1,vector<int> lst2){\nint num=0;\n    for (int i=0;i<lst1.size();i++)\n    if (lst1[i]%2==0) num+=1;\n    for (int i=0;i<lst2.size();i++)\n    if (lst2[i]%2==0) num+=1;\n    if (num>=lst1.size()) return \"YES\";\n    return \"NO\";\n}",
+        4.708,
+        0.135,
+        8202721.8,
+        20957.6,
+        7.416,
+        16
+    ],
+    "1": [
+        "#include<iostream>\n#include<vector>\n#include<string>\nusing namespace std;\n\nstring exchange(const vector<int>& lst1, const vector<int>& lst2) {\n    int num = 0;\n    size_t total_size = lst1.size();\n\n    \n    for (size_t i = 0; i < total_size; ++i) {\n        if (i < lst1.size() && (lst1[i] & 1) == 0) ++num;  \n    }\n    for (size_t i = 0; i < lst2.size(); ++i) {\n        if ((lst2[i] & 1) == 0) ++num;  \n    }\n\n    \n    return (num >= total_size) ? \"YES\" : \"NO\";\n}\n\n\n\n",
+        1.06,
+        1.009,
+        0.947,
+        0.992,
+        1.007,
+        23
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <thread>\n#include <atomic>\nusing namespace std;\n\nvoid count_evens(const vector<int>& lst, atomic<int>& num) {\n    int local_count = 0;\n    for (const int& n : lst) {\n        if ((n & 1) == 0) {\n            ++local_count;\n        }\n    }\n    num += local_count;\n}\n\nstring exchange(const vector<int>& lst1, const vector<int>& lst2) {\n    atomic<int> num(0);\n    \n    \n    thread t1(count_evens, ref(lst1), ref(num));\n    thread t2(count_evens, ref(lst2), ref(num));\n\n    \n    t1.join();\n    t2.join();\n\n    return (num >= static_cast<int>(lst1.size())) ? \"YES\" : \"NO\";\n}\n\n\n\n",
+        1.054,
+        1.017,
+        0.837,
+        0.993,
+        1.015,
+        33
+    ]
+}

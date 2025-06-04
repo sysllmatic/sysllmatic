@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encrypt(string s){\nstring out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+4-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}",
+        11.061,
+        0.155,
+        47517778.2,
+        21135.2,
+        6.457,
+        16
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nstd::string encrypt(const std::string &s) {\n    std::string out(s.size(), ' '); \n    for (size_t i = 0; i < s.size(); ++i) {\n        char w = ((s[i] - 'a' + 4) % 26) + 'a';\n        out[i] = w; \n    }\n    return out;\n}\n\n",
+        0.833,
+        1.299,
+        8.151,
+        1.002,
+        1.296,
+        12
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nstd::string encrypt(const std::string &s) {\n    std::string out(s.size(), ' ');\n    for (size_t i = 0; i < s.size(); ++i) {\n        char w = ((s[i] - 'a' + 4) % 26) + 'a';\n        out[i] = w;\n    }\n    return out;\n}\n\n",
+        0.713,
+        1.279,
+        7.699,
+        1.002,
+        1.276,
+        12
+    ]
+}

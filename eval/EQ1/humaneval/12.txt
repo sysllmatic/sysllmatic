@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring longest(vector<string> strings){\nstring out;\n    for (int i=0;i<strings.size();i++)\n    {\n        if (strings[i].length()>out.length()) out=strings[i];\n    }\n    return out;\n}",
+        11.398,
+        0.262,
+        465989949.0,
+        314380.8,
+        3.821,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\n\nstring longest(const vector<string>& strings) {\n    const string* longest_str = nullptr;\n    for (const auto& str : strings) {\n        if (longest_str == nullptr || str.length() > longest_str->length()) {\n            longest_str = &str;\n        }\n    }\n    return longest_str ? *longest_str : \"\";\n}",
+        1.087,
+        1.042,
+        0.997,
+        1.0,
+        1.04,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\n\nconst string& longest(const vector<string>& strings) {\n    if (strings.empty()) {\n        static const string empty_str = \"\";\n        return empty_str;\n    }\n\n    const string* longest_str = &strings[0];\n    for (const auto& str : strings) {\n        if (str.length() > longest_str->length()) {\n            longest_str = &str;\n        }\n    }\n    return *longest_str;\n}",
+        1.08,
+        1.013,
+        1.003,
+        1.0,
+        1.011,
+        22
+    ]
+}

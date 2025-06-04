@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> separate_paren_groups(string paren_string){\nvector<string> all_parens;\n    string current_paren;\n    int level=0;\n    char chr;\n    int i;\n    for (i=0;i<paren_string.length();i++)\n    {\n        chr=paren_string[i];\n        if (chr=='(')\n        {\n        level+=1;\n        current_paren+=chr;\n        }\n        if (chr==')')\n        {\n            level-=1;\n            current_paren+=chr;\n            if (level==0){\n                all_parens.push_back(current_paren);\n                current_paren=\"\";\n            }\n        }\n    }\n    return all_parens;\n}",
+        4.738,
+        0.143,
+        16895395.4,
+        20876.0,
+        6.974,
+        33
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> separate_paren_groups(const string& paren_string) {\n    vector<string> all_parens;\n    all_parens.reserve(paren_string.length() / 2); \n\n    string current_paren;\n    current_paren.reserve(paren_string.length()); \n\n    int level = 0;\n\n    for (char chr : paren_string) {\n        if (chr == '(') {\n            if (level++ == 0) {\n                current_paren.clear();\n            }\n            current_paren += chr;\n        } else if (chr == ')') {\n            current_paren += chr;\n            if (--level == 0) {\n                all_parens.push_back(std::move(current_paren));\n            }\n        }\n    }\n\n    return all_parens;\n}\n\n",
+        1.013,
+        1.05,
+        1.239,
+        0.993,
+        1.052,
+        31
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream> \nusing namespace std;\n\nvector<string> separate_paren_groups(const string& paren_string) {\n    vector<string> all_parens;\n    all_parens.reserve(paren_string.length() / 2); \n\n    ostringstream current_paren_stream;\n    int level = 0;\n\n    for (char chr : paren_string) {\n        if (chr == '(') {\n            if (level++ == 0) {\n                current_paren_stream.str(\"\"); \n            }\n            current_paren_stream.put(chr); \n        } else if (chr == ')') {\n            current_paren_stream.put(chr);\n            if (--level == 0) {\n                all_parens.push_back(current_paren_stream.str()); \n            }\n        }\n    }\n\n    return all_parens;\n}\n\n",
+        0.994,
+        1.093,
+        0.886,
+        0.995,
+        1.095,
+        30
+    ]
+}

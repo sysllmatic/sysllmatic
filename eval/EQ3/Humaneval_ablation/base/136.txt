@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> largest_smallest_integers(vector<int> lst){\nint maxneg=0,minpos=0;\n    for (int i=0;i<lst.size();i++)\n    {\n        if (lst[i]<0 and (maxneg==0 or lst[i]>maxneg)) maxneg=lst[i];\n        if (lst[i]>0 and (minpos==0 or lst[i]<minpos)) minpos=lst[i];\n    }\n    return {maxneg,minpos};\n}",
+        4.432,
+        0.133,
+        12515245.2,
+        20957.6,
+        7.487,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <limits.h> \nusing namespace std;\n\nvector<int> largest_smallest_integers(const vector<int>& lst) {\n    int maxneg = INT_MIN; \n    int minpos = INT_MAX; \n\n    for (int num : lst) {\n        if (num < 0 && num > maxneg) {\n            maxneg = num;\n        }\n        if (num > 0 && num < minpos) {\n            minpos = num;\n        }\n    }\n\n    \n    maxneg = (maxneg == INT_MIN) ? 0 : maxneg;\n    minpos = (minpos == INT_MAX) ? 0 : minpos;\n\n    return {maxneg, minpos};\n}\n\n",
+        0.957,
+        0.996,
+        1.057,
+        1.0,
+        0.999,
+        25
+    ]
+}

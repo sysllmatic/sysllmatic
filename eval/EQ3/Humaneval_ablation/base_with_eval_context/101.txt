@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> words_string(string s){\nstring current=\"\";\n    vector<string> out={};\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n     if (s[i]==' ' or s[i]==',')\n     {\n        if (current.length()>0)\n        {\n            out.push_back(current);\n            current=\"\";\n        }\n     }\n     else current=current+s[i];\n     return out;\n}",
+        7.757,
+        0.136,
+        53189864.6,
+        21133.6,
+        7.331,
+        23
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\nvector<string> words_string(const string& s) {\n    vector<string> out;\n    istringstream stream(s);\n    string word;\n    while (getline(stream, word, ' ')) {\n        size_t pos = 0;\n        while ((pos = word.find(',')) != string::npos) {\n            string part = word.substr(0, pos);\n            if (!part.empty()) {\n                out.push_back(part);\n            }\n            word.erase(0, pos + 1);\n        }\n        if (!word.empty()) {\n            out.push_back(word);\n        }\n    }\n    return out;\n}\n\n",
+        1.044,
+        0.997,
+        2.075,
+        1.005,
+        0.998,
+        27
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <regex>\n\nusing namespace std;\n\nvector<string> words_string(const string& s) {\n    vector<string> out;\n    std::regex re(\"[ ,]+\"); \n    std::sregex_token_iterator it(s.begin(), s.end(), re, -1);\n    std::sregex_token_iterator reg_end;\n    out.reserve(s.size() / 4); \n    for (; it != reg_end; ++it) {\n        if (!it->str().empty()) {\n            out.push_back(*it);\n        }\n    }\n    return out;\n}\n\n",
+        0.555,
+        0.57,
+        0.143,
+        1.0,
+        0.571,
+        21
+    ]
+}

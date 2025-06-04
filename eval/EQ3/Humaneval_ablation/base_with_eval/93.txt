@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring encode(string message){\nstring vowels=\"aeiouAEIOU\";\n    string out=\"\";\n    for (int i=0;i<message.length();i++)\n    {\n        char w=message[i];\n        if (w>=97 and w<=122){w=w-32;}\n        else if (w>=65 and w<=90) w=w+32;\n        if (find(vowels.begin(),vowels.end(),w)!=vowels.end()) w=w+2;\n        out=out+w;\n    }\n    return out;\n}",
+        4.745,
+        0.122,
+        5349715.6,
+        20986.4,
+        8.159,
+        19
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <set>\n#include <algorithm>\nusing namespace std;\n\nstring encode(string message) {\n    const set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    string out = \"\";\n    for (char w : message) {\n        if (islower(w)) {\n            w = toupper(w);\n        } else if (isupper(w)) {\n            w = tolower(w);\n        }\n        if (vowels.find(w) != vowels.end()) {\n            w += 2;\n        }\n        out += w;\n    }\n    return out;\n}",
+        1.015,
+        0.869,
+        0.979,
+        0.991,
+        0.872,
+        22
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <unordered_set>\n#include <sstream>\n#include <cctype>\nusing namespace std;\n\nstring encode(const string& message) {\n    const unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    ostringstream out;\n    out.str().reserve(message.length()); \n    for (char w : message) {\n        if (islower(w)) {\n            w = toupper(w);\n        } else if (isupper(w)) {\n            w = tolower(w);\n        }\n        if (vowels.find(w) != vowels.end()) {\n            w += 2;\n        }\n        out << w;\n    }\n    return out.str();\n}",
+        1.002,
+        1.007,
+        0.956,
+        0.992,
+        1.011,
+        24
+    ]
+}

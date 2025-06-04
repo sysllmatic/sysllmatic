@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include <vector>\n#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fib4(int n){\nvector<int> f(n + 1, 0);\n    f[0]=0;\n    f[1]=0;\n    f[2]=2;\n    f[3]=0;\n    for (int i=4;i<=n;i++)\n    {\n        f[i]=f[i-1]+f[i-2]+f[i-3]+f[i-4];\n    }\n    return f[n];\n}",
+        8.931,
+        0.128,
+        6289831.2,
+        21086.4,
+        7.791,
+        18
+    ],
+    "1": [
+        "#include <iostream>\n\nint fib4(int n) {\n    if (n < 2) return 0;\n    if (n == 2) return 2;\n    if (n == 3) return 0;\n\n    int f[4] = {0, 0, 2, 0}; \n    for (int i = 4; i <= n; ++i) {\n        int next = f[0] + f[1] + f[2] + f[3];\n        f[0] = f[1];\n        f[1] = f[2];\n        f[2] = f[3];\n        f[3] = next;\n    }\n    return f[3];\n}\n\n\n\n",
+        0.96,
+        1.028,
+        1.204,
+        0.998,
+        1.03,
+        20
+    ]
+}

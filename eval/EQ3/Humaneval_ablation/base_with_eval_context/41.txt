@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint car_race_collision(int n){\nreturn n*n;\n}",
+        5.198,
+        0.127,
+        2552038.0,
+        21062.4,
+        7.86,
+        8
+    ],
+    "1": [
+        "#include<stdio.h>\n\nint car_race_collision(int n) {\n    return n * n;\n}",
+        1.055,
+        0.984,
+        0.883,
+        1.001,
+        0.984,
+        5
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <immintrin.h>\n#include <thread>\n#include <vector>\n\n\nint car_race_collision(int n) {\n    return n * n;\n}\n\n\nvoid car_race_collision_batch(int* input, int* output, int size) {\n    for (int i = 0; i < size; i += 8) {\n        __m256i vec = _mm256_loadu_si256((__m256i*)&input[i]);\n        __m256i result = _mm256_mullo_epi32(vec, vec);\n        _mm256_storeu_si256((__m256i*)&output[i], result);\n    }\n}\n\n\nvoid parallel_car_race_collision(int* input, int* output, int size) {\n    int num_threads = std::thread::hardware_concurrency();\n    std::vector<std::thread> threads;\n    int chunk_size = size / num_threads;\n\n    auto worker = [](int* input, int* output, int start, int end) {\n        for (int i = start; i < end; ++i) {\n            output[i] = input[i] * input[i];\n        }\n    };\n\n    for (int i = 0; i < num_threads; ++i) {\n        int start = i * chunk_size;\n        int end = (i == num_threads - 1) ? size : start + chunk_size;\n        threads.emplace_back(worker, input, output, start, end);\n    }\n\n    for (auto& thread : threads) {\n        thread.join();\n    }\n}\n\n",
+        1.145,
+        0.999,
+        0.626,
+        1.004,
+        1.0,
+        42
+    ]
+}

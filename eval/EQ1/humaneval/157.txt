@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool right_angle_triangle(float a,float b,float c){\nif (abs(a*a+b*b-c*c)<1e-4 or abs(a*a+c*c-b*b)<1e-4 or abs(b*b+c*c-a*a)<1e-4) return true;\n    return false;\n}",
+        5.214,
+        0.121,
+        2632264.6,
+        21055.2,
+        8.249,
+        9
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nbool right_angle_triangle(float a, float b, float c) {\n    float a2 = a * a;\n    float b2 = b * b;\n    float c2 = c * c;\n    \n    \n    return (fabs(a2 + b2 - c2) < 1e-4) || \n           (fabs(a2 + c2 - b2) < 1e-4) || \n           (fabs(b2 + c2 - a2) < 1e-4);\n}",
+        1.055,
+        0.991,
+        0.962,
+        1.0,
+        0.992,
+        14
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\nbool right_angle_triangle(float a, float b, float c) {\n    \n    float max_side = fmax(fmax(a, b), c);\n    float min1, min2;\n    \n    \n    if (max_side == a) {\n        min1 = b;\n        min2 = c;\n    } else if (max_side == b) {\n        min1 = a;\n        min2 = c;\n    } else {\n        min1 = a;\n        min2 = b;\n    }\n\n    \n    return fabs(max_side * max_side - (min1 * min1 + min2 * min2)) < 1e-4;\n}\n\n",
+        1.05,
+        1.014,
+        0.894,
+        1.002,
+        1.015,
+        25
+    ]
+}

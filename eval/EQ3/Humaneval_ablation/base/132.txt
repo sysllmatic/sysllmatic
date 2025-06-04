@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_nested(string str){\nint count=0,maxcount=0;\n    for (int i=0;i<str.length();i++)\n    {\n        if (str[i]=='[') count+=1;\n        if (str[i]==']') count-=1;\n        if (count<0) count=0;\n        if (count>maxcount) maxcount=count;\n        if (count<=maxcount-2) return  true;\n    }\n    return false;\n}",
+        4.593,
+        0.138,
+        4762732.4,
+        21121.6,
+        7.25,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nbool is_nested(const string& str) {\n    int count = 0, maxcount = 0;\n    for (char c : str) {\n        if (c == '[') {\n            count++;\n            if (count > maxcount) maxcount = count;\n        }\n        if (c == ']') {\n            count--;\n            if (count < 0) {\n                \n                count = 0;\n            }\n        }\n        \n        if (count <= maxcount - 2) return true;\n    }\n    return false;\n}\n\n",
+        1.033,
+        1.109,
+        0.934,
+        1.002,
+        1.107,
+        24
+    ]
+}

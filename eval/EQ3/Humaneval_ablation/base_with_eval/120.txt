@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> maximum(vector<int> arr,int k){\nsort(arr.begin(),arr.end());\n    vector<int> out(arr.end()-k,arr.end());\n    return out;\n}",
+        4.803,
+        0.136,
+        6999581.0,
+        21176.0,
+        7.351,
+        11
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> maximum(vector<int> arr, int k) {\n    \n    \n    nth_element(arr.begin(), arr.end() - k, arr.end());\n    \n    \n    vector<int> out(arr.end() - k, arr.end());\n    \n    \n    sort(out.begin(), out.end());\n    \n    return out;\n}\n\n",
+        1.04,
+        1.095,
+        1.005,
+        1.007,
+        1.094,
+        19
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> maximum(vector<int> arr, int k) {\n    \n    partial_sort(arr.begin(), arr.begin() + k, arr.end(), greater<int>());\n    \n    vector<int> out(arr.begin(), arr.begin() + k);\n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        1.003,
+        1.052,
+        0.684,
+        1.007,
+        1.051,
+        14
+    ]
+}

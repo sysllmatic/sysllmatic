@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique(vector<int> l){\nvector<int> out={};\n    for (int i=0;i<l.size();i++)\n        if (find(out.begin(),out.end(),l[i])==out.end())\n            out.push_back(l[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        65.14,
+        1.244,
+        5117566574.6,
+        21235.2,
+        0.804,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <set>\n#include <algorithm>\nusing namespace std;\n\nvector<int> unique(vector<int> l){\n    set<int> unique_set(l.begin(), l.end()); \n    vector<int> out(unique_set.begin(), unique_set.end()); \n    return out; \n}\n\n\n",
+        11.793,
+        8.34,
+        59.513,
+        1.01,
+        8.329,
+        13
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <unordered_set>\n#include <algorithm>\nusing namespace std;\n\nvector<int> unique(vector<int> l) {\n    unordered_set<int> unique_set(l.begin(), l.end()); \n    vector<int> out(unique_set.begin(), unique_set.end()); \n    sort(out.begin(), out.end()); \n    return out; \n}\n\n\n",
+        11.459,
+        8.642,
+        66.687,
+        1.008,
+        8.631,
+        14
+    ]
+}

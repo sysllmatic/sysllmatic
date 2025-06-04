@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fruit_distribution(string s,int n){\nstring num1=\"\",num2=\"\";\n    int is12;\n    is12=0;\n    for (int i=0;i<s.size();i++)\n        \n        if (s[i]>=48 and s[i]<=57)\n        {\n            if (is12==0) num1=num1+s[i];\n            if (is12==1) num2=num2+s[i];\n        }\n        else\n          if (is12==0 and num1.length()>0) is12=1;\n    return n-atoi(num1.c_str())-atoi(num2.c_str());\n\n}",
+        4.492,
+        0.137,
+        4295998.6,
+        21120.8,
+        7.312,
+        22
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nint fruit_distribution(const std::string& s, int n) {\n    std::string num1, num2;\n    std::string* currentNum = &num1;\n    \n    for (char c : s) {\n        if (std::isdigit(c)) {\n            currentNum->push_back(c);\n        } else if (!num1.empty() && currentNum == &num1) {\n            currentNum = &num2;\n        }\n    }\n    \n    int firstNum = std::stoi(num1);\n    int secondNum = std::stoi(num2);\n    \n    return n - firstNum - secondNum;\n}\n\n",
+        0.958,
+        1.025,
+        0.902,
+        0.999,
+        1.022,
+        21
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nint fruit_distribution(const std::string& s, int n) {\n    int num1 = 0, num2 = 0;\n    bool foundFirst = false;\n    bool capturingFirst = true;\n    \n    for (char c : s) {\n        if (std::isdigit(c)) {\n            if (capturingFirst) {\n                num1 = num1 * 10 + (c - '0');\n                foundFirst = true;\n            } else {\n                num2 = num2 * 10 + (c - '0');\n            }\n        } else if (foundFirst) {\n            capturingFirst = false;\n            if (num2 > 0) break; \n        }\n    }\n    return n - num1 - num2;\n}\n\n",
+        0.953,
+        1.032,
+        0.95,
+        1.005,
+        1.029,
+        24
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring string_sequence(int n){\nstring out=\"0\";\n    for (int i=1;i<=n;i++)\n    out=out+\" \"+to_string(i);\n    return out;\n}",
+        7.928,
+        0.201,
+        235374911.6,
+        21006.4,
+        4.981,
+        12
+    ],
+    "1": [
+        "#include<iostream>  \n#include<sstream>   \n#include<string>\nusing namespace std;\n\nstring string_sequence(int n) {\n    ostringstream out;  \n    out << \"0\";        \n    for (int i = 1; i <= n; i++) {\n        out << \" \" << i;  \n    }\n    return out.str();      \n}\n\n\n",
+        1.673,
+        1.533,
+        19.376,
+        0.997,
+        1.53,
+        15
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n#include <numeric>\nusing namespace std;\n\n\ninline string int_to_string(int num) {\n    char buffer[12];  \n    snprintf(buffer, sizeof(buffer), \"%d\", num);\n    return string(buffer);\n}\n\nstring string_sequence(int n) {\n    vector<string> numbers(n + 1);\n    for (int i = 0; i <= n; ++i) {\n        numbers[i] = int_to_string(i);\n    }\n    \n    size_t total_length = 1 + n * 2; \n    for (const auto& num : numbers) {\n        total_length += num.length();\n    }\n\n    string result;\n    result.reserve(total_length);\n    \n    string space = \" \";\n    result = accumulate(numbers.begin(), numbers.end(), string(\"\"),\n                        [&space](const string& a, const string& b) -> string {\n                            return a.empty() ? b : a + space + b;\n                        });\n    return result;\n}\n\n\n",
+        1.0,
+        1.052,
+        1.084,
+        1.0,
+        1.05,
+        36
+    ]
+}

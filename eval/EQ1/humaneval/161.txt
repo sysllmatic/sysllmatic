@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring solve(string s){\nint nletter=0;\n    string out=\"\";\n    for (int i=0;i<s.length();i++)\n    {\n        char w=s[i];\n        if (w>=65 and w<=90) w=w+32;\n        else if (w>=97 and w<=122) w=w-32;\n        else nletter+=1;\n        out=out+w;\n    }\n    if (nletter==s.length())\n    {\n        string p(s.rbegin(),s.rend());\n        return p;\n    }\n    else return out;\n}",
+        5.393,
+        0.147,
+        58530913.2,
+        21190.4,
+        6.787,
+        24
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nstring solve(const string &s) {\n    int nletter = 0;\n    string out;\n    out.reserve(s.size()); \n\n    for (char w : s) {\n        if (w >= 'A' && w <= 'Z') {\n            w += 32; \n        } else if (w >= 'a' && w <= 'z') {\n            w -= 32; \n        } else {\n            nletter += 1;\n        }\n        out += w;\n    }\n\n    if (nletter == s.size()) {\n        reverse(out.begin(), out.end()); \n    }\n\n    return out;\n}\n\n",
+        1.215,
+        1.101,
+        8.334,
+        1.011,
+        1.102,
+        29
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nstring solve(const string &s) {\n    int nletter = 0;\n    vector<char> out;\n    out.reserve(s.size());\n\n    for (char w : s) {\n        if (w >= 'A' && w <= 'Z') {\n            out.push_back(w + 32); \n        } else if (w >= 'a' && w <= 'z') {\n            out.push_back(w - 32); \n        } else {\n            nletter++;\n            out.push_back(w);\n        }\n    }\n\n    if (nletter == s.size()) {\n        reverse(out.begin(), out.end());\n    }\n\n    return string(out.begin(), out.end());\n}\n\n",
+        1.128,
+        1.174,
+        5.619,
+        1.001,
+        1.175,
+        30
+    ]
+}

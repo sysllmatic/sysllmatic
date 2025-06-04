@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool triples_sum_to_zero(vector<int> l){\nfor (int i=0;i<l.size();i++)\n    for (int j=i+1;j<l.size();j++)\n    for (int k=j+1;k<l.size();k++)\n        if (l[i]+l[j]+l[k]==0) return true;\n    return false;\n}",
+        15.906,
+        0.343,
+        900434960.2,
+        21046.4,
+        2.918,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nbool triples_sum_to_zero(vector<int> l){\n    sort(l.begin(), l.end());  \n    int n = l.size();          \n    for (int i = 0; i < n - 2; i++) {\n        int left = i + 1;\n        int right = n - 1;\n        while (left < right) {\n            int sum = l[i] + l[left] + l[right];\n            if (sum == 0) {\n                return true;\n            } else if (sum < 0) {\n                left++;\n            } else {\n                right--;\n            }\n        }\n    }\n    return false;\n}",
+        3.199,
+        2.615,
+        48.421,
+        0.998,
+        2.61,
+        26
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nbool triples_sum_to_zero(vector<int> l) {\n    if (l.size() < 3) return false; \n    sort(l.begin(), l.end());  \n    int n = l.size();\n    for (int i = 0; i < n - 2; i++) {\n        if (i > 0 && l[i] == l[i - 1]) continue; \n        int left = i + 1;\n        int right = n - 1;\n        while (left < right) {\n            int sum = l[i] + l[left] + l[right];\n            if (sum == 0) {\n                return true;\n            } else if (sum < 0) {\n                left++;\n            } else {\n                right--;\n            }\n        }\n    }\n    return false;\n}",
+        3.382,
+        2.459,
+        47.593,
+        0.997,
+        2.454,
+        26
+    ]
+}

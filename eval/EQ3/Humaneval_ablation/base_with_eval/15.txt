@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring string_sequence(int n){\nstring out=\"0\";\n    for (int i=1;i<=n;i++)\n    out=out+\" \"+to_string(i);\n    return out;\n}",
+        7.904,
+        0.181,
+        236142186.8,
+        21191.2,
+        5.535,
+        12
+    ],
+    "1": [
+        "#include <iostream>  \n#include <sstream>   \n\nstd::string string_sequence(int n) {\n    std::ostringstream out;\n    out << \"0\";  \n    for (int i = 1; i <= n; ++i) {\n        out << \" \" << i;  \n    }\n    return out.str();  \n}\n\n\n\n\n",
+        1.703,
+        1.367,
+        20.363,
+        1.006,
+        1.362,
+        15
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <numeric>\n\nstd::string string_sequence(int n) {\n    std::vector<std::string> numbers(n + 1);\n    numbers[0] = \"0\";\n    for (int i = 1; i <= n; ++i) {\n        numbers[i] = std::to_string(i);\n    }\n    return std::accumulate(numbers.begin(), numbers.end(), std::string(),\n                           [](const std::string& a, const std::string& b) {\n                               return a.empty() ? b : a + \" \" + b;\n                           });\n}\n\n\n\n\n",
+        1.07,
+        1.065,
+        1.131,
+        1.013,
+        1.062,
+        20
+    ]
+}

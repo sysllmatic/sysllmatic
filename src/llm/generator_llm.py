@@ -52,7 +52,7 @@ def llm_optimize(code, llm_assistant, evaluator_feedback=None, ast=None, flame_r
     logger.info(response)
     
     try:
-        if llm_assistant.is_genai_studio() or llm_assistant.is_openai_model():
+        if llm_assistant.is_openai_model():
             content_dict = json.loads(response["content"])
             final_code = content_dict["final_code"]
         else:
@@ -85,7 +85,7 @@ def handle_error(error_message, llm_assistant):
     response = llm_assistant.get_last_msg()
 
     try:
-        if llm_assistant.is_genai_studio() or llm_assistant.is_openai_model():
+        if llm_assistant.is_openai_model():
             content_dict = json.loads(response["content"])
             final_code = content_dict["final_code"]
         else:

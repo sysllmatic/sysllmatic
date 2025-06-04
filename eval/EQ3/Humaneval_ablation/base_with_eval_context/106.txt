@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> f(int n){\nint sum=0,prod=1;\n    vector<int> out={};\n    for (int i=1;i<=n;i++)\n    {\n        sum+=i;\n        prod*=i;\n        if (i%2==0) out.push_back(prod);\n        else out.push_back(sum);\n    } \n    return out;\n}",
+        7.765,
+        0.139,
+        5136056.0,
+        21009.6,
+        7.194,
+        18
+    ],
+    "1": [
+        "#include <vector>\nusing namespace std;\n\nvector<int> f(int n) {\n    int sum = 0, prod = 1;\n    vector<int> out;\n    out.reserve(n);  \n    \n    for (int i = 1; i <= n; i++) {\n        sum += i;\n        prod *= i;\n        if (i % 2 == 0) {\n            out.push_back(prod);\n        } else {\n            out.push_back(sum);\n        }\n    }\n    return out;\n}",
+        1.591,
+        1.109,
+        1.059,
+        0.995,
+        1.107,
+        19
+    ],
+    "2": [
+        "#include <vector>\nusing namespace std;\n\nvector<int> f(int n) {\n    long long sum = 0, prod = 1;\n    vector<int> out;\n    out.reserve(n);  \n    \n    for (int i = 1; i <= n; i++) {\n        sum += i;\n        prod *= i;\n        if (i % 2 == 0) {\n            out.push_back(static_cast<int>(prod));\n        } else {\n            out.push_back(static_cast<int>(sum));\n        }\n    }\n    return out;\n}\n\n",
+        1.643,
+        1.127,
+        1.004,
+        0.991,
+        1.125,
+        20
+    ]
+}

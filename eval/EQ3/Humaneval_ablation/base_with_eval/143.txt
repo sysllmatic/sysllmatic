@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring words_in_sentence(string sentence){\nstring out=\"\";\n    string current=\"\";\n    sentence=sentence+' ';\n\n    for (int i=0;i<sentence.size();i++)\n    if (sentence[i]!=' ') current=current+sentence[i];\n    else\n    {\n        bool isp=true;\n        int l=current.length();\n        if (l<2) isp=false;\n        for (int j=2;j*j<=l;j++)\n            if (l%j==0) isp=false;\n        if (isp) out=out+current+' ';\n        current=\"\";        \n    }\n    if (out.length()>0)\n        out.pop_back();\n    return out;\n}",
+        4.527,
+        0.129,
+        4678066.0,
+        21042.4,
+        7.752,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <sstream>  \n#include <cmath>    \n\nusing namespace std;\n\nbool is_prime(int n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (int i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0) return false;\n    }\n    return true;\n}\n\nstring words_in_sentence(string sentence) {\n    stringstream out;\n    string current;\n    sentence += ' ';  \n\n    for (char ch : sentence) {\n        if (ch != ' ') {\n            current += ch;\n        } else {\n            if (is_prime(current.length())) {\n                out << current << ' ';\n            }\n            current.clear();\n        }\n    }\n\n    string result = out.str();\n    if (!result.empty()) {\n        result.pop_back();  \n    }\n    return result;\n}",
+        0.935,
+        1.06,
+        1.041,
+        1.0,
+        1.058,
+        39
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n#include <cmath>\n#include <sstream>\n\nusing namespace std;\n\nvector<bool> sieve_of_eratosthenes(int max_length) {\n    vector<bool> is_prime(max_length + 1, true);\n    is_prime[0] = is_prime[1] = false;\n    for (int i = 2; i * i <= max_length; ++i) {\n        if (is_prime[i]) {\n            for (int j = i * i; j <= max_length; j += i) {\n                is_prime[j] = false;\n            }\n        }\n    }\n    return is_prime;\n}\n\nstring join(const vector<string>& words, const string& delimiter) {\n    if (words.empty()) return \"\";\n    stringstream result;\n    auto it = words.begin();\n    result << *it;\n    ++it;\n    for (; it != words.end(); ++it) {\n        result << delimiter << *it;\n    }\n    return result.str();\n}\n\nstring words_in_sentence(string sentence) {\n    const int max_word_length = 100; \n    vector<bool> prime_cache = sieve_of_eratosthenes(max_word_length);\n    vector<string> prime_words;\n    prime_words.reserve(sentence.size() / 2); \n\n    string current;\n    sentence += ' ';  \n\n    for (char ch : sentence) {\n        if (ch != ' ') {\n            current += ch;\n        } else {\n            if (prime_cache[current.length()]) {\n                prime_words.push_back(current);\n            }\n            current.clear();\n        }\n    }\n\n    return join(prime_words, \" \");\n}",
+        0.901,
+        1.0,
+        0.979,
+        1.002,
+        0.999,
+        55
+    ]
+}

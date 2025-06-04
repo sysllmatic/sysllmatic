@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique_digits(vector<int> x){\nvector<int> out={};\n    for (int i=0;i<x.size();i++)\n        {\n            int num=x[i];\n            bool u=true;\n            if (num==0) u=false;\n            while (num>0 and u)\n            {\n                if (num%2==0) u=false;\n                num=num/10;\n            }\n            if (u) out.push_back(x[i]);\n        }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        6.952,
+        0.122,
+        5275744.4,
+        21056.0,
+        8.202,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> unique_digits(vector<int> x) {\n    vector<int> out;\n    out.reserve(x.size()); \n    \n    for (int num : x) {\n        bool has_only_odd_digits = true;\n        int original_num = num;\n\n        while (num > 0) {\n            if ((num % 10) % 2 == 0) { \n                has_only_odd_digits = false;\n                break;\n            }\n            num /= 10;\n        }\n\n        if (has_only_odd_digits && original_num != 0) {\n            out.push_back(original_num);\n        }\n    }\n\n    sort(out.begin(), out.end()); \n    return out;\n}",
+        0.912,
+        0.889,
+        1.028,
+        1.001,
+        0.887,
+        29
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <omp.h> \nusing namespace std;\n\nvector<int> unique_digits(vector<int> x) {\n    vector<int> out;\n    out.reserve(x.size());\n\n    #pragma omp parallel\n    {\n        vector<int> local_out;\n\n        #pragma omp for nowait\n        for (int i = 0; i < x.size(); ++i) {\n            int num = x[i];\n            bool has_only_odd_digits = true;\n\n            while (num > 0) {\n                if ((num % 10) % 2 == 0) {\n                    has_only_odd_digits = false;\n                    break;\n                }\n                num /= 10;\n            }\n\n            if (has_only_odd_digits && x[i] != 0) {\n                local_out.push_back(x[i]);\n            }\n        }\n\n        #pragma omp critical\n        out.insert(out.end(), local_out.begin(), local_out.end());\n    }\n\n    sort(out.begin(), out.end());\n    return out;\n}",
+        0.931,
+        0.925,
+        0.971,
+        1.004,
+        0.924,
+        39
+    ]
+}

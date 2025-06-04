@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\nstring n=\"\";\n    for (int i=0;i<s.length();i++)\n    if (find(c.begin(),c.end(),s[i])==c.end())\n        n=n+s[i]; \n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"};\n}",
+        15.923,
+        0.345,
+        898752032.0,
+        20939.2,
+        2.893,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <unordered_set>\n#include <sstream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> reverse_delete(string s, string c) {\n    unordered_set<char> charSet(c.begin(), c.end());\n    ostringstream oss;\n\n    for (char ch : s) {\n        if (charSet.find(ch) == charSet.end()) {\n            oss << ch;\n        }\n    }\n\n    string n = oss.str();\n    if (n.empty()) return {n, \"True\"};\n\n    \n    bool isPalindrome = true;\n    int len = n.size();\n    for (int i = 0; i < len / 2; ++i) {\n        if (n[i] != n[len - 1 - i]) {\n            isPalindrome = false;\n            break;\n        }\n    }\n    return {n, isPalindrome ? \"True\" : \"False\"};\n}",
+        3.177,
+        2.232,
+        17.81,
+        0.995,
+        2.234,
+        31
+    ],
+    "2": [
+        "#include <iostream>\n#include <bitset>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> reverse_delete(string s, string c) {\n    bitset<256> charSet;\n    for (char ch : c) {\n        charSet.set(static_cast<unsigned char>(ch));\n    }\n    \n    string n;\n    n.reserve(s.size()); \n    for (char ch : s) {\n        if (!charSet.test(static_cast<unsigned char>(ch))) {\n            n.push_back(ch);\n        }\n    }\n\n    if (n.empty()) return {n, \"True\"};\n    \n    \n    bool isPalindrome = true;\n    int len = n.size();\n    for (int i = 0; i < len / 2; ++i) {\n        if (n[i] != n[len - 1 - i]) {\n            isPalindrome = false;\n            break;\n        }\n    }\n    return {n, isPalindrome ? \"True\" : \"False\"};\n}",
+        3.397,
+        2.53,
+        41.526,
+        0.996,
+        2.531,
+        33
+    ]
+}

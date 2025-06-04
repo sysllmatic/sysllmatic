@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique_digits(vector<int> x){\nvector<int> out={};\n    for (int i=0;i<x.size();i++)\n        {\n            int num=x[i];\n            bool u=true;\n            if (num==0) u=false;\n            while (num>0 and u)\n            {\n                if (num%2==0) u=false;\n                num=num/10;\n            }\n            if (u) out.push_back(x[i]);\n        }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        4.537,
+        0.129,
+        5405043.6,
+        21049.6,
+        7.759,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> unique_digits(vector<int> x) {\n    vector<int> out;\n    for (int i = 0; i < x.size(); i++) {\n        int num = x[i];\n        if (num == 0) continue; \n        bool allOdd = true;\n        while (num > 0) {\n            if ((num % 10) % 2 == 0) { \n                allOdd = false;\n                break;\n            }\n            num /= 10;\n        }\n        if (allOdd) out.push_back(x[i]);\n    }\n    sort(out.begin(), out.end());\n    return out;\n}",
+        0.995,
+        0.889,
+        1.041,
+        0.992,
+        0.887,
+        24
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> unique_digits(vector<int> x) { \n    auto is_all_odd = [](int num) {\n        if (num == 0) return false; \n        while (num > 0) {\n            if ((num % 10) % 2 == 0) return false; \n            num /= 10;\n        }\n        return true;\n    };\n\n    \n    x.erase(remove_if(x.begin(), x.end(), [&](int num) {\n        return !is_all_odd(num);\n    }), x.end());\n\n    \n    sort(x.begin(), x.end());\n\n    return x;\n}\n\n\n",
+        0.97,
+        0.993,
+        1.035,
+        0.993,
+        0.991,
+        28
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_third(vector<int> l){\nvector<int> third={};\n    int i;\n    for (i=0;i*3<l.size();i++)\n        third.push_back(l[i*3]);\n    \n    sort(third.begin(),third.end());\n\n    vector<int> out={};\n    for (i=0;i<l.size();i++)\n    {\n        if (i%3==0) {out.push_back(third[i/3]);}\n        else out.push_back(l[i]);\n    }\n    return out;\n\n}",
+        4.974,
+        0.141,
+        20902503.8,
+        21000.0,
+        7.067,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> sort_third(vector<int> l) {\n    int n = l.size();\n    vector<int> third;\n    \n    \n    for (int i = 0; i < n; i += 3) {\n        third.push_back(l[i]);\n    }\n    \n    \n    sort(third.begin(), third.end());\n\n    \n    int j = 0;\n    for (int i = 0; i < n; i += 3) {\n        l[i] = third[j++];\n    }\n\n    return l;\n}\n\n",
+        1.056,
+        1.022,
+        1.132,
+        0.996,
+        1.025,
+        27
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> sort_third(vector<int> l) {\n    int n = l.size();\n    vector<int> third;\n    third.reserve((n + 2) / 3);  \n\n    \n    for (int i = 0; i < n; i += 3) {\n        third.push_back(l[i]);\n    }\n\n    \n    sort(third.begin(), third.end());\n\n    \n    int j = 0;\n    for (int i = 0; i < n; i += 3) {\n        l[i] = third[j++];\n    }\n\n    return l;\n}\n\n",
+        1.046,
+        1.029,
+        1.146,
+        0.998,
+        1.031,
+        28
+    ]
+}

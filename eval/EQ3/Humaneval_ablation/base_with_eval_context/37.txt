@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<float> sort_even(vector<float> l){\nvector<float> out={};\n    vector<float> even={};\n    for (int i=0;i*2<l.size();i++)\n        even.push_back(l[i*2]);\n    sort(even.begin(),even.end());\n    for (int i=0;i<l.size();i++)\n    {\n        if (i%2==0) out.push_back(even[i/2]);\n        if (i%2==1) out.push_back(l[i]);\n    }\n    return out;\n}",
+        4.82,
+        0.132,
+        6357920.2,
+        21086.4,
+        7.554,
+        19
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nvector<float> sort_even(vector<float> l) {\n    vector<float> even;\n    even.reserve(l.size() / 2 + 1); \n\n    \n    for (size_t i = 0; i < l.size(); i += 2) {\n        even.push_back(l[i]);\n    }\n\n    \n    sort(even.begin(), even.end());\n\n    \n    vector<float> out;\n    out.reserve(l.size()); \n\n    size_t evenIndex = 0;\n    for (size_t i = 0; i < l.size(); ++i) {\n        if (i % 2 == 0) {\n            out.push_back(even[evenIndex++]);\n        } else {\n            out.push_back(l[i]);\n        }\n    }\n\n    return out;\n}\n\n",
+        0.996,
+        1.005,
+        0.981,
+        0.997,
+        1.006,
+        35
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<float> sort_even(vector<float> l) { \n    size_t n = l.size();\n    vector<float> even;\n    even.reserve(n / 2 + 1);\n\n    \n    for (size_t i = 0; i < n; i += 2) {\n        even.push_back(l[i]);\n    }\n\n    \n    sort(even.begin(), even.end());\n\n    \n    size_t evenIndex = 0;\n    for (size_t i = 0; i < n; i += 2) {\n        l[i] = even[evenIndex++];\n    }\n    \n\n    return l;\n}\n\n",
+        1.094,
+        1.05,
+        1.024,
+        0.999,
+        1.052,
+        28
+    ]
+}

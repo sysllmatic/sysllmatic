@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fizz_buzz(int n){\nint count=0;\n    for (int i=0;i<n;i++)\n    if (i%11==0 or i%13==0)\n    {\n        int q=i;\n        while (q>0)\n        {\n            if (q%10==7) count+=1;\n            q=q/10;\n        }\n    } \n    return count;\n}",
+        4.489,
+        0.13,
+        3775884.4,
+        21027.2,
+        7.697,
+        19
+    ],
+    "1": [
+        "#include<stdio.h>\n\nint fizz_buzz(int n){\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        \n        if (i % 11 == 0 || i % 13 == 0) {\n            \n            char buffer[12]; \n            snprintf(buffer, sizeof(buffer), \"%d\", i);\n            for (char* p = buffer; *p; ++p) {\n                if (*p == '7') {\n                    count++;\n                }\n            }\n        }\n    }\n    return count;\n}\n\n",
+        1.026,
+        1.007,
+        0.657,
+        0.999,
+        1.005,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <omp.h>\n\nint fizz_buzz(int n) {\n    int count = 0;\n    \n    #pragma omp parallel for reduction(+:count)\n    for (int i = 0; i < n; i++) {\n        if (i % 11 == 0 || i % 13 == 0) {\n            int q = i;\n            while (q > 0) {\n                if (q % 10 == 7) {\n                    count++;\n                }\n                q /= 10;\n            }\n        }\n    }\n    return count;\n}\n\n",
+        0.853,
+        0.943,
+        0.006,
+        0.995,
+        0.941,
+        21
+    ]
+}

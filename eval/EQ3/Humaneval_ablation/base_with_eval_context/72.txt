@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool will_it_fly(vector<int> q,int w){\nint sum=0;\n    for (int i=0;i<q.size();i++)\n    {\n        if (q[i]!=q[q.size()-1-i]) return false;\n        sum+=q[i];\n    }\n    if (sum>w) return false;\n    return true;\n}",
+        4.522,
+        0.138,
+        8043577.2,
+        21062.4,
+        7.257,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\nbool will_it_fly(vector<int> q, int w) {\n    int sum = 0;\n    int n = q.size(); \n    for (int i = 0; i < n; i++) {\n        if (q[i] != q[n - 1 - i]) return false;\n        sum += q[i];\n    }\n    if (sum > w) return false;\n    return true;\n}",
+        0.955,
+        0.966,
+        0.994,
+        1.0,
+        0.964,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <omp.h> \n\nbool will_it_fly(std::vector<int> q, int w) { \n    int n = q.size();\n    int sum = 0;\n    bool is_palindrome = true;\n    \n    \n    #pragma omp parallel for reduction(+:sum) reduction(&&:is_palindrome)\n    for (int i = 0; i < n / 2; i++) {\n        if (q[i] != q[n - 1 - i]) {\n            is_palindrome = false;\n        }\n        \n        sum += q[i] + q[n - 1 - i];\n    }\n\n    \n    if (n % 2 == 1) {\n        sum += q[n / 2];\n    }\n\n    return is_palindrome && sum <= w;\n}\n\n",
+        0.968,
+        1.014,
+        0.078,
+        1.003,
+        1.011,
+        27
+    ]
+}

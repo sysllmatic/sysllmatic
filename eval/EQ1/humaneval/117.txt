@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> select_words(string s,int n){\nstring vowels=\"aeiouAEIOU\";\n    string current=\"\";\n    vector<string> out={};\n    int numc=0;\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n        if (s[i]==' ')\n        {\n            if (numc==n) out.push_back(current);\n            current=\"\";\n            numc=0;\n        }\n        else\n        {\n            current=current+s[i];\n            if ((s[i]>=65 and s[i]<=90) or (s[i]>=97 and s[i]<=122))\n            if (find(vowels.begin(),vowels.end(),s[i])==vowels.end())\n                numc+=1;\n        }\n    return out;\n}",
+        5.601,
+        0.136,
+        75541907.2,
+        21097.6,
+        7.325,
+        29
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <set>\n#include <string>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<string> select_words(string s, int n) {\n    set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    string current = \"\";\n    vector<string> out;\n    int numc = 0;\n    \n    for (int i = 0; i <= s.length(); ++i) { \n        if (i == s.length() || s[i] == ' ') { \n            if (numc == n) {\n                out.push_back(current);\n            }\n            current.clear(); \n            numc = 0;\n        } else {\n            current += s[i];\n            \n            if (((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z')) && vowels.find(s[i]) == vowels.end()) {\n                numc += 1;\n            }\n        }\n    }\n    return out;\n}",
+        1.186,
+        0.941,
+        3.33,
+        1.001,
+        0.943,
+        31
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\nusing namespace std;\n\nvector<string> select_words(string s, int n) {\n    \n    bool isVowel[128] = {0};\n    isVowel['a'] = isVowel['e'] = isVowel['i'] = isVowel['o'] = isVowel['u'] =\n    isVowel['A'] = isVowel['E'] = isVowel['I'] = isVowel['O'] = isVowel['U'] = true;\n\n    string current;\n    vector<string> out;\n    out.reserve(10);  \n    int numc = 0;\n    size_t len = s.length();\n\n    for (size_t i = 0; i <= len; ++i) {\n        \n        if (i == len || s[i] == ' ') {\n            if (numc == n) {\n                out.push_back(current);\n            }\n            current.clear();  \n            numc = 0;\n        } else {\n            current += s[i];  \n            \n            if (((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z')) && !isVowel[s[i]]) {\n                numc += 1;\n            }\n        }\n    }\n    return out;\n}",
+        1.228,
+        1.023,
+        9.483,
+        0.997,
+        1.025,
+        35
+    ]
+}

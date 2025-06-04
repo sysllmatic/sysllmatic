@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring change_base(int x,int base){\nstring out=\"\";\n    while (x>0)\n    {\n        out=to_string(x%base)+out;\n        x=x/base;\n    }\n    return out;\n}",
+        4.597,
+        0.126,
+        4649636.6,
+        20991.2,
+        7.92,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring change_base(int x, int base) {\n    if (x == 0) return \"0\"; \n    string out;\n    char char_map[] = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\"; \n    while (x > 0) {\n        out.push_back(char_map[x % base]);\n        x /= base;\n    }\n    reverse(out.begin(), out.end()); \n    return out;\n}\n\n",
+        0.997,
+        1.012,
+        1.024,
+        0.994,
+        1.012,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nstring change_base(int x, int base) {\n    if (x == 0) return \"0\"; \n    char buffer[33]; \n    int index = 32; \n    buffer[index--] = '\\0'; \n    char char_map[] = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\n    while (x > 0) {\n        buffer[index--] = char_map[x % base];\n        x /= base;\n    }\n    return string(&buffer[index + 1]); \n}\n\n\n\n",
+        0.954,
+        0.975,
+        1.013,
+        0.998,
+        0.976,
+        19
+    ]
+}

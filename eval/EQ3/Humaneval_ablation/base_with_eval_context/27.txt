@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring filp_case(string str){\nstring out=\"\";\n    for (int i=0;i<str.length();i++)\n    {\n        char w=str[i];\n        if (w>=97 and w<=122) {w-=32;}\n        else\n            if (w>=65 and w<=90){ w+=32;}\n        out=out+w;\n    }\n    return out;\n}",
+        5.353,
+        0.14,
+        53286763.4,
+        21081.6,
+        7.116,
+        18
+    ],
+    "1": [
+        "#include <string>\n\nstd::string filp_case(std::string str) {\n    for (std::size_t i = 0; i < str.length(); ++i) {\n        char& w = str[i]; \n        if (w >= 'a' && w <= 'z') {\n            w -= 32;\n        } else if (w >= 'A' && w <= 'Z') {\n            w += 32;\n        }\n    }\n    return str;\n}",
+        1.21,
+        1.094,
+        9.486,
+        1.001,
+        1.097,
+        13
+    ],
+    "2": [
+        "#include <string>\n#ifdef __AVX2__\n#include <immintrin.h>\n#endif\n\nstd::string filp_case(std::string str) {\n    size_t length = str.length();\n    size_t i = 0;\n\n#ifdef __AVX2__\n    const __m256i lower_bound = _mm256_set1_epi8('a' - 1);\n    const __m256i upper_bound = _mm256_set1_epi8('z' + 1);\n    const __m256i capital_a = _mm256_set1_epi8('A' - 1);\n    const __m256i capital_z = _mm256_set1_epi8('Z' + 1);\n    const __m256i toggle_mask = _mm256_set1_epi8(0x20);\n\n    for (; i + 31 < length; i += 32) {\n        __m256i chars = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&str[i]));\n\n        __m256i is_lower = _mm256_and_si256(_mm256_cmpgt_epi8(chars, lower_bound), _mm256_cmpgt_epi8(upper_bound, chars));\n        __m256i is_upper = _mm256_and_si256(_mm256_cmpgt_epi8(chars, capital_a), _mm256_cmpgt_epi8(capital_z, chars));\n\n        __m256i toggle_case = _mm256_and_si256(_mm256_or_si256(is_lower, is_upper), toggle_mask);\n        chars = _mm256_xor_si256(chars, toggle_case);\n\n        _mm256_storeu_si256(reinterpret_cast<__m256i*>(&str[i]), chars);\n    }\n#endif\n\n    \n    for (; i < length; ++i) {\n        char& w = str[i];\n        if (w >= 'a' && w <= 'z') {\n            w -= 32;\n        } else if (w >= 'A' && w <= 'Z') {\n            w += 32;\n        }\n    }\n\n    return str;\n}",
+        1.171,
+        1.141,
+        10.807,
+        0.995,
+        1.143,
+        41
+    ]
+}

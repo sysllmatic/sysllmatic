@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\n#include<boost/any.hpp>\nusing namespace std;\n#include<stdlib.h>\nboost::any compare_one(boost::any a,boost::any b){\ndouble  numa,numb;\n    boost::any out;\n   \n    if (a.type()==typeid(string))\n    {\n        string s;\n        s=boost::any_cast<string>(a);\n        if (find(s.begin(),s.end(),',')!=s.end())\n            for (int i=0;i<s.length();i++)\n                if (s[i]==',') s=s.substr(0,i)+'.'+s.substr(i+1);\n        numa=atof(s.c_str());\n        \n    }\n    else \n    {\n        if (a.type()==typeid(int)) numa=boost::any_cast<int>(a);\n        if (a.type()==typeid(double)) numa=boost::any_cast<double>(a);\n    }\n    if (b.type()==typeid(string))\n    {\n        string s;\n        s=boost::any_cast<string>(b);\n        if (find(s.begin(),s.end(),',')!=s.end())\n            for (int i=0;i<s.length();i++)\n                if (s[i]==',') s=s.substr(0,i)+'.'+s.substr(i+1);\n        numb=atof(s.c_str());\n    }\n    else \n    {\n        if (b.type()==typeid(int)) numb=boost::any_cast<int>(b);\n        if (b.type()==typeid(double)) numb=boost::any_cast<double>(b);\n    }\n\n    if (numa==numb) return string(\"None\");\n    if (numa<numb) return b;\n    if (numa>numb) return a;\n}",
+        4.667,
+        0.116,
+        4307485.8,
+        21020.8,
+        8.636,
+        45
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <boost/any.hpp>\n#include <cstdlib> \nusing namespace std;\n\nboost::any compare_one(boost::any a, boost::any b) {\n    double numa = 0.0, numb = 0.0;\n\n    auto get_double_from_any = [](const boost::any& val) -> double {\n        if (val.type() == typeid(string)) {\n            string s = boost::any_cast<string>(val);\n            for (char& ch : s) {\n                if (ch == ',') ch = '.'; \n            }\n            return atof(s.c_str());\n        } else if (val.type() == typeid(int)) {\n            return static_cast<double>(boost::any_cast<int>(val));\n        } else if (val.type() == typeid(double)) {\n            return boost::any_cast<double>(val);\n        } else {\n            throw std::invalid_argument(\"Unsupported type\");\n        }\n    };\n\n    numa = get_double_from_any(a);\n    numb = get_double_from_any(b);\n\n    if (numa == numb) return string(\"None\");\n    return (numa < numb) ? b : a;\n}\n\n",
+        0.835,
+        0.901,
+        0.977,
+        0.997,
+        0.898,
+        32
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <boost/any.hpp>\n#include <algorithm>\n#include <stdexcept>\n\nusing namespace std;\n\n\ninline double string_to_double(const string &s) {\n    string modified = s;\n    std::replace(modified.begin(), modified.end(), ',', '.');\n    return std::stod(modified);\n}\n\nboost::any compare_one(const boost::any &a, const boost::any &b) {\n    double numa = 0.0, numb = 0.0;\n\n    auto get_double_from_any = [](const boost::any &val) -> double {\n        if (val.type() == typeid(string)) {\n            return string_to_double(boost::any_cast<string>(val));\n        } else if (val.type() == typeid(int)) {\n            return static_cast<double>(boost::any_cast<int>(val));\n        } else if (val.type() == typeid(double)) {\n            return boost::any_cast<double>(val);\n        } else {\n            throw std::invalid_argument(\"Unsupported type\");\n        }\n    };\n\n    numa = get_double_from_any(a);\n    numb = get_double_from_any(b);\n\n    if (numa == numb) return string(\"None\");\n    return (numa < numb) ? b : a;\n}\n\n",
+        1.079,
+        0.908,
+        0.89,
+        1.0,
+        0.905,
+        37
+    ]
+}

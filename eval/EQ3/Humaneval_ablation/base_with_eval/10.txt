@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool is_palindrome(string str){\n    string s(str.rbegin(),str.rend());\n    return s==str;\n}\nstring make_palindrome(string str){\nint i;\n   for (i=0;i<str.length();i++)\n   {\n        string rstr=str.substr(i);\n        if (is_palindrome(rstr))\n        {\n            string nstr;\n            nstr=str.substr(0,i);\n            string n2str(nstr.rbegin(),nstr.rend());\n            return str+n2str;\n        }\n   }\n   string n2str(str.rbegin(),str.rend());\n   return str+n2str;\n}",
+        4.63,
+        0.133,
+        4794246.6,
+        21196.8,
+        7.527,
+        26
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\n#include <iostream>\nusing namespace std;\n\nbool is_palindrome(const string &str) {\n    return equal(str.begin(), str.begin() + str.size() / 2, str.rbegin());\n}\n\nstring make_palindrome(const string &str) {\n    int len = str.length();\n    for (int i = 0; i < len; ++i) {\n        if (is_palindrome(str.substr(i))) {\n            string n2str(str.begin(), str.begin() + i);\n            reverse(n2str.begin(), n2str.end());\n            return str + n2str;\n        }\n    }\n    string n2str(str.rbegin(), str.rend());\n    return str + n2str;\n}\n\n",
+        0.945,
+        0.989,
+        0.946,
+        1.01,
+        0.987,
+        23
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nbool is_palindrome(const string &str, int start, int end) {\n    while (start < end) {\n        if (str[start] != str[end]) {\n            return false;\n        }\n        ++start;\n        --end;\n    }\n    return true;\n}\n\nstring make_palindrome(const string &str) {\n    int len = str.length();\n    if (is_palindrome(str, 0, len - 1)) {\n        return str;  \n    }\n    for (int i = 0; i < len; ++i) {\n        if (is_palindrome(str, i, len - 1)) {\n            string prefix = str.substr(0, i);\n            reverse(prefix.begin(), prefix.end());\n            return str + prefix;\n        }\n    }\n    string n2str(str.rbegin(), str.rend());\n    return str + n2str;\n}\n\n",
+        0.985,
+        0.945,
+        0.954,
+        1.004,
+        0.943,
+        32
+    ]
+}

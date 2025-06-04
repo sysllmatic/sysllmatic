@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nfloat truncate_number(float number){\nreturn number-int(number);\n}",
+        5.117,
+        0.12,
+        2580154.0,
+        21017.6,
+        8.339,
+        8
+    ],
+    "1": [
+        "#include <cmath>\n\ninline float truncate_number(float number) {\n    return number - std::trunc(number);\n}",
+        1.069,
+        0.876,
+        0.979,
+        1.004,
+        0.874,
+        5
+    ],
+    "2": [
+        "#include <cmath>\n\n\ninline float truncate_number(float number) {\n    return number - std::trunc(number);\n}\n\n\n#include <immintrin.h>\nvoid truncate_numbers_avx2(const float* numbers, float* results, size_t size) {\n    size_t i = 0;\n    \n    for (; i + 7 < size; i += 8) {\n        __m256 vec = _mm256_loadu_ps(&numbers[i]);\n        __m256 trunc_vec = _mm256_floor_ps(vec);  \n        __m256 frac_part = _mm256_sub_ps(vec, trunc_vec);\n        _mm256_storeu_ps(&results[i], frac_part);\n    }\n    \n    for (; i < size; ++i) {\n        results[i] = numbers[i] - std::trunc(numbers[i]);\n    }\n}\n\n\n",
+        1.081,
+        0.985,
+        0.978,
+        0.997,
+        0.983,
+        25
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> bf(string planet1,string planet2){\nvector<string> planets={\"Mercury\",\"Venus\",\"Earth\",\"Mars\",\"Jupiter\",\"Saturn\",\"Uranus\",\"Neptune\"};\n    int pos1=-1,pos2=-1,m;\n    for (m=0;m<planets.size();m++)\n    {\n    if (planets[m]==planet1) pos1=m;\n    if (planets[m]==planet2) pos2=m;\n    }\n    if (pos1==-1 or pos2==-1) return {};\n    if (pos1>pos2) {m=pos1;pos1=pos2;pos2=m;}\n    vector<string> out={};\n    for (m=pos1+1;m<pos2;m++)\n    out.push_back(planets[m]);\n    return out;\n}",
+        4.781,
+        0.123,
+        4734029.2,
+        21053.6,
+        8.149,
+        22
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> bf(const string& planet1, const string& planet2) {\n    vector<string> planets = {\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"};\n    int pos1 = -1, pos2 = -1;\n    \n    for (int m = 0; m < planets.size(); ++m) {\n        if (planets[m] == planet1) pos1 = m;\n        if (planets[m] == planet2) pos2 = m;\n        if (pos1 != -1 && pos2 != -1) break; \n    }\n    if (pos1 == -1 || pos2 == -1) return {};\n    if (pos1 > pos2) std::swap(pos1, pos2);\n\n    vector<string> out;\n    for (int m = pos1 + 1; m < pos2; ++m) {\n        out.push_back(planets[m]);\n    }\n    return out;\n}\n\n",
+        1.022,
+        0.972,
+        1.139,
+        1.003,
+        0.969,
+        25
+    ]
+}

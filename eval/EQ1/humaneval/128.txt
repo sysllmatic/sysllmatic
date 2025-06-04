@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint prod_signs(vector<int> arr){\nif (arr.size()==0) return -32768;\n    int i,sum=0,prods=1;\n    for (i=0;i<arr.size();i++)\n    {\n        sum+=abs(arr[i]);\n        if (arr[i]==0) prods=0;\n        if (arr[i]<0) prods=-prods;\n   }\n   return sum*prods;\n}",
+        4.686,
+        0.132,
+        7851360.6,
+        20994.4,
+        7.546,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>  \nusing namespace std;\n\nint prod_signs(vector<int> arr) {\n    if (arr.empty()) return -32768;  \n    int sum = 0, prods = 1;\n    size_t size = arr.size();  \n\n    for (size_t i = 0; i < size; ++i) {\n        int val = arr[i];  \n        sum += abs(val);\n        if (val == 0) {\n            return 0;  \n        }\n        \n        if (val < 0) prods *= -1;\n    }\n    return sum * prods;\n}\n\n\n",
+        0.793,
+        1.016,
+        1.035,
+        0.996,
+        1.018,
+        23
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>  \nusing namespace std;\n\nint prod_signs(const vector<int>& arr) {\n    if (arr.empty()) return -32768;\n    int sum = 0, prods = 1;\n\n    for (auto it = arr.begin(); it != arr.end(); ++it) {\n        int val = *it;\n        sum += abs(val);\n        if (val == 0) {\n            return 0;  \n        }\n        if (val < 0) prods *= -1;\n    }\n    return sum * prods;\n}\n\n\n",
+        0.99,
+        0.944,
+        0.914,
+        0.994,
+        0.946,
+        21
+    ]
+}

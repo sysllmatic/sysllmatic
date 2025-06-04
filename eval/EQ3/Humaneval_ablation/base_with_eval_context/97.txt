@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint multiply(int a,int b){\nreturn (abs(a)%10)*(abs(b)%10);\n}",
+        7.943,
+        0.127,
+        2634543.6,
+        21143.2,
+        7.892,
+        8
+    ],
+    "1": [
+        "#include <stdio.h>\n\nint multiply(int a, int b) {\n    int lastDigitA = (a < 0) ? (-a) % 10 : a % 10; \n    int lastDigitB = (b < 0) ? (-b) % 10 : b % 10;\n    return lastDigitA * lastDigitB;\n}",
+        1.012,
+        1.025,
+        0.975,
+        1.007,
+        1.021,
+        7
+    ],
+    "2": [
+        "#include <stdio.h>\n\ninline int multiply(int a, int b) {\n    int lastDigitA = (a < 0) ? (-a) % 10 : a % 10; \n    int lastDigitB = (b < 0) ? (-b) % 10 : b % 10;\n    return lastDigitA * lastDigitB;\n}\n\n",
+        1.16,
+        1.053,
+        1.004,
+        1.0,
+        1.049,
+        8
+    ]
+}

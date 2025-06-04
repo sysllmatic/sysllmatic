@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nlong long minSubArraySum(vector<long long> nums){\nlong long current,min;\n    current=nums[0];\n    min=nums[0];\n    for (int i=1;i<nums.size();i++)\n    {\n       if (current<0) current=current+nums[i];\n       else current=nums[i];\n       if (current<min) min=current;\n    }\n    return min;\n}",
+        4.529,
+        0.135,
+        7621436.2,
+        21023.2,
+        7.38,
+        18
+    ],
+    "1": [
+        "#include <iostream> \n#include <vector>\n#include <limits>  \n\nusing namespace std;\n\nlong long minSubArraySum(const vector<long long>& nums) {\n    long long current = nums[0];\n    long long min = nums[0];\n    \n    for (size_t i = 1; i < nums.size(); ++i) {\n        if (current < 0) \n            current += nums[i];\n        else \n            current = nums[i];\n        \n        if (current < min) \n            min = current;\n    }\n    return min;\n}\n\n",
+        0.959,
+        1.034,
+        0.905,
+        1.0,
+        1.036,
+        22
+    ],
+    "2": [
+        "#include <vector>\n#include <stdexcept>  \n\nusing namespace std;\n\nlong long minSubArraySum(const vector<long long>& nums) {\n    if (nums.empty()) {\n        throw invalid_argument(\"The input vector must not be empty\");\n    }\n\n    long long currentSum = nums[0];\n    long long minSum = nums[0];\n\n    for (size_t i = 1; i < nums.size(); ++i) {\n        if (currentSum < 0) \n            currentSum += nums[i];\n        else \n            currentSum = nums[i];\n\n        if (currentSum < minSum) \n            minSum = currentSum;\n    }\n    return minSum;\n}",
+        0.983,
+        0.997,
+        0.938,
+        0.995,
+        1.0,
+        24
+    ]
+}

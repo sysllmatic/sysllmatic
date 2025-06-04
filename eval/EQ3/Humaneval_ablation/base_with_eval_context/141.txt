@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nstring file_name_check(string file_name){\nint numdigit=0,numdot=0;\n    if (file_name.length()<5) return \"No\";\n    char w=file_name[0];\n    if (w<65 or (w>90 and w<97) or w>122) return \"No\";\n    string last=file_name.substr(file_name.length()-4,4);\n    if (last!=\".txt\" and last!=\".exe\" and last!=\".dll\") return \"No\";\n    for (int i=0;i<file_name.length();i++)\n    {\n        if (file_name[i]>=48 and file_name[i]<=57) numdigit+=1;\n        if (file_name[i]=='.') numdot+=1;\n    }\n    if (numdigit>3 or numdot!=1) return \"No\";\n    return \"Yes\"; \n}",
+        4.523,
+        0.138,
+        6204493.4,
+        20956.0,
+        7.219,
+        21
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <unordered_set>\nusing namespace std;\n\nstring file_name_check(const string& file_name) {\n    int numdigit = 0, numdot = 0;\n    \n    if (file_name.length() < 5) return \"No\";\n    \n    char w = file_name[0];\n    if (!((w >= 'A' && w <= 'Z') || (w >= 'a' && w <= 'z'))) return \"No\";\n    \n    unordered_set<string> valid_extensions = {\".txt\", \".exe\", \".dll\"};\n    string extension = file_name.substr(file_name.length() - 4);\n    if (valid_extensions.find(extension) == valid_extensions.end()) return \"No\";\n    \n    for (char c : file_name) {\n        if (c >= '0' && c <= '9') numdigit++;\n        if (c == '.') numdot++;\n    }\n    \n    if (numdigit > 3 || numdot != 1) return \"No\";\n    return \"Yes\";\n}\n\n\n",
+        0.974,
+        1.02,
+        1.068,
+        0.996,
+        1.023,
+        27
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nstring file_name_check(const string& file_name) {\n    int numdigit = 0, numdot = 0;\n    int length = file_name.length();\n\n    \n    if (length < 5) return \"No\";\n\n    \n    char w = file_name[0];\n    if (!((w >= 'A' && w <= 'Z') || (w >= 'a' && w <= 'z'))) return \"No\";\n\n    \n    if (!(file_name.compare(length - 4, 4, \".txt\") == 0 ||\n          file_name.compare(length - 4, 4, \".exe\") == 0 ||\n          file_name.compare(length - 4, 4, \".dll\") == 0)) return \"No\";\n\n    \n    for (char c : file_name) {\n        if (c >= '0' && c <= '9') numdigit++;\n        else if (c == '.') numdot++;\n    }\n\n    \n    return (numdigit <= 3 && numdot == 1) ? \"Yes\" : \"No\";\n}\n\n\n",
+        0.972,
+        0.985,
+        1.009,
+        1.002,
+        0.988,
+        31
+    ]
+}

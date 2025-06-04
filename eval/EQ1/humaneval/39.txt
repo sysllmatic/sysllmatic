@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint prime_fib(int n){\nint f1,f2,m;\n    f1=1;f2=2;\n    int count=0;\n    while (count<n)\n    {\n        f1=f1+f2;\n        m=f1;f1=f2;f2=m;\n        bool isprime=true;\n        for (int w=2;w*w<=f1;w++)\n            if (f1%w==0)\n            {\n             isprime=false; break;\n            }\n        if (isprime) count+=1;\n        if (count==n) return f1;\n    }\n\n}",
+        4.642,
+        0.135,
+        2992373.6,
+        20961.6,
+        7.381,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n\n\nbool is_prime(int num) {\n    if (num <= 1) return false;\n    if (num <= 3) return true;\n    if (num % 2 == 0 || num % 3 == 0) return false;\n    for (int i = 5; i * i <= num; i += 6) {\n        if (num % i == 0 || num % (i + 2) == 0)\n            return false;\n    }\n    return true;\n}\n\n\nint prime_fib(int n) {\n    int f1 = 1, f2 = 2;\n    int count = 0;\n    while (true) {\n        \n        if (is_prime(f1)) {\n            count++;\n            if (count == n) {\n                return f1;\n            }\n        }\n        \n        int next_fib = f1 + f2;\n        f1 = f2;\n        f2 = next_fib;\n    }\n}\n\n",
+        0.955,
+        1.054,
+        1.11,
+        0.999,
+        1.056,
+        34
+    ]
+}

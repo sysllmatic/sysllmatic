@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> filter_by_substring(vector<string> strings, string substring){\nvector<string> out;\n    for (int i=0;i<strings.size();i++)\n    {\n        if (strings[i].find(substring)!=strings[i].npos)\n        out.push_back(strings[i]);\n    }\n    return out;\n}",
+        4.794,
+        0.129,
+        15273391.0,
+        21131.2,
+        7.736,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\nusing namespace std;\n\nvector<string> filter_by_substring(vector<string> strings, string substring) {\n    vector<string> out;\n    if (substring.empty()) {\n        return strings; \n    }\n\n    out.reserve(strings.size()); \n    for (const auto& str : strings) {\n        if (str.find(substring) != string::npos) {\n            out.push_back(str);\n        }\n    }\n    return out;\n}",
+        1.022,
+        0.983,
+        1.048,
+        1.002,
+        0.983,
+        22
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\nusing namespace std;\n\nvector<string> filter_by_substring(vector<string> strings, const string& substring) {\n    vector<string> out;\n    if (substring.empty()) {\n        return strings; \n    }\n\n    for (const auto& str : strings) {\n        if (str.find(substring) != string::npos) {\n            out.push_back(str);\n        }\n    }\n    return out;\n}",
+        0.879,
+        0.957,
+        0.988,
+        1.005,
+        0.957,
+        21
+    ]
+}

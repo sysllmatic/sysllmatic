@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint max_fill(vector<vector<int>> grid,int capacity){\nint out=0;\n    for (int i=0;i<grid.size();i++)\n    {\n        int sum=0;\n        for (int j=0;j<grid[i].size();j++)\n            sum+=grid[i][j];\n        if (sum>0)  out+=(sum-1)/capacity+1;\n    }\n    return out;\n}",
+        4.966,
+        0.13,
+        6522238.2,
+        20998.4,
+        7.692,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nint max_fill(const vector<vector<int>>& grid, int capacity) {\n    int out = 0;\n    for (const auto& row : grid) {\n        int sum = 0;\n        for (int value : row) {\n            sum += value;\n        }\n        if (sum > 0) {  \n            out += (sum + capacity - 1) / capacity; \n        }\n    }\n    return out;\n}\n\n",
+        1.033,
+        0.972,
+        0.978,
+        1.001,
+        0.971,
+        18
+    ]
+}

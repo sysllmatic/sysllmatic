@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint count_nums(vector<int> n){\nint num=0;\n    for (int i=0;i<n.size();i++)\n        if (n[i]>0) num+=1;\n        else\n        {\n            int sum=0;\n            int w;\n            w=abs(n[i]);\n            while (w>=10)\n            {\n                sum+=w%10;\n                w=w/10;\n            }\n            sum-=w;\n            if (sum>0) num+=1;\n        }\n    return num;\n}",
+        4.98,
+        0.129,
+        7738256.4,
+        21011.2,
+        7.728,
+        25
+    ],
+    "1": [
+        "#include <vector>\n#include <cstdlib> \n\nusing namespace std;\n\nint count_nums(const vector<int>& n) {\n    int num = 0;\n    for (auto it = n.begin(); it != n.end(); ++it) {\n        int value = *it;\n        if (value > 0) {\n            ++num;\n        } else {\n            int sum = 0;\n            int w = abs(value);\n            while (w > 0) {\n                sum += w % 10;\n                w /= 10;\n            }\n            \n            if (sum > (abs(value) % 10)) { \n                ++num;\n            }\n        }\n    }\n    return num;\n}",
+        1.1,
+        1.045,
+        0.831,
+        0.997,
+        1.047,
+        26
+    ],
+    "2": [
+        "#include <vector>\n#include <cstdlib> \n#include <omp.h>  \n\nusing namespace std;\n\nint count_nums(const vector<int>& n) {\n    int num = 0;\n\n    #pragma omp parallel for reduction(+:num)\n    for (int i = 0; i < n.size(); ++i) {\n        int value = n[i];\n        if (value > 0) {\n            ++num;\n        } else {\n            int sum = 0;\n            int w = abs(value);\n            int last_digit = w % 10;\n            while (w > 0) {\n                sum += w % 10;\n                w /= 10;\n            }\n            if (sum > last_digit) {\n                ++num;\n            }\n        }\n    }\n    return num;\n}\n\n",
+        1.031,
+        0.958,
+        0.056,
+        1.002,
+        0.96,
+        30
+    ]
+}

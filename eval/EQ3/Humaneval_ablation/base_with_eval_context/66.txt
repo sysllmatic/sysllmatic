@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint digitSum(string s){\nint sum=0;\n    for (int i=0;i<s.length();i++)\n        if (s[i]>=65 and s[i]<=90)\n            sum+=s[i];\n    return sum;\n}",
+        4.476,
+        0.138,
+        4736558.4,
+        21122.4,
+        7.221,
+        13
+    ],
+    "1": [
+        "#include <iostream>  \n#include <cctype>   \n\nusing namespace std;\n\nint digitSum(const string& s) {\n    int sum = 0;\n    size_t length = s.length();  \n    for (size_t i = 0; i < length; i++) {\n        if (isupper(s[i])) {\n            sum += s[i];\n        }\n    }\n    return sum;\n}\n\n\n",
+        0.942,
+        1.006,
+        0.93,
+        1.005,
+        1.008,
+        17
+    ],
+    "2": [
+        "#include <iostream>\n#include <cctype>\n#include <immintrin.h>  \n\nusing namespace std;\n\nint digitSum(const string& s) {\n    int sum = 0;\n    size_t length = s.length();\n    size_t i = 0;\n    const __m256i ascii_upper_bound = _mm256_set1_epi8('Z');\n    const __m256i ascii_lower_bound = _mm256_set1_epi8('A');\n\n    \n    for (; i + 31 < length; i += 32) {\n        __m256i chars = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&s[i]));\n        __m256i mask_upper = _mm256_cmpgt_epi8(chars, ascii_lower_bound);\n        __m256i mask_lower = _mm256_cmpgt_epi8(ascii_upper_bound, chars);\n        __m256i mask = _mm256_and_si256(mask_upper, mask_lower);\n        __m256i filtered_chars = _mm256_and_si256(chars, mask);\n\n        \n        __m256i zero = _mm256_setzero_si256();\n        __m256i unpacked_low = _mm256_unpacklo_epi8(filtered_chars, zero);\n        __m256i unpacked_high = _mm256_unpackhi_epi8(filtered_chars, zero);\n\n        __m256i sum_vec = _mm256_add_epi16(unpacked_low, unpacked_high);\n        __m256i hadd_vec = _mm256_hadd_epi16(sum_vec, zero);\n        hadd_vec = _mm256_hadd_epi16(hadd_vec, zero);\n\n        \n        __m128i sum128_low = _mm256_castsi256_si128(hadd_vec);\n        __m128i sum128_high = _mm256_extracti128_si256(hadd_vec, 1);\n\n        __m128i total128 = _mm_add_epi16(sum128_low, sum128_high);\n        \n        total128 = _mm_hadd_epi16(total128, _mm_setzero_si128());\n        total128 = _mm_hadd_epi16(total128, _mm_setzero_si128());\n\n        sum += _mm_extract_epi16(total128, 0);\n    }\n\n    \n    for (; i < length; ++i) {\n        if (isupper(s[i])) {\n            sum += s[i];\n        }\n    }\n\n    return sum;\n}\n\n\n",
+        0.929,
+        1.081,
+        0.936,
+        0.997,
+        1.084,
+        53
+    ]
+}

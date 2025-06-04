@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring solve(string s){\nint nletter=0;\n    string out=\"\";\n    for (int i=0;i<s.length();i++)\n    {\n        char w=s[i];\n        if (w>=65 and w<=90) w=w+32;\n        else if (w>=97 and w<=122) w=w-32;\n        else nletter+=1;\n        out=out+w;\n    }\n    if (nletter==s.length())\n    {\n        string p(s.rbegin(),s.rend());\n        return p;\n    }\n    else return out;\n}",
+        5.215,
+        0.141,
+        58745483.8,
+        21038.4,
+        7.105,
+        24
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm> \n#include <cctype> \nusing namespace std;\n\nstring solve(const string& s) {\n    int nletter = 0;\n    string out;\n    for (char c : s) {\n        if (isalpha(c)) {\n            if (isupper(c)) {\n                out += tolower(c);\n            } else {\n                out += toupper(c);\n            }\n        } else {\n            nletter++;\n            out += c;\n        }\n    }\n    if (nletter == s.length()) {\n        return string(s.rbegin(), s.rend());\n    } else {\n        return out;\n    }\n}\n\n",
+        1.154,
+        1.04,
+        7.307,
+        0.996,
+        1.037,
+        28
+    ]
+}

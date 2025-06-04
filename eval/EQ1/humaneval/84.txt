@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring solve(int N){\nstring str,bi=\"\";\n    str=to_string(N);\n    int i,sum=0;\n    for (int i=0;i<str.length();i++)\n        sum+=str[i]-48;\n    while (sum>0)\n    {\n        bi=to_string(sum%2)+bi;\n        sum=sum/2;\n    }\n    return bi;\n}",
+        4.401,
+        0.127,
+        4427416.6,
+        21019.2,
+        7.88,
+        19
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\n#include <algorithm> \nusing namespace std;\n\nstring solve(int N) {\n    int sum = 0;\n    while (N > 0) {\n        sum += N % 10;\n        N /= 10;\n    }\n    \n    vector<char> binaryDigits;\n    if (sum == 0) {\n        binaryDigits.push_back('0');\n    } else {\n        while (sum > 0) {\n            binaryDigits.push_back((sum & 1) + '0');\n            sum >>= 1;\n        }\n    }\n    \n    reverse(binaryDigits.begin(), binaryDigits.end());\n    return string(binaryDigits.begin(), binaryDigits.end());\n}\n\n\n",
+        0.975,
+        0.979,
+        1.067,
+        1.005,
+        0.977,
+        28
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nstring solve(int N) {\n    int sum = 0;\n    while (N > 0) {\n        sum += N % 10;\n        N /= 10;\n    }\n    \n    if (sum == 0) {\n        return \"0\";\n    }\n\n    string binary = \"\";\n    while (sum > 0) {\n        binary.insert(binary.begin(), (sum & 1) + '0');\n        sum >>= 1;\n    }\n    \n    return binary;\n}\n\n\n",
+        1.028,
+        0.91,
+        1.009,
+        0.995,
+        0.908,
+        25
+    ]
+}

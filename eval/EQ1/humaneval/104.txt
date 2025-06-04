@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique_digits(vector<int> x){\nvector<int> out={};\n    for (int i=0;i<x.size();i++)\n        {\n            int num=x[i];\n            bool u=true;\n            if (num==0) u=false;\n            while (num>0 and u)\n            {\n                if (num%2==0) u=false;\n                num=num/10;\n            }\n            if (u) out.push_back(x[i]);\n        }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        4.557,
+        0.129,
+        4872518.8,
+        21038.4,
+        7.768,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> unique_digits(vector<int> x) {\n    vector<int> out;\n    for (int i = 0; i < x.size(); i++) {\n        int num = x[i];\n        bool u = true;\n        if (num == 0) {\n            u = false;\n        } else {\n            while (num > 0 && u) {\n                \n                if ((num & 1) == 0) u = false;\n                num /= 10;\n            }\n        }\n        if (u) out.push_back(x[i]);\n    }\n    sort(out.begin(), out.end());\n    return out;\n}\n\n",
+        0.997,
+        0.936,
+        0.907,
+        0.999,
+        0.933,
+        25
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <thread>\n#include <mutex>\n\nusing namespace std;\n\n\nmutex mtx;\n\nvoid process_segment(vector<int>& x, vector<int>& out, int start, int end) {\n    for (int i = start; i < end; ++i) {\n        int num = x[i];\n        bool u = true;\n        if (num == 0) continue; \n        while (num > 0 && u) {\n            if ((num & 1) == 0) u = false; \n            num /= 10;\n        }\n        if (u) {\n            lock_guard<mutex> lock(mtx);\n            out.push_back(x[i]);\n        }\n    }\n}\n\nvector<int> unique_digits(vector<int> x) {\n    vector<int> out;\n    int num_threads = thread::hardware_concurrency();\n    vector<thread> threads;\n    int segment_size = x.size() / num_threads;\n\n    for (int i = 0; i < num_threads; ++i) {\n        int start = i * segment_size;\n        int end = (i == num_threads - 1) ? x.size() : (i + 1) * segment_size;\n        threads.emplace_back(process_segment, ref(x), ref(out), start, end);\n    }\n\n    for (auto& th : threads) th.join();\n\n    sort(out.begin(), out.end());\n    return out;\n}\n\n",
+        1.028,
+        0.955,
+        0.948,
+        1.0,
+        0.952,
+        45
+    ]
+}

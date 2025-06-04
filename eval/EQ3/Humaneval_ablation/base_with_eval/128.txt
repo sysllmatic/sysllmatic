@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint prod_signs(vector<int> arr){\nif (arr.size()==0) return -32768;\n    int i,sum=0,prods=1;\n    for (i=0;i<arr.size();i++)\n    {\n        sum+=abs(arr[i]);\n        if (arr[i]==0) prods=0;\n        if (arr[i]<0) prods=-prods;\n   }\n   return sum*prods;\n}",
+        4.706,
+        0.134,
+        7914410.6,
+        20983.2,
+        7.464,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <cmath>\n\nint prod_signs(const std::vector<int>& arr) {\n    if (arr.empty()) return -32768;\n    int sum = 0, prods = 1;\n    for (const int& num : arr) {\n        sum += std::abs(num);\n        if (num == 0) {\n            prods = 0;\n            break; \n        }\n        if (num < 0) prods = -prods;\n    }\n    return sum * prods;\n}",
+        0.989,
+        0.995,
+        0.963,
+        0.996,
+        0.994,
+        17
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <numeric>\n#include <cmath>\n\nint prod_signs(const std::vector<int>& arr) {\n    if (arr.empty()) return -32768;\n    int sum = std::accumulate(arr.begin(), arr.end(), 0, [](int acc, int num) { return acc + std::abs(num); });\n    int prods = std::accumulate(arr.begin(), arr.end(), 1, [](int acc, int num) {\n        if (acc == 0) return 0; \n        return (num == 0) ? 0 : (num < 0 ? -acc : acc);\n    });\n    return sum * prods;\n}",
+        1.044,
+        0.987,
+        0.79,
+        0.992,
+        0.986,
+        14
+    ]
+}

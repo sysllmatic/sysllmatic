@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool triples_sum_to_zero(vector<int> l){\nfor (int i=0;i<l.size();i++)\n    for (int j=i+1;j<l.size();j++)\n    for (int k=j+1;k<l.size();k++)\n        if (l[i]+l[j]+l[k]==0) return true;\n    return false;\n}",
+        15.854,
+        0.344,
+        901929369.2,
+        21017.6,
+        2.906,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <assert.h>\nusing namespace std;\n\nbool triples_sum_to_zero(const vector<int> &l) {\n    vector<int> sorted_l = l;  \n    sort(sorted_l.begin(), sorted_l.end());  \n    int size = sorted_l.size();\n    for (int i = 0; i < size - 2; i++) {\n        \n        if (i > 0 && sorted_l[i] == sorted_l[i-1]) continue;\n        \n        int left = i + 1;\n        int right = size - 1;\n        while (left < right) {\n            int sum = sorted_l[i] + sorted_l[left] + sorted_l[right];\n            if (sum == 0) {\n                return true;  \n            } else if (sum < 0) {\n                left++;  \n            } else {\n                right--;  \n            }\n        }\n    }\n    return false;  \n}\n\n",
+        2.994,
+        2.666,
+        46.903,
+        0.993,
+        2.663,
+        30
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <assert.h>\nusing namespace std;\n\nbool triples_sum_to_zero(const vector<int> &l) {\n    vector<int> sorted_l = l;  \n    sort(sorted_l.begin(), sorted_l.end());  \n    int size = sorted_l.size();\n    for (int i = 0; i < size - 2; i++) {\n        \n        if (i > 0 && sorted_l[i] == sorted_l[i-1]) continue;\n\n        int left = i + 1;\n        int right = size - 1;\n        while (left < right) {\n            int sum = sorted_l[i] + sorted_l[left] + sorted_l[right];\n            if (sum == 0) {\n                return true;  \n            } else if (sum < 0) {\n                left++;  \n            } else {\n                right--;  \n            }\n        }\n    }\n    return false;  \n}\n\n",
+        3.288,
+        2.426,
+        47.555,
+        0.998,
+        2.423,
+        30
+    ]
+}

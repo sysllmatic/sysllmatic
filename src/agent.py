@@ -9,21 +9,15 @@ logger = Logger("logs", sys.argv[2]).logger if len(sys.argv) > 2 else Logger("lo
 
 class LLMAgent:
     global_counter = 0
-    def __init__(self, openai_api_key, genai_api_key, model, use_genai_studio=False, system_message="You are a helpful assistant."):
+    def __init__(self, openai_api_key, model, system_message="You are a helpful assistant."):
         if not model:
             raise ValueError("A model must be specified when creating a LLM Agent.")
         self.model = model
         self.system_message=system_message
         self.memory = [{"role": "system", "content": system_message}]
-        self.use_genai_studio = use_genai_studio
-        self.genai_api_key = genai_api_key
 
         if self.is_openai_model():
             self.client=OpenAI(api_key=openai_api_key)
-        elif use_genai_studio:
-            self.client=OpenAI(
-                base_url="https://genai.rcac.purdue.edu/api",
-                api_key=genai_api_key)
         else:
             try:
                 subprocess.run(["ollama", "pull", model], check=True)
@@ -39,7 +33,7 @@ class LLMAgent:
     def generate_response(self, response_format=BaseModel):
         LLMAgent.global_counter +=1
         try:
-            if self.is_openai_model() or self.use_genai_studio:
+            if self.is_openai_model():
                 response = self.client.beta.chat.completions.parse(
                     model = self.model,
                     messages = self.memory,
@@ -69,9 +63,6 @@ class LLMAgent:
     
     def is_openai_model(self):
         return self.model in ["gpt-4o", "gpt-4.1", "o1", "o3-mini", "gpt-4o-mini"]
-    
-    def is_genai_studio(self):
-        return self.use_genai_studio
 
     @classmethod
     def get_global_counter(cls):

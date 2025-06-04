@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring exchange(vector<int> lst1,vector<int> lst2){\nint num=0;\n    for (int i=0;i<lst1.size();i++)\n    if (lst1[i]%2==0) num+=1;\n    for (int i=0;i<lst2.size();i++)\n    if (lst2[i]%2==0) num+=1;\n    if (num>=lst1.size()) return \"YES\";\n    return \"NO\";\n}",
+        7.466,
+        0.131,
+        8397619.0,
+        20988.8,
+        7.605,
+        16
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\n\nstd::string exchange(const std::vector<int>& lst1, const std::vector<int>& lst2) {\n    int num = 0;\n    int size1 = lst1.size();\n    int size2 = lst2.size();\n\n    \n    for (auto it = lst1.begin(); it != lst1.end(); ++it) {\n        if (*it % 2 == 0) num++;\n    }\n    for (auto it = lst2.begin(); it != lst2.end(); ++it) {\n        if (*it % 2 == 0) num++;\n    }\n\n    \n    if (num >= size1) return \"YES\";\n    return \"NO\";\n}",
+        1.608,
+        0.987,
+        0.864,
+        0.995,
+        0.99,
+        20
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\n\nstd::string exchange(const std::vector<int>& lst1, const std::vector<int>& lst2) {\n    int num = 0;\n    int size1 = lst1.size();\n\n    \n    for (const auto& vec : {lst1, lst2}) {\n        for (int val : vec) {\n            if (val % 2 == 0) {\n                num++;\n                if (num >= size1) return \"YES\";  \n            }\n        }\n    }\n    return \"NO\";\n}",
+        1.627,
+        0.957,
+        0.961,
+        0.999,
+        0.959,
+        18
+    ]
+}

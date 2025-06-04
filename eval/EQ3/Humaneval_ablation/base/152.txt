@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> compare(vector<int> game,vector<int> guess){\nvector<int> out;\n    for (int i=0;i<game.size();i++)\n    out.push_back(abs(game[i]-guess[i]));\n    return out;\n}",
+        5.094,
+        0.139,
+        14531903.6,
+        21070.4,
+        7.179,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <cstdlib> \nusing namespace std;\n\nvector<int> compare(const vector<int>& game, const vector<int>& guess) {\n    vector<int> out;\n    size_t size = game.size();\n    if (size != guess.size()) return {}; \n    out.reserve(size); \n\n    for (size_t i = 0; i < size; ++i) {\n        out.push_back(abs(game[i] - guess[i]));\n    }\n    return out;\n}\n\n",
+        1.101,
+        1.08,
+        1.113,
+        1.005,
+        1.081,
+        17
+    ]
+}

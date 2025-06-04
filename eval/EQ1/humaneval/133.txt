@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<float> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        sum+=ceil(lst[i])*ceil(lst[i]);\n    return sum;\n}",
+        5.45,
+        0.127,
+        7516109.6,
+        21069.6,
+        7.873,
+        12
+    ],
+    "1": [
+        "#include <cstdio>\n#include <vector>\n#include <algorithm>\n#include <cstdlib>\nusing namespace std;\n\nint sum_squares(const vector<float>& lst) {\n    int sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0;\n    size_t i = 0;\n    \n    \n    for (; i + 3 < lst.size(); i += 4) {\n        int ceil1 = static_cast<int>(lst[i]) + (lst[i] > static_cast<int>(lst[i]));\n        int ceil2 = static_cast<int>(lst[i+1]) + (lst[i+1] > static_cast<int>(lst[i+1]));\n        int ceil3 = static_cast<int>(lst[i+2]) + (lst[i+2] > static_cast<int>(lst[i+2]));\n        int ceil4 = static_cast<int>(lst[i+3]) + (lst[i+3] > static_cast<int>(lst[i+3]));\n\n        sum1 += ceil1 * ceil1;\n        sum2 += ceil2 * ceil2;\n        sum3 += ceil3 * ceil3;\n        sum4 += ceil4 * ceil4;\n    }\n\n    \n    for (; i < lst.size(); ++i) {\n        int ceil_val = static_cast<int>(lst[i]) + (lst[i] > static_cast<int>(lst[i]));\n        sum1 += ceil_val * ceil_val;\n    }\n\n    return sum1 + sum2 + sum3 + sum4;\n}\n\n",
+        1.185,
+        0.931,
+        0.986,
+        1.003,
+        0.93,
+        32
+    ],
+    "2": [
+        "#include <cstdio>\n#include <vector>\n#include <cmath>\n#include <omp.h>\n#include <immintrin.h> \nusing namespace std;\n\nint sum_squares(const vector<float>& lst) {\n    int total_sum = 0;\n    size_t i = 0;\n    size_t n = lst.size();\n\n    \n    #pragma omp parallel for reduction(+:total_sum) schedule(static)\n    for (i = 0; i < n; i += 8) {\n        \n        __m256 values = _mm256_loadu_ps(&lst[i]);\n        \n        __m256 ceils = _mm256_ceil_ps(values);\n        \n        __m256 squares = _mm256_mul_ps(ceils, ceils);\n        \n        float buffer[8];\n        _mm256_storeu_ps(buffer, squares);\n        for (int j = 0; j < 8 && i + j < n; ++j) {\n            total_sum += static_cast<int>(buffer[j]);\n        }\n    }\n\n    return total_sum;\n}\n\n",
+        1.171,
+        0.983,
+        1.016,
+        1.006,
+        0.982,
+        32
+    ]
+}

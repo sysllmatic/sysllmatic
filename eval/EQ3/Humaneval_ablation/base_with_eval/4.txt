@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nfloat mean_absolute_deviation(vector<float> numbers){\nfloat sum=0;\n    float avg,msum,mavg;\n    int i=0;\n    for (i=0;i<numbers.size();i++)\n        sum+=numbers[i];\n    avg=sum/numbers.size();\n    msum=0;\n    for (i=0;i<numbers.size();i++)\n        msum+=abs(numbers[i]-avg);\n    return msum/numbers.size();\n}",
+        4.627,
+        0.12,
+        9937854.2,
+        21034.4,
+        8.335,
+        18
+    ],
+    "1": [
+        "#include <vector>\n#include <cmath> \n\nfloat mean_absolute_deviation(const std::vector<float>& numbers) {\n    float sum = 0.0f;\n    float msum = 0.0f;\n    int n = numbers.size();\n\n    if (n == 0) {\n        return 0.0f; \n    }\n\n    \n    for (const auto& num : numbers) {\n        sum += num;\n    }\n    float avg = sum / n;\n    for (const auto& num : numbers) {\n        msum += std::abs(num - avg);\n    }\n\n    return msum / n;\n}\n\n",
+        0.977,
+        0.926,
+        0.787,
+        0.998,
+        0.924,
+        24
+    ],
+    "2": [
+        "#include <vector>\n#include <cmath> \n\nfloat mean_absolute_deviation(const std::vector<float>& numbers) {\n    if (numbers.empty()) {\n        return 0.0f;\n    }\n\n    float sum = 0.0f;\n    float msum = 0.0f;\n    int n = numbers.size();\n\n    \n    for (const auto& num : numbers) {\n        sum += num;\n    }\n    float avg = sum / n;\n\n    for (const auto& num : numbers) {\n        msum += std::abs(num - avg);\n    }\n\n    return msum / n;\n}\n\n",
+        0.986,
+        1.009,
+        0.807,
+        0.997,
+        1.007,
+        25
+    ]
+}

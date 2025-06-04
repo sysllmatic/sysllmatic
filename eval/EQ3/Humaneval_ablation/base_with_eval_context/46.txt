@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include <vector>\n#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fib4(int n){\nvector<int> f(n + 1, 0);\n    f[0]=0;\n    f[1]=0;\n    f[2]=2;\n    f[3]=0;\n    for (int i=4;i<=n;i++)\n    {\n        f[i]=f[i-1]+f[i-2]+f[i-3]+f[i-4];\n    }\n    return f[n];\n}",
+        4.61,
+        0.126,
+        6206255.4,
+        21054.4,
+        7.922,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<algorithm>\n\nint fib4(int n) {\n    if (n < 4) {\n        int base_cases[4] = {0, 0, 2, 0};\n        return base_cases[n];\n    }\n\n    int f[4] = {0, 0, 2, 0};\n    for (int i = 4; i <= n; ++i) {\n        int next = f[0] + f[1] + f[2] + f[3];\n        \n        f[0] = f[1];\n        f[1] = f[2];\n        f[2] = f[3];\n        f[3] = next;\n    }\n\n    return f[3];\n}\n\n",
+        0.811,
+        0.92,
+        2.043,
+        1.0,
+        0.92,
+        22
+    ],
+    "2": [
+        "#include <immintrin.h>\n#include <stdio.h>\n\nint fib4(int n) {\n    if (n < 4) {\n        static const int base_cases[4] = {0, 0, 2, 0};\n        return base_cases[n];\n    }\n\n    alignas(16) int f[4] = {0, 0, 2, 0};\n    for (int i = 4; i <= n; ++i) {\n        __m128i f_vec = _mm_load_si128((__m128i*)f);\n        int next = _mm_extract_epi32(f_vec, 0) + _mm_extract_epi32(f_vec, 1) +\n                   _mm_extract_epi32(f_vec, 2) + _mm_extract_epi32(f_vec, 3);\n\n        \n        f[0] = f[1];\n        f[1] = f[2];\n        f[2] = f[3];\n        f[3] = next;\n    }\n\n    return f[3];\n}\n\n",
+        0.998,
+        1.018,
+        1.489,
+        0.999,
+        1.018,
+        25
+    ]
+}

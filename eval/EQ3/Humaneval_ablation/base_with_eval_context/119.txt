@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring match_parens(vector<string> lst){\nstring l1=lst[0]+lst[1];\n    int i,count=0;\n    bool can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (count!=0) return \"No\";\n    if (can==true) return \"Yes\";\n    l1=lst[1]+lst[0];\n    can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (can==true) return \"Yes\";\n    return \"No\";\n}",
+        4.778,
+        0.129,
+        6305237.4,
+        21138.4,
+        7.732,
+        30
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n\n\nbool is_balanced(const std::string &s) {\n    int count = 0;\n    for (char c : s) {\n        if (c == '(') count++;\n        else if (c == ')') count--;\n        \n        if (count < 0) return false;\n    }\n    \n    return count == 0;\n}\n\nstd::string match_parens(const std::vector<std::string> &lst) {\n    \n    if (is_balanced(lst[0] + lst[1]) || is_balanced(lst[1] + lst[0])) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\n\n",
+        1.022,
+        1.076,
+        0.854,
+        1.005,
+        1.077,
+        26
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <thread>\n\n\nbool is_balanced_combination(const std::string &s1, const std::string &s2) {\n    int count = 0;\n    for (char c : s1) {\n        if (c == '(') count++;\n        else if (c == ')') count--;\n        \n        if (count < 0) return false;\n    }\n    for (char c : s2) {\n        if (c == '(') count++;\n        else if (c == ')') count--;\n        if (count < 0) return false;\n    }\n    return count == 0;\n}\n\nstd::string match_parens(const std::vector<std::string> &lst) {\n    bool result1 = false, result2 = false;\n    std::thread t1([&]() { result1 = is_balanced_combination(lst[0], lst[1]); });\n    std::thread t2([&]() { result2 = is_balanced_combination(lst[1], lst[0]); });\n    t1.join();\n    t2.join();\n    return (result1 || result2) ? \"Yes\" : \"No\";\n}\n\n\n",
+        1.039,
+        0.923,
+        0.678,
+        1.009,
+        0.924,
+        32
+    ]
+}

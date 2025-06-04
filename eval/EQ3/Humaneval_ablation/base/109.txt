@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool move_one_ball(vector<int> arr){\nint num=0;\n    if (arr.size()==0) return true;\n    for (int i=1;i<arr.size();i++)\n        if (arr[i]<arr[i-1]) num+=1;\n    if (arr[arr.size()-1]>arr[0]) num+=1;\n    if (num<2) return true;\n    return false;\n}",
+        4.618,
+        0.125,
+        7647033.8,
+        21097.6,
+        8.025,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nbool move_one_ball(const vector<int>& arr) {\n    if (arr.size() == 0) return true;\n    int num = 0;\n    int n = arr.size();\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > arr[(i + 1) % n]) num++;\n        if (num > 1) return false;\n    }\n    return true;\n}\n\n",
+        1.022,
+        0.905,
+        1.055,
+        0.999,
+        0.901,
+        15
+    ]
+}

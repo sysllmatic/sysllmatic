@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint choose_num(int x,int y){\nif (y<x) return -1;\n    if (y==x and y%2==1) return -1;\n    if (y%2==1) return y-1;\n    return y;\n}",
+        4.425,
+        0.132,
+        2624032.6,
+        21094.4,
+        7.593,
+        11
+    ],
+    "1": [
+        "int choose_num(int x, int y) {\n    if (y < x) return -1;\n    if (y == x && y % 2 == 1) return -1;\n    if (y % 2 == 1) return y - 1;\n    return y;\n}",
+        0.977,
+        1.051,
+        1.004,
+        1.005,
+        1.047,
+        6
+    ],
+    "2": [
+        "int choose_num(int x, int y) {\n    \n    if (y < x || (y == x && y % 2 == 1)) {\n        return -1;\n    }\n    \n    if (y % 2 == 1) {\n        return y - 1;\n    }\n    \n    return y;\n}",
+        1.025,
+        1.128,
+        1.016,
+        1.0,
+        1.124,
+        12
+    ]
+}

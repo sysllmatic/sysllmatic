@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<int> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        if (i%3==0) sum+=lst[i]*lst[i];\n        else if (i%4==0) sum+=lst[i]*lst[i]*lst[i];\n        else sum+=lst[i];\n    return sum;\n}",
+        6.072,
+        0.14,
+        13834304.8,
+        21015.2,
+        7.127,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nint sum_squares(vector<int> lst) {\n    int sum = 0;\n    int size = lst.size();\n    for (int i = 0; i < size; ++i) {\n        int value = lst[i];\n        if (i % 12 == 0) { \n            sum += value * value; \n        } else if (i % 4 == 0) {\n            sum += value * value * value; \n        } else if (i % 3 == 0) {\n            sum += value * value; \n        } else {\n            sum += value;\n        }\n    }\n    return sum;\n}",
+        1.243,
+        1.052,
+        1.061,
+        0.994,
+        1.053,
+        21
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <omp.h> \n#include <assert.h>\nusing namespace std;\n\nint sum_squares(const vector<int>& lst) { \n    int sum = 0;\n    int size = lst.size();\n\n    \n    #pragma omp parallel for simd reduction(+:sum)\n    for (int i = 0; i < size; ++i) {\n        int value = lst[i];\n        if (i % 12 == 0) {\n            sum += value * value;\n        } else if (i % 4 == 0) {\n            sum += value * value * value;\n        } else if (i % 3 == 0) {\n            sum += value * value;\n        } else {\n            sum += value;\n        }\n    }\n    return sum;\n}\n\n",
+        1.317,
+        1.112,
+        0.996,
+        1.007,
+        1.113,
+        27
+    ]
+}

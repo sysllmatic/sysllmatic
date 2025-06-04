@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> get_positive(vector<float> l){\nvector<float> out={};\n    for (int i=0;i<l.size();i++)\n        if (l[i]>0) out.push_back(l[i]);\n    return out;\n}",
+        4.69,
+        0.136,
+        9557951.2,
+        21196.0,
+        7.334,
+        12
+    ],
+    "1": [
+        "#include <iostream> \n#include <vector>\n#include <algorithm> \n\nusing namespace std;\n\nvector<float> get_positive(vector<float> l) {\n    vector<float> out;\n    out.reserve(l.size()); \n    std::copy_if(l.begin(), l.end(), std::back_inserter(out), [](float number){ return number > 0; });\n    return out;\n}\n\n",
+        1.017,
+        1.018,
+        0.881,
+        1.009,
+        1.02,
+        13
+    ],
+    "2": [
+        "#include <iostream> \n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<float> get_positive(const vector<float>& l) {\n    vector<float> out;\n    out.reserve(l.size()); \n    std::copy_if(l.begin(), l.end(), std::back_inserter(out), [](float number){ return number > 0; });\n    return out;\n}\n\n",
+        0.945,
+        1.066,
+        0.858,
+        1.008,
+        1.068,
+        13
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> generate_integers(int a,int b){\nint m;\n    if (b<a)\n    {\n        m=a;a=b;b=m;\n    }\n\n    vector<int> out={};\n    for (int i=a;i<=b;i++)\n    if (i<10 and i%2==0) out.push_back(i);\n    return out;\n}",
+        4.513,
+        0.125,
+        4729818.4,
+        21025.6,
+        7.973,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>  \nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    if (b < a) {\n        std::swap(a, b);\n    }\n\n    vector<int> out;\n    \n    int start = (a % 2 == 0) ? a : a + 1;\n    for (int i = start; i <= b && i < 10; i += 2) {\n        out.push_back(i);\n    }\n    return out;\n}",
+        0.949,
+        0.918,
+        1.066,
+        1.001,
+        0.92,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    vector<int> out;\n    int lower = min(a, b);\n    int upper = min(max(a, b), 9); \n\n    \n    for (int i = (lower % 2 == 0 ? lower : lower + 1); i <= upper; i += 2) {\n        out.push_back(i);\n    }\n\n    return out;\n}",
+        0.902,
+        0.985,
+        1.108,
+        0.997,
+        0.987,
+        16
+    ]
+}

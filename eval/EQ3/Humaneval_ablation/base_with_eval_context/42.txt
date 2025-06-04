@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> incr_list(vector<int> l){\nfor (int i=0;i<l.size();i++)\n        l[i]+=1;\n    return l;\n}",
+        4.871,
+        0.129,
+        7699118.8,
+        20934.4,
+        7.756,
+        11
+    ],
+    "1": [
+        "#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> incr_list(vector<int> l) {\n    \n    std::transform(l.begin(), l.end(), l.begin(), [](int x) { return x + 1; });\n    return l;\n}",
+        1.026,
+        1.027,
+        0.888,
+        0.998,
+        1.025,
+        10
+    ],
+    "2": [
+        "#include <vector>\n#include <algorithm>\n#include <immintrin.h>\n#include <iostream>\n\nusing namespace std;\n\nvoid incr_list_simd(vector<int>& l) {\n    size_t i = 0;\n    __m256i one = _mm256_set1_epi32(1);\n    for (; i <= l.size() - 8; i += 8) {\n        __m256i vec = _mm256_loadu_si256((__m256i*)&l[i]);\n        vec = _mm256_add_epi32(vec, one);\n        _mm256_storeu_si256((__m256i*)&l[i], vec);\n    }\n    for (; i < l.size(); ++i) {\n        l[i] += 1;\n    }\n}\n\n\nvector<int> incr_list(vector<int> l) {\n    std::transform(l.begin(), l.end(), l.begin(), [](int x) { return x + 1; });\n    return l;\n}\n\n",
+        1.042,
+        1.037,
+        0.845,
+        0.996,
+        1.035,
+        26
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring anti_shuffle(string s){\nstring out=\"\";\n    string current=\"\";\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n    if (s[i]==' ')\n    {\n        sort(current.begin(),current.end());\n        if (out.length()>0) out=out+' ';\n        out=out+current;\n        current=\"\";\n    }\n    else current=current+s[i];\n    return out;\n}",
+        9.41,
+        0.13,
+        13484945.8,
+        21139.2,
+        7.693,
+        21
+    ],
+    "1": [
+        "#include <string>\n#include <algorithm>\n#include <sstream>\n#include <iostream>\n\nstd::string anti_shuffle(const std::string& s) {\n    std::ostringstream out;\n    std::string current;\n    for (char c : s) {\n        if (c == ' ') {\n            std::sort(current.begin(), current.end());\n            if (!out.str().empty()) out << ' ';\n            out << current;\n            current.clear();\n        } else {\n            current += c;\n        }\n    }\n    if (!current.empty()) {\n        std::sort(current.begin(), current.end());\n        if (!out.str().empty()) out << ' ';\n        out << current;\n    }\n    return out.str();\n}\n\n\n\n",
+        0.963,
+        1.009,
+        1.005,
+        1.007,
+        1.007,
+        28
+    ]
+}

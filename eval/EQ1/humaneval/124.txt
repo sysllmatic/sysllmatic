@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool valid_date(string date){\nint mm,dd,yy,i;\n    if (date.length()!=10) return false;\n    for (int i=0;i<10;i++)\n        if (i==2 or i==5)\n        {\n            if (date[i]!='-') return false;\n        }\n        else\n            if (date[i]<48 or date[i]>57) return false;\n\n    mm=atoi(date.substr(0,2).c_str());\n    dd=atoi(date.substr(3,2).c_str());\n    yy=atoi(date.substr(6,4).c_str());\n    if (mm<1 or mm>12) return false;\n    if (dd<1 or dd>31) return false;\n    if (dd==31 and (mm==4 or mm==6 or mm==9 or mm==11 or mm==2)) return false;\n    if (dd==30 and mm==2) return false;\n    return true;\n\n}",
+        4.737,
+        0.128,
+        4481533.0,
+        21095.2,
+        7.795,
+        27
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nbool valid_date(const string& date) {\n    if (date.length() != 10) return false;\n    if (date[2] != '-' || date[5] != '-') return false;\n\n    \n    int mm = (date[0] - '0') * 10 + (date[1] - '0');\n    int dd = (date[3] - '0') * 10 + (date[4] - '0');\n    int yy = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');\n\n    if (mm < 1 || mm > 12) return false;\n    if (dd < 1 || dd > 31) return false;\n    if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return false;\n    if (mm == 2 && dd > 29) return false;\n    \n    if (mm == 2 && dd == 29) {\n        if ((yy % 4 != 0) || (yy % 100 == 0 && yy % 400 != 0)) return false;\n    }\n    return true;\n}",
+        1.093,
+        0.947,
+        1.054,
+        1.001,
+        0.948,
+        24
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\ninline bool valid_date(const string& date) {\n    if (date.length() != 10) return false;\n    if (date[2] != '-' || date[5] != '-') return false;\n\n    int mm = (date[0] - '0') * 10 + (date[1] - '0');\n    int dd = (date[3] - '0') * 10 + (date[4] - '0');\n    int yy = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');\n\n    const int month_days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n\n    if (mm < 1 || mm > 12) return false;\n    if (dd < 1 || dd > 31) return false;\n    if (dd > month_days[mm - 1]) return false;\n\n    \n    if (mm == 2 && dd == 29) {\n        if ((yy % 4 != 0) || (yy % 100 == 0 && yy % 400 != 0)) return false;\n    }\n\n    return true;\n}",
+        1.03,
+        1.002,
+        1.028,
+        1.002,
+        1.003,
+        26
+    ]
+}

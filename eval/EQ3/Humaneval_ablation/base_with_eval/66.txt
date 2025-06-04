@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint digitSum(string s){\nint sum=0;\n    for (int i=0;i<s.length();i++)\n        if (s[i]>=65 and s[i]<=90)\n            sum+=s[i];\n    return sum;\n}",
+        4.602,
+        0.13,
+        4646853.6,
+        21005.6,
+        7.712,
+        13
+    ],
+    "1": [
+        "#include <string>\n\nint digitSum(const std::string& s) {\n    int sum = 0;\n    int length = s.length(); \n    for (int i = 0; i < length; ++i) {\n        if (s[i] >= 'A' && s[i] <= 'Z') {\n            sum += s[i];\n        }\n    }\n    return sum;\n}",
+        1.018,
+        0.981,
+        0.911,
+        0.999,
+        0.977,
+        12
+    ],
+    "2": [
+        "#include <string>\n\nint digitSum(const std::string& s) {\n    int sum = 0;\n    for (char c : s) {\n        if (c >= 'A' && c <= 'Z') {\n            sum += c;\n        }\n    }\n    return sum;\n}",
+        1.024,
+        0.983,
+        0.948,
+        0.998,
+        0.98,
+        11
+    ]
+}

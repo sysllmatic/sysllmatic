@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> generate_integers(int a,int b){\nint m;\n    if (b<a)\n    {\n        m=a;a=b;b=m;\n    }\n\n    vector<int> out={};\n    for (int i=a;i<=b;i++)\n    if (i<10 and i%2==0) out.push_back(i);\n    return out;\n}",
+        4.595,
+        0.134,
+        4882623.8,
+        21050.4,
+        7.455,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm> \nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    \n    int min_val = min(a, b);\n    int max_val = max(a, b);\n    \n    vector<int> out;\n    out.reserve((max_val - min_val) / 2 + 1); \n\n    \n    int start = (min_val % 2 == 0) ? min_val : min_val + 1;\n    \n    for (int i = start; i <= max_val && i < 10; i += 2) {\n        out.push_back(i);\n    }\n    return out;\n}\n\n\n",
+        1.006,
+        1.057,
+        1.037,
+        1.002,
+        1.057,
+        23
+    ],
+    "2": [
+        "#include <array>\n#include <algorithm>\n#include <vector>\nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    int min_val = min(a, b);\n    int max_val = max(a, b);\n    \n    const array<int, 5> all_evens = {0, 2, 4, 6, 8};\n    vector<int> out;\n    \n    for (int i = 0; i < all_evens.size(); ++i) {\n        if (all_evens[i] >= min_val && all_evens[i] <= max_val) {\n            out.push_back(all_evens[i]);\n        }\n    }\n    return out;\n}\n\n\n",
+        1.004,
+        1.011,
+        1.086,
+        0.997,
+        1.011,
+        21
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> even_odd_palindrome(int n){\nint num1=0,num2=0;\n    for (int i=1;i<=n;i++)\n    {\n        string w=to_string(i);\n        string p(w.rbegin(),w.rend());\n        if (w==p and i%2==1) num1+=1;\n        if (w==p and i%2==0) num2+=1;\n            \n    }\n    return {num2,num1};\n}",
+        4.493,
+        0.132,
+        7831129.8,
+        21070.4,
+        7.547,
+        19
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\n\nbool is_palindrome(int num) {\n    int original = num, reversed = 0;\n    while (num > 0) {\n        reversed = reversed * 10 + num % 10;\n        num /= 10;\n    }\n    return original == reversed;\n}\n\nvector<int> even_odd_palindrome(int n) {\n    int num1 = 0, num2 = 0;\n    for (int i = 1; i <= n; i++) {\n        if (is_palindrome(i)) {\n            if (i % 2 == 0) {\n                num2++;\n            } else {\n                num1++;\n            }\n        }\n    }\n    return {num2, num1};\n}\n\n\n\n",
+        1.017,
+        0.961,
+        1.614,
+        1.002,
+        0.963,
+        30
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <thread>\n#include <mutex>\nusing namespace std;\n\nbool is_palindrome(int num) {\n    int original = num, reversed = 0;\n    while (num > 0) {\n        reversed = reversed * 10 + num % 10;\n        num /= 10;\n    }\n    return original == reversed;\n}\n\nvoid count_palindromes(int start, int end, int &num1, int &num2, mutex &mtx) {\n    int local_num1 = 0, local_num2 = 0;\n    for (int i = start; i <= end; ++i) {\n        if (is_palindrome(i)) {\n            if (i % 2 == 0) {\n                local_num2++;\n            } else {\n                local_num1++;\n            }\n        }\n    }\n    lock_guard<mutex> lock(mtx);\n    num1 += local_num1;\n    num2 += local_num2;\n}\n\nvector<int> even_odd_palindrome(int n) {\n    int num1 = 0, num2 = 0;\n    mutex mtx;\n    int num_threads = 4;\n    vector<thread> threads;\n    int range = n / num_threads;\n\n    for (int t = 0; t < num_threads; ++t) {\n        int start = t * range + 1;\n        int end = (t == num_threads - 1) ? n : (t + 1) * range;\n        threads.emplace_back(count_palindromes, start, end, ref(num1), ref(num2), ref(mtx));\n    }\n\n    for (auto &th : threads) {\n        th.join();\n    }\n    return {num2, num1};\n}\n\n\n",
+        0.938,
+        0.952,
+        1.011,
+        1.004,
+        0.954,
+        51
+    ]
+}

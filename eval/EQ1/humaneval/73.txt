@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint smallest_change(vector<int> arr){\nint out=0;\n    for (int i=0;i<arr.size()-1-i;i++)\n        if (arr[i]!=arr[arr.size()-1-i])\n            out+=1;\n    return out;\n}",
+        4.651,
+        0.131,
+        6902015.2,
+        21095.2,
+        7.603,
+        13
+    ],
+    "1": [
+        "#include <vector>\n#include <iostream>\nusing namespace std;\n\nint smallest_change(const vector<int>& arr) {\n    int out = 0;\n    int size = arr.size();\n    for (int i = 0; i < size / 2; ++i) {\n        int symmetric_index = size - 1 - i;\n        if (arr[i] != arr[symmetric_index]) {\n            ++out;\n        }\n    }\n    return out;\n}\n\n",
+        1.042,
+        1.046,
+        0.93,
+        0.994,
+        1.049,
+        16
+    ],
+    "2": [
+        "#include <vector>\n#include <iostream>\nusing namespace std;\n\nint smallest_change(const vector<int>& arr) {\n    int out = 0;\n    int size = arr.size();\n    int half_size = size / 2; \n    for (int i = 0; i < half_size; ++i) {\n        \n        if (arr[i] != arr[size - 1 - i]) {\n            ++out;\n        }\n    }\n    return out;\n}\n\n\n",
+        1.022,
+        1.033,
+        0.954,
+        1.004,
+        1.035,
+        18
+    ]
+}

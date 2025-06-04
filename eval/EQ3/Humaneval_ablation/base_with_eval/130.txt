@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> tri(int n){\nvector<int> out={1,3};\n    if (n==0) return {1};\n    for (int i=2;i<=n;i++)\n    {\n        if (i%2==0) out.push_back(1+i/2);\n        else out.push_back(out[i-1]+out[i-2]+1+(i+1)/2);\n    }\n    return out;\n}",
+        4.86,
+        0.126,
+        8045351.6,
+        20963.2,
+        7.929,
+        16
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\nusing namespace std;\n\nvector<int> tri(int n) {\n    if (n == 0) return {1};\n    if (n == 1) return {1, 3};\n\n    vector<int> out;\n    out.reserve(n + 1);  \n    out.push_back(1);    \n    out.push_back(3);    \n\n    for (int i = 2; i <= n; ++i) {\n        if (i % 2 == 0) {\n            out.push_back(1 + i / 2);\n        } else {\n            out.push_back(out[i - 1] + out[i - 2] + 1 + (i + 1) / 2);\n        }\n    }\n\n    return out;\n}\n\n",
+        0.966,
+        1.001,
+        1.044,
+        1.004,
+        1.0,
+        24
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\nusing namespace std;\n\nvector<int> tri(int n) {\n    if (n == 0) return {1};\n    if (n == 1) return {1, 3};\n\n    vector<int> out;\n    out.reserve(n + 1);  \n    out.push_back(1);    \n    out.push_back(3);    \n\n    int lastEven = 1; \n\n    for (int i = 2; i <= n; ++i) {\n        if (i % 2 == 0) {\n            lastEven += 1; \n            out.push_back(lastEven);\n        } else {\n            \n            out.push_back(out[i - 1] + out[i - 2] + 1 + (i + 1) / 2);\n        }\n    }\n\n    return out;\n}\n\n",
+        1.018,
+        0.939,
+        1.076,
+        0.988,
+        0.939,
+        28
+    ]
+}

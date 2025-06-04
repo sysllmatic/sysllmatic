@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> derivative(vector<float> xs){\nvector<float> out={};\n    for (int i=1;i<xs.size();i++)\n        out.push_back(i*xs[i]);\n    return out;\n}",
+        4.947,
+        0.129,
+        6539456.4,
+        21070.4,
+        7.765,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\nvector<float> derivative(const vector<float>& xs) {\n    vector<float> out;\n    out.reserve(xs.size() - 1);  \n    size_t size = xs.size();\n    for (size_t i = 1; i < size; ++i) {\n        out.push_back(i * xs[i]);\n    }\n    return out;\n}",
+        1.067,
+        0.969,
+        1.093,
+        1.001,
+        0.966,
+        16
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\n#ifdef _OPENMP\n#include <omp.h>\n#endif\n\nusing namespace std;\n\nvector<float> derivative(const vector<float>& xs) {\n    if (xs.size() < 2) return {};\n    vector<float> out(xs.size() - 1);\n    #ifdef _OPENMP\n    #pragma omp parallel for\n    #endif\n    for (size_t i = 1; i < xs.size(); ++i) {\n        out[i - 1] = i * xs[i];\n    }\n    return out;\n}",
+        1.026,
+        0.991,
+        0.08,
+        0.997,
+        0.988,
+        22
+    ]
+}

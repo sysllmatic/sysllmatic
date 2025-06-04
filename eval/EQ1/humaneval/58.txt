@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> common(vector<int> l1,vector<int> l2){\nvector<int> out={};\n    for (int i=0;i<l1.size();i++)\n        if (find(out.begin(),out.end(),l1[i])==out.end())\n            if (find(l2.begin(),l2.end(),l1[i])!=l2.end())\n                out.push_back(l1[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        85.012,
+        1.636,
+        6985433856.6,
+        20974.4,
+        0.611,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n\nvector<int> common(vector<int> l1, vector<int> l2) {\n    unordered_set<int> set_l2(l2.begin(), l2.end()); \n    unordered_set<int> unique_common;\n    vector<int> out;\n    \n    for (int element : l1) {\n        if (set_l2.find(element) != set_l2.end()) { \n            unique_common.insert(element); \n        }\n    }\n\n    out.assign(unique_common.begin(), unique_common.end());\n    sort(out.begin(), out.end()); \n    return out;\n}",
+        15.139,
+        9.624,
+        72.662,
+        1.0,
+        9.618,
+        22
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <unordered_set>\n#include <set>\nusing namespace std;\n\nvector<int> common(const vector<int>& l1, const vector<int>& l2) {\n    unordered_set<int> set_l2(l2.begin(), l2.end());\n    set<int> unique_common;  \n\n    for (int element : l1) {\n        if (set_l2.find(element) != set_l2.end()) {\n            unique_common.insert(element);  \n        }\n    }\n\n    return vector<int>(unique_common.begin(), unique_common.end());\n}\n\n",
+        14.418,
+        10.112,
+        67.463,
+        0.993,
+        10.106,
+        19
+    ]
+}

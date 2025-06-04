@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring exchange(vector<int> lst1,vector<int> lst2){\nint num=0;\n    for (int i=0;i<lst1.size();i++)\n    if (lst1[i]%2==0) num+=1;\n    for (int i=0;i<lst2.size();i++)\n    if (lst2[i]%2==0) num+=1;\n    if (num>=lst1.size()) return \"YES\";\n    return \"NO\";\n}",
+        4.797,
+        0.128,
+        8170654.4,
+        21052.8,
+        7.785,
+        16
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\n\nstd::string exchange(const std::vector<int>& lst1, const std::vector<int>& lst2) {\n    int num = 0;\n    int totalSize = lst1.size();\n\n    \n    for (size_t i = 0; i < lst1.size() + lst2.size(); ++i) {\n        \n        if (i < lst1.size() && lst1[i] % 2 == 0) {\n            num += 1;\n        }\n        \n        else if (i >= lst1.size() && lst2[i - lst1.size()] % 2 == 0) {\n            num += 1;\n        }\n        \n        if (num >= totalSize) {\n            return \"YES\";\n        }\n    }\n    return \"NO\";\n}",
+        1.005,
+        0.987,
+        0.893,
+        1.004,
+        0.989,
+        24
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\n\nstd::string exchange(const std::vector<int>& lst1, const std::vector<int>& lst2) {\n    int num = 0;\n    int target = lst1.size();\n    \n    \n    for (int i = 0; i < lst1.size(); ++i) {\n        if (lst1[i] % 2 == 0) {\n            num += 1;\n            if (num >= target) {\n                return \"YES\";\n            }\n        }\n    }\n\n    \n    for (int i = 0; i < lst2.size(); ++i) {\n        if (lst2[i] % 2 == 0) {\n            num += 1;\n            if (num >= target) {\n                return \"YES\";\n            }\n        }\n    }\n\n    return \"NO\";\n}",
+        0.99,
+        0.956,
+        1.036,
+        0.994,
+        0.959,
+        29
+    ]
+}

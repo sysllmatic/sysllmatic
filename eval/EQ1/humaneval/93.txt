@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring encode(string message){\nstring vowels=\"aeiouAEIOU\";\n    string out=\"\";\n    for (int i=0;i<message.length();i++)\n    {\n        char w=message[i];\n        if (w>=97 and w<=122){w=w-32;}\n        else if (w>=65 and w<=90) w=w+32;\n        if (find(vowels.begin(),vowels.end(),w)!=vowels.end()) w=w+2;\n        out=out+w;\n    }\n    return out;\n}",
+        4.504,
+        0.128,
+        5738379.8,
+        21032.0,
+        7.776,
+        19
+    ],
+    "1": [
+        "#include <iostream>\n#include <unordered_set>\n#include <string>\n\nusing namespace std;\n\nstring encode(const string& message) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    string out;\n    out.reserve(message.length()); \n    \n    for (char w : message) {\n        \n        if (w >= 'a' && w <= 'z') {\n            w ^= 32; \n        } else if (w >= 'A' && w <= 'Z') {\n            w ^= 32; \n        }\n\n        \n        if (vowels.count(w) > 0) {\n            w += 2;\n        }\n\n        out += w;\n    }\n    return out;\n}\n\n",
+        0.985,
+        1.036,
+        1.033,
+        1.002,
+        1.04,
+        29
+    ],
+    "2": [
+        "#include <iostream>\n#include <bitset>\n#include <string>\n#include <immintrin.h> \n\nusing namespace std;\n\nstring encode(const string& message) {\n    bitset<128> vowels;\n    vowels['a'] = vowels['e'] = vowels['i'] = vowels['o'] = vowels['u'] = true;\n    vowels['A'] = vowels['E'] = vowels['I'] = vowels['O'] = vowels['U'] = true;\n    \n    size_t len = message.length();\n    string out;\n    out.reserve(len);\n    size_t i = 0;\n\n    \n    __m256i toggle_mask = _mm256_set1_epi8(32);\n\n    char buffer[32];\n\n    for (; i + 31 < len; i += 32) {\n        __m256i chunk = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(message.data() + i));\n        __m256i toggled = _mm256_xor_si256(chunk, toggle_mask);\n        \n        _mm256_storeu_si256(reinterpret_cast<__m256i*>(buffer), toggled);\n        \n        \n        for (int j = 0; j < 32; ++j) {\n            if (vowels[buffer[j]]) {\n                buffer[j] += 2;\n            }\n        }\n        \n        out.append(buffer, 32);\n    }\n\n    \n    for (; i < len; ++i) {\n        char w = message[i];\n        if ((w >= 'a' && w <= 'z') || (w >= 'A' && w <= 'Z')) {\n            w ^= 32;\n        }\n        if (vowels[w]) {\n            w += 2;\n        }\n        out += w;\n    }\n    return out;\n}\n\n",
+        1.009,
+        1.018,
+        1.106,
+        1.0,
+        1.021,
+        52
+    ]
+}

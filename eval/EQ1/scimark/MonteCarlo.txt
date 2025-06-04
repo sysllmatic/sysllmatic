@@ -1,0 +1,32 @@
+{
+    "0": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        for (long count = 0; count < Num_samples; count++) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n\n            if (x * x + y * y <= 1.0)\n                under_curve++;\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}\n",
+        818.08,
+        16.597,
+        76932801871.4,
+        44529.6,
+        0.06,
+        1155.49,
+        26
+    ],
+    "1": [
+        "package jnt.scimark2;\n\nimport java.util.concurrent.ThreadLocalRandom;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        long cycles = 1073741824L;\n        double result = integrate(cycles);\n        System.out.println(result);\n    }\n\n    public static double integrate(long Num_samples) {\n        long under_curve1 = 0;\n        long under_curve2 = 0;\n        long under_curve3 = 0;\n        long under_curve4 = 0;\n\n        for (long count = 0; count < Num_samples; count += 4) {\n            double x1 = ThreadLocalRandom.current().nextDouble();\n            double y1 = ThreadLocalRandom.current().nextDouble();\n            double x2 = ThreadLocalRandom.current().nextDouble();\n            double y2 = ThreadLocalRandom.current().nextDouble();\n            double x3 = ThreadLocalRandom.current().nextDouble();\n            double y3 = ThreadLocalRandom.current().nextDouble();\n            double x4 = ThreadLocalRandom.current().nextDouble();\n            double y4 = ThreadLocalRandom.current().nextDouble();\n\n            if (x1 * x1 + y1 * y1 <= 1.0) under_curve1++;\n            if (x2 * x2 + y2 * y2 <= 1.0) under_curve2++;\n            if (x3 * x3 + y3 * y3 <= 1.0) under_curve3++;\n            if (x4 * x4 + y4 * y4 <= 1.0) under_curve4++;\n        }\n\n        long total_under_curve = under_curve1 + under_curve2 + under_curve3 + under_curve4;\n        return ((double) total_under_curve / Num_samples) * 4.0;\n    }\n}",
+        2.409,
+        2.537,
+        2.59121862477552,
+        0.9820221943861258,
+        2.547616666666667,
+        0.5870236869207003,
+        39
+    ],
+    "2": [
+        "package jnt.scimark2;\n\nimport java.util.concurrent.ThreadLocalRandom;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        long cycles = 1073741824L;\n        double result = integrate(cycles);\n        System.out.println(result);\n    }\n\n    public static double integrate(long Num_samples) {\n        long under_curve = 0;\n\n        for (long count = 0; count < Num_samples; count++) {\n            double x = ThreadLocalRandom.current().nextDouble();\n            double y = ThreadLocalRandom.current().nextDouble();\n\n            if (x * x + y * y <= 1.0) {\n                under_curve++;\n            }\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}\n",
+        2.561,
+        2.658,
+        2.7194758093924833,
+        0.99870814942405,
+        2.6690833333333335,
+        0.6369072860864222,
+        28
+    ]
+}

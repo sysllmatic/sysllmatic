@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<stdlib.h>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\nint add(int x,int y){\nreturn x+y;\n}",
+        4.505,
+        0.117,
+        2623305.2,
+        21116.0,
+        8.569,
+        8
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <stdlib.h> \n\ninline int add(int x, int y) {\n    return x + y;\n}\n\n",
+        1.018,
+        0.88,
+        0.919,
+        1.005,
+        0.876,
+        7
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <stdlib.h>\n\nint add(int x, int y) {\n    return x + y;\n}\n\n",
+        0.99,
+        0.901,
+        0.989,
+        0.997,
+        0.898,
+        7
+    ]
+}

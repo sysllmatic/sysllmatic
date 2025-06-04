@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> all_prefixes(string str){\nvector<string> out;\n    string current=\"\";\n    for (int i=0;i<str.length();i++)\n    {\n        current=current+str[i];\n        out.push_back(current);\n    }\n    return out;\n}",
+        10.504,
+        0.252,
+        462066584.6,
+        55002.4,
+        3.969,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\nvector<string> all_prefixes(const string &str) {\n    vector<string> out;\n    out.reserve(str.length());  \n    for (size_t i = 1; i <= str.length(); ++i) {\n        out.push_back(str.substr(0, i));  \n    }\n    return out;\n}",
+        1.185,
+        1.163,
+        1.349,
+        1.058,
+        1.162,
+        14
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n\nusing namespace std;\n\nvector<string> all_prefixes(const string &str) {\n    vector<string> out;\n    out.reserve(str.length());  \n    string current;\n    current.reserve(str.length());  \n    for (char ch : str) {\n        current += ch;  \n        out.push_back(current);  \n    }\n    return out;\n}",
+        1.05,
+        1.161,
+        1.335,
+        1.057,
+        1.16,
+        17
+    ]
+}

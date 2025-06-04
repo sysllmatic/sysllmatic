@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring remove_vowels(string text){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=0;i<text.length();i++)\n        if (find(vowels.begin(),vowels.end(),text[i])==vowels.end())\n            out=out+text[i];\n    return out;\n\n}",
+        7.991,
+        0.12,
+        5112039.6,
+        20973.6,
+        8.31,
+        15
+    ],
+    "1": [
+        "#include <string>\n#include <unordered_set>\n\nstd::string remove_vowels(const std::string& text) {\n    std::unordered_set<char> vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};\n    std::string out;\n    out.reserve(text.size()); \n    for (char c : text) {\n        if (vowels.find(c) == vowels.end()) {\n            out += c;\n        }\n    }\n    return out;\n}\n\n\n\n",
+        0.782,
+        0.949,
+        1.071,
+        0.998,
+        0.95,
+        17
+    ]
+}

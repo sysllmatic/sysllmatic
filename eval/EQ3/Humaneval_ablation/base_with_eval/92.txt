@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool any_int(float a,float b,float c){\nif (round(a)!=a) return false;\n    if (round(b)!=b) return false;\n    if (round(c)!=c) return false;\n    if (a+b==c or a+c==b or b+c==a) return true;\n    return false;\n}",
+        4.687,
+        0.132,
+        2969757.0,
+        21039.2,
+        7.557,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n\nbool any_int(float a, float b, float c) {\n    \n    if (floor(a) != a || floor(b) != b || floor(c) != c) {\n        return false;\n    }\n    \n    return (a + b == c) || (a + c == b) || (b + c == a);\n}",
+        1.066,
+        1.084,
+        1.086,
+        0.999,
+        1.085,
+        11
+    ],
+    "2": [
+        "#include<stdio.h>\n\nbool any_int(float a, float b, float c) {\n    \n    if ((int)a != a || (int)b != b || (int)c != c) {\n        return false;\n    }\n    \n    return (a + b == c) || (a + c == b) || (b + c == a);\n}",
+        1.065,
+        0.997,
+        1.101,
+        0.995,
+        0.999,
+        10
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<float> sort_even(vector<float> l){\nvector<float> out={};\n    vector<float> even={};\n    for (int i=0;i*2<l.size();i++)\n        even.push_back(l[i*2]);\n    sort(even.begin(),even.end());\n    for (int i=0;i<l.size();i++)\n    {\n        if (i%2==0) out.push_back(even[i/2]);\n        if (i%2==1) out.push_back(l[i]);\n    }\n    return out;\n}",
+        4.744,
+        0.134,
+        6385516.8,
+        21106.4,
+        7.475,
+        19
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<float> sort_even(vector<float> l) {\n    size_t n = l.size();\n    vector<float> out(n); \n    vector<float> even((n + 1) / 2); \n    \n    \n    for (size_t i = 0; i * 2 < n; ++i) {\n        even[i] = l[i * 2];\n    }\n    \n    \n    sort(even.begin(), even.end());\n    \n    \n    for (size_t i = 0; i < n; ++i) {\n        if (i % 2 == 0) {\n            out[i] = even[i / 2];\n        } else {\n            out[i] = l[i];\n        }\n    }\n    return out;\n}",
+        1.048,
+        1.041,
+        0.972,
+        1.009,
+        1.038,
+        29
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<float> sort_even(vector<float> l) {\n    size_t n = l.size();\n    vector<float> out(n); \n    vector<float> even((n + 1) / 2); \n    \n    \n    for (size_t i = 0; i * 2 < n; ++i) {\n        even[i] = l[i * 2];\n    }\n    \n    \n    sort(even.begin(), even.end());\n    \n    \n    for (size_t i = 0; i < n; ++i) {\n        if (i % 2 == 0) {\n            out[i] = even[i / 2];\n        } else {\n            out[i] = l[i];\n        }\n    }\n    return out;\n}",
+        1.063,
+        1.041,
+        1.011,
+        1.005,
+        1.038,
+        29
+    ]
+}

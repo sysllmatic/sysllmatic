@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring rounded_avg(int n,int m){\nif (n>m) return \"-1\";\n    int num=(m+n)/2;\n    string out=\"\";\n    while (num>0)\n    {\n        out=to_string(num%2)+out;\n        num=num/2;\n    }\n    return out;\n}",
+        7.545,
+        0.135,
+        4451921.6,
+        21070.4,
+        7.406,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <bitset>\n\nstd::string rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    \n    std::string binary = std::bitset<32>(num).to_string();\n    \n    std::size_t found = binary.find('1');\n    return found != std::string::npos ? binary.substr(found) : \"0\";\n}\n\n\n",
+        0.986,
+        1.013,
+        0.903,
+        1.003,
+        1.012,
+        15
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <bitset>\n\nstd::string rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    \n    std::string binary = std::bitset<16>(num).to_string();\n    \n    auto pos = binary.find_first_not_of('0');\n    return pos != std::string::npos ? binary.substr(pos) : \"0\";\n}\n\n\n",
+        1.064,
+        1.091,
+        0.923,
+        0.999,
+        1.09,
+        15
+    ]
+}

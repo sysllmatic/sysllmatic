@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool valid_date(string date){\nint mm,dd,yy,i;\n    if (date.length()!=10) return false;\n    for (int i=0;i<10;i++)\n        if (i==2 or i==5)\n        {\n            if (date[i]!='-') return false;\n        }\n        else\n            if (date[i]<48 or date[i]>57) return false;\n\n    mm=atoi(date.substr(0,2).c_str());\n    dd=atoi(date.substr(3,2).c_str());\n    yy=atoi(date.substr(6,4).c_str());\n    if (mm<1 or mm>12) return false;\n    if (dd<1 or dd>31) return false;\n    if (dd==31 and (mm==4 or mm==6 or mm==9 or mm==11 or mm==2)) return false;\n    if (dd==30 and mm==2) return false;\n    return true;\n\n}",
+        4.45,
+        0.136,
+        4624176.2,
+        21093.6,
+        7.333,
+        27
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nbool valid_date(string date) {\n    if (date.length() != 10) return false;\n    if (date[2] != '-' || date[5] != '-') return false;\n    \n    \n    for (int i = 0; i < 10; ++i) {\n        if (i != 2 && i != 5) {\n            if (date[i] < '0' || date[i] > '9') return false;\n        }\n    }\n\n    \n    int mm = (date[0] - '0') * 10 + (date[1] - '0');\n    int dd = (date[3] - '0') * 10 + (date[4] - '0');\n    int yy = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');\n\n    \n    int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n\n    if (mm < 1 || mm > 12) return false;\n    if (dd < 1 || dd > days_in_month[mm]) return false;\n\n    \n    if (mm == 2) {\n        \n        bool is_leap = (yy % 4 == 0 && yy % 100 != 0) || (yy % 400 == 0);\n        if (dd > 29 || (dd == 29 && !is_leap)) return false;\n    }\n\n    return true;\n}\n\n",
+        0.948,
+        1.002,
+        1.024,
+        1.004,
+        1.003,
+        36
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\n\n#define DATE_LENGTH 10\n#define DASH1_INDEX 2\n#define DASH2_INDEX 5\n\n\ninline bool is_digit(char c) {\n    return c >= '0' && c <= '9';\n}\n\n\ninline bool valid_date(const string& date) {\n    if (date.length() != DATE_LENGTH) return false;\n    if (date[DASH1_INDEX] != '-' || date[DASH2_INDEX] != '-') return false;\n    \n    \n    for (int i = 0; i < DATE_LENGTH; ++i) {\n        if (i != DASH1_INDEX && i != DASH2_INDEX && !is_digit(date[i])) return false;\n    }\n\n    \n    int mm = (date[0] - '0') * 10 + (date[1] - '0');\n    int dd = (date[3] - '0') * 10 + (date[4] - '0');\n    int yy = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');\n\n    \n    int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};\n\n    \n    if (mm < 1 || mm > 12) return false;\n    if (dd < 1 || dd > days_in_month[mm]) return false;\n\n    \n    if (mm == 2) {\n        \n        bool is_leap = (yy % 4 == 0 && yy % 100 != 0) || (yy % 400 == 0);\n        if (dd > 29 || (dd == 29 && !is_leap)) return false;\n    }\n\n    return true;\n}\n\n",
+        0.833,
+        1.145,
+        0.926,
+        1.002,
+        1.147,
+        46
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\nstring n=\"\";\n    for (int i=0;i<s.length();i++)\n    if (find(c.begin(),c.end(),s[i])==c.end())\n        n=n+s[i]; \n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"};\n}",
+        15.94,
+        0.343,
+        897068688.0,
+        21130.4,
+        2.918,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <unordered_set>\n\nusing namespace std;\n\nvector<string> reverse_delete(string s, string c) {\n    unordered_set<char> char_set(c.begin(), c.end());\n    string n;\n    n.reserve(s.length()); \n    \n    for (char ch : s) {\n        if (char_set.find(ch) == char_set.end()) {\n            n.push_back(ch);\n        }\n    }\n    \n    if (n.empty()) return {n, \"True\"};\n    \n    \n    bool is_palindrome = true;\n    for (size_t i = 0, j = n.length() - 1; i < j; ++i, --j) {\n        if (n[i] != n[j]) {\n            is_palindrome = false;\n            break;\n        }\n    }\n    \n    return {n, is_palindrome ? \"True\" : \"False\"};\n}",
+        2.949,
+        2.25,
+        18.851,
+        1.009,
+        2.245,
+        31
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <immintrin.h>  \n\nusing namespace std;\n\nvector<string> reverse_delete(string s, string c) {\n    \n    unsigned int char_mask = 0;\n    for (char ch : c) {\n        char_mask |= (1 << (ch - 'a'));\n    }\n\n    string n;\n    n.reserve(s.length()); \n    \n    for (char ch : s) {\n        if (!(char_mask & (1 << (ch - 'a')))) {\n            n.push_back(ch);\n        }\n    }\n    \n    if (n.empty()) return {n, \"True\"};\n    \n    \n    bool is_palindrome = true;\n    size_t len = n.length();\n    size_t i = 0;\n    for (; i + 8 <= len / 2; i += 8) {\n        __m128i front = _mm_loadu_si128((__m128i*)&n[i]);\n        __m128i back = _mm_loadu_si128((__m128i*)&n[len - i - 8]);\n        back = _mm_shuffle_epi8(back, _mm_setr_epi8(15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0));\n        if (_mm_cmpistrc(front, back, _SIDD_CMP_EQUAL_EACH)) {\n            is_palindrome = false;\n            break;\n        }\n    }\n\n    for (; i < len / 2; ++i) {\n        if (n[i] != n[len - 1 - i]) {\n            is_palindrome = false;\n            break;\n        }\n    }\n\n    return {n, is_palindrome ? \"True\" : \"False\"};\n}",
+        2.725,
+        2.472,
+        59.048,
+        1.003,
+        2.467,
+        48
+    ]
+}

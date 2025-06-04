@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_happy(string s){\nif (s.length()<3) return false;\n    for (int i=2;i<s.length();i++)\n    if (s[i]==s[i-1] or s[i]==s[i-2]) return false;\n    return true;\n}",
+        4.683,
+        0.128,
+        4628804.4,
+        21183.2,
+        7.779,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n\nbool is_happy(const std::string& s) {\n    size_t length = s.length();\n    if (length < 3) return false;\n    \n    for (size_t i = 2; i < length; ++i) {\n        if (s[i] == s[i-1] || s[i] == s[i-2]) {\n            return false;\n        }\n    }\n    return true;\n}\n\n",
+        1.026,
+        0.985,
+        0.948,
+        1.007,
+        0.988,
+        15
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n\nbool is_happy(const std::string& s) {\n    size_t length = s.length();\n    if (length < 3) return false;\n    \n    for (size_t i = 2; i < length; ++i) {\n        \n        if (s[i] == s[i-1] || s[i] == s[i-2]) {\n            return false;\n        }\n    }\n    return true;\n}\n\n",
+        1.051,
+        1.003,
+        0.982,
+        1.01,
+        1.006,
+        16
+    ]
+}

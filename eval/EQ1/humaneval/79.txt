@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring decimal_to_binary(int decimal){\nstring out=\"\";\n    if (decimal==0) return \"db0db\";\n    while (decimal>0)\n    {\n        out=to_string(decimal%2)+out;\n        decimal=decimal/2;\n    }\n    out=\"db\"+out+\"db\";\n    return out;\n}",
+        4.778,
+        0.129,
+        4454669.0,
+        21006.4,
+        7.719,
+        17
+    ],
+    "1": [
+        "#include<string>\n#include<algorithm> \nusing namespace std;\n\nstring decimal_to_binary(int decimal) {\n    if (decimal == 0) return \"db0db\";\n    \n    string out;\n    while (decimal > 0) {\n        out.push_back('0' + (decimal & 1)); \n        decimal >>= 1; \n    }\n    \n    reverse(out.begin(), out.end());\n    return \"db\" + out + \"db\";\n}",
+        0.925,
+        1.011,
+        0.973,
+        0.997,
+        1.014,
+        16
+    ],
+    "2": [
+        "#include <string>\n#include <cmath> \n#include <algorithm> \nusing namespace std;\n\nstring decimal_to_binary(int decimal) {\n    if (decimal == 0) return \"db0db\";\n    \n    \n    int num_bits = log2(decimal) + 1;\n    string out(num_bits, '0'); \n    \n    int index = num_bits - 1;\n    while (decimal > 0) {\n        out[index--] = '0' + (decimal & 1); \n        decimal >>= 1; \n    }\n    \n    return \"db\" + out + \"db\";\n}",
+        0.865,
+        1.017,
+        0.887,
+        0.995,
+        1.02,
+        20
+    ]
+}

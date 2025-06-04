@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> remove_duplicates(vector<int> numbers){\nvector<int> out={};\n    vector<int> has1={};\n    vector<int> has2={};\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (find(has2.begin(),has2.end(),numbers[i])!=has2.end()) continue;\n        if (find(has1.begin(),has1.end(),numbers[i])!=has1.end())\n        {\n\n            has2.push_back(numbers[i]);\n        }\n        else has1.push_back(numbers[i]);\n    }\n    for (int i=0;i<numbers.size();i++)\n    if (find(has2.begin(),has2.end(),numbers[i])==has2.end())\n        out.push_back(numbers[i]);\n    return out;\n\n\n}",
+        62.856,
+        1.218,
+        4984466985.4,
+        21100.0,
+        0.821,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <unordered_set>\n#include <vector>\n\nusing namespace std;\n\nvector<int> remove_duplicates(const vector<int>& numbers) {\n    unordered_set<int> seen;\n    unordered_set<int> duplicates;\n    vector<int> out;\n    \n    for (int number : numbers) {\n        if (seen.find(number) != seen.end()) {\n            duplicates.insert(number);\n        } else {\n            seen.insert(number);\n        }\n    }\n    \n    for (int number : numbers) {\n        if (duplicates.find(number) == duplicates.end()) {\n            out.push_back(number);\n        }\n    }\n    \n    return out;\n}\n\n\n",
+        11.105,
+        7.818,
+        68.12,
+        1.002,
+        7.81,
+        29
+    ],
+    "2": [
+        "#include <iostream>\n#include <unordered_map>\n#include <vector>\n#include <algorithm> \n\nusing namespace std;\n\nvector<int> remove_duplicates(const vector<int>& numbers) {\n    unordered_map<int, pair<int, int>> num_count_map; \n    vector<int> out;\n    out.reserve(numbers.size()); \n\n    for (int i = 0; i < numbers.size(); ++i) {\n        auto& entry = num_count_map[numbers[i]];\n        entry.first++;\n        if (entry.first == 1) {\n            entry.second = i; \n        }\n    }\n\n    for (const auto& pair : num_count_map) {\n        if (pair.second.first == 1) { \n            out.push_back(pair.first);\n        }\n    }\n\n    \n    sort(out.begin(), out.end(), [&](int a, int b) {\n        return num_count_map[a].second < num_count_map[b].second;\n    });\n\n    return out;\n}\n\n",
+        8.555,
+        7.061,
+        34.849,
+        1.009,
+        7.054,
+        34
+    ]
+}

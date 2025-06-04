@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> separate_paren_groups(string paren_string){\nvector<string> all_parens;\n    string current_paren;\n    int level=0;\n    char chr;\n    int i;\n    for (i=0;i<paren_string.length();i++)\n    {\n        chr=paren_string[i];\n        if (chr=='(')\n        {\n        level+=1;\n        current_paren+=chr;\n        }\n        if (chr==')')\n        {\n            level-=1;\n            current_paren+=chr;\n            if (level==0){\n                all_parens.push_back(current_paren);\n                current_paren=\"\";\n            }\n        }\n    }\n    return all_parens;\n}",
+        9.688,
+        0.14,
+        16553987.4,
+        21113.6,
+        7.153,
+        33
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> separate_paren_groups(string paren_string) {\n    vector<string> all_parens;\n    string current_paren;\n    int level = 0;\n    \n    for (char chr : paren_string) {\n        if (chr == '(') {\n            level += 1;\n            current_paren += chr;\n        } else if (chr == ')') {\n            level -= 1;\n            current_paren += chr;\n            if (level == 0) {\n                all_parens.push_back(current_paren);\n                current_paren = \"\";\n            }\n        }\n    }\n    return all_parens;\n}\n\n",
+        0.93,
+        1.046,
+        0.898,
+        1.004,
+        1.043,
+        25
+    ]
+}

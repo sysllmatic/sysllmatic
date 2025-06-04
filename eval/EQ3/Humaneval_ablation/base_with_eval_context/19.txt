@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring sort_numbers(string numbers){\nmap<string,int> tonum={{\"zero\",0},{\"one\",1},{\"two\",2},{\"three\",3},{\"four\",4},{\"five\",5},{\"six\",6},{\"seven\",7},{\"eight\",8},{\"nine\",9}};\n    map<int,string> numto={{0,\"zero\"},{1,\"one\"},{2,\"two\"},{3,\"three\"},{4,\"four\"},{5,\"five\"},{6,\"six\"},{7,\"seven\"},{8,\"eight\"},{9,\"nine\"}};\n    int count[10];\n    for (int i=0;i<10;i++)\n        count[i]=0;\n    string out=\"\",current=\"\";\n    if (numbers.length()>0) numbers=numbers+' ';\n    for (int i=0;i<numbers.length();i++)\n        if (numbers[i]==' ')\n        {\n            count[tonum[current]]+=1;\n            current=\"\";\n        }\n        else current+=numbers[i];\n    for (int i=0;i<10;i++)\n        for (int j=0;j<count[i];j++)\n            out=out+numto[i]+' ';\n    if (out.length()>0) out.pop_back();\n    return out;\n}",
+        4.673,
+        0.124,
+        5500936.0,
+        21009.6,
+        8.05,
+        28
+    ],
+    "1": [
+        "#include <iostream>\n#include <unordered_map>\n#include <sstream>\n#include <algorithm>\n\nusing namespace std;\n\nstring sort_numbers(const string& numbers) {\n    unordered_map<string, int> tonum = { {\"zero\", 0}, {\"one\", 1}, {\"two\", 2}, {\"three\", 3}, {\"four\", 4}, {\"five\", 5}, {\"six\", 6}, {\"seven\", 7}, {\"eight\", 8}, {\"nine\", 9} };\n    unordered_map<int, string> numto = { {0, \"zero\"}, {1, \"one\"}, {2, \"two\"}, {3, \"three\"}, {4, \"four\"}, {5, \"five\"}, {6, \"six\"}, {7, \"seven\"}, {8, \"eight\"}, {9, \"nine\"} };\n    int count[10] = {0};\n\n    string current = \"\";\n    stringstream ss(numbers + \" \");\n    \n    while (ss >> current) {\n        if (tonum.find(current) != tonum.end()) {\n            count[tonum[current]]++;\n        }\n    }\n    \n    ostringstream out;\n    for (int i = 0; i < 10; ++i) {\n        for (int j = 0; j < count[i]; ++j) {\n            out << numto[i] << \" \";\n        }\n    }\n    string result = out.str();\n    if (!result.empty()) {\n        result.pop_back(); \n    }\n    return result;\n}\n\n",
+        1.047,
+        0.937,
+        0.994,
+        0.999,
+        0.937,
+        34
+    ],
+    "2": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <array>\n\nusing namespace std;\n\nstring sort_numbers(const string& numbers) {\n    static const std::array<std::string, 10> numto = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    static const std::array<std::string, 10> tonum = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    std::array<int, 10> count = {0};\n    \n    std::stringstream ss(numbers);\n    std::string current;\n    while (ss >> current) {\n        for (int i = 0; i < 10; ++i) {\n            if (current == tonum[i]) {\n                ++count[i];\n                break;\n            }\n        }\n    }\n\n    std::string result;\n    for (int i = 0; i < 10; ++i) {\n        for (int j = 0; j < count[i]; ++j) {\n            result.append(numto[i]).append(\" \");\n        }\n    }\n    if (!result.empty()) {\n        result.pop_back(); \n    }\n\n    return result;\n}\n\n",
+        1.016,
+        1.03,
+        1.124,
+        0.996,
+        1.03,
+        36
+    ]
+}

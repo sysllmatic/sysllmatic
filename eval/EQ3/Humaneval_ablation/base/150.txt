@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint x_or_y(int n,int x,int y){\nbool isp=true;\n    if (n<2) isp=false;\n    for (int i=2;i*i<=n;i++)\n    if (n%i==0) isp=false;\n    if (isp) return x;\n    return y;\n}",
+        4.603,
+        0.127,
+        2902780.0,
+        21116.8,
+        7.89,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\nusing namespace std;\n\nint x_or_y(int n, int x, int y) {\n    if (n < 2) return y; \n    if (n == 2) return x; \n    if (n % 2 == 0) return y; \n    for (int i = 3; i * i <= n; i += 2) { \n        if (n % i == 0) return y;\n    }\n    return x; \n}\n\n",
+        1.03,
+        1.04,
+        1.115,
+        1.001,
+        1.037,
+        14
+    ]
+}

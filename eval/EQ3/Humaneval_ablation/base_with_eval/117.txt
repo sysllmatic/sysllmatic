@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> select_words(string s,int n){\nstring vowels=\"aeiouAEIOU\";\n    string current=\"\";\n    vector<string> out={};\n    int numc=0;\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n        if (s[i]==' ')\n        {\n            if (numc==n) out.push_back(current);\n            current=\"\";\n            numc=0;\n        }\n        else\n        {\n            current=current+s[i];\n            if ((s[i]>=65 and s[i]<=90) or (s[i]>=97 and s[i]<=122))\n            if (find(vowels.begin(),vowels.end(),s[i])==vowels.end())\n                numc+=1;\n        }\n    return out;\n}",
+        5.519,
+        0.153,
+        74982989.2,
+        21144.0,
+        6.524,
+        29
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\n#include <unordered_set>\n#include <sstream>\nusing namespace std;\n\nvector<string> select_words(string s, int n) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    stringstream ss(s);\n    string word;\n    vector<string> out;\n    \n    while (ss >> word) {\n        int numc = 0;\n        for (char c : word) {\n            if (isalpha(c) && vowels.find(c) == vowels.end()) {\n                numc++;\n            }\n        }\n        if (numc == n) {\n            out.push_back(word);\n        }\n    }\n    return out;\n}",
+        1.142,
+        1.018,
+        3.022,
+        1.005,
+        1.019,
+        26
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\n#include <unordered_set>\n#include <thread>\n#include <mutex>\n#include <iostream>\nusing namespace std;\n\n\nvector<string> select_words(const string &s, int n) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    vector<string> out;\n    vector<thread> threads;\n    mutex out_mutex;\n    size_t start = 0, end = 0;\n\n    while ((end = s.find(' ', start)) != string::npos) {\n        string word = s.substr(start, end - start);\n        start = end + 1;\n\n        threads.emplace_back([&out, &out_mutex, &vowels, word, n]() {\n            int numc = 0;\n            for (char c : word) {\n                if (isalpha(c) && vowels.find(c) == vowels.end()) {\n                    numc++;\n                }\n            }\n            if (numc == n) {\n                lock_guard<mutex> lock(out_mutex);\n                out.push_back(word);\n            }\n        });\n    }\n\n    \n    if (start < s.length()) {\n        string word = s.substr(start);\n        threads.emplace_back([&out, &out_mutex, &vowels, word, n]() {\n            int numc = 0;\n            for (char c : word) {\n                if (isalpha(c) && vowels.find(c) == vowels.end()) {\n                    numc++;\n                }\n            }\n            if (numc == n) {\n                lock_guard<mutex> lock(out_mutex);\n                out.push_back(word);\n            }\n        });\n    }\n\n    for (auto &t : threads) {\n        t.join();\n    }\n\n    return out;\n}\n\n",
+        1.124,
+        1.08,
+        2.851,
+        1.004,
+        1.081,
+        59
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> rescale_to_unit(vector<float> numbers){\nfloat min=100000,max=-100000;\n    for (int i=0;i<numbers.size();i++)\n        {\n            if (numbers[i]<min) min=numbers[i];\n            if (numbers[i]>max) max=numbers[i];\n        }\n    for (int i=0;i<numbers.size();i++)\n        numbers[i]=(numbers[i]-min)/(max-min);\n    return numbers;\n}",
+        4.853,
+        0.136,
+        10575735.2,
+        21108.8,
+        7.347,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<float> rescale_to_unit(vector<float> numbers) {\n    if (numbers.empty()) return numbers;\n\n    float min = numbers[0];\n    float max = numbers[0];\n\n    \n    for (auto it = numbers.begin(); it != numbers.end(); ++it) {\n        if (*it < min) min = *it;\n        if (*it > max) max = *it;\n    }\n\n    \n    float range = max - min;\n    if (range == 0) return numbers; \n    float inv_range = 1.0f / range;\n\n    \n    for (auto it = numbers.begin(); it != numbers.end(); ++it) {\n        *it = (*it - min) * inv_range;\n    }\n\n    return numbers;\n}",
+        1.028,
+        1.03,
+        0.759,
+        1.01,
+        1.03,
+        31
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <immintrin.h>  \n#include <omp.h>        \n\nusing namespace std;\n\nvector<float> rescale_to_unit(vector<float> numbers) {\n    if (numbers.empty()) return numbers;\n\n    float min = numbers[0];\n    float max = numbers[0];\n\n    \n    #pragma omp parallel for reduction(min:min) reduction(max:max)\n    for (size_t i = 0; i < numbers.size(); i++) {\n        #pragma omp critical\n        {\n            if (numbers[i] < min) min = numbers[i];\n            if (numbers[i] > max) max = numbers[i];\n        }\n    }\n\n    float range = max - min;\n    if (range == 0) return numbers; \n    float inv_range = 1.0f / range;\n\n    \n    size_t i = 0;\n    __m256 min_vec = _mm256_set1_ps(min);\n    __m256 inv_range_vec = _mm256_set1_ps(inv_range);\n    for (; i + 8 <= numbers.size(); i += 8) {\n        __m256 num_vec = _mm256_loadu_ps(&numbers[i]);\n        num_vec = _mm256_sub_ps(num_vec, min_vec);\n        num_vec = _mm256_mul_ps(num_vec, inv_range_vec);\n        _mm256_storeu_ps(&numbers[i], num_vec);\n    }\n\n    \n    for (; i < numbers.size(); i++) {\n        numbers[i] = (numbers[i] - min) * inv_range;\n    }\n\n    return numbers;\n}",
+        0.601,
+        0.949,
+        0.004,
+        1.004,
+        0.949,
+        47
+    ]
+}

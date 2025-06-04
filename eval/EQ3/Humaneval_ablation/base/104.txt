@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique_digits(vector<int> x){\nvector<int> out={};\n    for (int i=0;i<x.size();i++)\n        {\n            int num=x[i];\n            bool u=true;\n            if (num==0) u=false;\n            while (num>0 and u)\n            {\n                if (num%2==0) u=false;\n                num=num/10;\n            }\n            if (u) out.push_back(x[i]);\n        }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        4.505,
+        0.129,
+        5645541.0,
+        20952.0,
+        7.741,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> unique_digits(const vector<int>& x) {\n    vector<int> out;\n    for (int num : x) {\n        if (num == 0) continue; \n        bool u = true;\n        int temp = num;\n        while (temp > 0) {\n            if ((temp % 10) % 2 == 0) { \n                u = false;\n                break; \n            }\n            temp /= 10;\n        }\n        if (u) out.push_back(num);\n    }\n    sort(out.begin(), out.end()); \n    return out;\n}\n\n",
+        0.982,
+        1.042,
+        1.039,
+        0.995,
+        1.042,
+        24
+    ]
+}

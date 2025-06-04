@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool any_int(float a,float b,float c){\nif (round(a)!=a) return false;\n    if (round(b)!=b) return false;\n    if (round(c)!=c) return false;\n    if (a+b==c or a+c==b or b+c==a) return true;\n    return false;\n}",
+        4.607,
+        0.131,
+        2942362.6,
+        21038.4,
+        7.648,
+        12
+    ],
+    "1": [
+        "#include <math.h>\n\nbool any_int(float a, float b, float c) {\n    float ra = round(a);\n    float rb = round(b);\n    float rc = round(c);\n\n    if (ra != a || rb != b || rc != c) {\n        return false;\n    }\n\n    return (a + b == c) || (a + c == b) || (b + c == a);\n}",
+        0.896,
+        1.022,
+        1.031,
+        0.994,
+        1.016,
+        13
+    ],
+    "2": [
+        "#include <math.h>\n\nbool is_integer(float x) {\n    return fmod(x, 1.0) == 0.0;\n}\n\nbool any_int(float a, float b, float c) {\n    if (!is_integer(a) || !is_integer(b) || !is_integer(c)) {\n        return false;\n    }\n\n    return (a + b == c) || (a + c == b) || (b + c == a);\n}",
+        0.972,
+        1.016,
+        1.062,
+        1.003,
+        1.013,
+        13
+    ]
+}

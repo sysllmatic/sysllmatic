@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring concatenate(vector<string> strings){\nstring out=\"\";\n    for (int i=0;i<strings.size();i++)\n        out=out+strings[i];\n    return out;\n}",
+        12.081,
+        0.151,
+        70147540.2,
+        21140.8,
+        6.632,
+        13
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\n#include <sstream>\n\nstd::string concatenate(const std::vector<std::string>& strings) {\n    std::ostringstream out;\n    for (const auto& str : strings) {\n        out << str;\n    }\n    return out.str();\n}\n\n\n\n",
+        1.269,
+        1.141,
+        3.318,
+        1.005,
+        1.138,
+        14
+    ]
+}

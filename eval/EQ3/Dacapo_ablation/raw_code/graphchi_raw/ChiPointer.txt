@@ -1,0 +1,11 @@
+{
+    "0": [
+        "package edu.cmu.graphchi.datablocks;\n\n\n\n\npublic class ChiPointer {\n    public int blockId;\n    public int offset;\n\n    public ChiPointer(int blockId, int offset) {\n        this.blockId = blockId;\n        this.offset = offset;\n    }\n\n}\n"
+    ],
+    "1": [
+        "package edu.cmu.graphchi.datablocks;\n\npublic final class ChiPointer {\n    public final int blockId;\n    public final int offset;\n\n    public ChiPointer(int blockId, int offset) {\n        this.blockId = blockId;\n        this.offset = offset;\n    }\n}\n"
+    ],
+    "2": [
+        "package edu.cmu.graphchi.datablocks;\n\nimport java.util.Objects;\n\npublic final class ChiPointer {\n    public final int blockId;\n    public final int offset;\n\n    public ChiPointer(int blockId, int offset) {\n        this.blockId = blockId;\n        this.offset = offset;\n    }\n\n    @Override\n    public boolean equals(Object o) {\n        if (this == o) return true;\n        if (o == null || getClass() != o.getClass()) return false;\n        ChiPointer that = (ChiPointer) o;\n        return blockId == that.blockId && offset == that.offset;\n    }\n\n    @Override\n    public int hashCode() {\n        return Objects.hash(blockId, offset);\n    }\n\n    @Override\n    public String toString() {\n        return \"ChiPointer{\" +\n                \"blockId=\" + blockId +\n                \", offset=\" + offset +\n                '}';\n    }\n}\n"
+    ]
+}

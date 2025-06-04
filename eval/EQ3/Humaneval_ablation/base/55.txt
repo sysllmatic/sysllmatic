@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fib(int n){\nint f[1000];\n    f[0]=0;f[1]=1;\n    for (int i=2;i<=n; i++)\n    f[i]=f[i-1]+f[i-2];\n    return f[n];\n}",
+        8.884,
+        0.126,
+        2680750.8,
+        21048.0,
+        7.939,
+        12
+    ],
+    "1": [
+        "#include <iostream>\n\nint fib(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    int a = 0, b = 1;\n    for (int i = 2; i <= n; ++i) {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n    return b;\n}\n\n\n\n",
+        0.987,
+        1.028,
+        0.542,
+        1.0,
+        1.027,
+        16
+    ]
+}

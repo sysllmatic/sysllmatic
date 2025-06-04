@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<int> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        if (i%3==0) sum+=lst[i]*lst[i];\n        else if (i%4==0) sum+=lst[i]*lst[i]*lst[i];\n        else sum+=lst[i];\n    return sum;\n}",
+        4.679,
+        0.133,
+        13227375.2,
+        21031.2,
+        7.52,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nint sum_squares(vector<int> lst) {\n    int sum = 0;\n    int size = lst.size();\n    for (int i = 0; i < size; i++) {\n        switch (i % 12) {  \n            case 0:\n            case 3:\n            case 6:\n            case 9:\n                sum += lst[i] * lst[i];\n                break;\n            case 4:\n            case 8:\n                sum += lst[i] * lst[i] * lst[i];\n                break;\n            default:\n                sum += lst[i];\n                break;\n        }\n    }\n    return sum;\n}",
+        1.003,
+        0.976,
+        0.999,
+        1.004,
+        0.974,
+        26
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nint sum_squares(const vector<int>& lst) {\n    int sum = 0;\n    int size = lst.size();\n    int i = 0;\n    \n    \n    for (; i <= size - 12; i += 12) {\n        sum += lst[i] * lst[i];\n        sum += lst[i + 1];\n        sum += lst[i + 2];\n        sum += lst[i + 3] * lst[i + 3];\n        sum += lst[i + 4] * lst[i + 4] * lst[i + 4];\n        sum += lst[i + 5];\n        sum += lst[i + 6] * lst[i + 6];\n        sum += lst[i + 7];\n        sum += lst[i + 8] * lst[i + 8] * lst[i + 8];\n        sum += lst[i + 9] * lst[i + 9];\n        sum += lst[i + 10];\n        sum += lst[i + 11];\n    }\n    \n    \n    for (; i < size; i++) {\n        switch (i % 12) {\n            case 0:\n            case 3:\n            case 6:\n            case 9:\n                sum += lst[i] * lst[i];\n                break;\n            case 4:\n            case 8:\n                sum += lst[i] * lst[i] * lst[i];\n                break;\n            default:\n                sum += lst[i];\n                break;\n        }\n    }\n    return sum;\n}",
+        0.989,
+        1.064,
+        0.97,
+        0.996,
+        1.063,
+        45
+    ]
+}

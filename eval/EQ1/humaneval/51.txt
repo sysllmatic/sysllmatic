@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring remove_vowels(string text){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=0;i<text.length();i++)\n        if (find(vowels.begin(),vowels.end(),text[i])==vowels.end())\n            out=out+text[i];\n    return out;\n\n}",
+        4.597,
+        0.124,
+        4735203.6,
+        21046.4,
+        8.077,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <string>\n#include <set>\n#include <sstream>\nusing namespace std;\n\nstring remove_vowels(string text) {\n    ostringstream out;\n    set<char> vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};\n    for (char c : text) {\n        if (vowels.find(c) == vowels.end()) {\n            out << c;\n        }\n    }\n    return out.str();\n}\n\n",
+        1.028,
+        0.976,
+        0.996,
+        1.007,
+        0.973,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <bitset>\n#include <iostream>\n#include <thread>\n#include <vector>\nusing namespace std;\n\nstring remove_vowels(const string& text) {\n    std::bitset<256> vowels;\n    vowels.set('A'); vowels.set('E'); vowels.set('I'); vowels.set('O'); vowels.set('U');\n    vowels.set('a'); vowels.set('e'); vowels.set('i'); vowels.set('o'); vowels.set('u');\n\n    size_t length = text.length();\n    string result;\n    result.reserve(length);  \n\n    \n    auto process_chunk = [&](size_t start, size_t end) {\n        for (size_t i = start; i < end; ++i) {\n            if (!vowels[text[i]]) {\n                result.push_back(text[i]);\n            }\n        }\n    };\n\n    \n    if (length > 10000) {  \n        size_t num_threads = std::min((size_t)std::thread::hardware_concurrency(), length / 1000);\n        vector<thread> threads;\n        threads.reserve(num_threads);\n\n        size_t chunk_size = length / num_threads;\n        for (size_t t = 0; t < num_threads; ++t) {\n            size_t start = t * chunk_size;\n            size_t end = (t == num_threads - 1) ? length : start + chunk_size;\n            threads.emplace_back(process_chunk, start, end);\n        }\n\n        for (auto& th : threads) {\n            th.join();\n        }\n    } else {\n        process_chunk(0, length);\n    }\n\n    return result;\n}\n\n",
+        1.008,
+        0.931,
+        0.971,
+        1.001,
+        0.928,
+        49
+    ]
+}

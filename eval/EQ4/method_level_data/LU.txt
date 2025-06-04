@@ -1,0 +1,32 @@
+{
+    "0": [
+        "private static double[][] RandomMatrix(int M, int N, Random R) {\n    double[][] A = new double[M][N];\n    for (int i = 0; i < N; i++) for (int j = 0; j < N; j++) A[i][j] = R.nextDouble();\n    return A;\n}",
+        140.752,
+        1.091,
+        1661240301.2,
+        62952.0,
+        0.917,
+        4431.52,
+        5
+    ],
+    "1": [
+        "package jnt.scimark2;\nprivate static double[][] RandomMatrix(int M, int N, Random R) {\n    double[][] A = new double[M][N];\n    for (int i = 0; i < M; i++) { \n        for (int j = 0; j < N; j++) { \n            A[i][j] = R.nextDouble();\n        }\n    }\n    return A;\n}",
+        1.09,
+        1.074,
+        0.8100390984079812,
+        0.994150569150885,
+        1.0735627044711014,
+        0.9639559338556521,
+        10
+    ],
+    "2": [
+        "package jnt.scimark2;\n\nimport java.util.concurrent.ThreadLocalRandom;\nimport java.util.stream.IntStream;\n\nprivate static double[][] RandomMatrix(int M, int N) {\n    double[][] A = new double[M][N];\n    IntStream.range(0, M).parallel().forEach(i -> {\n        for (int j = 0; j < N; j++) {\n            A[i][j] = ThreadLocalRandom.current().nextDouble();\n        }\n    });\n    return A;\n}",
+        4.626,
+        2.281,
+        0.11816025959882567,
+        0.9267350519956189,
+        2.2788669574700107,
+        1.3965772466332091,
+        14
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> count_up_to(int n){\nvector<int> out={};\n    int i,j;\n    for (i=2;i<n;i++)\n        if (out.size()==0) {out.push_back(i);}\n        else\n        {\n            bool isp=true;\n            for (j=0;out[j]*out[j]<=i;j++)\n                if (i%out[j]==0) isp=false;\n            if (isp) out.push_back(i);\n        }\n    return out;\n}",
+        12.446,
+        0.144,
+        38588019.0,
+        21138.4,
+        6.921,
+        20
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\nvector<int> count_up_to(int n) {\n    vector<int> out;\n    if (n > 2) out.push_back(2);  \n    for (int i = 3; i < n; i += 2) {  \n        bool isp = true;\n        int limit = sqrt(i);\n        for (int j = 0; j < out.size() && out[j] <= limit; j++) {\n            int prime = out[j]; \n            if (i % prime == 0) {\n                isp = false;\n                break;\n            }\n        }\n        if (isp) out.push_back(i);\n    }\n    return out;\n}",
+        1.229,
+        1.172,
+        3.27,
+        1.001,
+        1.174,
+        24
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> count_up_to(int n) {\n    vector<int> out;\n    if (n > 2) out.push_back(2);\n    for (int i = 3; i < n; i += 2) {  \n        bool isp = true;\n        int limit = i * i;\n        for (auto it = out.begin(); it != out.end() && (*it) * (*it) <= limit; ++it) {\n            if (i % *it == 0) {\n                isp = false;\n                break;\n            }\n        }\n        if (isp) out.push_back(i);\n    }\n    return out;\n}",
+        0.978,
+        0.708,
+        0.156,
+        1.005,
+        0.71,
+        20
+    ]
+}

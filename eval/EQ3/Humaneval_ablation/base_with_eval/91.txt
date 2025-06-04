@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint is_bored(string S){\nbool isstart=true;\n    bool isi=false;\n    int sum=0;\n    for (int i=0;i<S.length();i++)\n    {\n        if (S[i]==' ' and isi) {isi=false; sum+=1;}\n        if (S[i]=='I' and isstart) {isi=true;  }\n        else isi=false;   \n        if (S[i]!=' ') { isstart=false;}\n        if (S[i]=='.' or S[i]=='?' or S[i]=='!') isstart=true;\n    }\n    return sum;\n}",
+        4.955,
+        0.128,
+        8195378.8,
+        20924.0,
+        7.832,
+        20
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint is_bored(string S){\n    bool isstart = true;\n    int sum = 0;\n    int length = S.length();\n    \n    for (int i = 0; i < length; i++) {\n        char current = S[i];\n        \n        if (isstart && current == 'I') {\n            if (i + 1 < length && S[i + 1] == ' ') {\n                sum++;\n                i++; \n            }\n            isstart = false;\n        } else if (current == '.' || current == '?' || current == '!') {\n            isstart = true;\n        } else if (current != ' ') {\n            isstart = false;\n        }\n    }\n    return sum;\n}",
+        1.12,
+        1.02,
+        1.262,
+        0.992,
+        1.016,
+        29
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nint is_bored(const string& S) {\n    int count_of_I_space = 0;\n    bool is_sentence_start = true;\n    int length = S.length();\n\n    for (int i = 0; i < length; ++i) {\n        char current = S[i];\n\n        if (is_sentence_start && current == 'I') {\n            if ((i + 1) < length && S[i + 1] == ' ') {\n                ++count_of_I_space;\n                ++i;  \n            }\n            is_sentence_start = false;\n        } else if (current == '.' || current == '?' || current == '!') {\n            is_sentence_start = true;\n        } else if (current != ' ') {\n            is_sentence_start = false;\n        }\n    }\n\n    return count_of_I_space;\n}",
+        1.098,
+        0.968,
+        1.23,
+        0.992,
+        0.965,
+        27
+    ]
+}

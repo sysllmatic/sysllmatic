@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool check_if_last_char_is_a_letter(string txt){\nif (txt.length()==0) return false;\n    char chr=txt[txt.length()-1];\n    if (chr<65 or (chr>90 and chr<97) or chr>122) return false;\n    if (txt.length()==1) return true;\n    chr=txt[txt.length()-2];\n    if ((chr>=65 and chr<=90) or (chr>=97 and chr<=122)) return false;\n    return true;\n}",
+        4.491,
+        0.128,
+        4306190.2,
+        21072.8,
+        7.774,
+        15
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <cctype> \nusing namespace std;\n\nbool check_if_last_char_is_a_letter(const string &txt) {\n    size_t len = txt.length();\n    if (len == 0) return false;\n    if (!isalpha(txt[len - 1])) return false;\n    if (len == 1) return true;\n    return !isalpha(txt[len - 2]);\n}\n\n\n",
+        0.956,
+        0.995,
+        0.897,
+        1.002,
+        0.999,
+        14
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <cctype> \nusing namespace std;\n\nbool check_if_last_char_is_a_letter(const string &txt) {\n    size_t len = txt.length();\n    return len && isalpha(txt[len - 1]) && (len == 1 || !isalpha(txt[len - 2]));\n}\n\n\n\n",
+        0.931,
+        1.041,
+        0.953,
+        1.006,
+        1.044,
+        12
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(vector<int> numbers){\nint sum=0,product=1;\n    for (int i=0;i<numbers.size();i++)\n    {\n        sum+=numbers[i];\n        product*=numbers[i];\n    }\n    return {sum,product};\n}",
+        5.036,
+        0.132,
+        6782464.8,
+        21066.4,
+        7.542,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> sum_product(const vector<int>& numbers) {\n    int sum = 0, product = 1;\n    size_t size = numbers.size(); \n    for (size_t i = 0; i < size; ++i) {\n        int element = numbers[i]; \n        sum += element;\n        product *= element;\n    }\n    return {sum, product}; \n}\n\n",
+        1.126,
+        1.004,
+        1.121,
+        1.004,
+        1.007,
+        15
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <omp.h>\n#include <limits>\nusing namespace std;\n\nvector<int> sum_product(const vector<int>& numbers) {\n    int sum = 0;\n    int product = 1;\n    size_t size = numbers.size();\n\n    \n    #pragma omp parallel for reduction(+:sum) reduction(*:product)\n    for (size_t i = 0; i < size; ++i) {\n        int element = numbers[i];\n        sum += element;\n        \n        if (product != 0 && element > 0 && product > (std::numeric_limits<int>::max() / element)) {\n            \n            product = 0; \n        } else {\n            product *= element;\n        }\n    }\n\n    return {sum, product};\n}\n\n",
+        1.059,
+        0.998,
+        0.069,
+        1.0,
+        1.001,
+        28
+    ]
+}

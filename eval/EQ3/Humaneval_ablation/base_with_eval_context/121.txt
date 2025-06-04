@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint solutions(vector<int> lst){\nint sum=0;\n    for (int i=0;i*2<lst.size();i++)\n        if (lst[i*2]%2==1) sum+=lst[i*2];\n    return sum;\n}",
+        8.272,
+        0.2,
+        265476707.8,
+        33829.6,
+        4.989,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\ninline int solutions(const vector<int>& lst) {\n    int sum = 0;\n    int size = lst.size();\n    for (int i = 0; i < size; i += 2) { \n        if (lst[i] % 2 == 1) {\n            sum += lst[i];\n        }\n    }\n    return sum;\n}",
+        1.069,
+        1.092,
+        1.164,
+        1.61,
+        1.094,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <immintrin.h> \n#include <omp.h> \nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\ninline int solutions(const vector<int>& lst) {\n    int sum = 0;\n    size_t size = lst.size();\n\n    \n    __m256i vec_sum = _mm256_setzero_si256();\n    size_t i = 0;\n    \n    for (; i + 8 <= size; i += 8) {\n        __m256i vec = _mm256_loadu_si256((const __m256i*)&lst[i]);\n        __m256i odd_mask = _mm256_and_si256(vec, _mm256_set1_epi32(1));\n        __m256i odd_elements = _mm256_and_si256(odd_mask, vec);\n        vec_sum = _mm256_add_epi32(vec_sum, odd_elements);\n    }\n    \n    alignas(32) int buffer[8];\n    _mm256_store_si256((__m256i*)buffer, vec_sum);\n    for (int j = 0; j < 8; ++j) {\n        if (buffer[j] % 2 == 1) {\n            sum += buffer[j];\n        }\n    }\n\n    \n    #pragma omp parallel for reduction(+:sum)\n    for (int j = i; j < size; j += 2) {\n        if (lst[j] % 2 == 1) {\n            sum += lst[j];\n        }\n    }\n\n    return sum;\n}",
+        0.954,
+        0.972,
+        0.209,
+        1.605,
+        0.973,
+        42
+    ]
+}

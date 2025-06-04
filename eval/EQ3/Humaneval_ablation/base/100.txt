@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> make_a_pile(int n){\nvector<int> out={n};\n    for (int i=1;i<n;i++)\n        out.push_back(out[out.size()-1]+2);\n    return out;\n}",
+        4.437,
+        0.139,
+        7415081.0,
+        21212.8,
+        7.189,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\nusing namespace std;\n\nvector<int> make_a_pile(int n) {\n    vector<int> out;\n    out.reserve(n); \n    int current = n;\n    for (int i = 0; i < n; i++) {\n        out.push_back(current);\n        current += 2;\n    }\n    return out;\n}\n\n",
+        1.019,
+        1.072,
+        1.177,
+        1.011,
+        1.072,
+        17
+    ]
+}

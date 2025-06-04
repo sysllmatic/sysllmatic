@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint can_arrange(vector<int> arr){\nint max=-1;\n    for (int i=0;i<arr.size();i++)\n    if (arr[i]<=i) max=i;\n    return max;\n}",
+        4.575,
+        0.12,
+        7826988.8,
+        21059.2,
+        8.341,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm> \nusing namespace std;\n\nint can_arrange(vector<int> arr) {\n    int max_index = -1;\n    size_t size = arr.size(); \n    for (size_t i = 0; i < size; ++i) {\n        \n        if (arr[i] <= i) {\n            max_index = max(static_cast<int>(i), max_index);\n        }\n    }\n    return max_index;\n}",
+        0.97,
+        0.909,
+        1.058,
+        1.001,
+        0.907,
+        16
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm> \n#include <omp.h> \nusing namespace std;\n\nint can_arrange(vector<int> arr) {\n    int max_index = -1;\n    size_t size = arr.size();\n    \n    #pragma omp parallel for reduction(max : max_index)\n    for (size_t i = 0; i < size; ++i) {\n        if (arr[i] <= i) {\n            max_index = max(static_cast<int>(i), max_index);\n        }\n    }\n    return max_index;\n}\n\n",
+        0.906,
+        0.932,
+        0.061,
+        1.002,
+        0.93,
+        19
+    ]
+}

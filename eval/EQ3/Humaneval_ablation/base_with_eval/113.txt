@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> odd_count(vector<string> lst){\nvector<string> out={};\n    for (int i=0;i<lst.size();i++)\n        {\n            int sum=0;\n            for (int j=0;j<lst[i].length();j++)\n                if (lst[i][j]>=48 and lst[i][j]<=57 and lst[i][j]%2==1)\n                sum+=1;\n            string s=\"the number of odd elements in the string i of the input.\";\n            string s2=\"\";\n            for (int j=0;j<s.length();j++)\n                if (s[j]=='i') s2=s2+to_string(sum);\n                else s2=s2+s[j];\n            out.push_back(s2);\n        }\n    return out;\n}",
+        6.459,
+        0.175,
+        123064428.4,
+        21158.4,
+        5.716,
+        25
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\nusing namespace std;\n\nvector<string> odd_count(const vector<string>& lst) {\n    vector<string> out;\n    out.reserve(lst.size()); \n    string static_part = \"the number of odd elements in the string i of the input.\";\n\n    for (const auto& str : lst) {\n        int sum = 0;\n        for (char ch : str) {\n            if (isdigit(ch) && (ch - '0') % 2 == 1) {\n                ++sum;\n            }\n        }\n        ostringstream oss;\n        for (char ch : static_part) {\n            if (ch == 'i') {\n                oss << sum;\n            } else {\n                oss << ch;\n            }\n        }\n        out.push_back(oss.str());\n    }\n    return out;\n}",
+        1.269,
+        1.288,
+        2.116,
+        1.006,
+        1.286,
+        30
+    ]
+}

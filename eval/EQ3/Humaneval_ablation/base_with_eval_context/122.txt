@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add_elements(vector<int> arr,int k){\nint sum=0;\n    for (int i=0;i<k;i++)\n        if( arr[i]>=-99 and arr[i]<=99)\n            sum+=arr[i];\n    return sum;\n}",
+        8.86,
+        0.207,
+        278356665.4,
+        21010.4,
+        4.834,
+        13
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm> \n#include <numeric>   \n\nusing namespace std;\n\nint add_elements(const vector<int>& arr, int k) {\n    if (k <= 0) return 0;\n    \n    int limit = min(k, static_cast<int>(arr.size()));\n    \n    return accumulate(arr.begin(), arr.begin() + limit, 0, [](int sum, int value) {\n        return (value >= -99 && value <= 99) ? sum + value : sum;\n    });\n}\n\n",
+        0.9,
+        1.019,
+        1.005,
+        0.997,
+        1.018,
+        17
+    ],
+    "2": [
+        "#include <immintrin.h>  \n#include <iostream>\n#include <vector>\n#include <algorithm>   \n#include <omp.h>       \n\nusing namespace std;\n\nint add_elements(const vector<int>& arr, int k) {\n    if (k <= 0) return 0;\n    int limit = min(k, static_cast<int>(arr.size()));\n    int sum = 0;\n\n    \n    int i = 0;\n    __m256i simd_sum = _mm256_setzero_si256();\n    for (; i <= limit - 8; i += 8) {\n        __m256i values = _mm256_loadu_si256((__m256i*)&arr[i]);\n        __m256i mask = _mm256_and_si256(_mm256_cmpgt_epi32(values, _mm256_set1_epi32(-100)),\n                                         _mm256_cmpgt_epi32(_mm256_set1_epi32(100), values));\n        values = _mm256_and_si256(values, mask);\n        simd_sum = _mm256_add_epi32(simd_sum, values);\n    }\n    int temp[8];\n    _mm256_storeu_si256((__m256i*)temp, simd_sum);\n    for (int j = 0; j < 8; ++j) sum += temp[j];\n\n    \n    for (; i < limit; ++i) {\n        if (arr[i] >= -99 && arr[i] <= 99) {\n            sum += arr[i];\n        }\n    }\n\n    return sum;\n}\n\n\n",
+        0.699,
+        0.944,
+        0.958,
+        0.997,
+        0.943,
+        38
+    ]
+}

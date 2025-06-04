@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> parse_music(string music_string){\nstring current=\"\";\n    vector<int> out={};\n    if (music_string.length()>0)\n        music_string=music_string+' ';\n    for (int i=0;i<music_string.length();i++)\n    {\n        if (music_string[i]==' ')\n        {\n            if (current==\"o\") out.push_back(4);\n            if (current==\"o|\") out.push_back(2);\n            if (current==\".|\") out.push_back(1);\n            current=\"\";\n        }\n        else current+=music_string[i];\n    }\n    return out;\n}",
+        4.845,
+        0.136,
+        10359194.8,
+        21014.4,
+        7.326,
+        25
+    ],
+    "1": [
+        "#include <stdio.h> \n#include <vector>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nvector<int> parse_music(string music_string){\n    unordered_map<string, int> music_map = {\n        {\"o\", 4},\n        {\"o|\", 2},\n        {\".|\", 1}\n    };\n    vector<int> out;\n    out.reserve(music_string.length() / 2); \n    string current = \"\";\n    for (int i = 0; i < music_string.length(); i++) {\n        if (music_string[i] == ' ') {\n            if (!current.empty() && music_map.find(current) != music_map.end()) {\n                out.push_back(music_map[current]);\n            }\n            current = \"\";\n        } else {\n            current += music_string[i];\n        }\n    }\n    \n    if (!current.empty() && music_map.find(current) != music_map.end()) {\n        out.push_back(music_map[current]);\n    }\n    return out;\n}",
+        0.952,
+        1.004,
+        0.488,
+        0.999,
+        1.006,
+        31
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\n#include <unordered_map>\n#include <sstream>\nusing namespace std;\n\nvector<int> parse_music(const string& music_string) {\n    unordered_map<string, int> music_map = {\n        {\"o\", 4},\n        {\"o|\", 2},\n        {\".|\", 1}\n    };\n    vector<int> out;\n    stringstream ss(music_string);\n    string current;\n    \n    \n    auto process_current = [&](const string& cur) {\n        auto it = music_map.find(cur);\n        if (it != music_map.end()) {\n            out.push_back(it->second);\n        }\n    };\n\n    while (ss >> current) { \n        process_current(current);\n    }\n    \n    return out;\n}",
+        1.04,
+        1.007,
+        0.654,
+        0.997,
+        1.009,
+        30
+    ]
+}

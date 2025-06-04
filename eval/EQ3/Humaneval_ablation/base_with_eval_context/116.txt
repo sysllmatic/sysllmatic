@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_array(vector<int> arr){\nvector<int> bin={};\n    int m;\n\n    for (int i=0;i<arr.size();i++)\n    {\n        int b=0,n=abs(arr[i]);\n        while (n>0)\n        {\n            b+=n%2;n=n/2;\n        }\n        bin.push_back(b);\n    }\n    for (int i=0;i<arr.size();i++)\n    for (int j=1;j<arr.size();j++)\n    if (bin[j]<bin[j-1] or (bin[j]==bin[j-1] and arr[j]<arr[j-1]))\n    {\n        m=arr[j];arr[j]=arr[j-1];arr[j-1]=m;\n        m=bin[j];bin[j]=bin[j-1];bin[j-1]=m;\n    }\n    return arr;\n}",
+        310.616,
+        5.679,
+        25565904930.8,
+        21087.2,
+        0.176,
+        28
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\nusing namespace std;\n\n\nint count_set_bits(int n) {\n    int count = 0;\n    n = abs(n);\n    while (n > 0) {\n        count += n % 2;\n        n /= 2;\n    }\n    return count;\n}\n\nvector<int> sort_array(vector<int> arr) {\n    \n    vector<pair<int, int>> elements_with_bits;\n    elements_with_bits.reserve(arr.size());\n\n    \n    for (int num : arr) {\n        elements_with_bits.emplace_back(num, count_set_bits(num));\n    }\n\n    \n    sort(elements_with_bits.begin(), elements_with_bits.end(), [](const pair<int, int> &a, const pair<int, int> &b) {\n        if (a.second == b.second) {\n            return a.first < b.first; \n        }\n        return a.second < b.second; \n    });\n\n    \n    vector<int> sorted_arr;\n    sorted_arr.reserve(arr.size());\n    for (const auto &pair : elements_with_bits) {\n        sorted_arr.push_back(pair.first);\n    }\n\n    return sorted_arr;\n}\n\n\n",
+        58.202,
+        38.738,
+        407.559,
+        0.999,
+        38.716,
+        46
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\nusing namespace std;\n\n\nint count_set_bits(int n) {\n    int count = 0;\n    n = abs(n);\n    while (n) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}\n\nvector<int> sort_array(vector<int> arr) {\n    vector<pair<int, int>> elements_with_bits;\n    elements_with_bits.reserve(arr.size());\n\n    \n    for (int num : arr) {\n        elements_with_bits.emplace_back(num, count_set_bits(num));\n    }\n\n    \n    sort(elements_with_bits.begin(), elements_with_bits.end(), [](const pair<int, int> &a, const pair<int, int> &b) {\n        if (a.second == b.second) {\n            return a.first < b.first; \n        }\n        return a.second < b.second; \n    });\n\n    \n    vector<int> sorted_arr;\n    sorted_arr.reserve(arr.size());\n    for (const auto &pair : elements_with_bits) {\n        sorted_arr.push_back(pair.first);\n    }\n\n    return sorted_arr;\n}\n\n\n",
+        59.664,
+        36.119,
+        420.525,
+        1.002,
+        36.097,
+        45
+    ]
+}

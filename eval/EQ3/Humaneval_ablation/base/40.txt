@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool triples_sum_to_zero(vector<int> l){\nfor (int i=0;i<l.size();i++)\n    for (int j=i+1;j<l.size();j++)\n    for (int k=j+1;k<l.size();k++)\n        if (l[i]+l[j]+l[k]==0) return true;\n    return false;\n}",
+        28.543,
+        0.356,
+        901313429.8,
+        21132.8,
+        2.81,
+        13
+    ],
+    "1": [
+        "#include <vector>\n#include <algorithm>\n\nbool triples_sum_to_zero(std::vector<int> l) {\n    std::sort(l.begin(), l.end());\n    for (size_t i = 0; i < l.size(); ++i) {\n        if (i > 0 && l[i] == l[i - 1]) continue; \n        int left = i + 1;\n        int right = l.size() - 1;\n        while (left < right) {\n            int sum = l[i] + l[left] + l[right];\n            if (sum == 0) {\n                return true;\n            } else if (sum < 0) {\n                ++left;\n            } else {\n                --right;\n            }\n        }\n    }\n    return false;\n}\n\n\n\n",
+        2.896,
+        2.563,
+        46.405,
+        1.009,
+        2.56,
+        25
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='(') level+=1;\n        if (brackets[i]==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        4.694,
+        0.131,
+        7403925.2,
+        21024.8,
+        7.636,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nbool correct_bracketing(const std::string& brackets) {\n    int level = 0;\n    size_t length = brackets.length();\n    for (size_t i = 0; i < length; ++i) {\n        if (brackets[i] == '(') {\n            ++level;\n        } else if (brackets[i] == ')') {\n            --level;\n            if (level < 0) return false;\n        }\n    }\n    return level == 0;\n}\n\n",
+        0.996,
+        0.949,
+        1.114,
+        0.999,
+        0.947,
+        17
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nbool correct_bracketing(const std::string& brackets) {\n    int level = 0;\n    for (char ch : brackets) {\n        if (ch == '(') {\n            ++level;\n        } else if (ch == ')') {\n            --level;\n            if (level < 0) return false;\n        }\n    }\n    return level == 0;\n}\n\n",
+        0.975,
+        0.968,
+        0.964,
+        0.999,
+        0.967,
+        16
+    ]
+}

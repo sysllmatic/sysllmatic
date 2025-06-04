@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint count_nums(vector<int> n){\nint num=0;\n    for (int i=0;i<n.size();i++)\n        if (n[i]>0) num+=1;\n        else\n        {\n            int sum=0;\n            int w;\n            w=abs(n[i]);\n            while (w>=10)\n            {\n                sum+=w%10;\n                w=w/10;\n            }\n            sum-=w;\n            if (sum>0) num+=1;\n        }\n    return num;\n}",
+        4.444,
+        0.132,
+        7878290.0,
+        21102.4,
+        7.552,
+        25
+    ],
+    "1": [
+        "#include <vector>\n#include <cmath> \nusing namespace std;\n\nint count_nums(vector<int> n) {\n    int num = 0;\n    for (int i = 0; i < n.size(); i++) {\n        if (n[i] > 0) {\n            num += 1;\n        } else {\n            int sum = 0;\n            int w = std::abs(n[i]);\n            while (w >= 10) {\n                sum += w % 10;\n                w /= 10;\n            }\n            \n            if (sum > 0) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}",
+        0.819,
+        0.998,
+        0.98,
+        1.007,
+        1.0,
+        24
+    ],
+    "2": [
+        "#include <vector>\n#include <cmath>\nusing namespace std;\n\nint count_nums(const vector<int>& n) {\n    int num = 0;\n    for (const int value : n) {\n        if (value > 0) {\n            num += 1;\n        } else {\n            int sum = 0;\n            int w = std::abs(value);\n            if (w >= 10) { \n                while (w >= 10 && sum <= 0) { \n                    sum += w % 10;\n                    w /= 10;\n                }\n            }\n            if (sum > 0) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}",
+        0.938,
+        0.947,
+        1.045,
+        0.998,
+        0.949,
+        25
+    ]
+}

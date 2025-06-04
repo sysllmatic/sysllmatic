@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring circular_shift(int x,int shift){\nstring xs;\n    xs=to_string(x);\n    if (xs.length()<shift)\n    {\n        string s(xs.rbegin(),xs.rend());\n        return s;\n    }\n    xs=xs.substr(xs.length()-shift)+xs.substr(0,xs.length()-shift);\n    return xs;\n}",
+        4.595,
+        0.117,
+        4440852.4,
+        21021.6,
+        8.567,
+        17
+    ],
+    "1": [
+        "#include <iostream> \n#include <string>\n\nstd::string circular_shift(int x, int shift) {\n    std::string xs = std::to_string(x);\n    int len = xs.length();\n    \n    \n    if (len < shift) {\n        return std::string(xs.rbegin(), xs.rend());\n    }\n    \n    \n    shift = shift % len;\n    if (shift == 0) return xs; \n\n    \n    return xs.substr(len - shift) + xs.substr(0, len - shift);\n}\n\n",
+        0.915,
+        0.947,
+        1.01,
+        0.998,
+        0.944,
+        20
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>  \n\nstd::string circular_shift(int x, int shift) {\n    std::string xs = std::to_string(x);\n    int len = xs.length();\n\n    \n    if (len < shift) {\n        \n        std::reverse(xs.begin(), xs.end());\n        return xs;\n    }\n\n    \n    shift = shift % len;\n    if (shift == 0) return xs; \n\n    \n    return xs.substr(len - shift) + xs.substr(0, len - shift);\n}\n\n",
+        1.007,
+        0.889,
+        0.907,
+        1.002,
+        0.886,
+        23
+    ]
+}

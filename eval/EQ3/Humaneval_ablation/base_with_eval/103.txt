@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring rounded_avg(int n,int m){\nif (n>m) return \"-1\";\n    int num=(m+n)/2;\n    string out=\"\";\n    while (num>0)\n    {\n        out=to_string(num%2)+out;\n        num=num/2;\n    }\n    return out;\n}",
+        4.515,
+        0.129,
+        4454316.2,
+        21064.8,
+        7.722,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <bitset>\n#include <string>\n\nstd::string rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    if (num == 0) return \"0\";\n    return std::bitset<32>(num).to_string().substr(std::bitset<32>(num).to_string().find('1'));\n    \n}\n\n",
+        0.954,
+        1.01,
+        0.945,
+        1.002,
+        1.013,
+        12
+    ],
+    "2": [
+        "#include <string>\n\nstd::string rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    if (num == 0) return \"0\";\n    \n    std::string out;\n    bool started = false;\n    for (int i = 31; i >= 0; --i) {\n        if ((num & (1 << i)) != 0) {\n            out += '1';\n            started = true;\n        } else if (started) {\n            out += '0';\n        }\n    }\n    return out;\n}",
+        0.947,
+        1.057,
+        0.954,
+        0.999,
+        1.06,
+        19
+    ]
+}

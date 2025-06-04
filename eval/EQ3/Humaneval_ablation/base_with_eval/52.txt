@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool below_threshold(vector<int>l, int t){\nfor (int i=0;i<l.size();i++)\n        if (l[i]>=t) return false;\n    return true;\n}",
+        4.611,
+        0.13,
+        7877598.4,
+        21124.0,
+        7.654,
+        11
+    ],
+    "1": [
+        "#include <vector>\n#include <algorithm>\n\nbool below_threshold(const std::vector<int>& l, int t) {\n    for (int i = 0; i < l.size(); i++) {\n        if (l[i] >= t) return false;\n    }\n    return true;\n}",
+        1.036,
+        0.988,
+        0.948,
+        1.002,
+        0.991,
+        9
+    ],
+    "2": [
+        "#include <vector>\n#include <algorithm>\n\nbool below_threshold(const std::vector<int>& l, int t) {\n    return std::all_of(l.begin(), l.end(), [t](int value) { return value < t; });\n}",
+        1.021,
+        0.961,
+        0.938,
+        1.001,
+        0.964,
+        6
+    ]
+}

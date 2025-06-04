@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring string_xor(string a,string b){\nstring output=\"\";\n    for (int i=0;(i<a.length() and i<b.length());i++)\n    {\n        if (i<a.length() and i<b.length())\n        {\n            if (a[i]== b[i]) \n            {\n                output+='0';\n            }  \n            else output+='1';\n        }\n        else\n        {\n            if (i>=a.length()) \n            {\n            output+=b[i];\n            }\n            else output+=a[i];\n        }\n    }\n    return output;\n}",
+        4.498,
+        0.133,
+        4187126.4,
+        20956.8,
+        7.508,
+        29
+    ],
+    "1": [
+        "#include <string>\nusing namespace std;\n\nstring string_xor(const string& a, const string& b) {\n    size_t len = max(a.length(), b.length());\n    string output;\n    output.reserve(len);\n\n    for (size_t i = 0; i < len; ++i) {\n        char char_a = (i < a.length()) ? a[i] : '0';\n        char char_b = (i < b.length()) ? b[i] : '0';\n        output += (char_a == char_b) ? '0' : '1';\n    }\n\n    return output;\n}",
+        1.025,
+        0.93,
+        0.932,
+        0.995,
+        0.931,
+        16
+    ],
+    "2": [
+        "#include <string>\n#include <immintrin.h>\n#include <vector>\nusing namespace std;\n\nstring string_xor(const string& a, const string& b) {\n    size_t len = max(a.length(), b.length());\n    vector<char> output(len);\n\n    size_t i = 0;\n    __m256i zero = _mm256_set1_epi8('0');\n\n    while (i + 31 < len) {\n        __m256i vec_a = _mm256_set1_epi8('0');\n        __m256i vec_b = _mm256_set1_epi8('0');\n\n        if (i < a.length())\n            vec_a = _mm256_loadu_si256((__m256i*)(a.data() + i));\n        if (i < b.length())\n            vec_b = _mm256_loadu_si256((__m256i*)(b.data() + i));\n\n        __m256i xor_result = _mm256_xor_si256(vec_a, vec_b);\n        xor_result = _mm256_blendv_epi8(zero, _mm256_set1_epi8('1'), xor_result);\n        _mm256_storeu_si256((__m256i*)(output.data() + i), xor_result);\n\n        i += 32;\n    }\n\n    for (; i < len; ++i) {\n        char char_a = (i < a.length()) ? a[i] : '0';\n        char char_b = (i < b.length()) ? b[i] : '0';\n        output[i] = (char_a == char_b) ? '0' : '1';\n    }\n\n    return string(output.begin(), output.end());\n}",
+        0.991,
+        0.991,
+        0.831,
+        0.996,
+        0.991,
+        36
+    ]
+}

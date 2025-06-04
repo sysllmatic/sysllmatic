@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring words_in_sentence(string sentence){\nstring out=\"\";\n    string current=\"\";\n    sentence=sentence+' ';\n\n    for (int i=0;i<sentence.size();i++)\n    if (sentence[i]!=' ') current=current+sentence[i];\n    else\n    {\n        bool isp=true;\n        int l=current.length();\n        if (l<2) isp=false;\n        for (int j=2;j*j<=l;j++)\n            if (l%j==0) isp=false;\n        if (isp) out=out+current+' ';\n        current=\"\";        \n    }\n    if (out.length()>0)\n        out.pop_back();\n    return out;\n}",
+        4.56,
+        0.12,
+        4733461.2,
+        21084.0,
+        8.338,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <cmath>\n\nbool is_prime(int n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (int i = 5; i * i <= n; i += 6)\n        if (n % i == 0 || n % (i + 2) == 0)\n            return false;\n    return true;\n}\n\nstd::string words_in_sentence(const std::string& sentence) {\n    std::ostringstream out;\n    std::string current;\n    for (char ch : sentence) {\n        if (ch != ' ') {\n            current += ch;\n        } else {\n            if (is_prime(current.length())) {\n                out << current << ' ';\n            }\n            current.clear();\n        }\n    }\n    \n    if (!current.empty() && is_prime(current.length())) {\n        out << current;\n    } else {\n        \n        std::string result = out.str();\n        if (!result.empty() && result.back() == ' ') {\n            result.pop_back();\n        }\n        return result;\n    }\n    return out.str();\n}\n\n",
+        1.012,
+        0.897,
+        0.916,
+        0.995,
+        0.896,
+        43
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n#include <cmath>\n#include <unordered_map>\n#include <sstream>\n\nstd::unordered_map<int, bool> prime_cache;\n\nbool is_prime(int n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (int i = 5; i * i <= n; i += 6)\n        if (n % i == 0 || n % (i + 2) == 0)\n            return false;\n    return true;\n}\n\nbool is_prime_cached(int n) {\n    if (prime_cache.find(n) != prime_cache.end()) return prime_cache[n];\n    bool result = is_prime(n);\n    prime_cache[n] = result;\n    return result;\n}\n\nstd::string words_in_sentence(const std::string& sentence) {\n    std::vector<std::string> words;\n    std::string current;\n    for (char ch : sentence) {\n        if (ch != ' ') {\n            current += ch;\n        } else {\n            if (is_prime_cached(current.length())) {\n                words.push_back(current);\n            }\n            current.clear();\n        }\n    }\n    \n    if (!current.empty() && is_prime_cached(current.length())) {\n        words.push_back(current);\n    }\n\n    \n    std::ostringstream out;\n    for (size_t i = 0; i < words.size(); ++i) {\n        out << words[i];\n        if (i != words.size() - 1) out << ' ';\n    }\n\n    return out.str();\n}\n\n",
+        0.989,
+        0.895,
+        0.963,
+        1.002,
+        0.893,
+        54
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<int> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        if (i%3==0) sum+=lst[i]*lst[i];\n        else if (i%4==0) sum+=lst[i]*lst[i]*lst[i];\n        else sum+=lst[i];\n    return sum;\n}",
+        4.578,
+        0.148,
+        13188519.4,
+        21103.2,
+        6.768,
+        14
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint sum_squares(const vector<int>& lst) {\n    int sum = 0;\n    int size = lst.size();  \n\n    for (int i = 0; i < size; i++) {\n        int value = lst[i];  \n        if (i % 3 == 0) {\n            sum += value * value;\n        } else if (i % 4 == 0) {\n            sum += value * value * value;\n        } else {\n            sum += value;\n        }\n    }\n    return sum;\n}\n\n",
+        0.993,
+        1.111,
+        0.983,
+        0.999,
+        1.108,
+        21
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint sum_squares(const vector<int>& lst) {\n    int sum = 0;\n    int size = lst.size();\n\n    for (int i = 0; i < size; i++) {\n        int value = lst[i];\n        bool isMultipleOf3 = (i % 3 == 0);\n        bool isMultipleOf4 = (i % 4 == 0);\n\n        if (isMultipleOf3) {\n            sum += value * value;\n        } else if (isMultipleOf4) {\n            sum += value * value * value;\n        } else {\n            sum += value;\n        }\n    }\n    return sum;\n}\n\n",
+        0.968,
+        1.039,
+        0.948,
+        1.004,
+        1.036,
+        24
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> largest_smallest_integers(vector<int> lst){\nint maxneg=0,minpos=0;\n    for (int i=0;i<lst.size();i++)\n    {\n        if (lst[i]<0 and (maxneg==0 or lst[i]>maxneg)) maxneg=lst[i];\n        if (lst[i]>0 and (minpos==0 or lst[i]<minpos)) minpos=lst[i];\n    }\n    return {maxneg,minpos};\n}",
+        4.693,
+        0.141,
+        12317884.0,
+        21077.6,
+        7.071,
+        15
+    ],
+    "1": [
+        "#include <vector>\n#include <climits> \nusing namespace std;\n\nvector<int> largest_smallest_integers(vector<int> lst) {\n    int maxneg = INT_MIN;\n    int minpos = INT_MAX;\n    for (int i = 0; i < lst.size(); i++) {\n        if (lst[i] < 0 && lst[i] > maxneg) maxneg = lst[i];\n        if (lst[i] > 0 && lst[i] < minpos) minpos = lst[i];\n    }\n    \n    if (maxneg == INT_MIN) maxneg = 0; \n    if (minpos == INT_MAX) minpos = 0; \n    return {maxneg, minpos};\n}",
+        1.039,
+        1.097,
+        0.98,
+        0.994,
+        1.099,
+        16
+    ],
+    "2": [
+        "#include <vector>\n#include <climits>\n#include <thread>\n#include <algorithm>\nusing namespace std;\n\nvoid find_extremes(const vector<int>& lst, int start, int end, int& local_maxneg, int& local_minpos) {\n    for (int i = start; i < end; ++i) {\n        if (lst[i] < 0 && lst[i] > local_maxneg) local_maxneg = lst[i];\n        if (lst[i] > 0 && lst[i] < local_minpos) local_minpos = lst[i];\n    }\n}\n\nvector<int> largest_smallest_integers(const vector<int>& lst) {\n    if (lst.empty()) return {0, 0}; \n\n    int maxneg1 = INT_MIN, maxneg2 = INT_MIN;\n    int minpos1 = INT_MAX, minpos2 = INT_MAX;\n    int mid = lst.size() / 2;\n\n    \n    thread t1(find_extremes, ref(lst), 0, mid, ref(maxneg1), ref(minpos1));\n    thread t2(find_extremes, ref(lst), mid, lst.size(), ref(maxneg2), ref(minpos2));\n    t1.join();\n    t2.join();\n\n    \n    int maxneg = max(maxneg1, maxneg2);\n    int minpos = min(minpos1, minpos2);\n\n    \n    if (maxneg == INT_MIN) maxneg = 0;\n    if (minpos == INT_MAX) minpos = 0;\n\n    return {maxneg, minpos};\n}\n\n\n",
+        0.983,
+        1.024,
+        0.779,
+        1.0,
+        1.026,
+        38
+    ]
+}

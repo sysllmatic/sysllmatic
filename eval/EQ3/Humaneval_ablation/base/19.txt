@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring sort_numbers(string numbers){\nmap<string,int> tonum={{\"zero\",0},{\"one\",1},{\"two\",2},{\"three\",3},{\"four\",4},{\"five\",5},{\"six\",6},{\"seven\",7},{\"eight\",8},{\"nine\",9}};\n    map<int,string> numto={{0,\"zero\"},{1,\"one\"},{2,\"two\"},{3,\"three\"},{4,\"four\"},{5,\"five\"},{6,\"six\"},{7,\"seven\"},{8,\"eight\"},{9,\"nine\"}};\n    int count[10];\n    for (int i=0;i<10;i++)\n        count[i]=0;\n    string out=\"\",current=\"\";\n    if (numbers.length()>0) numbers=numbers+' ';\n    for (int i=0;i<numbers.length();i++)\n        if (numbers[i]==' ')\n        {\n            count[tonum[current]]+=1;\n            current=\"\";\n        }\n        else current+=numbers[i];\n    for (int i=0;i<10;i++)\n        for (int j=0;j<count[i];j++)\n            out=out+numto[i]+' ';\n    if (out.length()>0) out.pop_back();\n    return out;\n}",
+        8.823,
+        0.112,
+        5909478.2,
+        21039.2,
+        8.881,
+        28
+    ],
+    "1": [
+        "#include <string>\n#include <map>\n#include <sstream>\n\nstd::string sort_numbers(const std::string& numbers) {\n    std::map<std::string, int> tonum = { {\"zero\", 0}, {\"one\", 1}, {\"two\", 2}, {\"three\", 3}, {\"four\", 4}, {\"five\", 5}, {\"six\", 6}, {\"seven\", 7}, {\"eight\", 8}, {\"nine\", 9} };\n    std::map<int, std::string> numto = { {0, \"zero\"}, {1, \"one\"}, {2, \"two\"}, {3, \"three\"}, {4, \"four\"}, {5, \"five\"}, {6, \"six\"}, {7, \"seven\"}, {8, \"eight\"}, {9, \"nine\"} };\n    int count[10] = {0};\n\n    std::string current;\n    std::istringstream iss(numbers);\n    while (iss >> current) {\n        if (tonum.find(current) != tonum.end()) {\n            count[tonum[current]]++;\n        }\n    }\n\n    std::ostringstream out;\n    for (int i = 0; i < 10; ++i) {\n        for (int j = 0; j < count[i]; ++j) {\n            out << numto[i] << ' ';\n        }\n    }\n\n    std::string result = out.str();\n    if (!result.empty()) result.pop_back(); \n    return result;\n}\n\n",
+        0.961,
+        0.945,
+        1.159,
+        1.0,
+        0.949,
+        29
+    ]
+}

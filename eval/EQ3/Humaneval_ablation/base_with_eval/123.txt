@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> get_odd_collatz(int n){\nvector<int> out={1};\n    while (n!=1)\n    {\n        if (n%2==1) {out.push_back(n); n=n*3+1;}\n        else n=n/2;\n    }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        4.673,
+        0.123,
+        4540732.4,
+        21078.4,
+        8.148,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> get_odd_collatz(int n) {\n    vector<int> out;\n    while (n != 1) {\n        if (n % 2 == 1) {\n            out.push_back(n);\n            n = n * 3 + 1;\n        } else {\n            n = n / 2;\n        }\n    }\n    \n    out.push_back(1);\n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        0.866,
+        0.994,
+        0.922,
+        0.999,
+        0.99,
+        21
+    ]
+}

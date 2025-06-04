@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint strlen(string str){\nreturn str.length();\n}",
+        5.415,
+        0.124,
+        5111692.4,
+        21087.2,
+        8.084,
+        9
+    ],
+    "1": [
+        "#include <iostream>\n#include <cstring> \n#include <cassert>\n\n",
+        1.166,
+        0.895,
+        0.98,
+        0.999,
+        0.891,
+        4
+    ],
+    "2": [
+        "#include <iostream>\n#include <cstring>  \n#include <cassert>\n#include <string>\n\n\nstd::size_t string_length(const std::string& str) {\n    return str.length();\n}\n\n",
+        1.157,
+        0.933,
+        0.994,
+        0.998,
+        0.93,
+        10
+    ]
+}

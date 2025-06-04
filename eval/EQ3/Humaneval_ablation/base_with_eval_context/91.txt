@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint is_bored(string S){\nbool isstart=true;\n    bool isi=false;\n    int sum=0;\n    for (int i=0;i<S.length();i++)\n    {\n        if (S[i]==' ' and isi) {isi=false; sum+=1;}\n        if (S[i]=='I' and isstart) {isi=true;  }\n        else isi=false;   \n        if (S[i]!=' ') { isstart=false;}\n        if (S[i]=='.' or S[i]=='?' or S[i]=='!') isstart=true;\n    }\n    return sum;\n}",
+        8.244,
+        0.133,
+        9015327.6,
+        21105.6,
+        7.494,
+        20
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint is_bored(const string &S) {\n    int sum = 0;\n    bool isstart = true, isi = false;\n    size_t length = S.length();\n    \n    for (size_t i = 0; i < length; ++i) {\n        char current = S[i];\n        \n        if (current == ' ') {\n            if (isi) {\n                ++sum;\n                isi = false;\n            }\n        } else if (current == 'I' && isstart) {\n            isi = true;\n            isstart = false;\n        } else {\n            isi = false;\n        }\n        \n        if (current != ' ') {\n            isstart = false;\n        }\n        \n        if (current == '.' || current == '?' || current == '!') {\n            isstart = true;\n        }\n    }\n    return sum;\n}\n\n\n\n",
+        1.06,
+        1.044,
+        1.537,
+        1.002,
+        1.046,
+        38
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nint is_bored(const string &S) {\n    int sum = 0;\n    bool isstart = true;\n    bool isi = false;\n\n    for (auto it = S.begin(); it != S.end(); ++it) {\n        if (*it == ' ') {\n            if (isi) {\n                ++sum;\n                isi = false;\n            }\n            continue;\n        }\n\n        if (isstart && *it == 'I') {\n            isi = true;\n        } else {\n            isi = false;\n        }\n\n        if (*it == '.' || *it == '?' || *it == '!') {\n            isstart = true;\n        } else {\n            isstart = false;\n        }\n    }\n    return sum;\n}",
+        1.426,
+        0.988,
+        1.072,
+        0.998,
+        0.99,
+        33
+    ]
+}

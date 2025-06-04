@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint largest_divisor(int n){\nfor (int i=2;i*i<=n;i++)\n        if (n%i==0) return  n/i;\n    return 1;\n\n}",
+        10.329,
+        0.128,
+        2784259.2,
+        20972.8,
+        7.81,
+        11
+    ],
+    "1": [
+        "#include <iostream>\n\nint largest_divisor(int n) {\n    if (n < 2) return 1; \n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            return n / i;\n        }\n    }\n    return 1;\n}\n\n\n\n",
+        1.229,
+        1.035,
+        0.565,
+        0.995,
+        1.034,
+        14
+    ]
+}

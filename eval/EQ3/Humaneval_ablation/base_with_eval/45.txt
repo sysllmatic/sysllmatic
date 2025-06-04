@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nfloat triangle_area(float a,float h){\nreturn (a*h)*0.5;\n\n}",
+        4.54,
+        0.133,
+        4621813.8,
+        20936.8,
+        7.498,
+        9
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <cmath>\n#include <cassert>\n\nfloat triangle_area(float a, float h) {\n    return (a * h) * 0.5;\n}\n\n",
+        0.955,
+        1.056,
+        0.937,
+        0.991,
+        1.057,
+        8
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <cmath>  \n#include <cassert>  \n\ninline float triangle_area(float a, float h) {\n    return (a * h) * 0.5;\n}\n\n",
+        1.013,
+        1.009,
+        0.888,
+        0.998,
+        1.011,
+        8
+    ]
+}

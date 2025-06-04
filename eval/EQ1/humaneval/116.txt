@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_array(vector<int> arr){\nvector<int> bin={};\n    int m;\n\n    for (int i=0;i<arr.size();i++)\n    {\n        int b=0,n=abs(arr[i]);\n        while (n>0)\n        {\n            b+=n%2;n=n/2;\n        }\n        bin.push_back(b);\n    }\n    for (int i=0;i<arr.size();i++)\n    for (int j=1;j<arr.size();j++)\n    if (bin[j]<bin[j-1] or (bin[j]==bin[j-1] and arr[j]<arr[j-1]))\n    {\n        m=arr[j];arr[j]=arr[j-1];arr[j-1]=m;\n        m=bin[j];bin[j]=bin[j-1];bin[j-1]=m;\n    }\n    return arr;\n}",
+        355.392,
+        5.675,
+        25518394396.2,
+        20997.6,
+        0.176,
+        28
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\n\nint count_bits(int n) {\n    int count = 0;\n    while (n) {\n        count += n & 1;\n        n >>= 1;\n    }\n    return count;\n}\n\nvector<int> sort_array(vector<int> arr) {\n    \n    vector<pair<int, int>> bin;\n    for (int num : arr) {\n        bin.push_back({count_bits(abs(num)), num});\n    }\n\n    \n    stable_sort(bin.begin(), bin.end(), [](const pair<int, int>& a, const pair<int, int>& b) {\n        return (a.first < b.first) || (a.first == b.first && a.second < b.second);\n    });\n\n    \n    vector<int> sorted_arr;\n    for (const auto& p : bin) {\n        sorted_arr.push_back(p.second);\n    }\n\n    return sorted_arr;\n}\n\n\n",
+        65.492,
+        35.236,
+        342.366,
+        0.993,
+        35.242,
+        39
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <cmath>  \nusing namespace std;\n\n\nint count_bits(int n) {\n    int count = 0;\n    while (n) {\n        n &= (n - 1); \n        count++;\n    }\n    return count;\n}\n\nvector<int> sort_array(vector<int> arr) {\n    \n    sort(arr.begin(), arr.end(), [](int a, int b) {\n        int count_a = count_bits(abs(a));\n        int count_b = count_bits(abs(b));\n        return (count_a < count_b) || (count_a == count_b && a < b);\n    });\n    return arr;\n}\n\n\n",
+        68.392,
+        34.982,
+        402.305,
+        0.995,
+        34.984,
+        27
+    ]
+}

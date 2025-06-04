@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint search(vector<int> lst){\nvector<vector<int>> freq={};\n    int max=-1;\n    for (int i=0;i<lst.size();i++)\n    {\n        bool has=false;\n        for (int j=0;j<freq.size();j++)\n            if (lst[i]==freq[j][0]) \n            {\n            freq[j][1]+=1;\n            has=true;\n            if (freq[j][1]>=freq[j][0] and freq[j][0]>max) max=freq[j][0];\n            }\n        if (not(has)) \n        {\n        freq.push_back({lst[i],1});\n        if (max==-1 and lst[i]==1) max=1;\n        }\n    }\n    return max;\n}",
+        45.981,
+        0.9,
+        3454548625.8,
+        21114.4,
+        1.11,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <unordered_map>\nusing namespace std;\n\nint search(const vector<int>& lst) {\n    unordered_map<int, int> freq;\n    int max = -1;\n\n    for (int num : lst) {\n        ++freq[num];\n        if (freq[num] >= num && num > max) {\n            max = num;\n        }\n    }\n\n    return max;\n}\n\n",
+        9.239,
+        5.417,
+        81.244,
+        1.004,
+        5.417,
+        19
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <unordered_map>\n#include <omp.h> \nusing namespace std;\n\nint search(const vector<int>& lst) {\n    unordered_map<int, int> freq(lst.size()); \n    int max = -1;\n\n    #pragma omp parallel\n    {\n        unordered_map<int, int> local_freq;\n        int local_max = -1;\n\n        #pragma omp for nowait\n        for (int i = 0; i < lst.size(); ++i) {\n            int num = lst[i];\n            ++local_freq[num];\n        }\n\n        #pragma omp critical\n        {\n            for (const auto& entry : local_freq) {\n                freq[entry.first] += entry.second;\n                if (freq[entry.first] >= entry.first && entry.first > local_max) {\n                    local_max = entry.first;\n                }\n            }\n            if (local_max > max) max = local_max;\n        }\n    }\n\n    return max;\n}\n\n",
+        7.358,
+        6.423,
+        2.681,
+        1.001,
+        6.424,
+        36
+    ]
+}

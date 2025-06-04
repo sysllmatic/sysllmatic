@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring change_base(int x,int base){\nstring out=\"\";\n    while (x>0)\n    {\n        out=to_string(x%base)+out;\n        x=x/base;\n    }\n    return out;\n}",
+        4.429,
+        0.126,
+        4706377.0,
+        21187.2,
+        7.915,
+        15
+    ],
+    "1": [
+        "#include <iostream> \n#include <sstream>  \n#include <algorithm> \nusing namespace std;\n\nstring change_base(int x, int base) {\n    if (x == 0) return \"0\";\n    stringstream out; \n    while (x > 0) {\n        int digit = x % base;\n        out << char('0' + digit); \n        x = x / base;\n    }\n    string result = out.str();\n    reverse(result.begin(), result.end()); \n    return result;\n}\n\n",
+        0.926,
+        0.997,
+        0.994,
+        1.01,
+        0.999,
+        18
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nconst char digits[] = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\n\nstring change_base(int x, int base) {\n    if (x == 0) return \"0\";\n    string result;\n    while (x > 0) {\n        int digit = x % base;\n        result = digits[digit] + result; \n        x /= base;\n    }\n    return result;\n}\n\n",
+        0.963,
+        0.969,
+        1.008,
+        1.007,
+        0.97,
+        17
+    ]
+}

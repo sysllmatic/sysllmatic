@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool check_if_last_char_is_a_letter(string txt){\nif (txt.length()==0) return false;\n    char chr=txt[txt.length()-1];\n    if (chr<65 or (chr>90 and chr<97) or chr>122) return false;\n    if (txt.length()==1) return true;\n    chr=txt[txt.length()-2];\n    if ((chr>=65 and chr<=90) or (chr>=97 and chr<=122)) return false;\n    return true;\n}",
+        4.469,
+        0.125,
+        4632276.6,
+        21092.0,
+        8.011,
+        15
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nbool check_if_last_char_is_a_letter(const string& txt) {\n    size_t len = txt.length();\n    if (len == 0) return false;\n    \n    char lastChar = txt[len - 1];\n    \n    bool isLastCharLetter = (lastChar >= 'A' && lastChar <= 'Z') || (lastChar >= 'a' && lastChar <= 'z');\n    if (!isLastCharLetter) return false;\n    \n    \n    if (len == 1) return true;\n    \n    char secondLastChar = txt[len - 2];\n    \n    bool isSecondLastCharNotLetter = (secondLastChar < 'A' || (secondLastChar > 'Z' && secondLastChar < 'a') || secondLastChar > 'z');\n    \n    return isSecondLastCharNotLetter;\n}",
+        0.967,
+        0.999,
+        0.942,
+        1.0,
+        0.996,
+        22
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nbool check_if_last_char_is_a_letter(const string& txt) {\n    size_t len = txt.length();\n    if (len == 0) return false;\n    \n    char lastChar = txt[len - 1];\n    \n    if ((lastChar >= 'A' && lastChar <= 'Z') || (lastChar >= 'a' && lastChar <= 'z')) {\n        \n        if (len == 1) return true;\n        \n        \n        char secondLastChar = txt[len - 2];\n        return (secondLastChar < 'A' || (secondLastChar > 'Z' && secondLastChar < 'a') || secondLastChar > 'z');\n    }\n    return false;\n}",
+        1.007,
+        0.96,
+        1.015,
+        1.002,
+        0.958,
+        20
+    ]
+}

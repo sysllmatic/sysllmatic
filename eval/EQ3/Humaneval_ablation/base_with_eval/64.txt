@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint vowels_count(string s){\nstring vowels=\"aeiouAEIOU\";\n    int count=0;\n    for (int i=0;i<s.length();i++)\n    if (find(vowels.begin(),vowels.end(),s[i])!=vowels.end())\n        count+=1;\n    if (s[s.length()-1]=='y' or s[s.length()-1]=='Y') count+=1;\n    return count;\n}",
+        4.599,
+        0.133,
+        17400231.6,
+        20960.8,
+        7.523,
+        15
+    ],
+    "1": [
+        "#include <iostream>\n#include <unordered_set>\n#include <string>\nusing namespace std;\n\nint vowels_count(const string &s) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    int count = 0;\n    int length = s.length();\n    for (int i = 0; i < length; ++i) {\n        if (vowels.find(s[i]) != vowels.end()) {\n            count += 1;\n        }\n    }\n    if (length > 0 && (s[length - 1] == 'y' || s[length - 1] == 'Y')) {\n        count += 1;\n    }\n    return count;\n}\n\n",
+        0.961,
+        1.021,
+        0.828,
+        0.996,
+        1.019,
+        20
+    ],
+    "2": [
+        "#include <iostream>\n#include <bitset>\n#include <string>\nusing namespace std;\n\nint vowels_count(const string &s) {\n    std::bitset<128> vowels;\n    vowels['a'] = vowels['e'] = vowels['i'] = vowels['o'] = vowels['u'] =\n    vowels['A'] = vowels['E'] = vowels['I'] = vowels['O'] = vowels['U'] = 1;\n    int count = 0;\n    int length = s.length();\n    for (int i = 0; i < length; ++i) {\n        if (vowels[s[i]]) {\n            ++count;\n        }\n    }\n    if (length > 0 && (s[length - 1] == 'y' || s[length - 1] == 'Y')) {\n        ++count;\n    }\n    return count;\n}\n\n",
+        1.006,
+        1.05,
+        2.305,
+        0.993,
+        1.048,
+        22
+    ]
+}

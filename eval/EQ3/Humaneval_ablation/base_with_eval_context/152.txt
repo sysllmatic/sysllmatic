@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> compare(vector<int> game,vector<int> guess){\nvector<int> out;\n    for (int i=0;i<game.size();i++)\n    out.push_back(abs(game[i]-guess[i]));\n    return out;\n}",
+        4.718,
+        0.134,
+        14741115.8,
+        21075.2,
+        7.475,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <cmath>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n\nvector<int> compare(vector<int> game, vector<int> guess) {\n    vector<int> out;\n    out.reserve(game.size());  \n    for (int i = 0; i < game.size(); i++) {\n        out.emplace_back(std::abs(game[i] - guess[i]));  \n    }\n    return out;\n}",
+        0.923,
+        0.999,
+        1.153,
+        1.0,
+        0.996,
+        14
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <cmath>\n#include <vector>\n#include <omp.h>  \nusing namespace std;\n#include <algorithm>\n\nvector<int> compare(vector<int> game, vector<int> guess) {\n    vector<int> out(game.size());  \n    \n    #pragma omp parallel for  \n    for (int i = 0; i < game.size(); i++) {\n        out[i] = std::abs(game[i] - guess[i]);  \n    }\n    return out;\n}\n\n",
+        0.903,
+        0.989,
+        0.03,
+        1.003,
+        0.987,
+        17
+    ]
+}

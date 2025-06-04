@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(vector<int> numbers){\nint sum=0,product=1;\n    for (int i=0;i<numbers.size();i++)\n    {\n        sum+=numbers[i];\n        product*=numbers[i];\n    }\n    return {sum,product};\n}",
+        4.532,
+        0.131,
+        6493571.8,
+        21086.4,
+        7.611,
+        15
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <numeric> \n\nusing namespace std;\n\nvector<int> sum_product(const vector<int>& numbers) {\n    int sum = accumulate(numbers.begin(), numbers.end(), 0);\n    int product = 1;\n    for (int number : numbers) {\n        product *= number;\n    }\n    return {sum, product};\n}\n\n",
+        0.992,
+        0.931,
+        0.786,
+        0.996,
+        0.933,
+        15
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nvector<int> sum_product(const vector<int>& numbers) {\n    long long sum = 0, product = 1;\n    for (int number : numbers) {\n        sum += number;\n        product *= number;\n    }\n    \n    return {static_cast<int>(sum), static_cast<int>(product)};\n}\n\n",
+        0.989,
+        1.116,
+        0.876,
+        0.999,
+        1.118,
+        15
+    ]
+}

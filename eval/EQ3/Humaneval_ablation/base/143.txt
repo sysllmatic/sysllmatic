@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring words_in_sentence(string sentence){\nstring out=\"\";\n    string current=\"\";\n    sentence=sentence+' ';\n\n    for (int i=0;i<sentence.size();i++)\n    if (sentence[i]!=' ') current=current+sentence[i];\n    else\n    {\n        bool isp=true;\n        int l=current.length();\n        if (l<2) isp=false;\n        for (int j=2;j*j<=l;j++)\n            if (l%j==0) isp=false;\n        if (isp) out=out+current+' ';\n        current=\"\";        \n    }\n    if (out.length()>0)\n        out.pop_back();\n    return out;\n}",
+        4.967,
+        0.133,
+        4652571.0,
+        21094.4,
+        7.525,
+        27
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <sstream>\n#include <cmath>\nusing namespace std;\n\nbool is_prime(int number) {\n    if (number <= 1) return false;\n    if (number == 2) return true;\n    if (number % 2 == 0) return false;\n    for (int i = 3; i * i <= number; i += 2) {\n        if (number % i == 0) return false;\n    }\n    return true;\n}\n\nstring words_in_sentence(const string& sentence) {\n    ostringstream out;\n    string current;\n    for (char c : sentence + ' ') { \n        if (c != ' ') {\n            current.push_back(c);\n        } else {\n            if (is_prime(current.length())) {\n                out << current << ' ';\n            }\n            current.clear();\n        }\n    }\n    string result = out.str();\n    if (!result.empty()) result.pop_back(); \n    return result;\n}\n\n",
+        1.031,
+        1.041,
+        0.986,
+        1.002,
+        1.039,
+        34
+    ]
+}

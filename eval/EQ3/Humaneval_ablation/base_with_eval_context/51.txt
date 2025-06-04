@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring remove_vowels(string text){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=0;i<text.length();i++)\n        if (find(vowels.begin(),vowels.end(),text[i])==vowels.end())\n            out=out+text[i];\n    return out;\n\n}",
+        4.775,
+        0.136,
+        5350744.2,
+        21172.8,
+        7.363,
+        15
+    ],
+    "1": [
+        "#include <iostream>  \n#include <string>\n#include <unordered_set>\n\nusing namespace std;\n\nstring remove_vowels(const string& text) {\n    string out;\n    out.reserve(text.size());  \n    unordered_set<char> vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};\n    for (char ch : text) {\n        if (vowels.find(ch) == vowels.end()) {\n            out += ch;\n        }\n    }\n    return out;\n}\n\n",
+        1.068,
+        1.022,
+        1.012,
+        1.002,
+        1.02,
+        18
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <unordered_set>\n#include <algorithm>\n\nusing namespace std;\n\nstring remove_vowels(const string& text) {\n    string out;\n    out.reserve(text.size());  \n    unordered_set<char> vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};\n\n    \n    std::copy_if(text.begin(), text.end(), std::back_inserter(out), [&](char ch) {\n        return vowels.find(ch) == vowels.end();\n    });\n    return out;\n}\n\n",
+        1.032,
+        0.979,
+        0.993,
+        1.006,
+        0.976,
+        19
+    ]
+}

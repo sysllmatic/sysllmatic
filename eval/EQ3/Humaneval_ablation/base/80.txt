@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_happy(string s){\nif (s.length()<3) return false;\n    for (int i=2;i<s.length();i++)\n    if (s[i]==s[i-1] or s[i]==s[i-2]) return false;\n    return true;\n}",
+        8.787,
+        0.124,
+        5204079.2,
+        21078.4,
+        8.079,
+        12
+    ],
+    "1": [
+        "#include <string>\n#include <iostream>\n\nbool is_happy(const std::string& s) {\n    if (s.length() < 3) return false;\n    for (size_t i = 2; i < s.length(); ++i) {\n        if (s[i] == s[i - 1] || s[i] == s[i - 2]) return false;\n    }\n    return true;\n}\n\n\n\n",
+        1.08,
+        0.899,
+        1.003,
+        1.002,
+        0.897,
+        13
+    ]
+}

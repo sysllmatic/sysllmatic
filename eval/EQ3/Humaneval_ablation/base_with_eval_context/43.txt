@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool pairs_sum_to_zero(vector<int> l){\nfor (int i=0;i<l.size();i++)\n    for (int j=i+1;j<l.size();j++)\n    if (l[i]+l[j]==0) return true;\n    return false;\n}",
+        16.974,
+        0.357,
+        991610287.6,
+        21128.8,
+        2.8,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <unordered_set>\nusing namespace std;\n\nbool pairs_sum_to_zero(const vector<int> &l) {\n    unordered_set<int> seen;\n    for (int num : l) {\n        if (seen.find(-num) != seen.end()) {\n            return true;\n        }\n        seen.insert(num);\n    }\n    return false;\n}\n\n\n",
+        3.371,
+        2.606,
+        24.075,
+        1.001,
+        2.604,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <unordered_set>\n#include <omp.h>\nusing namespace std;\n\nbool pairs_sum_to_zero(const vector<int> &l) {\n    unordered_set<int> seen;\n    seen.reserve(l.size()); \n\n    bool found = false;\n    #pragma omp parallel for shared(seen, found, l) default(none) if(l.size() > 1000) \n    for (size_t i = 0; i < l.size(); ++i) {\n        int num = l[i];\n        #pragma omp critical\n        {\n            if (seen.find(-num) != seen.end()) {\n                found = true;\n            } else {\n                seen.insert(num);\n            }\n        }\n    }\n    return found;\n}\n\n",
+        1.855,
+        2.471,
+        0.227,
+        1.002,
+        2.47,
+        26
+    ]
+}

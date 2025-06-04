@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> even_odd_count(long long num){\nstring w=to_string(abs(num));\n    int n1=0,n2=0;\n    for (int i=0;i<w.length();i++)\n    if (w[i]%2==1) n1+=1;\n    else n2+=1;\n    return {n2,n1};\n}",
+        4.705,
+        0.141,
+        4152573.4,
+        20991.2,
+        7.101,
+        15
+    ],
+    "1": [
+        "#include <vector>\nusing namespace std;\n\nvector<int> even_odd_count(long long num) {\n    int n1 = 0, n2 = 0;\n    \n    if (num < 0) num = -num;  \n    \n    do {\n        int digit = num % 10;\n        if (digit % 2 == 0) n2++;\n        else n1++;\n        num /= 10;\n    } while (num > 0);\n    \n    return {n2, n1};\n}",
+        1.051,
+        1.07,
+        0.929,
+        0.997,
+        1.067,
+        17
+    ],
+    "2": [
+        "#include <vector>\nusing namespace std;\n\nvector<int> even_odd_count(long long num) {\n    int n1 = 0, n2 = 0;\n    \n    if (num < 0) num = -num;  \n    \n    do {\n        int digit = num % 10;\n        (digit & 1) == 0 ? n2++ : n1++;\n        num /= 10;\n    } while (num > 0);\n    \n    return {n2, n1};\n}",
+        0.996,
+        1.124,
+        0.928,
+        1.003,
+        1.121,
+        16
+    ]
+}

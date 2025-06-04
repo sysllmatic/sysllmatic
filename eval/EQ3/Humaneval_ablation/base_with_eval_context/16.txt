@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint count_distinct_characters(string str){\nvector<char> distinct={};\n    transform(str.begin(),str.end(),str.begin(),::tolower);\n    for (int i=0;i<str.size();i++)\n    {\n        bool isin=false;\n        for (int j=0;j<distinct.size();j++)\n            if (distinct[j]==str[i])\n                isin=true;\n        if (isin==false) distinct.push_back(str[i]);\n\n    }\n    return distinct.size();\n}",
+        4.99,
+        0.137,
+        23672926.8,
+        21125.6,
+        7.276,
+        21
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <unordered_set>\n#include <algorithm>\nusing namespace std;\n\nint count_distinct_characters(string str) {\n    unordered_set<char> distinct;\n    for (char ch : str) {\n        char lower_ch = tolower(ch);  \n        distinct.insert(lower_ch);    \n    }\n    return distinct.size();\n}",
+        0.965,
+        0.942,
+        0.629,
+        1.001,
+        0.944,
+        14
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <bitset>\n#include <algorithm>\nusing namespace std;\n\nint count_distinct_characters(const string &str) {\n    std::bitset<128> distinct;  \n    for (char ch : str) {\n        char lower_ch = tolower(ch);  \n        distinct.set(static_cast<unsigned char>(lower_ch));  \n    }\n    return distinct.count();\n}\n\n\n",
+        1.076,
+        1.039,
+        1.721,
+        1.004,
+        1.041,
+        16
+    ]
+}

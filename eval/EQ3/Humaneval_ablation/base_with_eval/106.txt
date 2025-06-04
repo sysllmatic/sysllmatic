@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> f(int n){\nint sum=0,prod=1;\n    vector<int> out={};\n    for (int i=1;i<=n;i++)\n    {\n        sum+=i;\n        prod*=i;\n        if (i%2==0) out.push_back(prod);\n        else out.push_back(sum);\n    } \n    return out;\n}",
+        4.741,
+        0.126,
+        4955587.8,
+        21151.2,
+        7.904,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nvector<int> f(int n) {\n    int sum = 0, prod = 1;\n    vector<int> out;\n    out.reserve(n); \n    for (int i = 1; i <= n; i++) {\n        sum += i;\n        prod *= i;\n        if (i % 2 == 0) {\n            out.push_back(prod);\n        } else {\n            out.push_back(sum);\n        }\n    }\n    return out;\n}",
+        0.88,
+        0.988,
+        0.9,
+        1.009,
+        0.991,
+        19
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <climits>  \nusing namespace std;\n\nvector<int> f(int n) {\n    int sum = 0, prod = 1;\n    vector<int> out;\n    out.reserve(n); \n    for (int i = 1; i <= n; i++) {\n        sum += i;\n        \n        if (prod < INT_MAX / i) {\n            prod *= i;\n        } else {\n            \n            \n            prod = INT_MAX; \n        }\n        if (i % 2 == 0) {\n            out.push_back(prod);\n        } else {\n            out.push_back(sum);\n        }\n    }\n    return out;\n}",
+        1.073,
+        0.953,
+        0.966,
+        1.002,
+        0.956,
+        27
+    ]
+}

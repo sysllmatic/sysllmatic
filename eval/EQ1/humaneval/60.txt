@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint sum_to_n(int n){\nreturn n*(n+1)/2;\n}",
+        4.797,
+        0.124,
+        4641206.8,
+        21114.4,
+        8.086,
+        8
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint sum_to_n(int n){\n    return (n * (n + 1)) >> 1;\n}",
+        0.857,
+        0.997,
+        0.954,
+        1.003,
+        0.993,
+        9
+    ],
+    "2": [
+        "#include <stdio.h>\n\n\nint sum_to_n(int n) {\n    \n    return n * (n + 1) / 2;\n}\n\n",
+        1.035,
+        0.947,
+        0.968,
+        1.004,
+        0.943,
+        8
+    ]
+}

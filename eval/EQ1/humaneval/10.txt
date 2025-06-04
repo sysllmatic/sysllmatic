@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool is_palindrome(string str){\n    string s(str.rbegin(),str.rend());\n    return s==str;\n}\nstring make_palindrome(string str){\nint i;\n   for (i=0;i<str.length();i++)\n   {\n        string rstr=str.substr(i);\n        if (is_palindrome(rstr))\n        {\n            string nstr;\n            nstr=str.substr(0,i);\n            string n2str(nstr.rbegin(),nstr.rend());\n            return str+n2str;\n        }\n   }\n   string n2str(str.rbegin(),str.rend());\n   return str+n2str;\n}",
+        4.65,
+        0.124,
+        4279229.6,
+        21040.8,
+        8.085,
+        26
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm> \nusing namespace std;\n\nbool is_palindrome(const string &str) {\n    int n = str.size();\n    for (int i = 0; i < n / 2; ++i) {\n        if (str[i] != str[n - i - 1])\n            return false;\n    }\n    return true;\n}\n\nstring make_palindrome(const string &str) {\n    int n = str.length();\n    int longest_pal_suffix_len = 0;\n\n    \n    for (int i = 0; i < n; ++i) {\n        if (is_palindrome(str.substr(i))) {\n            longest_pal_suffix_len = n - i;\n            break;\n        }\n    }\n\n    \n    string prefix_to_reverse = str.substr(0, n - longest_pal_suffix_len);\n    reverse(prefix_to_reverse.begin(), prefix_to_reverse.end());\n\n    return str + prefix_to_reverse;\n}\n\n\n",
+        1.008,
+        0.892,
+        0.897,
+        0.995,
+        0.889,
+        34
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\n\nbool is_palindrome(const string &str, int start, int end) {\n    while (start < end) {\n        if (str[start] != str[end])\n            return false;\n        ++start;\n        --end;\n    }\n    return true;\n}\n\n\nstring make_palindrome(const string &str) {\n    int n = str.length();\n    if (n == 0) return \"\";\n\n    \n    int longest_pal_suffix_len = 0;\n    for (int i = 0; i < n; ++i) {\n        if (is_palindrome(str, i, n - 1)) {\n            longest_pal_suffix_len = n - i;\n            break;\n        }\n    }\n\n    \n    string prefix_to_reverse = str.substr(0, n - longest_pal_suffix_len);\n    reverse(prefix_to_reverse.begin(), prefix_to_reverse.end());\n\n    return str + prefix_to_reverse;\n}\n\n\n",
+        0.903,
+        0.93,
+        0.85,
+        0.997,
+        0.926,
+        38
+    ]
+}

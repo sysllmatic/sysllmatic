@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring sort_numbers(string numbers){\nmap<string,int> tonum={{\"zero\",0},{\"one\",1},{\"two\",2},{\"three\",3},{\"four\",4},{\"five\",5},{\"six\",6},{\"seven\",7},{\"eight\",8},{\"nine\",9}};\n    map<int,string> numto={{0,\"zero\"},{1,\"one\"},{2,\"two\"},{3,\"three\"},{4,\"four\"},{5,\"five\"},{6,\"six\"},{7,\"seven\"},{8,\"eight\"},{9,\"nine\"}};\n    int count[10];\n    for (int i=0;i<10;i++)\n        count[i]=0;\n    string out=\"\",current=\"\";\n    if (numbers.length()>0) numbers=numbers+' ';\n    for (int i=0;i<numbers.length();i++)\n        if (numbers[i]==' ')\n        {\n            count[tonum[current]]+=1;\n            current=\"\";\n        }\n        else current+=numbers[i];\n    for (int i=0;i<10;i++)\n        for (int j=0;j<count[i];j++)\n            out=out+numto[i]+' ';\n    if (out.length()>0) out.pop_back();\n    return out;\n}",
+        4.561,
+        0.129,
+        5254177.0,
+        20961.6,
+        7.737,
+        28
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstring sort_numbers(const string& numbers) {\n    const vector<string> num_words = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    int count[10] = {0};\n    string current = \"\";\n    stringstream ss(numbers);\n    \n    while (ss >> current) {\n        for (int i = 0; i < 10; ++i) {\n            if (current == num_words[i]) {\n                count[i]++;\n                break;\n            }\n        }\n    }\n\n    stringstream output;\n    for (int i = 0; i < 10; ++i) {\n        for (int j = 0; j < count[i]; ++j) {\n            output << num_words[i] << \" \";\n        }\n    }\n\n    string result = output.str();\n    if (!result.empty()) {\n        result.pop_back(); \n    }\n    return result;\n}\n\n",
+        0.984,
+        0.969,
+        1.121,
+        0.999,
+        0.97,
+        35
+    ],
+    "2": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n#include <vector>\n#include <unordered_map>\nusing namespace std;\n\nstring sort_numbers(const string& numbers) {\n    const unordered_map<string, int> num_map = { \n        {\"zero\", 0}, {\"one\", 1}, {\"two\", 2}, {\"three\", 3}, \n        {\"four\", 4}, {\"five\", 5}, {\"six\", 6}, {\"seven\", 7}, \n        {\"eight\", 8}, {\"nine\", 9} \n    };\n    const vector<string> num_words = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    int count[10] = {0};\n    stringstream ss(numbers);\n    string current;\n    while (ss >> current) {\n        auto it = num_map.find(current);\n        if (it != num_map.end()) {\n            count[it->second]++;\n        }\n    }\n\n    stringstream output;\n    for (int i = 0; i < 10; ++i) {\n        for (int j = 0; j < count[i]; ++j) {\n            output << num_words[i] << \" \";\n        }\n    }\n\n    string result = output.str();\n    if (!result.empty()) {\n        result.pop_back(); \n    }\n    return result;\n}\n\n",
+        0.935,
+        0.999,
+        0.984,
+        0.99,
+        0.999,
+        38
+    ]
+}

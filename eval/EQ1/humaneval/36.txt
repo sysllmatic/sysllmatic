@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fizz_buzz(int n){\nint count=0;\n    for (int i=0;i<n;i++)\n    if (i%11==0 or i%13==0)\n    {\n        int q=i;\n        while (q>0)\n        {\n            if (q%10==7) count+=1;\n            q=q/10;\n        }\n    } \n    return count;\n}",
+        5.242,
+        0.125,
+        3937156.0,
+        21009.6,
+        7.963,
+        19
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint fizz_buzz(int n) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if ((i / 11) * 11 == i || (i / 13) * 13 == i) { \n            int q = i;\n            do { \n                if (q % 10 == 7) count += 1;\n                q /= 10;\n            } while (q > 0);\n        }\n    }\n    return count;\n}",
+        1.151,
+        0.966,
+        1.052,
+        0.997,
+        0.969,
+        19
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <stdlib.h>\n#include <string>\n#include <algorithm>\n#include <omp.h>\n\nint fizz_buzz(int n) {\n    int count = 0;\n    #pragma omp parallel for reduction(+:count)\n    for (int i = 0; i < n; i++) {\n        if (i % 11 == 0 || i % 13 == 0) {  \n            std::string s = std::to_string(i);\n            count += std::count(s.begin(), s.end(), '7');  \n        }\n    }\n    return count;\n}",
+        1.134,
+        0.976,
+        0.1,
+        1.0,
+        0.98,
+        17
+    ]
+}

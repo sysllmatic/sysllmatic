@@ -1,0 +1,13 @@
+Correctness: 64.63%
+
+% of programs with ≥1.1 improvement (out of all programs):
+  energy_improvement: 14.02%
+  runtime_improvement: 12.80%
+  cpu_cycles_improvement: 18.29%
+  peak_memory_improvement: 1.22%
+
+Average improvement:
+  energy_improvement: 1.917
+  runtime_improvement: 1.695
+  cpu_cycles_improvement: 10.390
+  peak_memory_improvement: 1.007

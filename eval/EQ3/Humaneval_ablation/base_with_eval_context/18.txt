@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint how_many_times(string str,string substring){\nint out=0;\n    if (str.length()==0) return 0;\n    for (int i=0;i<=str.length()-substring.length();i++)\n    if (str.substr(i,substring.length())==substring)\n        out+=1;\n    return out;\n}",
+        4.518,
+        0.124,
+        10812082.6,
+        21056.0,
+        8.058,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nint how_many_times(const string &str, const string &substring) {\n    int out = 0;\n    size_t str_len = str.length();\n    size_t sub_len = substring.length();\n\n    if (str_len == 0 || sub_len == 0 || sub_len > str_len) return 0;\n\n    for (size_t i = 0; i <= str_len - sub_len; ++i) {\n        if (str.compare(i, sub_len, substring) == 0) {\n            ++out;\n        }\n    }\n    return out;\n}\n\n",
+        0.924,
+        0.907,
+        1.958,
+        0.996,
+        0.907,
+        19
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\n#include <cassert>\nusing namespace std;\n\nvector<int> computeLPSArray(const string &pat) {\n    int M = pat.length();\n    vector<int> lps(M);\n    int len = 0;\n    lps[0] = 0;\n    int i = 1;\n    while (i < M) {\n        if (pat[i] == pat[len]) {\n            len++;\n            lps[i] = len;\n            i++;\n        } else {\n            if (len != 0) {\n                len = lps[len - 1];\n            } else {\n                lps[i] = 0;\n                i++;\n            }\n        }\n    }\n    return lps;\n}\n\nint KMPSearch(const string &txt, const string &pat) {\n    int N = txt.length();\n    int M = pat.length();\n    if (M == 0 || N == 0 || M > N) return 0;\n\n    vector<int> lps = computeLPSArray(pat);\n    int i = 0;  \n    int j = 0;  \n    int count = 0;\n    while (i < N) {\n        if (pat[j] == txt[i]) {\n            j++;\n            i++;\n        }\n        if (j == M) {\n            count++;\n            j = lps[j - 1];\n        } else if (i < N && pat[j] != txt[i]) {\n            if (j != 0) {\n                j = lps[j - 1];\n            } else {\n                i++;\n            }\n        }\n    }\n    return count;\n}\n\nint how_many_times(const string &str, const string &substring) {\n    return KMPSearch(str, substring);\n}\n\n",
+        0.964,
+        0.911,
+        1.691,
+        1.001,
+        0.911,
+        61
+    ]
+}

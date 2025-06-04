@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool below_zero(vector<int> operations){\nint num=0;\n    for (int i=0;i<operations.size();i++)\n    {\n        num+=operations[i];\n        if (num<0) return true;\n    }\n    return false;\n}",
+        4.818,
+        0.126,
+        7331465.6,
+        21152.0,
+        7.915,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\nusing namespace std;\n\nbool below_zero(const vector<int>& operations) {\n    int num = 0;\n    for (size_t i = 0; i < operations.size(); ++i) {\n        num += operations[i];\n        if (num < 0) return true;\n    }\n    return false;\n}",
+        1.04,
+        0.933,
+        1.085,
+        1.006,
+        0.934,
+        15
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\nusing namespace std;\n\nbool below_zero(const vector<int>& operations) {\n    int num = 0;\n    for (auto it = operations.begin(); it != operations.end(); ++it) {\n        num += *it;\n        if (num < 0) return true;\n    }\n    return false;\n}",
+        1.065,
+        0.958,
+        0.859,
+        1.002,
+        0.96,
+        15
+    ]
+}

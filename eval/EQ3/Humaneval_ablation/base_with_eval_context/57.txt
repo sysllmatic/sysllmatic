@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool monotonic(vector<float> l){\nint incr,decr;\n    incr=0;decr=0;\n    for (int i=1;i<l.size();i++)\n    {\n        if (l[i]>l[i-1]) incr=1;\n        if (l[i]<l[i-1]) decr=1;\n    }\n    if (incr+decr==2) return false;\n    return true;\n}",
+        5.038,
+        0.144,
+        37905319.2,
+        21178.4,
+        6.915,
+        17
+    ],
+    "1": [
+        "#include<vector>\nusing namespace std;\n\nbool monotonic(const vector<float>& l) {\n    int incr = 0, decr = 0;\n    size_t n = l.size();\n    for (size_t i = 1; i < n; ++i) {\n        if (l[i] > l[i - 1]) {\n            incr = 1;\n        }\n        if (l[i] < l[i - 1]) {\n            decr = 1;\n        }\n        if (incr && decr) return false; \n    }\n    return true;\n}",
+        1.018,
+        1.022,
+        1.032,
+        1.004,
+        1.025,
+        17
+    ],
+    "2": [
+        "#include <vector>\n#include <unordered_map>\n#include <thread>\n#include <mutex>\n#include <iostream>\n\nusing namespace std;\n\nstruct VectorHash {\n    size_t operator()(const vector<float>& v) const {\n        std::hash<float> hasher;\n        size_t seed = 0;\n        for (float num : v) {\n            seed ^= hasher(num) + 0x9e3779b9 + (seed << 6) + (seed >> 2);\n        }\n        return seed;\n    }\n};\n\n\nunordered_map<vector<float>, bool, VectorHash> monotonic_cache;\nmutex cache_mutex; \n\nbool monotonic(const vector<float>& l) {\n    size_t n = l.size();\n    if (n <= 1) return true; \n\n    int incr = 0, decr = 0;\n    for (size_t i = 1; i < n; ++i) {\n        if (l[i] > l[i - 1]) {\n            incr = 1;\n        }\n        if (l[i] < l[i - 1]) {\n            decr = 1;\n        }\n        if (incr && decr) return false;\n    }\n    return true;\n}\n\nvoid check_monotonic_batch(const vector<vector<float>>& batches) {\n    vector<thread> threads;\n    for (const auto& batch : batches) {\n        threads.emplace_back([&batch]() {\n            {\n                lock_guard<mutex> lock(cache_mutex);\n                if (monotonic_cache.find(batch) != monotonic_cache.end()) {\n                    cout << (monotonic_cache[batch] ? \"Monotonic\" : \"Not Monotonic\") << endl;\n                    return;\n                }\n            }\n            \n            bool result = monotonic(batch);\n            {\n                lock_guard<mutex> lock(cache_mutex);\n                \n                monotonic_cache[batch] = result;\n            }\n            cout << (result ? \"Monotonic\" : \"Not Monotonic\") << endl;\n        });\n    }\n    for (auto& t : threads) {\n        if (t.joinable()) {\n            t.join();\n        }\n    }\n}",
+        1.045,
+        1.083,
+        1.046,
+        1.008,
+        1.087,
+        67
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nfloat triangle_area(float a,float b,float c){\nif (a+b<=c or a+c<=b or b+c<=a) return -1;\n    float h=(a+b+c)/2;\n    float area;\n    area=pow(h*(h-a)*(h-b)*(h-c),0.5);\n    return area;\n}",
+        4.529,
+        0.128,
+        2869638.6,
+        21093.6,
+        7.805,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n\nfloat triangle_area(float a, float b, float c) {\n    if (a + b <= c || a + c <= b || b + c <= a) return -1;\n    float h = (a + b + c) / 2;\n    float area = sqrt(h * (h - a) * (h - b) * (h - c));\n    return area;\n}",
+        1.046,
+        1.077,
+        1.029,
+        1.0,
+        1.076,
+        9
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n\n\nfloat triangle_area(float a, float b, float c) {\n    const float EPSILON = 1e-7;  \n    \n    if (a + b <= c + EPSILON || a + c <= b + EPSILON || b + c <= a + EPSILON) {\n        return -1;  \n    }\n    \n    float semiPerimeter = (a + b + c) / 2;\n    \n    float area = sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));\n    return area;  \n}",
+        1.029,
+        1.081,
+        1.03,
+        1.0,
+        1.08,
+        16
+    ]
+}

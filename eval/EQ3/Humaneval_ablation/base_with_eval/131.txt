@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint digits(int n){\nint prod=1,has=0;\n    string s=to_string(n);\n    for (int i=0;i<s.length();i++)\n        if (s[i]%2==1) \n        {\n            has=1;\n            prod=prod*(s[i]-48);\n        }\n    if (has==0) return 0;\n    return prod;\n}",
+        4.573,
+        0.128,
+        4406183.6,
+        21064.8,
+        7.807,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n\nint digits(int n) {\n    int prod = 1, has = 0;\n    while (n > 0) {\n        int digit = n % 10; \n        if (digit % 2 == 1) { \n            has = 1;\n            prod *= digit; \n        }\n        n /= 10; \n    }\n    if (has == 0) return 0;\n    return prod;\n}\n\n\n",
+        1.021,
+        0.916,
+        0.955,
+        0.997,
+        0.916,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <stdlib.h> \n\nint digits(int n) {\n    \n    n = abs(n);\n    int prod = 1, has = 0;\n    while (n > 0) {\n        int digit = n % 10; \n        if (digit % 2 == 1) { \n            has = 1; \n            prod *= digit; \n        }\n        n /= 10; \n    }\n    \n    if (has == 0) return 0;\n    return prod; \n}\n\n",
+        1.047,
+        0.986,
+        0.93,
+        0.995,
+        0.985,
+        20
+    ]
+}

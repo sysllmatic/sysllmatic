@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring decimal_to_binary(int decimal){\nstring out=\"\";\n    if (decimal==0) return \"db0db\";\n    while (decimal>0)\n    {\n        out=to_string(decimal%2)+out;\n        decimal=decimal/2;\n    }\n    out=\"db\"+out+\"db\";\n    return out;\n}",
+        7.669,
+        0.129,
+        4819638.6,
+        21019.2,
+        7.716,
+        17
+    ],
+    "1": [
+        "#include <string>\n#include <algorithm>\n#include <iostream>\n\nstd::string decimal_to_binary(int decimal) {\n    if (decimal == 0) return \"db0db\";\n    std::string out;\n    while (decimal > 0) {\n        out += (decimal % 2 == 0 ? '0' : '1');\n        decimal /= 2;\n    }\n    std::reverse(out.begin(), out.end());\n    return \"db\" + out + \"db\";\n}\n\n\n\n",
+        1.0,
+        0.997,
+        1.065,
+        0.994,
+        1.001,
+        17
+    ]
+}

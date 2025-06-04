@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint closest_integer(string value){\ndouble w;\n    w=atof(value.c_str());\n    return round(w);\n}",
+        4.754,
+        0.128,
+        4121288.2,
+        20999.2,
+        7.793,
+        11
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <cmath> \n#include <stdexcept> \nusing namespace std;\n\nint closest_integer(const string &value) {\n    try {\n        return round(stod(value));\n    } catch (const invalid_argument&) {\n        \n        return 0; \n    } catch (const out_of_range&) {\n        \n        return 0; \n    }\n}\n\n",
+        1.016,
+        1.006,
+        0.865,
+        0.999,
+        1.007,
+        18
+    ]
+}

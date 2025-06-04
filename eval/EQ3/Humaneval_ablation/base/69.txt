@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint search(vector<int> lst){\nvector<vector<int>> freq={};\n    int max=-1;\n    for (int i=0;i<lst.size();i++)\n    {\n        bool has=false;\n        for (int j=0;j<freq.size();j++)\n            if (lst[i]==freq[j][0]) \n            {\n            freq[j][1]+=1;\n            has=true;\n            if (freq[j][1]>=freq[j][0] and freq[j][0]>max) max=freq[j][0];\n            }\n        if (not(has)) \n        {\n        freq.push_back({lst[i],1});\n        if (max==-1 and lst[i]==1) max=1;\n        }\n    }\n    return max;\n}",
+        76.597,
+        0.969,
+        3448528180.8,
+        21064.0,
+        1.032,
+        27
+    ],
+    "1": [
+        "#include <vector>\n#include <unordered_map>\n#include <iostream>\n\nint search(const std::vector<int>& lst) {\n    std::unordered_map<int, int> freq;\n    int max = -1;\n    for (int num : lst) {\n        freq[num]++;\n        if (freq[num] >= num && num > max) {\n            max = num;\n        }\n    }\n    return max;\n}\n\n\n\n",
+        7.937,
+        7.698,
+        79.509,
+        1.002,
+        7.69,
+        18
+    ]
+}

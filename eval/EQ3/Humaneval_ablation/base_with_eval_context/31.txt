@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_prime(long long n){\nif (n<2) return false;\n    for (long long i=2;i*i<=n;i++)\n        if (n%i==0) return false;\n    return true;\n}",
+        4.414,
+        0.119,
+        2644163.2,
+        21084.8,
+        8.374,
+        11
+    ],
+    "1": [
+        "#include <cmath>\n\nbool is_prime(long long n) {\n    if (n < 2) return false;\n    if (n == 2) return true; \n    if (n % 2 == 0) return false; \n    \n    long long limit = static_cast<long long>(sqrt(n));\n    for (long long i = 3; i <= limit; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}",
+        1.014,
+        0.991,
+        0.887,
+        1.001,
+        0.993,
+        13
+    ],
+    "2": [
+        "#include <cmath>\n#include <unordered_map>\n#include <omp.h>\n\nstd::unordered_map<long long, bool> prime_cache;\n\nbool is_prime(long long n) {\n    if (n < 2) return false;\n    if (n == 2) return true;\n    if (n % 2 == 0) return false;\n\n    \n    if (prime_cache.find(n) != prime_cache.end()) {\n        return prime_cache[n];\n    }\n\n    long long limit = static_cast<long long>(sqrt(n));\n    bool isPrime = true;\n\n    #pragma omp parallel for shared(isPrime)\n    for (long long i = 3; i <= limit; i += 2) {\n        if (isPrime && n % i == 0) {\n            #pragma omp atomic write\n            isPrime = false;\n        }\n    }\n\n    \n    prime_cache[n] = isPrime;\n    return isPrime;\n}",
+        0.929,
+        0.848,
+        0.017,
+        1.004,
+        0.85,
+        31
+    ]
+}

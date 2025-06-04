@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> find_closest_elements(vector<float> numbers){\nvector<float> out={};\n    for (int i=0;i<numbers.size();i++)\n    for (int j=i+1;j<numbers.size();j++)\n        if (out.size()==0 or abs(numbers[i]-numbers[j])<abs(out[0]-out[1]))\n            out={numbers[i],numbers[j]};\n    if (out[0]>out[1])\n        out={out[1],out[0]};\n    return out;\n}",
+        42.772,
+        0.827,
+        3243347707.4,
+        21017.6,
+        1.208,
+        16
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n\nusing namespace std;\n\nvector<float> find_closest_elements(vector<float> numbers) {\n    \n    sort(numbers.begin(), numbers.end());\n    \n    \n    vector<float> closest_pair = {numbers[0], numbers[1]};\n    float min_diff = fabs(numbers[1] - numbers[0]);\n    \n    \n    for (size_t i = 1; i < numbers.size() - 1; ++i) {\n        float diff = fabs(numbers[i + 1] - numbers[i]);\n        if (diff < min_diff) {\n            min_diff = diff;\n            closest_pair = {numbers[i], numbers[i + 1]};\n        }\n    }\n\n    \n    if (closest_pair[0] > closest_pair[1]) {\n        swap(closest_pair[0], closest_pair[1]);\n    }\n\n    return closest_pair;\n}\n\n\n",
+        8.998,
+        5.914,
+        170.505,
+        0.998,
+        5.912,
+        33
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n#include <thread>\n#include <x86intrin.h>\n\nusing namespace std;\n\n\nvoid parallel_sort(vector<float>::iterator begin, vector<float>::iterator end) {\n    \n    \n    sort(begin, end);\n}\n\nvector<float> find_closest_elements(vector<float> numbers) {\n    \n    parallel_sort(numbers.begin(), numbers.end());\n    \n    \n    vector<float> closest_pair = {numbers[0], numbers[1]};\n    float min_diff = fabs(numbers[1] - numbers[0]);\n    size_t index = 0;\n\n    \n    const size_t size = numbers.size();\n    size_t i = 0;\n    for (; i + 8 <= size - 1; i += 8) {\n        __m256 current = _mm256_loadu_ps(&numbers[i]);\n        __m256 next = _mm256_loadu_ps(&numbers[i + 1]);\n        __m256 diff = _mm256_sub_ps(next, current);\n        __m256 abs_diff = _mm256_andnot_ps(_mm256_set1_ps(-0.0f), diff);\n        \n        \n        float diffs[8];\n        _mm256_storeu_ps(diffs, abs_diff);\n        for (int j = 0; j < 8; ++j) {\n            if (diffs[j] < min_diff) {\n                min_diff = diffs[j];\n                index = i + j;\n            }\n        }\n    }\n\n    \n    for (; i < size - 1; ++i) {\n        float diff = fabs(numbers[i + 1] - numbers[i]);\n        if (diff < min_diff) {\n            min_diff = diff;\n            index = i;\n        }\n    }\n\n    \n    closest_pair = {numbers[index], numbers[index + 1]};\n\n    \n    if (closest_pair[0] > closest_pair[1]) {\n        swap(closest_pair[0], closest_pair[1]);\n    }\n\n    return closest_pair;\n}\n\n",
+        9.072,
+        5.884,
+        179.078,
+        0.994,
+        5.883,
+        65
+    ]
+}

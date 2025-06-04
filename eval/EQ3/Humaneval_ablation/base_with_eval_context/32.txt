@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\ndouble poly(vector<double> xs, double x){\n    double sum=0;\n    int i;\n    for (i=0;i<xs.size();i++)\n    {\n        sum+=xs[i]*pow(x,i);\n    }\n    return sum;\n}\n\ndouble find_zero(vector<double> xs){\ndouble ans=0;\n    double value;\n    value=poly(xs,ans);\n    while (abs(value)>1e-6)\n    {\n        double driv=0;\n        for (int i=1;i<xs.size();i++)\n        {\n            driv+=xs[i]*pow(ans,i-1)*i;\n        }\n        ans=ans-value/driv;\n        value=poly(xs,ans);\n    }\n    return ans;\n\n}",
+        4.742,
+        0.127,
+        10910979.6,
+        21147.2,
+        7.893,
+        33
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <cmath>\nusing namespace std;\n\n\n\n\n\ndouble poly(const vector<double>& xs, double x) {\n    double sum = 0;\n    double current_power = 1;  \n    for (size_t i = 0; i < xs.size(); ++i) {\n        sum += xs[i] * current_power;\n        current_power *= x;  \n    }\n    return sum;\n}\n\n\n\ndouble find_zero(const vector<double>& xs) {\n    double ans = 0;\n    double value = poly(xs, ans);\n    size_t n = xs.size();\n\n    while (fabs(value) > 1e-6) {\n        double driv = 0;\n        double current_power = 1;  \n        for (size_t i = 1; i < n; ++i) {\n            driv += xs[i] * current_power * i;\n            current_power *= ans;  \n        }\n        ans -= value / driv;\n        value = poly(xs, ans);\n    }\n    return ans;\n}",
+        0.962,
+        0.995,
+        1.386,
+        1.002,
+        0.992,
+        38
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <cmath>\nusing namespace std;\n\n\ninline double poly(const vector<double>& xs, double x) {\n    double result = 0;\n    for (size_t i = xs.size(); i-- > 0;) {\n        result = result * x + xs[i];\n    }\n    return result;\n}\n\n\ninline double find_zero(const vector<double>& xs) {\n    double ans = 0;\n    double value = poly(xs, ans);\n    size_t n = xs.size();\n\n    while (fabs(value) > 1e-6) {\n        double driv = 0;\n        \n        for (size_t i = n - 1; i > 0; --i) {\n            driv = driv * ans + xs[i] * i;\n        }\n        if (driv == 0) {\n            break;  \n        }\n        ans -= value / driv;\n        value = poly(xs, ans);\n    }\n    return ans;\n}\n\n\n",
+        1.073,
+        0.965,
+        1.345,
+        1.014,
+        0.961,
+        36
+    ]
+}

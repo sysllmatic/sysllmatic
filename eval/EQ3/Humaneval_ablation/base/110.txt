@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring exchange(vector<int> lst1,vector<int> lst2){\nint num=0;\n    for (int i=0;i<lst1.size();i++)\n    if (lst1[i]%2==0) num+=1;\n    for (int i=0;i<lst2.size();i++)\n    if (lst2[i]%2==0) num+=1;\n    if (num>=lst1.size()) return \"YES\";\n    return \"NO\";\n}",
+        4.598,
+        0.139,
+        7830956.6,
+        21049.6,
+        7.166,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nstring exchange(const vector<int>& lst1, const vector<int>& lst2) {\n    int num = 0;\n    int target = lst1.size();\n    for (int value : lst1) {\n        if (value % 2 == 0) num++;\n    }\n    if (num >= target) return \"YES\"; \n    \n    for (int value : lst2) {\n        if (value % 2 == 0) num++;\n        if (num >= target) return \"YES\"; \n    }\n    return \"NO\";\n}\n\n",
+        1.0,
+        1.077,
+        0.901,
+        1.002,
+        1.08,
+        20
+    ]
+}

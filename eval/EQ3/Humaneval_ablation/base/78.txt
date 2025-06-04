@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\nstring key=\"2357BD\";\n    int out=0;\n    for (int i=0;i<num.length();i++)\n    if (find(key.begin(),key.end(),num[i])!=key.end()) out+=1;\n    return out;\n}",
+        7.363,
+        0.123,
+        14461651.0,
+        21157.6,
+        8.154,
+        13
+    ],
+    "1": [
+        "#include <string>\n#include <unordered_set>\n#include <iostream>\n\nint hex_key(const std::string& num) {\n    std::unordered_set<char> key = {'2', '3', '5', '7', 'B', 'D'};\n    int out = 0;\n    for (char c : num) {\n        if (key.find(c) != key.end()) {\n            ++out;\n        }\n    }\n    return out;\n}\n\n\n\n",
+        0.965,
+        0.927,
+        0.933,
+        1.0,
+        0.924,
+        17
+    ]
+}

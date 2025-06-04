@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring encode(string message){\nstring vowels=\"aeiouAEIOU\";\n    string out=\"\";\n    for (int i=0;i<message.length();i++)\n    {\n        char w=message[i];\n        if (w>=97 and w<=122){w=w-32;}\n        else if (w>=65 and w<=90) w=w+32;\n        if (find(vowels.begin(),vowels.end(),w)!=vowels.end()) w=w+2;\n        out=out+w;\n    }\n    return out;\n}",
+        5.755,
+        0.119,
+        5752317.0,
+        21136.8,
+        8.363,
+        19
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<unordered_set>\n#include<string>\n#include<algorithm>\n#include<sstream>\nusing namespace std;\n\nstring encode(string message) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    string out;\n    out.reserve(message.length());  \n    \n    for (char &w : message) {\n        \n        if (isupper(w)) \n            w = tolower(w);\n        else if (islower(w)) \n            w = toupper(w);\n\n        \n        if (vowels.count(w))\n            w += 2;\n\n        out += w;\n    }\n    return out;\n}",
+        1.245,
+        0.905,
+        1.018,
+        1.007,
+        0.908,
+        27
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <unordered_set>\n#include <string>\n#include <algorithm>\n#include <thread>\n#include <vector>\nusing namespace std;\n\nvoid process_chunk(const string& input, string& output, unordered_set<char>& vowels, size_t start, size_t end) {\n    for (size_t i = start; i < end; ++i) {\n        char w = input[i];\n        \n        if (w >= 'a' && w <= 'z')\n            w &= ~0x20;  \n        else if (w >= 'A' && w <= 'Z')\n            w |= 0x20;  \n\n        \n        if (vowels.count(w))\n            w += 2;\n\n        output[i] = w;\n    }\n}\n\nstring encode(string message) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    string out(message.length(), '\\0');  \n    size_t num_threads = thread::hardware_concurrency();\n    size_t chunk_size = (message.length() + num_threads - 1) / num_threads; \n    vector<thread> threads(num_threads);\n\n    for (size_t i = 0; i < num_threads; ++i) {\n        size_t start = i * chunk_size;\n        size_t end = min(start + chunk_size, message.length());\n        threads[i] = thread(process_chunk, ref(message), ref(out), ref(vowels), start, end);\n    }\n\n    for (auto& t : threads) {\n        t.join();\n    }\n\n    return out;\n}",
+        1.225,
+        0.905,
+        1.004,
+        1.001,
+        0.908,
+        44
+    ]
+}

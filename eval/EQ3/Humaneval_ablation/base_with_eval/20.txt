@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> find_closest_elements(vector<float> numbers){\nvector<float> out={};\n    for (int i=0;i<numbers.size();i++)\n    for (int j=i+1;j<numbers.size();j++)\n        if (out.size()==0 or abs(numbers[i]-numbers[j])<abs(out[0]-out[1]))\n            out={numbers[i],numbers[j]};\n    if (out[0]>out[1])\n        out={out[1],out[0]};\n    return out;\n}",
+        46.247,
+        0.85,
+        3245247695.0,
+        21168.0,
+        1.176,
+        16
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n#include <cassert>\n\nusing namespace std;\n\nvector<float> find_closest_elements(vector<float> numbers) {\n    if (numbers.size() < 2) {\n        throw invalid_argument(\"At least two numbers are required.\");\n    }\n   \n    \n    sort(numbers.begin(), numbers.end());\n    \n    \n    vector<float> closest_pair = {numbers[0], numbers[1]};\n    float min_diff = abs(numbers[1] - numbers[0]);\n\n    \n    for (size_t i = 1; i < numbers.size() - 1; ++i) {\n        float current_diff = abs(numbers[i + 1] - numbers[i]);\n        if (current_diff < min_diff) {\n            min_diff = current_diff;\n            closest_pair = {numbers[i], numbers[i + 1]};\n        }\n    }\n\n    return closest_pair;\n}\n\n",
+        9.874,
+        6.504,
+        162.82,
+        1.001,
+        6.498,
+        32
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n#include <cassert>\n\nusing namespace std;\n\nvector<float> find_closest_elements(vector<float> numbers) {\n    \n    if (numbers.size() < 2) {\n        throw invalid_argument(\"At least two numbers are required.\");\n    }\n\n    \n    sort(numbers.begin(), numbers.end());\n    \n    \n    vector<float> closest_pair = {numbers[0], numbers[1]};\n    float min_diff = std::fabs(numbers[1] - numbers[0]);\n\n    \n    for (size_t i = 1; i < numbers.size() - 1; ++i) {\n        float current_diff = std::fabs(numbers[i + 1] - numbers[i]);\n        if (current_diff < min_diff) {\n            min_diff = current_diff;\n            closest_pair = {numbers[i], numbers[i + 1]};\n        }\n    }\n\n    return closest_pair;\n}\n\n",
+        9.423,
+        6.455,
+        166.595,
+        1.006,
+        6.449,
+        33
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool will_it_fly(vector<int> q,int w){\nint sum=0;\n    for (int i=0;i<q.size();i++)\n    {\n        if (q[i]!=q[q.size()-1-i]) return false;\n        sum+=q[i];\n    }\n    if (sum>w) return false;\n    return true;\n}",
+        4.71,
+        0.132,
+        8198855.6,
+        21108.0,
+        7.585,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\nbool will_it_fly(vector<int> q, int w) {\n    int sum = 0;\n    int n = q.size(); \n    int half = n / 2; \n\n    for (int i = 0; i < half; i++) {\n        if (q[i] != q[n - 1 - i]) return false; \n    }\n    \n    \n    int i = 0;\n    for (; i <= n - 4; i += 4) {\n        sum += q[i] + q[i + 1] + q[i + 2] + q[i + 3];\n    }\n    \n    \n    for (; i < n; i++) {\n        sum += q[i];\n    }\n\n    return sum <= w; \n}\n\n",
+        1.004,
+        1.028,
+        1.082,
+        0.999,
+        1.025,
+        30
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\n#include <immintrin.h> \n#include <omp.h> \n\nusing namespace std;\n\nbool will_it_fly(const vector<int>& q, int w) {\n    int n = q.size();\n    int half = n / 2;\n    int sum = 0;\n    bool is_palindrome = true;\n\n    #pragma omp parallel for reduction(+:sum) reduction(&:is_palindrome)\n    for (int i = 0; i < half; i += 8) { \n        if (is_palindrome) {\n            for (int j = 0; j < 8 && i + j < half; ++j) {\n                if (q[i + j] != q[n - 1 - (i + j)]) {\n                    is_palindrome = false;\n                }\n                sum += q[i + j] + q[n - 1 - (i + j)];\n            }\n        }\n    }\n\n    if (!is_palindrome) return false;\n\n    if (n % 2 != 0) sum += q[half]; \n\n    return sum <= w;\n}\n\n",
+        0.958,
+        0.96,
+        0.042,
+        1.0,
+        0.958,
+        35
+    ]
+}

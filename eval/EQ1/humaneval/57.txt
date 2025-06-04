@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool monotonic(vector<float> l){\nint incr,decr;\n    incr=0;decr=0;\n    for (int i=1;i<l.size();i++)\n    {\n        if (l[i]>l[i-1]) incr=1;\n        if (l[i]<l[i-1]) decr=1;\n    }\n    if (incr+decr==2) return false;\n    return true;\n}",
+        4.659,
+        0.131,
+        38179223.4,
+        20961.6,
+        7.612,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\nusing namespace std;\n\nbool monotonic(const vector<float>& l) {\n    int dir_flags = 0; \n    for (size_t i = 1; i < l.size(); ++i) {\n        dir_flags |= (l[i] > l[i-1]) << 0; \n        dir_flags |= (l[i] < l[i-1]) << 1; \n        if (dir_flags == 3) { \n            return false;\n        }\n    }\n    return true;\n}\n\n",
+        0.973,
+        0.822,
+        1.046,
+        0.992,
+        0.824,
+        16
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\nusing namespace std;\n\nbool monotonic(const vector<float>& l) {\n    int dir_flags = 0; \n    for (size_t i = 1; i < l.size(); ++i) {\n        dir_flags |= (l[i] > l[i-1]) << 0; \n        dir_flags |= (l[i] < l[i-1]) << 1; \n        if (dir_flags == 3) { \n            return false;\n        }\n    }\n    return true;\n}\n\n",
+        0.967,
+        0.949,
+        1.051,
+        0.999,
+        0.95,
+        16
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> remove_duplicates(vector<int> numbers){\nvector<int> out={};\n    vector<int> has1={};\n    vector<int> has2={};\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (find(has2.begin(),has2.end(),numbers[i])!=has2.end()) continue;\n        if (find(has1.begin(),has1.end(),numbers[i])!=has1.end())\n        {\n\n            has2.push_back(numbers[i]);\n        }\n        else has1.push_back(numbers[i]);\n    }\n    for (int i=0;i<numbers.size();i++)\n    if (find(has2.begin(),has2.end(),numbers[i])==has2.end())\n        out.push_back(numbers[i]);\n    return out;\n\n\n}",
+        62.25,
+        1.203,
+        4980698568.2,
+        21012.0,
+        0.831,
+        27
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<unordered_set>\n#include<vector>\nusing namespace std;\n\nvector<int> remove_duplicates(vector<int> numbers) {\n    unordered_set<int> seen;\n    unordered_set<int> duplicates;\n    vector<int> out;\n\n    \n    for (int num : numbers) {\n        if (seen.find(num) != seen.end()) {\n            duplicates.insert(num);\n        } else {\n            seen.insert(num);\n        }\n    }\n\n    \n    for (int num : numbers) {\n        if (duplicates.find(num) == duplicates.end()) {\n            out.push_back(num);\n        }\n    }\n\n    return out;\n}\n\n",
+        11.321,
+        7.647,
+        68.539,
+        0.993,
+        7.642,
+        29
+    ],
+    "2": [
+        "#include <unordered_map>\n#include <vector>\n#include <omp.h>\n#include <mutex>\nusing namespace std;\n\nvector<int> remove_duplicates(vector<int> numbers) {\n    unordered_map<int, int> count_map;\n    vector<int> out;\n    mutex map_mutex;\n\n    \n    #pragma omp parallel for\n    for (int i = 0; i < numbers.size(); ++i) {\n        int num = numbers[i];\n        map_mutex.lock();\n        count_map[num]++;\n        map_mutex.unlock();\n    }\n\n    \n    for (int num : numbers) {\n        if (count_map[num] == 1) {\n            out.push_back(num);\n        }\n    }\n\n    return out;\n}\n\n",
+        5.803,
+        6.355,
+        1.308,
+        1.001,
+        6.355,
+        30
+    ]
+}

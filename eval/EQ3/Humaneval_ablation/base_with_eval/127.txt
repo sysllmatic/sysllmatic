@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring intersection( vector<int> interval1,vector<int> interval2){\nint inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n    if (l<2) return \"NO\";\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}",
+        4.709,
+        0.128,
+        4859301.0,
+        20911.2,
+        7.832,
+        17
+    ],
+    "1": [
+        "#include <iostream> \n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nstring intersection(vector<int> interval1, vector<int> interval2) {\n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n    if (l < 2) return \"NO\"; \n\n    if (l == 2) return \"YES\"; \n\n    if (l % 2 == 0) return \"NO\"; \n\n    for (int i = 3; i * i <= l; i += 2) {\n        if (l % i == 0) return \"NO\"; \n    }\n    return \"YES\"; \n}",
+        1.016,
+        1.07,
+        1.04,
+        0.995,
+        1.066,
+        20
+    ],
+    "2": [
+        "#include <iostream> \n#include <vector>\n#include <algorithm>\n#include <set>\nusing namespace std;\n\nstring intersection(const vector<int>& interval1, const vector<int>& interval2) {\n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n    if (l < 2) return \"NO\"; \n\n    \n    static const set<int> smallPrimes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};\n    if (smallPrimes.find(l) != smallPrimes.end()) return \"YES\";\n\n    if (l % 2 == 0) return \"NO\"; \n\n    for (int i = 3; i * i <= l; i += 2) {\n        if (l % i == 0) return \"NO\"; \n    }\n    return \"YES\"; \n}\n\n",
+        1.042,
+        0.966,
+        0.986,
+        0.99,
+        0.962,
+        24
+    ]
+}

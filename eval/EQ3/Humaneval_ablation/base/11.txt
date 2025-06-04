@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring string_xor(string a,string b){\nstring output=\"\";\n    for (int i=0;(i<a.length() and i<b.length());i++)\n    {\n        if (i<a.length() and i<b.length())\n        {\n            if (a[i]== b[i]) \n            {\n                output+='0';\n            }  \n            else output+='1';\n        }\n        else\n        {\n            if (i>=a.length()) \n            {\n            output+=b[i];\n            }\n            else output+=a[i];\n        }\n    }\n    return output;\n}",
+        9.988,
+        0.128,
+        4411744.4,
+        21012.0,
+        7.807,
+        29
+    ],
+    "1": [
+        "#include <string>\n\nstd::string string_xor(const std::string& a, const std::string& b) {\n    std::string output;\n    size_t min_length = std::min(a.length(), b.length());\n    output.reserve(min_length); \n    for (size_t i = 0; i < min_length; ++i) {\n        output += (a[i] == b[i]) ? '0' : '1';\n    }\n    return output;\n}\n\n",
+        1.068,
+        1.051,
+        0.999,
+        0.994,
+        1.05,
+        12
+    ]
+}

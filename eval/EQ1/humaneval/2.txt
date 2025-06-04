@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nfloat truncate_number(float number){\nreturn number-int(number);\n}",
+        4.302,
+        0.125,
+        2753332.4,
+        21048.8,
+        7.993,
+        8
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n\nfloat truncate_number(float number) {\n    double int_part;\n    return modf(number, &int_part);\n}\n\n",
+        1.024,
+        0.957,
+        1.02,
+        1.005,
+        0.957,
+        8
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <omp.h> \n\n\nfloat truncate_number(float number) {\n    double int_part;\n    return modf(number, &int_part);\n}\n\n\nvoid truncate_numbers(float* numbers, float* results, size_t size) {\n    #pragma omp parallel for\n    for (size_t i = 0; i < size; ++i) {\n        double int_part;\n        results[i] = modf(numbers[i], &int_part);\n    }\n}\n\n\n\n",
+        0.833,
+        1.094,
+        0.901,
+        0.995,
+        1.093,
+        21
+    ]
+}

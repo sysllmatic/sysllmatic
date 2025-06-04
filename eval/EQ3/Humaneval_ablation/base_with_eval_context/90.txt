@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint next_smallest(vector<int> lst){\nsort(lst.begin(),lst.end());\n    for (int i=1;i<lst.size();i++)\n        if (lst[i]!=lst[i-1]) return lst[i];\n    return -1;\n}",
+        7.792,
+        0.124,
+        4690143.6,
+        21096.0,
+        8.054,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <limits.h>\nusing namespace std;\n\nint next_smallest(vector<int> lst) {\n    if (lst.size() < 2) return -1; \n    \n    int smallest = INT_MAX;\n    int second_smallest = INT_MAX;\n\n    \n    for (int num : lst) {\n        if (num < smallest) {\n            smallest = num;\n        }\n    }\n\n    \n    for (int num : lst) {\n        if (num > smallest && num < second_smallest) {\n            second_smallest = num;\n        }\n    }\n\n    return (second_smallest == INT_MAX) ? -1 : second_smallest;\n}",
+        0.852,
+        0.948,
+        1.009,
+        1.0,
+        0.948,
+        27
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <limits.h>\nusing namespace std;\n\nint next_smallest(vector<int> lst) {\n    if (lst.size() < 2) return -1; \n    \n    int smallest = INT_MAX;\n    int second_smallest = INT_MAX;\n\n    \n    for (int num : lst) {\n        if (num < smallest) {\n            second_smallest = smallest;\n            smallest = num;\n        } else if (num > smallest && num < second_smallest) {\n            second_smallest = num;\n        }\n    }\n\n    return (second_smallest == INT_MAX) ? -1 : second_smallest;\n}",
+        0.994,
+        0.969,
+        1.111,
+        1.007,
+        0.969,
+        23
+    ]
+}

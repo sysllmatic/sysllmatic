@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring int_to_mini_romank(int number){\nstring current=\"\";\n    vector<string> rep={\"m\",\"cm\",\"d\",\"cd\",\"c\",\"xc\",\"l\",\"xl\",\"x\",\"ix\",\"v\",\"iv\",\"i\"};\n    vector<int> num={1000,900,500,400,100,90,50,40,10,9,5,4,1};\n    int pos=0;\n    while(number>0)\n    {\n        while (number>=num[pos])\n        {\n            current=current+rep[pos];\n            number-=num[pos];\n        }\n        if (number>0) pos+=1;\n    }\n    return current;\n}",
+        4.609,
+        0.137,
+        4529372.0,
+        21155.2,
+        7.267,
+        23
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream>\n\nstd::string int_to_mini_romank(int number) {\n    std::ostringstream current;\n    std::vector<std::string> rep = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    std::vector<int> num = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    int pos = 0;\n    while (number > 0) {\n        while (number >= num[pos]) {\n            current << rep[pos];\n            number -= num[pos];\n        }\n        pos += 1;\n    }\n    return current.str();\n}",
+        0.967,
+        1.038,
+        1.027,
+        1.01,
+        1.042,
+        19
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n\nstd::string int_to_mini_romank(int number) {\n    std::string current;\n    current.reserve(15);  \n    std::vector<std::string> rep = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    std::vector<int> num = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    int pos = 0;\n    while (number > 0) {\n        if (number >= num[pos]) {\n            current += rep[pos];\n            number -= num[pos];\n        } else {\n            pos += 1;\n        }\n    }\n    return current;\n}",
+        1.018,
+        1.052,
+        1.053,
+        1.005,
+        1.055,
+        20
+    ]
+}

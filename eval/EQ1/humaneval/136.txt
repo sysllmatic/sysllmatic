@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> largest_smallest_integers(vector<int> lst){\nint maxneg=0,minpos=0;\n    for (int i=0;i<lst.size();i++)\n    {\n        if (lst[i]<0 and (maxneg==0 or lst[i]>maxneg)) maxneg=lst[i];\n        if (lst[i]>0 and (minpos==0 or lst[i]<minpos)) minpos=lst[i];\n    }\n    return {maxneg,minpos};\n}",
+        4.986,
+        0.126,
+        12495878.8,
+        21016.8,
+        7.929,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<limits.h>  \nusing namespace std;\n\nvector<int> largest_smallest_integers(vector<int> lst){\n    int maxneg = INT_MIN;  \n    int minpos = INT_MAX;  \n    for (int i = 0; i < lst.size(); i++) {\n        int current = lst[i];  \n        if (current < 0 && current > maxneg) maxneg = current;\n        if (current > 0 && current < minpos) minpos = current;\n    }\n    \n    if (maxneg == INT_MIN) maxneg = 0;\n    if (minpos == INT_MAX) minpos = 0;\n    return {maxneg, minpos};\n}",
+        1.033,
+        0.987,
+        1.133,
+        1.0,
+        0.986,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <limits.h>\n#include <immintrin.h>  \n\nusing namespace std;\n\nvector<int> largest_smallest_integers(vector<int> lst) {\n    int maxneg = INT_MIN;\n    int minpos = INT_MAX;\n    size_t size = lst.size();  \n\n    size_t i = 0;\n    __m256i maxneg_vec = _mm256_set1_epi32(INT_MIN);\n    __m256i minpos_vec = _mm256_set1_epi32(INT_MAX);\n\n    \n    for (; i + 8 <= size; i += 8) {\n        __m256i current = _mm256_loadu_si256((__m256i*)&lst[i]);\n        __m256i mask_neg = _mm256_cmpgt_epi32(_mm256_setzero_si256(), current);\n        __m256i mask_pos = _mm256_cmpgt_epi32(current, _mm256_setzero_si256());\n        maxneg_vec = _mm256_blendv_epi8(maxneg_vec, current, mask_neg);\n        minpos_vec = _mm256_blendv_epi8(minpos_vec, current, mask_pos);\n    }\n\n    \n    int temp_maxneg[8], temp_minpos[8];\n    _mm256_storeu_si256((__m256i*)temp_maxneg, maxneg_vec);\n    _mm256_storeu_si256((__m256i*)temp_minpos, minpos_vec);\n\n    for (int j = 0; j < 8; ++j) {\n        if (temp_maxneg[j] > maxneg) maxneg = temp_maxneg[j];\n        if (temp_minpos[j] < minpos) minpos = temp_minpos[j];\n    }\n\n    \n    for (; i < size; ++i) {\n        int current = lst[i];\n        if (current < 0 && current > maxneg) maxneg = current;\n        if (current > 0 && current < minpos) minpos = current;\n    }\n\n    if (maxneg == INT_MIN) maxneg = 0;\n    if (minpos == INT_MAX) minpos = 0;\n\n    return {maxneg, minpos};\n}",
+        1.101,
+        0.923,
+        1.27,
+        0.994,
+        0.923,
+        47
+    ]
+}

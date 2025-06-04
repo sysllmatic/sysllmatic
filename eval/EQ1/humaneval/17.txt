@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> parse_music(string music_string){\nstring current=\"\";\n    vector<int> out={};\n    if (music_string.length()>0)\n        music_string=music_string+' ';\n    for (int i=0;i<music_string.length();i++)\n    {\n        if (music_string[i]==' ')\n        {\n            if (current==\"o\") out.push_back(4);\n            if (current==\"o|\") out.push_back(2);\n            if (current==\".|\") out.push_back(1);\n            current=\"\";\n        }\n        else current+=music_string[i];\n    }\n    return out;\n}",
+        4.495,
+        0.131,
+        11068416.2,
+        21049.6,
+        7.599,
+        25
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nvector<int> parse_music(const string& music_string) {\n    unordered_map<string, int> note_map = {\n        {\"o\", 4}, {\"o|\", 2}, {\".|\", 1}\n    };\n\n    vector<int> out;\n    out.reserve(music_string.size() / 2); \n\n    string current;\n    for (size_t i = 0; i < music_string.length(); ++i) {\n        char c = music_string[i];\n        if (c == ' ') {\n            if (!current.empty()) { \n                auto it = note_map.find(current);\n                if (it != note_map.end()) {\n                    out.push_back(it->second);\n                }\n                current.clear();\n            }\n        } else {\n            current += c;\n        }\n    }\n\n    \n    if (!current.empty()) {\n        auto it = note_map.find(current);\n        if (it != note_map.end()) {\n            out.push_back(it->second);\n        }\n    }\n\n    return out;\n}",
+        0.998,
+        0.964,
+        0.744,
+        1.003,
+        0.967,
+        41
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<int> parse_music(const string& music_string) {\n    vector<int> out;\n    out.reserve(music_string.size() / 2);  \n    \n    int note_value = 0;\n    size_t length = music_string.length();\n    for (size_t i = 0; i < length; ++i) {\n        switch (music_string[i]) {\n            case 'o':\n                if (i + 1 < length && music_string[i + 1] == '|') {\n                    note_value = 2;\n                    ++i;  \n                } else {\n                    note_value = 4;\n                }\n                break;\n            case '.':\n                if (i + 1 < length && music_string[i + 1] == '|') {\n                    note_value = 1;\n                    ++i;  \n                }\n                break;\n            case ' ':  \n                if (note_value != 0) {\n                    out.push_back(note_value);\n                    note_value = 0;\n                }\n                continue;  \n        }\n    }\n\n    \n    if (note_value != 0) {\n        out.push_back(note_value);\n    }\n\n    return out;\n}\n\n",
+        1.002,
+        0.998,
+        1.782,
+        1.0,
+        1.002,
+        44
+    ]
+}

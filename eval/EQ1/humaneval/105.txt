@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<map>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> by_length(vector<int> arr){\nmap<int,string> numto={{0,\"Zero\"},{1,\"One\"},{2,\"Two\"},{3,\"Three\"},{4,\"Four\"},{5,\"Five\"},{6,\"Six\"},{7,\"Seven\"},{8,\"Eight\"},{9,\"Nine\"}};\n    sort(arr.begin(),arr.end());\n    vector<string> out={};\n    for (int i=arr.size()-1;i>=0;i-=1)\n        if (arr[i]>=1 and arr[i]<=9)\n        out.push_back(numto[arr[i]]);\n    return out;\n}",
+        4.909,
+        0.141,
+        44273306.2,
+        21101.6,
+        7.106,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nvector<string> by_length(const vector<int>& arr) {\n    \n    const char* numto[10] = { \"Zero\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\" };\n    vector<int> filtered;\n    \n    \n    for (int num : arr) {\n        if (num >= 1 && num <= 9) {\n            filtered.push_back(num);\n        }\n    }\n    \n    \n    sort(filtered.begin(), filtered.end(), greater<int>());\n    \n    vector<string> out;\n    \n    for (int num : filtered) {\n        out.push_back(numto[num]);\n    }\n    \n    return out;\n}",
+        1.076,
+        1.089,
+        2.363,
+        1.001,
+        1.085,
+        29
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> by_length(const vector<int>& arr) {\n    const char* numto[] = { \"Zero\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\" };\n    vector<int> count(10, 0);\n\n    \n    for (int num : arr) {\n        if (num >= 1 && num <= 9) {\n            count[num]++;\n        }\n    }\n\n    vector<string> out;\n    \n    for (int i = 9; i >= 1; --i) {\n        while (count[i]-- > 0) {\n            out.push_back(numto[i]);\n        }\n    }\n\n    return out;\n}\n\n",
+        1.051,
+        1.015,
+        3.791,
+        1.003,
+        1.012,
+        27
+    ]
+}

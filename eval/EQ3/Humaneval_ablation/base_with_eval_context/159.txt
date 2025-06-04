@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> eat(int number,int need,int remaining){\nif (need>remaining) return {number+remaining, 0};\n    return {number+need,remaining-need};\n}",
+        4.523,
+        0.141,
+        4657701.6,
+        21067.2,
+        7.065,
+        10
+    ],
+    "1": [
+        "#include<vector>\nusing namespace std;\n\nvector<int> eat(int number, int need, int remaining) {\n    if (need > remaining) return {number + remaining, 0};\n    return {number + need, remaining - need};\n}\n\n",
+        0.951,
+        1.124,
+        1.102,
+        0.999,
+        1.126,
+        8
+    ],
+    "2": [
+        "#include <vector>\n#include <thread>\nusing namespace std;\n\nvector<int> eat(int number, int need, int remaining) {\n    if (need > remaining) return {number + remaining, 0};\n    return {number + need, remaining - need};\n}\n\nvoid processBatch(const vector<int>& numbers, const vector<int>& needs, const vector<int>& remainings, vector<vector<int>>& results, int start, int end) {\n    for (int i = start; i < end; ++i) {\n        results[i] = eat(numbers[i], needs[i], remainings[i]);\n    }\n}\n\nvoid parallelBatchProcess(const vector<int>& numbers, const vector<int>& needs, const vector<int>& remainings, vector<vector<int>>& results) {\n    int numThreads = std::thread::hardware_concurrency();\n    int batchSize = numbers.size() / numThreads;\n    vector<thread> threads;\n    for (int i = 0; i < numThreads; ++i) {\n        int start = i * batchSize;\n        int end = (i == numThreads - 1) ? numbers.size() : start + batchSize;\n        threads.emplace_back(processBatch, ref(numbers), ref(needs), ref(remainings), ref(results), start, end);\n    }\n    for (auto& thread : threads) {\n        thread.join();\n    }\n}",
+        1.027,
+        1.084,
+        1.033,
+        0.999,
+        1.087,
+        28
+    ]
+}

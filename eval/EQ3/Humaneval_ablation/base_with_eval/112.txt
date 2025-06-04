@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\nstring n=\"\";\n    for (int i=0;i<s.length();i++)\n    if (find(c.begin(),c.end(),s[i])==c.end())\n        n=n+s[i]; \n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"};\n}",
+        15.9,
+        0.337,
+        895745061.2,
+        21100.8,
+        2.967,
+        17
+    ],
+    "1": [
+        "#include<iostream>\n#include<vector>\n#include<string>\n#include<unordered_set>\nusing namespace std;\n\nvector<string> reverse_delete(string s, string c) {\n    string n;\n    unordered_set<char> char_set(c.begin(), c.end()); \n\n    for (char ch : s) {\n        if (char_set.find(ch) == char_set.end()) {\n            n += ch; \n        }\n    }\n\n    \n    bool is_palindrome = true;\n    int len = n.length();\n    for (int i = 0; i < len / 2; ++i) {\n        if (n[i] != n[len - i - 1]) {\n            is_palindrome = false;\n            break;\n        }\n    }\n\n    return {n, is_palindrome ? \"True\" : \"False\"};\n}",
+        3.164,
+        2.169,
+        18.91,
+        1.006,
+        2.167,
+        28
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <unordered_set>\nusing namespace std;\n\nvector<string> reverse_delete(string s, string c) {\n    string n;\n    n.reserve(s.length()); \n    unordered_set<char> char_set(c.begin(), c.end());\n\n    for (char ch : s) {\n        if (char_set.find(ch) == char_set.end()) {\n            n.push_back(ch); \n        }\n    }\n\n    \n    bool is_palindrome = true;\n    int len = n.length();\n    for (int i = 0; i < len / 2; ++i) {\n        if (n[i] != n[len - i - 1]) {\n            is_palindrome = false;\n            break;\n        }\n    }\n\n    return {n, is_palindrome ? \"True\" : \"False\"};\n}",
+        3.064,
+        2.467,
+        18.981,
+        1.002,
+        2.464,
+        29
+    ]
+}

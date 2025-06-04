@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> pluck(vector<int> arr){\nvector<int> out={};\n    for (int i=0;i<arr.size();i++)\n    if (arr[i]%2==0 and (out.size()==0 or arr[i]<out[0]))\n        out={arr[i],i};\n    return out;\n}",
+        4.639,
+        0.139,
+        8341345.2,
+        21105.6,
+        7.202,
+        13
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <limits> \n\nusing namespace std;\n\nvector<int> pluck(const vector<int>& arr) {\n    int smallest_even = std::numeric_limits<int>::max();\n    int index = -1;\n    for (int i = 0; i < arr.size(); i++) {\n        if (arr[i] % 2 == 0 && arr[i] < smallest_even) {\n            smallest_even = arr[i];\n            index = i;\n        }\n    }\n    if (index != -1) {\n        return {smallest_even, index};\n    } else {\n        return {};  \n    }\n}\n\n",
+        0.981,
+        1.177,
+        1.2,
+        1.002,
+        1.174,
+        22
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <limits> \n\nusing namespace std;\n\nvector<int> pluck(const vector<int>& arr) {\n    int smallest_even = numeric_limits<int>::max();\n    int index = -1;\n    for (int i = 0; i < arr.size(); ++i) {\n        int num = arr[i];\n        if (num % 2 == 0 && num < smallest_even) {\n            smallest_even = num;\n            index = i;\n        }\n    }\n    return (index != -1) ? vector<int>{smallest_even, index} : vector<int>{};\n}",
+        1.013,
+        1.025,
+        1.12,
+        1.0,
+        1.023,
+        18
+    ]
+}

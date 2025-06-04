@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring match_parens(vector<string> lst){\nstring l1=lst[0]+lst[1];\n    int i,count=0;\n    bool can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (count!=0) return \"No\";\n    if (can==true) return \"Yes\";\n    l1=lst[1]+lst[0];\n    can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (can==true) return \"Yes\";\n    return \"No\";\n}",
+        4.674,
+        0.128,
+        6720798.2,
+        20951.2,
+        7.801,
+        30
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nstring match_parens(const vector<string>& lst) {\n    int n1 = lst[0].length();\n    int n2 = lst[1].length();\n    int count1 = 0, count2 = 0;\n    bool can1 = true, can2 = true;\n\n    for (int i = 0; i < n1 + n2; ++i) {\n        char c1 = i < n1 ? lst[0][i] : lst[1][i - n1];\n        char c2 = i < n2 ? lst[1][i] : lst[0][i - n2];\n\n        if (c1 == '(') count1++;\n        else if (c1 == ')') count1--;\n\n        if (c2 == '(') count2++;\n        else if (c2 == ')') count2--;\n\n        if (count1 < 0) can1 = false;\n        if (count2 < 0) can2 = false;\n    }\n\n    if (can1 && count1 == 0) return \"Yes\";\n    if (can2 && count2 == 0) return \"Yes\";\n    return \"No\";\n}",
+        1.042,
+        1.034,
+        0.972,
+        0.995,
+        1.034,
+        29
+    ],
+    "2": [
+        "#include <thread>\n#include <vector>\n#include <string>\nusing namespace std;\n\nbool check_parens(const string& a, const string& b) {\n    int count = 0;\n    for (char c : a) {\n        if (c == '(') count++;\n        else if (c == ')') count--;\n        if (count < 0) return false;\n    }\n    for (char c : b) {\n        if (c == '(') count++;\n        else if (c == ')') count--;\n        if (count < 0) return false;\n    }\n    return count == 0;\n}\n\nstring match_parens(const vector<string>& lst) {\n    bool result1 = false, result2 = false;\n    std::thread t1([&]() { result1 = check_parens(lst[0], lst[1]); });\n    std::thread t2([&]() { result2 = check_parens(lst[1], lst[0]); });\n    t1.join();\n    t2.join();\n    return (result1 || result2) ? \"Yes\" : \"No\";\n}",
+        1.017,
+        1.012,
+        0.758,
+        0.994,
+        1.012,
+        28
+    ]
+}

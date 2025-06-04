@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_array(vector<int> array){\nif (array.size()==0) return {};\n    if ((array[0]+array[array.size()-1]) %2==1)\n    {\n        sort(array.begin(),array.end());\n        return array;\n    }\n    else\n    {\n        sort(array.begin(),array.end());\n        vector<int> out={};\n        for (int i=array.size()-1;i>=0;i-=1)\n            out.push_back(array[i]);\n        return out;\n    }\n\n}",
+        4.945,
+        0.132,
+        36972901.0,
+        21079.2,
+        7.573,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> sort_array(vector<int> array) {\n    if (array.size() == 0) return {};\n    \n    \n    bool reverse = ((array[0] + array[array.size() - 1]) % 2 == 0);\n    sort(array.begin(), array.end(), [reverse](int a, int b) {\n        return reverse ? b < a : a < b;\n    });\n    \n    return array;\n}\n\n",
+        1.031,
+        0.984,
+        0.895,
+        1.003,
+        0.984,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <functional> \nusing namespace std;\n\nvector<int> sort_array(vector<int> array) {\n    size_t array_size = array.size();\n    if (array_size == 0) return {};\n    \n    bool reverse = ((array[0] + array[array_size - 1]) % 2 == 0);\n    \n    if (reverse) {\n        std::sort(array.begin(), array.end(), std::greater<int>());\n    } else {\n        std::sort(array.begin(), array.end());\n    }\n    \n    return array;\n}\n\n",
+        1.051,
+        0.957,
+        1.018,
+        1.0,
+        0.956,
+        21
+    ]
+}

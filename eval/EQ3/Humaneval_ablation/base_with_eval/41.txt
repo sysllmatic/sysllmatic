@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint car_race_collision(int n){\nreturn n*n;\n}",
+        4.62,
+        0.123,
+        2885003.2,
+        21008.8,
+        8.098,
+        8
+    ],
+    "1": [
+        "#include <stdio.h>\n\nint car_race_collision(int n){\n    return n * n;\n}\n\n",
+        1.058,
+        0.976,
+        1.015,
+        0.993,
+        0.979,
+        6
+    ],
+    "2": [
+        "#include <stdio.h>\n\n\n#define CAR_RACE_COLLISION(n) ((n) * (n))\n\n\nlong long car_race_collision_long(long long n) {\n    return n * n;\n}\n\n\nint car_race_collision(int n) {\n    return n * n;\n}\n\n\n",
+        1.061,
+        1.045,
+        1.066,
+        1.002,
+        1.047,
+        16
+    ]
+}

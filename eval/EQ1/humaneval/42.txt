@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> incr_list(vector<int> l){\nfor (int i=0;i<l.size();i++)\n        l[i]+=1;\n    return l;\n}",
+        4.613,
+        0.136,
+        7064457.4,
+        21116.0,
+        7.338,
+        11
+    ],
+    "1": [
+        "#include <vector>\n#include <iostream>\nusing namespace std;\n\nvector<int> incr_list(vector<int> l) {\n    size_t size = l.size();\n    size_t i = 0;\n    \n    for (; i + 3 < size; i += 4) {\n        l[i] += 1;\n        l[i + 1] += 1;\n        l[i + 2] += 1;\n        l[i + 3] += 1;\n    }\n    \n    for (; i < size; ++i) {\n        l[i] += 1;\n    }\n    return l; \n}\n\n",
+        1.047,
+        1.078,
+        0.965,
+        1.003,
+        1.079,
+        21
+    ],
+    "2": [
+        "#include <vector>\n#include <iostream>\n#include <immintrin.h>  \n#include <omp.h>        \nusing namespace std;\n\nvector<int> incr_list(vector<int> l) {\n    size_t size = l.size();\n    size_t i = 0;\n\n    \n    l.reserve(size);\n\n    __m256i add_one = _mm256_set1_epi32(1);  \n    \n    for (; i + 7 < size; i += 8) {\n        __m256i vec = _mm256_loadu_si256((__m256i*)&l[i]);\n        vec = _mm256_add_epi32(vec, add_one);\n        _mm256_storeu_si256((__m256i*)&l[i], vec);\n    }\n\n    \n    for (; i < size; ++i) {\n        l[i] += 1;\n    }\n\n    return l;\n}\n\n",
+        1.001,
+        1.026,
+        1.048,
+        1.008,
+        1.026,
+        29
+    ]
+}

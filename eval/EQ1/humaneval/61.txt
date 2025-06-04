@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='(') level+=1;\n        if (brackets[i]==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        4.591,
+        0.134,
+        7069658.6,
+        21097.6,
+        7.435,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nbool correct_bracketing(const string &brackets) {\n    int level = 0;\n    size_t length = brackets.length();\n    for (size_t i = 0; i < length; ++i) {\n        char c = brackets[i];\n        if (c == '(') {\n            ++level;\n        } else if (c == ')') {\n            if (--level < 0) {\n                return false;\n            }\n        }\n    }\n    return level == 0;\n}\n\n",
+        0.949,
+        1.073,
+        1.285,
+        1.0,
+        1.076,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <thread>  \n#include <vector>\nusing namespace std;\n\n\nbool correct_bracketing(const string &brackets) {\n    int level = 0;\n    size_t length = brackets.length();\n    for (size_t i = 0; i < length; ++i) {\n        char c = brackets[i];\n        if (c == '(') {\n            ++level;\n        } else if (c == ')') {\n            if (--level < 0) {\n                return false;\n            }\n        }\n    }\n    return level == 0;\n}\n\n\nvoid process_multiple_strings(const vector<string> &strings, vector<bool> &results) {\n    auto worker = [&](size_t start, size_t end) {\n        for (size_t i = start; i < end; ++i) {\n            results[i] = correct_bracketing(strings[i]);\n        }\n    };\n\n    size_t num_threads = thread::hardware_concurrency();\n    vector<thread> threads;\n    size_t block_size = strings.size() / num_threads;\n\n    for (size_t i = 0; i < num_threads; ++i) {\n        size_t start = i * block_size;\n        size_t end = (i == num_threads - 1) ? strings.size() : start + block_size;\n        threads.emplace_back(worker, start, end);\n    }\n\n    for (auto &t : threads) {\n        t.join();\n    }\n}\n\n",
+        0.955,
+        0.996,
+        1.189,
+        1.0,
+        0.999,
+        46
+    ]
+}

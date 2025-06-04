@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring solve(string s){\nint nletter=0;\n    string out=\"\";\n    for (int i=0;i<s.length();i++)\n    {\n        char w=s[i];\n        if (w>=65 and w<=90) w=w+32;\n        else if (w>=97 and w<=122) w=w-32;\n        else nletter+=1;\n        out=out+w;\n    }\n    if (nletter==s.length())\n    {\n        string p(s.rbegin(),s.rend());\n        return p;\n    }\n    else return out;\n}",
+        5.276,
+        0.142,
+        59022497.8,
+        20984.0,
+        7.016,
+        24
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <cctype>\n\nusing namespace std;\n\nstring solve(string s) {\n    string out;\n    out.reserve(s.size()); \n    \n    transform(s.begin(), s.end(), back_inserter(out), [](char c) {\n        if (islower(c)) return static_cast<char>(toupper(c));\n        if (isupper(c)) return static_cast<char>(tolower(c));\n        return c;\n    });\n\n    if (none_of(s.begin(), s.end(), [](char c) { return isalpha(c); })) {\n        reverse(out.begin(), out.end());\n    }\n\n    return out;\n}\n\n\n\n",
+        1.048,
+        1.102,
+        6.433,
+        1.001,
+        1.105,
+        26
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n#include <cctype>\n\nusing namespace std;\n\nstring solve(string s) {\n    string out;\n    out.reserve(s.size()); \n    bool hasAlpha = false;\n    \n    for (char c : s) {\n        if (isalpha(c)) {\n            hasAlpha = true;\n            out += c ^ 32; \n        } else {\n            out += c;\n        }\n    }\n\n    if (!hasAlpha) {\n        reverse(out.begin(), out.end());\n    }\n\n    return out;\n}\n\n\n\n",
+        1.146,
+        1.11,
+        8.006,
+        1.008,
+        1.113,
+        30
+    ]
+}

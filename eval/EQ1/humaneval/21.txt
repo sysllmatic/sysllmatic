@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> rescale_to_unit(vector<float> numbers){\nfloat min=100000,max=-100000;\n    for (int i=0;i<numbers.size();i++)\n        {\n            if (numbers[i]<min) min=numbers[i];\n            if (numbers[i]>max) max=numbers[i];\n        }\n    for (int i=0;i<numbers.size();i++)\n        numbers[i]=(numbers[i]-min)/(max-min);\n    return numbers;\n}",
+        4.805,
+        0.134,
+        10588514.8,
+        21074.4,
+        7.471,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<float> rescale_to_unit(vector<float> numbers) {\n    if (numbers.empty()) return numbers; \n    float min = numbers[0], max = numbers[0];\n    int size = numbers.size();\n    \n    \n    for (int i = 0; i < size; ++i) {\n        if (numbers[i] < min) min = numbers[i];\n        if (numbers[i] > max) max = numbers[i];\n    }\n    \n    \n    if (min == max) {\n        std::fill(numbers.begin(), numbers.end(), 0.0f);\n    } else {\n        for (int i = 0; i < size; ++i) {\n            numbers[i] = (numbers[i] - min) / (max - min);\n        }\n    }\n    return numbers;\n}\n\n",
+        1.041,
+        0.95,
+        1.027,
+        0.998,
+        0.948,
+        27
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <omp.h> \nusing namespace std;\n\nvector<float> rescale_to_unit(vector<float> numbers) {\n    if (numbers.empty()) return numbers;\n    float min = numbers[0], max = numbers[0];\n    int size = numbers.size();\n\n    \n    #pragma omp parallel for reduction(min:min) reduction(max:max)\n    for (int i = 0; i < size; ++i) {\n        if (numbers[i] < min) min = numbers[i];\n        if (numbers[i] > max) max = numbers[i];\n    }\n\n    \n    if (min == max) {\n        std::fill(numbers.begin(), numbers.end(), 0.0f);\n    } else {\n        float range = max - min;\n        \n        #pragma omp parallel for\n        for (int i = 0; i < size; ++i) {\n            numbers[i] = (numbers[i] - min) / range;\n        }\n    }\n    return numbers;\n}\n\n",
+        0.997,
+        0.981,
+        0.077,
+        1.005,
+        0.979,
+        32
+    ]
+}

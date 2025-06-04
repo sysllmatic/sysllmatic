@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint digits(int n){\nint prod=1,has=0;\n    string s=to_string(n);\n    for (int i=0;i<s.length();i++)\n        if (s[i]%2==1) \n        {\n            has=1;\n            prod=prod*(s[i]-48);\n        }\n    if (has==0) return 0;\n    return prod;\n}",
+        4.729,
+        0.129,
+        4482482.8,
+        20985.6,
+        7.727,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<stdlib.h>\n\nint digits(int n) {\n    int prod = 1;\n    int has = 0;\n    while (n > 0) {\n        int digit = n % 10;\n        if (digit & 1) { \n            has = 1;\n            prod *= digit;\n        }\n        n /= 10; \n    }\n    if (has == 0) return 0;\n    return prod;\n}",
+        0.903,
+        1.012,
+        1.086,
+        0.999,
+        1.014,
+        17
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<stdlib.h>\n#include<thread>\n#include<vector>\n\nint digits(int n) {\n    int prod = 1;\n    int has = 0;\n    while (n > 0) {\n        int digit = n % 10;\n        if (digit & 1) { \n            has = 1;\n            prod *= digit;\n        }\n        n /= 10; \n    }\n    return has ? prod : 0;\n}\n\nvoid process_range(const std::vector<int>& numbers, std::vector<int>& results, int start, int end) {\n    for (int i = start; i < end; ++i) {\n        results[i] = digits(numbers[i]);\n    }\n}\n\nvoid parallel_process_numbers(const std::vector<int>& numbers, std::vector<int>& results) {\n    int num_threads = std::thread::hardware_concurrency();\n    std::vector<std::thread> threads;\n    int chunk_size = numbers.size() / num_threads;\n\n    for (int i = 0; i < num_threads; ++i) {\n        int start = i * chunk_size;\n        int end = (i == num_threads - 1) ? numbers.size() : start + chunk_size;\n        threads.emplace_back(process_range, std::cref(numbers), std::ref(results), start, end);\n    }\n\n    for (auto& t : threads) {\n        t.join();\n    }\n}",
+        0.81,
+        1.017,
+        0.882,
+        0.995,
+        1.019,
+        40
+    ]
+}

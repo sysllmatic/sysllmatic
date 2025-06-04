@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring words_in_sentence(string sentence){\nstring out=\"\";\n    string current=\"\";\n    sentence=sentence+' ';\n\n    for (int i=0;i<sentence.size();i++)\n    if (sentence[i]!=' ') current=current+sentence[i];\n    else\n    {\n        bool isp=true;\n        int l=current.length();\n        if (l<2) isp=false;\n        for (int j=2;j*j<=l;j++)\n            if (l%j==0) isp=false;\n        if (isp) out=out+current+' ';\n        current=\"\";        \n    }\n    if (out.length()>0)\n        out.pop_back();\n    return out;\n}",
+        4.573,
+        0.128,
+        4645709.0,
+        21063.2,
+        7.815,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <cmath>\n#include <string>\n\nbool isPrime(int n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (int i = 5; i * i <= n; i += 6)\n        if (n % i == 0 || n % (i + 2) == 0)\n            return false;\n    return true;\n}\n\nstd::string words_in_sentence(const std::string& sentence) {\n    std::stringstream ss(sentence);\n    std::stringstream out;\n    std::string current;\n    while (ss >> current) {\n        if (isPrime(current.length())) {\n            out << current << ' ';\n        }\n    }\n    std::string result = out.str();\n    if (!result.empty()) {\n        result.pop_back(); \n    }\n    return result;\n}\n\n",
+        0.908,
+        0.965,
+        1.006,
+        0.996,
+        0.964,
+        31
+    ],
+    "2": [
+        "#include <iostream>\n#include <sstream>\n#include <cmath>\n#include <string>\n#include <unordered_map>\n#include <vector>\n#include <omp.h>\n\nstd::unordered_map<int, bool> primeCache;\n\nbool isPrimeWithMemo(int n) {\n    if (primeCache.find(n) != primeCache.end()) return primeCache[n];\n    if (n <= 1) return primeCache[n] = false;\n    if (n <= 3) return primeCache[n] = true;\n    if (n % 2 == 0 || n % 3 == 0) return primeCache[n] = false;\n    for (int i = 5; i * i <= n; i += 6)\n        if (n % i == 0 || n % (i + 2) == 0)\n            return primeCache[n] = false;\n    return primeCache[n] = true;\n}\n\nstd::string words_in_sentence(const std::string& sentence) {\n    std::stringstream ss(sentence);\n    std::vector<std::string> words;\n    std::string current;\n\n    \n    while (ss >> current) {\n        words.push_back(current);\n    }\n\n    std::vector<std::string> primeWords(words.size());\n    \n    \n    #pragma omp parallel for\n    for (size_t i = 0; i < words.size(); ++i) {\n        if (isPrimeWithMemo(words[i].length())) {\n            primeWords[i] = words[i];\n        }\n    }\n\n    std::stringstream out;\n    for (const auto& word : primeWords) {\n        if (!word.empty()) {\n            out << word << ' ';\n        }\n    }\n\n    std::string result = out.str();\n    if (!result.empty()) {\n        result.pop_back(); \n    }\n    return result;\n}\n\n",
+        0.941,
+        1.054,
+        0.082,
+        0.999,
+        1.053,
+        55
+    ]
+}

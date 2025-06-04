@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint count_distinct_characters(string str){\nvector<char> distinct={};\n    transform(str.begin(),str.end(),str.begin(),::tolower);\n    for (int i=0;i<str.size();i++)\n    {\n        bool isin=false;\n        for (int j=0;j<distinct.size();j++)\n            if (distinct[j]==str[i])\n                isin=true;\n        if (isin==false) distinct.push_back(str[i]);\n\n    }\n    return distinct.size();\n}",
+        10.479,
+        0.137,
+        24424742.6,
+        21084.0,
+        7.299,
+        21
+    ],
+    "1": [
+        "#include <string>\n#include <set>\n#include <algorithm>\n\nint count_distinct_characters(const std::string& str) {\n    std::set<char> distinct;\n    std::string lower_str = str;\n    std::transform(lower_str.begin(), lower_str.end(), lower_str.begin(), ::tolower);\n    for (char c : lower_str) {\n        distinct.insert(c);\n    }\n    return distinct.size();\n}\n\n",
+        1.054,
+        0.994,
+        0.557,
+        1.0,
+        0.993,
+        14
+    ]
+}

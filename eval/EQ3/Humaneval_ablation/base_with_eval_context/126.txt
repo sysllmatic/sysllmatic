@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_sorted(vector<int> lst){\nfor (int i=1;i<lst.size();i++)\n    {\n        if (lst[i]<lst[i-1]) return false;\n        if (i>=2 and lst[i]==lst[i-1] and lst[i]==lst[i-2]) return false;\n    }\n    return true;\n}",
+        4.611,
+        0.138,
+        5844845.6,
+        21147.2,
+        7.244,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nbool is_sorted(const vector<int>& lst) {\n    int n = lst.size();\n    if (n < 2) return true; \n    \n    \n    for (int i = 1; i < n; ++i) {\n        \n        if (lst[i] < lst[i - 1] || (i >= 2 && lst[i] == lst[i - 1] && lst[i] == lst[i - 2])) {\n            return false;\n        }\n    }\n    return true;\n}\n\n",
+        0.949,
+        1.102,
+        1.02,
+        1.003,
+        1.101,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <thread>\n#include <future>\n#include <algorithm>\n\nbool is_sorted_section(const std::vector<int>& lst, int start, int end) {\n    for (int i = start + 1; i <= end; ++i) {\n        if (lst[i] < lst[i - 1] || (i >= start + 2 && lst[i] == lst[i - 1] && lst[i] == lst[i - 2])) {\n            return false;\n        }\n    }\n    return true;\n}\n\nbool is_sorted(const std::vector<int>& lst) {\n    int n = lst.size();\n    if (n < 2) return true;\n\n    \n    const int num_threads = std::min(4, std::max(1, n / 1000));\n    std::vector<std::future<bool>> futures;\n    int chunk_size = n / num_threads;\n\n    for (int i = 0; i < num_threads; ++i) {\n        int start = i * chunk_size;\n        int end = (i == num_threads - 1) ? n - 1 : (i + 1) * chunk_size - 1;\n        futures.push_back(std::async(std::launch::async, is_sorted_section, std::cref(lst), start, end));\n    }\n\n    for (auto& f : futures) {\n        if (!f.get()) return false;\n    }\n\n    \n    for (int i = 0; i < num_threads - 1; ++i) {\n        int end = (i + 1) * chunk_size - 1;\n        if (end < n - 1 && (lst[end] > lst[end + 1] || (end >= 1 && lst[end] == lst[end + 1] && lst[end] == lst[end - 1]))) {\n            return false;\n        }\n    }\n\n    return true;\n}\n\n",
+        0.97,
+        1.12,
+        1.082,
+        1.003,
+        1.119,
+        45
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool prime_length(string str){\nint l,i;\n    l=str.length();\n    if (l<2) return false;\n    for (i=2;i*i<=l;i++)\n    if (l%i==0) return false;\n    return true;\n}",
+        9.075,
+        0.126,
+        4510420.2,
+        21140.8,
+        7.921,
+        14
+    ],
+    "1": [
+        "#include <string>\n#include <iostream>\n\nbool prime_length(const std::string& str) {\n    size_t l = str.length();\n    if (l < 2) return false;\n    for (size_t i = 2; i * i <= l; ++i) {\n        if (l % i == 0) return false;\n    }\n    return true;\n}\n\n\n\n",
+        0.972,
+        1.019,
+        0.96,
+        1.007,
+        1.02,
+        14
+    ]
+}

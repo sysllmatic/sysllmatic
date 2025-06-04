@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring longest(vector<string> strings){\nstring out;\n    for (int i=0;i<strings.size();i++)\n    {\n        if (strings[i].length()>out.length()) out=strings[i];\n    }\n    return out;\n}",
+        12.152,
+        0.25,
+        492433445.8,
+        314228.0,
+        3.993,
+        15
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nstring longest(const vector<string>& strings) {\n    auto longestIt = std::max_element(strings.begin(), strings.end(),\n        [](const string& a, const string& b) {\n            return a.length() < b.length();\n        });\n    return longestIt != strings.end() ? *longestIt : \"\";\n}\n\n",
+        1.124,
+        0.963,
+        1.022,
+        0.998,
+        0.964,
+        15
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nstring longest(const vector<string>& strings) {\n    auto longestIt = std::max_element(strings.begin(), strings.end(),\n        [](const string& a, const string& b) {\n            return a.length() < b.length();\n        });\n    return longestIt != strings.end() ? *longestIt : \"\";\n}\n\n",
+        1.103,
+        0.931,
+        1.03,
+        0.998,
+        0.932,
+        15
+    ]
+}

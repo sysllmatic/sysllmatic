@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> words_string(string s){\nstring current=\"\";\n    vector<string> out={};\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n     if (s[i]==' ' or s[i]==',')\n     {\n        if (current.length()>0)\n        {\n            out.push_back(current);\n            current=\"\";\n        }\n     }\n     else current=current+s[i];\n     return out;\n}",
+        4.877,
+        0.153,
+        52369961.0,
+        21040.0,
+        6.528,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> words_string(const string &s) {\n    vector<string> out;\n    out.reserve(s.length() / 5); \n    string current;\n    bool in_word = false;\n\n    for (char ch : s) {\n        if (ch == ' ' || ch == ',') {\n            if (in_word) {\n                out.push_back(move(current));\n                current.clear();\n                in_word = false;\n            }\n        } else {\n            current.push_back(ch);\n            in_word = true;\n        }\n    }\n\n    \n    if (in_word) {\n        out.push_back(move(current));\n    }\n\n    return out;\n}",
+        1.035,
+        1.048,
+        2.186,
+        1.001,
+        1.048,
+        31
+    ],
+    "2": [
+        "#include <sstream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> words_string(const string &s) {\n    vector<string> out;\n    out.reserve(s.length() / 5); \n    stringstream ss(s);\n    string word;\n\n    while (getline(ss, word, ' ')) {\n        size_t pos = 0;\n        while ((pos = word.find(',')) != string::npos) {\n            if (pos > 0) {\n                out.push_back(word.substr(0, pos));\n            }\n            word.erase(0, pos + 1);\n        }\n        if (!word.empty()) {\n            out.push_back(move(word));\n        }\n    }\n\n    return out;\n}",
+        1.072,
+        1.193,
+        2.638,
+        0.998,
+        1.193,
+        26
+    ]
+}

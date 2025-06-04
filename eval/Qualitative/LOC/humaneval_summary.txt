@@ -1,0 +1,9 @@
+HumanEval Programs - CLOC Diff Analysis Summary
+==================================================
+
+Total programs analyzed: 145
+Average same lines per program: 3.30
+Average modified lines per program: 11.66
+Average added lines per program: 4.54
+Average removed lines per program: 2.32
+Average net change per program: +2.22

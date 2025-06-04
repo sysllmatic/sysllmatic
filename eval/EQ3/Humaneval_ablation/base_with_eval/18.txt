@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint how_many_times(string str,string substring){\nint out=0;\n    if (str.length()==0) return 0;\n    for (int i=0;i<=str.length()-substring.length();i++)\n    if (str.substr(i,substring.length())==substring)\n        out+=1;\n    return out;\n}",
+        4.796,
+        0.131,
+        10974061.8,
+        21078.4,
+        7.648,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\nint how_many_times(string str, string substring) {\n    int out = 0;\n    int str_len = str.length();\n    int sub_len = substring.length();\n    if (str_len == 0 || sub_len == 0 || sub_len > str_len) return 0;\n    for (int i = 0; i <= str_len - sub_len; ++i) {\n        int j = 0;\n        while (j < sub_len && str[i + j] == substring[j]) {\n            ++j;\n        }\n        if (j == sub_len) {\n            ++out;\n        }\n    }\n    return out;\n}",
+        0.827,
+        0.785,
+        0.127,
+        0.998,
+        0.783,
+        19
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<int> computeLPSArray(const string& pattern) {\n    int m = pattern.size();\n    vector<int> lps(m, 0);\n    int len = 0;\n    int i = 1;\n    while (i < m) {\n        if (pattern[i] == pattern[len]) {\n            len++;\n            lps[i] = len;\n            i++;\n        } else {\n            if (len != 0) {\n                len = lps[len - 1];\n            } else {\n                lps[i] = 0;\n                i++;\n            }\n        }\n    }\n    return lps;\n}\n\nint how_many_times(const string& text, const string& pattern) {\n    if (pattern.empty()) return 0;\n\n    int n = text.size();\n    int m = pattern.size();\n    vector<int> lps = computeLPSArray(pattern);\n\n    int i = 0; \n    int j = 0; \n    int count = 0;\n\n    while (i < n) {\n        if (pattern[j] == text[i]) {\n            i++;\n            j++;\n        }\n\n        if (j == m) {\n            count++;\n            j = lps[j - 1];\n        } else if (i < n && pattern[j] != text[i]) {\n            if (j != 0) {\n                j = lps[j - 1];\n            } else {\n                i++;\n            }\n        }\n    }\n    return count;\n}",
+        1.02,
+        0.979,
+        1.865,
+        1.002,
+        0.976,
+        56
+    ]
+}

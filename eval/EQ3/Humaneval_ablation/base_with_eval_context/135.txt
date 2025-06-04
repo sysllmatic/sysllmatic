@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint can_arrange(vector<int> arr){\nint max=-1;\n    for (int i=0;i<arr.size();i++)\n    if (arr[i]<=i) max=i;\n    return max;\n}",
+        4.676,
+        0.137,
+        7639293.0,
+        21012.8,
+        7.289,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nint can_arrange(const vector<int>& arr) {\n    int max = -1;\n    int size = arr.size(); \n    for (int i = 0; i < size; ++i) {\n        if (arr[i] <= i) {\n            max = i;\n        }\n    }\n    return max;\n}",
+        1.011,
+        1.049,
+        0.989,
+        0.997,
+        1.05,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <omp.h> \nusing namespace std;\n#include <stdlib.h>\n\nint can_arrange(const vector<int>& arr) {\n    int max = -1;\n    int size = arr.size(); \n\n    #pragma omp parallel for reduction(max:max)\n    for (int i = 0; i < size; ++i) {\n        if (arr[i] <= i) {\n            #pragma omp critical\n            {\n                if (i > max) max = i;\n            }\n        }\n    }\n    return max;\n}",
+        0.676,
+        0.914,
+        0.005,
+        1.0,
+        0.915,
+        23
+    ]
+}

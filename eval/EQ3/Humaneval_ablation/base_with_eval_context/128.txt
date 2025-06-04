@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint prod_signs(vector<int> arr){\nif (arr.size()==0) return -32768;\n    int i,sum=0,prods=1;\n    for (i=0;i<arr.size();i++)\n    {\n        sum+=abs(arr[i]);\n        if (arr[i]==0) prods=0;\n        if (arr[i]<0) prods=-prods;\n   }\n   return sum*prods;\n}",
+        4.651,
+        0.136,
+        8491890.4,
+        21156.8,
+        7.331,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <stdlib.h>\nusing namespace std;\n\nint prod_signs(vector<int> arr) {\n    if (arr.empty()) return -32768;\n    int sum = 0;\n    int prods = 1;\n    size_t arr_size = arr.size();\n    for (size_t i = 0; i < arr_size; ++i) {\n        int value = arr[i];\n        sum += abs(value);\n        if (value == 0) {\n            prods = 0;\n            break;  \n        } else if (value < 0) {\n            prods = -prods;\n        }\n    }\n    return sum * prods;\n}",
+        0.942,
+        1.099,
+        1.2,
+        1.002,
+        1.101,
+        22
+    ],
+    "2": [
+        "#include <vector>\n#include <immintrin.h> \n#include <stdlib.h>\nusing namespace std;\n\nint prod_signs(const vector<int> &arr) {\n    if (arr.empty()) return -32768;\n    int sum = 0;\n    int prods = 1;\n    size_t arr_size = arr.size();\n    size_t i = 0;\n\n    \n    __m256i sum_vec = _mm256_setzero_si256();\n    const size_t simd_width = 8; \n\n    for (; i + simd_width <= arr_size; i += simd_width) {\n        __m256i vec = _mm256_loadu_si256((__m256i*)&arr[i]);\n        __m256i abs_vec = _mm256_abs_epi32(vec);\n        sum_vec = _mm256_add_epi32(sum_vec, abs_vec);\n    }\n\n    \n    int temp[simd_width];\n    _mm256_storeu_si256((__m256i*)temp, sum_vec);\n    for (int j = 0; j < simd_width; ++j) {\n        sum += temp[j];\n    }\n\n    \n    for (; i < arr_size; ++i) {\n        int value = arr[i];\n        sum += abs(value);\n        if (value == 0) {\n            prods = 0;\n            return sum * prods; \n        } else if (value < 0) {\n            prods = -prods;\n        }\n    }\n\n    return sum * prods;\n}",
+        1.015,
+        1.081,
+        1.254,
+        1.011,
+        1.082,
+        43
+    ]
+}

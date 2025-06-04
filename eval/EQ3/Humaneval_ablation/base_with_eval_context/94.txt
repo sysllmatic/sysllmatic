@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint skjkasdkd(vector<int> lst){\nint largest=0;\n    for (int i=0;i<lst.size();i++)\n        if (lst[i]>largest)\n        {\n            bool prime=true;\n            for (int j=2;j*j<=lst[i];j++)\n                if (lst[i]%j==0) prime=false;\n            if (prime) largest=lst[i];\n        }\n    int sum=0;\n    string s;\n    s=to_string(largest);\n    for (int i=0;i<s.length();i++)\n        sum+=s[i]-48;\n    return sum;\n}\n#undef NDEBUG\n#include<assert.h>",
+        157.139,
+        2.92,
+        12974016674.8,
+        21024.8,
+        0.342,
+        26
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint skjkasdkd(vector<int> lst) {\n    int largest = 0;\n    for (int i = 0; i < lst.size(); i++) {\n        int current = lst[i];  \n        if (current > largest) {\n            bool prime = current > 1;\n            if (current > 3) {\n                if (current % 2 == 0 || current % 3 == 0) {\n                    prime = false;\n                } else {\n                    for (int j = 5; j * j <= current; j += 6) {\n                        if (current % j == 0 || current % (j + 2) == 0) {\n                            prime = false;\n                            break;\n                        }\n                    }\n                }\n            }\n            if (prime) largest = current;\n        }\n    }\n    int sum = 0;\n    while (largest > 0) {\n        sum += largest % 10;\n        largest /= 10;\n    }\n    return sum;\n}\n\n#undef NDEBUG\n#include<assert.h>",
+        1.719,
+        3.193,
+        4.223,
+        0.999,
+        3.197,
+        38
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <unordered_map>\n#include <omp.h>\nusing namespace std;\n\n\nbool isPrime(int n, unordered_map<int, bool>& prime_cache) {\n    if (n <= 1) return false;\n    if (prime_cache.find(n) != prime_cache.end()) return prime_cache[n];\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (int i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0) {\n            prime_cache[n] = false;\n            return false;\n        }\n    }\n    prime_cache[n] = true;\n    return true;\n}\n\nint skjkasdkd(vector<int> lst) {\n    int largest = 0;\n    unordered_map<int, bool> prime_cache;\n    #pragma omp parallel for reduction(max:largest)\n    for (int i = 0; i < lst.size(); i++) {\n        int current = lst[i];\n        if (current > largest && isPrime(current, prime_cache)) {\n            largest = current;\n        }\n    }\n\n    \n    int sum = 0;\n    while (largest > 0) {\n        sum += largest % 10;\n        largest /= 10;\n    }\n    return sum;\n}\n\n#undef NDEBUG\n#include <assert.h>\n\n\n",
+        10.287,
+        11.314,
+        40.111,
+        0.996,
+        11.322,
+        46
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> words_string(string s){\nstring current=\"\";\n    vector<string> out={};\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n     if (s[i]==' ' or s[i]==',')\n     {\n        if (current.length()>0)\n        {\n            out.push_back(current);\n            current=\"\";\n        }\n     }\n     else current=current+s[i];\n     return out;\n}",
+        5.022,
+        0.153,
+        53048384.4,
+        21088.8,
+        6.537,
+        23
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> words_string(const string &s) {\n    vector<string> out;\n    stringstream ss(s);\n    string word;\n    char delimiter = ' ';\n    \n    while (getline(ss, word, delimiter)) {\n        size_t pos;\n        while ((pos = word.find(',')) != string::npos) {\n            string sub = word.substr(0, pos);\n            if (!sub.empty()) {\n                out.push_back(sub);\n            }\n            word = word.substr(pos + 1);\n        }\n        if (!word.empty()) {\n            out.push_back(word);\n        }\n    }\n    \n    return out;\n}\n\n\n\n",
+        1.027,
+        1.108,
+        1.979,
+        1.004,
+        1.107,
+        31
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> words_string(const string &s) {\n    vector<string> out;\n    string word;\n    for (char ch : s) {\n        if (ch != ' ' && ch != ',') {\n            word += ch;  \n        } else if (!word.empty()) {\n            out.push_back(word);  \n            word.clear();  \n        }\n    }\n    if (!word.empty()) {  \n        out.push_back(word);\n    }\n    return out;\n}\n\n\n\n",
+        1.061,
+        1.075,
+        1.743,
+        1.0,
+        1.074,
+        24
+    ]
+}

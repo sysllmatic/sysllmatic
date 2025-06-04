@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint smallest_change(vector<int> arr){\nint out=0;\n    for (int i=0;i<arr.size()-1-i;i++)\n        if (arr[i]!=arr[arr.size()-1-i])\n            out+=1;\n    return out;\n}",
+        4.82,
+        0.129,
+        7105183.2,
+        21072.0,
+        7.741,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nint smallest_change(vector<int> arr) {\n    int out = 0;\n    int n = arr.size();  \n    for (int i = 0; i < n / 2; i++) {  \n        if (arr[i] != arr[n - 1 - i]) {\n            out += 1;\n        }\n    }\n    return out;\n}",
+        1.094,
+        1.016,
+        1.004,
+        1.002,
+        1.016,
+        14
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <omp.h>\nusing namespace std;\n\nint smallest_change(const vector<int>& arr) {  \n    int out = 0;\n    int n = arr.size();\n    \n    #pragma omp parallel for reduction(+:out)\n    for (int i = 0; i < n / 2; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            out += 1;\n        }\n    }\n    return out;\n}",
+        1.038,
+        0.984,
+        0.082,
+        1.001,
+        0.984,
+        17
+    ]
+}

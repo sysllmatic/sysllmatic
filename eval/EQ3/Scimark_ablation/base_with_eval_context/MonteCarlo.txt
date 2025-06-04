@@ -1,0 +1,32 @@
+{
+    "0": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        for (long count = 0; count < Num_samples; count++) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n\n            if (x * x + y * y <= 1.0)\n                under_curve++;\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}\n",
+        820.66,
+        16.597,
+        76930470658.2,
+        44620.8,
+        0.06,
+        1149.0,
+        26
+    ],
+    "1": [
+        "package jnt.scimark2;\n\nimport java.util.concurrent.ThreadLocalRandom;\nimport java.util.stream.LongStream;\n\npublic class MonteCarloOptimized {\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    }\n\n    public static double integrate(long numSamples) {\n        long underCurve = LongStream.range(0, numSamples)\n            .parallel()\n            .filter(i -> {\n                double x = ThreadLocalRandom.current().nextDouble();\n                double y = ThreadLocalRandom.current().nextDouble();\n                return (x * x + y * y) <= 1.0;\n            })\n            .count();\n\n        return ((double) underCurve / numSamples) * 4.0;\n    }\n}\n\n\n\n\n",
+        7.199,
+        19.733,
+        0.9963800676382871,
+        0.8759481743227326,
+        19.811400000000003,
+        3.0285639686684074,
+        29
+    ],
+    "2": [
+        "package jnt.scimark2;\n\nimport java.util.SplittableRandom;\nimport java.util.stream.LongStream;\n\npublic class MonteCarloOptimized {\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    }\n\n    public static double integrate(long numSamples) {\n        SplittableRandom random = new SplittableRandom();\n        long underCurve = LongStream.range(0, numSamples)\n            .parallel()\n            .filter(i -> {\n                double x = random.nextDouble();\n                double y = random.nextDouble();\n                return (x * x + y * y) <= 1.0;\n            })\n            .count();\n\n        return ((double) underCurve / numSamples) * 4.0;\n    }\n}\n\n\n\n\n",
+        2.881,
+        7.14,
+        0.2747243327294172,
+        0.8800391296801781,
+        7.16975,
+        2.161949521322889,
+        30
+    ]
+}

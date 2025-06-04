@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> minPath(vector<vector<int>> grid, int k){\nint i,j,x,y,min;\n    for (i=0;i<grid.size();i++)\n        for (j=0;j<grid[i].size();j++)\n            if (grid[i][j]==1) {\n                x=i;y=j;\n            }\n    min=grid.size()*grid.size();\n    if (x>0 and grid[x-1][y]<min) min=grid[x-1][y];\n    if (x<grid.size()-1 and grid[x+1][y]<min) min=grid[x+1][y];\n    if (y>0 and grid[x][y-1]<min) min=grid[x][y-1];\n    if (y<grid.size()-1 and grid[x][y+1]<min) min=grid[x][y+1];\n    vector<int> out={};\n    for (i=0;i<k;i++)\n    if (i%2==0) out.push_back(1);\n    else out.push_back(min);\n    return out;\n}",
+        4.924,
+        0.126,
+        5981300.4,
+        21011.2,
+        7.938,
+        24
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <climits> \nusing namespace std;\n\nvector<int> minPath(vector<vector<int>> grid, int k) {\n    int x = -1, y = -1, min = INT_MAX;\n    \n    for (int i = 0; i < grid.size() && x == -1; ++i) {\n        for (int j = 0; j < grid[i].size(); ++j) {\n            if (grid[i][j] == 1) {\n                x = i;\n                y = j;\n                break;\n            }\n        }\n    }\n\n    \n    if (x > 0) min = std::min(min, grid[x-1][y]);\n    if (x < grid.size() - 1) min = std::min(min, grid[x+1][y]);\n    if (y > 0) min = std::min(min, grid[x][y-1]);\n    if (y < grid[0].size() - 1) min = std::min(min, grid[x][y+1]);\n\n    vector<int> out;\n    out.reserve(k); \n    for (int i = 0; i < k; i += 2) {\n        \n        out.push_back(1);\n        if (i + 1 < k) {\n            out.push_back(min);\n        }\n    }\n    return out;\n}\n\n\n",
+        1.038,
+        0.947,
+        0.991,
+        1.003,
+        0.945,
+        38
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <climits>\nusing namespace std;\n\nvector<int> minPath(const vector<vector<int>>& grid, int k) {\n    int x = -1, y = -1, min = INT_MAX;\n    int rows = grid.size();\n    int cols = grid[0].size();\n    \n    \n    for (int i = 0; i < rows && x == -1; ++i) {\n        for (int j = 0; j < cols; ++j) {\n            if (grid[i][j] == 1) {\n                x = i;\n                y = j;\n                break;\n            }\n        }\n    }\n\n    \n    if (x > 0) min = std::min(min, grid[x-1][y]);\n    if (x < rows - 1) min = std::min(min, grid[x+1][y]);\n    if (y > 0) min = std::min(min, grid[x][y-1]);\n    if (y < cols - 1) min = std::min(min, grid[x][y+1]);\n\n    \n    vector<int> out(k);\n    for (int i = 0; i < k; i++) {\n        out[i] = (i % 2 == 0) ? 1 : min;\n    }\n    return out;\n}\n\n\n",
+        1.05,
+        0.925,
+        0.987,
+        0.995,
+        0.924,
+        37
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring match_parens(vector<string> lst){\nstring l1=lst[0]+lst[1];\n    int i,count=0;\n    bool can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (count!=0) return \"No\";\n    if (can==true) return \"Yes\";\n    l1=lst[1]+lst[0];\n    can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (can==true) return \"Yes\";\n    return \"No\";\n}",
+        4.468,
+        0.131,
+        6334151.6,
+        20958.4,
+        7.617,
+        30
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nstring match_parens(const vector<string>& lst) {\n    \n    auto is_valid = [](const string& s1, const string& s2) {\n        int count = 0;\n        for (char c : s1 + s2) {\n            if (c == '(') count++;\n            if (c == ')') count--;\n            if (count < 0) return false;\n        }\n        return count == 0;\n    };\n    \n    \n    if (is_valid(lst[0], lst[1]) || is_valid(lst[1], lst[0])) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\n",
+        0.953,
+        1.02,
+        0.865,
+        0.995,
+        1.021,
+        24
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nbool is_valid(const string& s1, const string& s2) {\n    int count = 0;\n    for (const char& c : s1) {\n        if (c == '(') count++;\n        else if (c == ')') count--;\n        if (count < 0) return false;\n    }\n    for (const char& c : s2) {\n        if (c == '(') count++;\n        else if (c == ')') count--;\n        if (count < 0) return false;\n    }\n    return count == 0;\n}\n\nstring match_parens(const vector<string>& lst) {\n    if (is_valid(lst[0], lst[1]) || is_valid(lst[1], lst[0])) {\n        return \"Yes\";\n    }\n    return \"No\";\n}\n\n",
+        0.871,
+        1.06,
+        0.808,
+        0.995,
+        1.06,
+        27
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_simple_power(int x,int n){\nint p=1,count=0;\n    while (p<=x and count<100)\n    {\n        if (p==x) return true;\n        p=p*n;count+=1;\n    }\n    return false;\n}",
+        4.959,
+        0.127,
+        2596385.8,
+        21110.4,
+        7.834,
+        14
+    ],
+    "1": [
+        "#include <cmath>\n\nbool is_simple_power(int x, int n) {\n    \n    if (x <= 0 || n <= 1) {\n        return x == 1; \n    }\n    \n    \n    double potential_power = log(x) / log(n);\n    \n    \n    return std::fabs(potential_power - round(potential_power)) < 1e-9;\n}",
+        0.96,
+        1.057,
+        0.913,
+        1.002,
+        1.061,
+        14
+    ],
+    "2": [
+        "#include <limits.h>\n\nbool is_simple_power(int x, int n) {\n    \n    if (x <= 0 || n <= 1) {\n        return x == 1; \n    }\n\n    int power = 1;\n    while (power < x && power <= INT_MAX / n) {\n        power *= n;\n    }\n\n    return power == x;\n}",
+        1.172,
+        1.001,
+        0.958,
+        1.005,
+        1.005,
+        15
+    ]
+}

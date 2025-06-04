@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nvector<string> sorted_list_sum(vector<string> lst){\nvector<string> out={};\n    for (int i=0;i<lst.size();i++)\n    if (lst[i].length()%2==0) out.push_back(lst[i]);\n    string mid;\n    sort(out.begin(),out.end());\n    for (int i=0;i<out.size();i++)\n    for (int j=1;j<out.size();j++)\n    if (out[j].length()<out[j-1].length())\n    {\n        mid=out[j];out[j]=out[j-1];out[j-1]=mid;\n    }\n    return out;\n}",
+        173.888,
+        3.086,
+        13617392272.4,
+        311915.2,
+        0.324,
+        21
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nvector<string> sorted_list_sum(vector<string> lst) {\n    vector<string> out;\n    \n    \n    for (const auto& str : lst) {\n        if (str.length() % 2 == 0) {\n            out.push_back(str);\n        }\n    }\n\n    \n    stable_sort(out.begin(), out.end(), [](const string& a, const string& b) {\n        if (a.length() != b.length()) {\n            return a.length() < b.length();\n        }\n        return a < b;  \n    });\n\n    return out;\n}",
+        12.331,
+        9.663,
+        17.593,
+        1.0,
+        9.659,
+        26
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nvector<string> sorted_list_sum(vector<string> lst) {\n    vector<string> out;\n    out.reserve(lst.size());  \n    \n    \n    for (auto& str : lst) {\n        if (str.length() % 2 == 0) {\n            out.push_back(std::move(str));  \n        }\n    }\n\n    \n    stable_sort(out.begin(), out.end(), [](const string& a, const string& b) {\n        if (a.length() != b.length()) {\n            return a.length() < b.length();\n        }\n        return a < b;  \n    });\n\n    return out;\n}",
+        12.896,
+        10.259,
+        18.222,
+        1.089,
+        10.255,
+        27
+    ]
+}

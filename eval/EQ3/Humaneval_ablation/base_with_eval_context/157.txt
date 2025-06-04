@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool right_angle_triangle(float a,float b,float c){\nif (abs(a*a+b*b-c*c)<1e-4 or abs(a*a+c*c-b*b)<1e-4 or abs(b*b+c*c-a*a)<1e-4) return true;\n    return false;\n}",
+        5.051,
+        0.136,
+        2822899.8,
+        21118.4,
+        7.34,
+        9
+    ],
+    "1": [
+        "#include <cmath>\n#include <algorithm>\n\nbool right_angle_triangle(float a, float b, float c) {\n    float a2 = a * a;\n    float b2 = b * b;\n    float c2 = c * c;\n    const float epsilon = 1e-4;\n    \n    return (std::fabs(a2 + b2 - c2) < epsilon ||\n            std::fabs(a2 + c2 - b2) < epsilon ||\n            std::fabs(b2 + c2 - a2) < epsilon);\n}",
+        1.055,
+        1.081,
+        1.055,
+        1.012,
+        1.081,
+        13
+    ],
+    "2": [
+        "#include <cmath>\n#include <immintrin.h> \n#include <omp.h> \n#include <cassert> \n\nbool right_angle_triangle(float a, float b, float c) {\n    float a2 = a * a;\n    float b2 = b * b;\n    float c2 = c * c;\n    const float epsilon = 1e-4;\n    return (std::fabs(a2 + b2 - c2) < epsilon ||\n            std::fabs(a2 + c2 - b2) < epsilon ||\n            std::fabs(b2 + c2 - a2) < epsilon);\n}\n\nvoid process_triangles_parallel(const float* a, const float* b, const float* c, bool* results, int count) {\n    \n    #pragma omp parallel for\n    for (int i = 0; i < count; ++i) {\n        results[i] = right_angle_triangle(a[i], b[i], c[i]);\n    }\n}\n\n\n",
+        1.11,
+        1.031,
+        0.963,
+        1.004,
+        1.031,
+        24
+    ]
+}

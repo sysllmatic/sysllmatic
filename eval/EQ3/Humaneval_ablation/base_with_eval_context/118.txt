@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring get_closest_vowel(string word){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=word.length()-2;i>=1;i-=1)\n        if (find(vowels.begin(),vowels.end(),word[i])!=vowels.end())\n            if (find(vowels.begin(),vowels.end(),word[i+1])==vowels.end())\n                if (find(vowels.begin(),vowels.end(),word[i-1])==vowels.end())\n                    return out+word[i];\n    return out;\n}",
+        4.776,
+        0.136,
+        19589830.8,
+        21105.6,
+        7.351,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n\nstring get_closest_vowel(string word) {\n    string out = \"\";\n    bool is_vowel[256] = {false};\n    string vowels = \"AEIOUaeiou\";\n\n    \n    for (char v : vowels) {\n        is_vowel[v] = true;\n    }\n\n    for (int i = word.length() - 2; i >= 1; i--) {\n        if (is_vowel[word[i]] && !is_vowel[word[i + 1]] && !is_vowel[word[i - 1]]) {\n            return out + word[i];\n        }\n    }\n    return out;\n}",
+        0.972,
+        1.145,
+        3.823,
+        1.005,
+        1.144,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n\nstring get_closest_vowel(string word) {\n    bool is_vowel[256] = {false};\n    string vowels = \"AEIOUaeiou\";\n\n    \n    for (char v : vowels) {\n        is_vowel[v] = true;\n    }\n\n    int len = word.length();\n    for (int i = len - 2; i >= 1; i--) {\n        if (is_vowel[word[i]] && !is_vowel[word[i + 1]] && !is_vowel[word[i - 1]]) {\n            \n            return string(1, word[i]);\n        }\n    }\n    return \"\";\n}",
+        1.039,
+        1.054,
+        3.638,
+        1.007,
+        1.053,
+        23
+    ]
+}

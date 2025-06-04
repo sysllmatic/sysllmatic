@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nint get_matrix_triples(int n){\nvector<int> a;\n    vector<vector<int>> sum={{0,0,0}};\n    vector<vector<int>> sum2={{0,0,0}};\n    for (int i=1;i<=n;i++)\n    {\n        a.push_back((i*i-i+1)%3);\n        sum.push_back(sum[sum.size()-1]);\n        sum[i][a[i-1]]+=1;\n    }\n    for (int times=1;times<3;times++)\n    {\n    for (int i=1;i<=n;i++)\n    {\n        sum2.push_back(sum2[sum2.size()-1]);\n        if (i>=1)\n        for (int j=0;j<=2;j++)\n            sum2[i][(a[i-1]+j)%3]+=sum[i-1][j];\n    }\n    sum=sum2;\n    sum2={{0,0,0}};\n    }\n\n    return sum[n][0];\n}",
+        4.692,
+        0.13,
+        7159046.2,
+        21120.8,
+        7.672,
+        31
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nint get_matrix_triples(int n) {\n    vector<int> a(n);\n    vector<vector<int>> sum(n + 1, vector<int>(3, 0));\n    \n    \n    for (int i = 1; i <= n; ++i) {\n        a[i - 1] = (i * i - i + 1) % 3;\n        sum[i] = sum[i - 1];\n        sum[i][a[i - 1]] += 1;\n    }\n\n    vector<int> sum2(3, 0);\n    for (int times = 1; times < 3; ++times) {\n        vector<vector<int>> new_sum(n + 1, vector<int>(3, 0));\n        \n        for (int i = 1; i <= n; ++i) {\n            new_sum[i] = new_sum[i - 1];\n            for (int j = 0; j <= 2; ++j) {\n                new_sum[i][(a[i - 1] + j) % 3] += sum[i - 1][j];\n            }\n        }\n        sum = new_sum;\n    }\n    \n    return sum[n][0];\n}",
+        1.041,
+        1.031,
+        0.958,
+        1.012,
+        1.033,
+        30
+    ],
+    "2": [
+        "#include <stdio.h>\n\nint get_matrix_triples(int n) {\n    int a[n];\n    int sum[n + 1][3] = {0};\n    \n    \n    for (int i = 1; i <= n; ++i) {\n        a[i - 1] = (i * i - i + 1) % 3;\n        for (int j = 0; j < 3; ++j) {\n            sum[i][j] = sum[i - 1][j];\n        }\n        sum[i][a[i - 1]] += 1;\n    }\n\n    \n    for (int times = 1; times < 3; ++times) {\n        int new_sum[n + 1][3] = {0};\n        \n        for (int i = 1; i <= n; ++i) {\n            for (int j = 0; j < 3; ++j) {\n                new_sum[i][j] = new_sum[i - 1][j];\n            }\n            for (int j = 0; j < 3; ++j) {\n                new_sum[i][(a[i - 1] + j) % 3] += sum[i - 1][j];\n            }\n        }\n        \n        for (int i = 0; i <= n; ++i) {\n            for (int j = 0; j < 3; ++j) {\n                sum[i][j] = new_sum[i][j];\n            }\n        }\n    }\n    \n    return sum[n][0];\n}",
+        1.036,
+        1.045,
+        2.586,
+        0.999,
+        1.046,
+        37
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fruit_distribution(string s,int n){\nstring num1=\"\",num2=\"\";\n    int is12;\n    is12=0;\n    for (int i=0;i<s.size();i++)\n        \n        if (s[i]>=48 and s[i]<=57)\n        {\n            if (is12==0) num1=num1+s[i];\n            if (is12==1) num2=num2+s[i];\n        }\n        else\n          if (is12==0 and num1.length()>0) is12=1;\n    return n-atoi(num1.c_str())-atoi(num2.c_str());\n\n}",
+        4.649,
+        0.129,
+        4265569.6,
+        20983.2,
+        7.748,
+        22
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nint fruit_distribution(const string& s, int n) {\n    int num1 = 0, num2 = 0;\n    bool in_num1 = true;\n    int current_number = 0;\n    bool building_number = false;\n\n    for (char c : s) {\n        if ('0' <= c && c <= '9') {\n            current_number = current_number * 10 + (c - '0');\n            building_number = true;\n        } else if (building_number) {\n            if (in_num1) {\n                num1 = current_number;\n                in_num1 = false;\n            } else {\n                num2 = current_number;\n            }\n            current_number = 0;\n            building_number = false;\n        }\n    }\n\n    \n    if (building_number) {\n        if (in_num1) {\n            num1 = current_number;\n        } else {\n            num2 = current_number;\n        }\n    }\n\n    return n - num1 - num2;\n}\n\n",
+        1.051,
+        0.989,
+        0.955,
+        0.989,
+        0.988,
+        38
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nint fruit_distribution(const string& s, int n) {\n    int num1 = 0, num2 = 0;\n    int* current_num = &num1; \n    int current_number = 0;\n    bool building_number = false; \n\n    for (char c : s) {\n        if ('0' <= c && c <= '9') {\n            current_number = current_number * 10 + (c - '0');\n            building_number = true;\n        } else if (building_number) {\n            \n            *current_num = current_number;\n            current_number = 0;\n            building_number = false;\n            \n            current_num = &num2;\n        }\n    }\n\n    \n    if (building_number) {\n        *current_num = current_number;\n    }\n\n    return n - num1 - num2;\n}\n\n",
+        1.013,
+        0.974,
+        0.92,
+        0.994,
+        0.973,
+        32
+    ]
+}

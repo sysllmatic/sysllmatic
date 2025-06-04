@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> intersperse(vector<int> numbers, int delimeter){\nvector<int> out={};\n    if (numbers.size()>0) out.push_back(numbers[0]);\n    for (int i=1;i<numbers.size();i++)\n    {\n        out.push_back(delimeter);\n        out.push_back(numbers[i]);\n\n    }\n    return out;\n}",
+        4.714,
+        0.135,
+        10975066.6,
+        21028.0,
+        7.411,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n\nvector<int> intersperse(vector<int> numbers, int delimiter) {\n    vector<int> out;\n    size_t num_size = numbers.size();\n    if (!numbers.empty()) {\n        out.reserve(num_size * 2 - 1); \n        out.push_back(numbers[0]);\n        for (size_t i = 1; i < num_size; ++i) {\n            out.push_back(delimiter);\n            out.push_back(numbers[i]);\n        }\n    }\n    return out;\n}",
+        0.941,
+        1.044,
+        1.023,
+        1.005,
+        1.042,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <omp.h> \nusing namespace std;\n\nvector<int> intersperse(const vector<int>& numbers, int delimiter) {\n    size_t num_size = numbers.size();\n    if (num_size == 0) return {};\n\n    vector<int> out(num_size * 2 - 1);\n    #pragma omp parallel for\n    for (size_t i = 0; i < num_size; ++i) {\n        out[i * 2] = numbers[i];\n        if (i < num_size - 1) {\n            out[i * 2 + 1] = delimiter;\n        }\n    }\n    return out;\n}",
+        0.92,
+        0.962,
+        0.02,
+        0.997,
+        0.961,
+        19
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint next_smallest(vector<int> lst){\nsort(lst.begin(),lst.end());\n    for (int i=1;i<lst.size();i++)\n        if (lst[i]!=lst[i-1]) return lst[i];\n    return -1;\n}",
+        4.822,
+        0.141,
+        4327098.8,
+        21060.8,
+        7.091,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <limits.h>\nusing namespace std;\n\nint next_smallest(vector<int> lst) {\n    int min1 = INT_MAX, min2 = INT_MAX;\n    for (int num : lst) {\n        if (num < min1) {\n            min2 = min1;\n            min1 = num;\n        } else if (num > min1 && num < min2) {\n            min2 = num;\n        }\n    }\n    return (min2 == INT_MAX) ? -1 : min2;\n}",
+        1.044,
+        1.08,
+        0.952,
+        1.001,
+        1.079,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n\nint next_smallest(vector<int> lst) {\n    if (lst.size() < 2) return -1;\n    int min1, min2;\n    bool min1_set = false, min2_set = false;\n    \n    for (int num : lst) {\n        if (!min1_set || num < min1) {\n            if (min1_set && num != min1) {\n                min2 = min1;\n                min2_set = true;\n            }\n            min1 = num;\n            min1_set = true;\n        } else if (num > min1 && (!min2_set || num < min2)) {\n            min2 = num;\n            min2_set = true;\n        }\n    }\n    return min2_set ? min2 : -1;\n}",
+        1.044,
+        1.083,
+        0.96,
+        1.0,
+        1.081,
+        24
+    ]
+}

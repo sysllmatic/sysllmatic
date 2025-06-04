@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool any_int(float a,float b,float c){\nif (round(a)!=a) return false;\n    if (round(b)!=b) return false;\n    if (round(c)!=c) return false;\n    if (a+b==c or a+c==b or b+c==a) return true;\n    return false;\n}",
+        4.461,
+        0.13,
+        2735030.8,
+        21053.6,
+        7.712,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <stdlib.h>\n#include <algorithm>\nusing namespace std;\n\nbool any_int(float a, float b, float c) {\n    if (fmod(a, 1.0) != 0.0) return false;  \n    if (fmod(b, 1.0) != 0.0) return false;  \n    if (fmod(c, 1.0) != 0.0) return false;  \n    \n    if (a + b == c || a + c == b || b + c == a) return true;\n    return false;\n}\n\n",
+        1.007,
+        1.013,
+        0.989,
+        0.999,
+        1.01,
+        15
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> strange_sort_list(vector<int> lst){\nvector<int> out={};\n    sort(lst.begin(),lst.end());\n    int l=0,r=lst.size()-1;\n    while (l<r)\n    {\n        out.push_back(lst[l]);\n        l+=1;\n        out.push_back(lst[r]);\n        r-=1;\n    }\n    if (l==r) out.push_back(lst[l]);\n    return out;\n\n}",
+        4.69,
+        0.148,
+        38869754.6,
+        21020.0,
+        6.742,
+        21
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nvector<int> strange_sort_list(vector<int> lst) {\n    vector<int> out;\n    out.reserve(lst.size()); \n    sort(lst.begin(), lst.end());\n    int l = 0, r = lst.size() - 1;\n\n    \n    while (l < r) {\n        out.push_back(lst[l++]);\n        out.push_back(lst[r--]);\n        \n        if (l < r) {\n            out.push_back(lst[l++]);\n            out.push_back(lst[r--]);\n        }\n    }\n\n    if (l == r) out.push_back(lst[l]);\n\n    return out;\n}\n\n",
+        0.936,
+        1.095,
+        1.008,
+        1.003,
+        1.096,
+        29
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nvector<int> strange_sort_list(vector<int> lst) {\n    vector<int> out;\n    out.reserve(lst.size()); \n    sort(lst.begin(), lst.end());\n    int l = 0, r = lst.size() - 1;\n\n    while (l <= r) {\n        out.push_back(lst[l++]);\n        if (l <= r) {\n            out.push_back(lst[r--]);\n        }\n    }\n\n    return out;\n}\n\n",
+        0.986,
+        0.961,
+        1.015,
+        0.995,
+        0.962,
+        23
+    ]
+}

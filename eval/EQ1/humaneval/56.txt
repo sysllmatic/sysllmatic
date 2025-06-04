@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='<') level+=1;\n        if (brackets[i]=='>') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        4.666,
+        0.142,
+        7099304.8,
+        21009.6,
+        7.019,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nbool correct_bracketing(const string &brackets) {\n    int level = 0;\n    for (char bracket : brackets) {\n        \n        switch (bracket) {\n            case '<':\n                level += 1;\n                break;\n            case '>':\n                level -= 1;\n                if (level < 0) return false; \n                break;\n            default:\n                \n                break;\n        }\n    }\n    return level == 0;\n}\n\n\n\n",
+        1.024,
+        1.237,
+        0.966,
+        0.995,
+        1.239,
+        26
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <immintrin.h> \nusing namespace std;\n\nbool correct_bracketing(const string &brackets) {\n    int level = 0;\n\n    const size_t len = brackets.length();\n    size_t i = 0;\n\n    \n    for (; i + 32 <= len; i += 32) {\n        __m256i chars = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&brackets[i]));\n        __m256i lt_mask = _mm256_cmpeq_epi8(chars, _mm256_set1_epi8('<'));\n        __m256i gt_mask = _mm256_cmpeq_epi8(chars, _mm256_set1_epi8('>'));\n\n        \n        int lt_count = _mm256_movemask_epi8(lt_mask);\n        int gt_count = _mm256_movemask_epi8(gt_mask);\n\n        level += __builtin_popcount(lt_count) - __builtin_popcount(gt_count);\n\n        if (level < 0) return false;\n    }\n\n    \n    for (; i < len; ++i) {\n        if (brackets[i] == '<') level += 1;\n        else if (brackets[i] == '>') level -= 1;\n        if (level < 0) return false;\n    }\n\n    return level == 0;\n}\n\n\n\n",
+        1.028,
+        1.14,
+        1.269,
+        0.995,
+        1.142,
+        38
+    ]
+}

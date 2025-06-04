@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> numerical_letter_grade(vector<float> grades){\nvector<string> out={};\n    for (int i=0;i<grades.size();i++)\n    {\n        if (grades[i]>=3.9999) out.push_back(\"A+\");\n        if (grades[i]>3.7001 and grades[i]<3.9999) out.push_back(\"A\");\n        if (grades[i]>3.3001 and grades[i]<=3.7001) out.push_back(\"A-\");\n        if (grades[i]>3.0001 and grades[i]<=3.3001) out.push_back(\"B+\");\n        if (grades[i]>2.7001 and grades[i]<=3.0001) out.push_back(\"B\");\n        if (grades[i]>2.3001 and grades[i]<=2.7001) out.push_back(\"B-\");\n        if (grades[i]>2.0001 and grades[i]<=2.3001) out.push_back(\"C+\");\n        if (grades[i]>1.7001 and grades[i]<=2.0001) out.push_back(\"C\");\n        if (grades[i]>1.3001 and grades[i]<=1.7001) out.push_back(\"C-\");\n        if (grades[i]>1.0001 and grades[i]<=1.3001) out.push_back(\"D+\");\n        if (grades[i]>0.7001 and grades[i]<=1.0001) out.push_back(\"D\");\n        if (grades[i]>0.0001 and grades[i]<=0.7001) out.push_back(\"D-\");\n        if (grades[i]<=0.0001) out.push_back(\"E\");\n    }\n    return out;\n}",
+        4.877,
+        0.151,
+        33718375.8,
+        21096.0,
+        6.624,
+        27
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <string>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\nvector<string> numerical_letter_grade(const vector<float>& grades) {\n    vector<string> out;\n    out.reserve(grades.size());  \n    for (int i = 0; i < grades.size(); i++) {\n        if (grades[i] >= 3.9999) {\n            out.push_back(\"A+\");\n        } else if (grades[i] > 3.7001) {\n            out.push_back(\"A\");\n        } else if (grades[i] > 3.3001) {\n            out.push_back(\"A-\");\n        } else if (grades[i] > 3.0001) {\n            out.push_back(\"B+\");\n        } else if (grades[i] > 2.7001) {\n            out.push_back(\"B\");\n        } else if (grades[i] > 2.3001) {\n            out.push_back(\"B-\");\n        } else if (grades[i] > 2.0001) {\n            out.push_back(\"C+\");\n        } else if (grades[i] > 1.7001) {\n            out.push_back(\"C\");\n        } else if (grades[i] > 1.3001) {\n            out.push_back(\"C-\");\n        } else if (grades[i] > 1.0001) {\n            out.push_back(\"D+\");\n        } else if (grades[i] > 0.7001) {\n            out.push_back(\"D\");\n        } else if (grades[i] > 0.0001) {\n            out.push_back(\"D-\");\n        } else {\n            out.push_back(\"E\");\n        }\n    }\n    return out;\n}",
+        1.065,
+        1.126,
+        1.459,
+        0.993,
+        1.125,
+        42
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <string>\n#include <omp.h>\nusing namespace std;\n\n\nconst vector<pair<float, string>> gradeBoundaries = {\n    {0.0001, \"D-\"},\n    {0.7001, \"D\"},\n    {1.0001, \"D+\"},\n    {1.3001, \"C-\"},\n    {1.7001, \"C\"},\n    {2.0001, \"C+\"},\n    {2.3001, \"B-\"},\n    {2.7001, \"B\"},\n    {3.0001, \"B+\"},\n    {3.3001, \"A-\"},\n    {3.7001, \"A\"},\n    {3.9999, \"A+\"}\n};\n\nvector<string> numerical_letter_grade(const vector<float>& grades) {\n    vector<string> out(grades.size());\n    \n    #pragma omp parallel for\n    for (int i = 0; i < grades.size(); ++i) {\n        float grade = grades[i];\n        string letterGrade = \"E\"; \n\n        \n        for (auto it = gradeBoundaries.rbegin(); it != gradeBoundaries.rend(); ++it) {\n            if (grade >= it->first) {\n                letterGrade = it->second;\n                break;\n            }\n        }\n        out[i] = letterGrade;\n    }\n    return out;\n}\n\n",
+        0.933,
+        1.16,
+        0.093,
+        1.003,
+        1.158,
+        43
+    ]
+}

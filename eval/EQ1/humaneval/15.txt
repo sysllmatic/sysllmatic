@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring string_sequence(int n){\nstring out=\"0\";\n    for (int i=1;i<=n;i++)\n    out=out+\" \"+to_string(i);\n    return out;\n}",
+        7.775,
+        0.205,
+        235720630.0,
+        21071.2,
+        4.878,
+        12
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n\nusing namespace std;\n\nstring string_sequence(int n) {\n    stringstream out;\n    out << \"0\";\n    for (int i = 1; i <= n; ++i) {\n        out << \" \" << i;\n    }\n    return out.str();\n}\n\n",
+        1.66,
+        1.536,
+        20.158,
+        1.002,
+        1.534,
+        15
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <numeric>\n\nusing namespace std;\n\nstring string_sequence(int n) {\n    vector<string> parts;\n    parts.reserve(n + 1); \n    parts.push_back(\"0\");\n    for (int i = 1; i <= n; ++i) {\n        parts.push_back(to_string(i));\n    }\n    auto join = [](const string& a, const string& b) { return a.empty() ? b : a + \" \" + b; };\n    return accumulate(parts.begin(), parts.end(), string(\"\"), join);\n}\n\n",
+        1.092,
+        1.034,
+        1.13,
+        1.002,
+        1.033,
+        18
+    ]
+}

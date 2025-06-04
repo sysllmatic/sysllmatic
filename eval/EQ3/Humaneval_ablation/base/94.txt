@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint skjkasdkd(vector<int> lst){\nint largest=0;\n    for (int i=0;i<lst.size();i++)\n        if (lst[i]>largest)\n        {\n            bool prime=true;\n            for (int j=2;j*j<=lst[i];j++)\n                if (lst[i]%j==0) prime=false;\n            if (prime) largest=lst[i];\n        }\n    int sum=0;\n    string s;\n    s=to_string(largest);\n    for (int i=0;i<s.length();i++)\n        sum+=s[i]-48;\n    return sum;\n}\n#undef NDEBUG\n#include<assert.h>",
+        158.574,
+        2.905,
+        12970925233.4,
+        21018.4,
+        0.344,
+        26
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <string>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\nbool is_prime(int num) {\n    if (num <= 1) return false;\n    if (num == 2) return true;\n    if (num % 2 == 0) return false;\n    for (int j = 3; j * j <= num; j += 2) {\n        if (num % j == 0) return false;\n    }\n    return true;\n}\n\nint skjkasdkd(const vector<int>& lst) {\n    int largest = 0;\n    for (int num : lst) {\n        if (num > largest && is_prime(num)) {\n            largest = num;\n        }\n    }\n    int sum = 0;\n    string s = to_string(largest);\n    for (char c : s) {\n        sum += c - '0';  \n    }\n    return sum;\n}\n\n",
+        4.118,
+        3.709,
+        4.354,
+        0.996,
+        3.711,
+        33
+    ]
+}

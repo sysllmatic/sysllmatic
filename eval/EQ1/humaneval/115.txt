@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint max_fill(vector<vector<int>> grid,int capacity){\nint out=0;\n    for (int i=0;i<grid.size();i++)\n    {\n        int sum=0;\n        for (int j=0;j<grid[i].size();j++)\n            sum+=grid[i][j];\n        if (sum>0)  out+=(sum-1)/capacity+1;\n    }\n    return out;\n}",
+        4.593,
+        0.133,
+        7039286.4,
+        20957.6,
+        7.483,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint max_fill(vector<vector<int>> grid, int capacity) {\n    int out = 0;\n    size_t grid_size = grid.size(); \n    for (size_t i = 0; i < grid_size; ++i) {\n        int sum = 0;\n        size_t row_size = grid[i].size(); \n        for (size_t j = 0; j < row_size; ++j) {\n            sum += grid[i][j];\n        }\n        if (sum > 0) {\n            \n            out += (sum + capacity - 1) / capacity;\n        }\n    }\n    return out;\n}",
+        1.035,
+        1.013,
+        1.185,
+        0.996,
+        1.017,
+        23
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <numeric> \n#include <omp.h>  \nusing namespace std;\n\nint max_fill(vector<vector<int>> grid, int capacity) {\n    int out = 0;\n    size_t grid_size = grid.size();\n    \n    #pragma omp parallel for reduction(+:out)\n    for (size_t i = 0; i < grid_size; ++i) {\n        int sum = std::accumulate(grid[i].begin(), grid[i].end(), 0);\n        if (sum > 0) {\n            if ((capacity & (capacity - 1)) == 0) {\n                \n                out += (sum + capacity - 1) >> __builtin_ctz(capacity);\n            } else {\n                out += (sum + capacity - 1) / capacity;\n            }\n        }\n    }\n    return out;\n}",
+        0.97,
+        1.012,
+        0.112,
+        0.992,
+        1.016,
+        24
+    ]
+}

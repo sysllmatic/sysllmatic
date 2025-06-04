@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nmap<char,int> histogram(string test){\nmap<char,int> count={},out={};\n    map <char,int>::iterator it;\n    int max=0;\n    for (int i=0;i<test.length();i++)\n        if (test[i]!=' ')\n        {\n            count[test[i]]+=1;\n            if (count[test[i]]>max) max=count[test[i]];\n        }\n    for (it=count.begin();it!=count.end();it++)\n    {\n        char w1=it->first;\n        int w2=it->second;\n        if (w2==max) out[w1]=w2;\n    }\n    return out;\n}",
+        4.713,
+        0.14,
+        5385449.2,
+        21070.4,
+        7.158,
+        25
+    ],
+    "1": [
+        "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nmap<char, int> histogram(const string& test) {\n    map<char, int> count;\n    int max = 0;\n\n    \n    for (char ch : test) {\n        if (ch != ' ') {\n            int newCount = ++count[ch];\n            if (newCount > max) {\n                max = newCount;\n            }\n        }\n    }\n\n    \n    map<char, int> out;\n    for (const auto& kv : count) {\n        if (kv.second == max) {\n            out[kv.first] = kv.second;\n        }\n    }\n\n    return out;\n}\n\n",
+        1.034,
+        1.036,
+        0.965,
+        0.999,
+        1.032,
+        30
+    ]
+}

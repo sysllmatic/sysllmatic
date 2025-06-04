@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> pluck(vector<int> arr){\nvector<int> out={};\n    for (int i=0;i<arr.size();i++)\n    if (arr[i]%2==0 and (out.size()==0 or arr[i]<out[0]))\n        out={arr[i],i};\n    return out;\n}",
+        4.403,
+        0.134,
+        7999268.6,
+        21088.0,
+        7.428,
+        13
+    ],
+    "1": [
+        "#include <vector>\n\nusing namespace std;\n\nvector<int> pluck(vector<int> arr) {\n    vector<int> out(2, -1); \n    bool found = false;\n    for (int i = 0; i < arr.size(); i++) {\n        if (arr[i] % 2 == 0 && (!found || arr[i] < out[0])) {\n            out[0] = arr[i];\n            out[1] = i;\n            found = true;\n        }\n    }\n    return found ? out : vector<int>();\n}",
+        0.905,
+        0.984,
+        1.054,
+        1.005,
+        0.988,
+        16
+    ],
+    "2": [
+        "#include <vector>\n#include <utility>\n\nusing namespace std;\n\nvector<int> pluck(const vector<int>& arr) {\n    pair<int, int> out = {-1, -1}; \n    bool found = false;\n    for (size_t i = 0; i < arr.size(); ++i) {\n        if (arr[i] % 2 == 0 && (!found || arr[i] < out.first)) {\n            out.first = arr[i];\n            out.second = static_cast<int>(i);\n            found = true;\n        }\n    }\n    return found ? vector<int>{out.first, out.second} : vector<int>();\n}",
+        0.995,
+        1.023,
+        1.078,
+        1.005,
+        1.026,
+        17
+    ]
+}

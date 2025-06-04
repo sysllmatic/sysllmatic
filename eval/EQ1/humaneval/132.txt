@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_nested(string str){\nint count=0,maxcount=0;\n    for (int i=0;i<str.length();i++)\n    {\n        if (str[i]=='[') count+=1;\n        if (str[i]==']') count-=1;\n        if (count<0) count=0;\n        if (count>maxcount) maxcount=count;\n        if (count<=maxcount-2) return  true;\n    }\n    return false;\n}",
+        5.463,
+        0.133,
+        5008131.6,
+        21084.8,
+        7.516,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nbool is_nested(string str) {\n    int count = 0, maxcount = 0;\n    for (int i = 0; i < str.length(); i++) {\n        if (str[i] == '[') {\n            count += 1;\n        } else if (str[i] == ']') {\n            count -= 1;\n        }\n\n        \n        count = max(count, 0);\n        \n        \n        if (count > maxcount) {\n            maxcount = count;\n        }\n\n        \n        if (count <= maxcount - 2) {\n            return true;\n        }\n    }\n    return false;\n}\n\n",
+        1.212,
+        1.017,
+        0.895,
+        0.995,
+        1.016,
+        32
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nbool is_nested(string str) {\n    int count = 0, maxcount = 0;\n    int threshold = 2; \n    \n    for (int i = 0; i < str.length(); i++) {\n        if (str[i] == '[') {\n            count++;\n        } else if (str[i] == ']') {\n            count--;\n        }\n\n        \n        count = max(count, 0);\n\n        \n        if (count > maxcount) {\n            maxcount = count;\n        }\n\n        \n        \n        if (maxcount - count >= threshold) {\n            return true;\n        }\n    }\n    return false;\n}\n\n\n\n",
+        1.234,
+        1.035,
+        0.902,
+        1.002,
+        1.035,
+        37
+    ]
+}

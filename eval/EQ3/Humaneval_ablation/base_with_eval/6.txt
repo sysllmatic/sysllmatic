@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> parse_nested_parens(string paren_string){\nvector<int> all_levels;\n    string current_paren;\n    int level=0,max_level=0;\n    char chr;\n    int i;\n    for (i=0;i<paren_string.length();i++)\n    {\n        chr=paren_string[i];\n        if (chr=='(')\n        {\n        level+=1;\n        if (level>max_level) max_level=level;\n        current_paren+=chr;\n        }\n        if (chr==')')\n        {\n            level-=1;\n            current_paren+=chr;\n            if (level==0){\n                all_levels.push_back(max_level);\n                current_paren=\"\";\n                max_level=0;\n            }\n        }\n    }\n    return all_levels;\n}",
+        5.131,
+        0.133,
+        39093777.0,
+        21103.2,
+        7.524,
+        35
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<int> parse_nested_parens(const string &paren_string) {\n    vector<int> all_levels;\n    int level = 0, max_level = 0;\n    size_t length = paren_string.length();\n\n    for (size_t i = 0; i < length; ++i) {\n        char chr = paren_string[i];\n        if (chr == '(') {\n            level += 1;\n            if (level > max_level) max_level = level;\n        } else if (chr == ')') {\n            level -= 1;\n            if (level == 0) {\n                all_levels.push_back(max_level);\n                max_level = 0;\n            }\n        }\n    }\n    return all_levels;\n}",
+        1.061,
+        0.961,
+        1.83,
+        0.997,
+        0.959,
+        25
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvector<int> parse_nested_parens(const string &paren_string) {\n    vector<int> all_levels;\n    int level = 0, max_level = 0;\n    size_t length = paren_string.length();\n\n    for (size_t i = 0; i < length; ++i) {\n        char chr = paren_string[i];\n        if (chr == '(') {\n            level += 1;\n            if (level > max_level) max_level = level;\n        } else if (chr == ')') {\n            level -= 1;\n            if (level == 0) {\n                all_levels.push_back(max_level);\n                max_level = 0;\n            }\n        }\n    }\n    return all_levels;\n}",
+        1.035,
+        0.926,
+        1.825,
+        1.004,
+        0.924,
+        25
+    ]
+}

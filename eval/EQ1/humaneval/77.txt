@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool iscuber(int a){\nfor (int i=0;i*i*i<=abs(a);i++)\n        if (i*i*i==abs(a)) return true;\n    return false;\n}",
+        4.741,
+        0.12,
+        2605235.4,
+        21127.2,
+        8.306,
+        10
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <stdlib.h>\n#include <cmath>\n\nbool iscuber(int a) {\n    int abs_a = abs(a);\n    int low = 0, high = std::cbrt(abs_a) + 1; \n\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        int mid_cubed = mid * mid * mid;\n\n        if (mid_cubed == abs_a) {\n            return true;\n        } else if (mid_cubed < abs_a) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return false;\n}",
+        0.948,
+        0.954,
+        0.974,
+        1.002,
+        0.956,
+        22
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <stdlib.h>\n\nbool iscuber(int a) {\n    int abs_a = abs(a);\n    int low = 0, high = 1;\n\n    \n    while (high * high * high <= abs_a) {\n        high++;\n    }\n\n    \n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        int mid_cubed = mid * mid * mid;\n\n        if (mid_cubed == abs_a) {\n            return true;\n        } else if (mid_cubed < abs_a) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return false;\n}",
+        0.914,
+        0.933,
+        0.982,
+        1.003,
+        0.935,
+        27
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add_elements(vector<int> arr,int k){\nint sum=0;\n    for (int i=0;i<k;i++)\n        if( arr[i]>=-99 and arr[i]<=99)\n            sum+=arr[i];\n    return sum;\n}",
+        8.308,
+        0.199,
+        280604457.2,
+        21063.2,
+        5.017,
+        13
+    ],
+    "1": [
+        "#include <vector>\n\nint add_elements(const std::vector<int>& arr, int k) {\n    int sum = 0;\n    int n = arr.size();\n    for (int i = 0; i < k && i < n; ++i) {\n        if (arr[i] >= -99 && arr[i] <= 99) {\n            sum += arr[i];\n        }\n    }\n    return sum;\n}",
+        0.977,
+        0.972,
+        1.035,
+        1.002,
+        0.972,
+        12
+    ],
+    "2": [
+        "#include <vector>\n#ifdef __AVX2__\n#include <immintrin.h>  \n#endif\n\nint add_elements(const std::vector<int>& arr, int k) {\n    int sum = 0;\n    int n = arr.size();\n    int i = 0;\n\n#ifdef __AVX2__\n    __m256i boundary_low = _mm256_set1_epi32(-99);\n    __m256i boundary_high = _mm256_set1_epi32(99);\n    __m256i sum_vec = _mm256_setzero_si256();\n\n    for (; i <= k - 8 && i <= n - 8; i += 8) {\n        __m256i data = _mm256_loadu_si256((__m256i*)&arr[i]);\n        __m256i mask1 = _mm256_cmpgt_epi32(data, boundary_low);\n        __m256i mask2 = _mm256_cmpgt_epi32(boundary_high, data);\n        __m256i mask = _mm256_and_si256(mask1, mask2);\n        __m256i filtered = _mm256_and_si256(data, mask);\n        sum_vec = _mm256_add_epi32(sum_vec, filtered);\n    }\n\n    int buffer[8];\n    _mm256_storeu_si256((__m256i*)buffer, sum_vec);\n    for (int j = 0; j < 8; ++j) {\n        sum += buffer[j];\n    }\n#endif\n\n    \n    for (; i < k && i < n; ++i) {\n        if (arr[i] >= -99 && arr[i] <= 99) {\n            sum += arr[i];\n        }\n    }\n\n    return sum;\n}",
+        0.953,
+        0.923,
+        1.022,
+        1.003,
+        0.924,
+        40
+    ]
+}

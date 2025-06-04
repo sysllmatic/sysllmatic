@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<float> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        sum+=ceil(lst[i])*ceil(lst[i]);\n    return sum;\n}",
+        4.718,
+        0.128,
+        7608550.8,
+        21053.6,
+        7.779,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n\nusing namespace std;\n\nint sum_squares(const vector<float>& lst) {\n    int sum = 0;\n    size_t size = lst.size();  \n    for (size_t i = 0; i < size; ++i) {\n        int ceil_value = static_cast<int>(ceil(lst[i]));  \n        sum += ceil_value * ceil_value;  \n    }\n    return sum;\n}\n\n",
+        0.961,
+        1.022,
+        1.053,
+        1.0,
+        1.025,
+        16
+    ],
+    "2": [
+        "#include <vector>\n#include <cmath>\n#include <thread>\n#include <immintrin.h> \n\nusing namespace std;\n\n\nint avx_sum_squares(const float* data, size_t size) {\n    __m256i sum_vec = _mm256_setzero_si256();\n    size_t i = 0;\n    for (; i + 8 <= size; i += 8) {\n        __m256 vec = _mm256_loadu_ps(&data[i]);\n        __m256 ceil_vec = _mm256_ceil_ps(vec);\n        __m256i int_vec = _mm256_cvtps_epi32(ceil_vec);\n        __m256i square_vec = _mm256_mullo_epi32(int_vec, int_vec);\n        sum_vec = _mm256_add_epi32(sum_vec, square_vec);\n    }\n    \n    int result[8];\n    _mm256_storeu_si256((__m256i*)result, sum_vec);\n    int sum = 0;\n    for (int j = 0; j < 8; ++j) {\n        sum += result[j];\n    }\n    \n    for (; i < size; ++i) {\n        int ceil_value = static_cast<int>(ceil(data[i]));\n        sum += ceil_value * ceil_value;\n    }\n    return sum;\n}\n\nint sum_squares(const vector<float>& lst) {\n    size_t size = lst.size();\n    const size_t num_threads = std::thread::hardware_concurrency();\n    vector<thread> threads;\n    vector<int> partial_sums(num_threads, 0);\n    size_t chunk_size = size / num_threads;\n\n    auto worker = [&](size_t thread_id) {\n        size_t start = thread_id * chunk_size;\n        size_t end = (thread_id == num_threads - 1) ? size : start + chunk_size;\n        partial_sums[thread_id] = avx_sum_squares(lst.data() + start, end - start);\n    };\n\n    for (size_t i = 0; i < num_threads; ++i) {\n        threads.emplace_back(worker, i);\n    }\n\n    for (auto& t : threads) {\n        t.join();\n    }\n\n    int total_sum = 0;\n    for (int ps : partial_sums) {\n        total_sum += ps;\n    }\n    return total_sum;\n}\n\n",
+        1.036,
+        0.978,
+        1.028,
+        1.002,
+        0.981,
+        61
+    ]
+}

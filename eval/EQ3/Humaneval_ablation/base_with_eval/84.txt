@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring solve(int N){\nstring str,bi=\"\";\n    str=to_string(N);\n    int i,sum=0;\n    for (int i=0;i<str.length();i++)\n        sum+=str[i]-48;\n    while (sum>0)\n    {\n        bi=to_string(sum%2)+bi;\n        sum=sum/2;\n    }\n    return bi;\n}",
+        4.696,
+        0.136,
+        4604850.8,
+        21114.4,
+        7.33,
+        19
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nstd::string solve(int N) {\n    int sum = 0;\n    \n    while (N > 0) {\n        sum += N % 10;\n        N /= 10;\n    }\n\n    \n    std::string bi;\n    if (sum == 0) {\n        return \"0\";\n    }\n    while (sum > 0) {\n        bi.insert(bi.begin(), (sum % 2) + '0');\n        sum /= 2;\n    }\n    return bi;\n}\n\n",
+        1.005,
+        1.07,
+        1.049,
+        0.996,
+        1.072,
+        23
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>  \n\nstd::string solve(int N) {\n    int sum = 0;\n    \n    while (N > 0) {\n        sum += N % 10;\n        N /= 10;\n    }\n\n    \n    std::string bi;\n    if (sum == 0) {\n        return \"0\";\n    }\n    while (sum > 0) {\n        bi += (sum % 2) + '0';  \n        sum /= 2;\n    }\n    std::reverse(bi.begin(), bi.end());  \n    return bi;\n}\n\n",
+        1.018,
+        1.072,
+        1.0,
+        1.005,
+        1.074,
+        25
+    ]
+}

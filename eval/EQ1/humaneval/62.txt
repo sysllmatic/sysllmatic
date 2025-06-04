@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> derivative(vector<float> xs){\nvector<float> out={};\n    for (int i=1;i<xs.size();i++)\n        out.push_back(i*xs[i]);\n    return out;\n}",
+        4.547,
+        0.134,
+        6453168.2,
+        21058.4,
+        7.43,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\nusing namespace std;\n\nvector<float> derivative(const vector<float>& xs) {\n    size_t n = xs.size();\n    vector<float> out(n - 1);\n    for (size_t i = 1; i < n; i++) {\n        out[i - 1] = static_cast<float>(i) * xs[i];\n    }\n    return out;\n}\n\n",
+        1.0,
+        1.071,
+        1.137,
+        1.004,
+        1.074,
+        16
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\n#include <immintrin.h>  \n#include <omp.h>        \nusing namespace std;\n\nvector<float> derivative(const vector<float>& xs) {\n    size_t n = xs.size();\n    if (n <= 1) return vector<float>();\n    vector<float> out(n - 1);\n\n    \n    #pragma omp parallel for\n    for (size_t i = 1; i <= n - 8; i += 8) {\n        __m256 x = _mm256_loadu_ps(&xs[i]);\n        __m256i idx = _mm256_setr_epi32(i, i+1, i+2, i+3, i+4, i+5, i+6, i+7);\n        __m256 result = _mm256_mul_ps(_mm256_cvtepi32_ps(idx), x);\n        _mm256_storeu_ps(&out[i - 1], result);\n    }\n\n    \n    for (size_t i = (n/8)*8; i < n; ++i) {\n        out[i - 1] = static_cast<float>(i) * xs[i];\n    }\n\n    return out;\n}\n\n\n",
+        0.965,
+        0.999,
+        0.054,
+        1.006,
+        1.003,
+        32
+    ]
+}

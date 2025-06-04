@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring Strongest_Extension(string class_name,vector<string> extensions){\nstring strongest=\"\";\n    int max=-1000;\n    for (int i=0;i<extensions.size();i++)\n    {\n        int strength=0;\n        for (int j=0;j<extensions[i].length();j++)\n        {\n            char chr=extensions[i][j];\n            if (chr>=65 and chr<=90) strength+=1;\n            if (chr>=97 and chr<=122) strength-=1;\n        }\n        if (strength>max) \n        {\n            max=strength;\n            strongest=extensions[i];\n        }\n    }\n    return class_name+'.'+strongest;\n}",
+        4.836,
+        0.137,
+        19659809.0,
+        21129.6,
+        7.3,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <sstream> \n#include <climits> \nusing namespace std;\n\nstring Strongest_Extension(string class_name, vector<string> extensions) {\n    string strongest = \"\";\n    int max_strength = INT_MIN; \n\n    for (const auto& ext : extensions) {\n        int strength = 0;\n        for (char chr : ext) {\n            if (isupper(chr)) strength += 1;\n            else if (islower(chr)) strength -= 1;\n        }\n        if (strength > max_strength) {\n            max_strength = strength;\n            strongest = ext;\n        }\n    }\n\n    \n    stringstream result;\n    result << class_name << '.' << strongest;\n    return result.str();\n}\n\n\n",
+        0.661,
+        0.975,
+        0.788,
+        1.009,
+        0.973,
+        30
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <climits> \nusing namespace std;\n\nstring Strongest_Extension(string class_name, vector<string> extensions) {\n    string strongest = \"\";\n    int max_strength = INT_MIN; \n    \n    \n    int char_strength[256] = {0};\n    for (char c = 'A'; c <= 'Z'; ++c) {\n        char_strength[c] = 1;\n    }\n    for (char c = 'a'; c <= 'z'; ++c) {\n        char_strength[c] = -1;\n    }\n\n    for (const auto& ext : extensions) {\n        int strength = 0;\n        for (char chr : ext) {\n            strength += char_strength[chr];\n        }\n        if (strength > max_strength) {\n            max_strength = strength;\n            strongest = ext;\n        }\n    }\n\n    \n    return class_name + '.' + strongest;\n}\n\n\n",
+        1.025,
+        0.965,
+        0.904,
+        1.007,
+        0.964,
+        35
+    ]
+}

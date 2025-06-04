@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint prod_signs(vector<int> arr){\nif (arr.size()==0) return -32768;\n    int i,sum=0,prods=1;\n    for (i=0;i<arr.size();i++)\n    {\n        sum+=abs(arr[i]);\n        if (arr[i]==0) prods=0;\n        if (arr[i]<0) prods=-prods;\n   }\n   return sum*prods;\n}",
+        4.537,
+        0.137,
+        7977636.0,
+        21098.4,
+        7.295,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <cstdlib> \nusing namespace std;\n\nint prod_signs(const vector<int>& arr) {\n    if (arr.empty()) return -32768; \n\n    int sum = 0;\n    int prods = 1; \n\n    for (int num : arr) {\n        sum += abs(num);\n        if (num == 0) {\n            prods = 0; \n        } else if (num < 0) {\n            prods = -prods; \n        }\n    }\n\n    return sum * prods;\n}\n\n",
+        1.001,
+        1.055,
+        0.959,
+        0.999,
+        1.055,
+        23
+    ]
+}

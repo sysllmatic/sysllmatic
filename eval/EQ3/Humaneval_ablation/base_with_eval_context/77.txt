@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool iscuber(int a){\nfor (int i=0;i*i*i<=abs(a);i++)\n        if (i*i*i==abs(a)) return true;\n    return false;\n}",
+        7.471,
+        0.132,
+        2617673.0,
+        21028.0,
+        7.542,
+        10
+    ],
+    "1": [
+        "#include <cmath>\n#include <cstdlib>\n\nbool iscuber(int a) {\n    int abs_a = std::abs(a);\n    int cbrt_a = std::round(std::cbrt(abs_a)); \n    return cbrt_a * cbrt_a * cbrt_a == abs_a; \n}\n\n\n\n",
+        1.022,
+        1.019,
+        0.909,
+        0.999,
+        1.022,
+        11
+    ],
+    "2": [
+        "#include <cmath>\n#include <vector>\n#include <iostream>\n#include <immintrin.h> \n#include <omp.h>       \n\nbool iscuber(int a) {\n    int abs_a = a < 0 ? -a : a; \n    int low = 0, high = 1290;   \n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        int cube = mid * mid * mid;\n        if (cube == abs_a) {\n            return true;\n        } else if (cube < abs_a) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return false;\n}\n\n\nstd::vector<bool> areCubes(const std::vector<int>& nums) {\n    std::vector<bool> results(nums.size());\n    #pragma omp parallel for \n    for (size_t i = 0; i < nums.size(); ++i) {\n        results[i] = iscuber(nums[i]);\n    }\n    return results;\n}\n\n",
+        1.016,
+        1.102,
+        0.494,
+        0.998,
+        1.106,
+        33
+    ]
+}

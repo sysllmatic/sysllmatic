@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fizz_buzz(int n){\nint count=0;\n    for (int i=0;i<n;i++)\n    if (i%11==0 or i%13==0)\n    {\n        int q=i;\n        while (q>0)\n        {\n            if (q%10==7) count+=1;\n            q=q/10;\n        }\n    } \n    return count;\n}",
+        4.453,
+        0.132,
+        3814965.4,
+        21120.0,
+        7.588,
+        19
+    ],
+    "1": [
+        "#include <cstdio>\n\nint fizz_buzz(int n) {\n    int count = 0;\n    \n    for (int i = 0; i < n; i += 11) {\n        int q = i;\n        while (q > 0) {\n            if (q % 10 == 7) count++;\n            q /= 10;\n        }\n    }\n    for (int i = 0; i < n; i += 13) {\n        \n        if (i % 11 != 0) {\n            int q = i;\n            while (q > 0) {\n                if (q % 10 == 7) count++;\n                q /= 10;\n            }\n        }\n    }\n    return count;\n}",
+        1.017,
+        1.023,
+        1.195,
+        0.998,
+        1.02,
+        24
+    ],
+    "2": [
+        "#include <cstdio>\n\nint fizz_buzz(int n) {\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if (i % 11 == 0 || i % 13 == 0) {\n            int q = i;\n            while (q > 0) {\n                if (q % 10 == 7) count++;\n                q /= 10;\n            }\n        }\n    }\n    return count;\n}",
+        1.017,
+        1.04,
+        0.948,
+        1.0,
+        1.037,
+        15
+    ]
+}

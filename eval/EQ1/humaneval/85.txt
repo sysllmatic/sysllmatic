@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add(vector<int> lst){\nint sum=0;\n    for (int i=0;i*2+1<lst.size();i++)\n        if (lst[i*2+1]%2==0) sum+=lst[i*2+1];\n    return sum;\n}",
+        4.3,
+        0.129,
+        4586792.4,
+        20912.8,
+        7.726,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <stdlib.h>\n\nusing namespace std;\n\nint add(vector<int> lst){\n    int sum = 0;\n    int n = lst.size();\n    \n    for (int i = 1; i < n; i += 4) {\n        if (i < n && lst[i] % 2 == 0) sum += lst[i];\n        if (i + 2 < n && lst[i + 2] % 2 == 0) sum += lst[i + 2];\n    }\n    return sum;\n}\n\n",
+        0.948,
+        1.116,
+        1.083,
+        0.999,
+        1.118,
+        19
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <immintrin.h> \n\nusing namespace std;\n\nint add(vector<int> lst) {\n    int sum = 0;\n    int n = lst.size();\n    __m256i vsum = _mm256_setzero_si256(); \n\n    for (int i = 1; i < n; i += 8) {\n        \n        __m256i vdata = _mm256_setr_epi32(\n            i < n ? lst[i] : 0, \n            i+2 < n ? lst[i+2] : 0, \n            i+4 < n ? lst[i+4] : 0, \n            i+6 < n ? lst[i+6] : 0,\n            0, 0, 0, 0); \n\n        \n        __m256i veven_mask = _mm256_setr_epi32(\n            i < n && lst[i] % 2 == 0 ? -1 : 0,\n            i+2 < n && lst[i+2] % 2 == 0 ? -1 : 0,\n            i+4 < n && lst[i+4] % 2 == 0 ? -1 : 0,\n            i+6 < n && lst[i+6] % 2 == 0 ? -1 : 0,\n            0, 0, 0, 0);\n\n        \n        __m256i vfiltered = _mm256_and_si256(vdata, veven_mask);\n        vsum = _mm256_add_epi32(vsum, vfiltered);\n    }\n\n    \n    int sum_array[8];\n    _mm256_storeu_si256((__m256i*)sum_array, vsum);\n    for (int i = 0; i < 8; i++) sum += sum_array[i];\n\n    return sum;\n}\n\n",
+        0.963,
+        0.992,
+        1.136,
+        0.995,
+        0.994,
+        41
+    ]
+}

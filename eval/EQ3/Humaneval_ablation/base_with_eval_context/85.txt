@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add(vector<int> lst){\nint sum=0;\n    for (int i=0;i*2+1<lst.size();i++)\n        if (lst[i*2+1]%2==0) sum+=lst[i*2+1];\n    return sum;\n}",
+        4.508,
+        0.136,
+        4064640.2,
+        21114.4,
+        7.366,
+        12
+    ],
+    "1": [
+        "#include <vector>\n#include <iostream>\nusing namespace std;\n\nint add(const vector<int>& lst) {\n    int sum = 0;\n    for (int i = 1; i < lst.size(); i += 2) {\n        if (lst[i] % 2 == 0) {\n            sum += lst[i];\n        }\n    }\n    return sum;\n}\n\n\n\n",
+        0.974,
+        1.008,
+        0.913,
+        1.002,
+        1.005,
+        16
+    ],
+    "2": [
+        "#include <vector>\n#include <iostream>\n#include <numeric>\nusing namespace std;\n\nint add(const vector<int>& lst) {\n    int sum = 0;\n    for (size_t i = 1; i < lst.size(); i += 2) {\n        if ((lst[i] & 1) == 0) { \n            sum += lst[i];\n        }\n    }\n    return sum;\n}\n\n\n\n",
+        0.99,
+        0.999,
+        0.897,
+        0.996,
+        0.996,
+        17
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring match_parens(vector<string> lst){\nstring l1=lst[0]+lst[1];\n    int i,count=0;\n    bool can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (count!=0) return \"No\";\n    if (can==true) return \"Yes\";\n    l1=lst[1]+lst[0];\n    can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (can==true) return \"Yes\";\n    return \"No\";\n}",
+        4.515,
+        0.129,
+        6295030.2,
+        21163.2,
+        7.748,
+        30
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\nusing namespace std;\n\nbool isValidParentheses(const string &str) {\n    int count = 0;\n    for (char c : str) {\n        if (c == '(') count++;\n        if (c == ')') count--;\n        if (count < 0) return false; \n    }\n    return count == 0; \n}\n\nstring match_parens(vector<string> lst) {\n    if (isValidParentheses(lst[0] + lst[1])) return \"Yes\";\n    if (isValidParentheses(lst[1] + lst[0])) return \"Yes\";\n    return \"No\";\n}\n\n",
+        1.01,
+        0.968,
+        0.87,
+        1.004,
+        0.967,
+        21
+    ]
+}

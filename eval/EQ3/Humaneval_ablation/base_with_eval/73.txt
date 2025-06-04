@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint smallest_change(vector<int> arr){\nint out=0;\n    for (int i=0;i<arr.size()-1-i;i++)\n        if (arr[i]!=arr[arr.size()-1-i])\n            out+=1;\n    return out;\n}",
+        4.729,
+        0.143,
+        7245601.8,
+        21250.4,
+        6.983,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <assert.h>\n\nint smallest_change(const std::vector<int>& arr) {\n    int out = 0;\n    int n = arr.size();\n    int mid = n / 2;\n    for (int i = 0; i < mid; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            out += 1;\n        }\n    }\n    return out;\n}\n\n",
+        1.039,
+        1.058,
+        1.01,
+        1.012,
+        1.058,
+        16
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <cassert>\n\nint smallest_change(const std::vector<int>& arr) {\n    int out = 0;\n    int n = arr.size();\n    int mid = n / 2;\n    for (int i = 0; i < mid; i++) {\n        if (arr[i] != arr[n - 1 - i]) {\n            out += 1;\n        }\n    }\n    return out;\n}\n\n",
+        1.033,
+        1.06,
+        0.971,
+        1.008,
+        1.06,
+        16
+    ]
+}

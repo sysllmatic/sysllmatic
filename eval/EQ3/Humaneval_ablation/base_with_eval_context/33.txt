@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_third(vector<int> l){\nvector<int> third={};\n    int i;\n    for (i=0;i*3<l.size();i++)\n        third.push_back(l[i*3]);\n    \n    sort(third.begin(),third.end());\n\n    vector<int> out={};\n    for (i=0;i<l.size();i++)\n    {\n        if (i%3==0) {out.push_back(third[i/3]);}\n        else out.push_back(l[i]);\n    }\n    return out;\n\n}",
+        4.745,
+        0.137,
+        21274517.4,
+        21085.6,
+        7.301,
+        23
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> sort_third(vector<int> l) {\n    vector<int> third;\n    third.reserve(l.size() / 3 + 1); \n    \n    \n    for (size_t i = 0; i < l.size(); i += 3) {\n        third.push_back(l[i]);\n    }\n    \n    \n    sort(third.begin(), third.end());\n    \n    vector<int> out = std::move(l); \n    \n    \n    for (size_t i = 0; i < third.size(); ++i) {\n        out[i * 3] = third[i];\n    }\n    \n    return out;\n}\n\n\n",
+        1.012,
+        0.961,
+        1.132,
+        0.997,
+        0.96,
+        28
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> sort_third(vector<int> l) {\n    vector<int> third;\n    third.reserve(l.size() / 3 + 1); \n    \n    for (size_t i = 0; i < l.size(); i += 3) {\n        third.push_back(l[i]);\n    }\n    \n    \n    #ifdef __cpp_lib_execution\n        sort(std::execution::par, third.begin(), third.end());\n    #else\n        sort(third.begin(), third.end());\n    #endif\n    \n    vector<int> out = std::move(l); \n    \n    for (size_t i = 0; i < third.size(); ++i) {\n        out[i * 3] = third[i];\n    }\n    \n    return out;\n}\n\n\n",
+        1.023,
+        1.145,
+        1.121,
+        0.999,
+        1.143,
+        31
+    ]
+}

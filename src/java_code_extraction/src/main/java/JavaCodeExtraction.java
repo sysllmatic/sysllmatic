@@ -96,7 +96,7 @@ public class JavaCodeExtraction {
                 break;
 
             case "replace":
-                String blockPath = "/home/hpeng/E2COOL/src/runtime_logs/optimized_java.txt";
+                String blockPath = "../../../runtime_logs/optimized_java.txt";
                 System.out.println("=== Original Method Source ===");
                 System.out.println(getMethodSourceCode(filePath, methodName));
 

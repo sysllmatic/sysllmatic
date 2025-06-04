@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> get_positive(vector<float> l){\nvector<float> out={};\n    for (int i=0;i<l.size();i++)\n        if (l[i]>0) out.push_back(l[i]);\n    return out;\n}",
+        4.785,
+        0.124,
+        8865606.4,
+        21057.6,
+        8.076,
+        12
+    ],
+    "1": [
+        "#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nvector<float> get_positive(const vector<float>& l) {\n    vector<float> out;\n    out.reserve(l.size()); \n    std::copy_if(l.begin(), l.end(), std::back_inserter(out), [](float x) { return x > 0; });\n    return out;\n}\n\n",
+        1.018,
+        0.944,
+        0.818,
+        1.002,
+        0.942,
+        13
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<float> get_positive(const vector<float>& l) {\n    \n    size_t count = std::count_if(l.begin(), l.end(), [](float x) { return x > 0; });\n    vector<float> out;\n    out.reserve(count);  \n\n    \n    for (float x : l) {\n        if (x > 0) {\n            out.push_back(x);\n        }\n    }\n\n    return out;\n}\n\n",
+        1.025,
+        0.838,
+        0.748,
+        0.993,
+        0.835,
+        22
+    ]
+}

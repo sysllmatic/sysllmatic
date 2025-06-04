@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\nstring key=\"2357BD\";\n    int out=0;\n    for (int i=0;i<num.length();i++)\n    if (find(key.begin(),key.end(),num[i])!=key.end()) out+=1;\n    return out;\n}",
+        4.517,
+        0.142,
+        14315018.8,
+        21104.8,
+        7.051,
+        13
+    ],
+    "1": [
+        "#include <iostream>  \n#include <string>\n#include <unordered_set>\nusing namespace std;\n\nint hex_key(string num){\n    unordered_set<char> key = {'2', '3', '5', '7', 'B', 'D'};\n    int out = 0;\n    for (char c : num) {\n        if (key.find(c) != key.end()) {\n            out += 1;\n        }\n    }\n    return out;\n}\n\n\n",
+        0.982,
+        1.006,
+        0.917,
+        1.003,
+        1.004,
+        17
+    ],
+    "2": [
+        "#include <iostream>  \n#include <string>\n#include <bitset>\n#include <omp.h>  \nusing namespace std;\n\nint hex_key(const string& num) {\n    \n    bitset<256> key;\n    key['2'] = key['3'] = key['5'] = key['7'] = key['B'] = key['D'] = 1;\n    \n    int out = 0;\n    \n    \n    #pragma omp parallel for reduction(+:out)\n    for (size_t i = 0; i < num.size(); ++i) {\n        if (key[num[i]]) {\n            out += 1;\n        }\n    }\n    return out;\n}\n\n\n",
+        0.975,
+        1.15,
+        0.157,
+        1.001,
+        1.147,
+        24
+    ]
+}

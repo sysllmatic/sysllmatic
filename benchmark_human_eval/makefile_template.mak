@@ -10,7 +10,7 @@ compile_optimized:
 
 measure:
 	sudo modprobe msr
-	sudo ${USER_PREFIX}/RAPL/main "${USER_PREFIX}/benchmark_human_eval/${FILE_NAME}/stress_${FILE_NAME}.gpp_run" c++ stress_${FILE_NAME}
+	sudo ${USER_PREFIX}/MEASURE/main "${USER_PREFIX}/benchmark_human_eval/${FILE_NAME}/stress_${FILE_NAME}.gpp_run" c++ stress_${FILE_NAME}
 	sudo chmod -R 777 ${USER_PREFIX}/src/runtime_logs/c++.csv
 
 compile_stress:
@@ -19,7 +19,7 @@ compile_stress:
 
 measure_optimized:
 	sudo modprobe msr
-	sudo ${USER_PREFIX}/RAPL/main "${USER_PREFIX}/benchmark_human_eval/${FILE_NAME}/stress_optimized_${FILE_NAME}.gpp_run" c++ stress_optimized_${FILE_NAME}
+	sudo ${USER_PREFIX}/MEASURE/main "${USER_PREFIX}/benchmark_human_eval/${FILE_NAME}/stress_optimized_${FILE_NAME}.gpp_run" c++ stress_optimized_${FILE_NAME}
 	sudo chmod -R 777 ${USER_PREFIX}/src/runtime_logs/c++.csv
 
 compile_stress_optimized:

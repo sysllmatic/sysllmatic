@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> rolling_max(vector<int> numbers){\nvector<int> out;\n    int max=0;\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (numbers[i]>max) max=numbers[i];\n        out.push_back(max);\n    }\n    return out;\n}",
+        4.602,
+        0.139,
+        8608863.8,
+        21078.4,
+        7.202,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\n\nvector<int> rolling_max(vector<int> numbers) {\n    vector<int> out;\n    out.reserve(numbers.size());  \n    int max = 0;\n    for (int i = 0; i < numbers.size(); i++) {\n        if (numbers[i] > max) max = numbers[i];\n        out.push_back(max);\n    }\n    return out;\n}",
+        1.031,
+        1.091,
+        1.011,
+        0.998,
+        1.088,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <thread>\n#include <algorithm>\n\nusing namespace std;\n\n\nvoid compute_rolling_max_segment(const vector<int>& numbers, vector<int>& out, int start, int end) {\n    int max = (start > 0) ? out[start - 1] : 0;  \n    for (int i = start; i < end; ++i) {\n        if (numbers[i] > max) max = numbers[i];\n        out[i] = max;\n    }\n}\n\n\nvector<int> rolling_max(const vector<int>& numbers) {\n    int n = numbers.size();\n    vector<int> out(n);\n    int num_threads = std::min(4, std::max(1, (int)std::thread::hardware_concurrency()));\n    vector<thread> threads;\n    int segment_size = (n + num_threads - 1) / num_threads;\n\n    \n    for (int i = 0; i < num_threads; ++i) {\n        int start = i * segment_size;\n        int end = std::min(start + segment_size, n);\n        if (start < end) {\n            threads.emplace_back(compute_rolling_max_segment, cref(numbers), ref(out), start, end);\n        }\n    }\n    for (auto& t : threads) t.join();\n\n    \n    for (int i = 1; i < num_threads && i * segment_size < n; ++i) {\n        int start = i * segment_size;\n        int last_max = out[start - 1];\n        for (int j = start; j < std::min(start + segment_size, n); ++j) {\n            if (out[j] < last_max) out[j] = last_max;\n            else last_max = out[j];\n        }\n    }\n\n    return out;\n}",
+        1.001,
+        1.045,
+        0.799,
+        1.001,
+        1.042,
+        46
+    ]
+}

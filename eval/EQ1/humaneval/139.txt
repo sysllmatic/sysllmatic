@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nlong long special_factorial(int n){\nlong long fact=1,bfact=1;\n    for (int i=1;i<=n;i++)\n    {\n        fact=fact*i;\n        bfact=bfact*fact;\n    }\n    return bfact;\n}",
+        5.014,
+        0.119,
+        2637521.4,
+        21006.4,
+        8.371,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <stdlib.h>\n\nlong long special_factorial(int n) {\n    long long fact = 1, bfact = 1;\n    for (int i = 1; i <= n; i++) {\n        fact *= i;  \n        bfact *= fact;  \n    }\n    return bfact;\n}\n\n",
+        0.939,
+        1.001,
+        0.962,
+        0.994,
+        1.004,
+        12
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <stdlib.h>\n\nlong long special_factorial(int n) {\n    if (n < 0) return 0; \n    long long fact = 1, bfact = 1;\n    for (int i = 1; i <= n; i++) {\n        fact *= i;  \n        bfact *= fact;  \n    }\n    return bfact;\n}\n\n",
+        0.912,
+        0.965,
+        0.995,
+        0.995,
+        0.967,
+        13
+    ]
+}

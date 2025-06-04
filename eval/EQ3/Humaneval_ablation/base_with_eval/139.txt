@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nlong long special_factorial(int n){\nlong long fact=1,bfact=1;\n    for (int i=1;i<=n;i++)\n    {\n        fact=fact*i;\n        bfact=bfact*fact;\n    }\n    return bfact;\n}",
+        4.986,
+        0.121,
+        2598659.4,
+        21025.6,
+        8.222,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nlong long special_factorial(int n) {\n    long long fact = 1, bfact = 1;\n    for (int i = 1; i <= n; i++) {\n        fact *= i;  \n        bfact *= fact;\n        \n    }\n    return bfact;\n}\n\n",
+        1.123,
+        0.909,
+        0.992,
+        1.001,
+        0.912,
+        16
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<stdlib.h>\n#include<climits>  \n\n\nlong long special_factorial(int n) {\n    if (n == 0) return 1;\n    long long fact = 1;\n    long long bfact = 1;\n    for (int i = 1; i <= n; i++) {\n        fact *= i;\n        if (bfact > LLONG_MAX / fact) {\n            \n            printf(\"Overflow detected!\\n\");\n            return -1; \n        }\n        bfact *= fact;\n    }\n    return bfact;\n}\n\n",
+        1.104,
+        1.001,
+        0.919,
+        0.998,
+        1.005,
+        21
+    ]
+}

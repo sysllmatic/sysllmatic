@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encrypt(string s){\nstring out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+4-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}",
+        13.714,
+        0.138,
+        47960120.4,
+        21053.6,
+        7.255,
+        16
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nstd::string encrypt(const std::string &s) {\n    std::string out;\n    out.reserve(s.length()); \n    \n    for (size_t i = 0; i < s.length(); ++i) {\n        char w = ((s[i] - 'a' + 4) % 26) + 'a'; \n        out += w; \n    }\n    return out;\n}\n\n",
+        3.089,
+        1.053,
+        7.345,
+        0.995,
+        1.05,
+        14
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n\nstd::string encrypt(const std::string &s) {\n    std::string out(s.length(), ' '); \n    \n    \n    std::transform(s.begin(), s.end(), out.begin(), [](char c) -> char {\n        \n        if (c >= 'a' && c <= 'z') {\n            return ((c - 'a' + 4) % 26) + 'a';\n        } else {\n            return c; \n        }\n    });\n\n    return out;\n}\n\n",
+        3.017,
+        1.058,
+        6.804,
+        1.002,
+        1.055,
+        20
+    ]
+}

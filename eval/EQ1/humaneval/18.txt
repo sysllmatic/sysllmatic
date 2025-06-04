@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint how_many_times(string str,string substring){\nint out=0;\n    if (str.length()==0) return 0;\n    for (int i=0;i<=str.length()-substring.length();i++)\n    if (str.substr(i,substring.length())==substring)\n        out+=1;\n    return out;\n}",
+        4.451,
+        0.131,
+        10733504.2,
+        21072.0,
+        7.598,
+        14
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nvoid computeLPSArray(const string &pattern, vector<int> &lps) {\n    int length = 0;\n    int i = 1;\n    lps[0] = 0; \n    while (i < pattern.length()) {\n        if (pattern[i] == pattern[length]) {\n            length++;\n            lps[i] = length;\n            i++;\n        } else {\n            if (length != 0) {\n                length = lps[length - 1];\n            } else {\n                lps[i] = 0;\n                i++;\n            }\n        }\n    }\n}\n\nint how_many_times(const string &str, const string &substring) {\n    if (substring.empty() || str.length() < substring.length()) return 0;\n    \n    int out = 0;\n    int n = str.length();\n    int m = substring.length();\n\n    vector<int> lps(m);\n    computeLPSArray(substring, lps);\n\n    int i = 0; \n    int j = 0; \n    while (i < n) {\n        if (substring[j] == str[i]) {\n            i++;\n            j++;\n        }\n\n        if (j == m) {\n            out++;\n            j = lps[j - 1];\n        } else if (i < n && substring[j] != str[i]) {\n            if (j != 0) {\n                j = lps[j - 1];\n            } else {\n                i++;\n            }\n        }\n    }\n\n    return out;\n}\n\n\n",
+        0.988,
+        1.017,
+        1.783,
+        1.001,
+        1.02,
+        59
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n#include <string>\n#include <immintrin.h> \nusing namespace std;\n\nvoid computeLPSArray(const string &pattern, vector<int> &lps) {\n    int length = 0;\n    int i = 1;\n    lps[0] = 0; \n    while (i < pattern.length()) {\n        if (pattern[i] == pattern[length]) {\n            length++;\n            lps[i] = length;\n            i++;\n        } else {\n            if (length != 0) {\n                length = lps[length - 1];\n            } else {\n                lps[i] = 0;\n                i++;\n            }\n        }\n    }\n}\n\n\nbool compare_chars_simd(const char* str, const char* pattern, int length) {\n    int i;\n    for (i = 0; i <= length - 32; i += 32) {\n        __m256i vstr = _mm256_loadu_si256((__m256i*)&str[i]);\n        __m256i vpattern = _mm256_loadu_si256((__m256i*)&pattern[i]);\n        __m256i result = _mm256_cmpeq_epi8(vstr, vpattern);\n        if (_mm256_movemask_epi8(result) != 0xFFFFFFFF) {\n            return false;\n        }\n    }\n    for (; i < length; ++i) {\n        if (str[i] != pattern[i]) {\n            return false;\n        }\n    }\n    return true;\n}\n\nint how_many_times(const string &str, const string &substring) {\n    if (substring.empty() || str.length() < substring.length()) return 0;\n    \n    int out = 0;\n    int n = str.length();\n    int m = substring.length();\n\n    vector<int> lps(m);\n    computeLPSArray(substring, lps);\n\n    int i = 0; \n    int j = 0; \n    while (i < n) {\n        if (j < m && compare_chars_simd(&str[i], &substring[0], m - j)) {\n            i += m - j;\n            j = m;\n        } else if (substring[j] == str[i]) {\n            i++;\n            j++;\n        }\n\n        if (j == m) {\n            out++;\n            j = lps[j - 1];\n        } else if (i < n && substring[j] != str[i]) {\n            if (j != 0) {\n                j = lps[j - 1];\n            } else {\n                i++;\n            }\n        }\n    }\n\n    return out;\n}\n\n",
+        0.925,
+        1.064,
+        1.594,
+        1.0,
+        1.067,
+        81
+    ]
+}

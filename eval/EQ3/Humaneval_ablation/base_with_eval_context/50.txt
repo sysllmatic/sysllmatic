@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encode_shift(string s){\n    string out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+5-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}\nstring decode_shift(string s){\nstring out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+21-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}",
+        5.13,
+        0.121,
+        4338366.6,
+        21156.8,
+        8.225,
+        26
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring shift_cipher(const string &s, int shift) {\n    string out;\n    out.reserve(s.length()); \n    int offset = static_cast<int>('a');\n    \n    std::transform(s.begin(), s.end(), std::back_inserter(out), [shift, offset](char c) {\n        return static_cast<char>((static_cast<int>(c) - offset + shift) % 26 + offset);\n    });\n    \n    return out;\n}\n\nstring encode_shift(const string &s) {\n    return shift_cipher(s, 5);\n}\n\nstring decode_shift(const string &s) {\n    return shift_cipher(s, 21);\n}\n\n\n",
+        1.05,
+        0.909,
+        0.973,
+        1.006,
+        0.912,
+        26
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring shift_cipher(const string &s, int shift) {\n    string out;\n    out.reserve(s.length()); \n    int offset = static_cast<int>('a');\n\n    std::transform(s.begin(), s.end(), std::back_inserter(out), [shift, offset](char c) {\n        int shifted_value = (static_cast<int>(c) - offset + shift) % 26;\n        if (shifted_value < 0) shifted_value += 26; \n        return static_cast<char>(shifted_value + offset);\n    });\n\n    return out;\n}\n\nstring encode_shift(const string &s) {\n    return shift_cipher(s, 5);\n}\n\nstring decode_shift(const string &s) {\n    return shift_cipher(s, 21);\n}\n\n\n",
+        1.108,
+        0.974,
+        0.936,
+        1.009,
+        0.977,
+        28
+    ]
+}

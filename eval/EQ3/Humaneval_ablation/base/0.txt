@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool has_close_elements(vector<float> numbers, float threshold){\nint i,j;\n    \n    for (i=0;i<numbers.size();i++)\n    for (j=i+1;j<numbers.size();j++)\n    if (abs(numbers[i]-numbers[j])<threshold)\n    return true;\n\n    return false;\n}",
+        27.965,
+        0.353,
+        891549761.2,
+        20953.6,
+        2.831,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nbool has_close_elements(vector<float> numbers, float threshold) {\n    \n    sort(numbers.begin(), numbers.end());\n    \n    \n    int size = numbers.size();\n    \n    \n    for (int i = 0; i < size - 1; i++) {\n        if (numbers[i+1] - numbers[i] < threshold) {\n            return true;\n        }\n    }\n    return false;\n}\n\n",
+        2.831,
+        2.795,
+        64.788,
+        0.994,
+        2.795,
+        21
+    ]
+}

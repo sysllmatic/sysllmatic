@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> minPath(vector<vector<int>> grid, int k){\nint i,j,x,y,min;\n    for (i=0;i<grid.size();i++)\n        for (j=0;j<grid[i].size();j++)\n            if (grid[i][j]==1) {\n                x=i;y=j;\n            }\n    min=grid.size()*grid.size();\n    if (x>0 and grid[x-1][y]<min) min=grid[x-1][y];\n    if (x<grid.size()-1 and grid[x+1][y]<min) min=grid[x+1][y];\n    if (y>0 and grid[x][y-1]<min) min=grid[x][y-1];\n    if (y<grid.size()-1 and grid[x][y+1]<min) min=grid[x][y+1];\n    vector<int> out={};\n    for (i=0;i<k;i++)\n    if (i%2==0) out.push_back(1);\n    else out.push_back(min);\n    return out;\n}",
+        4.839,
+        0.123,
+        6361666.2,
+        21160.0,
+        8.113,
+        24
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> minPath(const vector<vector<int>>& grid, int k) {\n    int x = -1, y = -1;\n    int gridSize = grid.size();\n    int min = gridSize * gridSize;\n\n    \n    for (int i = 0; i < gridSize && x == -1; ++i) {\n        for (int j = 0; j < grid[i].size(); ++j) {\n            if (grid[i][j] == 1) {\n                x = i;\n                y = j;\n                break;\n            }\n        }\n    }\n\n    \n    if (x > 0) min = std::min(min, grid[x - 1][y]);\n    if (x < gridSize - 1) min = std::min(min, grid[x + 1][y]);\n    if (y > 0) min = std::min(min, grid[x][y - 1]);\n    if (y < gridSize - 1) min = std::min(min, grid[x][y + 1]);\n\n    \n    vector<int> out;\n    for (int i = 0; i < k; ++i) {\n        out.push_back(i % 2 == 0 ? 1 : min);\n    }\n\n    return out;\n}\n\n",
+        1.038,
+        0.947,
+        1.123,
+        1.008,
+        0.948,
+        36
+    ]
+}

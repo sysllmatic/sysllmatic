@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> even_odd_palindrome(int n){\nint num1=0,num2=0;\n    for (int i=1;i<=n;i++)\n    {\n        string w=to_string(i);\n        string p(w.rbegin(),w.rend());\n        if (w==p and i%2==1) num1+=1;\n        if (w==p and i%2==0) num2+=1;\n            \n    }\n    return {num2,num1};\n}",
+        4.942,
+        0.128,
+        7952562.8,
+        20976.0,
+        7.826,
+        19
+    ],
+    "1": [
+        "#include <vector>\n#include <cmath>\n#include <string>\nusing namespace std;\n\n\nbool is_palindrome(int num) {\n    int original = num, reversed = 0;\n    while (num > 0) {\n        int digit = num % 10;\n        reversed = reversed * 10 + digit;\n        num /= 10;\n    }\n    return original == reversed;\n}\n\nvector<int> even_odd_palindrome(int n) {\n    int num1 = 0, num2 = 0;\n    for (int i = 1; i <= n; ++i) {\n        if (is_palindrome(i)) {  \n            if (i % 2 == 0) {\n                num2 += 1;  \n            } else {\n                num1 += 1;  \n            }\n        }\n    }\n    return {num2, num1};\n}",
+        1.088,
+        1.055,
+        1.704,
+        0.996,
+        1.052,
+        29
+    ],
+    "2": [
+        "#include <vector>\n#include <thread>\n#include <atomic>\n#include <cmath>\nusing namespace std;\n\nbool is_palindrome(int num) {\n    if (num < 10) return true;  \n    if (num % 10 == 0 && num != 0) return false;  \n    int original = num, reversed = 0;\n    while (num > 0) {\n        int digit = num % 10;\n        reversed = reversed * 10 + digit;\n        num /= 10;\n    }\n    return original == reversed;\n}\n\nvoid count_palindromes(int start, int end, atomic<int>& num1, atomic<int>& num2) {\n    for (int i = start; i <= end; ++i) {\n        if (is_palindrome(i)) {\n            if (i % 2 == 0) {\n                ++num2;  \n            } else {\n                ++num1;  \n            }\n        }\n    }\n}\n\nvector<int> even_odd_palindrome(int n) {\n    atomic<int> num1(0), num2(0);\n    const int num_threads = 4;  \n    vector<thread> threads;\n    int chunk_size = (n + num_threads - 1) / num_threads;  \n\n    for (int i = 0; i < num_threads; ++i) {\n        int start = i * chunk_size + 1;\n        int end = min((i + 1) * chunk_size, n);\n        threads.emplace_back(count_palindromes, start, end, ref(num1), ref(num2));\n    }\n\n    for (auto& t : threads) {\n        t.join();\n    }\n\n    return {num2.load(), num1.load()};\n}",
+        1.037,
+        1.017,
+        1.122,
+        0.998,
+        1.014,
+        48
+    ]
+}

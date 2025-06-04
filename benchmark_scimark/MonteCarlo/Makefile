@@ -4,7 +4,6 @@ include ../../.env
 # sudo update-alternatives --config java
 # sudo update-alternatives --config javac
 
-
 JAVAC = javac
 JAVA = java
 JFLAGS = -d . 
@@ -13,7 +12,7 @@ SRCS = *.java
 BENCHMARK_CLASS = jnt/scimark2/MonteCarloBenchmark	
 
 MAIN_CLASS = jnt/scimark2/MonteCarlo
-OPTIMIZED_CLASS = -cp /home/hpeng/sootup-extractor/sootOutput:. com/example/MonteCarlo
+OPTIMIZED_CLASS = jnt/scimark2/MonteCarloOptimized
 
 compile:
 	rm -rf *.class
@@ -28,12 +27,12 @@ run_optimized:
 
 measure:
 	sudo modprobe msr
-	sudo ${USER_PREFIX}/RAPL/main "$(JAVA) $(MAIN_CLASS)" java MonteCarlo
+	sudo ${USER_PREFIX}/MEASURE/main "$(JAVA) $(MAIN_CLASS)" java MonteCarlo
 	sudo chmod -R 777 ${USER_PREFIX}/src/runtime_logs/java.csv
 
 measure_optimized:
 	sudo modprobe msr
-	sudo ${USER_PREFIX}/RAPL/main "$(JAVA) $(OPTIMIZED_CLASS)" java MonteCarlo_soot
+	sudo ${USER_PREFIX}/MEASURE/main "$(JAVA) $(OPTIMIZED_CLASS)" java MonteCarlo_optimized
 	sudo chmod -R 777 ${USER_PREFIX}/src/runtime_logs/java.csv
 
 measure_mflops:

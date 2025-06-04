@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring intersection( vector<int> interval1,vector<int> interval2){\nint inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n    if (l<2) return \"NO\";\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}",
+        4.567,
+        0.131,
+        4742718.6,
+        21136.8,
+        7.639,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring intersection(const vector<int>& interval1, const vector<int>& interval2) {\n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n\n    \n    if (l < 2) return \"NO\";\n\n    \n    if (l == 2) return \"YES\"; \n    if (l % 2 == 0) return \"NO\"; \n    for (int i = 3; i * i <= l; i += 2) {\n        if (l % i == 0) return \"NO\";\n    }\n\n    return \"YES\";\n}\n\n",
+        1.02,
+        0.999,
+        0.936,
+        1.003,
+        0.998,
+        24
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint vowels_count(string s){\nstring vowels=\"aeiouAEIOU\";\n    int count=0;\n    for (int i=0;i<s.length();i++)\n    if (find(vowels.begin(),vowels.end(),s[i])!=vowels.end())\n        count+=1;\n    if (s[s.length()-1]=='y' or s[s.length()-1]=='Y') count+=1;\n    return count;\n}",
+        4.508,
+        0.136,
+        16980562.8,
+        21124.0,
+        7.341,
+        15
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <set>\n#include <string>\nusing namespace std;\n\nint vowels_count(const string& s) {\n    const set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    int count = 0;\n    int length = s.length();\n    for (int i = 0; i < length; i++) {\n        if (vowels.find(s[i]) != vowels.end() || (i == length - 1 && (s[i] == 'y' || s[i] == 'Y'))) {\n            count++;\n        }\n    }\n    return count;\n}",
+        0.966,
+        0.96,
+        0.848,
+        1.003,
+        0.96,
+        16
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <omp.h>\nusing namespace std;\n\nint vowels_count(const string& s) {\n    bool isVowel[128] = {false};\n    isVowel['a'] = isVowel['e'] = isVowel['i'] = isVowel['o'] = isVowel['u'] = true;\n    isVowel['A'] = isVowel['E'] = isVowel['I'] = isVowel['O'] = isVowel['U'] = true;\n\n    int count = 0;\n    int length = s.length();\n\n    #pragma omp parallel for reduction(+:count)\n    for (int i = 0; i < length; i++) {\n        if (isVowel[s[i]] || (i == length - 1 && (s[i] == 'y' || s[i] == 'Y'))) {\n            count++;\n        }\n    }\n    return count;\n}",
+        0.98,
+        1.008,
+        0.354,
+        0.998,
+        1.008,
+        21
+    ]
+}

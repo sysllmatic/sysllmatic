@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool monotonic(vector<float> l){\nint incr,decr;\n    incr=0;decr=0;\n    for (int i=1;i<l.size();i++)\n    {\n        if (l[i]>l[i-1]) incr=1;\n        if (l[i]<l[i-1]) decr=1;\n    }\n    if (incr+decr==2) return false;\n    return true;\n}",
+        4.796,
+        0.137,
+        38312855.4,
+        21064.0,
+        7.302,
+        17
+    ],
+    "1": [
+        "#include <vector>\nusing namespace std;\n#include <algorithm>\n\nbool monotonic(vector<float> l) {\n    bool incr = false, decr = false;\n    for (int i = 1; i < l.size(); i++) {\n        if (l[i] > l[i - 1]) incr = true;\n        if (l[i] < l[i - 1]) decr = true;\n        if (incr && decr) return false;  \n    }\n    return true;  \n}\n",
+        1.002,
+        0.978,
+        1.054,
+        0.998,
+        0.976,
+        13
+    ],
+    "2": [
+        "#include <vector>\nusing namespace std;\n#include <algorithm>\n\nbool monotonic(const vector<float>& l) {\n    bool incr = false, decr = false;\n    for (size_t i = 1; i < l.size(); ++i) {\n        if (l[i] > l[i - 1]) incr = true;\n        if (l[i] < l[i - 1]) decr = true;\n        if (incr && decr) return false;  \n    }\n    return true;  \n}\n",
+        0.967,
+        0.986,
+        1.062,
+        1.005,
+        0.985,
+        13
+    ]
+}

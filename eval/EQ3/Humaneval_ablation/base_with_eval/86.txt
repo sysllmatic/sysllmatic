@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring anti_shuffle(string s){\nstring out=\"\";\n    string current=\"\";\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n    if (s[i]==' ')\n    {\n        sort(current.begin(),current.end());\n        if (out.length()>0) out=out+' ';\n        out=out+current;\n        current=\"\";\n    }\n    else current=current+s[i];\n    return out;\n}",
+        4.73,
+        0.137,
+        13715166.8,
+        21028.8,
+        7.306,
+        21
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <algorithm>\n#include <string>\n\nusing namespace std;\n\nstring anti_shuffle(const string &s) {\n    ostringstream out;\n    string current;\n    for (auto it = s.begin(); it != s.end(); ++it) {\n        if (*it == ' ') {\n            sort(current.begin(), current.end());\n            if (!out.str().empty()) out << ' ';\n            out << current;\n            current.clear();\n        } else {\n            current += *it;\n        }\n    }\n\n    \n    if (!current.empty()) {\n        sort(current.begin(), current.end());\n        if (!out.str().empty()) out << ' ';\n        out << current;\n    }\n\n    return out.str();\n}\n\n",
+        0.973,
+        1.004,
+        0.99,
+        0.994,
+        1.002,
+        31
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nstring anti_shuffle(const string &s) {\n    vector<string> words;\n    string current;\n    for (char c : s) {\n        if (c == ' ') {\n            if (!current.empty()) {\n                sort(current.begin(), current.end());\n                words.push_back(current);\n                current.clear();\n            }\n        } else {\n            current += c;\n        }\n    }\n    \n    if (!current.empty()) {\n        sort(current.begin(), current.end());\n        words.push_back(current);\n    }\n\n    \n    string result;\n    for (size_t i = 0; i < words.size(); ++i) {\n        if (i > 0) result += \" \";\n        result += words[i];\n    }\n    return result;\n}\n\n",
+        0.984,
+        0.991,
+        1.012,
+        1.002,
+        0.989,
+        36
+    ]
+}

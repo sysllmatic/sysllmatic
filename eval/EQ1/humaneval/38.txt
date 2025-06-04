@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encode_cyclic(string s){ \n    int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x.substr(1)+x[0];\n        output=output+x;\n    }\n    return output;\n}\n\n\nstring decode_cyclic(string s){ \n int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x[2]+x.substr(0,2);\n        output=output+x;\n    }\n    return output;\n}",
+        4.676,
+        0.13,
+        23498671.4,
+        20961.6,
+        7.677,
+        34
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\nusing namespace std;\n\nstring encode_cyclic(string s) {\n    int l = s.length();\n    string output;\n    output.reserve(l); \n    \n    for (int i = 0; i * 3 < l; i++) {\n        int start = i * 3;\n        if (start + 2 < l) {\n            output += s[start + 1];\n            output += s[start + 2];\n            output += s[start];\n        } else {\n            output += s.substr(start);\n        }\n    }\n    return output;\n}\n\nstring decode_cyclic(string s) {\n    int l = s.length();\n    string output;\n    output.reserve(l); \n\n    for (int i = 0; i * 3 < l; i++) {\n        int start = i * 3;\n        if (start + 2 < l) {\n            output += s[start + 2];\n            output += s[start];\n            output += s[start + 1];\n        } else {\n            output += s.substr(start);\n        }\n    }\n    return output;\n}\n\n",
+        1.052,
+        0.934,
+        3.73,
+        0.99,
+        0.935,
+        40
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstring encode_cyclic(string s) {\n    int l = s.length();\n    vector<char> output;\n    output.reserve(l); \n    \n    for (int i = 0; i * 3 < l; i++) {\n        int start = i * 3;\n        if (start + 2 < l) {\n            output.push_back(s[start + 1]);\n            output.push_back(s[start + 2]);\n            output.push_back(s[start]);\n        } else {\n            output.insert(output.end(), s.begin() + start, s.end());\n        }\n    }\n    return string(output.begin(), output.end());\n}\n\nstring decode_cyclic(string s) {\n    int l = s.length();\n    vector<char> output;\n    output.reserve(l); \n\n    for (int i = 0; i * 3 < l; i++) {\n        int start = i * 3;\n        if (start + 2 < l) {\n            output.push_back(s[start + 2]);\n            output.push_back(s[start]);\n            output.push_back(s[start + 1]);\n        } else {\n            output.insert(output.end(), s.begin() + start, s.end());\n        }\n    }\n    return string(output.begin(), output.end());\n}\n\n",
+        1.023,
+        0.987,
+        2.797,
+        0.998,
+        0.987,
+        41
+    ]
+}

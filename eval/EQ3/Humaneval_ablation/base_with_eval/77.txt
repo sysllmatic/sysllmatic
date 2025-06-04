@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool iscuber(int a){\nfor (int i=0;i*i*i<=abs(a);i++)\n        if (i*i*i==abs(a)) return true;\n    return false;\n}",
+        6.813,
+        0.118,
+        2853964.2,
+        21120.0,
+        8.453,
+        10
+    ],
+    "1": [
+        "#include <math.h>\n\nbool iscuber(int a) {\n    int abs_a = abs(a);\n    int root = round(cbrt(abs_a));\n    return root * root * root == abs_a;\n}",
+        0.863,
+        0.966,
+        0.875,
+        0.996,
+        0.968,
+        7
+    ],
+    "2": [
+        "#include <math.h>\n\nbool iscuber(int a) {\n    int abs_a = abs(a);\n    int low = 0, high = abs_a, mid;\n    \n    while (low <= high) {\n        mid = low + (high - low) / 2; \n        long long cube = static_cast<long long>(mid) * mid * mid; \n        \n        if (cube == abs_a) {\n            return true;\n        } else if (cube < abs_a) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return false;\n}",
+        1.124,
+        0.961,
+        1.034,
+        1.0,
+        0.962,
+        20
+    ]
+}

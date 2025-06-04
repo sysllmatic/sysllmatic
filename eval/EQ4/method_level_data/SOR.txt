@@ -1,0 +1,32 @@
+{
+    "0": [
+        "// Executes the Successive Over-Relaxation (SOR) algorithm.\npublic static void execute(double omega, double[][] G, long num_iterations) {\n    int M = G.length;\n    int N = G[0].length;\n    double omega_over_four = omega * 0.25;\n    double one_minus_omega = 1.0 - omega;\n    // Update interior points for each iteration.\n    int Mm1 = M - 1;\n    int Nm1 = N - 1;\n    for (long p = 0; p < num_iterations; p++) {\n        for (int i = 1; i < Mm1; i++) {\n            double[] Gi = G[i];\n            double[] Gim1 = G[i - 1];\n            double[] Gip1 = G[i + 1];\n            for (int j = 1; j < Nm1; j++) {\n                Gi[j] = omega_over_four * (Gim1[j] + Gip1[j] + Gi[j - 1] + Gi[j + 1]) + one_minus_omega * Gi[j];\n            }\n        }\n    }\n}",
+        112.73,
+        2.328,
+        10053948362.0,
+        45707.2,
+        0.429,
+        1805.96,
+        20
+    ],
+    "1": [
+        "package jnt.scimark2;\npublic static void execute(double omega, double[][] G, long num_iterations) {\n    int M = G.length;\n    int N = G[0].length;\n    double omega_over_four = omega * 0.25;\n    double one_minus_omega = 1.0 - omega;\n    int Mm1 = M - 1;\n    int Nm1 = N - 1;\n\n    \n    int blockSize = 16; \n\n    for (long p = 0; p < num_iterations; p++) {\n        for (int ii = 1; ii < Mm1; ii += blockSize) {\n            for (int jj = 1; jj < Nm1; jj += blockSize) {\n                for (int i = ii; i < Math.min(ii + blockSize, Mm1); i++) {\n                    double[] Gi = G[i];\n                    double[] Gim1 = G[i - 1];\n                    double[] Gip1 = G[i + 1];\n                    for (int j = jj; j < Math.min(jj + blockSize, Nm1); j++) {\n                        double neighborSum = Gim1[j] + Gip1[j] + Gi[j - 1] + Gi[j + 1];\n                        Gi[j] = omega_over_four * neighborSum + one_minus_omega * Gi[j];\n                    }\n                }\n            }\n        }\n    }\n}",
+        1.169,
+        1.203,
+        1.223084639797315,
+        0.993047589251573,
+        1.20488344988345,
+        1.360096569137744,
+        28
+    ],
+    "2": [
+        "package jnt.scimark2;\nimport java.util.concurrent.ForkJoinPool;\nimport java.util.stream.IntStream;\n\npublic static void execute(double omega, double[][] G, long num_iterations) {\n    int M = G.length;\n    int N = G[0].length;\n    double omega_over_four = omega * 0.25;\n    double one_minus_omega = 1.0 - omega;\n    int Mm1 = M - 1;\n    int Nm1 = N - 1;\n    int blockSize = 16; \n\n    \n    ForkJoinPool pool = new ForkJoinPool();\n    pool.submit(() -> IntStream.range(0, (int)num_iterations).parallel().forEach(p -> {\n        for (int ii = 1; ii < Mm1; ii += blockSize) {\n            int iMax = Math.min(ii + blockSize, Mm1);\n            for (int jj = 1; jj < Nm1; jj += blockSize) {\n                int jMax = Math.min(jj + blockSize, Nm1);\n                for (int i = ii; i < iMax; i++) {\n                    double[] Gi = G[i];\n                    double[] Gim1 = G[i - 1];\n                    double[] Gip1 = G[i + 1];\n                    for (int j = jj; j < jMax; j++) {\n                        double neighborSum = Gim1[j] + Gip1[j] + Gi[j - 1] + Gi[j + 1];\n                        Gi[j] = omega_over_four * neighborSum + one_minus_omega * Gi[j];\n                    }\n                }\n            }\n        }\n    })).join();\n    pool.shutdown();\n}",
+        0.355,
+        1.003,
+        0.035899989014579366,
+        0.9140854985280942,
+        1.0037435897435898,
+        2.6927395955613633,
+        34
+    ]
+}

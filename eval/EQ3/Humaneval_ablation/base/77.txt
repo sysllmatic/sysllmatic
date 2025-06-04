@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool iscuber(int a){\nfor (int i=0;i*i*i<=abs(a);i++)\n        if (i*i*i==abs(a)) return true;\n    return false;\n}",
+        7.461,
+        0.131,
+        2724116.2,
+        21143.2,
+        7.646,
+        10
+    ],
+    "1": [
+        "#include <iostream>\n#include <cmath>\n\nbool iscuber(int a) {\n    int abs_a = std::abs(a);\n    int cube_root = static_cast<int>(std::cbrt(abs_a));\n    return (cube_root * cube_root * cube_root == abs_a);\n}\n\n\n\n",
+        0.973,
+        0.976,
+        0.584,
+        1.002,
+        0.974,
+        11
+    ]
+}

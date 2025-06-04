@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_array(vector<int> array){\nif (array.size()==0) return {};\n    if ((array[0]+array[array.size()-1]) %2==1)\n    {\n        sort(array.begin(),array.end());\n        return array;\n    }\n    else\n    {\n        sort(array.begin(),array.end());\n        vector<int> out={};\n        for (int i=array.size()-1;i>=0;i-=1)\n            out.push_back(array[i]);\n        return out;\n    }\n\n}",
+        5.167,
+        0.145,
+        37092435.8,
+        21176.8,
+        6.89,
+        23
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> sort_array(vector<int> array) {\n    if (array.empty()) return {};\n\n    sort(array.begin(), array.end());\n    \n    if ((array.front() + array.back()) % 2 == 0) {\n        \n        std::reverse(array.begin(), array.end());\n    }\n\n    return array;\n}",
+        1.056,
+        1.09,
+        0.99,
+        1.008,
+        1.089,
+        18
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> sort_array(vector<int> array) {\n    if (array.empty()) return {};\n\n    \n    sort(array.begin(), array.end());\n    \n    \n    int sum = array.front() + array.back();\n    if ((sum & 1) == 0) {\n        std::reverse(array.begin(), array.end());\n    }\n\n    return array;\n}",
+        0.483,
+        0.998,
+        0.985,
+        1.004,
+        0.998,
+        20
+    ]
+}

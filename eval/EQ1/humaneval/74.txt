@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> total_match(vector<string> lst1,vector<string> lst2){\nint num1,num2,i;\n    num1=0;num2=0;\n    for (i=0;i<lst1.size();i++)\n        num1+=lst1[i].length();\n    for (i=0;i<lst2.size();i++)\n        num2+=lst2[i].length();\n    if (num1>num2) return lst2;\n    return lst1;\n}",
+        7.02,
+        0.179,
+        159109670.2,
+        65328.0,
+        5.57,
+        17
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <string>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nvector<string> total_match(vector<string> lst1, vector<string> lst2) {\n    int num1 = 0, num2 = 0;\n    int max_size = max(lst1.size(), lst2.size());\n    for (int i = 0; i < max_size; i++) {\n        if (i < lst1.size()) {\n            num1 += lst1[i].length();\n            \n            if (num1 > num2 + (lst2.size() - i) * 100) return lst2;\n        }\n        if (i < lst2.size()) {\n            num2 += lst2[i].length();\n            \n            if (num2 > num1 + (lst1.size() - i) * 100) return lst1;\n        }\n    }\n    return num1 > num2 ? lst2 : lst1;\n}",
+        0.964,
+        0.999,
+        0.842,
+        1.0,
+        1.001,
+        25
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <algorithm>\n#include <numeric>  \n#include <thread>\n#include <future>\n\nusing namespace std;\n\nsize_t compute_total_length(const vector<string>& lst) {\n    return accumulate(lst.begin(), lst.end(), size_t(0), [](size_t sum, const string& str) {\n        return sum + str.length();\n    });\n}\n\nvector<string> total_match(vector<string> lst1, vector<string> lst2) {\n    \n    auto future1 = async(compute_total_length, lst1);\n    auto future2 = async(compute_total_length, lst2);\n\n    size_t num1 = future1.get();\n    size_t num2 = future2.get();\n\n    \n    return num1 > num2 ? lst2 : lst1;\n}\n\n",
+        0.835,
+        0.863,
+        0.542,
+        0.854,
+        0.865,
+        28
+    ]
+}

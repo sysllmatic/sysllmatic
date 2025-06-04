@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool below_zero(vector<int> operations){\nint num=0;\n    for (int i=0;i<operations.size();i++)\n    {\n        num+=operations[i];\n        if (num<0) return true;\n    }\n    return false;\n}",
+        8.538,
+        0.117,
+        6990406.4,
+        20997.6,
+        8.556,
+        15
+    ],
+    "1": [
+        "#include <vector>\n\nbool below_zero(const std::vector<int>& operations) {\n    int num = 0;\n    for (int i = 0; i < operations.size(); i++) {\n        num += operations[i];\n        if (num < 0) return true;\n    }\n    return false;\n}\n\n",
+        0.961,
+        0.911,
+        0.944,
+        1.001,
+        0.91,
+        11
+    ]
+}

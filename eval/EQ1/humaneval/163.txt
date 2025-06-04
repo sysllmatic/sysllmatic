@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> generate_integers(int a,int b){\nint m;\n    if (b<a)\n    {\n        m=a;a=b;b=m;\n    }\n\n    vector<int> out={};\n    for (int i=a;i<=b;i++)\n    if (i<10 and i%2==0) out.push_back(i);\n    return out;\n}",
+        4.454,
+        0.136,
+        4920804.2,
+        21012.8,
+        7.359,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>  \nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    if (b < a) {\n        std::swap(a, b);\n    }\n\n    vector<int> out;\n    out.reserve((b - a) / 2);  \n\n    for (int i = (a < 10 ? a : 10); i <= b && i < 10; i += 2) {\n        if (i % 2 == 0) {\n            out.push_back(i);\n        }\n    }\n    return out;\n}",
+        0.959,
+        1.027,
+        1.088,
+        0.995,
+        1.025,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>  \nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    if (b < a) {\n        std::swap(a, b);\n    }\n\n    static const int even_numbers_below_10[] = {2, 4, 6, 8};\n    vector<int> out;\n    for (int i : even_numbers_below_10) {\n        if (i >= a && i <= b) {\n            out.push_back(i);\n        }\n    }\n    return out;\n}",
+        1.001,
+        1.064,
+        1.119,
+        0.999,
+        1.062,
+        19
+    ]
+}

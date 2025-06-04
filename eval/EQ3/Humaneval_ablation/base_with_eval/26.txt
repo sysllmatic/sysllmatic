@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> remove_duplicates(vector<int> numbers){\nvector<int> out={};\n    vector<int> has1={};\n    vector<int> has2={};\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (find(has2.begin(),has2.end(),numbers[i])!=has2.end()) continue;\n        if (find(has1.begin(),has1.end(),numbers[i])!=has1.end())\n        {\n\n            has2.push_back(numbers[i]);\n        }\n        else has1.push_back(numbers[i]);\n    }\n    for (int i=0;i<numbers.size();i++)\n    if (find(has2.begin(),has2.end(),numbers[i])==has2.end())\n        out.push_back(numbers[i]);\n    return out;\n\n\n}",
+        64.816,
+        1.235,
+        4982426027.2,
+        21072.8,
+        0.809,
+        27
+    ],
+    "1": [
+        "#include <iostream>\n#include <unordered_set>\n#include <vector>\nusing namespace std;\n\nvector<int> remove_duplicates(const vector<int>& numbers) {\n    unordered_set<int> seen;\n    unordered_set<int> duplicates;\n    vector<int> out;\n\n    for (int num : numbers) {\n        if (seen.find(num) != seen.end()) {\n            duplicates.insert(num);\n        } else {\n            seen.insert(num);\n        }\n    }\n\n    for (int num : numbers) {\n        if (duplicates.find(num) == duplicates.end()) {\n            out.push_back(num);\n        }\n    }\n\n    return out;\n}\n\n",
+        11.568,
+        7.198,
+        68.386,
+        1.0,
+        7.197,
+        27
+    ],
+    "2": [
+        "#include <iostream>\n#include <unordered_map>\n#include <vector>\nusing namespace std;\n\nvector<int> remove_duplicates(const vector<int>& numbers) {\n    unordered_map<int, int> countMap;\n    vector<int> out;\n\n    \n    for (int num : numbers) {\n        countMap[num]++;\n    }\n\n    \n    for (int num : numbers) {\n        if (countMap[num] == 1) {\n            out.push_back(num);\n        }\n    }\n\n    return out;\n}\n\n",
+        12.648,
+        7.709,
+        88.374,
+        0.998,
+        7.707,
+        24
+    ]
+}
