@@ -17,6 +17,7 @@ We evaluate the effectiveness of our approach using two primary quantitative met
 - **Interpretation**:
   - A value of `1x` indicates no change.
   - Values greater than `1x` indicate performance improvement.
+  - Values less than `1x` indicate performance degradation.
 - **Correctness Requirement**: Only **correct** programs (i.e., those that pass all test cases) are included in this calculation.
 
 ### 2. %Optimized (`%opt`)
