@@ -1,0 +1,10 @@
+file_name,functions_compared,functions_changed
+BitArray.java,27,13
+BitMatrix.java,31,9
+Code39Reader.java,17,16
+Code93Reader.java,17,17
+Detector.java,13,10
+GlobalHistogramBinarizer.java,6,1
+HybridBinarizer.java,7,4
+OneDReader.java,7,3
+AVERAGE,15.625000,9.125000

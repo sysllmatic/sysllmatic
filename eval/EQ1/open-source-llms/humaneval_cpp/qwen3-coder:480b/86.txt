@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring anti_shuffle(string s){\nstring out=\"\";\n    string current=\"\";\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n    if (s[i]==' ')\n    {\n        sort(current.begin(),current.end());\n        if (out.length()>0) out=out+' ';\n        out=out+current;\n        current=\"\";\n    }\n    else current=current+s[i];\n    return out;\n}",
+        5.02,
+        0.105,
+        13957452.4,
+        20528.0,
+        9.5,
+        21
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring anti_shuffle(string s){\n    string out=\"\";\n    string current=\"\";\n    s=s+' ';\n    \n    \n    out.reserve(s.length());\n    \n    for (int i=0;i<s.length();i++) {\n        if (s[i]==' ') {\n            \n            int count[256] = {0}; \n            \n            \n            for (char c : current) {\n                count[c]++;\n            }\n            \n            \n            current.clear();\n            for (int j = 0; j < 256; j++) {\n                while (count[j] > 0) {\n                    current += static_cast<char>(j);\n                    count[j]--;\n                }\n            }\n            \n            \n            if (!out.empty()) {\n                out += ' ';\n            }\n            out += current;\n            current.clear();\n        } else {\n            current += s[i];\n        }\n    }\n    return out;\n}",
+        1.022,
+        1.025,
+        0.982,
+        1.005,
+        1.026,
+        46
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring anti_shuffle(string s){\n    string out = \"\";\n    out.reserve(s.length());\n    \n    int start = 0;\n    bool first_word = true;\n    \n    for (int i = 0; i <= s.length(); i++) {\n        if (i == s.length() || s[i] == ' ') {\n            if (i > start) { \n                \n                int count[256] = {0};\n                \n                \n                for (int j = start; j < i; j++) {\n                    count[static_cast<unsigned char>(s[j])]++;\n                }\n                \n                \n                if (!first_word) {\n                    out += ' ';\n                } else {\n                    first_word = false;\n                }\n                \n                \n                for (int c = 0; c < 256; c++) {\n                    while (count[c] > 0) {\n                        out += static_cast<char>(c);\n                        count[c]--;\n                    }\n                }\n            }\n            start = i + 1;\n        }\n    }\n    \n    return out;\n}",
+        1.0,
+        0.988,
+        0.997,
+        0.994,
+        0.989,
+        46
+    ]
+}

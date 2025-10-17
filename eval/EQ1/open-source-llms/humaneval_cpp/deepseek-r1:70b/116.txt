@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_array(vector<int> arr){\nvector<int> bin={};\n    int m;\n\n    for (int i=0;i<arr.size();i++)\n    {\n        int b=0,n=abs(arr[i]);\n        while (n>0)\n        {\n            b+=n%2;n=n/2;\n        }\n        bin.push_back(b);\n    }\n    for (int i=0;i<arr.size();i++)\n    for (int j=1;j<arr.size();j++)\n    if (bin[j]<bin[j-1] or (bin[j]==bin[j-1] and arr[j]<arr[j-1]))\n    {\n        m=arr[j];arr[j]=arr[j-1];arr[j-1]=m;\n        m=bin[j];bin[j]=bin[j-1];bin[j-1]=m;\n    }\n    return arr;\n}",
+        304.499,
+        5.712,
+        25584245711.6,
+        20940.0,
+        0.175,
+        28
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> sort_array(vector<int> arr) {\n    sort(arr.begin(), arr.end(), [](const int& a, const int& b) {\n        int count_a = 0, count_b = 0;\n        for (int num : {a, b}) {\n            int n = abs(num);\n            while (n > 0) {\n                if (n & 1) count_a += (num == a);\n                if (n & 1) count_b += (num == b);\n                n >>= 1;\n            }\n        }\n        return make_pair(count_a, a) < make_pair(count_b, b);\n    });\n    return arr;\n}\n",
+        44.513,
+        30.841,
+        153.188,
+        1.001,
+        30.825,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> sort_array(vector<int> arr) {\n    sort(arr.begin(), arr.end(), [](const int& a, const int& b) {\n        int count_a = 0, count_b = 0;\n        for (int num : {a, b}) {\n            int n = abs(num);\n            while (n > 0) {\n                if (n & 1) count_a += (num == a);\n                if (n & 1) count_b += (num == b);\n                n >>= 1;\n            }\n        }\n        return make_pair(count_a, a) < make_pair(count_b, b);\n    });\n    return arr;\n}\n",
+        45.938,
+        31.339,
+        153.425,
+        0.999,
+        31.323,
+        22
+    ]
+}

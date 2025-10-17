@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_prime(long long n){\nif (n<2) return false;\n    for (long long i=2;i*i<=n;i++)\n        if (n%i==0) return false;\n    return true;\n}",
+        4.656,
+        0.135,
+        3049200.0,
+        20841.6,
+        7.421,
+        11
+    ],
+    "1": [
+        "\n#include <iostream>\n#include <cmath>\n#include <cstdlib>\n#include <ctime>\n#include <random>\n\nusing namespace std;\n\n\nbool miller_rabin_test(long long a, long long d, int s, long long n);\nlong long pow_mod(long long base, long long exponent, long long mod);\n\nbool is_prime(long long n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0)\n        return false;\n\n    \n    long long d = n - 1;\n    int s_val = 0;\n    while (d % 2 == 0) {\n        d /= 2;\n        s_val++;\n    }\n\n    \n    static mt19937 rng(random_device{}());\n    uniform_int_distribution<long long> dist(2, n - 1);\n\n    const int iterations = 5; \n    for (int i = 0; i < iterations; ++i) {\n        long long a = dist(rng);\n        if (!miller_rabin_test(a, d, s_val, n))\n            return false;\n    }\n\n    return true;\n}\n\nbool miller_rabin_test(long long a, long long d, int s, long long n) {\n    long long x = pow_mod(a, d, n);\n    if (x == 1 || x == n - 1)\n        return true;\n\n    for (int j = 0; j < s - 1; ++j) {\n        \n        x = pow_mod(x, 2, n);\n        if (x == 1) return false;\n        if (x == n - 1) return true;\n    }\n\n    return false;\n}\n\nlong long pow_mod(long long base, long long exponent, long long mod) {\n    long long result = 1;\n    base = base % mod; \n    while (exponent > 0) {\n        if (exponent % 2 == 1)\n            result = (result * base) % mod;\n        exponent >>= 1; \n        base = (base * base) % mod;\n    }\n    return result;\n}\n\n\n",
+        0.871,
+        1.12,
+        0.615,
+        0.998,
+        1.116,
+        69
+    ],
+    "2": [
+        "\n#include <iostream>\n#include <cmath>\n#include <cstdlib>\n#include <random>\n\nusing namespace std;\n\n\nbool miller_rabin_test(long long a, long long d, int s, long long n);\nlong long pow_mod(long long base, long long exponent, long long mod);\n\nbool is_prime(long long n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0)\n        return false;\n\n    \n    long long d = n - 1;\n    int s_val = 0;\n    while (d % 2 == 0) {\n        d /= 2;\n        s_val++;\n    }\n\n    \n    static mt19937 rng(random_device{}());\n    uniform_int_distribution<long long> dist(2, n - 1);\n\n    const int iterations = 5; \n    for (int i = 0; i < iterations; ++i) {\n        long long a = dist(rng);\n        if (!miller_rabin_test(a, d, s_val, n))\n            return false;\n    }\n\n    return true;\n}\n\nbool miller_rabin_test(long long a, long long d, int s, long long n) {\n    \n    long long x = 1;\n    long long base = a % n;\n    while (d > 0) {\n        if (d % 2 == 1)\n            x = (x * base) % n;\n        d /= 2;\n        base = (base * base) % n;\n    }\n\n    if (x == 1 || x == n - 1)\n        return true;\n\n    for (int j = 0; j < s - 1; ++j) {\n        x = (x * x) % n;\n        if (x == 1) return false;\n        if (x == n - 1) return true;\n    }\n\n    return false;\n}\n\n\n",
+        0.941,
+        1.044,
+        0.578,
+        1.002,
+        1.041,
+        64
+    ]
+}

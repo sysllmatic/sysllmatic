@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool prime_length(string str){\nint l,i;\n    l=str.length();\n    if (l<2) return false;\n    for (i=2;i*i<=l;i++)\n    if (l%i==0) return false;\n    return true;\n}",
+        4.517,
+        0.136,
+        4647533.4,
+        20761.6,
+        7.328,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\nbool prime_length(string str) {\n    int l = str.length();\n    if (l < 2 || l == 4) return false;\n    if (l != 2 && l % 2 == 0)\n        return false;\n    for (int i = 3; i * i <= l; i += 2) {\n        if (l % i == 0)\n            return false;\n    }\n    return true;\n}\n",
+        0.984,
+        0.985,
+        0.925,
+        0.997,
+        0.987,
+        14
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\nbool isPrime(int n) {\n    if (n <= 1)\n        return false;\n    if (n <= 3)\n        return true;\n    if (n % 2 == 0 || n % 3 == 0)\n        return false;\n    int i = 5;\n    while (i * i <= n) {\n        if (n % i == 0)\n            return false;\n        if (n % (i + 2) == 0)\n            return false;\n        i += 6;\n    }\n    return true;\n}\n\nbool prime_length(string str) {\n    int l = str.length();\n    return isPrime(l);\n}\n",
+        0.97,
+        1.019,
+        0.971,
+        0.996,
+        1.021,
+        25
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint closest_integer(string value){\ndouble w;\n    w=atof(value.c_str());\n    return round(w);\n}",
+        4.795,
+        0.127,
+        4740145.4,
+        20766.4,
+        7.881,
+        11
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<stdexcept>\n\nusing namespace std;\n\nint closest_integer(string value) {\n    double w;\n    try {\n        w = stod(value);\n    } catch (const invalid_argument& e) {\n        throw invalid_argument(\"Invalid input string: \" + value);\n    } catch (const out_of_range& e) {\n        throw out_of_range(\"Out of range value: \" + value);\n    }\n    return round(w);\n}\n",
+        0.993,
+        1.021,
+        0.93,
+        0.994,
+        1.019,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<stdexcept>\n\nusing namespace std;\n\nint closest_integer(string value) {\n    double w;\n    try {\n        w = stod(value);\n    } catch (const invalid_argument& e) {\n        return 0;\n    } catch (const out_of_range& e) {\n        return 0;\n    }\n    return round(w);\n}\n",
+        1.046,
+        0.934,
+        1.008,
+        0.998,
+        0.932,
+        18
+    ]
+}

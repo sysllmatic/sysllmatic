@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<int> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        if (i%3==0) sum+=lst[i]*lst[i];\n        else if (i%4==0) sum+=lst[i]*lst[i]*lst[i];\n        else sum+=lst[i];\n    return sum;\n}",
+        5.121,
+        0.131,
+        13632935.0,
+        20767.2,
+        7.632,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nint sum_squares(vector<int> lst){\n    int sum = 0;\n    for (int i = 0; i < lst.size(); ++i) {\n        if (i % 3 == 0) {\n            sum += lst[i] * lst[i];\n        } else if (i % 4 == 0) {\n            sum += lst[i] * lst[i] * lst[i];\n        } else {\n            sum += lst[i];\n        }\n    }\n    return sum;\n}\n",
+        1.049,
+        0.967,
+        1.002,
+        0.998,
+        0.966,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nint sum_squares(vector<int> lst){\n    int sum = 0;\n    for (int i = 0; i < lst.size(); ++i) {\n        if (i % 3 == 0) {\n            sum += lst[i] * lst[i];\n        } else if (i % 4 == 0) {\n            sum += lst[i] * lst[i] * lst[i];\n        } else {\n            sum += lst[i];\n        }\n    }\n    return sum;\n}\n",
+        0.949,
+        1.051,
+        0.987,
+        0.995,
+        1.049,
+        19
+    ]
+}

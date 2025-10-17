@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique(vector<int> l){\nvector<int> out={};\n    for (int i=0;i<l.size();i++)\n        if (find(out.begin(),out.end(),l[i])==out.end())\n            out.push_back(l[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        65.566,
+        1.21,
+        5123630615.4,
+        20481.6,
+        0.826,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> unique(vector<int> l){\n    \n    unordered_set<int> seen;\n    vector<int> out = {};\n    \n    \n    size_t l_size = l.size();\n    \n    \n    for (size_t i = 0; i < l_size; i++) {\n        \n        \n        if (seen.insert(l[i]).second) {\n            out.push_back(l[i]);\n        }\n    }\n    \n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        11.264,
+        10.036,
+        64.875,
+        1.0,
+        10.028,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> unique(const vector<int>& l){\n    \n    unordered_set<int> seen;\n    \n    \n    \n    vector<int> out;\n    out.reserve(l.size());\n    \n    \n    for (const int& element : l) {\n        \n        \n        if (seen.insert(element).second) {\n            out.emplace_back(element);\n        }\n    }\n    \n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        11.529,
+        10.506,
+        64.477,
+        0.999,
+        10.497,
+        30
+    ]
+}

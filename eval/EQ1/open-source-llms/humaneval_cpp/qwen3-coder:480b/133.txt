@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<float> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        sum+=ceil(lst[i])*ceil(lst[i]);\n    return sum;\n}",
+        4.796,
+        0.098,
+        7581549.8,
+        20517.6,
+        10.167,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint sum_squares(vector<float> lst){\n    int sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0;\n    size_t i = 0;\n    size_t size = lst.size();\n    \n    \n    for (; i + 3 < size; i += 4) {\n        float val1 = ceil(lst[i]);\n        float val2 = ceil(lst[i+1]);\n        float val3 = ceil(lst[i+2]);\n        float val4 = ceil(lst[i+3]);\n        \n        sum1 += (int)(val1 * val1);\n        sum2 += (int)(val2 * val2);\n        sum3 += (int)(val3 * val3);\n        sum4 += (int)(val4 * val4);\n    }\n    \n    \n    for (; i < size; i++) {\n        float val = ceil(lst[i]);\n        sum1 += (int)(val * val);\n    }\n    \n    return sum1 + sum2 + sum3 + sum4;\n}",
+        0.979,
+        0.959,
+        1.011,
+        1.0,
+        0.961,
+        33
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint sum_squares(const vector<float>& lst){\n    int sum = 0;\n    for (float val : lst) {\n        float c = ceil(val);\n        sum += static_cast<int>(c * c);\n    }\n    return sum;\n}",
+        0.966,
+        0.93,
+        1.0,
+        1.0,
+        0.932,
+        15
+    ]
+}

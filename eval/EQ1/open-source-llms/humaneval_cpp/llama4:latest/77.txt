@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool iscuber(int a){\nfor (int i=0;i*i*i<=abs(a);i++)\n        if (i*i*i==abs(a)) return true;\n    return false;\n}",
+        4.981,
+        0.132,
+        2700094.8,
+        20979.2,
+        7.551,
+        10
+    ],
+    "1": [
+        "#include <cmath>\n#include <iostream>\n\nbool iscuber(int a) {\n    int n = std::abs(a);\n    int i = 0;\n    while (i * i * i < n) i++;\n    return i * i * i == n;\n}\n",
+        1.025,
+        1.055,
+        0.574,
+        1.005,
+        1.057,
+        9
+    ],
+    "2": [
+        "#include <iostream>\n\nbool iscuber(int a) {\n    if (a < 0) return iscuber(-a);\n    if (a == 0 || a == 1) return true;\n    int left = 1, right = a;\n    while (left <= right) {\n        long long mid = left + (right - left) / 2;\n        long long cube = (long long)mid * mid * mid;\n        if (cube == a) return true;\n        if (cube < a) left = mid + 1;\n        else right = mid - 1;\n    }\n    return false;\n}\n",
+        1.052,
+        1.037,
+        0.559,
+        1.007,
+        1.039,
+        15
+    ]
+}

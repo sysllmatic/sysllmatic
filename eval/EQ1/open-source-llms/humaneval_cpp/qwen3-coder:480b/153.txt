@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring Strongest_Extension(string class_name,vector<string> extensions){\nstring strongest=\"\";\n    int max=-1000;\n    for (int i=0;i<extensions.size();i++)\n    {\n        int strength=0;\n        for (int j=0;j<extensions[i].length();j++)\n        {\n            char chr=extensions[i][j];\n            if (chr>=65 and chr<=90) strength+=1;\n            if (chr>=97 and chr<=122) strength-=1;\n        }\n        if (strength>max) \n        {\n            max=strength;\n            strongest=extensions[i];\n        }\n    }\n    return class_name+'.'+strongest;\n}",
+        5.012,
+        0.103,
+        20021047.0,
+        20432.0,
+        9.671,
+        27
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring Strongest_Extension(string class_name,vector<string> extensions){\n    \n    static bool lookup_initialized = false;\n    static short char_strengths[256];\n    \n    if (!lookup_initialized) {\n        for (int i = 0; i < 256; i++) {\n            char_strengths[i] = 0;\n        }\n        \n        for (int i = 65; i <= 90; i++) {\n            char_strengths[i] = 1;\n        }\n        \n        for (int i = 97; i <= 122; i++) {\n            char_strengths[i] = -1;\n        }\n        lookup_initialized = true;\n    }\n    \n    string strongest = \"\";\n    short max_strength = -1000;\n    \n    for (const auto& extension : extensions) {\n        short strength = 0;\n        const size_t len = extension.length();\n        \n        \n        for (size_t j = 0; j < len; j++) {\n            strength += char_strengths[static_cast<unsigned char>(extension[j])];\n        }\n        \n        if (strength > max_strength) {\n            max_strength = strength;\n            strongest = extension;\n        }\n    }\n    \n    return class_name + '.' + strongest;\n}",
+        0.991,
+        0.981,
+        1.369,
+        0.993,
+        0.983,
+        48
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<array>\nusing namespace std;\n#include<stdlib.h>\n\n\nconst array<short, 256> create_char_strengths() {\n    array<short, 256> strengths;\n    for (int i = 0; i < 256; i++) {\n        strengths[i] = 0;\n    }\n    for (int i = 65; i <= 90; i++) {\n        strengths[i] = 1;\n    }\n    for (int i = 97; i <= 122; i++) {\n        strengths[i] = -1;\n    }\n    return strengths;\n}\n\nconst array<short, 256> char_strengths = create_char_strengths();\n\nstring Strongest_Extension(const string& class_name, const vector<string>& extensions){\n    string strongest;\n    short max_strength = -32768; \n    \n    for (const auto& extension : extensions) {\n        short strength = 0;\n        \n        for (unsigned char c : extension) {\n            strength += char_strengths[c];\n        }\n        \n        if (strength > max_strength) {\n            max_strength = strength;\n            strongest = extension;\n        }\n    }\n    \n    \n    string result;\n    result.reserve(class_name.length() + 1 + strongest.length());\n    result += class_name;\n    result += '.';\n    result += strongest;\n    return result;\n}",
+        0.997,
+        0.97,
+        0.84,
+        0.999,
+        0.972,
+        51
+    ]
+}

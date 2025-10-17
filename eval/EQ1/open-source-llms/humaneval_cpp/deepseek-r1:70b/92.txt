@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool any_int(float a,float b,float c){\nif (round(a)!=a) return false;\n    if (round(b)!=b) return false;\n    if (round(c)!=c) return false;\n    if (a+b==c or a+c==b or b+c==a) return true;\n    return false;\n}",
+        7.226,
+        0.116,
+        3427730.6,
+        20856.8,
+        8.597,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n\nbool any_int(float a, float b, float c) {\n    \n    if (a != round(a) || b != round(b) || c != round(c))\n        return false;\n    \n    int ai = static_cast<int>(round(a));\n    int bi = static_cast<int>(round(b));\n    int ci = static_cast<int>(round(c));\n\n    \n    return (ai + bi == ci) || (ai + ci == bi) || (bi + ci == ai);\n}",
+        1.008,
+        0.991,
+        1.059,
+        1.003,
+        0.992,
+        16
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n\nbool any_int(float a, float b, float c) {\n    \n    int ai = round(a);\n    int bi = round(b);\n    int ci = round(c);\n\n    \n    return (a == ai && b == bi && c == ci) && \n           ((ai + bi == ci) || (ai + ci == bi) || (bi + ci == ai));\n}",
+        1.154,
+        0.876,
+        1.077,
+        1.001,
+        0.877,
+        14
+    ]
+}

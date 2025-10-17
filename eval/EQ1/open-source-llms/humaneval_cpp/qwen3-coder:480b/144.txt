@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nbool simplify(string x,string n){\nint a,b,c,d,i;\n    for (i=0;i<x.size();i++)\n        if (x[i]=='/') \n        {\n            a=atoi(x.substr(0,i).c_str());\n            b=atoi(x.substr(i+1).c_str());\n        }\n    for (i=0;i<n.size();i++)\n        if (n[i]=='/') \n        {\n            c=atoi(n.substr(0,i).c_str());\n            d=atoi(n.substr(i+1).c_str());\n        }\n    if ((a*c)%(b*d)==0) return true;\n    return false;\n}",
+        4.928,
+        0.104,
+        4609683.6,
+        20465.6,
+        9.616,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n\n\nint gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\n\nvoid reduce_fraction(int &num, int &den) {\n    if (num == 0) {\n        den = 1;\n        return;\n    }\n    int g = gcd(abs(num), abs(den));\n    num /= g;\n    den /= g;\n}\n\nbool simplify(string x, string n){\n    int a, b, c, d;\n    \n    \n    if (sscanf(x.c_str(), \"%d/%d\", &a, &b) != 2 || \n        sscanf(n.c_str(), \"%d/%d\", &c, &d) != 2) {\n        return false; \n    }\n    \n    \n    reduce_fraction(a, b);\n    reduce_fraction(c, d);\n    \n    \n    int g1 = gcd(abs(a), abs(d));\n    int g2 = gcd(abs(c), abs(b));\n    \n    \n    return (b/g2) == 1 && (d/g1) == 1;\n}",
+        1.032,
+        1.033,
+        0.958,
+        0.999,
+        1.031,
+        46
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n\n\ninline int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a < 0 ? -a : a; \n}\n\n\ninline void reduce_fraction(int &num, int &den) {\n    if (num == 0) {\n        den = 1;\n        return;\n    }\n    \n    \n    if (den < 0) {\n        num = -num;\n        den = -den;\n    }\n    \n    int g = gcd(num, den);\n    num /= g;\n    den /= g;\n}\n\nbool simplify(string x, string n){\n    int a, b, c, d;\n    \n    \n    if (sscanf(x.c_str(), \"%d/%d\", &a, &b) != 2 || \n        sscanf(n.c_str(), \"%d/%d\", &c, &d) != 2 ||\n        b == 0 || d == 0) { \n        return false; \n    }\n    \n    \n    reduce_fraction(a, b);\n    reduce_fraction(c, d);\n    \n    \n    \n    int g1 = gcd(a, d); \n    int g2 = gcd(c, b); \n    \n    \n    a /= g1;\n    d /= g1;\n    c /= g2;\n    b /= g2;\n    \n    \n    return b == 1 && d == 1;\n}",
+        0.998,
+        1.018,
+        0.936,
+        0.998,
+        1.016,
+        60
+    ]
+}

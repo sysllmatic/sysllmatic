@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring decimal_to_binary(int decimal){\nstring out=\"\";\n    if (decimal==0) return \"db0db\";\n    while (decimal>0)\n    {\n        out=to_string(decimal%2)+out;\n        decimal=decimal/2;\n    }\n    out=\"db\"+out+\"db\";\n    return out;\n}",
+        4.702,
+        0.14,
+        4661579.4,
+        20934.4,
+        7.158,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n\nstring decimal_to_binary(int decimal){\n    string out;\n    out.reserve(32); \n\n    if (decimal == 0) return \"db0db\";\n\n    while (decimal > 0) {\n        out += to_string(decimal % 2);\n        decimal /= 2;\n    }\n\n    reverse(out.begin(), out.end());\n    out = \"db\" + out + \"db\";\n    return out;\n}",
+        1.012,
+        1.104,
+        1.041,
+        1.001,
+        1.1,
+        21
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n\nstring decimal_to_binary(int decimal){\n    string out;\n    out.reserve(32); \n\n    if (decimal == 0) return \"db0db\";\n\n    while (decimal > 0) {\n        out += (decimal % 2 == 0 ? '0' : '1');\n        decimal /= 2;\n    }\n\n    reverse(out.begin(), out.end());\n    out = \"db\" + out + \"db\";\n    return out;\n}",
+        0.984,
+        1.097,
+        0.924,
+        1.006,
+        1.093,
+        21
+    ]
+}

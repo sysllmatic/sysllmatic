@@ -1,0 +1,32 @@
+{
+    "0": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        for (long count = 0; count < Num_samples; count++) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n\n            if (x * x + y * y <= 1.0)\n                under_curve++;\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}\n",
+        821.141,
+        17.142,
+        77184258042.8,
+        44385.6,
+        0.058,
+        1115.0,
+        26
+    ],
+    "1": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    }\n\n    public static double integrate(long Num_samples) {\n\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        final int unrollFactor = 4; \n\n        for (long count = 0; count < Num_samples; count += unrollFactor) {\n            double x1 = R.nextDouble();\n            double y1 = R.nextDouble();\n            if (x1 * x1 + y1 * y1 <= 1.0)\n                under_curve++;\n\n            if (count + 1 < Num_samples) {\n                double x2 = R.nextDouble();\n                double y2 = R.nextDouble();\n                if (x2 * x2 + y2 * y2 <= 1.0)\n                    under_curve++;\n            }\n\n            if (count + 2 < Num_samples) {\n                double x3 = R.nextDouble();\n                double y3 = R.nextDouble();\n                if (x3 * x3 + y3 * y3 <= 1.0)\n                    under_curve++;\n            }\n\n            if (count + 3 < Num_samples) {\n                double x4 = R.nextDouble();\n                double y4 = R.nextDouble();\n                if (x4 * x4 + y4 * y4 <= 1.0)\n                    under_curve++;\n            }\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}",
+        0.994,
+        0.995,
+        0.9958025442510992,
+        0.9825213834139086,
+        1.001103448275862,
+        0.9992197309417041,
+        48
+    ],
+    "2": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    }\n\n    public static double integrate(long Num_samples) {\n\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        long count = 0;\n\n        while (count < Num_samples) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n            if (x * x + y * y <= 1.0)\n                under_curve++;\n            count++;\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}",
+        0.977,
+        0.994,
+        0.9947599667488903,
+        1.0004507997187009,
+        0.9999482758620689,
+        0.9940627802690584,
+        28
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_multiply_prime(int a){\nint num=0;\n    for (int i=2;i*i<=a;i++)\n    while (a%i==0 and a>i)\n    {\n        a=a/i;\n        num+=1;\n    }\n    if (num==2) return true;\n    return false; \n}",
+        4.633,
+        0.125,
+        2687552.2,
+        20825.6,
+        7.984,
+        16
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <algorithm>\n#include <cstdlib>\n\nbool is_multiply_prime(int a) {\n    int num = 0;\n    for (int i = 2; i * i <= a; ++i) {\n        while (a % i == 0 && a > i) {\n            a /= i;\n            num += 1;\n        }\n    }\n    return num == 2;\n}\n",
+        1.055,
+        1.077,
+        0.919,
+        0.995,
+        1.077,
+        15
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <algorithm>\n#include <cstdlib>\n\nbool is_multiply_prime(int a) {\n    int num = 0;\n    for (int i = 2; i * i <= a; ++i) {\n        while (a % i == 0 && a > i) {\n            a /= i;\n            num += 1;\n        }\n    }\n    return num == 2;\n}\n",
+        1.073,
+        0.941,
+        0.895,
+        1.001,
+        0.941,
+        15
+    ]
+}

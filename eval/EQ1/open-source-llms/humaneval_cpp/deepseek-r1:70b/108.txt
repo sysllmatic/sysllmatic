@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint count_nums(vector<int> n){\nint num=0;\n    for (int i=0;i<n.size();i++)\n        if (n[i]>0) num+=1;\n        else\n        {\n            int sum=0;\n            int w;\n            w=abs(n[i]);\n            while (w>=10)\n            {\n                sum+=w%10;\n                w=w/10;\n            }\n            sum-=w;\n            if (sum>0) num+=1;\n        }\n    return num;\n}",
+        4.949,
+        0.131,
+        8008389.8,
+        20922.4,
+        7.596,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint count_nums(vector<int> n) {\n    int num = 0;\n    for (size_t i = 0; i < n.size(); ++i) {\n        if (n[i] > 0) {\n            num += 1;\n        } else {\n            \n            int w_abs = -n[i];\n            int sum = 0;\n            while (w_abs >= 10) {\n                sum += w_abs % 10;\n                w_abs /= 10;\n            }\n            sum -= w_abs; \n            if (sum > 0) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}\n",
+        1.024,
+        1.013,
+        1.041,
+        1.002,
+        1.017,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint count_nums(vector<int> n) {\n    int num = 0;\n    for (const auto& elem : n) {\n        if (elem > 0 || \n            (elem <= 0 && static_cast<int>(log10(-elem)) + 1 >= 2)) { \n            ++num;\n        }\n    }\n    return num;\n}\n",
+        1.02,
+        1.019,
+        0.835,
+        1.0,
+        1.023,
+        17
+    ]
+}

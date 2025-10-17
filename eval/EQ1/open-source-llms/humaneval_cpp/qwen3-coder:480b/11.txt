@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring string_xor(string a,string b){\nstring output=\"\";\n    for (int i=0;(i<a.length() and i<b.length());i++)\n    {\n        if (i<a.length() and i<b.length())\n        {\n            if (a[i]== b[i]) \n            {\n                output+='0';\n            }  \n            else output+='1';\n        }\n        else\n        {\n            if (i>=a.length()) \n            {\n            output+=b[i];\n            }\n            else output+=a[i];\n        }\n    }\n    return output;\n}",
+        4.843,
+        0.1,
+        4699600.4,
+        20480.0,
+        9.938,
+        29
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring string_xor(string a,string b){\n    size_t min_len = min(a.length(), b.length());\n    string output;\n    output.reserve(max(a.length(), b.length())); \n    \n    \n    for (size_t i = 0; i < min_len; i++) {\n        output += (a[i] == b[i]) ? '0' : '1';\n    }\n    \n    \n    if (a.length() > min_len) {\n        output += a.substr(min_len);\n    } else if (b.length() > min_len) {\n        output += b.substr(min_len);\n    }\n    \n    return output;\n}",
+        1.004,
+        1.002,
+        0.992,
+        0.997,
+        1.007,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n#include<vector>\nstring string_xor(string a,string b){\n    size_t len_a = a.length();\n    size_t len_b = b.length();\n    size_t max_len = max(len_a, len_b);\n    \n    if (max_len == 0) return \"\";\n    \n    \n    std::vector<char> result(max_len);\n    \n    size_t i = 0;\n    \n    size_t min_len = min(len_a, len_b);\n    for (; i < min_len; i++) {\n        result[i] = (a[i] == b[i]) ? '0' : '1';\n    }\n    \n    \n    if (len_a > min_len) {\n        for (; i < max_len; i++) {\n            result[i] = a[i];\n        }\n    } else if (len_b > min_len) {\n        for (; i < max_len; i++) {\n            result[i] = b[i];\n        }\n    }\n    \n    \n    return string(result.begin(), result.end());\n}",
+        1.007,
+        0.999,
+        1.002,
+        1.003,
+        1.003,
+        38
+    ]
+}

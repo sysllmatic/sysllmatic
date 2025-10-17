@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring decimal_to_binary(int decimal){\nstring out=\"\";\n    if (decimal==0) return \"db0db\";\n    while (decimal>0)\n    {\n        out=to_string(decimal%2)+out;\n        decimal=decimal/2;\n    }\n    out=\"db\"+out+\"db\";\n    return out;\n}",
+        4.892,
+        0.102,
+        4596999.6,
+        20487.2,
+        9.786,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring decimal_to_binary(int decimal){\n    if (decimal == 0) return \"db0db\";\n    \n    string out;\n    int temp = decimal;\n    int bits = 0;\n    \n    \n    while (temp > 0) {\n        temp /= 2;\n        bits++;\n    }\n    \n    \n    out.reserve(bits + 4);\n    \n    \n    while (decimal > 0) {\n        out += (decimal % 2) ? '1' : '0';\n        decimal /= 2;\n    }\n    \n    \n    reverse(out.begin(), out.end());\n    \n    \n    return \"db\" + out + \"db\";\n}",
+        0.977,
+        0.949,
+        0.945,
+        0.99,
+        0.949,
+        34
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring decimal_to_binary(int decimal){\n    if (decimal == 0) return \"db0db\";\n    \n    \n    int bits = 32 - __builtin_clz(decimal);\n    \n    \n    string out;\n    out.reserve(bits + 4);\n    \n    \n    for (int i = bits - 1; i >= 0; i--) {\n        out += ((decimal >> i) & 1) ? '1' : '0';\n    }\n    \n    \n    out.insert(0, \"db\");\n    out.append(\"db\");\n    \n    return out;\n}",
+        1.0,
+        0.999,
+        0.971,
+        0.994,
+        0.999,
+        27
+    ]
+}

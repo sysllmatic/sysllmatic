@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring words_in_sentence(string sentence){\nstring out=\"\";\n    string current=\"\";\n    sentence=sentence+' ';\n\n    for (int i=0;i<sentence.size();i++)\n    if (sentence[i]!=' ') current=current+sentence[i];\n    else\n    {\n        bool isp=true;\n        int l=current.length();\n        if (l<2) isp=false;\n        for (int j=2;j*j<=l;j++)\n            if (l%j==0) isp=false;\n        if (isp) out=out+current+' ';\n        current=\"\";        \n    }\n    if (out.length()>0)\n        out.pop_back();\n    return out;\n}",
+        4.822,
+        0.128,
+        5231396.4,
+        20896.0,
+        7.828,
+        27
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\n#include<cmath>\nusing namespace std;\n\nstring words_in_sentence(string sentence) {\n    string out = \"\";\n    string current = \"\";\n    sentence += ' ';  \n\n    for (int i = 0; i < sentence.size(); ++i) {\n        if (sentence[i] != ' ') {\n            current += sentence[i];\n        } else {\n            bool is_prime = true;\n            int len = current.length();\n            if (len < 2) {\n                is_prime = false;\n            } else {\n                \n                if (len % 2 == 0) {  \n                    if (len != 2) {  \n                        is_prime = false;\n                    }\n                } else {\n                    \n                    for (int j = 3; j <= static_cast<int>(sqrt(len)); j += 2) {\n                        if (len % j == 0) {\n                            is_prime = false;\n                            break;\n                        }\n                    }\n                }\n            }\n            if (is_prime) {\n                out += current + ' ';\n            }\n            current.clear();\n        }\n    }\n\n    if (!out.empty()) {\n        out.pop_back();\n    }\n    return out;\n}\n",
+        1.049,
+        0.959,
+        1.114,
+        1.0,
+        0.956,
+        47
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n\nbool is_prime(int n) {\n    if (n <= 1) return false;\n    if (n == 2) return true;\n    if (n % 2 == 0) return false;\n    for (int j = 3; j * j <= n; j += 2) {\n        if (n % j == 0)\n            return false;\n    }\n    return true;\n}\n\nstring words_in_sentence(string sentence) {\n    string out = \"\";\n    string current = \"\";\n    sentence += ' ';  \n\n    for (int i = 0; i < sentence.size(); ++i) {\n        if (sentence[i] != ' ') {\n            current += sentence[i];\n        } else {\n            int len = current.length();\n            if (is_prime(len)) {\n                out += current + ' ';\n            }\n            current.clear();\n        }\n    }\n\n    if (!out.empty()) {\n        out.pop_back();\n    }\n    return out;\n}\n",
+        1.083,
+        0.966,
+        1.049,
+        0.999,
+        0.963,
+        37
+    ]
+}

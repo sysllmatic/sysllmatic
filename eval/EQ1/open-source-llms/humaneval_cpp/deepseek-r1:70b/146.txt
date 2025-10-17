@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint specialFilter(vector<int> nums){\nint num=0;\n    for (int i=0;i<nums.size();i++)\n    if (nums[i]>10)\n    {\n        string w=to_string(nums[i]);\n        if (w[0]%2==1 and w[w.length()-1]%2==1) num+=1;\n    }\n    return num;\n}",
+        4.697,
+        0.129,
+        10929520.6,
+        20950.4,
+        7.723,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nint specialFilter(vector<int> nums) {\n    int num = 0;\n    for (int n : nums) {\n        if (n > 10) {\n            \n            int firstDigit;\n            if (n >= 0) {\n                int len = static_cast<int>(log10(n));\n                firstDigit = n / static_cast<int>(pow(10, len));\n            } else {\n                continue; \n            }\n            \n            \n            int lastDigit = n % 10;\n            if ((firstDigit % 2 != 0) && (lastDigit % 2 != 0)) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}\n",
+        0.978,
+        0.957,
+        0.805,
+        0.997,
+        0.959,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nint specialFilter(vector<int> nums) {\n    int num = 0;\n    for (int n : nums) {\n        if (n > 10) {\n            \n            int temp = n;\n            while (temp >= 100) { \n                temp /= 10;\n            }\n            int firstDigit = temp / 10; \n            \n            int lastDigit = n % 10;\n            if ((firstDigit % 2 != 0) && (lastDigit % 2 != 0)) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}\n",
+        0.839,
+        1.007,
+        1.239,
+        1.0,
+        1.01,
+        25
+    ]
+}

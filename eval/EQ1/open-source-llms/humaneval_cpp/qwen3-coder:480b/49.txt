@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint modp(int n,int p){\nint out=1;\n    for (int i=0;i<n;i++)\n        out=(out*2)%p;\n    return out;\n}",
+        4.834,
+        0.1,
+        4461849.6,
+        20559.2,
+        9.997,
+        11
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint modp(int n, int p) {\n    if (p == 1) return 0;\n    long long out = 1;\n    long long base = 2 % p;\n    long long exp = n;\n    \n    while (exp > 0) {\n        if (exp % 2 == 1) {\n            out = (out * base) % p;\n        }\n        base = (base * base) % p;\n        exp /= 2;\n    }\n    return (int)out;\n}",
+        0.97,
+        0.954,
+        1.541,
+        1.006,
+        0.953,
+        21
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint modp(int n, int p) {\n    if (p == 1) return 0;\n    if (n == 0) return 1;\n    \n    long long out = 1;\n    long long base = 2;\n    long long exp = n;\n    \n    base %= p;  \n    \n    while (exp > 0) {\n        if (exp & 1) {  \n            out = (out * base) % p;\n        }\n        if (exp > 1) {  \n            base = (base * base) % p;\n        }\n        exp >>= 1;  \n    }\n    return (int)out;\n}",
+        0.989,
+        0.982,
+        1.595,
+        0.998,
+        0.981,
+        27
+    ]
+}

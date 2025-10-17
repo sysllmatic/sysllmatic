@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> common(vector<int> l1,vector<int> l2){\nvector<int> out={};\n    for (int i=0;i<l1.size();i++)\n        if (find(out.begin(),out.end(),l1[i])==out.end())\n            if (find(l2.begin(),l2.end(),l1[i])!=l2.end())\n                out.push_back(l1[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        84.445,
+        1.602,
+        6976849552.4,
+        20598.4,
+        0.624,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> common(vector<int> l1,vector<int> l2){\n    unordered_set<int> set2(l2.begin(), l2.end());\n    unordered_set<int> seen;\n    vector<int> out;\n    \n    for (int element : l1) {\n        if (set2.find(element) != set2.end() && seen.find(element) == seen.end()) {\n            out.push_back(element);\n            seen.insert(element);\n        }\n    }\n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        14.465,
+        13.458,
+        70.491,
+        1.002,
+        13.445,
+        23
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> common(vector<int> l1,vector<int> l2){\n    \n    if (l1.size() > l2.size()) {\n        swap(l1, l2);\n    }\n    \n    unordered_set<int> set2(l2.begin(), l2.end());\n    unordered_set<int> seen;\n    vector<int> out;\n    \n    for (int element : l1) {\n        if (set2.find(element) != set2.end() && seen.find(element) == seen.end()) {\n            out.push_back(element);\n            seen.insert(element);\n        }\n    }\n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        13.395,
+        12.99,
+        70.156,
+        1.001,
+        12.979,
+        28
+    ]
+}

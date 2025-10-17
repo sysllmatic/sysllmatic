@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint specialFilter(vector<int> nums){\nint num=0;\n    for (int i=0;i<nums.size();i++)\n    if (nums[i]>10)\n    {\n        string w=to_string(nums[i]);\n        if (w[0]%2==1 and w[w.length()-1]%2==1) num+=1;\n    }\n    return num;\n}",
+        4.877,
+        0.141,
+        10895330.8,
+        20872.0,
+        7.104,
+        17
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\n\nint specialFilter(const std::vector<int>& nums) {\n    int count = 0;\n    for (const auto& num : nums) {\n        if (num > 10) {\n            std::string strNum = std::to_string(num);\n            if (strNum[0] % 2 != 0 && strNum[strNum.size() - 1] % 2 != 0) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+        1.004,
+        1.065,
+        0.988,
+        0.999,
+        1.062,
+        15
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\n\nint specialFilter(const std::vector<int>& nums) {\n    int count = 0;\n    for (const auto& num : nums) {\n        if (num > 10) {\n            std::string strNum = std::to_string(num);\n            if (strNum[0] % 2 != 0 && strNum[strNum.length() - 1] % 2 != 0) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+        1.041,
+        1.029,
+        1.024,
+        1.004,
+        1.026,
+        15
+    ]
+}

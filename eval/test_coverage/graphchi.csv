@@ -1,0 +1,271 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+graphchi-java,edu.cmu.graphchi.apps.pig,PigALSMatrixFactorization.new EdgeProcessor() {...},32,0,2,0,4,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.pig,PigALSMatrixFactorization,622,0,54,0,100,0,41,0,14,0
+graphchi-java,edu.cmu.graphchi.apps.pig,PigWeightedPagerank.new EdgeProcessor() {...},13,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.pig,PigWeightedPagerank.new VertexProcessor() {...},14,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.pig,PigPagerank,165,0,8,0,37,0,18,0,14,0
+graphchi-java,edu.cmu.graphchi.apps.pig,PigWeightedPagerank,198,0,10,0,41,0,19,0,14,0
+graphchi-java,edu.cmu.graphchi.apps.pig,PigPagerank.new VertexProcessor() {...},14,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.pig,PigPagerank.new EdgeProcessor() {...},14,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.datablocks,ChiPointer,0,9,0,0,0,4,0,1,0,1
+graphchi-java,edu.cmu.graphchi.datablocks,FloatPair,61,9,14,0,7,4,9,1,2,1
+graphchi-java,edu.cmu.graphchi.datablocks,LongConverter,0,163,0,0,0,12,0,4,0,4
+graphchi-java,edu.cmu.graphchi.datablocks,DataBlockManager,77,81,10,2,15,19,10,5,4,5
+graphchi-java,edu.cmu.graphchi.datablocks,FloatPairConverter,0,154,0,0,0,16,0,4,0,4
+graphchi-java,edu.cmu.graphchi.datablocks,FloatConverter,0,80,0,0,0,10,0,4,0,4
+graphchi-java,edu.cmu.graphchi.datablocks,IntConverter,0,75,0,0,0,8,0,4,0,4
+graphchi-java,edu.cmu.graphchi.engine.auxdata,DegreeData,355,0,24,0,60,0,16,0,4,0
+graphchi-java,edu.cmu.graphchi.engine.auxdata,VertexDegree,13,9,0,0,1,4,1,1,1,1
+graphchi-java,edu.cmu.graphchi.engine.auxdata,VertexData.new Iterator() {...},34,0,2,0,5,0,5,0,4,0
+graphchi-java,edu.cmu.graphchi.engine.auxdata,VertexData.new Iterator() {...},37,0,2,0,5,0,5,0,4,0
+graphchi-java,edu.cmu.graphchi.engine.auxdata,VertexData,622,0,54,0,134,0,37,0,10,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank,29,0,0,0,0,0,7,0,7,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.initVertexData.1..anonfun.apply.new Serializable() {...},60,0,6,0,7,0,5,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.initVertexData.1..anonfun.apply.new Serializable() {...},11,0,2,0,1,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank.TopicInfo.,33,0,2,0,1,0,7,0,6,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank.TopicInfo,123,0,25,0,1,0,27,0,14,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.initialize.new Serializable() {...},31,0,0,0,3,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.initialize.new Serializable() {...},12,0,2,0,1,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.initVertexData.new Serializable() {...},15,0,0,0,1,0,3,0,3,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.initVertexData.new Serializable() {...},60,0,2,0,2,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.main.new Serializable() {...},60,0,0,0,6,0,3,0,3,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.main.new Serializable() {...},13,0,0,0,1,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.main.new Serializable() {...},32,0,0,0,2,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.main.new Serializable() {...},11,0,2,0,1,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.initVertexData.new Serializable() {...},78,0,4,0,6,0,4,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,SumAndNormalizer.,33,0,2,0,1,0,7,0,6,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank.TopicInfo.,33,0,2,0,1,0,7,0,6,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,SumAndNormalizer,164,0,25,0,2,0,32,0,19,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank.,312,0,2,0,45,0,11,0,10,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank,31,0,0,0,0,0,8,0,8,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank.,320,0,8,0,49,0,13,0,9,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.initVertexData.2..anonfun.apply.new Serializable() {...},11,0,2,0,1,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.initVertexData.2..anonfun.apply.new Serializable() {...},62,0,4,0,6,0,4,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},11,0,2,0,1,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},5,0,0,0,1,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},21,0,0,0,3,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},76,0,4,0,11,0,4,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},11,0,2,0,1,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},21,0,0,0,3,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},39,0,2,0,4,0,3,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,PersonalizedPagerank..anonfun.main.1..anonfun.apply.mcVI.sp.new Serializable() {...},37,0,0,0,1,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},69,0,0,0,6,0,3,0,3,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.new Serializable() {...},13,0,0,0,2,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank.TopicInfo,123,0,25,0,1,0,27,0,14,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.main.1..anonfun.apply.mcVI.sp.new Serializable() {...},37,0,0,0,1,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.initialize.new Serializable() {...},31,0,0,0,3,0,2,0,2,0
+graphchi-java,com.twitter.graphchi.topic_pagerank,WeightedPersonalizedPagerank..anonfun.initialize.new Serializable() {...},12,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.walks,IntWalkManager.new WalkSnapshot() {...},153,305,18,26,22,49,13,16,3,4
+graphchi-java,edu.cmu.graphchi.walks,IntWalkArray,0,13,0,0,0,5,0,3,0,3
+graphchi-java,edu.cmu.graphchi.walks,LongDrunkardDriver,47,0,2,0,8,0,4,0,3,0
+graphchi-java,edu.cmu.graphchi.walks,LocalWalkBuffer,61,0,0,0,14,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.walks,LongWalkManager.new WalkSnapshot() {...},153,305,18,26,22,49,13,16,3,4
+graphchi-java,edu.cmu.graphchi.walks,WeightedHopper,41,291,11,33,7,65,12,16,1,3
+graphchi-java,edu.cmu.graphchi.walks,LongWalkManager,214,498,21,29,42,78,16,27,4,14
+graphchi-java,edu.cmu.graphchi.walks,DrunkardDriver,359,0,20,0,90,0,24,0,14,0
+graphchi-java,edu.cmu.graphchi.walks,WalkDistributionAnalyzer,110,0,4,0,17,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.walks,WalkDistributionAnalyzer.new FilenameFilter() {...},11,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.walks,LongLocalWalkBuffer,94,0,4,0,20,0,5,0,3,0
+graphchi-java,edu.cmu.graphchi.walks,DumperThread,57,0,8,0,17,0,6,0,2,0
+graphchi-java,edu.cmu.graphchi.walks,IntLocalWalkBuffer,94,0,4,0,20,0,5,0,3,0
+graphchi-java,edu.cmu.graphchi.walks,IntDrunkardDriver,47,0,2,0,8,0,4,0,3,0
+graphchi-java,edu.cmu.graphchi.walks,IntDrunkardDriver.new IntDrunkardContext() {...},66,0,2,0,11,0,10,0,9,0
+graphchi-java,edu.cmu.graphchi.walks,LongDrunkardDriver.new LongDrunkardContext() {...},66,0,2,0,11,0,10,0,9,0
+graphchi-java,edu.cmu.graphchi.walks,IntDrunkardFactory,19,0,0,0,4,0,4,0,4,0
+graphchi-java,edu.cmu.graphchi.walks,WalkManager,120,155,10,6,24,31,14,6,7,5
+graphchi-java,edu.cmu.graphchi.walks,DrunkardJob,98,0,8,0,25,0,11,0,7,0
+graphchi-java,edu.cmu.graphchi.walks,LongWalkArray,0,13,0,0,0,5,0,3,0,3
+graphchi-java,edu.cmu.graphchi.walks,BucketsToSend,12,0,0,0,5,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.walks,DrunkardMobEngine.GraphChiDrunkardWrapper,192,0,18,0,45,0,17,0,8,0
+graphchi-java,edu.cmu.graphchi.walks,IntDumperThread,129,0,4,0,32,0,5,0,3,0
+graphchi-java,edu.cmu.graphchi.walks,LongDrunkardFactory,19,0,0,0,4,0,4,0,4,0
+graphchi-java,edu.cmu.graphchi.walks,LongDumperThread,129,0,4,0,32,0,5,0,3,0
+graphchi-java,edu.cmu.graphchi.walks,IntWalkManager,213,495,21,29,42,79,16,27,4,14
+graphchi-java,edu.cmu.graphchi.walks,DrunkardMobEngine,251,0,18,0,60,0,20,0,10,0
+graphchi-java,edu.cmu.graphchi.walks,WalkArray,0,3,0,0,0,1,0,1,0,1
+graphchi-java,edu.cmu.graphchi.apps.kcore,KCoreDecomposer.new EdgeProcessor() {...},6,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.kcore,KCoreDecomposer.new VertexProcessor() {...},6,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.kcore,GraphTransformer.new EdgeProcessor() {...},6,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.kcore,GraphTransformer.new VertexProcessor() {...},6,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.kcore,KCoreDecomposer,493,0,26,0,105,0,28,0,15,0
+graphchi-java,edu.cmu.graphchi.apps.kcore,GraphTransformer,257,0,12,0,54,0,19,0,13,0
+graphchi-java,edu.cmu.graphchi.walks.analysis,WalkPathAnalyzerTemplate.new FilenameFilter() {...},10,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.analysis,WalkPathAnalyzerTemplate.new Comparator() {...},24,0,4,0,4,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.analysis,WalkPathAnalyzerTemplate,430,0,36,0,81,0,25,0,7,0
+graphchi-java,edu.cmu.graphchi.walks.analysis,WalkPathAnalyzerTemplate.Walk,123,0,6,0,20,0,10,0,7,0
+graphchi-java,com.twitter.pers.bipartite,HITSSmallMem,495,0,36,0,104,0,36,0,18,0
+graphchi-java,com.twitter.pers.bipartite,HITSSmallMem.new VertexTransformCallBack() {...},18,0,0,0,2,0,2,0,2,0
+graphchi-java,com.twitter.pers.bipartite,HITSSmallMem.new ForeachCallback() {...},28,0,2,0,4,0,3,0,2,0
+graphchi-java,com.twitter.pers.bipartite,HITSSmallMem.new ForeachCallback() {...},30,0,2,0,4,0,3,0,2,0
+graphchi-java,com.twitter.pers.bipartite,HITSSmallMem.new EdgeProcessor() {...},10,0,0,0,2,0,2,0,2,0
+graphchi-java,com.twitter.pers.bipartite,HITSSmallMem.new VertexProcessor() {...},13,0,0,0,2,0,2,0,2,0
+graphchi-java,com.twitter.pers.bipartite,SALSASmallMem.new ForeachCallback() {...},30,0,2,0,4,0,3,0,2,0
+graphchi-java,com.twitter.pers.bipartite,SALSASmallMem.new ForeachCallback() {...},28,0,2,0,4,0,3,0,2,0
+graphchi-java,com.twitter.pers.bipartite,SALSASmallMem.new VertexProcessor() {...},13,0,0,0,2,0,2,0,2,0
+graphchi-java,com.twitter.pers.bipartite,SALSASmallMem.new EdgeProcessor() {...},10,0,0,0,2,0,2,0,2,0
+graphchi-java,com.twitter.pers.bipartite,SALSASmallMem,384,0,32,0,83,0,34,0,18,0
+graphchi-java,edu.cmu.graphchi.apps.util,CreateCassovary,195,0,10,0,40,0,16,0,11,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala,4,0,0,0,0,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala..anonfun.main.new Serializable() {...},7,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala..anonfun.main.new Serializable() {...},13,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala..anonfun.main.new Serializable() {...},13,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala..anonfun.main.new Serializable() {...},15,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala..anonfun.main.new Serializable() {...},44,0,0,0,4,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala.,114,0,0,0,23,0,3,0,3,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala..anon.new EdgeProcessor() {...},7,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala.apps,PagerankScala..anon.new VertexProcessor() {...},7,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.preprocessing,FastSharder.GraphInputFormat,34,0,0,0,1,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.preprocessing,FastSharder,1998,155,199,13,353,32,119,13,19,7
+graphchi-java,edu.cmu.graphchi.preprocessing,FastSharder.new EdgeProcessor() {...},12,0,2,0,3,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.preprocessing,FastSharder.new BytesToValueConverter() {...},14,0,0,0,4,0,4,0,4,0
+graphchi-java,edu.cmu.graphchi.preprocessing,VertexIdTranslate,45,123,4,8,10,22,7,9,3,7
+graphchi-java,edu.cmu.graphchi.preprocessing,VertexIdTranslate.new VertexIdTranslate() {...},13,0,0,0,6,0,6,0,6,0
+graphchi-java,edu.cmu.graphchi.io,CompressedIO,119,0,10,0,32,0,11,0,6,0
+graphchi-java,nom.tam.util,BufferedDataInputStream,1378,0,92,0,181,0,83,0,33,0
+graphchi-java,edu.cmu.graphchi.apps,Pagerank,217,0,14,0,42,0,18,0,11,0
+graphchi-java,edu.cmu.graphchi.apps,ALSMatrixFactorization.new EdgeProcessor() {...},11,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,ALSMatrixFactorization,756,0,42,0,126,0,37,0,16,0
+graphchi-java,edu.cmu.graphchi.apps,SmokeTest.new VertexProcessor() {...},27,0,2,0,7,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,SmokeTest.new EdgeProcessor() {...},11,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,ConnectedComponents.new VertexProcessor() {...},6,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,ConnectedComponents.new EdgeProcessor() {...},6,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,Pagerank.new EdgeProcessor() {...},11,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,Pagerank.new VertexProcessor() {...},11,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,WeightedPagerank.new VertexProcessor() {...},11,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,WeightedPagerank.new EdgeProcessor() {...},10,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps,WeightedPagerank,251,0,16,0,46,0,19,0,11,0
+graphchi-java,edu.cmu.graphchi.apps,ALSMatrixFactorization.BipartiteGraphInfo,18,0,0,0,6,0,3,0,3,0
+graphchi-java,edu.cmu.graphchi.apps,ConnectedComponents,234,0,22,0,48,0,22,0,11,0
+graphchi-java,edu.cmu.graphchi.apps,SmokeTest,413,0,28,0,67,0,25,0,11,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex,160,0,0,0,17,0,16,0,16,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiSquared..anonfun.new Serializable() {...},5,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,EdgeDirection,3,0,0,0,1,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.scala,VertexInfo,26,0,0,0,7,0,6,0,6,0
+graphchi-java,edu.cmu.graphchi.scala,INEDGES.,22,0,2,0,1,0,7,0,6,0
+graphchi-java,edu.cmu.graphchi.scala,OUTEDGES,65,0,6,0,1,0,15,0,12,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.outEdgeValues.new Serializable() {...},17,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,OUTEDGES.,22,0,2,0,1,0,7,0,6,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiSquared..anonfun.initValues.new Serializable() {...},42,0,4,0,1,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala,560,0,56,0,75,0,60,0,32,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.edges.new Serializable() {...},16,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,INEDGES,65,0,6,0,1,0,15,0,12,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.scatterOutedges.new Serializable() {...},13,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.scatterInedges.new Serializable() {...},13,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},11,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.edgeValues.new Serializable() {...},17,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},38,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},38,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},38,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},38,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},31,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},31,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},11,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},31,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiScala..anonfun.update.new Serializable() {...},11,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.scatterEdges.new Serializable() {...},13,0,0,0,1,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.outEdges.new Serializable() {...},16,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,NOEDGES.,22,0,2,0,1,0,7,0,6,0
+graphchi-java,edu.cmu.graphchi.scala,ALLEDGES.,22,0,2,0,1,0,7,0,6,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.inEdges.new Serializable() {...},16,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.scala,GraphChiSquared,521,0,22,0,91,0,41,0,30,0
+graphchi-java,edu.cmu.graphchi.scala,ALLEDGES,65,0,6,0,1,0,15,0,12,0
+graphchi-java,edu.cmu.graphchi.scala,NOEDGES,65,0,6,0,1,0,15,0,12,0
+graphchi-java,edu.cmu.graphchi.scala,ScalaChiVertex..anonfun.inEdgeValues.new Serializable() {...},17,0,2,0,1,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.hadoop,PigGraphChiBase,195,0,8,0,47,0,17,0,13,0
+graphchi-java,edu.cmu.graphchi.hadoop,HDFSGraphLoader,164,0,14,0,32,0,11,0,4,0
+graphchi-java,edu.cmu.graphchi.hadoop,PigGraphChiBase.new Runnable() {...},36,0,2,0,8,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.hadoop,PigGraphChiBase.new Runnable() {...},78,0,0,0,16,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.hadoop,PigGraphChiBase.2.new EdgeProcessor() {...},55,0,2,0,10,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.randomwalks,PersonalizedPageRank,472,0,26,0,83,0,20,0,7,0
+graphchi-java,edu.cmu.graphchi.toolkits.collaborative_filtering,Common,179,0,20,0,26,0,12,0,2,0
+graphchi-java,edu.cmu.graphchi.toolkits.collaborative_filtering,ALS,487,0,30,0,89,0,26,0,11,0
+graphchi-java,edu.cmu.graphchi.toolkits.collaborative_filtering,RMSEEngine,226,0,8,0,47,0,14,0,10,0
+graphchi-java,edu.cmu.graphchi.toolkits.collaborative_filtering,IO.new EdgeProcessor() {...},11,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.toolkits.collaborative_filtering,IO,59,0,4,0,8,0,5,0,3,0
+graphchi-java,edu.cmu.graphchi.toolkits.collaborative_filtering,ProblemSetup,39,0,0,0,10,0,3,0,3,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.GraphChiContextInternal,38,0,0,0,17,0,9,0,9,0
+graphchi-java,edu.cmu.graphchi.engine,BitsetScheduler,99,0,6,0,26,0,13,0,10,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine,1888,0,170,0,369,0,128,0,43,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.new Runnable() {...},83,0,8,0,16,0,6,0,2,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.new Runnable() {...},25,0,0,0,6,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.new Runnable() {...},57,0,2,0,13,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.new Runnable() {...},103,0,10,0,19,0,7,0,2,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.MockScheduler,16,0,0,0,9,0,9,0,9,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.AutoLoaderTask,117,0,2,0,17,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.engine,NoEdgesInIntervalException,3,0,0,0,1,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.engine,VertexInterval,38,0,0,0,11,0,6,0,6,0
+graphchi-java,edu.cmu.graphchi.engine,GraphChiEngine.IntervalData,36,0,0,0,12,0,6,0,6,0
+graphchi-java,ucar.unidata.io,RandomAccessFile,1880,0,193,0,406,0,178,0,81,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,DrunkardCompanion.new TimerTask() {...},11,0,0,0,3,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,DrunkardCompanion.new Runnable() {...},151,0,18,0,25,0,11,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,DrunkardClient,82,0,6,0,18,0,5,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,DiscreteDistribution,219,605,25,67,33,126,21,42,7,10
+graphchi-java,edu.cmu.graphchi.walks.distributions,DrunkardCompanion.WalkSubmission,9,0,0,0,4,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,TwoKeyCompanion.ProcessingThread.new Runnable() {...},45,0,0,0,9,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,TwoKeyCompanion.WalkSubmission,9,0,0,0,4,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,DrunkardCompanion.1.new Runnable() {...},40,0,0,0,9,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,TwoKeyCompanion.new TimerTask() {...},11,0,0,0,3,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,TwoKeyCompanion,935,0,46,0,184,0,40,0,17,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,IntDrunkardCompanion,88,0,6,0,18,0,5,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,LongDrunkardCompanion,88,0,6,0,18,0,5,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,DrunkardCompanion,844,0,30,0,148,0,29,0,14,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,TwoKeyCompanion.ProcessingThread,166,0,18,0,34,0,11,0,2,0
+graphchi-java,edu.cmu.graphchi.walks.distributions,DiscreteDistribution.new Comparator() {...},2,34,1,7,0,2,1,5,0,2
+graphchi-java,com.twitter.pers.graph_generator,RMATGraphGenerator.RMATGenerator,222,0,16,0,40,0,11,0,3,0
+graphchi-java,com.twitter.pers.graph_generator,EdgeListOutput.new ThreadLocal() {...},48,0,0,0,9,0,2,0,2,0
+graphchi-java,com.twitter.pers.graph_generator,EdgeListOutput,69,0,2,0,18,0,5,0,4,0
+graphchi-java,com.twitter.pers.graph_generator,RMATGraphGenerator,192,0,6,0,36,0,6,0,3,0
+graphchi-java,edu.cmu.graphchi,EdgeDirection,0,34,0,0,0,2,0,1,0,1
+graphchi-java,edu.cmu.graphchi,ChiVertex.Edge,0,28,0,0,0,8,0,4,0,4
+graphchi-java,edu.cmu.graphchi,GraphChiContext,113,0,2,0,38,0,21,0,20,0
+graphchi-java,edu.cmu.graphchi,ChiVertex,206,253,27,11,42,63,26,13,7,13
+graphchi-java,edu.cmu.graphchi,ChiLogger,27,24,3,1,9,7,4,1,2,1
+graphchi-java,edu.cmu.graphchi,EmptyType,3,0,0,0,1,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi,ChiFilenames,300,0,12,0,43,0,22,0,16,0
+graphchi-java,edu.cmu.graphchi,ChiLogger.SingleLineFormatter,22,137,2,6,7,30,2,4,0,2
+graphchi-java,edu.cmu.graphchi.shards,ShardIndex.IndexEntry,86,0,12,0,17,0,10,0,4,0
+graphchi-java,edu.cmu.graphchi.shards,MemoryShard,917,0,112,0,181,0,71,0,15,0
+graphchi-java,edu.cmu.graphchi.shards,MemoryShard.new Runnable() {...},70,0,0,0,10,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.shards,SlidingShard.Block,87,0,0,0,21,0,6,0,6,0
+graphchi-java,edu.cmu.graphchi.shards,ShardIndex,193,0,8,0,32,0,8,0,4,0
+graphchi-java,edu.cmu.graphchi.shards,SlidingShard,671,0,86,0,142,0,63,0,20,0
+graphchi-java,edu.cmu.graphchi.vertexdata,VertexTransformer,83,0,6,0,19,0,5,0,2,0
+graphchi-java,edu.cmu.graphchi.vertexdata,VertexAggregator,114,0,6,0,25,0,7,0,4,0
+graphchi-java,edu.cmu.graphchi.vertexdata,VertexAggregator.new Iterator() {...},116,0,10,0,18,0,9,0,4,0
+graphchi-java,edu.cmu.graphchi.vertexdata,VertexIdValue,15,0,0,0,6,0,3,0,3,0
+graphchi-java,edu.cmu.graphchi.vertexdata,VertexAggregator.SumCallbackInt,18,0,0,0,5,0,3,0,3,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,TwitterWTF,594,0,28,0,113,0,22,0,8,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,MovieRecommender.PositiveWalkUpdate,107,0,6,0,15,0,8,0,5,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,MovieRecommender,344,0,12,0,62,0,10,0,4,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,MovieRecommender.PositiveWalkUpdate.new WeightedHopper.EdgeWeightMap() {...},10,0,0,0,3,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,CircleOfTrustSalsa.SalsaVertex,12,0,0,0,5,0,1,0,1,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,MovieRecommender.NegativeWalkUpdate,194,0,28,0,29,0,16,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,CircleOfTrustSalsa.new LinkedHashMap() {...},21,0,2,0,2,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,CircleOfTrustSalsa.new Comparator() {...},24,0,4,0,3,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,TwitterWTF.new ThreadLocal() {...},24,0,0,0,5,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,TwitterWTF.new Runnable() {...},57,0,0,0,8,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.apps.recommendations,CircleOfTrustSalsa,755,0,58,0,144,0,37,0,8,0
+graphchi-java,edu.cmu.graphchi.queries,VertexQuery.Shard,583,0,64,0,146,0,38,0,6,0
+graphchi-java,edu.cmu.graphchi.queries,VertexQuery.new Callable() {...},20,0,0,0,3,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.queries,VertexQuery.new Callable() {...},20,0,0,0,3,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.queries,VertexQuery.new Callable() {...},18,0,0,0,2,0,2,0,2,0
+graphchi-java,edu.cmu.graphchi.queries,VertexQuery,340,0,24,0,68,0,18,0,6,0
+graphchi-java,edu.cmu.graphchi.util,IdCount,65,9,14,0,8,4,11,1,4,1
+graphchi-java,edu.cmu.graphchi.util,HugeLongMatrix,251,0,10,0,42,0,15,0,10,0
+graphchi-java,edu.cmu.graphchi.util,HugeFloatMatrix,387,150,36,6,58,24,32,6,13,4
+graphchi-java,edu.cmu.graphchi.util,Toplist.new Comparator() {...},30,0,6,0,4,0,5,0,2,0
+graphchi-java,edu.cmu.graphchi.util,Toplist.new ForeachCallback() {...},61,0,4,0,9,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.util,Toplist.new Comparator() {...},33,0,8,0,3,0,6,0,2,0
+graphchi-java,edu.cmu.graphchi.util,Toplist.new ForeachCallback() {...},62,0,4,0,9,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.util,LabelAnalysis,73,0,2,0,11,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.util,DegreeFileReader,84,0,4,0,17,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.util,Toplist,186,0,8,0,31,0,9,0,5,0
+graphchi-java,edu.cmu.graphchi.util,IdFloat,15,0,0,0,6,0,3,0,3,0
+graphchi-java,edu.cmu.graphchi.util,LabelAnalysis.new ForeachCallback() {...},38,0,4,0,8,0,4,0,2,0
+graphchi-java,edu.cmu.graphchi.util,IdInt,16,0,0,0,6,0,3,0,3,0
+graphchi-java,edu.cmu.graphchi.util,IntegerBuffer,18,67,1,3,3,14,3,4,2,3
+graphchi-java,edu.cmu.graphchi.util,HugeDoubleMatrix,612,0,42,0,93,0,40,0,19,0
+graphchi-java,edu.cmu.graphchi.util,MultinomialSampler,194,0,22,0,41,0,13,0,2,0
+graphchi-java,edu.cmu.graphchi.util,FileUtils,43,0,2,0,9,0,3,0,2,0
+graphchi-java,edu.cmu.graphchi.util,IdFloat.Comparator,30,0,6,0,4,0,5,0,2,0
+graphchi-java,edu.cmu.graphchi.queries.demo,FriendsOfFriends,644,0,44,0,109,0,28,0,6,0

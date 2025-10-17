@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint can_arrange(vector<int> arr){\nint max=-1;\n    for (int i=0;i<arr.size();i++)\n    if (arr[i]<=i) max=i;\n    return max;\n}",
+        4.896,
+        0.103,
+        7947305.2,
+        20598.4,
+        9.684,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint can_arrange(const vector<int>& arr) {\n    int max_index = -1;\n    for (int i = 0; i < static_cast<int>(arr.size()); i++) {\n        \n        max_index = (arr[i] <= i) ? i : max_index;\n    }\n    return max_index;\n}",
+        0.994,
+        1.016,
+        1.044,
+        1.004,
+        1.017,
+        15
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint can_arrange(const vector<int>& arr) {\n    int max_index = -1;\n    const int size = static_cast<int>(arr.size());\n    \n    for (int i = 0; i < size; i++) {\n        \n        max_index = max(max_index, (arr[i] <= i) ? i : -1);\n    }\n    return max_index;\n}",
+        1.015,
+        1.035,
+        0.996,
+        1.003,
+        1.035,
+        17
+    ]
+}

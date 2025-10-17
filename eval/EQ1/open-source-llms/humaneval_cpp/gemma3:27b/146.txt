@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint specialFilter(vector<int> nums){\nint num=0;\n    for (int i=0;i<nums.size();i++)\n    if (nums[i]>10)\n    {\n        string w=to_string(nums[i]);\n        if (w[0]%2==1 and w[w.length()-1]%2==1) num+=1;\n    }\n    return num;\n}",
+        4.734,
+        0.132,
+        10767909.0,
+        20815.2,
+        7.562,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint specialFilter(vector<int> nums){\n    int num=0;\n    for (int i=0;i<nums.size();i++){\n        if (nums[i]>10){\n            int lastDigit = nums[i] % 10;\n            int firstDigit = nums[i];\n            while (firstDigit >= 10) {\n                firstDigit /= 10;\n            }\n\n            if (firstDigit % 2 != 0 && lastDigit % 2 != 0) {\n                num+=1;\n            }\n        }\n    }\n    return num;\n}",
+        0.959,
+        1.056,
+        1.234,
+        0.994,
+        1.056,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint specialFilter(vector<int> nums){\n    int num=0;\n    size_t i = 0;\n    for (; i + 1 < nums.size(); i += 2) {\n        if (nums[i] > 10) {\n            int lastDigit1 = nums[i] % 10;\n            int firstDigit1 = nums[i];\n            while (firstDigit1 >= 10) {\n                firstDigit1 /= 10;\n            }\n            if (firstDigit1 % 2 != 0 && lastDigit1 % 2 != 0) {\n                num++;\n            }\n        }\n        if (nums[i + 1] > 10) {\n            int lastDigit2 = nums[i + 1] % 10;\n            int firstDigit2 = nums[i + 1];\n            while (firstDigit2 >= 10) {\n                firstDigit2 /= 10;\n            }\n            if (firstDigit2 % 2 != 0 && lastDigit2 % 2 != 0) {\n                num++;\n            }\n        }\n    }\n    return num;\n}",
+        0.879,
+        0.962,
+        1.231,
+        0.994,
+        0.962,
+        35
+    ]
+}

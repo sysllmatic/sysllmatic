@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring string_xor(string a,string b){\nstring output=\"\";\n    for (int i=0;(i<a.length() and i<b.length());i++)\n    {\n        if (i<a.length() and i<b.length())\n        {\n            if (a[i]== b[i]) \n            {\n                output+='0';\n            }  \n            else output+='1';\n        }\n        else\n        {\n            if (i>=a.length()) \n            {\n            output+=b[i];\n            }\n            else output+=a[i];\n        }\n    }\n    return output;\n}",
+        4.843,
+        0.123,
+        4482737.6,
+        20841.6,
+        8.151,
+        29
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\n#include <cstring>\n\nstring string_xor(string a, string b) {\n    size_t len = min(a.length(), b.length());\n    string output; \n    output.reserve(len + max(a.length(), b.length()) - min(a.length(), b.length()));\n    for (size_t i = 0; i < len; ++i) {\n        if (a[i] == b[i]) {\n            output += '0';\n        } else {\n            output += '1';\n        }\n    }\n    if (a.length() > len) {\n        output.append(a.substr(len));\n    } else if (b.length() > len) {\n        output.append(b.substr(len));\n    }\n    return output;\n}\n",
+        1.024,
+        0.891,
+        0.959,
+        1.004,
+        0.888,
+        26
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n#include <algorithm>\n#include <math.h>\n#include <stdlib.h>\n#include <cstring>\n\nstring string_xor(string a, string b) {\n    size_t len = min(a.length(), b.length());\n    size_t total_len = len + max(a.length(), b.length()) - min(a.length(), b.length());\n    string output;\n    output.resize(total_len); \n    for (size_t i = 0; i < len; ++i) {\n        output[i] = (a[i] == b[i]) ? '0' : '1';\n    }\n    if (a.length() > len) {\n        memcpy(&output[len], a.c_str() + len, a.length() - len);\n    } else if (b.length() > len) {\n        memcpy(&output[len], b.c_str() + len, b.length() - len);\n    }\n    return output;\n}\n",
+        0.998,
+        1.049,
+        0.989,
+        0.996,
+        1.044,
+        23
+    ]
+}

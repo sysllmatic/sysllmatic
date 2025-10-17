@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> incr_list(vector<int> l){\nfor (int i=0;i<l.size();i++)\n        l[i]+=1;\n    return l;\n}",
+        6.513,
+        0.102,
+        8111944.0,
+        20476.8,
+        9.793,
+        11
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> incr_list(vector<int> l){\n    for (int& element : l)\n        element += 1;\n    return l;\n}",
+        1.335,
+        1.015,
+        0.971,
+        0.998,
+        1.014,
+        12
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> incr_list(vector<int> l){\n    vector<int> result;\n    result.reserve(l.size());\n    for (const int& element : l)\n        result.push_back(element + 1);\n    return result;\n}",
+        1.309,
+        0.965,
+        0.729,
+        0.995,
+        0.964,
+        14
+    ]
+}

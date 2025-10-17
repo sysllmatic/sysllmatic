@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint car_race_collision(int n){\nreturn n*n;\n}",
+        4.731,
+        0.097,
+        2824111.6,
+        20540.8,
+        10.249,
+        8
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint car_race_collision(short n){\nreturn (int)n*n;\n}",
+        0.742,
+        0.948,
+        0.863,
+        0.999,
+        0.952,
+        8
+    ],
+    "2": [
+        "#include<stdio.h>\nint car_race_collision(int n){\nreturn n*n;\n}",
+        0.966,
+        0.95,
+        0.987,
+        1.007,
+        0.954,
+        4
+    ]
+}

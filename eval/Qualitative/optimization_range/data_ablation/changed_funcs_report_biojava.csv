@@ -1,0 +1,10 @@
+file_name,functions_compared,functions_changed
+AbstractSequence.java,73,19
+AminoAcidCompound.java,5,4
+AminoAcidCompoundSet.java,17,10
+CommandPrompt.java,9,4
+FastaReader.java,5,1
+PeptidePropertiesImpl.java,34,13
+SequenceMixin.java,25,7
+Utils.java,8,7
+AVERAGE,22.000000,8.125000

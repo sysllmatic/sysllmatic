@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint specialFilter(vector<int> nums){\nint num=0;\n    for (int i=0;i<nums.size();i++)\n    if (nums[i]>10)\n    {\n        string w=to_string(nums[i]);\n        if (w[0]%2==1 and w[w.length()-1]%2==1) num+=1;\n    }\n    return num;\n}",
+        4.942,
+        0.106,
+        10384715.8,
+        20678.4,
+        9.413,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint specialFilter(vector<int> nums){\n    int num = 0;\n    for (int i = 0; i < nums.size(); i++) {\n        if (nums[i] > 10) {\n            int n = nums[i];\n            int last_digit = n % 10;\n            int first_digit = n;\n            while (first_digit >= 10) {\n                first_digit /= 10;\n            }\n            \n            \n            if ((first_digit & 1) && (last_digit & 1)) {\n                num += 1;\n            }\n        }\n    }\n    return num;\n}",
+        1.014,
+        1.024,
+        1.202,
+        1.008,
+        1.025,
+        27
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint specialFilter(const vector<int>& nums){\n    int count = 0;\n    const size_t sz = nums.size();\n    for (size_t i = 0; i < sz; ++i) {\n        if (nums[i] > 10) {\n            int n = nums[i];\n            int lastDigit = n % 10;\n            int firstDigit = n;\n            while (firstDigit >= 10) {\n                firstDigit /= 10;\n            }\n            \n            if ((firstDigit & 1) && (lastDigit & 1)) {\n                ++count;\n            }\n        }\n    }\n    return count;\n}",
+        0.979,
+        1.002,
+        1.273,
+        1.006,
+        1.003,
+        27
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool monotonic(vector<float> l){\nint incr,decr;\n    incr=0;decr=0;\n    for (int i=1;i<l.size();i++)\n    {\n        if (l[i]>l[i-1]) incr=1;\n        if (l[i]<l[i-1]) decr=1;\n    }\n    if (incr+decr==2) return false;\n    return true;\n}",
+        5.046,
+        0.138,
+        38318659.4,
+        20779.2,
+        7.26,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool monotonic(vector<float> l){\n    int incr = 0;\n    int decr = 0;\n    for (int i=1; i<l.size(); ++i) {\n        if (l[i] > l[i-1]) \n            incr = 1;\n        else if (l[i] < l[i-1])\n            decr = 1;\n        \n        if (incr && decr)\n            break;\n    }\n    return !(incr && decr);\n}\n",
+        1.013,
+        1.022,
+        1.058,
+        1.0,
+        1.019,
+        21
+    ],
+    "2": [
+        "#include <vector>\n\nbool monotonic(const std::vector<float>& l) {\n    bool increasing = false;\n    bool decreasing = false;\n    for (int i = 1; i < static_cast<int>(l.size()); ++i) {\n        if (l[i] > l[i-1]) {\n            increasing = true;\n        } else if (l[i] < l[i-1]) {\n            decreasing = true;\n        }\n\n        \n        if (increasing && decreasing) {\n            break;\n        }\n    }\n    return !(increasing && decreasing);\n}\n",
+        1.007,
+        0.981,
+        1.045,
+        0.998,
+        0.978,
+        19
+    ]
+}

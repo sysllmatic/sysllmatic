@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring fix_spaces(string text){\nstring out=\"\";\n    int spacelen=0;\n    for (int i=0;i<text.length();i++)\n    if (text[i]==' ') spacelen+=1;\n    else\n    {\n        if (spacelen==1) out=out+'_';\n        if (spacelen==2) out=out+\"__\";\n        if (spacelen>2) out=out+'-';\n        spacelen=0;\n        out=out+text[i];\n    }\n    if (spacelen==1) out=out+'_';\n    if (spacelen==2) out=out+\"__\";\n    if (spacelen>2) out=out+'-';\n    return out;\n}",
+        8.283,
+        0.199,
+        230010068.2,
+        20748.8,
+        5.027,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring fix_spaces(string text){\n    string out=\"\";\n    out.reserve(text.length()); \n    int spacelen=0;\n    for (int i=0;i<text.length();i++)\n    if (text[i]==' ')\n        spacelen+=1;\n    else\n    {\n        if (spacelen==1) out+='_';\n        if (spacelen==2) out+= \"__\";\n        if (spacelen>2) out+='-';\n        spacelen=0;\n        out+=text[i];\n    }\n    if (spacelen==1) out+='_';\n    if (spacelen==2) out+= \"__\";\n    if (spacelen>2) out+='-';\n    return out;\n}",
+        1.715,
+        1.512,
+        30.178,
+        0.989,
+        1.51,
+        27
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring fix_spaces(string text){\n    vector<char> out;\n    out.reserve(text.length());\n    int spacelen=0;\n    for (int i=0;i<text.length();i++)\n    if (text[i]==' ')\n        spacelen+=1;\n    else\n    {\n        switch (spacelen) {\n            case 1: out.push_back('_'); break;\n            case 2: out.push_back('_'); out.push_back('_'); break;\n            case 3:\n            case 4:\n            case 5:\n            case 6:\n            case 7:\n            case 8:\n            case 9:\n            case 10:\n                out.push_back('-'); break;\n        }\n        spacelen=0;\n        out.push_back(text[i]);\n    }\n    if (spacelen==1) out.push_back('_');\n    if (spacelen==2) {\n        out.push_back('_');\n        out.push_back('_');\n    }\n    if (spacelen>2) out.push_back('-');\n    return string(out.begin(), out.end());\n}",
+        1.634,
+        1.547,
+        19.994,
+        0.997,
+        1.544,
+        41
+    ]
+}

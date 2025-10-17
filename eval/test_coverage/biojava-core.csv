@@ -1,0 +1,215 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+biojava-core,org.biojava.nbio.core.alignment.matrices,ScaledSubstitutionMatrix,325,64,24,2,58,23,29,11,16,11
+biojava-core,org.biojava.nbio.core.alignment.matrices,SimpleSubstitutionMatrix,69,632,8,56,17,105,15,38,8,13
+biojava-core,org.biojava.nbio.core.alignment.matrices,AAIndexFileParser,0,415,0,36,0,89,0,26,0,8
+biojava-core,org.biojava.nbio.core.alignment.matrices,DefaultAAIndexProvider,5,35,0,0,2,10,0,4,0,4
+biojava-core,org.biojava.nbio.core.alignment.matrices,SubstitutionMatrixHelper,0,153,1,9,0,42,1,30,0,26
+biojava-core,org.biojava.nbio.core.alignment.matrices,AAindexFactory,3,14,0,2,1,6,1,4,1,3
+biojava-core,org.biojava.nbio.core.sequence.storage,SingleCompoundSequenceReader,127,42,16,4,28,14,21,8,13,6
+biojava-core,org.biojava.nbio.core.sequence.storage,JoiningSequenceReader.new Iterator() {...},11,90,2,12,2,17,3,8,1,3
+biojava-core,org.biojava.nbio.core.sequence.storage,SequenceAsStringHelper,169,0,20,0,26,0,12,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.storage,BitSequenceReader.BitArrayWorker,108,235,13,13,22,56,11,22,3,17
+biojava-core,org.biojava.nbio.core.sequence.storage,TwoBitSequenceReader,13,27,0,0,4,6,2,3,2,3
+biojava-core,org.biojava.nbio.core.sequence.storage,ArrayListSequenceReader,164,123,14,8,33,35,21,11,13,8
+biojava-core,org.biojava.nbio.core.sequence.storage,BitSequenceReader,89,25,6,0,20,8,16,5,13,5
+biojava-core,org.biojava.nbio.core.sequence.storage,FourBitSequenceReader.FourBitArrayWorker,13,185,1,9,5,40,3,13,2,9
+biojava-core,org.biojava.nbio.core.sequence.storage,JoiningSequenceReader,156,243,21,19,40,60,27,21,14,14
+biojava-core,org.biojava.nbio.core.sequence.storage,FourBitSequenceReader,13,27,0,0,4,6,2,3,2,3
+biojava-core,org.biojava.nbio.core.sequence.storage,TwoBitSequenceReader.TwoBitArrayWorker,10,115,0,0,4,24,2,7,2,7
+biojava-core,org.biojava.nbio.core.sequence.storage,FourBitSequenceReader.FourBitArrayWorker.new Comparator() {...},0,23,0,0,0,4,0,2,0,2
+biojava-core,org.biojava.nbio.core.alignment,SimpleProfile,546,976,65,83,91,162,49,62,9,27
+biojava-core,org.biojava.nbio.core.alignment,SimpleSequencePair,12,211,7,13,2,45,6,18,0,14
+biojava-core,org.biojava.nbio.core.alignment,SimpleProfilePair,19,0,0,0,6,0,3,0,3,0
+biojava-core,org.biojava.nbio.core.alignment,SimpleAlignedSequence,142,609,28,86,32,131,26,68,6,31
+biojava-core,org.biojava.nbio.core.sequence.reference,AbstractReference,21,3,0,0,9,1,6,1,6,1
+biojava-core,org.biojava.nbio.core.sequence.reference,GenbankReference,0,24,0,0,0,10,0,7,0,7
+biojava-core,org.biojava.nbio.core.sequence.features,QualityFeature,35,0,0,0,8,0,5,0,5,0
+biojava-core,org.biojava.nbio.core.sequence.features,QuantityFeature,23,0,0,0,8,0,4,0,4,0
+biojava-core,org.biojava.nbio.core.sequence.features,DBReferenceInfo,31,28,0,0,10,9,6,3,6,3
+biojava-core,org.biojava.nbio.core.sequence.features,AbstractFeature.new Comparator() {...},6,3,0,0,1,1,1,1,1,1
+biojava-core,org.biojava.nbio.core.sequence.features,AbstractFeature.new Comparator() {...},0,57,0,8,0,14,0,6,0,2
+biojava-core,org.biojava.nbio.core.sequence.features,AbstractFeature.new Comparator() {...},42,3,4,0,7,1,3,1,1,1
+biojava-core,org.biojava.nbio.core.sequence.features,FeatureDbReferenceInfo,129,0,4,0,44,0,22,0,20,0
+biojava-core,org.biojava.nbio.core.sequence.features,Qualifier,14,37,0,0,5,15,3,6,3,6
+biojava-core,org.biojava.nbio.core.sequence.features,TextFeature,0,11,0,0,0,4,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.features,AbstractFeature,39,108,0,2,17,33,11,11,11,10
+biojava-core,org.biojava.nbio.core.sequence.template,AbstractSequence,220,584,33,33,58,141,36,64,15,52
+biojava-core,org.biojava.nbio.core.sequence.template,AbstractCompoundSet,116,232,19,23,29,55,20,21,6,14
+biojava-core,org.biojava.nbio.core.sequence.template,AbstractNucleotideCompoundSet,2,299,1,23,1,58,1,19,0,8
+biojava-core,org.biojava.nbio.core.sequence.template,SequenceProxyView,42,99,4,2,12,26,8,17,5,17
+biojava-core,org.biojava.nbio.core.sequence.template,SequenceMixin.SequenceIterator,10,36,1,3,2,8,2,4,1,3
+biojava-core,org.biojava.nbio.core.sequence.template,AbstractCompound,67,53,8,0,19,21,10,10,6,10
+biojava-core,org.biojava.nbio.core.sequence.template,AbstractCompoundTranslator,133,194,16,18,23,48,15,16,3,11
+biojava-core,org.biojava.nbio.core.sequence.template,SequenceMixin,58,482,7,39,16,100,9,36,4,18
+biojava-core,org.biojava.nbio.core.sequence.template,LightweightProfile.StringFormat,0,39,0,0,0,7,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.template,AbstractSequence.AnnotationType,0,21,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastResult,0,14,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastHspBuilder,0,140,0,0,0,41,0,21,0,21
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastHsp,0,22,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastResultBuilder,10,74,0,0,4,21,2,11,2,11
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastHitBuilder,5,51,0,0,2,15,1,8,1,8
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastXMLParser,132,400,9,13,23,89,10,11,3,7
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastTabularParser.PARSING_CONSISTENCY,0,15,0,0,0,3,0,1,0,1
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastHit,0,10,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.search.io.blast,BlastTabularParser,28,419,1,33,7,92,5,22,4,6
+biojava-core,org.biojava.nbio.core.sequence.compound,AminoAcidCompoundSet,245,497,15,5,43,49,16,8,7,7
+biojava-core,org.biojava.nbio.core.sequence.compound,DNACompoundSet.InitaliseOnDemand,0,5,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.compound,AmbiguityDNACompoundSet,0,211,0,0,0,16,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence.compound,RNACompoundSet.InitaliseOnDemand,0,5,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.compound,AmbiguityDNARNAHybridCompoundSet,217,0,0,0,17,0,2,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.compound,NucleotideCompound,9,93,5,5,4,23,5,9,0,9
+biojava-core,org.biojava.nbio.core.sequence.compound,ABITracerCompoundSet.InitaliseOnDemand,0,5,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.compound,AmbiguityRNACompoundSet.InitaliseOnDemand,0,5,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.compound,AmbiguityRNACompoundSet,0,249,0,0,0,19,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence.compound,DNACompoundSet,0,80,0,4,0,15,0,5,0,3
+biojava-core,org.biojava.nbio.core.sequence.compound,ABITracerCompoundSet,29,69,3,1,4,14,2,3,0,3
+biojava-core,org.biojava.nbio.core.sequence.compound,AmbiguityDNARNAHybridCompoundSet.InitaliseOnDemand,5,0,0,0,1,0,1,0,1,0
+biojava-core,org.biojava.nbio.core.sequence.compound,AminoAcidCompound,11,67,4,8,5,20,5,6,1,4
+biojava-core,org.biojava.nbio.core.sequence.compound,CodonCompound,86,0,8,0,31,0,20,0,16,0
+biojava-core,org.biojava.nbio.core.sequence.compound,RNACompoundSet,0,48,0,0,0,10,0,3,0,3
+biojava-core,org.biojava.nbio.core.sequence.compound,AmbiguityDNACompoundSet.InitaliseOnDemand,0,5,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.location.template,AbstractLocation,120,430,24,40,27,97,29,38,7,28
+biojava-core,org.biojava.nbio.core.sequence.location.template,Location,8,0,0,0,1,0,1,0,1,0
+biojava-core,org.biojava.nbio.core.sequence.location.template,Location.Tools,41,218,9,21,8,46,9,15,2,7
+biojava-core,org.biojava.nbio.core.sequence.location.template,Location.Tools.new Location.Tools.LocationPredicate() {...},0,15,0,2,0,3,0,3,0,2
+biojava-core,org.biojava.nbio.core.sequence.location.template,Location.Tools.new Location.Tools.LocationPredicate() {...},0,15,0,2,0,3,0,3,0,2
+biojava-core,demo,UncompressFile,46,0,2,0,13,0,4,0,3,0
+biojava-core,demo,ParseFastaFileDemo,140,0,10,0,34,0,7,0,2,0
+biojava-core,demo,DemoSixFrameTranslation,100,0,4,0,21,0,4,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.edits,Edit.AbstractEdit,16,101,1,3,6,29,2,10,1,9
+biojava-core,org.biojava.nbio.core.sequence.edits,Edit.Substitute,10,78,1,7,4,18,2,7,1,4
+biojava-core,org.biojava.nbio.core.sequence.edits,Edit.Insert,32,75,2,10,10,20,4,8,2,4
+biojava-core,org.biojava.nbio.core.sequence.edits,Edit.Delete,0,58,0,4,0,15,0,8,0,6
+biojava-core,org.biojava.nbio.core.util,FileDownloadUtils.Hash,0,27,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.util,SingleLinkageClusterer,59,761,8,88,8,139,7,54,1,12
+biojava-core,org.biojava.nbio.core.util,FileDownloadUtils.new SimpleFileVisitor() {...},2,13,1,1,1,6,1,3,0,3
+biojava-core,org.biojava.nbio.core.util,FileDownloadUtils.new FilenameFilter() {...},0,39,0,0,0,3,0,2,0,2
+biojava-core,org.biojava.nbio.core.util,Hashcoder,8,77,1,7,2,15,2,10,1,7
+biojava-core,org.biojava.nbio.core.util,SoftHashMap.SoftValue,0,8,0,0,0,3,0,1,0,1
+biojava-core,org.biojava.nbio.core.util,InputStreamProvider,221,89,31,7,57,29,24,5,5,5
+biojava-core,org.biojava.nbio.core.util,XMLHelper,5,225,1,27,2,60,2,21,1,8
+biojava-core,org.biojava.nbio.core.util,FileDownloadUtils,92,359,16,26,21,89,15,20,1,13
+biojava-core,org.biojava.nbio.core.util,UncompressInputStream,260,588,30,44,58,136,30,19,5,7
+biojava-core,org.biojava.nbio.core.util,Equals,12,48,5,21,2,4,6,13,2,4
+biojava-core,org.biojava.nbio.core.util,SequenceTools,105,100,20,20,18,23,12,15,2,5
+biojava-core,org.biojava.nbio.core.util,SoftHashMap,16,148,2,6,5,39,3,11,1,9
+biojava-core,org.biojava.nbio.core.util,FlatFileCache,23,84,4,8,6,24,4,7,0,5
+biojava-core,org.biojava.nbio.core.util,StringManipulationHelper,58,217,7,29,16,57,7,20,0,9
+biojava-core,org.biojava.nbio.core.util,SingleLinkageClusterer.LinkedPair,36,24,2,0,5,8,2,4,1,4
+biojava-core,org.biojava.nbio.core.util,ConcurrencyTools,106,0,14,0,36,0,19,0,12,0
+biojava-core,org.biojava.nbio.core.util,CRC64Checksum,5,159,1,19,1,31,1,17,0,8
+biojava-core,org.biojava.nbio.core.util,PrettyXMLWriter,112,471,28,44,33,130,29,27,3,17
+biojava-core,org.biojava.nbio.core.sequence.views,RnaSequenceView,39,120,2,8,8,31,7,9,6,5
+biojava-core,org.biojava.nbio.core.sequence.views,WindowedSequence.WindowedSequenceIterator,9,62,1,3,2,12,2,4,1,3
+biojava-core,org.biojava.nbio.core.sequence.views,ComplementSequenceView,10,13,0,0,2,4,2,3,2,3
+biojava-core,org.biojava.nbio.core.sequence.views,ReversedSequenceView,0,24,0,0,0,6,0,4,0,4
+biojava-core,org.biojava.nbio.core.sequence.views,WindowedSequence,40,20,0,0,6,7,4,4,4,4
+biojava-core,org.biojava.nbio.core.sequence.transcription,Frame,30,98,0,4,2,20,2,7,2,5
+biojava-core,org.biojava.nbio.core.sequence.transcription,DNAToRNATranslator,0,133,0,6,0,30,0,11,0,8
+biojava-core,org.biojava.nbio.core.sequence.transcription,RNAToAminoAcidTranslator,0,294,1,43,0,68,1,26,0,5
+biojava-core,org.biojava.nbio.core.sequence.transcription,TranscriptionEngine.Builder,68,196,7,9,25,57,16,25,9,24
+biojava-core,org.biojava.nbio.core.sequence.transcription,CaseInsensitiveCompound,70,0,8,0,25,0,18,0,14,0
+biojava-core,org.biojava.nbio.core.sequence.transcription,TranscriptionEngine,18,89,0,2,6,23,6,7,6,6
+biojava-core,org.biojava.nbio.core.sequence.transcription,TranscriptionEngine.IOD,0,6,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.transcription,Table.Codon,126,34,10,0,28,12,20,6,15,6
+biojava-core,org.biojava.nbio.core.sequence.transcription,Table.CaseInsensitiveTriplet,2,100,2,4,1,28,2,10,0,9
+biojava-core,org.biojava.nbio.core.sequence.location,InsdcParser,31,440,10,57,7,91,11,34,1,10
+biojava-core,org.biojava.nbio.core.sequence.location,SimplePoint,75,88,8,4,19,22,16,9,10,9
+biojava-core,org.biojava.nbio.core.sequence.location,SimpleLocation,62,83,0,0,12,17,6,9,6,9
+biojava-core,org.biojava.nbio.core.sequence.location,InsdcLocations.BondLocation,14,47,1,3,3,15,2,3,1,2
+biojava-core,org.biojava.nbio.core.sequence.location,SequenceLocation,55,0,0,0,17,0,6,0,6,0
+biojava-core,org.biojava.nbio.core.sequence.location,InsdcParser.complexFeaturesAppendEnum,0,15,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.location,LocationHelper.new LocationHelper.LocationPredicate() {...},15,0,2,0,3,0,3,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.location,LocationHelper.new LocationHelper.LocationPredicate() {...},15,0,2,0,3,0,3,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.location,InsdcLocations.OneOfLocation,44,0,2,0,13,0,3,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.location,FuzzyPoint.new Point.Resolver() {...},13,0,0,0,2,0,2,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.location,FuzzyPoint.new Point.Resolver() {...},7,0,0,0,2,0,2,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.location,FuzzyPoint.new Point.Resolver() {...},7,0,0,0,2,0,2,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.location,InsdcLocations,3,0,0,0,1,0,1,0,1,0
+biojava-core,org.biojava.nbio.core.sequence.location,FuzzyPoint,216,0,16,0,48,0,21,0,13,0
+biojava-core,org.biojava.nbio.core.sequence.location,InsdcLocations.OrderLocation,65,17,0,0,14,7,7,1,7,1
+biojava-core,org.biojava.nbio.core.sequence.location,LocationHelper,486,0,56,0,104,0,43,0,15,0
+biojava-core,org.biojava.nbio.core.sequence.location,InsdcLocations.GroupLocation,65,25,0,0,15,9,7,2,7,2
+biojava-core,org.biojava.nbio.core.sequence.loader,GenbankProxySequenceReader,94,151,10,10,23,36,12,10,4,8
+biojava-core,org.biojava.nbio.core.sequence.loader,StringProxySequenceReader,139,90,12,6,33,24,22,8,15,6
+biojava-core,org.biojava.nbio.core.sequence.loader,UniprotProxySequenceReader,1290,0,132,0,336,0,108,0,42,0
+biojava-core,org.biojava.nbio.core.sequence.loader,SequenceFileProxyLoader,259,0,18,0,63,0,29,0,20,0
+biojava-core,org.biojava.nbio.core.sequence.loader,ArrayListProxySequenceReader,0,3,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.io.embl,EmblId,21,24,0,0,7,9,7,1,7,1
+biojava-core,org.biojava.nbio.core.sequence.io.embl,EmblReader,28,373,11,67,7,82,12,34,1,6
+biojava-core,org.biojava.nbio.core.sequence.io.embl,EmblRecord,74,72,0,0,28,32,23,16,23,16
+biojava-core,org.biojava.nbio.core.sequence.io.embl,EmblReference,0,97,0,0,0,35,0,18,0,18
+biojava-core,org.biojava.nbio.core.alignment.template,Profile.StringFormat,0,39,0,0,0,7,0,1,0,1
+biojava-core,org.biojava.nbio.core.alignment.template,AlignedSequence.Step,0,15,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.search.io,Hsp,152,288,27,31,32,55,37,18,17,9
+biojava-core,org.biojava.nbio.core.search.io,SearchIO,26,142,5,9,6,33,8,7,3,5
+biojava-core,org.biojava.nbio.core.search.io,SearchIO.new Iterator() {...},45,0,4,0,7,0,6,0,4,0
+biojava-core,org.biojava.nbio.core.search.io,Result,98,91,19,9,21,23,26,4,12,4
+biojava-core,org.biojava.nbio.core.search.io,Hit.new Iterator() {...},10,35,2,2,2,5,3,3,1,3
+biojava-core,org.biojava.nbio.core.search.io,Hit,50,60,8,6,14,16,14,3,7,3
+biojava-core,org.biojava.nbio.core.search.io,Result.new Iterator() {...},10,35,2,2,2,5,3,3,1,3
+biojava-core,org.biojava.nbio.core.sequence,DNASequence,21,65,0,0,5,18,4,12,4,12
+biojava-core,org.biojava.nbio.core.sequence,TranscriptSequence,257,214,27,5,54,50,18,14,3,13
+biojava-core,org.biojava.nbio.core.sequence,RNASequence,14,37,0,0,4,10,3,7,3,7
+biojava-core,org.biojava.nbio.core.sequence,DataSource,0,99,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence,MultipleSequenceAlignment,262,431,25,45,41,62,20,31,4,11
+biojava-core,org.biojava.nbio.core.sequence,Strand,0,55,0,3,0,12,0,7,0,5
+biojava-core,org.biojava.nbio.core.sequence,SequenceOptimizationHints.SequenceUsage,21,0,0,0,2,0,1,0,1,0
+biojava-core,org.biojava.nbio.core.sequence,ChromosomeSequence,38,52,0,0,8,13,4,7,4,7
+biojava-core,org.biojava.nbio.core.sequence,DNASequence.DNAType,0,33,0,0,0,2,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence,ProteinSequence,19,183,3,9,5,44,3,11,0,8
+biojava-core,org.biojava.nbio.core.sequence,SequenceOptimizationHints,18,0,0,0,9,0,6,0,6,0
+biojava-core,org.biojava.nbio.core.sequence,SequenceOptimizationHints.SequenceCollection,21,0,0,0,2,0,1,0,1,0
+biojava-core,org.biojava.nbio.core.sequence,StartCodonSequence,0,28,0,0,0,7,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence,ExonComparator,0,11,0,0,0,2,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence,CDSSequence,45,67,3,1,10,17,3,4,1,4
+biojava-core,org.biojava.nbio.core.sequence,IntronSequence,11,14,0,0,1,5,1,1,1,1
+biojava-core,org.biojava.nbio.core.sequence,ExonSequence,6,33,0,0,2,9,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence,BasicSequence,6,5,0,0,2,2,1,1,1,1
+biojava-core,org.biojava.nbio.core.sequence,GeneSequence,115,354,11,15,27,81,13,19,5,14
+biojava-core,org.biojava.nbio.core.sequence,CDSComparator,18,20,2,2,2,4,2,2,0,2
+biojava-core,org.biojava.nbio.core.sequence,SequenceComparator,11,0,0,0,2,0,2,0,2,0
+biojava-core,org.biojava.nbio.core.sequence,TaxonomyID,0,21,0,0,0,8,0,3,0,3
+biojava-core,org.biojava.nbio.core.sequence,StopCodonSequence,0,28,0,0,0,7,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence,AccessionID,48,101,5,5,13,28,9,9,4,9
+biojava-core,org.biojava.nbio.core.sequence.io.util,IOUtils.new IOUtils.ReaderProcessor() {...},0,12,0,0,0,3,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence.io.util,IOUtils,150,287,21,31,31,58,23,22,5,14
+biojava-core,org.biojava.nbio.core.sequence.io.util,ClasspathResource,56,63,3,5,14,21,6,6,3,5
+biojava-core,org.biojava.nbio.core.sequence.io,GenbankReader,39,158,1,9,9,40,2,9,1,5
+biojava-core,org.biojava.nbio.core.sequence.io,FastaGeneWriter,47,211,7,17,5,50,8,10,1,5
+biojava-core,org.biojava.nbio.core.sequence.io,FileProxyRNASequenceCreator,48,0,0,0,12,0,4,0,4,0
+biojava-core,org.biojava.nbio.core.sequence.io,GenbankSequenceParser,106,926,23,110,20,208,23,71,3,18
+biojava-core,org.biojava.nbio.core.sequence.io,GenericFastaHeaderParser,18,381,8,44,3,61,8,22,0,4
+biojava-core,org.biojava.nbio.core.sequence.io,IUPACParser,6,216,1,19,3,43,2,16,1,7
+biojava-core,org.biojava.nbio.core.sequence.io,GenbankWriterHelper,104,30,0,0,33,8,9,2,9,2
+biojava-core,org.biojava.nbio.core.sequence.io,ABITrace,93,1158,16,104,19,229,13,73,1,22
+biojava-core,org.biojava.nbio.core.sequence.io,IUPACParser.IUPACTable,50,238,9,13,11,52,7,16,2,10
+biojava-core,org.biojava.nbio.core.sequence.io,IUPACParser.IOD,0,5,0,0,0,1,0,1,0,1
+biojava-core,org.biojava.nbio.core.sequence.io,ProteinSequenceCreator,7,29,0,0,1,8,1,3,1,3
+biojava-core,org.biojava.nbio.core.sequence.io,FastaReader,75,231,3,35,17,63,4,21,1,5
+biojava-core,org.biojava.nbio.core.sequence.io,FileProxyProteinSequenceCreator,42,0,0,0,10,0,4,0,4,0
+biojava-core,org.biojava.nbio.core.sequence.io,GenericInsdcHeaderFormat,558,500,49,45,99,95,33,24,0,10
+biojava-core,org.biojava.nbio.core.sequence.io,IUPACParser.IUPACTable.new AbstractCompoundSet() {...},0,32,0,2,0,5,0,2,0,1
+biojava-core,org.biojava.nbio.core.sequence.io,GenbankWriter,28,118,0,8,9,28,3,6,3,2
+biojava-core,org.biojava.nbio.core.sequence.io,PlainFastaHeaderParser,5,31,1,1,1,7,1,3,0,3
+biojava-core,org.biojava.nbio.core.sequence.io,GenericGenbankHeaderFormat,106,332,14,18,24,81,13,15,2,10
+biojava-core,org.biojava.nbio.core.sequence.io,GenbankWriterHelper.new GenbankHeaderFormatInterface() {...},7,0,0,0,2,0,2,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.io,RNASequenceCreator,7,29,0,0,1,8,1,3,1,3
+biojava-core,org.biojava.nbio.core.sequence.io,GenbankReaderHelper,126,34,6,0,31,7,11,3,8,3
+biojava-core,org.biojava.nbio.core.sequence.io,FastaWriterHelper.new FastaHeaderFormatInterface() {...},0,7,0,0,0,2,0,2,0,2
+biojava-core,org.biojava.nbio.core.sequence.io,FastaStreamer,20,96,0,0,7,22,3,11,3,11
+biojava-core,org.biojava.nbio.core.sequence.io,DNASequenceCreator,23,13,0,0,5,4,2,2,2,2
+biojava-core,org.biojava.nbio.core.sequence.io,GenericGenbankHeaderParser,80,132,8,8,14,43,13,12,5,12
+biojava-core,org.biojava.nbio.core.sequence.io,CasePreservingProteinSequenceCreator,90,42,12,2,22,10,9,5,3,4
+biojava-core,org.biojava.nbio.core.sequence.io,FastaWriterHelper,114,29,0,0,34,9,8,3,8,3
+biojava-core,org.biojava.nbio.core.sequence.io,FastaReaderHelper,132,0,4,0,32,0,11,0,9,0
+biojava-core,org.biojava.nbio.core.sequence.io,FastaStreamer.new Spliterators.AbstractSpliterator() {...},27,82,2,8,7,17,2,6,0,3
+biojava-core,org.biojava.nbio.core.sequence.io,FastaWriter,32,103,0,8,10,27,3,8,3,4
+biojava-core,org.biojava.nbio.core.sequence.io,GenericFastaHeaderFormat,8,18,4,2,1,7,3,2,0,2
+biojava-core,org.biojava.nbio.core.sequence.io,FileProxyDNASequenceCreator,48,0,0,0,12,0,4,0,4,0
+biojava-core,org.biojava.nbio.core.sequence.io,FastaSequenceParser,39,0,8,0,12,0,6,0,2,0
+biojava-core,org.biojava.nbio.core.sequence.io,BufferedReaderBytesRead,568,263,96,32,124,71,61,19,8,8
+biojava-core,org.biojava.nbio.core.exceptions,ParserException,9,4,0,0,4,2,2,1,2,1
+biojava-core,org.biojava.nbio.core.exceptions,TranslationException,13,0,0,0,6,0,3,0,3,0
+biojava-core,org.biojava.nbio.core.exceptions,Messages,3,0,0,0,1,0,1,0,1,0
+biojava-core,org.biojava.nbio.core.exceptions,CompoundNotFoundException,0,4,0,0,0,2,0,1,0,1

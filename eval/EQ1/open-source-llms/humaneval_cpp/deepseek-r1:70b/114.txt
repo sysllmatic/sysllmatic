@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nlong long minSubArraySum(vector<long long> nums){\nlong long current,min;\n    current=nums[0];\n    min=nums[0];\n    for (int i=1;i<nums.size();i++)\n    {\n       if (current<0) current=current+nums[i];\n       else current=nums[i];\n       if (current<min) min=current;\n    }\n    return min;\n}",
+        4.667,
+        0.124,
+        8813577.6,
+        20808.8,
+        8.043,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n#include<climits>\n\nlong long minSubArraySum(vector<long long> nums) {\n    if (nums.empty())\n        return 0; \n\n    long long current = nums[0];\n    long long min_sum = nums[0];\n\n    for (size_t i = 1; i < nums.size(); ++i) {\n        const auto num = nums[i];\n        if (current < 0)\n            current += num;\n        else\n            current = num;\n\n        if (current < min_sum)\n            min_sum = current;\n\n        \n        if (min_sum == LLONG_MIN) {\n            \n            break;\n        }\n    }\n\n    return min_sum;\n}\n",
+        0.977,
+        0.982,
+        1.065,
+        0.999,
+        0.983,
+        34
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n#include<climits>\n\nlong long minSubArraySum(vector<long long> nums) {\n    if (nums.empty())\n        return 0; \n\n    long long current = nums[0];\n    long long min_sum = nums[0];\n\n    for (size_t i = 1; i < nums.size(); ++i) {\n        const auto num = nums[i];\n        if (current < 0)\n            current += num;\n        else\n            current = num;\n\n        if (current < min_sum)\n            min_sum = current;\n    }\n\n    return min_sum;\n}\n",
+        1.0,
+        0.896,
+        1.11,
+        0.998,
+        0.898,
+        28
+    ]
+}

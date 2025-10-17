@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring solve(string s){\nint nletter=0;\n    string out=\"\";\n    for (int i=0;i<s.length();i++)\n    {\n        char w=s[i];\n        if (w>=65 and w<=90) w=w+32;\n        else if (w>=97 and w<=122) w=w-32;\n        else nletter+=1;\n        out=out+w;\n    }\n    if (nletter==s.length())\n    {\n        string p(s.rbegin(),s.rend());\n        return p;\n    }\n    else return out;\n}",
+        5.63,
+        0.145,
+        59183422.6,
+        20658.4,
+        6.896,
+        24
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <algorithm> \n\nstd::string solve(const std::string& s) {\n    std::string out;\n    out.reserve(s.size()); \n\n    for (char c : s) {\n        if (isalpha(c)) { \n            if (isupper(c)) {\n                out += tolower(c); \n            } else {\n                out += toupper(c); \n            }\n        } else {\n            out += c; \n        }\n    }\n\n    \n    bool allNonLetters = true;\n    for (char c : s) {\n        if (isalpha(c)) {\n            allNonLetters = false;\n            break;\n        }\n    }\n\n    if (allNonLetters) {\n        std::reverse(out.begin(), out.end()); \n    }\n\n    return out;\n}\n\n\n",
+        1.164,
+        1.176,
+        7.688,
+        0.994,
+        1.174,
+        37
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <algorithm>\n\nstd::string solve(const std::string& s) {\n    std::string out;\n    out.reserve(s.size());\n    bool allNonAlpha = true;\n    for (char c : s) {\n        if (isalpha(c)) {\n            allNonAlpha = false;\n            if (isupper(c)) {\n                out += tolower(c);\n            } else {\n                out += toupper(c);\n            }\n        } else {\n            out += c;\n        }\n    }\n    if (allNonAlpha) {\n        std::reverse(out.begin(), out.end());\n    }\n    return out;\n}\n\n\n",
+        1.176,
+        1.103,
+        7.288,
+        0.995,
+        1.101,
+        27
+    ]
+}

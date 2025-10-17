@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> bf(string planet1,string planet2){\nvector<string> planets={\"Mercury\",\"Venus\",\"Earth\",\"Mars\",\"Jupiter\",\"Saturn\",\"Uranus\",\"Neptune\"};\n    int pos1=-1,pos2=-1,m;\n    for (m=0;m<planets.size();m++)\n    {\n    if (planets[m]==planet1) pos1=m;\n    if (planets[m]==planet2) pos2=m;\n    }\n    if (pos1==-1 or pos2==-1) return {};\n    if (pos1>pos2) {m=pos1;pos1=pos2;pos2=m;}\n    vector<string> out={};\n    for (m=pos1+1;m<pos2;m++)\n    out.push_back(planets[m]);\n    return out;\n}",
+        4.857,
+        0.123,
+        4713778.0,
+        20830.4,
+        8.13,
+        22
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<unordered_map>\nusing namespace std;\n#include<stdlib.h>\n\nvector<string> bf(string planet1,string planet2){\n    static unordered_map<string, int> planet_map;\n    static bool map_initialized = false;\n\n    if (!map_initialized) {\n        vector<string> planets = {\"Mercury\",\"Venus\",\"Earth\",\"Mars\",\"Jupiter\",\"Saturn\",\"Uranus\",\"Neptune\"};\n        for (size_t i = 0; i < planets.size(); ++i) {\n            planet_map[planets[i]] = static_cast<int>(i);\n        }\n        map_initialized = true;\n    }\n\n    auto it1 = planet_map.find(planet1);\n    auto it2 = planet_map.find(planet2);\n\n    if (it1 == planet_map.end() || it2 == planet_map.end()) {\n        return {};\n    }\n\n    int pos1 = it1->second;\n    int pos2 = it2->second;\n\n    if (pos1 > pos2) {\n        swap(pos1, pos2);\n    }\n\n    vector<string> out;\n    vector<string> planets = {\"Mercury\",\"Venus\",\"Earth\",\"Mars\",\"Jupiter\",\"Saturn\",\"Uranus\",\"Neptune\"};\n    for (int m = pos1 + 1; m < pos2; ++m) {\n        out.push_back(planets[m]);\n    }\n    return out;\n}",
+        1.028,
+        0.911,
+        1.001,
+        0.998,
+        0.91,
+        42
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<string> planets = {\"Mercury\",\"Venus\",\"Earth\",\"Mars\",\"Jupiter\",\"Saturn\",\"Uranus\",\"Neptune\"};\n\nvector<string> bf(string planet1,string planet2){\n    int pos1 = -1, pos2 = -1;\n    for (size_t m = 0; m < planets.size(); ++m) {\n        if (planets[m] == planet1) pos1 = static_cast<int>(m);\n        if (planets[m] == planet2) pos2 = static_cast<int>(m);\n    }\n\n    if (pos1 == -1 || pos2 == -1) return {};\n\n    if (pos1 > pos2) swap(pos1, pos2);\n\n    vector<string> out;\n    for (int m = pos1 + 1; m < pos2; ++m) {\n        out.push_back(planets[m]);\n    }\n    return out;\n}",
+        1.028,
+        1.002,
+        0.993,
+        1.001,
+        1.001,
+        27
+    ]
+}

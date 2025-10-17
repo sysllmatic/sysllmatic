@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_palindrome(string text){\nstring pr(text.rbegin(),text.rend());\n    return pr==text;\n}",
+        4.632,
+        0.125,
+        9190935.8,
+        20785.6,
+        7.963,
+        10
+    ],
+    "1": [
+        "#include <string>\nusing namespace std;\n\nbool is_palindrome(string text) {\n    int left = 0;\n    int right = text.length() - 1;\n    while (left < right) {\n        if (text[left] != text[right])\n            return false;\n        left++;\n        right--;\n    }\n    return true;\n}\n",
+        0.999,
+        0.951,
+        1.642,
+        0.997,
+        0.954,
+        14
+    ],
+    "2": [
+        "#include <string>\nusing namespace std;\n\nbool is_palindrome(string text) {\n    int left = 0;\n    int right = text.length() - 1;\n\n    \n    for (auto &c : text) {\n        c = tolower(c);\n        if (!isalnum(c))\n            continue;\n    }\n\n    while (left < right) {\n        if (!isalnum(text[left]))\n            left++;\n        else if (!isalnum(text[right]))\n            right--;\n        else if (text[left] != text[right])\n            return false;\n        else {\n            left++;\n            right--;\n        }\n    }\n\n    return true;\n}\n",
+        0.985,
+        0.913,
+        1.093,
+        1.0,
+        0.916,
+        29
+    ]
+}

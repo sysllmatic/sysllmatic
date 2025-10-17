@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> generate_integers(int a,int b){\nint m;\n    if (b<a)\n    {\n        m=a;a=b;b=m;\n    }\n\n    vector<int> out={};\n    for (int i=a;i<=b;i++)\n    if (i<10 and i%2==0) out.push_back(i);\n    return out;\n}",
+        4.783,
+        0.127,
+        4987361.8,
+        20773.6,
+        7.872,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    \n    if (b < a)\n        swap(a, b);\n\n    vector<int> out;\n\n    \n    const vector<int> evens_less_than_10 = {0, 2, 4, 6, 8};\n\n    for (int num : evens_less_than_10) {\n        if (num >= a && num <= b)\n            out.push_back(num);\n        \n    }\n    return out;\n}\n",
+        0.797,
+        1.039,
+        0.958,
+        0.986,
+        1.037,
+        21
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n\nvector<int> generate_integers(int a, int b) {\n    \n    if (b < a)\n        swap(a, b);\n\n    vector<int> out;\n\n    \n    const vector<int> evens_less_than_10 = {0, 2, 4, 6, 8};\n\n    for (int num : evens_less_than_10) {\n        if (num >= a && num <= b)\n            out.push_back(num);\n        \n    }\n    return out;\n}\n",
+        0.848,
+        0.913,
+        0.911,
+        0.998,
+        0.913,
+        21
+    ]
+}

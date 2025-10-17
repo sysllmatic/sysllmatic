@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> minPath(vector<vector<int>> grid, int k){\nint i,j,x,y,min;\n    for (i=0;i<grid.size();i++)\n        for (j=0;j<grid[i].size();j++)\n            if (grid[i][j]==1) {\n                x=i;y=j;\n            }\n    min=grid.size()*grid.size();\n    if (x>0 and grid[x-1][y]<min) min=grid[x-1][y];\n    if (x<grid.size()-1 and grid[x+1][y]<min) min=grid[x+1][y];\n    if (y>0 and grid[x][y-1]<min) min=grid[x][y-1];\n    if (y<grid.size()-1 and grid[x][y+1]<min) min=grid[x][y+1];\n    vector<int> out={};\n    for (i=0;i<k;i++)\n    if (i%2==0) out.push_back(1);\n    else out.push_back(min);\n    return out;\n}",
+        4.963,
+        0.105,
+        6328963.4,
+        20528.0,
+        9.468,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> minPath(vector<vector<int>> grid, int k){\n    \n    int i, j, x, y;\n    for (i = 0; i < grid.size(); i++)\n        for (j = 0; j < grid[i].size(); j++)\n            if (grid[i][j] == 1) {\n                x = i; y = j;\n            }\n    \n    \n    int gridSize = grid.size();\n    int maxIndex = gridSize - 1;\n    \n    \n    int minVal = gridSize * gridSize;\n    \n    \n    if (x > 0) minVal = min(minVal, grid[x-1][y]);\n    if (x < maxIndex) minVal = min(minVal, grid[x+1][y]);\n    if (y > 0) minVal = min(minVal, grid[x][y-1]);\n    if (y < maxIndex) minVal = min(minVal, grid[x][y+1]);\n    \n    \n    vector<int> out;\n    out.reserve(k);\n    \n    \n    for (int i = 0; i < k; i++) {\n        if (i % 2 == 0) out.push_back(1);\n        else out.push_back(minVal);\n    }\n    \n    return out;\n}",
+        1.001,
+        1.001,
+        0.973,
+        1.002,
+        1.006,
+        40
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> minPath(vector<vector<int>> grid, int k){\n    \n    int i, j, x = 0, y = 0;  \n    bool found = false;\n    \n    for (i = 0; i < grid.size() && !found; i++) {\n        for (j = 0; j < grid[i].size(); j++) {\n            if (grid[i][j] == 1) {\n                x = i; y = j;\n                found = true;\n                break;\n            }\n        }\n        if (found) break;\n    }\n    \n    \n    int gridSize = grid.size();\n    int maxIndex = gridSize - 1;\n    \n    \n    int minVal = gridSize * gridSize;\n    \n    \n    if (x > 0) minVal = min(minVal, grid[x-1][y]);\n    if (x < maxIndex) minVal = min(minVal, grid[x+1][y]);\n    if (y > 0) minVal = min(minVal, grid[x][y-1]);\n    if (y < maxIndex) minVal = min(minVal, grid[x][y+1]);\n    \n    \n    vector<int> out;\n    out.reserve(k);\n    \n    \n    int pairs = k / 2;\n    for (int idx = 0; idx < pairs; idx++) {\n        out.push_back(1);\n        out.push_back(minVal);\n    }\n    \n    \n    if (k % 2 == 1) {\n        out.push_back(1);\n    }\n    \n    return out;\n}",
+        1.016,
+        1.032,
+        1.02,
+        1.002,
+        1.036,
+        53
+    ]
+}

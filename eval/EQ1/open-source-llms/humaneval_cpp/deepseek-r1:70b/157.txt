@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool right_angle_triangle(float a,float b,float c){\nif (abs(a*a+b*b-c*c)<1e-4 or abs(a*a+c*c-b*b)<1e-4 or abs(b*b+c*c-a*a)<1e-4) return true;\n    return false;\n}",
+        5.388,
+        0.126,
+        2823311.8,
+        21000.0,
+        7.926,
+        9
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool right_angle_triangle(float a, float b, float c) {\n    \n    if (a > b) swap(a, b);\n    if (b > c) swap(b, c);\n    \n    \n    return abs(a*a + b*b - c*c) < 1e-4;\n}\n",
+        1.192,
+        1.008,
+        0.986,
+        1.003,
+        1.008,
+        14
+    ]
+}

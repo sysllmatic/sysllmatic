@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_prime(long long n){\nif (n<2) return false;\n    for (long long i=2;i*i<=n;i++)\n        if (n%i==0) return false;\n    return true;\n}",
+        4.896,
+        0.103,
+        2818950.4,
+        20461.6,
+        9.73,
+        11
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool is_prime(long long n){\n    \n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    \n    \n    for (long long i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0)\n            return false;\n    }\n    \n    return true;\n}",
+        0.97,
+        1.035,
+        0.977,
+        1.0,
+        1.031,
+        20
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\n\nstatic const int SMALL_PRIMES[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};\nstatic const int NUM_SMALL_PRIMES = sizeof(SMALL_PRIMES) / sizeof(SMALL_PRIMES[0]);\n\n\nstatic bool prime_cache_initialized = false;\nstatic bool prime_cache[1000]; \n\nvoid initialize_prime_cache() {\n    if (prime_cache_initialized) return;\n    \n    for (int i = 0; i < 1000; i++) {\n        prime_cache[i] = false;\n    }\n    \n    \n    if (1000 > 2) prime_cache[2] = true;\n    for (int i = 3; i < 1000; i += 2) {\n        bool is_prime = true;\n        for (int j = 0; j < NUM_SMALL_PRIMES && SMALL_PRIMES[j] * SMALL_PRIMES[j] <= i; j++) {\n            if (i % SMALL_PRIMES[j] == 0) {\n                is_prime = false;\n                break;\n            }\n        }\n        prime_cache[i] = is_prime;\n    }\n    \n    prime_cache_initialized = true;\n}\n\nbool is_prime(long long n){\n    \n    if (n <= 1) return false;\n    \n    \n    if (n < 1000) {\n        if (!prime_cache_initialized) initialize_prime_cache();\n        return prime_cache[n];\n    }\n    \n    \n    for (int i = 0; i < NUM_SMALL_PRIMES; i++) {\n        if (n == SMALL_PRIMES[i]) return true;\n        if (n % SMALL_PRIMES[i] == 0) return false;\n    }\n    \n    \n    for (long long i = 53; i * i <= n; i += 6) { \n        if (n % i == 0 || n % (i + 2) == 0)\n            return false;\n    }\n    \n    return true;\n}",
+        1.004,
+        1.07,
+        0.972,
+        0.996,
+        1.066,
+        61
+    ]
+}

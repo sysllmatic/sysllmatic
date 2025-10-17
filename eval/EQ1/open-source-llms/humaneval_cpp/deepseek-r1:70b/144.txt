@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nbool simplify(string x,string n){\nint a,b,c,d,i;\n    for (i=0;i<x.size();i++)\n        if (x[i]=='/') \n        {\n            a=atoi(x.substr(0,i).c_str());\n            b=atoi(x.substr(i+1).c_str());\n        }\n    for (i=0;i<n.size();i++)\n        if (n[i]=='/') \n        {\n            c=atoi(n.substr(0,i).c_str());\n            d=atoi(n.substr(i+1).c_str());\n        }\n    if ((a*c)%(b*d)==0) return true;\n    return false;\n}",
+        4.547,
+        0.127,
+        4809979.4,
+        20976.8,
+        7.888,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<sstream>\nusing namespace std;\n\nbool simplify(string x, string n) {\n    int a, b, c, d;\n    size_t pos_x = x.find('/');\n    size_t pos_n = n.find('/');\n\n    if (pos_x == string::npos || pos_n == string::npos)\n        return false;\n\n    \n    istringstream x_num(x.substr(0, pos_x));\n    istringstream x_den(x.substr(pos_x + 1));\n    istringstream n_num(n.substr(0, pos_n));\n    istringstream n_den(n.substr(pos_n + 1));\n\n    if (!(x_num >> a) || !(x_den >> b) || !(n_num >> c) || !(n_den >> d)) {\n        return false;\n    }\n\n    if (b == 0 || d == 0)\n        return false; \n\n    int product_ac = a * c;\n    int product_bd = b * d;\n\n    return (product_ac % product_bd) == 0;\n}\n",
+        0.951,
+        0.952,
+        0.92,
+        1.005,
+        0.949,
+        31
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\n#include<climits>\nusing namespace std;\n\nbool simplify(string x, string n) {\n    size_t pos_x = x.find('/');\n    size_t pos_n = n.find('/');\n\n    if (pos_x == string::npos || pos_n == string::npos)\n        return false;\n\n    int a = atoi(x.substr(0, pos_x).c_str());\n    int b = atoi(x.substr(pos_x + 1).c_str());\n    int c = atoi(n.substr(0, pos_n).c_str());\n    int d = atoi(n.substr(pos_n + 1).c_str());\n\n    if (b == 0 || d == 0)\n        return false; \n\n    \n    if ((a > INT_MAX / c) || (c > INT_MAX / a)) {\n        return false;\n    }\n    int product_ac = a * c;\n\n    if ((b > INT_MAX / d) || (d > INT_MAX / b)) {\n        return false;\n    }\n    int product_bd = b * d;\n\n    return (product_ac % product_bd) == 0;\n}\n",
+        1.02,
+        0.954,
+        1.0,
+        1.006,
+        0.951,
+        33
+    ]
+}

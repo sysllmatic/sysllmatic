@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encode_shift(string s){\n    string out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+5-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}\nstring decode_shift(string s){\nstring out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+21-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}",
+        4.605,
+        0.138,
+        4912330.4,
+        20905.6,
+        7.239,
+        26
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n\nstring encode_shift(string s) {\n    string out;\n    for (int i = 0; i < s.length(); ++i) {\n        char c = s[i];\n        if (c >= 'a' && c <= 'z') {\n            int offset = (c - 'a' + 5) % 26;\n            out += (char)('a' + offset);\n        } else {\n            out += c;\n        }\n    }\n    return out;\n}\n\nstring decode_shift(string s) {\n    string out;\n    for (int i = 0; i < s.length(); ++i) {\n        char c = s[i];\n        if (c >= 'a' && c <= 'z') {\n            int offset = (c - 'a' + 21) % 26;\n            out += (char)('a' + offset);\n        } else {\n        \t out += c;\n        }\n    }\n    return out;\n}\n",
+        0.953,
+        1.108,
+        0.941,
+        1.001,
+        1.107,
+        31
+    ]
+}

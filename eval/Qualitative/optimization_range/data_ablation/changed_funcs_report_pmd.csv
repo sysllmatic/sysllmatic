@@ -1,0 +1,13 @@
+file_name,functions_compared,functions_changed
+AbstractNode.java,64,11
+AbstractRule.java,62,12
+AbstractRuleViolationFactory.java,3,1
+Attribute.java,11,4
+AttributeAxisIterator.java,12,8
+ElementNode.java,22,5
+IOUtil.java,41,6
+RuleSetFactory.java,34,17
+RuleSetFactoryCompatibility.java,15,1
+SaxonXPathRuleQuery.java,16,6
+XPathRule.java,15,6
+AVERAGE,26.818182,7.000000

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_simple_power(int x,int n){\nint p=1,count=0;\n    while (p<=x and count<100)\n    {\n        if (p==x) return true;\n        p=p*n;count+=1;\n    }\n    return false;\n}",
+        4.501,
+        0.137,
+        2857606.0,
+        20902.4,
+        7.293,
+        14
+    ],
+    "1": [
+        "#include <cmath>\n\nbool is_simple_power(int x, int n) {\n    if (x <= 0 || n <= 0) {\n        return false;\n    }\n    if (x == 1) {\n        return true;\n    }\n    if (n == 1) {\n        return x == 1;\n    }\n    int p = 1;\n    while (p < x) {\n        p *= n;\n    }\n    return p == x;\n}",
+        1.023,
+        1.021,
+        1.021,
+        1.005,
+        1.021,
+        18
+    ],
+    "2": [
+        "#include <cmath>\n\nbool is_simple_power(int x, int n) {\n    if (x <= 0 || n <= 0 || n == 1) {\n        return x == 1;\n    }\n    double log_x = std::log(x);\n    double log_n = std::log(n);\n    if (log_n == 0) return false;\n    double result = log_x / log_n;\n    return std::fmod(result, 1.0) == 0.0;\n}",
+        1.013,
+        1.115,
+        0.94,
+        1.006,
+        1.115,
+        12
+    ]
+}

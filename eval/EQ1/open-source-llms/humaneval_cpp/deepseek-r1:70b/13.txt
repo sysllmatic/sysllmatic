@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nint greatest_common_divisor(int a, int b){\nint out,m;\n    while (true){\n        if (a<b) \n        {\n            m=a;a=b;b=m;\n        }\n        a=a%b;\n        if (a==0) return b;\n    }\n}",
+        4.89,
+        0.118,
+        2866465.4,
+        20875.2,
+        8.475,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nint greatest_common_divisor(int a, int b) {\n    while (b != 0) {\n        int temp = a % b;\n        a = b;\n        b = temp;\n        \n    }\n    return a;\n}\n",
+        1.084,
+        0.9,
+        1.031,
+        1.001,
+        0.898,
+        15
+    ],
+    "2": [
+        "#include<stdio.h>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nint greatest_common_divisor(int a, int b) {\n    while (b != 0) {\n        int temp = a - b;\n        if(temp > 0)\n            a = temp;\n        else\n            b = -temp;\n        \n    }\n    return a;\n}\n",
+        1.099,
+        0.957,
+        0.99,
+        1.001,
+        0.955,
+        17
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool pairs_sum_to_zero(vector<int> l){\nfor (int i=0;i<l.size();i++)\n    for (int j=i+1;j<l.size();j++)\n    if (l[i]+l[j]==0) return true;\n    return false;\n}",
+        16.273,
+        0.313,
+        990184507.4,
+        20553.6,
+        3.189,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool pairs_sum_to_zero(vector<int> l){\n    if (l.size() < 2) return false;\n    \n    \n    sort(l.begin(), l.end());\n    \n    \n    int left = 0;\n    int right = l.size() - 1;\n    \n    while (left < right) {\n        int sum = l[left] + l[right];\n        if (sum == 0) {\n            return true;\n        } else if (sum < 0) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return false;\n}",
+        3.11,
+        2.907,
+        27.844,
+        0.999,
+        2.908,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<unordered_set>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool pairs_sum_to_zero(const vector<int>& l){\n    if (l.size() < 2) return false;\n    \n    unordered_set<int> seen;\n    \n    for (int element : l) {\n        int complement = -element;\n        if (seen.find(complement) != seen.end()) {\n            return true;\n        }\n        seen.insert(element);\n    }\n    \n    return false;\n}",
+        3.048,
+        2.818,
+        24.04,
+        1.004,
+        2.819,
+        22
+    ]
+}

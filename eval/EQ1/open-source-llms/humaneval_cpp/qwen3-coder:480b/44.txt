@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring change_base(int x,int base){\nstring out=\"\";\n    while (x>0)\n    {\n        out=to_string(x%base)+out;\n        x=x/base;\n    }\n    return out;\n}",
+        4.866,
+        0.102,
+        4468665.0,
+        20496.8,
+        9.762,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring change_base(int x, int base){\n    if (x == 0) return \"0\";\n    \n    string out = \"\";\n    char digits[] = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\"; \n    \n    while (x > 0) {\n        int remainder = x % base;\n        out += digits[remainder];\n        x /= base;\n    }\n    \n    reverse(out.begin(), out.end());\n    return out;\n}",
+        0.999,
+        1.008,
+        0.906,
+        1.001,
+        1.01,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring change_base(int x, int base){\n    if (x == 0) return \"0\";\n    \n    \n    int temp = x;\n    int count = 0;\n    while (temp > 0) {\n        count++;\n        temp /= base;\n    }\n    \n    \n    string out(count, '0');\n    char digits[] = \"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\"; \n    \n    \n    int i = count - 1;\n    while (x > 0) {\n        int remainder = x % base;\n        out[i] = digits[remainder];\n        x /= base;\n        i--;\n    }\n    \n    return out;\n}",
+        0.997,
+        0.999,
+        0.88,
+        0.999,
+        1.002,
+        33
+    ]
+}

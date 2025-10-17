@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> compare(vector<int> game,vector<int> guess){\nvector<int> out;\n    for (int i=0;i<game.size();i++)\n    out.push_back(abs(game[i]-guess[i]));\n    return out;\n}",
+        4.999,
+        0.105,
+        14419163.0,
+        20488.8,
+        9.487,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> compare(vector<int> game,vector<int> guess){\n    vector<int> out;\n    size_t size = game.size();\n    \n    \n    out.reserve(size);\n    \n    size_t i = 0;\n    \n    for (; i + 3 < size; i += 4) {\n        out.push_back(abs(game[i] - guess[i]));\n        out.push_back(abs(game[i+1] - guess[i+1]));\n        out.push_back(abs(game[i+2] - guess[i+2]));\n        out.push_back(abs(game[i+3] - guess[i+3]));\n    }\n    \n    \n    for (; i < size; i++) {\n        out.push_back(abs(game[i] - guess[i]));\n    }\n    \n    return out;\n}",
+        1.01,
+        1.008,
+        1.039,
+        1.002,
+        1.01,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> compare(vector<int> game,vector<int> guess){\n    size_t size = game.size();\n    vector<int> out(size);  \n    \n    size_t i = 0;\n    \n    \n    for (; i + 3 < size; i += 4) {\n        int diff0 = game[i] - guess[i];\n        out[i] = (diff0 < 0) ? -diff0 : diff0;\n        \n        int diff1 = game[i+1] - guess[i+1];\n        out[i+1] = (diff1 < 0) ? -diff1 : diff1;\n        \n        int diff2 = game[i+2] - guess[i+2];\n        out[i+2] = (diff2 < 0) ? -diff2 : diff2;\n        \n        int diff3 = game[i+3] - guess[i+3];\n        out[i+3] = (diff3 < 0) ? -diff3 : diff3;\n    }\n    \n    \n    for (; i < size; i++) {\n        int diff = game[i] - guess[i];\n        out[i] = (diff < 0) ? -diff : diff;\n    }\n    \n    return out;\n}",
+        1.013,
+        1.025,
+        1.207,
+        0.999,
+        1.027,
+        35
+    ]
+}

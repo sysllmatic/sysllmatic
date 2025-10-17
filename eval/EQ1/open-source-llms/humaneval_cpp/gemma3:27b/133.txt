@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<float> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        sum+=ceil(lst[i])*ceil(lst[i]);\n    return sum;\n}",
+        5.097,
+        0.121,
+        7129469.4,
+        20797.6,
+        8.257,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint sum_squares(vector<float> lst){\n    int sum=0;\n    for (int i=0;i<lst.size();i++){\n        sum+=(int)ceil(lst[i])*(int)ceil(lst[i]);\n    }\n    return sum;\n}\n",
+        1.049,
+        0.931,
+        0.903,
+        1.0,
+        0.931,
+        14
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nint sum_squares(const vector<float>& lst){\n    int sum=0;\n    for (size_t i=0;i<lst.size();i++){\n        sum+= (int)ceil(lst[i])*(int)ceil(lst[i]);\n    }\n    return sum;\n}\n",
+        1.088,
+        0.979,
+        0.931,
+        0.993,
+        0.978,
+        13
+    ]
+}

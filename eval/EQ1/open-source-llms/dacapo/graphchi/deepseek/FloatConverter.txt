@@ -1,0 +1,11 @@
+{
+    "0": [
+        "package edu.cmu.graphchi.datablocks;\n\n\n\n\npublic class FloatConverter implements  BytesToValueConverter<Float> {\n    public int sizeOf() {\n        return 4;\n    }\n\n    public Float getValue(byte[] array) {\n        int x = ((array[3]  & 0xff) << 24) + ((array[2] & 0xff) << 16) + ((array[1] & 0xff) << 8) + (array[0] & 0xff);\n        return Float.intBitsToFloat(x);\n    }\n\n    public void setValue(byte[] array, Float val) {\n        int x = Float.floatToIntBits(val);\n        array[3] = (byte) ((x >>> 24) & 0xff);\n        array[2] = (byte) ((x >>> 16) & 0xff);\n        array[1] = (byte) ((x >>> 8) & 0xff);\n        array[0] = (byte) ((x >>> 0) & 0xff);\n    }\n}",
+    ],
+    "1": [
+        "package edu.cmu.graphchi.datablocks;\n\npublic class FloatConverter implements BytesToValueConverter<Float> {\n    public int sizeOf() {\n        return 4;\n    }\n\n    public Float getValue(byte[] array) {\n        int x = ((array[3] & 0xff) << 24) | ((array[2] & 0xff) << 16) |\n               ((array[1] & 0xff) << 8) | (array[0] & 0xff);\n        return Float.intBitsToFloat(x);\n    }\n\n    public void setValue(byte[] array, Float val) {\n        int x = Float.floatToIntBits(val);\n        array[3] = (byte)((x >>> 24) & 0xff);\n        array[2] = (byte)((x >>> 16) & 0xff);\n        array[1] = (byte)((x >>> 8) & 0xff);\n        array[0] = (byte)(x & 0xff);\n    }\n}\n",
+    ],
+    "2": [
+        "package edu.cmu.graphchi.datablocks;\n\nimport java.nio.ByteBuffer;\nimport java.nio.ByteOrder;\n\npublic class FloatConverter implements BytesToValueConverter<Float> {\n    private static final ByteOrder BYTE_ORDER = ByteOrder.BIG_ENDIAN;\n\n    public int sizeOf() {\n        return 4;\n    }\n\n    public Float getValue(byte[] array) {\n        ByteBuffer buffer = ByteBuffer.wrap(array);\n        buffer.order(BYTE_ORDER);\n        return buffer.getFloat();\n    }\n\n    public void setValue(byte[] array, Float val) {\n        ByteBuffer buffer = ByteBuffer.wrap(array);\n        buffer.order(BYTE_ORDER);\n        buffer.putFloat(val);\n        \n        \n        buffer.clear();\n        buffer.get(array);\n    }\n}\n",
+    ]
+}

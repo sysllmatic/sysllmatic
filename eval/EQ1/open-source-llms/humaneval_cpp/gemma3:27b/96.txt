@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> count_up_to(int n){\nvector<int> out={};\n    int i,j;\n    for (i=2;i<n;i++)\n        if (out.size()==0) {out.push_back(i);}\n        else\n        {\n            bool isp=true;\n            for (j=0;out[j]*out[j]<=i;j++)\n                if (i%out[j]==0) isp=false;\n            if (isp) out.push_back(i);\n        }\n    return out;\n}",
+        5.106,
+        0.134,
+        38964257.4,
+        20709.6,
+        7.463,
+        20
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> count_up_to(int n){\n    vector<int> out={};\n    int i,j;\n    if (n <= 2) return out;\n    out.push_back(2);\n    int last_prime = 2;\n\n    for (i=3; i<n; i+=2) {\n        bool isp=true;\n        int sqrt_i = (int)sqrt(i);\n        for (j=0; j<out.size() && out[j]<=sqrt_i; j++) {\n            if (i%out[j]==0) {\n                isp=false;\n                break;\n            }\n        }\n        if (isp) {\n            out.push_back(i);\n        }\n    }\n    return out;\n}",
+        1.023,
+        1.041,
+        3.147,
+        0.988,
+        1.039,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> count_up_to(int n){\n    vector<int> out={};\n    int i,j;\n    if (n <= 2) return out;\n    out.reserve(n / 2); \n    out.push_back(2);\n    int sqrt_n = (int)sqrt(n); \n\n    for (i=3; i<n; i+=2) {\n        bool isp=true;\n        int out_size = out.size(); \n        for (j=0; j<out_size && out[j]<=sqrt_n; j++) {\n            if (i%out[j]==0) {\n                isp=false;\n                break;\n            }\n        }\n        if (isp) {\n            out.push_back(i);\n        }\n    }\n    return out;\n}",
+        0.987,
+        0.936,
+        3.308,
+        0.991,
+        0.935,
+        30
+    ]
+}

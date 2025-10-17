@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nfloat triangle_area(float a,float b,float c){\nif (a+b<=c or a+c<=b or b+c<=a) return -1;\n    float h=(a+b+c)/2;\n    float area;\n    area=pow(h*(h-a)*(h-b)*(h-c),0.5);\n    return area;\n}",
+        4.999,
+        0.105,
+        2919221.8,
+        20578.4,
+        9.467,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nfloat triangle_area(float a, float b, float c) {\n    \n    if ((a + b <= c) || (a + c <= b) || (b + c <= a)) \n        return -1;\n    \n    \n    const float s = (a + b + c) * 0.5f;\n    \n    \n    const float sa = s - a;\n    const float sb = s - b;\n    const float sc = s - c;\n    \n    \n    return sqrt(s * sa * sb * sc);\n}",
+        1.045,
+        1.057,
+        0.971,
+        1.004,
+        1.062,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nfloat triangle_area(float a, float b, float c) {\n    \n    if (a > b) swap(a, b);\n    if (b > c) swap(b, c);\n    if (a > b) swap(a, b);\n    \n    \n    if (a + b <= c) return -1;\n    \n    \n    const float s = (a + b + c) * 0.5f;\n    \n    \n    const float sa = s - a;\n    const float sb = s - b;\n    const float sc = s - c;\n    \n    \n    \n    return sqrt(sa * sb * sc * s);\n}",
+        1.041,
+        1.057,
+        0.953,
+        1.003,
+        1.062,
+        27
+    ]
+}

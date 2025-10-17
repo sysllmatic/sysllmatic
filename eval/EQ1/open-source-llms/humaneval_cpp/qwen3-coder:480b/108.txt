@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint count_nums(vector<int> n){\nint num=0;\n    for (int i=0;i<n.size();i++)\n        if (n[i]>0) num+=1;\n        else\n        {\n            int sum=0;\n            int w;\n            w=abs(n[i]);\n            while (w>=10)\n            {\n                sum+=w%10;\n                w=w/10;\n            }\n            sum-=w;\n            if (sum>0) num+=1;\n        }\n    return num;\n}",
+        4.925,
+        0.103,
+        7549414.2,
+        20525.6,
+        9.717,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\n\nint precomputed_digit_sums[10000];\nbool precomputed_initialized = false;\n\nvoid initialize_precomputed() {\n    if (precomputed_initialized) return;\n    \n    for (int i = 0; i < 10000; i++) {\n        int w = i;\n        int sum = 0;\n        bool first = true;\n        \n        if (w == 0) {\n            precomputed_digit_sums[i] = 0;\n            continue;\n        }\n        \n        while (w > 0) {\n            if (!first) {\n                sum += w % 10;\n            } else {\n                first = false;\n            }\n            w /= 10;\n        }\n        precomputed_digit_sums[i] = sum;\n    }\n    precomputed_initialized = true;\n}\n\nint count_nums(const vector<int>& n){\n    initialize_precomputed();\n    int num = 0;\n    \n    for (size_t i = 0; i < n.size(); i++) {\n        const int val = n[i];\n        \n        if (val > 0) {\n            num++;\n        } else {\n            const int abs_val = (val >= 0) ? val : -val; \n            \n            if (abs_val < 10000) {\n                \n                if (precomputed_digit_sums[abs_val] > 0) num++;\n            } else {\n                \n                int w = abs_val;\n                int sum = 0;\n                bool first = true;\n                \n                while (w >= 10) {\n                    if (!first) {\n                        sum += w % 10;\n                    } else {\n                        first = false;\n                    }\n                    w /= 10;\n                }\n                \n                \n                if (sum > 0) num++;\n            }\n        }\n    }\n    return num;\n}",
+        1.018,
+        1.031,
+        1.033,
+        1.002,
+        1.029,
+        74
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint count_nums(const vector<int>& n){\n    int num = 0;\n    \n    for (size_t i = 0; i < n.size(); i++) {\n        const int val = n[i];\n        \n        if (val > 0) {\n            num++;\n        } else {\n            \n            const int abs_val = (val ^ (val >> 31)) - (val >> 31); \n            \n            \n            if (abs_val < 10) {\n                \n                continue;\n            } else if (abs_val < 100) {\n                \n                if ((abs_val % 10) > 0) num++;\n            } else {\n                \n                int w = abs_val;\n                int sum = 0;\n                int temp = w;\n                \n                \n                while (temp >= 10) {\n                    sum += temp % 10;\n                    temp /= 10;\n                }\n                \n                if (sum > 0) num++;\n            }\n        }\n    }\n    return num;\n}",
+        0.995,
+        0.991,
+        1.017,
+        0.999,
+        0.989,
+        44
+    ]
+}

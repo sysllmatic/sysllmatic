@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> separate_paren_groups(string paren_string){\nvector<string> all_parens;\n    string current_paren;\n    int level=0;\n    char chr;\n    int i;\n    for (i=0;i<paren_string.length();i++)\n    {\n        chr=paren_string[i];\n        if (chr=='(')\n        {\n        level+=1;\n        current_paren+=chr;\n        }\n        if (chr==')')\n        {\n            level-=1;\n            current_paren+=chr;\n            if (level==0){\n                all_parens.push_back(current_paren);\n                current_paren=\"\";\n            }\n        }\n    }\n    return all_parens;\n}",
+        4.808,
+        0.134,
+        17405536.2,
+        21017.6,
+        7.481,
+        33
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nvector<string> separate_paren_groups(string paren_string){\n    vector<string> all_parens;\n    string current_paren;\n    int level=0;\n    char chr;\n    int i;\n    for (i=0;i<paren_string.length();i++){\n        chr=paren_string[i];\n        if (chr=='(')\n        {\n            level+=1;\n            current_paren.push_back(chr);\n        }\n        if (chr==')')\n        {\n            level-=1;\n            current_paren.push_back(chr);\n            if (level==0){\n                all_parens.push_back(current_paren);\n                current_paren=\"\";\n            }\n        }\n    }\n    return all_parens;\n}\n",
+        1.024,
+        0.94,
+        1.012,
+        1.005,
+        0.937,
+        30
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nvector<string> separate_paren_groups(string paren_string){\n    vector<string> all_parens;\n    all_parens.reserve(10); \n    string current_paren;\n    int level=0;\n    char chr;\n    int i;\n    for (i=0;i<paren_string.length();i++){\n        chr=paren_string[i];\n        if (chr=='(')\n        {\n            level+=1;\n            current_paren += chr;\n        }\n        if (chr==')')\n        {\n            level-=1;\n            current_paren += chr;\n            if (level==0){\n                all_parens.push_back(current_paren);\n                current_paren=\"\";\n            }\n        }\n    }\n    return all_parens;\n}\n",
+        0.992,
+        0.932,
+        1.113,
+        1.006,
+        0.929,
+        31
+    ]
+}

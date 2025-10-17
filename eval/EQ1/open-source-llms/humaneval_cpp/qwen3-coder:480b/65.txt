@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring circular_shift(int x,int shift){\nstring xs;\n    xs=to_string(x);\n    if (xs.length()<shift)\n    {\n        string s(xs.rbegin(),xs.rend());\n        return s;\n    }\n    xs=xs.substr(xs.length()-shift)+xs.substr(0,xs.length()-shift);\n    return xs;\n}",
+        4.872,
+        0.104,
+        4642481.8,
+        20572.0,
+        9.615,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring circular_shift(int x,int shift){\n    string xs = to_string(x);\n    int len = xs.length();\n    \n    if (len == 0) return xs;\n    \n    \n    if (len < shift) {\n        string s(xs.rbegin(), xs.rend());\n        return s;\n    }\n    \n    \n    \n    shift = shift % len;\n    \n    \n    if (shift == 0) return xs;\n    \n    \n    return xs.substr(len - shift) + xs.substr(0, len - shift);\n}",
+        0.992,
+        1.008,
+        0.979,
+        1.002,
+        1.006,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring circular_shift(int x,int shift){\n    string xs = to_string(x);\n    int len = xs.length();\n    \n    \n    if (len == 0) return xs;\n    \n    \n    if (len < shift) {\n        return string(xs.rbegin(), xs.rend());\n    }\n    \n    \n    shift = shift % len;\n    if (shift == 0) return xs;\n    \n    \n    return xs.substr(len - shift) + xs.substr(0, len - shift);\n}",
+        0.996,
+        1.018,
+        1.004,
+        1.001,
+        1.017,
+        25
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nstring file_name_check(string file_name){\nint numdigit=0,numdot=0;\n    if (file_name.length()<5) return \"No\";\n    char w=file_name[0];\n    if (w<65 or (w>90 and w<97) or w>122) return \"No\";\n    string last=file_name.substr(file_name.length()-4,4);\n    if (last!=\".txt\" and last!=\".exe\" and last!=\".dll\") return \"No\";\n    for (int i=0;i<file_name.length();i++)\n    {\n        if (file_name[i]>=48 and file_name[i]<=57) numdigit+=1;\n        if (file_name[i]=='.') numdot+=1;\n    }\n    if (numdigit>3 or numdot!=1) return \"No\";\n    return \"Yes\"; \n}",
+        4.853,
+        0.123,
+        6597811.6,
+        20892.8,
+        8.11,
+        21
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\n\nstring file_name_check(string file_name) {\n    int numdigit = 0, numdot = 0;\n    if (file_name.length() < 5) return \"No\";\n    char w = file_name[0];\n    if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return \"No\";\n    string last = file_name.substr(file_name.length() - 4, 4);\n    if (!(last == \".txt\" || last == \".exe\" || last == \".dll\")) return \"No\";\n    for (int i = 0; i < file_name.length(); i++) {\n        if (file_name[i] >= '0' && file_name[i] <= '9') numdigit += 1;\n        if (file_name[i] == '.') numdot += 1;\n    }\n    if (numdigit > 3 || numdot != 1) return \"No\";\n    return \"Yes\";\n}\n",
+        1.044,
+        0.921,
+        0.985,
+        0.997,
+        0.922,
+        21
+    ]
+}

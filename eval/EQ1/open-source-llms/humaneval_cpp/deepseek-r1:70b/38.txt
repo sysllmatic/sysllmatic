@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encode_cyclic(string s){ \n    int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x.substr(1)+x[0];\n        output=output+x;\n    }\n    return output;\n}\n\n\nstring decode_cyclic(string s){ \n int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x[2]+x.substr(0,2);\n        output=output+x;\n    }\n    return output;\n}",
+        5.01,
+        0.146,
+        23722253.6,
+        20870.4,
+        6.838,
+        34
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring encode_cyclic(string s){ \n    int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x.substr(1)+x[0];\n        output+=x;\n    }\n    return output;\n}\n\nstring decode_cyclic(string s){ \n    int l = s.length();\n    string output;\n    \n    output.reserve(l);\n    for (int i=0; i < l; ) {\n        \n        char first = s[i];\n        int chunk_size = 3;\n        if (i + chunk_size > l) chunk_size = l - i;\n        if (chunk_size == 3) {\n            output += s[i+2];\n            output.append(&s[i], 2);\n        } else {\n            output.append(&s[i], chunk_size);\n        }\n        i += chunk_size;\n\n    }\n    return output;\n}\n",
+        1.106,
+        1.043,
+        3.656,
+        1.003,
+        1.043,
+        42
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring encode_cyclic(string s){ \n    int l = s.length();\n    string output;\n    \n    output.reserve(l);\n    for (int i=0; i < l; ) {\n        int chunk_size = 3;\n        if (i + chunk_size > l) chunk_size = l - i;\n        if (chunk_size == 3) {\n            \n            output.append(&s[i+1], 2);\n            output += s[i];\n        } else {\n            output.append(&s[i], chunk_size);\n        }\n        i += chunk_size;\n    }\n    return output;\n}\n\nstring decode_cyclic(string s){ \n    int l = s.length();\n    string output;\n    \n    output.reserve(l);\n    for (int i=0; i < l; ) {\n        int chunk_size = 3;\n        if (i + chunk_size > l) chunk_size = l - i;\n        if (chunk_size == 3) {\n            \n            output += s[i+2];\n            output.append(&s[i], 2);\n        } else {\n            output.append(&s[i], chunk_size);\n        }\n        i += chunk_size;\n    }\n    return output;\n}\n",
+        1.082,
+        1.092,
+        3.767,
+        0.999,
+        1.093,
+        46
+    ]
+}

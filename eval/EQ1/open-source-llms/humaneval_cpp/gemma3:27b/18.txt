@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint how_many_times(string str,string substring){\nint out=0;\n    if (str.length()==0) return 0;\n    for (int i=0;i<=str.length()-substring.length();i++)\n    if (str.substr(i,substring.length())==substring)\n        out+=1;\n    return out;\n}",
+        4.764,
+        0.142,
+        10887063.4,
+        20895.2,
+        7.044,
+        14
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nint how_many_times(string str, string substring) {\n    if (substring.length() > str.length()) {\n        return 0;\n    }\n\n    int n = str.length();\n    int m = substring.length();\n    int count = 0;\n\n    \n    vector<int> lps(m, 0);\n    int len = 0; \n    int i = 1;\n    while (i < m) {\n        if (substring[i] == substring[len]) {\n            len++;\n            lps[i] = len;\n            i++;\n        } else { \n            if (len != 0) {\n                len = lps[len - 1];\n            } else {\n                lps[i] = 0;\n                i++;\n            }\n        }\n    }\n\n    \n    i = 0; \n    int j = 0; \n    while (i < n) {\n        if (substring[j] == str[i]) {\n            j++;\n            i++;\n        } \n        if (j == m) {\n            count++;\n            j = lps[j - 1];\n        } else if (i < n && substring[j] != str[i]) { \n            if (j != 0) { \n                j = lps[j - 1];\n            } else { \n                i++;\n            }\n        }\n    }\n\n    return count;\n}\n",
+        0.978,
+        1.061,
+        1.709,
+        1.004,
+        1.059,
+        56
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nint how_many_times(string str, string substring) {\n    if (substring.length() > str.length()) {\n        return 0;\n    }\n\n    int stringLength = str.length();\n    int substringLength = substring.length();\n    int count = 0;\n\n    vector<int> lps(substringLength, 0);\n    int len = 0; \n    int i = 1;\n    while (i < substringLength) {\n        if (substring[i] == substring[len]) {\n            len++;\n            lps[i] = len;\n            i++;\n        } else {\n            if (len != 0) {\n                len = lps[len - 1];\n            } else {\n                lps[i] = 0;\n                i++;\n            }\n        }\n    }\n\n    i = 0; \n    int j = 0; \n    while (i < stringLength) {\n        if (substring[j] == str[i]) {\n            j++;\n            i++;\n        }\n        if (j == substringLength) {\n            count++;\n            j = lps[j - 1];\n        } else if (i < stringLength && substring[j] != str[i]) {\n            if (j != 0) {\n                j = lps[j - 1];\n            } else {\n                i++;\n            }\n        }\n    }\n\n    return count;\n}\n",
+        0.981,
+        1.123,
+        1.784,
+        1.007,
+        1.121,
+        54
+    ]
+}

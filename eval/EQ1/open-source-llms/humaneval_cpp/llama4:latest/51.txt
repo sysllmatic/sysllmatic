@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring remove_vowels(string text){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=0;i<text.length();i++)\n        if (find(vowels.begin(),vowels.end(),text[i])==vowels.end())\n            out=out+text[i];\n    return out;\n\n}",
+        4.818,
+        0.134,
+        5423738.8,
+        20750.4,
+        7.452,
+        15
+    ],
+    "1": [
+        "#include <algorithm>\n#include <string>\n\nstd::string remove_vowels(const std::string& input) {\n    std::string output = input;\n    output.erase(std::remove_if(output.begin(), output.end(), [](char c) {\n        return std::string(\"aeiouAEIOU\").find(c) != std::string::npos;\n    }), output.end());\n    return output;\n}",
+        1.045,
+        1.007,
+        0.975,
+        0.995,
+        1.008,
+        10
+    ],
+    "2": [
+        "#include <algorithm>\n#include <string>\n#include <unordered_set>\n\nstd::string remove_vowels(const std::string& input) {\n    std::unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    std::string output;\n    output.reserve(input.size());\n    for (char c : input) {\n        if (vowels.find(c) == vowels.end()) {\n            output += c;\n        }\n    }\n    return output;\n}",
+        1.041,
+        0.982,
+        1.004,
+        0.992,
+        0.982,
+        15
+    ]
+}

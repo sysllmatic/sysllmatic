@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encode_cyclic(string s){ \n    int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x.substr(1)+x[0];\n        output=output+x;\n    }\n    return output;\n}\n\n\nstring decode_cyclic(string s){ \n int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x[2]+x.substr(0,2);\n        output=output+x;\n    }\n    return output;\n}",
+        4.627,
+        0.133,
+        24006563.4,
+        21010.4,
+        7.527,
+        34
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring encode_cyclic(string s){\n    int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    output.reserve(l); \n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x.substr(1)+x[0];\n        output.append(x); \n    }\n    return output;\n}\n\n\nstring decode_cyclic(string s){\n    int l=s.length();\n    int num=(l+2)/3;\n    string x,output;\n    output.reserve(l); \n    int i;\n    for (i=0;i*3<l;i++)\n    {\n        x=s.substr(i*3,3);\n        if (x.length()==3) x=x[2]+x.substr(0,2);\n        output.append(x); \n    }\n    return output;\n}",
+        0.926,
+        1.065,
+        2.668,
+        1.004,
+        1.063,
+        37
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring encode_cyclic(string s) {\n    int l = s.length();\n    int num = (l + 2) / 3;\n    string output;\n    output.reserve(l);\n\n    for (int i = 0; i < l; ++i) {\n        int index = i % 3;\n        if (index == 0) {\n            output += s[i];\n        } else if (index == 1) {\n            output += s[i];\n        } else {\n            output += s[i];\n        }\n    }\n    return output;\n}\n\n\nstring decode_cyclic(string s) {\n    int l = s.length();\n    int num = (l + 2) / 3;\n    string output;\n    output.reserve(l);\n\n    for (int i = 0; i < l; ++i) {\n        int index = i % 3;\n        if (index == 0) {\n            output += s[i];\n        } else if (index == 1) {\n            output += s[i];\n        } else {\n            output += s[i];\n        }\n    }\n    return output;\n}",
+        1.004,
+        0.956,
+        3.513,
+        1.012,
+        0.954,
+        45
+    ]
+}

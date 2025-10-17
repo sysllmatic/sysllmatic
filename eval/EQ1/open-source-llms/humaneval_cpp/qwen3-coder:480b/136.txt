@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> largest_smallest_integers(vector<int> lst){\nint maxneg=0,minpos=0;\n    for (int i=0;i<lst.size();i++)\n    {\n        if (lst[i]<0 and (maxneg==0 or lst[i]>maxneg)) maxneg=lst[i];\n        if (lst[i]>0 and (minpos==0 or lst[i]<minpos)) minpos=lst[i];\n    }\n    return {maxneg,minpos};\n}",
+        5.061,
+        0.11,
+        12522354.2,
+        20594.4,
+        9.112,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> largest_smallest_integers(vector<int> lst){\n    int maxneg = 0;  \n    int minpos = 0;  \n    \n    const size_t sz = lst.size();  \n    \n    for (size_t i = 0; i < sz; ++i) {\n        const int val = lst[i];  \n        \n        \n        if (val < 0) {\n            maxneg = (maxneg == 0) ? val : std::max(maxneg, val);\n        }\n        \n        \n        if (val > 0) {\n            minpos = (minpos == 0) ? val : std::min(minpos, val);\n        }\n    }\n    \n    return {maxneg, minpos};\n}",
+        1.012,
+        1.044,
+        1.11,
+        1.007,
+        1.04,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> largest_smallest_integers(vector<int> lst){\n    int maxneg = 0;  \n    int minpos = 0;  \n    \n    const size_t sz = lst.size();  \n    \n    for (size_t i = 0; i < sz; ++i) {\n        const int val = lst[i];  \n        \n        \n        \n        const bool is_negative = val < 0;\n        const bool should_update_maxneg = is_negative && (maxneg == 0 || val > maxneg);\n        maxneg = should_update_maxneg ? val : maxneg;\n        \n        \n        \n        const bool is_positive = val > 0;\n        const bool should_update_minpos = is_positive && (minpos == 0 || val < minpos);\n        minpos = should_update_minpos ? val : minpos;\n    }\n    \n    return {maxneg, minpos};\n}",
+        1.018,
+        1.064,
+        1.1,
+        1.001,
+        1.06,
+        31
+    ]
+}

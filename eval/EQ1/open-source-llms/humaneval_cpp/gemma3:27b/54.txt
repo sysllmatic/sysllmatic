@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool same_chars(string s0,string s1){\nfor (int i=0;i<s0.length();i++)\n    if (find(s1.begin(),s1.end(),s0[i])==s1.end())\n        return false;\n    for (int i=0;i<s1.length();i++)\n    if (find(s0.begin(),s0.end(),s1[i])==s0.end())\n        return false;\n    return true;   \n}",
+        56.593,
+        1.125,
+        4435108999.2,
+        20845.6,
+        0.889,
+        15
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <unordered_set>\n\nbool same_chars(const std::string& s0, const std::string& s1) {\n    std::unordered_set<char> set0, set1;\n\n    for (char c : s0) {\n        set0.insert(c);\n    }\n\n    for (char c : s1) {\n        set1.insert(c);\n    }\n\n    if (set0.size() != set1.size()) {\n        return false;\n    }\n\n    for (char c : set0) {\n        if (set1.find(c) == set1.end()) {\n            return false;\n        }\n    }\n\n    return true;\n}\n",
+        11.546,
+        7.69,
+        140.499,
+        0.996,
+        7.68,
+        27
+    ]
+}

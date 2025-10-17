@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> largest_smallest_integers(vector<int> lst){\nint maxneg=0,minpos=0;\n    for (int i=0;i<lst.size();i++)\n    {\n        if (lst[i]<0 and (maxneg==0 or lst[i]>maxneg)) maxneg=lst[i];\n        if (lst[i]>0 and (minpos==0 or lst[i]<minpos)) minpos=lst[i];\n    }\n    return {maxneg,minpos};\n}",
+        4.77,
+        0.137,
+        12869855.6,
+        20852.8,
+        7.279,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> largest_smallest_integers(vector<int> lst) {\n    int maxneg = 0, minpos = 0;\n    for (const auto& num : lst) {\n        if (num < 0 && (maxneg == 0 || num > maxneg))\n            maxneg = num;\n        \n        if (num > 0 && (minpos == 0 || num < minpos))\n            minpos = num;\n    }\n    return {maxneg, minpos};\n}\n",
+        1.026,
+        1.046,
+        0.992,
+        1.0,
+        1.048,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nvector<int> largest_smallest_integers(vector<int> lst) {\n    int maxneg = 0, minpos = 0;\n    size_t n = lst.size();\n    \n    \n    for (size_t i = 0; i < n; i += 4) {\n        if (i + 4 > n) break;\n        \n        int num1 = lst[i];\n        int num2 = lst[i+1];\n        int num3 = lst[i+2];\n        int num4 = lst[i+3];\n\n        \n        if (num1 < 0 && (maxneg == 0 || num1 > maxneg)) maxneg = num1;\n        if (num1 > 0 && (minpos == 0 || num1 < minpos)) minpos = num1;\n\n        if (num2 < 0 && (maxneg == 0 || num2 > maxneg)) maxneg = num2;\n        if (num2 > 0 && (minpos == 0 || num2 < minpos)) minpos = num2;\n\n        if (num3 < 0 && (maxneg == 0 || num3 > maxneg)) maxneg = num3;\n        if (num3 > 0 && (minpos == 0 || num3 < minpos)) minpos = num3;\n\n        if (num4 < 0 && (maxneg == 0 || num4 > maxneg)) maxneg = num4;\n        if (num4 > 0 && (minpos == 0 || num4 < minpos)) minpos = num4;\n    }\n\n    \n    for (size_t i = n - (n % 4); i < n; ++i) {\n        int num = lst[i];\n        if (num < 0 && (maxneg == 0 || num > maxneg)) maxneg = num;\n        if (num > 0 && (minpos == 0 || num < minpos)) minpos = num;\n    }\n\n    return {maxneg, minpos};\n}\n",
+        0.969,
+        1.063,
+        1.177,
+        0.999,
+        1.065,
+        42
+    ]
+}

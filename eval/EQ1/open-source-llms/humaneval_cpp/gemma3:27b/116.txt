@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_array(vector<int> arr){\nvector<int> bin={};\n    int m;\n\n    for (int i=0;i<arr.size();i++)\n    {\n        int b=0,n=abs(arr[i]);\n        while (n>0)\n        {\n            b+=n%2;n=n/2;\n        }\n        bin.push_back(b);\n    }\n    for (int i=0;i<arr.size();i++)\n    for (int j=1;j<arr.size();j++)\n    if (bin[j]<bin[j-1] or (bin[j]==bin[j-1] and arr[j]<arr[j-1]))\n    {\n        m=arr[j];arr[j]=arr[j-1];arr[j-1]=m;\n        m=bin[j];bin[j]=bin[j-1];bin[j-1]=m;\n    }\n    return arr;\n}",
+        310.262,
+        5.791,
+        25601313007.4,
+        20765.6,
+        0.173,
+        28
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> sort_array(vector<int> arr) {\n    vector<pair<int, int>> bit_counts;\n    for (int i = 0; i < arr.size(); ++i) {\n        int num = abs(arr[i]);\n        int count = 0;\n        while (num > 0) {\n            count += num & 1;\n            num >>= 1;\n        }\n        bit_counts.push_back({count, arr[i]});\n    }\n\n    sort(bit_counts.begin(), bit_counts.end());\n\n    vector<int> sorted_arr;\n    for (const auto& p : bit_counts) {\n        sorted_arr.push_back(p.second);\n    }\n\n    return sorted_arr;\n}\n\n\n",
+        55.017,
+        40.483,
+        385.112,
+        1.0,
+        40.362,
+        29
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n\nusing namespace std;\n\nvector<int> sort_array(vector<int> arr) {\n    vector<pair<int, int>> bit_counts;\n    for (int i = 0; i < arr.size(); ++i) {\n        int num = abs(arr[i]);\n        int count = 0;\n        while (num > 0) {\n            count += num & 1;\n            num >>= 1;\n        }\n        bit_counts.push_back({count, arr[i]});\n    }\n\n    sort(bit_counts.begin(), bit_counts.end());\n\n    vector<int> sorted_arr(arr.size());\n    for (size_t i = 0; i < bit_counts.size(); ++i) {\n        sorted_arr[i] = bit_counts[i].second;\n    }\n\n    return sorted_arr;\n}\n\n\n",
+        57.111,
+        43.063,
+        389.181,
+        1.002,
+        42.932,
+        29
+    ]
+}

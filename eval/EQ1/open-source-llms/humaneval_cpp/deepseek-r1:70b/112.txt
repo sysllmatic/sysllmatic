@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\nstring n=\"\";\n    for (int i=0;i<s.length();i++)\n    if (find(c.begin(),c.end(),s[i])==c.end())\n        n=n+s[i]; \n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"};\n}",
+        16.291,
+        0.363,
+        897721971.6,
+        20840.0,
+        2.753,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n\nvector<string> reverse_delete(string s, string c) {\n    \n    unordered_set<char> exclude_chars(c.begin(), c.end());\n    \n    string n;\n    for (char ch : s) {\n        if (!exclude_chars.count(ch)) { \n            n += ch;\n        }\n    }\n    \n    if (n.empty()) return {n, \"True\"};\n    \n    string w(n.rbegin(), n.rend());\n    if (w == n) return {n, \"True\"};\n    else return {n, \"False\"};\n}\n",
+        3.133,
+        2.492,
+        15.66,
+        0.995,
+        2.49,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n\nvector<string> reverse_delete(const string &s, const string &c) {\n    unordered_set<char> exclude_chars(c.begin(), c.end());\n    \n    string filtered;\n    for (char ch : s) {\n        if (!exclude_chars.count(ch)) {\n            filtered += ch;\n        }\n    }\n    \n    if (filtered.empty()) return {filtered, \"True\"};\n    \n    int left = 0, right = filtered.size() - 1;\n    while (left < right) {\n        if (filtered[left] != filtered[right]) {\n            return {filtered, \"False\"};\n        }\n        ++left;\n        --right;\n        \n        \n        if (left >= right) break;\n    }\n    return {filtered, \"True\"};\n}\n",
+        3.025,
+        2.577,
+        19.916,
+        1.005,
+        2.575,
+        33
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\nstring n=\"\";\n    for (int i=0;i<s.length();i++)\n    if (find(c.begin(),c.end(),s[i])==c.end())\n        n=n+s[i]; \n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"};\n}",
+        15.256,
+        0.299,
+        900006226.6,
+        20477.6,
+        3.343,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\n    \n    bool to_remove[256] = {false};\n    for (char ch : c) {\n        to_remove[static_cast<unsigned char>(ch)] = true;\n    }\n    \n    \n    string n;\n    n.reserve(s.length());\n    \n    \n    for (char ch : s) {\n        if (!to_remove[static_cast<unsigned char>(ch)]) {\n            n += ch;\n        }\n    }\n    \n    if (n.length() == 0) return {n, \"True\"};\n    \n    \n    size_t len = n.length();\n    for (size_t i = 0; i < len / 2; i++) {\n        if (n[i] != n[len - 1 - i]) {\n            return {n, \"False\"};\n        }\n    }\n    \n    return {n, \"True\"};\n}",
+        3.033,
+        2.813,
+        59.029,
+        0.992,
+        2.81,
+        37
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\n    \n    static bool to_remove[256];\n    \n    for (int i = 0; i < 256; i++) {\n        to_remove[i] = false;\n    }\n    \n    \n    for (char ch : c) {\n        to_remove[static_cast<unsigned char>(ch)] = true;\n    }\n    \n    \n    string n;\n    n.reserve(s.length());\n    \n    \n    for (char ch : s) {\n        if (!to_remove[static_cast<unsigned char>(ch)]) {\n            n.push_back(ch);  \n        }\n    }\n    \n    if (n.length() == 0) return {n, \"True\"};\n    \n    \n    size_t len = n.length();\n    size_t half_len = len / 2;\n    for (size_t i = 0; i < half_len; i++) {\n        if (n[i] != n[len - 1 - i]) {\n            return {n, \"False\"};\n        }\n    }\n    \n    return {n, \"True\"};\n}",
+        3.039,
+        2.79,
+        60.609,
+        1.0,
+        2.786,
+        44
+    ]
+}

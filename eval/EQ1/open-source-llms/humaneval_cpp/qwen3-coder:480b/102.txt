@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint choose_num(int x,int y){\nif (y<x) return -1;\n    if (y==x and y%2==1) return -1;\n    if (y%2==1) return y-1;\n    return y;\n}",
+        4.803,
+        0.101,
+        2948727.4,
+        20471.2,
+        9.902,
+        11
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint choose_num(int x, int y) {\n    \n    if (y < x) return -1;\n    \n    \n    \n    \n    int is_odd = y & 1;  \n    int equal_and_odd = (y == x) & is_odd;  \n    \n    \n    return equal_and_odd ? -1 : (y - is_odd);\n}",
+        0.994,
+        0.983,
+        0.977,
+        0.999,
+        0.982,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint choose_num(int x, int y) {\n    \n    int y_less_than_x = (y < x);  \n    int is_odd = y & 1;           \n    int equal = (y == x);         \n    int equal_and_odd = equal & is_odd;  \n    \n    \n    \n    \n    \n    \n    \n    int should_return_minus_one = y_less_than_x | equal_and_odd;\n    int result_if_not_minus_one = y - is_odd;\n    \n    \n    \n    \n    return should_return_minus_one ? -1 : result_if_not_minus_one;\n}",
+        0.992,
+        1.002,
+        1.043,
+        0.998,
+        1.0,
+        27
+    ]
+}

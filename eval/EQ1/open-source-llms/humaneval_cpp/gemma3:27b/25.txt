@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> factorize(int n){\nvector<int> out={};\n    for (int i=2;i*i<=n;i++)\n        if (n%i==0)\n        {\n            n=n/i;\n            out.push_back(i);\n            i-=1;\n        }\n    out.push_back(n);\n    return out;\n}",
+        4.624,
+        0.122,
+        4757289.0,
+        20772.0,
+        8.188,
+        18
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n\nvector<int> factorize(int n) {\n    vector<int> out = {};\n    for (int i = 2; i * i <= n; ++i) {\n        while (n % i == 0) {\n            out.push_back(i);\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        out.push_back(n);\n    }\n    return out;\n}\n\n\n",
+        1.023,
+        0.893,
+        0.969,
+        0.994,
+        0.893,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n\nvector<int> factorize(int n) {\n    vector<int> out(10); \n    int out_size = 0;\n    for (int i = 2; i * i <= n; ++i) {\n        while (n % i == 0) {\n            out[out_size++] = i;\n            n /= i;\n        }\n    }\n    if (n > 1) {\n        out[out_size++] = n;\n    }\n    out.resize(out_size); \n    return out;\n}\n\n\n",
+        0.974,
+        1.06,
+        1.08,
+        1.001,
+        1.059,
+        22
+    ]
+}

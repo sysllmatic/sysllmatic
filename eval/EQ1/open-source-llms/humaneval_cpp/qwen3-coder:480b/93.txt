@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring encode(string message){\nstring vowels=\"aeiouAEIOU\";\n    string out=\"\";\n    for (int i=0;i<message.length();i++)\n    {\n        char w=message[i];\n        if (w>=97 and w<=122){w=w-32;}\n        else if (w>=65 and w<=90) w=w+32;\n        if (find(vowels.begin(),vowels.end(),w)!=vowels.end()) w=w+2;\n        out=out+w;\n    }\n    return out;\n}",
+        4.867,
+        0.104,
+        5647023.8,
+        20558.4,
+        9.628,
+        19
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring encode(string message){\n    \n    bool isVowel[256] = {false};\n    string vowels=\"aeiouAEIOU\";\n    for (char c : vowels) {\n        isVowel[(unsigned char)c] = true;\n    }\n    \n    \n    string out;\n    out.reserve(message.length());\n    \n    for (int i=0; i<message.length(); i++) {\n        char w = message[i];\n        \n        \n        if ((w >= 'a' && w <= 'z') || (w >= 'A' && w <= 'Z')) {\n            w ^= 32; \n        }\n        \n        \n        if (isVowel[(unsigned char)w]) {\n            w += 2;\n        }\n        \n        out += w;\n    }\n    return out;\n}",
+        0.863,
+        0.949,
+        1.016,
+        1.006,
+        0.946,
+        36
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring encode(string message){\n    \n    bool isVowel[256] = {false};\n    string vowels=\"aeiouAEIOU\";\n    for (char c : vowels) {\n        isVowel[(unsigned char)c] = true;\n    }\n    \n    \n    size_t msgLength = message.length();\n    \n    \n    string out;\n    out.resize(msgLength);\n    \n    for (size_t i=0; i<msgLength; i++) {\n        char w = message[i];\n        \n        \n        if ((w >= 'a' && w <= 'z') || (w >= 'A' && w <= 'Z')) {\n            w ^= 32; \n        }\n        \n        \n        if (isVowel[(unsigned char)w]) {\n            w += 2;\n        }\n        \n        \n        out[i] = w;\n    }\n    return out;\n}",
+        0.967,
+        0.966,
+        1.042,
+        1.004,
+        0.963,
+        40
+    ]
+}

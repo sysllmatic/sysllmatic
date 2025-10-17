@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<boost/any.hpp>\n#include<list>\ntypedef std::list<boost::any> list_any;\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> filter_integers(list_any values){\nlist_any::iterator it;\n    boost::any anyone;\n    vector<int> out;\n    for (it=values.begin();it!=values.end();it++)\n    {\n         anyone=*it;\n        if( anyone.type() == typeid(int) )\n           out.push_back(boost::any_cast<int>(*it));\n    }\n    return out;\n}",
+        5.888,
+        0.155,
+        80263476.0,
+        20788.0,
+        6.443,
+        22
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <boost/any.hpp>\n#include <list>\n#include <typeinfo>\n\nusing namespace std;\n\nvector<int> filter_integers(list<boost::any> values) {\n    vector<int> out;\n    \n    out.reserve(values.size());\n\n    for (const auto& item : values) {\n        if (item.type() == typeid(int)) {\n            out.push_back(boost::any_cast<int>(item));\n        }\n    }\n    return out;\n}\n",
+        1.072,
+        0.974,
+        1.068,
+        0.998,
+        0.974,
+        21
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <string>\n#include <boost/any.hpp>\n#include <list>\n#include <typeinfo>\n\nusing namespace std;\n\nvector<int> filter_integers(const list<boost::any>& values) {\n    vector<int> out;\n    out.reserve(values.size());\n\n    for (const auto& item : values) {\n        if (item.type() == typeid(int)) {\n            out.push_back(boost::any_cast<int>(item));\n        }\n    }\n    return out;\n}\n",
+        1.168,
+        1.087,
+        1.736,
+        0.997,
+        1.087,
+        20
+    ]
+}

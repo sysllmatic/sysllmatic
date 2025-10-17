@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_equal_to_sum_even(int n){\nif (n%2==0 and n>=8) return true;\n    return false;\n}",
+        4.816,
+        0.102,
+        2801406.6,
+        20501.6,
+        9.836,
+        9
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nbool is_equal_to_sum_even(int n) {\n    \n    \n    return (n & 1) == 0 && n >= 8;\n}",
+        0.988,
+        1.002,
+        0.97,
+        0.994,
+        0.997,
+        11
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nbool is_equal_to_sum_even(int n) {\n    \n    \n    \n    return (n >= 8) & ((n & 1) == 0);\n}",
+        0.998,
+        1.006,
+        0.959,
+        1.001,
+        1.001,
+        12
+    ]
+}

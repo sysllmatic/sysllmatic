@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> count_up_to(int n){\nvector<int> out={};\n    int i,j;\n    for (i=2;i<n;i++)\n        if (out.size()==0) {out.push_back(i);}\n        else\n        {\n            bool isp=true;\n            for (j=0;out[j]*out[j]<=i;j++)\n                if (i%out[j]==0) isp=false;\n            if (isp) out.push_back(i);\n        }\n    return out;\n}",
+        5.211,
+        0.105,
+        38576145.0,
+        20455.2,
+        9.499,
+        20
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> count_up_to(int n){\n    if (n <= 2) return {};\n    \n    vector<bool> is_prime(n, true);\n    is_prime[0] = is_prime[1] = false;\n    \n    for (int i = 2; i * i < n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j < n; j += i) {\n                is_prime[j] = false;\n            }\n        }\n    }\n    \n    vector<int> out;\n    for (int i = 2; i < n; i++) {\n        if (is_prime[i]) {\n            out.push_back(i);\n        }\n    }\n    \n    return out;\n}",
+        1.022,
+        0.971,
+        1.943,
+        1.002,
+        0.972,
+        30
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n#include<stdint.h>\n\nvector<int> count_up_to(int n){\n    if (n <= 2) return {};\n    \n    vector<char> is_prime(n, 1); \n    is_prime[0] = is_prime[1] = 0;\n    \n    for (int i = 2; i * i < n; i++) {\n        if (is_prime[i]) {\n            for (int j = i * i; j < n; j += i) {\n                is_prime[j] = 0;\n            }\n        }\n    }\n    \n    \n    vector<int> out;\n    out.reserve(max(1, static_cast<int>(n / (log(n) > 0 ? log(n) : 1))));\n    for (int i = 2; i < n; i++) {\n        if (is_prime[i]) {\n            out.push_back(i);\n        }\n    }\n    \n    return out;\n}",
+        1.068,
+        1.025,
+        6.144,
+        0.995,
+        1.026,
+        33
+    ]
+}

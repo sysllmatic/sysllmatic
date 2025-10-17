@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_sorted(vector<int> lst){\nfor (int i=1;i<lst.size();i++)\n    {\n        if (lst[i]<lst[i-1]) return false;\n        if (i>=2 and lst[i]==lst[i-1] and lst[i]==lst[i-2]) return false;\n    }\n    return true;\n}",
+        5.654,
+        0.138,
+        6044040.6,
+        20912.8,
+        7.253,
+        14
+    ],
+    "1": [
+        "#include <vector>\n\nbool is_sorted(const std::vector<int>& lst) {\n for (int i = 1; i < lst.size(); ++i) {\n if (lst[i] < lst[i-1]) return false;\n if (i >= 2 && lst[i] == lst[i-1] && lst[i] == lst[i-2]) return false;\n }\n return true;\n}\n",
+        1.178,
+        1.024,
+        0.949,
+        1.006,
+        1.022,
+        9
+    ],
+    "2": [
+        "#include <vector>\n\nbool is_sorted(const std::vector<int>& lst) {\n for (int i = 1; i < lst.size(); ++i) {\n if (lst[i] < lst[i-1]) return false;\n if (i >= 2 && lst[i] == lst[i-1] && lst[i] == lst[i-2]) return false;\n }\n return true;\n}\n",
+        1.204,
+        1.045,
+        0.966,
+        1.002,
+        1.042,
+        9
+    ]
+}

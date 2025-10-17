@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring sort_numbers(string numbers){\nmap<string,int> tonum={{\"zero\",0},{\"one\",1},{\"two\",2},{\"three\",3},{\"four\",4},{\"five\",5},{\"six\",6},{\"seven\",7},{\"eight\",8},{\"nine\",9}};\n    map<int,string> numto={{0,\"zero\"},{1,\"one\"},{2,\"two\"},{3,\"three\"},{4,\"four\"},{5,\"five\"},{6,\"six\"},{7,\"seven\"},{8,\"eight\"},{9,\"nine\"}};\n    int count[10];\n    for (int i=0;i<10;i++)\n        count[i]=0;\n    string out=\"\",current=\"\";\n    if (numbers.length()>0) numbers=numbers+' ';\n    for (int i=0;i<numbers.length();i++)\n        if (numbers[i]==' ')\n        {\n            count[tonum[current]]+=1;\n            current=\"\";\n        }\n        else current+=numbers[i];\n    for (int i=0;i<10;i++)\n        for (int j=0;j<count[i];j++)\n            out=out+numto[i]+' ';\n    if (out.length()>0) out.pop_back();\n    return out;\n}",
+        4.994,
+        0.104,
+        5607810.0,
+        20560.8,
+        9.641,
+        28
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring sort_numbers(string numbers){\n    \n    static const char* num_words[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    \n    int count[10] = {0}; \n    string out = \"\";\n    string current = \"\";\n    \n    \n    for (int i = 0; i <= (int)numbers.length(); i++) {\n        if (i == (int)numbers.length() || numbers[i] == ' ') {\n            if (!current.empty()) {\n                \n                for (int j = 0; j < 10; j++) {\n                    if (current == num_words[j]) {\n                        count[j]++;\n                        break;\n                    }\n                }\n                current = \"\";\n            }\n        } else {\n            current += numbers[i];\n        }\n    }\n    \n    \n    bool first = true;\n    for (int i = 0; i < 10; i++) {\n        for (int j = 0; j < count[i]; j++) {\n            if (!first) out += ' ';\n            out += num_words[i];\n            first = false;\n        }\n    }\n    \n    return out;\n}",
+        1.014,
+        1.027,
+        1.028,
+        1.001,
+        1.023,
+        45
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n#include<cstring>\n\nstring sort_numbers(string numbers){\n    static const char* num_words[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    static const int num_word_lengths[] = {4, 3, 3, 5, 4, 4, 3, 5, 5, 4}; \n    \n    int count[10] = {0};\n    \n    \n    const int len = (int)numbers.length();\n    int start = 0;\n    \n    for (int i = 0; i <= len; i++) {\n        if (i == len || numbers[i] == ' ') {\n            if (i > start) { \n                int word_len = i - start;\n                \n                for (int j = 0; j < 10; j++) {\n                    if (word_len == num_word_lengths[j] && \n                        strncmp(numbers.c_str() + start, num_words[j], word_len) == 0) {\n                        count[j]++;\n                        break;\n                    }\n                }\n            }\n            start = i + 1; \n        }\n    }\n    \n    \n    int total_length = 0;\n    int total_words = 0;\n    for (int i = 0; i < 10; i++) {\n        total_words += count[i];\n        total_length += count[i] * num_word_lengths[i];\n    }\n    if (total_words > 0) {\n        total_length += total_words - 1; \n    }\n    \n    \n    string out;\n    if (total_length > 0) {\n        out.reserve(total_length);\n        \n        bool first = true;\n        for (int i = 0; i < 10; i++) {\n            for (int j = 0; j < count[i]; j++) {\n                if (!first) out += ' ';\n                out += num_words[i];\n                first = false;\n            }\n        }\n    }\n    \n    return out;\n}",
+        1.03,
+        1.035,
+        1.125,
+        1.005,
+        1.031,
+        63
+    ]
+}

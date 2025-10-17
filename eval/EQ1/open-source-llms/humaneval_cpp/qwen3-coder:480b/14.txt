@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> all_prefixes(string str){\nvector<string> out;\n    string current=\"\";\n    for (int i=0;i<str.length();i++)\n    {\n        current=current+str[i];\n        out.push_back(current);\n    }\n    return out;\n}",
+        10.038,
+        0.205,
+        445495684.2,
+        54968.8,
+        4.873,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> all_prefixes(string str){\n    int n = str.length();\n    vector<string> out;\n    out.reserve(n);  \n    \n    for (int i = 1; i <= n; i++) {\n        out.emplace_back(str.substr(0, i));  \n    }\n    return out;\n}",
+        1.157,
+        1.143,
+        1.384,
+        1.059,
+        1.143,
+        17
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> all_prefixes(string str){\n    int n = str.length();\n    vector<string> out;\n    out.reserve(n);\n    \n    string current;\n    current.reserve(n);  \n    \n    for (int i = 0; i < n; i++) {\n        current += str[i];  \n        out.emplace_back(current);  \n    }\n    return out;\n}",
+        1.166,
+        1.169,
+        1.358,
+        1.057,
+        1.169,
+        21
+    ]
+}

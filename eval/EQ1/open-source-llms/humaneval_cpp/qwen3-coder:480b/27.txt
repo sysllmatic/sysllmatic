@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring filp_case(string str){\nstring out=\"\";\n    for (int i=0;i<str.length();i++)\n    {\n        char w=str[i];\n        if (w>=97 and w<=122) {w-=32;}\n        else\n            if (w>=65 and w<=90){ w+=32;}\n        out=out+w;\n    }\n    return out;\n}",
+        5.326,
+        0.107,
+        53417720.8,
+        20371.2,
+        9.334,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring filp_case(string str){\n    \n    string out;\n    out.reserve(str.length());\n    \n    for (int i = 0; i < str.length(); i++) {\n        char w = str[i];\n        \n        \n        \n        if (w >= 'a' && w <= 'z') {\n            w -= 32;\n        } else if (w >= 'A' && w <= 'Z') {\n            w += 32;\n        }\n        out.push_back(w);\n    }\n    return out;\n}",
+        1.071,
+        1.027,
+        8.021,
+        0.994,
+        1.027,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring filp_case(string str){\n    const size_t len = str.length();\n    string out;\n    out.reserve(len);\n    \n    for (size_t i = 0; i < len; i++) {\n        char w = str[i];\n        \n        \n        if ((w >= 'A' && w <= 'Z') || (w >= 'a' && w <= 'z')) {\n            w ^= 0x20;  \n        }\n        out.push_back(w);\n    }\n    return out;\n}",
+        1.09,
+        1.044,
+        9.059,
+        0.997,
+        1.043,
+        22
+    ]
+}

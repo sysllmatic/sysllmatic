@@ -1,0 +1,11 @@
+{
+    "0": [
+        "package edu.cmu.graphchi.datablocks;\n\n\n\n\npublic class ChiPointer {\n    public int blockId;\n    public int offset;\n\n    public ChiPointer(int blockId, int offset) {\n        this.blockId = blockId;\n        this.offset = offset;\n    }\n\n}\n",
+    ],
+    "1": [
+        "package edu.cmu.graphchi.datablocks;\n\npublic final class ChiPointer {\n    public final int blockId;\n    public final int offset;\n\n    public ChiPointer(int blockId, int offset) {\n        this.blockId = blockId;\n        this.offset = offset;\n    }\n\n    public ChiPointer(int pointer) {\n        \n        final int chunkSize = 1024;\n        this.blockId = pointer / chunkSize;\n        this.offset = pointer % chunkSize;\n    }\n\n    public int getBlockId() {\n        return blockId;\n    }\n\n    public int getOffset() {\n        return offset;\n    }\n\n    @Override\n    public String toString() {\n        return \"ChiPointer(blockId=\" + blockId + \", offset=\" + offset + \")\";\n    }\n}\n",
+    ],
+    "2": [
+        "package edu.cmu.graphchi.datablocks;\n\npublic final class ChiPointer {\n    public final int blockId;\n    public final int offset;\n\n    public ChiPointer(int blockId, int offset) {\n        this.blockId = blockId;\n        this.offset = offset;\n    }\n\n    public ChiPointer(int pointer) {\n        \n        final int chunkSize = 1024;\n        this.blockId = pointer / chunkSize;\n        this.offset = pointer % chunkSize;\n    }\n\n    public int getBlockId() {\n        return blockId;\n    }\n\n    public int getOffset() {\n        return offset;\n    }\n\n    @Override\n    public String toString() {\n        return \"ChiPointer(blockId=\" + blockId + \", offset=\" + offset + \")\";\n    }\n\n    @Override\n    public boolean equals(Object obj) {\n        if (this == obj) return true;\n        if (!(obj instanceof ChiPointer)) return false;\n        ChiPointer other = (ChiPointer) obj;\n        return blockId == other.blockId && offset == other.offset;\n    }\n\n    @Override\n    public int hashCode() {\n        final int prime = 31;\n        int result = 1;\n        result = prime * result + blockId;\n        result = prime * result + offset;\n        return result;\n    }\n}\n",
+    ]
+}

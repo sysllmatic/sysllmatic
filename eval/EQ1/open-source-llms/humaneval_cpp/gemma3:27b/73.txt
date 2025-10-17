@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint smallest_change(vector<int> arr){\nint out=0;\n    for (int i=0;i<arr.size()-1-i;i++)\n        if (arr[i]!=arr[arr.size()-1-i])\n            out+=1;\n    return out;\n}",
+        4.676,
+        0.131,
+        8058806.0,
+        21025.6,
+        7.631,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint smallest_change(vector<int> arr){\n    int out = 0;\n    int n = arr.size();\n    for (int i = 0; i < n / 2; ++i) {\n        if (arr[i] != arr[n - 1 - i]) {\n            out += 1;\n        }\n    }\n    return out;\n}\n",
+        1.018,
+        0.971,
+        1.111,
+        1.002,
+        0.97,
+        17
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint smallest_change(const vector<int>& arr){\n    int out = 0;\n    int n = arr.size();\n    for (int i = 0; i < n / 2; ++i) {\n        if (arr[i] != arr[n - 1 - i]) {\n            out += 1;\n        }\n    }\n    return out;\n}\n\n",
+        0.992,
+        0.983,
+        1.097,
+        1.005,
+        0.982,
+        18
+    ]
+}

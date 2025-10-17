@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring rounded_avg(int n,int m){\nif (n>m) return \"-1\";\n    int num=(m+n)/2;\n    string out=\"\";\n    while (num>0)\n    {\n        out=to_string(num%2)+out;\n        num=num/2;\n    }\n    return out;\n}",
+        8.707,
+        0.146,
+        5231272.2,
+        20804.8,
+        6.833,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring rounded_avg(int n,int m){\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    string out;\n    \n    int bits = num == 0 ? 1 : (int)(log2(num) + 1);\n    \n    for(int mask = 1 << (bits - 1); mask >= 1; mask >>= 1){\n        out += ((num & mask) != 0) ? '1' : '0';\n    }\n    return out;\n}",
+        1.866,
+        1.144,
+        1.113,
+        1.0,
+        1.146,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    string out;\n    \n    \n    int bits = 0;\n    int temp = num;\n    if (temp == 0) {\n        bits = 1;\n    } else {\n        while (temp > 0) {\n            temp >>= 1;\n            bits ++;\n        }\n    }\n\n    \n    out.reserve(bits);\n\n    for(int mask = 1 << (bits - 1); mask >= 1; mask >>= 1){\n        out += ((num & mask) != 0) ? '1' : '0';\n    }\n    return out;\n}",
+        1.838,
+        1.103,
+        1.031,
+        0.993,
+        1.104,
+        32
+    ]
+}

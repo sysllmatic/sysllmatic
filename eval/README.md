@@ -1,6 +1,6 @@
 # Evaluation Methodology
 
-This section describes the evaluation methodology used in our paper, which includes both **qualitative** and **quantitative** components. The quantitative evaluation is structured around four core **Evaluation Questions (EQ1–EQ4)** and focuses on improvements across various performance metrics.
+This section describes the evaluation methodology used in our paper, which includes both **qualitative** and **quantitative** components. The quantitative evaluation is structured around four core **Evaluation Questions (EQ1–EQ5)** and focuses on improvements across various performance metrics.
 
 ## Quantitative Evaluation
 

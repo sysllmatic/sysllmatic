@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> even_odd_count(long long num){\nstring w=to_string(abs(num));\n    int n1=0,n2=0;\n    for (int i=0;i<w.length();i++)\n    if (w[i]%2==1) n1+=1;\n    else n2+=1;\n    return {n2,n1};\n}",
+        7.038,
+        0.122,
+        4545744.4,
+        20761.6,
+        8.188,
+        15
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nvector<int> even_odd_count(long long num) {\n    int even_count = 0;\n    int odd_count = 0;\n\n    if (num < 0) {\n        num = -num; \n    }\n\n    if (num == 0) {\n        even_count = 1;\n    }\n\n    while (num > 0) {\n        int digit = num % 10;\n        if (digit % 2 == 0) {\n            even_count++;\n        } else {\n            odd_count++;\n        }\n        num /= 10;\n    }\n\n    return {even_count, odd_count};\n}\n\n",
+        0.829,
+        0.834,
+        0.861,
+        0.992,
+        0.834,
+        30
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nvector<int> even_odd_count(long long num) {\n    int even_count = 0;\n    int odd_count = 0;\n\n    if (num < 0) {\n        num = -num; \n    }\n\n    if (num == 0) {\n        even_count = 1;\n    }\n\n    while (num > 0) {\n        int digit = num % 10;\n        if ((digit & 1) == 0) {\n            even_count++;\n        } else {\n            odd_count++;\n        }\n        num /= 10;\n    }\n\n    return {even_count, odd_count};\n}",
+        1.432,
+        0.912,
+        0.91,
+        1.005,
+        0.912,
+        29
+    ]
+}

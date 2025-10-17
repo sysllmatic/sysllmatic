@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> f(int n){\nint sum=0,prod=1;\n    vector<int> out={};\n    for (int i=1;i<=n;i++)\n    {\n        sum+=i;\n        prod*=i;\n        if (i%2==0) out.push_back(prod);\n        else out.push_back(sum);\n    } \n    return out;\n}",
+        4.906,
+        0.128,
+        5326493.4,
+        20706.4,
+        7.821,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> f(int n){\n    int sum=0,prod=1;\n    vector<int> out(n); \n    for (int i=1;i<=n;i++)\n    {\n        sum+=i;\n        prod*=i;\n        if (i%2==0) out[i-1] = prod;\n        else out[i-1] = sum;\n    }\n    return out;\n}\n",
+        1.011,
+        0.987,
+        1.058,
+        0.993,
+        0.984,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> f(int n){\n    static long long cached_sum = 0;\n    static long long cached_prod = 1;\n\n    cached_sum = 0;  \n    cached_prod = 1; \n\n    vector<int> out(n);\n\n    for (int i = 1; i <= n; ++i) {\n        cached_sum += i;\n        cached_prod *= i;\n\n        if (i % 2 == 0) {\n            out[i - 1] = static_cast<int>(cached_prod);\n        } else {\n            out[i - 1] = static_cast<int>(cached_sum);\n        }\n    }\n\n    return out;\n}",
+        0.986,
+        0.97,
+        1.055,
+        0.989,
+        0.968,
+        29
+    ]
+}

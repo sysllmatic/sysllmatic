@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring encode(string message){\nstring vowels=\"aeiouAEIOU\";\n    string out=\"\";\n    for (int i=0;i<message.length();i++)\n    {\n        char w=message[i];\n        if (w>=97 and w<=122){w=w-32;}\n        else if (w>=65 and w<=90) w=w+32;\n        if (find(vowels.begin(),vowels.end(),w)!=vowels.end()) w=w+2;\n        out=out+w;\n    }\n    return out;\n}",
+        4.531,
+        0.134,
+        5501813.2,
+        20881.6,
+        7.457,
+        19
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\n\nstd::string encode(std::string message) {\n    std::string out = message;\n    for (size_t i = 0; i < out.length(); ++i) {\n        char& w = out[i];\n        if (w >= 'a' && w <= 'z') {\n            w -= 32; \n        } else if (w >= 'A' && w <= 'Z') {\n            w += 32; \n        }\n\n        if (w == 'a' || w == 'e' || w == 'i' || w == 'o' || w == 'u' ||\n            w == 'A' || w == 'E' || w == 'I' || w == 'O' || w == 'U') {\n            w += 2;\n        }\n    }\n    return out;\n}\n\n\n",
+        0.984,
+        1.015,
+        0.948,
+        1.008,
+        1.015,
+        23
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\n\nstd::string encode(std::string message) {\n    std::string out = message;\n    std::string vowels = \"aeiouAEIOU\";\n    for (size_t i = 0; i < out.length(); ++i) {\n        char& w = out[i];\n        if (w >= 'a' && w <= 'z') {\n            w -= 32;\n        } else if (w >= 'A' && w <= 'Z') {\n            w += 32;\n        }\n\n        if (vowels.find(w) != std::string::npos) {\n            w += 2;\n        }\n    }\n    return out;\n}\n\n\n",
+        0.941,
+        0.99,
+        0.935,
+        1.0,
+        0.989,
+        23
+    ]
+}

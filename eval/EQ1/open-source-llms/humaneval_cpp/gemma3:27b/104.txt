@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique_digits(vector<int> x){\nvector<int> out={};\n    for (int i=0;i<x.size();i++)\n        {\n            int num=x[i];\n            bool u=true;\n            if (num==0) u=false;\n            while (num>0 and u)\n            {\n                if (num%2==0) u=false;\n                num=num/10;\n            }\n            if (u) out.push_back(x[i]);\n        }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        5.654,
+        0.137,
+        5357521.4,
+        20703.2,
+        7.303,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> unique_digits(vector<int> x){\n    vector<int> out={};\n    for (int i=0;i<x.size();i++){\n        int num=x[i];\n        bool u=true;\n        if (num==0) u=false;\n        while (num>0 && u){\n            if (num%2==0) u=false;\n            num=num/10;\n        }\n        if (u) out.push_back(x[i]);\n    }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        1.214,
+        1.05,
+        0.943,
+        1.0,
+        1.048,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> unique_digits(vector<int> x){\n    vector<int> out={};\n    for (int i=0;i<x.size();i++){\n        int num=x[i];\n        bool all_odd = true;\n        if (num == 0) {\n            all_odd = false;\n        } else {\n            while (num > 0) {\n                int digit = num % 10;\n                if (digit % 2 == 0) {\n                    all_odd = false;\n                    break;\n                }\n                num /= 10;\n            }\n        }\n        if (all_odd) out.push_back(x[i]);\n    }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        1.257,
+        1.036,
+        0.917,
+        0.993,
+        1.034,
+        29
+    ]
+}

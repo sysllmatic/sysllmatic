@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> minPath(vector<vector<int>> grid, int k){\nint i,j,x,y,min;\n    for (i=0;i<grid.size();i++)\n        for (j=0;j<grid[i].size();j++)\n            if (grid[i][j]==1) {\n                x=i;y=j;\n            }\n    min=grid.size()*grid.size();\n    if (x>0 and grid[x-1][y]<min) min=grid[x-1][y];\n    if (x<grid.size()-1 and grid[x+1][y]<min) min=grid[x+1][y];\n    if (y>0 and grid[x][y-1]<min) min=grid[x][y-1];\n    if (y<grid.size()-1 and grid[x][y+1]<min) min=grid[x][y+1];\n    vector<int> out={};\n    for (i=0;i<k;i++)\n    if (i%2==0) out.push_back(1);\n    else out.push_back(min);\n    return out;\n}",
+        4.847,
+        0.132,
+        6190283.2,
+        20873.6,
+        7.584,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> minPath(vector<vector<int>> grid, int k) {\n    \n    int x, y, rows = grid.size();\n    bool found = false;\n    for (int i = 0; i < rows && !found; ++i) {\n        for (int j = 0; j < grid[i].size(); ++j) {\n            if (grid[i][j] == 1) {\n                x = i;\n                y = j;\n                found = true;\n                break;\n\n            }\n        }\n    }\n\n    \n    int min_val = grid.size() * grid.size();\n    if (x > 0 && grid[x-1][y] < min_val) min_val = grid[x-1][y];\n    if (x < rows -1 && grid[x+1][y] < min_val) min_val = grid[x+1][y];\n    if (y > 0 && grid[x][y-1] < min_val) min_val = grid[x][y-1];\n    if (y < grid[x].size()-1 && grid[x][y+1] < min_val) min_val = grid[x][y+1];\n\n    \n    vector<int> out;\n    out.reserve(k);\n    for(int i=0; i<k; i++) {\n        if(i%2 == 0)\n            out.push_back(1);\n        else\n            out.push_back(min_val);\n    }\n    return out;\n}\n",
+        0.991,
+        1.037,
+        0.982,
+        0.997,
+        1.035,
+        41
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nvector<int> minPath(vector<vector<int>> grid, int k) {\n    \n    int x, y, rows = grid.size();\n    bool found = false;\n    const auto cols = grid[0].size();\n    for (int i = 0; i < rows && !found; ++i) {\n        \n        auto it = find(grid[i].begin(), grid[i].end(), 1);\n        if(it != grid[i].end()){\n            x = i;\n            y = distance(grid[i].begin(), it);\n            found = true;\n            break;\n        }\n    }\n\n    \n    int min_val = rows * cols;\n    if (x > 0 && grid[x-1][y] < min_val) min_val = grid[x-1][y];\n    if (x < rows -1 && grid[x+1][y] < min_val) min_val = grid[x+1][y];\n    if (y > 0 && grid[x][y-1] < min_val) min_val = grid[x][y-1];\n    if (y < cols -1 && grid[x][y+1] < min_val) min_val = grid[x][y+1];\n\n    \n    vector<int> out(k);\n    for(int i=0; i<k; ++i){\n        if(i%2 == 0)\n            out[i] = 1;\n        else\n            out[i] = min_val;\n    }\n    return out;\n}\n",
+        0.989,
+        1.013,
+        1.016,
+        0.999,
+        1.01,
+        39
+    ]
+}

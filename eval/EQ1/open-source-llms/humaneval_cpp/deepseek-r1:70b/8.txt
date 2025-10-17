@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(vector<int> numbers){\nint sum=0,product=1;\n    for (int i=0;i<numbers.size();i++)\n    {\n        sum+=numbers[i];\n        product*=numbers[i];\n    }\n    return {sum,product};\n}",
+        4.664,
+        0.13,
+        7310124.0,
+        20865.6,
+        7.665,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(vector<int> numbers){\n    int sum=0,product=1;\n    for (int i=0;i<numbers.size();i++)\n    {\n        sum+=numbers[i];\n        product*=numbers[i];\n    }\n    vector<int> result(2);\n    result[0] = sum;\n    result[1] = product;\n    return result;\n}\n",
+        0.961,
+        0.93,
+        1.064,
+        0.998,
+        0.932,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(vector<int> numbers){\n    int sum=0,product=1;\n    for (int i=0;i<numbers.size();i++)\n    {\n        sum+=numbers[i];\n        product*=numbers[i];\n    }\n    vector<int> result(2);\n    result[0] = sum;\n    result[1] = product;\n    return result;\n}\n",
+        0.835,
+        1.077,
+        0.982,
+        1.001,
+        1.079,
+        18
+    ]
+}

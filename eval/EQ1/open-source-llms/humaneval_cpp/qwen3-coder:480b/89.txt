@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encrypt(string s){\nstring out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+4-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}",
+        5.21,
+        0.105,
+        46772127.4,
+        20449.6,
+        9.501,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encrypt(string s){\n    string out(s.length(), ' ');  \n    int len = s.length();         \n    \n    for (int i=0; i<len; i++) {\n        int w=((int)s[i]+4-(int)'a')%26+(int)'a';   \n        out[i]=(char)w;  \n    }\n    return out;\n}",
+        1.066,
+        1.014,
+        8.136,
+        0.992,
+        1.015,
+        16
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encrypt(string s) {\n    string out(s.length(), ' ');\n    int len = s.length();\n    char* src = &s[0];\n    char* dst = &out[0];\n    \n    for (int i = 0; i < len; ++i) {\n        char c = src[i];\n        char shifted = c + 4;\n        if (shifted > 'z') {\n            shifted -= 26;\n        }\n        dst[i] = shifted;\n    }\n    return out;\n}",
+        1.069,
+        1.033,
+        8.164,
+        0.998,
+        1.034,
+        22
+    ]
+}

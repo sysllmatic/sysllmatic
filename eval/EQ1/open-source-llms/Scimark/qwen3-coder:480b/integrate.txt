@@ -1,0 +1,32 @@
+{
+    "0": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        for (long count = 0; count < Num_samples; count++) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n\n            if (x * x + y * y <= 1.0)\n                under_curve++;\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}\n",
+        811.752,
+        16.6,
+        77145865042.8,
+        44432.8,
+        0.06,
+        1148.08,
+        26
+    ],
+    "1": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n        Random R = new Random(SEED);\n        long under_curve1 = 0, under_curve2 = 0, under_curve3 = 0, under_curve4 = 0;\n        long count;\n        \n        \n        for (count = 0; count < (Num_samples & ~3L); count += 4) {\n            \n            double x1 = R.nextDouble();\n            double y1 = R.nextDouble();\n            double x2 = R.nextDouble();\n            double y2 = R.nextDouble();\n            double x3 = R.nextDouble();\n            double y3 = R.nextDouble();\n            double x4 = R.nextDouble();\n            double y4 = R.nextDouble();\n\n            \n            if (x1 * x1 + y1 * y1 <= 1.0) under_curve1++;\n            if (x2 * x2 + y2 * y2 <= 1.0) under_curve2++;\n            if (x3 * x3 + y3 * y3 <= 1.0) under_curve3++;\n            if (x4 * x4 + y4 * y4 <= 1.0) under_curve4++;\n        }\n        \n        \n        while (count < Num_samples) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n            if (x * x + y * y <= 1.0)\n                under_curve1++; \n            count++;\n        }\n\n        \n        long total_under_curve = under_curve1 + under_curve2 + under_curve3 + under_curve4;\n        return ((double) total_under_curve / Num_samples) * 4.0;\n    }\n}",
+        2.292,
+        2.423,
+        2.446429108244795,
+        0.9818101467208769,
+        2.432283333333334,
+        1.0182391470977632,
+        49
+    ],
+    "2": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n        Random R = new Random(SEED);\n        \n        long under_curve1 = 0, under_curve2 = 0, under_curve3 = 0, under_curve4 = 0;\n        long under_curve5 = 0, under_curve6 = 0, under_curve7 = 0, under_curve8 = 0;\n        long count;\n        \n        \n        for (count = 0; count < (Num_samples & ~7L); count += 8) {\n            \n            double x1 = R.nextDouble(), y1 = R.nextDouble();\n            double x2 = R.nextDouble(), y2 = R.nextDouble();\n            double x3 = R.nextDouble(), y3 = R.nextDouble();\n            double x4 = R.nextDouble(), y4 = R.nextDouble();\n            double x5 = R.nextDouble(), y5 = R.nextDouble();\n            double x6 = R.nextDouble(), y6 = R.nextDouble();\n            double x7 = R.nextDouble(), y7 = R.nextDouble();\n            double x8 = R.nextDouble(), y8 = R.nextDouble();\n\n            \n            under_curve1 += (x1 * x1 + y1 * y1 <= 1.0) ? 1 : 0;\n            under_curve2 += (x2 * x2 + y2 * y2 <= 1.0) ? 1 : 0;\n            under_curve3 += (x3 * x3 + y3 * y3 <= 1.0) ? 1 : 0;\n            under_curve4 += (x4 * x4 + y4 * y4 <= 1.0) ? 1 : 0;\n            under_curve5 += (x5 * x5 + y5 * y5 <= 1.0) ? 1 : 0;\n            under_curve6 += (x6 * x6 + y6 * y6 <= 1.0) ? 1 : 0;\n            under_curve7 += (x7 * x7 + y7 * y7 <= 1.0) ? 1 : 0;\n            under_curve8 += (x8 * x8 + y8 * y8 <= 1.0) ? 1 : 0;\n        }\n        \n        \n        while (count < Num_samples) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n            under_curve1 += (x * x + y * y <= 1.0) ? 1 : 0;\n            count++;\n        }\n\n        \n        long total_under_curve = under_curve1 + under_curve2 + under_curve3 + under_curve4 + \n                                under_curve5 + under_curve6 + under_curve7 + under_curve8;\n        return ((double) total_under_curve / Num_samples) * 4.0;\n    }\n}",
+        2.711,
+        3.011,
+        3.044525112994099,
+        0.9486728384518157,
+        3.0227,
+        0.8732492509232807,
+        55
+    ]
+}

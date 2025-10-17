@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_third(vector<int> l){\nvector<int> third={};\n    int i;\n    for (i=0;i*3<l.size();i++)\n        third.push_back(l[i*3]);\n    \n    sort(third.begin(),third.end());\n\n    vector<int> out={};\n    for (i=0;i<l.size();i++)\n    {\n        if (i%3==0) {out.push_back(third[i/3]);}\n        else out.push_back(l[i]);\n    }\n    return out;\n\n}",
+        4.966,
+        0.138,
+        21543585.0,
+        20882.4,
+        7.26,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> sort_third(vector<int> l) {\n    vector<int> third;\n    for (size_t i = 0; i < l.size(); ) {\n        if (i % 3 == 0) {\n            third.push_back(l[i]);\n        }\n        i += 2;\n    }\n\n    sort(third.begin(), third.end());\n\n    size_t out_index = 0;\n    for (size_t i = 0; i < l.size(); ) {\n        if (i % 3 == 0) {\n            l[i] = third[out_index++];\n        }\n        i += 2;\n    }\n\n    return l;\n}\n",
+        1.013,
+        1.003,
+        1.562,
+        1.001,
+        1.0,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nvector<int> sort_third(vector<int> l) {\n    size_t n = l.size();\n    for (size_t i = 0; i < n; i += 3) {\n        \n        vector<int> temp;\n        for (size_t j = i; j < n; j += 3) {\n            temp.push_back(l[j]);\n        }\n        \n        sort(temp.begin(), temp.end());\n        \n        size_t k = 0;\n        for (size_t j = i; j < n; j += 3) {\n        \tl[j] = temp[k++];\n        }\n    }\n    return l;\n}\n",
+        0.035,
+        0.05,
+        0.002,
+        1.007,
+        0.05,
+        24
+    ]
+}

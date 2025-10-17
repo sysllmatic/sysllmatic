@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nmap<char,int> histogram(string test){\nmap<char,int> count={},out={};\n    map <char,int>::iterator it;\n    int max=0;\n    for (int i=0;i<test.length();i++)\n        if (test[i]!=' ')\n        {\n            count[test[i]]+=1;\n            if (count[test[i]]>max) max=count[test[i]];\n        }\n    for (it=count.begin();it!=count.end();it++)\n    {\n        char w1=it->first;\n        int w2=it->second;\n        if (w2==max) out[w1]=w2;\n    }\n    return out;\n}",
+        4.75,
+        0.131,
+        5624796.0,
+        20853.6,
+        7.646,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n\nmap<char,int> histogram(string test){\n    int counts[256] = {0}; \n    int max = 0;\n    for (char c : test) {\n        if (c != ' ') {\n            counts[(unsigned char)c]++;\n            if (counts[(unsigned char)c] > max) {\n                max = counts[(unsigned char)c];\n            }\n        }\n    }\n    map<char,int> result;\n    for (int i=0; i<256; i++) {\n        if (counts[i] == max && counts[i] != 0) {\n            result[(char)i] = counts[i];\n        }\n    }\n    return result;\n}\n",
+        0.96,
+        1.054,
+        1.091,
+        1.0,
+        1.05,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n\nconst int ASCII_SIZE = 256;\n\nmap<char, int> histogram(const string& test) {\n    int counts[ASCII_SIZE] = {0};\n    int max_count = 0;\n    \n    for (char c : test) {\n        if (c != ' ') {\n            unsigned char index = static_cast<unsigned char>(c);\n            counts[index]++;\n            if (counts[index] > max_count) {\n                max_count = counts[index];\n            }\n        }\n    }\n    \n    map<char, int> result;\n    for (int i = 0; i < ASCII_SIZE; i++) {\n        if (counts[i] == max_count && counts[i] != 0) {\n            result[static_cast<char>(i)] = counts[i];\n        }\n    }\n    return result;\n}\n",
+        1.064,
+        1.021,
+        1.103,
+        0.998,
+        1.018,
+        30
+    ]
+}

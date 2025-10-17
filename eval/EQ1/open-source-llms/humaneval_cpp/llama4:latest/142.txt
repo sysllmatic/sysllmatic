@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<int> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        if (i%3==0) sum+=lst[i]*lst[i];\n        else if (i%4==0) sum+=lst[i]*lst[i]*lst[i];\n        else sum+=lst[i];\n    return sum;\n}",
+        5.001,
+        0.123,
+        13781682.8,
+        20907.2,
+        8.089,
+        14
+    ],
+    "1": [
+        "#include <iostream>\n#include <vector>\n\nint sum_squares(const std::vector<int>& vec) {\n    int sum = 0;\n    for (size_t i = 0; i < vec.size(); ++i) {\n        if (i % 3 == 0) {\n            sum += vec[i] * vec[i];\n        } else if (i % 4 == 0) {\n            sum += vec[i] * vec[i] * vec[i];\n        } else {\n            sum += vec[i];\n        }\n    }\n    return sum;\n}\n\n\n",
+        1.086,
+        0.843,
+        1.002,
+        1.009,
+        0.846,
+        18
+    ],
+    "2": [
+        "#include <iostream>\n#include <vector>\n\nint sum_squares(const std::vector<int>& vec) {\n    int sum = 0;\n    for (size_t i = 0; i < vec.size(); ++i) {\n        if (i % 3 == 0) {\n            sum += vec[i] * vec[i];\n        } else if (i % 4 == 0) {\n            sum += vec[i] * vec[i] * vec[i];\n        } else {\n            sum += vec[i];\n        }\n    }\n    return sum;\n}\n\n\n",
+        1.029,
+        0.86,
+        1.033,
+        0.994,
+        0.863,
+        18
+    ]
+}

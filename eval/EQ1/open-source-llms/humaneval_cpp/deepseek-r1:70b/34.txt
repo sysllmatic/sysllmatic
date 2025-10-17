@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique(vector<int> l){\nvector<int> out={};\n    for (int i=0;i<l.size();i++)\n        if (find(out.begin(),out.end(),l[i])==out.end())\n            out.push_back(l[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        65.49,
+        1.276,
+        5128411657.6,
+        20802.4,
+        0.784,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> unique(vector<int> l) {\n    if (l.empty()) return {};\n    \n    \n    sort(l.begin(), l.end());\n    \n    vector<int> out;\n    out.reserve(l.size());  \n    \n    int prev = l[0];\n    out.push_back(prev);\n    \n    for (int i = 1; i < l.size(); ++i) {\n\t\n        if (l[i] != prev) {\n            prev = l[i];\n            out.push_back(prev);\n        }\n    }\n    \n    return out;\n}\n",
+        11.419,
+        7.982,
+        51.409,
+        1.0,
+        7.97,
+        29
+    ],
+    "2": [
+        "#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<int> unique(const vector<int>& l) {\n    if (l.empty()) return {};\n    \n    vector<int> sorted = l;\n    sort(sorted.begin(), sorted.end());\n    \n    auto last = unique(sorted.begin(), sorted.end());\n    sorted.erase(last, sorted.end());\n    \n    return sorted;\n}\n",
+        11.118,
+        8.483,
+        51.112,
+        1.004,
+        8.47,
+        15
+    ]
+}

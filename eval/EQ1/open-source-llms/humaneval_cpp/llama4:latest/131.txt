@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint digits(int n){\nint prod=1,has=0;\n    string s=to_string(n);\n    for (int i=0;i<s.length();i++)\n        if (s[i]%2==1) \n        {\n            has=1;\n            prod=prod*(s[i]-48);\n        }\n    if (has==0) return 0;\n    return prod;\n}",
+        4.829,
+        0.14,
+        5091063.4,
+        20908.0,
+        7.115,
+        18
+    ],
+    "1": [
+        "#include <iostream>\n\nint digits(int n) {\n int product = 1;\n int has_odd_digit = 0;\n\n while (n > 0) {\n int digit = n % 10;\n if (digit % 2 != 0) {\n product *= digit;\n has_odd_digit = 1;\n }\n n /= 10;\n }\n\n if (has_odd_digit == 0) {\n return 0;\n }\n\n return product;\n}\n\n",
+        1.039,
+        1.139,
+        1.032,
+        1.007,
+        1.142,
+        22
+    ],
+    "2": [
+        "#include <iostream>\n\nint digits(int n) {\n if (n == 0) return 0;\n\n int product = 1;\n int has_odd_digit = 0;\n\n while (n > 0) {\n int digit = n % 10;\n if (digit % 2 != 0) {\n product *= digit;\n has_odd_digit = 1;\n }\n n /= 10;\n }\n\n if (has_odd_digit == 0) return 0;\n\n return product;\n}\n\n",
+        1.031,
+        1.118,
+        1.031,
+        1.004,
+        1.12,
+        22
+    ]
+}

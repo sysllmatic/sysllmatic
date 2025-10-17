@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring match_parens(vector<string> lst){\nstring l1=lst[0]+lst[1];\n    int i,count=0;\n    bool can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (count!=0) return \"No\";\n    if (can==true) return \"Yes\";\n    l1=lst[1]+lst[0];\n    can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (can==true) return \"Yes\";\n    return \"No\";\n}",
+        7.932,
+        0.132,
+        6956790.4,
+        20860.8,
+        7.572,
+        30
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<vector>\nusing namespace std;\n\nstring match_parens(vector<string> lst){\n    string s1 = lst[0] + lst[1];\n    string s2 = lst[1] + lst[0];\n    int count = 0;\n    bool can1 = true;\n    bool can2 = true;\n\n    for (size_t i = 0; i < s1.length(); ++i) {\n        if (s1[i] == '(') {\n            count++;\n        } else if (s1[i] == ')') {\n            count--;\n        }\n        if (count < 0) {\n            can1 = false;\n            break;\n        }\n    }\n    if (count != 0) can1 = false;\n\n    if (can1) return \"Yes\";\n\n    count = 0;\n    for (size_t i = 0; i < s2.length(); ++i) {\n        if (s2[i] == '(') {\n            count++;\n        } else if (s2[i] == ')') {\n            count--;\n        }\n        if (count < 0) {\n            can2 = false;\n            break;\n        }\n    }\n    if (count != 0) can2 = false;\n\n    if (can2) return \"Yes\";\n    return \"No\";\n}",
+        1.634,
+        0.999,
+        1.058,
+        0.999,
+        0.999,
+        44
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\n\nusing namespace std;\n\nstring match_parens(vector<string> lst) {\n    string s1 = lst[0] + lst[1];\n    string s2 = lst[1] + lst[0];\n    int count = 0;\n    bool can1 = true;\n    bool can2 = true;\n\n    for (size_t i = 0; i < s1.length(); ++i) {\n        if (s1[i] == '(') {\n            count++;\n        } else if (s1[i] == ')') {\n            count--;\n        }\n        if (count < 0) {\n            can1 = false;\n            break;\n        }\n    }\n    can1 = (count != 0) ? false : can1;\n\n    if (can1) return \"Yes\";\n\n    count = 0; \n    for (size_t i = 0; i < s2.length(); ++i) {\n        if (s2[i] == '(') {\n            count++;\n        } else if (s2[i] == ')') {\n            count--;\n        }\n        if (count < 0) {\n            can2 = false;\n            break;\n        }\n    }\n    can2 = (count != 0) ? false : can2;\n\n    if (can2) return \"Yes\";\n    return \"No\";\n}",
+        1.701,
+        1.016,
+        1.028,
+        1.001,
+        1.016,
+        45
+    ]
+}

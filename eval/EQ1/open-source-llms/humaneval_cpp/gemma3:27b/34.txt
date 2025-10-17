@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique(vector<int> l){\nvector<int> out={};\n    for (int i=0;i<l.size();i++)\n        if (find(out.begin(),out.end(),l[i])==out.end())\n            out.push_back(l[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        65.096,
+        1.253,
+        5129559856.0,
+        20700.0,
+        0.798,
+        14
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <unordered_set>\nusing namespace std;\n\nvector<int> unique(vector<int> l) {\n    unordered_set<int> seen;\n    vector<int> out;\n    for (int x : l) {\n        if (seen.find(x) == seen.end()) {\n            out.push_back(x);\n            seen.insert(x);\n        }\n    }\n    sort(out.begin(), out.end());\n    return out;\n}\n",
+        11.341,
+        8.433,
+        59.07,
+        0.994,
+        8.423,
+        19
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\n#include <unordered_set>\nusing namespace std;\n\nvector<int> unique(vector<int> l) {\n    unordered_set<int> seen;\n    vector<int> out;\n    out.reserve(l.size()); \n    for (int x : l) {\n        if (seen.find(x) == seen.end()) {\n            out.push_back(x);\n            seen.insert(x);\n        }\n    }\n    sort(out.begin(), out.end());\n    return out;\n}\n",
+        11.565,
+        7.785,
+        59.274,
+        0.998,
+        7.778,
+        20
+    ]
+}

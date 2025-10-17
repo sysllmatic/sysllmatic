@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring solve(int N){\nstring str,bi=\"\";\n    str=to_string(N);\n    int i,sum=0;\n    for (int i=0;i<str.length();i++)\n        sum+=str[i]-48;\n    while (sum>0)\n    {\n        bi=to_string(sum%2)+bi;\n        sum=sum/2;\n    }\n    return bi;\n}",
+        5.685,
+        0.131,
+        5078439.2,
+        20795.2,
+        7.61,
+        19
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\n#include<stdlib.h>\n\nusing namespace std;\n\nstring solve(int N){\n    string bi = \"\";\n    int sum = 0;\n    string str = to_string(N);\n\n    for (int i = 0; i < str.length(); ++i) {\n        sum += str[i] - '0';\n    }\n\n    while (sum > 0) {\n        bi = (sum % 2 == 0 ? \"0\" : \"1\") + bi;\n        sum /= 2;\n    }\n\n    return bi;\n}\n",
+        1.211,
+        0.972,
+        1.025,
+        1.004,
+        0.974,
+        24
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\n#include<stdlib.h>\n\nusing namespace std;\n\nstring solve(int N){\n    int sum = 0;\n    string str = to_string(N);\n\n    for (int i = 0; i < str.length(); ++i) {\n        sum += str[i] - '0';\n    }\n\n    string bi = \"\";\n    while (sum > 0) {\n        bi = ((sum & 1) ? \"1\" : \"0\") + bi;\n        sum >>= 1;\n    }\n\n    return bi;\n}",
+        1.188,
+        0.987,
+        1.009,
+        1.006,
+        0.989,
+        24
+    ]
+}

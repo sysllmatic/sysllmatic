@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring solve(string s){\nint nletter=0;\n    string out=\"\";\n    for (int i=0;i<s.length();i++)\n    {\n        char w=s[i];\n        if (w>=65 and w<=90) w=w+32;\n        else if (w>=97 and w<=122) w=w-32;\n        else nletter+=1;\n        out=out+w;\n    }\n    if (nletter==s.length())\n    {\n        string p(s.rbegin(),s.rend());\n        return p;\n    }\n    else return out;\n}",
+        5.418,
+        0.111,
+        58970345.0,
+        20522.4,
+        8.956,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<ctype.h>\n#include<stdlib.h>\n\nstring solve(string s){\n    int n = s.length();\n    int nletter = 0;\n    string out(n, ' '); \n    \n    for (int i = 0; i < n; i++) {\n        char w = s[i];\n        if (isupper(w)) {\n            out[i] = tolower(w);\n        } else if (islower(w)) {\n            out[i] = toupper(w);\n        } else {\n            nletter++;\n            out[i] = w;\n        }\n    }\n    \n    if (nletter == n) {\n        reverse(out.begin(), out.end());\n        return out;\n    }\n    \n    return out;\n}",
+        1.115,
+        1.085,
+        9.092,
+        1.002,
+        1.089,
+        31
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring solve(string s){\n    int n = s.length();\n    int nletter = 0;\n    \n    \n    for (int i = 0; i < n; i++) {\n        char w = s[i];\n        \n        if (w >= 'A' && w <= 'Z') {\n            s[i] = w + 32;  \n        } else if (w >= 'a' && w <= 'z') {\n            s[i] = w - 32;  \n        } else {\n            nletter++;\n        }\n    }\n    \n    \n    if (nletter == n) {\n        reverse(s.begin(), s.end());\n        return s;\n    }\n    \n    return s;\n}",
+        1.088,
+        1.057,
+        10.163,
+        0.999,
+        1.062,
+        31
+    ]
+}

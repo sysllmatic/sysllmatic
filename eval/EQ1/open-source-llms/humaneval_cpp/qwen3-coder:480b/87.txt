@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<vector<int>> get_row(vector<vector<int>> lst, int x){\nvector<vector<int>> out={};\n    for (int i=0;i<lst.size();i++)\n    for (int j=lst[i].size()-1;j>=0;j-=1)\n    if (lst[i][j]==x) out.push_back({i,j});\n    return out;\n}",
+        5.813,
+        0.12,
+        78529689.0,
+        20512.8,
+        8.346,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<vector<int>> get_row(vector<vector<int>> lst, int x){\n    vector<vector<int>> out;\n    \n    \n    \n    size_t total_elements = 0;\n    for (const auto& row : lst) {\n        total_elements += row.size();\n    }\n    out.reserve(min(total_elements, static_cast<size_t>(1000))); \n    \n    for (int i=0; i<lst.size(); i++) {\n        for (int j=lst[i].size()-1; j>=0; j-=1) {\n            if (lst[i][j]==x) {\n                out.emplace_back(vector<int>{i,j});\n            }\n        }\n    }\n    \n    return out;\n}",
+        1.048,
+        1.071,
+        1.028,
+        0.995,
+        1.068,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<vector<int>> get_row(const vector<vector<int>>& lst, int x){\n    vector<vector<int>> out;\n    \n    \n    size_t total_elements = 0;\n    for (const auto& row : lst) {\n        total_elements += row.size();\n    }\n    \n    \n    out.reserve(total_elements / 10 + 10); \n    \n    for (size_t i=0; i<lst.size(); i++) {\n        const auto& row = lst[i];\n        for (int j=row.size()-1; j>=0; j-=1) {\n            if (row[j]==x) {\n                out.emplace_back(initializer_list<int>{static_cast<int>(i), j});\n            }\n        }\n    }\n    \n    return out;\n}",
+        1.042,
+        1.043,
+        1.354,
+        1.003,
+        1.04,
+        30
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool check_dict_case(map<string,string> dict){\nmap<string,string>::iterator it;\n    int islower=0,isupper=0;\n    if (dict.size()==0) return false;\n    for (it=dict.begin();it!=dict.end();it++)\n    {\n        string key=it->first;\n    \n        for (int i=0;i<key.length();i++)\n        {\n            if (key[i]<65 or (key[i]>90 and key[i]<97) or key[i]>122) return false;\n            if (key[i]>=65 and key[i]<=90) isupper=1;\n            if (key[i]>=97 and key[i]<=122) islower=1;\n            if (isupper+islower==2) return false;\n        }\n\n    }\n    return true;\n}",
+        74.334,
+        1.413,
+        6053111933.6,
+        190472.8,
+        0.708,
+        26
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool check_dict_case(map<string,string> dict){\n    if (dict.empty()) return false;\n    \n    bool found_lower = false;\n    bool found_upper = false;\n    \n    for (const auto& pair : dict) {\n        const string& key = pair.first;\n        \n        for (char c : key) {\n            \n            \n            unsigned char uc = static_cast<unsigned char>(c);\n            \n            \n            if ((uc < 'A' || uc > 'z') || (uc > 'Z' && uc < 'a')) {\n                return false;  \n            }\n            \n            \n            bool is_upper = (uc & 32) == 0;  \n            \n            found_lower |= !is_upper;\n            found_upper |= is_upper;\n            \n            \n            if (found_lower && found_upper) {\n                return false;\n            }\n        }\n    }\n    \n    return true;\n}",
+        1.538,
+        1.51,
+        1.605,
+        1.0,
+        1.509,
+        42
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool check_dict_case(const map<string,string>& dict){\n    if (dict.empty()) return false;\n    \n    bool has_lower = false;\n    bool has_upper = false;\n    \n    for (const auto& pair : dict) {\n        const string& key = pair.first;\n        \n        for (char c : key) {\n            unsigned char uc = static_cast<unsigned char>(c);\n            \n            \n            \n            \n            if ((uc >= 'A' && uc <= 'Z') || (uc >= 'a' && uc <= 'z')) {\n                \n                bool is_lower = (uc & 0x20) != 0;\n                \n                has_lower |= is_lower;\n                has_upper |= !is_lower;\n                \n                \n                if (has_lower && has_upper) {\n                    return false;\n                }\n            } else {\n                \n                return false;\n            }\n        }\n    }\n    \n    return true;\n}",
+        1.622,
+        1.615,
+        1.679,
+        1.356,
+        1.614,
+        43
+    ]
+}

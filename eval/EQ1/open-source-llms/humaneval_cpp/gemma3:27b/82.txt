@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool prime_length(string str){\nint l,i;\n    l=str.length();\n    if (l<2) return false;\n    for (i=2;i*i<=l;i++)\n    if (l%i==0) return false;\n    return true;\n}",
+        4.636,
+        0.126,
+        5098505.0,
+        20728.8,
+        7.942,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool prime_length(string str){\n    int l, i;\n    l = str.length();\n    if (l < 2) return false;\n    for (i = 2; i * i <= l; i++)\n        if (l % i == 0) return false;\n    return true;\n}\n",
+        0.968,
+        1.015,
+        1.084,
+        0.993,
+        1.013,
+        15
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool prime_length(string str){\n    int l, i;\n    l = str.length();\n    if (l < 2) return false;\n    int sqrt_l = (int)sqrt(l); \n    for (i = 2; i <= sqrt_l; i++)\n        if (l % i == 0) return false;\n    return true;\n}\n",
+        0.928,
+        0.919,
+        1.071,
+        0.991,
+        0.918,
+        16
+    ]
+}

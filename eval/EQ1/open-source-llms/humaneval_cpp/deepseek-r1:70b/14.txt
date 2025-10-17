@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> all_prefixes(string str){\nvector<string> out;\n    string current=\"\";\n    for (int i=0;i<str.length();i++)\n    {\n        current=current+str[i];\n        out.push_back(current);\n    }\n    return out;\n}",
+        10.699,
+        0.244,
+        477012227.6,
+        54956.0,
+        4.095,
+        17
+    ],
+    "1": [
+        "#include<string>\n#include<vector>\nusing namespace std;\n\nvector<string> all_prefixes(const string &str) {\n    vector<string> prefixes;\n    for (int i = 0; i < str.size(); ++i) {\n        prefixes.emplace_back(str.begin(), str.begin() + i + 1);\n    }\n    return prefixes;\n}\n",
+        1.11,
+        0.999,
+        1.274,
+        1.058,
+        1.0,
+        11
+    ],
+    "2": [
+        "#include<string>\n#include<vector>\nusing namespace std;\n\nvector<string> all_prefixes(const string &str) {\n    vector<string> prefixes;\n    for (int i = 0; i < str.size(); ++i) {\n        prefixes.emplace_back(str.begin(), str.begin() + i + 1);\n    }\n    return prefixes;\n}\n",
+        1.098,
+        1.091,
+        1.302,
+        1.058,
+        1.091,
+        11
+    ]
+}

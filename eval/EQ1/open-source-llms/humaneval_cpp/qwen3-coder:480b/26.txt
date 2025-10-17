@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> remove_duplicates(vector<int> numbers){\nvector<int> out={};\n    vector<int> has1={};\n    vector<int> has2={};\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (find(has2.begin(),has2.end(),numbers[i])!=has2.end()) continue;\n        if (find(has1.begin(),has1.end(),numbers[i])!=has1.end())\n        {\n\n            has2.push_back(numbers[i]);\n        }\n        else has1.push_back(numbers[i]);\n    }\n    for (int i=0;i<numbers.size();i++)\n    if (find(has2.begin(),has2.end(),numbers[i])==has2.end())\n        out.push_back(numbers[i]);\n    return out;\n\n\n}",
+        61.953,
+        1.171,
+        4978933668.0,
+        20442.4,
+        0.854,
+        27
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> remove_duplicates(vector<int> numbers){\n    unordered_set<int> seen;\n    unordered_set<int> duplicates;\n    vector<int> result;\n    \n    \n    for (int num : numbers) {\n        if (seen.find(num) != seen.end()) {\n            duplicates.insert(num);\n        } else {\n            seen.insert(num);\n        }\n    }\n    \n    \n    for (int num : numbers) {\n        if (duplicates.find(num) == duplicates.end()) {\n            result.push_back(num);\n        }\n    }\n    \n    return result;\n}",
+        11.171,
+        10.328,
+        67.853,
+        0.992,
+        10.312,
+        31
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> remove_duplicates(vector<int> numbers){\n    unordered_set<int> seen_once;\n    unordered_set<int> seen_multiple;\n    vector<int> result;\n    \n    \n    result.reserve(numbers.size());\n    \n    for (int num : numbers) {\n        \n        if (seen_multiple.find(num) != seen_multiple.end()) {\n            continue;\n        }\n        \n        \n        if (seen_once.find(num) != seen_once.end()) {\n            seen_once.erase(num);\n            seen_multiple.insert(num);\n            \n            \n            auto it = find(result.begin(), result.end(), num);\n            if (it != result.end()) {\n                result.erase(it);\n            }\n        } else {\n            \n            seen_once.insert(num);\n            result.push_back(num);\n        }\n    }\n    \n    return result;\n}",
+        4.148,
+        3.99,
+        5.545,
+        0.995,
+        3.987,
+        41
+    ]
+}

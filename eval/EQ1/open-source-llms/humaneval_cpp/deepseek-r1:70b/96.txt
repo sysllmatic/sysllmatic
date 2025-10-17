@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> count_up_to(int n){\nvector<int> out={};\n    int i,j;\n    for (i=2;i<n;i++)\n        if (out.size()==0) {out.push_back(i);}\n        else\n        {\n            bool isp=true;\n            for (j=0;out[j]*out[j]<=i;j++)\n                if (i%out[j]==0) isp=false;\n            if (isp) out.push_back(i);\n        }\n    return out;\n}",
+        7.94,
+        0.13,
+        39096609.2,
+        20846.4,
+        7.664,
+        20
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n\nvector<int> count_up_to(int n) {\n    if (n <= 2) return vector<int>();\n    vector<bool> sieve(n+1, true);\n    sieve[0] = sieve[1] = false;\n    for (int i=2; i*i <= n; ++i) {\n        if (sieve[i]) {\n            for (int j=i*i; j<=n; j+=i) {\n                sieve[j] = false;\n\n            }\n        }\n    }\n    vector<int> primes;\n    for(int i=2; i<n; ++i){\n        if(sieve[i]){\n            primes.push_back(i);\n        }\n    }\n    return primes;\n}\n",
+        1.743,
+        0.965,
+        1.994,
+        0.994,
+        0.968,
+        24
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<bitset>\nusing namespace std;\n\nvector<int> count_up_to(int n) {\n    if (n <= 2) return vector<int>();\n    bitset<1024> sieve; \n    sieve.set();\n    sieve[0] = sieve[1] = false;\n    for (int i=2; static_cast<long long>(i)*i <= n; ++i) {\n        if (sieve[i]) {\n            for (int j=i*i; j<1024; j+=i) {\n                sieve[j] = false;\n            }\n        }\n    }\n    vector<int> primes;\n    for(int i=2; i<n; ++i){\n        if(sieve[i]){ \n            primes.push_back(i);\n        }\n    }\n    return primes;\n}\n",
+        1.712,
+        1.018,
+        4.536,
+        1.005,
+        1.021,
+        25
+    ]
+}

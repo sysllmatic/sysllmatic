@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool is_palindrome(string str){\n    string s(str.rbegin(),str.rend());\n    return s==str;\n}\nstring make_palindrome(string str){\nint i;\n   for (i=0;i<str.length();i++)\n   {\n        string rstr=str.substr(i);\n        if (is_palindrome(rstr))\n        {\n            string nstr;\n            nstr=str.substr(0,i);\n            string n2str(nstr.rbegin(),nstr.rend());\n            return str+n2str;\n        }\n   }\n   string n2str(str.rbegin(),str.rend());\n   return str+n2str;\n}",
+        4.779,
+        0.136,
+        4918230.8,
+        20881.6,
+        7.359,
+        26
+    ],
+    "1": [
+        "#include <string>\n#include <algorithm>  \nusing namespace std;\n\nbool is_palindrome(const string& s) {\n    int n = s.size();\n    for (int i = 0; i < n / 2; ++i) {\n        if (s[i] != s[n - 1 - i]) return false;\n    }\n    return true;\n}\n\nstring make_palindrome(string str) {\n    for (size_t i = 0; i <= str.size(); ++i) {\n        string suffix = str.substr(i);\n        if (is_palindrome(suffix)) {\n            string prefix = str.substr(0, i);\n            reverse(prefix.begin(), prefix.end());\n            return str + prefix;\n        }\n    }\n    \n    reverse(str.begin(), str.end());\n    return str + str;\n}",
+        1.013,
+        0.992,
+        1.126,
+        1.003,
+        0.99,
+        25
+    ],
+    "2": [
+        "#include <string>\n#include <algorithm>\nusing namespace std;\n\nbool is_palindrome(const string& s) {\n    int n = s.size();\n    for (int i = 0; i < n / 2; ++i) {\n        if (s[i] != s[n - 1 - i]) return false;\n    }\n    return true;\n}\n\nstring make_palindrome(string str) {\n    size_t len = str.size();\n    for (size_t i = 0; i <= len; ++i) {\n        bool is_suffix_pal = true;\n        size_t suffix_start = i;\n        size_t suffix_end = len - 1;\n        while (suffix_start < suffix_end) {\n            if (str[suffix_start] != str[suffix_end]) {\n                is_suffix_pal = false;\n                break;\n            }\n            ++suffix_start;\n            --suffix_end;\n        }\n        if (is_suffix_pal) {\n            string prefix = str.substr(0, i);\n            reverse(prefix.begin(), prefix.end());\n            return str + prefix;\n        }\n    }\n\n    reverse(str.begin(), str.end());\n    return str + str;\n}",
+        1.051,
+        1.003,
+        0.971,
+        0.995,
+        1.0,
+        36
+    ]
+}

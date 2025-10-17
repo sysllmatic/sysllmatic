@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint closest_integer(string value){\ndouble w;\n    w=atof(value.c_str());\n    return round(w);\n}",
+        4.675,
+        0.124,
+        4666815.4,
+        20888.8,
+        8.026,
+        11
+    ],
+    "1": [
+        "#include <cmath>\n#include <string>\n\nint closest_integer(const std::string& value) {\n    char* endptr;\n    double num = std::strtod(value.c_str(), &endptr);\n    return std::round(num);\n}",
+        1.006,
+        0.871,
+        0.949,
+        1.005,
+        0.875,
+        8
+    ],
+    "2": [
+        "#include <cmath>\n#include <string>\n\nint closest_integer(const std::string& value) {\n    const char* c_str = value.c_str();\n    char* endptr;\n    double num = std::strtod(c_str, &endptr);\n    return std::lround(num);\n}",
+        0.98,
+        0.93,
+        0.862,
+        0.998,
+        0.933,
+        9
+    ]
+}

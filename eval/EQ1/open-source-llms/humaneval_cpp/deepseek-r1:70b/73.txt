@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint smallest_change(vector<int> arr){\nint out=0;\n    for (int i=0;i<arr.size()-1-i;i++)\n        if (arr[i]!=arr[arr.size()-1-i])\n            out+=1;\n    return out;\n}",
+        4.694,
+        0.134,
+        7110537.2,
+        20836.8,
+        7.445,
+        13
+    ],
+    "1": [
+        "\n#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint smallest_change(vector<int> arr) {\n    int out = 0;\n    int n = arr.size();\n    for (int i = 0; i < n / 2; ++i) {\n        if (arr[i] != arr[n - 1 - i]) {\n            out += 1;\n        }\n    }\n    return out;\n}\n",
+        0.995,
+        1.046,
+        0.997,
+        0.999,
+        1.047,
+        18
+    ],
+    "2": [
+        "\n#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint smallest_change(vector<int> arr) {\n    int out = 0;\n    const int* start = &arr[0];\n    const int* end = &arr[arr.size() - 1];\n    const int* mid = start + arr.size() / 2;\n\n    for (; start < mid; ++start, --end) {\n        if (*start != *end) {\n            out += 1;\n        }\n    }\n    return out;\n}\n",
+        1.0,
+        1.061,
+        0.97,
+        0.996,
+        1.062,
+        21
+    ]
+}

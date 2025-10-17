@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_prime(long long n){\nif (n<2) return false;\n    for (long long i=2;i*i<=n;i++)\n        if (n%i==0) return false;\n    return true;\n}",
+        4.912,
+        0.117,
+        2750899.2,
+        20892.0,
+        8.507,
+        11
+    ],
+    "1": [
+        "bool is_prime(long long n) {\n    if (n <= 1) return false;\n    if (n == 2) return true;\n    if (n % 2 == 0) return false;\n    for (long long i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}",
+        1.076,
+        0.85,
+        0.973,
+        1.005,
+        0.852,
+        9
+    ],
+    "2": [
+        "bool is_prime(long long n) {\n    if (n <= 1) return false;\n    if (n <= 3) return true;\n    if (n % 2 == 0 || n % 3 == 0) return false;\n    for (long long i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0) return false;\n    }\n    return true;\n}",
+        1.082,
+        0.891,
+        0.967,
+        1.001,
+        0.894,
+        9
+    ]
+}

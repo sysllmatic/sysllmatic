@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint solutions(vector<int> lst){\nint sum=0;\n    for (int i=0;i*2<lst.size();i++)\n        if (lst[i*2]%2==1) sum+=lst[i*2];\n    return sum;\n}",
+        8.226,
+        0.189,
+        266874976.0,
+        33829.6,
+        5.276,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint solutions(vector<int> lst) {\n    int sum = 0;\n    const int* ptr = lst.data();\n    for (const int* end_ptr = ptr + lst.size(); ptr < end_ptr; ) {\n        if (*ptr & 1) { \n            sum += *ptr;\n        }\n        ptr += 2; \n    }\n    return sum;\n}\n",
+        1.068,
+        0.906,
+        1.122,
+        1.001,
+        0.908,
+        18
+    ]
+}

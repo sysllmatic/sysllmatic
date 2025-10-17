@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring remove_vowels(string text){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=0;i<text.length();i++)\n        if (find(vowels.begin(),vowels.end(),text[i])==vowels.end())\n            out=out+text[i];\n    return out;\n\n}",
+        4.872,
+        0.102,
+        5248542.6,
+        20560.0,
+        9.828,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring remove_vowels(string text){\n    \n    bool is_vowel[256] = {false};\n    string vowels=\"AEIOUaeiou\";\n    \n    \n    for (char c : vowels) {\n        is_vowel[static_cast<unsigned char>(c)] = true;\n    }\n    \n    \n    string out;\n    out.reserve(text.length());\n    \n    \n    for (char c : text) {\n        if (!is_vowel[static_cast<unsigned char>(c)]) {\n            out += c;  \n        }\n    }\n    \n    return out;\n}",
+        0.998,
+        0.978,
+        0.993,
+        1.0,
+        0.974,
+        30
+    ],
+    "2": [
+        "#include<string>\nusing namespace std;\n\nstring remove_vowels(string text){\n    \n    constexpr bool is_vowel[256] = {\n        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\n        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\n        0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,\n        0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,\n        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\n        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\n        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\n        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n    };\n    \n    \n    string out;\n    out.reserve(text.length() * 19/20); \n    \n    \n    for (char c : text) {\n        if (!is_vowel[static_cast<unsigned char>(c)]) {\n            out += c;\n        }\n    }\n    \n    return out;\n}",
+        0.732,
+        1.006,
+        0.953,
+        0.999,
+        1.002,
+        29
+    ]
+}

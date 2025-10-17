@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring string_sequence(int n){\nstring out=\"0\";\n    for (int i=1;i<=n;i++)\n    out=out+\" \"+to_string(i);\n    return out;\n}",
+        8.074,
+        0.2,
+        236888978.2,
+        20780.0,
+        4.991,
+        12
+    ],
+    "1": [
+        "#include <iostream>\n#include <sstream>\n#include <string>\n\nstd::string string_sequence(int n) {\n    std::stringstream ss;\n    ss << '0';\n    for (int i = 1; i <= n; ++i) {\n        ss << ' ' << i;\n    }\n    return ss.str();\n}\n\n",
+        1.683,
+        1.732,
+        21.281,
+        0.998,
+        1.733,
+        13
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nstd::string string_sequence(int n) {\n    std::string result;\n    result.reserve(n * 5); \n    result += '0';\n    for (int i = 1; i <= n; ++i) {\n        result += ' ';\n        result += std::to_string(i);\n    }\n    return result;\n}\n\n",
+        1.722,
+        1.52,
+        23.713,
+        0.999,
+        1.521,
+        14
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint closest_integer(string value){\ndouble w;\n    w=atof(value.c_str());\n    return round(w);\n}",
+        4.805,
+        0.102,
+        4714759.4,
+        20480.8,
+        9.825,
+        11
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint closest_integer(string value){\n    int result = 0;\n    int sign = 1;\n    int i = 0;\n    \n    \n    if (value.empty()) return 0;\n    \n    \n    if (value[0] == '-') {\n        sign = -1;\n        i = 1;\n    } else if (value[0] == '+') {\n        i = 1;\n    }\n    \n    \n    while (i < value.length() && value[i] >= '0' && value[i] <= '9') {\n        result = result * 10 + (value[i] - '0');\n        i++;\n    }\n    \n    \n    if (i < value.length() && value[i] == '.') {\n        i++;\n        \n        if (i < value.length() && value[i] >= '5') {\n            result += 1;  \n        }\n    }\n    \n    return sign * result;\n}",
+        0.968,
+        0.975,
+        0.95,
+        0.992,
+        0.971,
+        40
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint closest_integer(string value){\n    \n    float f = stof(value);\n    return (int)roundf(f);\n}",
+        0.987,
+        1.013,
+        1.065,
+        0.997,
+        1.009,
+        12
+    ]
+}

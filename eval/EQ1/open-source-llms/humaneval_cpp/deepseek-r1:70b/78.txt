@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\nstring key=\"2357BD\";\n    int out=0;\n    for (int i=0;i<num.length();i++)\n    if (find(key.begin(),key.end(),num[i])!=key.end()) out+=1;\n    return out;\n}",
+        4.843,
+        0.13,
+        14820819.2,
+        20739.2,
+        7.659,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\n    string key=\"2357BD\";\n    unordered_set<char> key_chars(key.begin(), key.end());\n    int out=0;\n    for (char c : num) {\n        if (key_chars.count(c)) \n            out += 1;\n    }\n    return out;\n}\n",
+        1.012,
+        0.996,
+        1.004,
+        0.994,
+        0.999,
+        17
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\n    const string key = \"2357BD\";\n    int out=0;\n    for (char c : num) {\n        if (key.find(c) != string::npos)\n            out += 1;\n    }\n    return out;\n}\n",
+        1.034,
+        0.952,
+        2.098,
+        0.99,
+        0.955,
+        14
+    ]
+}

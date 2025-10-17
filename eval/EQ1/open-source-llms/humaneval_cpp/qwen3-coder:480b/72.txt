@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool will_it_fly(vector<int> q,int w){\nint sum=0;\n    for (int i=0;i<q.size();i++)\n    {\n        if (q[i]!=q[q.size()-1-i]) return false;\n        sum+=q[i];\n    }\n    if (sum>w) return false;\n    return true;\n}",
+        4.874,
+        0.1,
+        8477388.4,
+        20502.4,
+        9.969,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool will_it_fly(vector<int> q, int w) {\n    const size_t size = q.size();\n    const size_t half_size = size / 2;\n    \n    \n    for (size_t i = 0; i < half_size; i++) {\n        if (q[i] != q[size - 1 - i]) {\n            return false;\n        }\n    }\n    \n    \n    int sum = 0;\n    for (size_t i = 0; i < size; i++) {\n        sum += q[i];\n    }\n    \n    return sum <= w;\n}",
+        0.997,
+        0.965,
+        1.104,
+        1.002,
+        0.967,
+        26
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool will_it_fly(const vector<int>& q, int w) {\n    const size_t n = q.size();\n    \n    \n    if (n == 0) return true;\n    \n    int sum = 0;\n    const size_t half_size = n / 2;\n    \n    \n    for (size_t i = 0; i < n; i++) {\n        \n        sum += q[i];\n        \n        \n        if (sum > w) return false;\n        \n        \n        if (i < half_size && q[i] != q[n - 1 - i]) {\n            return false;\n        }\n    }\n    \n    return true;  \n}",
+        0.851,
+        0.964,
+        1.063,
+        0.997,
+        0.965,
+        32
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> common(vector<int> l1,vector<int> l2){\nvector<int> out={};\n    for (int i=0;i<l1.size();i++)\n        if (find(out.begin(),out.end(),l1[i])==out.end())\n            if (find(l2.begin(),l2.end(),l1[i])!=l2.end())\n                out.push_back(l1[i]);\n    sort(out.begin(),out.end());\n    return out;\n}",
+        85.522,
+        1.688,
+        6992042520.6,
+        20725.6,
+        0.592,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include <unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> common(vector<int> l1,vector<int> l2){\n    unordered_set<int> s(l2.begin(), l2.end());\n    vector<int> out = {};\n    for (int x : l1) {\n        if (s.count(x)) {\n            out.push_back(x);\n        }\n    }\n    sort(out.begin(), out.end());\n    return out;\n}\n",
+        14.93,
+        11.725,
+        91.846,
+        0.992,
+        11.719,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include <unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> common(vector<int> l1,vector<int> l2){\n    unordered_set<int> s(l2.begin(), l2.end());\n    vector<int> out = {};\n    for (int x : l1) {\n        if (s.count(x)) {\n            out.push_back(x);\n        }\n    }\n    sort(out.begin(), out.end());\n    return out;\n}\n",
+        14.672,
+        12.233,
+        91.539,
+        0.994,
+        12.227,
+        19
+    ]
+}

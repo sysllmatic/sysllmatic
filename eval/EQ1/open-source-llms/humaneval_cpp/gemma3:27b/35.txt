@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nfloat max_element(vector<float> l){\nfloat max=-10000;\n  for (int i=0;i<l.size();i++)\n  if (max<l[i]) max=l[i];\n  return max;\n\n}",
+        4.776,
+        0.125,
+        7434198.0,
+        20932.8,
+        8.016,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nfloat max_element(vector<float> l){\n  float max = -10000.0f; \n  for (size_t i = 0; i < l.size(); ++i) { \n    if (max < l[i]) {\n      max = l[i];\n    }\n  }\n  return max;\n}\n",
+        0.974,
+        0.957,
+        1.064,
+        1.008,
+        0.954,
+        16
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <algorithm>\nusing namespace std;\n#include <stdlib.h>\n\nfloat max_element(const std::vector<float>& l) {\n  if (l.empty()) {\n    return -10000.0f; \n  }\n  return *std::max_element(l.begin(), l.end());\n}\n",
+        1.037,
+        0.906,
+        1.06,
+        0.999,
+        0.903,
+        13
+    ]
+}

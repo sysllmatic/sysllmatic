@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fruit_distribution(string s,int n){\nstring num1=\"\",num2=\"\";\n    int is12;\n    is12=0;\n    for (int i=0;i<s.size();i++)\n        \n        if (s[i]>=48 and s[i]<=57)\n        {\n            if (is12==0) num1=num1+s[i];\n            if (is12==1) num2=num2+s[i];\n        }\n        else\n          if (is12==0 and num1.length()>0) is12=1;\n    return n-atoi(num1.c_str())-atoi(num2.c_str());\n\n}",
+        4.815,
+        0.1,
+        4522077.2,
+        20477.6,
+        10.013,
+        22
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint fruit_distribution(string s, int n) {\n    int num1 = 0, num2 = 0;\n    bool found_first = false;\n    \n    for (int i = 0; i < s.size(); i++) {\n        if (s[i] >= '0' && s[i] <= '9') {\n            if (!found_first) {\n                num1 = num1 * 10 + (s[i] - '0');\n            } else {\n                num2 = num2 * 10 + (s[i] - '0');\n            }\n        } else {\n            if (num1 > 0 && !found_first) {\n                found_first = true;\n            } else if (num2 > 0 && found_first) {\n                break;\n            }\n        }\n    }\n    \n    return n - num1 - num2;\n}",
+        0.998,
+        1.0,
+        0.931,
+        0.998,
+        0.997,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint fruit_distribution(string s, int n) {\n    int num1 = 0, num2 = 0;\n    bool parsing_first = true;\n    \n    for (char c : s) {\n        if (c >= '0' && c <= '9') {\n            if (parsing_first) {\n                num1 = num1 * 10 + (c - '0');\n            } else {\n                num2 = num2 * 10 + (c - '0');\n            }\n        } else {\n            if (!parsing_first && num2 > 0) break; \n            if (num1 > 0) parsing_first = false;\n        }\n    }\n    \n    return n - num1 - num2;\n}",
+        0.987,
+        0.979,
+        0.989,
+        0.998,
+        0.976,
+        26
+    ]
+}

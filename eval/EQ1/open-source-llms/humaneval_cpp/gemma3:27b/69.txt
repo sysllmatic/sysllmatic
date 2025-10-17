@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint search(vector<int> lst){\nvector<vector<int>> freq={};\n    int max=-1;\n    for (int i=0;i<lst.size();i++)\n    {\n        bool has=false;\n        for (int j=0;j<freq.size();j++)\n            if (lst[i]==freq[j][0]) \n            {\n            freq[j][1]+=1;\n            has=true;\n            if (freq[j][1]>=freq[j][0] and freq[j][0]>max) max=freq[j][0];\n            }\n        if (not(has)) \n        {\n        freq.push_back({lst[i],1});\n        if (max==-1 and lst[i]==1) max=1;\n        }\n    }\n    return max;\n}",
+        46.458,
+        0.929,
+        3466840759.0,
+        20804.8,
+        1.076,
+        27
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <unordered_map>\n#include <algorithm>\nusing namespace std;\n\nint search(vector<int> lst) {\n    unordered_map<int, int> freq;\n    int max_val = -1;\n\n    for (int i = 0; i < lst.size(); ++i) {\n        freq[lst[i]]++;\n        if (freq[lst[i]] >= lst[i] && lst[i] > max_val) {\n            max_val = lst[i];\n        }\n    }\n\n    return max_val;\n}\n",
+        8.978,
+        6.564,
+        79.8,
+        0.99,
+        6.562,
+        20
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <unordered_map>\n#include <algorithm>\nusing namespace std;\n\nint search(vector<int> lst) {\n    unordered_map<int, int> freq;\n    freq.reserve(lst.size()); \n    int max_val = -1;\n\n    for (int i = 0; i < lst.size(); ++i) {\n        freq[lst[i]]++;\n        if (freq[lst[i]] >= lst[i] && lst[i] > max_val) {\n            max_val = lst[i];\n        }\n    }\n\n    return max_val;\n}\n",
+        9.101,
+        6.725,
+        83.005,
+        1.0,
+        6.719,
+        21
+    ]
+}

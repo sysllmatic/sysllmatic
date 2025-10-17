@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring sort_numbers(string numbers){\nmap<string,int> tonum={{\"zero\",0},{\"one\",1},{\"two\",2},{\"three\",3},{\"four\",4},{\"five\",5},{\"six\",6},{\"seven\",7},{\"eight\",8},{\"nine\",9}};\n    map<int,string> numto={{0,\"zero\"},{1,\"one\"},{2,\"two\"},{3,\"three\"},{4,\"four\"},{5,\"five\"},{6,\"six\"},{7,\"seven\"},{8,\"eight\"},{9,\"nine\"}};\n    int count[10];\n    for (int i=0;i<10;i++)\n        count[i]=0;\n    string out=\"\",current=\"\";\n    if (numbers.length()>0) numbers=numbers+' ';\n    for (int i=0;i<numbers.length();i++)\n        if (numbers[i]==' ')\n        {\n            count[tonum[current]]+=1;\n            current=\"\";\n        }\n        else current+=numbers[i];\n    for (int i=0;i<10;i++)\n        for (int j=0;j<count[i];j++)\n            out=out+numto[i]+' ';\n    if (out.length()>0) out.pop_back();\n    return out;\n}",
+        4.628,
+        0.132,
+        6226105.4,
+        20793.6,
+        7.594,
+        28
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n\nstd::string sort_numbers(std::string numbers) {\n    \n    std::string number_words[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n    int to_num[10];\n    for (int i = 0; i < 10; ++i) {\n        to_num[i] = i;\n    }\n\n    std::string num_to[] = {\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n\n    int count[10] = {0}; \n\n    std::string current_number;\n\n    if (numbers.length() > 0) {\n        numbers += ' '; \n    }\n\n    for (int i = 0; i < numbers.length(); ++i) {\n        if (numbers[i] == ' ') {\n            \n            for (int j = 0; j < 10; ++j) {\n                if (number_words[j] == current_number) {\n                    count[j]++;\n                    break;\n                }\n            }\n            current_number = \"\";\n        } else {\n            current_number += numbers[i];\n        }\n    }\n\n    std::string out;\n    out.reserve(numbers.length()); \n\n    for (int i = 0; i < 10; ++i) {\n        for (int j = 0; j < count[i]; ++j) {\n            out += num_to[i] + \" \";\n        }\n    }\n\n    if (out.length() > 0) {\n        out.pop_back(); \n    }\n\n    return out;\n}",
+        0.907,
+        0.992,
+        1.126,
+        0.994,
+        0.988,
+        51
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring remove_vowels(string text){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=0;i<text.length();i++)\n        if (find(vowels.begin(),vowels.end(),text[i])==vowels.end())\n            out=out+text[i];\n    return out;\n\n}",
+        4.945,
+        0.135,
+        5389838.2,
+        20900.0,
+        7.406,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\n\nusing namespace std;\n\nstring remove_vowels(string text) {\n    string out;\n    out.reserve(text.length()); \n\n    bool is_vowel[256] = {false}; \n    is_vowel['A'] = is_vowel['E'] = is_vowel['I'] = is_vowel['O'] = is_vowel['U'] = true;\n    is_vowel['a'] = is_vowel['e'] = is_vowel['i'] = is_vowel['o'] = is_vowel['u'] = true;\n\n    for (int i = 0; i < text.length(); ++i) {\n        if (!is_vowel[text[i]]) {\n            out += text[i];\n        }\n    }\n\n    return out;\n}\n\n",
+        1.097,
+        1.092,
+        1.034,
+        1.006,
+        1.09,
+        23
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\n\nusing namespace std;\n\nstring remove_vowels(string text) {\n    string out;\n    out.reserve(text.length());\n\n    bool is_vowel[256] = {false};\n    is_vowel['A'] = is_vowel['E'] = is_vowel['I'] = is_vowel['O'] = is_vowel['U'] = true;\n    is_vowel['a'] = is_vowel['e'] = is_vowel['i'] = is_vowel['o'] = is_vowel['u'] = true;\n\n    for (char c : text) {\n        if (!is_vowel[c]) {\n            out += c;\n        }\n    }\n\n    return out;\n}",
+        0.986,
+        1.076,
+        1.008,
+        1.008,
+        1.075,
+        22
+    ]
+}

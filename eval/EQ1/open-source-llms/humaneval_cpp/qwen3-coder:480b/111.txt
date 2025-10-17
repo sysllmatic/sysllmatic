@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nmap<char,int> histogram(string test){\nmap<char,int> count={},out={};\n    map <char,int>::iterator it;\n    int max=0;\n    for (int i=0;i<test.length();i++)\n        if (test[i]!=' ')\n        {\n            count[test[i]]+=1;\n            if (count[test[i]]>max) max=count[test[i]];\n        }\n    for (it=count.begin();it!=count.end();it++)\n    {\n        char w1=it->first;\n        int w2=it->second;\n        if (w2==max) out[w1]=w2;\n    }\n    return out;\n}",
+        4.861,
+        0.102,
+        5492167.6,
+        20507.2,
+        9.804,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nmap<char,int> histogram(string test){\n    \n    short count[256] = {0};  \n    short max_count = 0;\n    \n    \n    for (size_t i = 0; i < test.length(); i++) {\n        char c = test[i];\n        if (c != ' ') {\n            count[static_cast<unsigned char>(c)]++;\n            if (count[static_cast<unsigned char>(c)] > max_count) {\n                max_count = count[static_cast<unsigned char>(c)];\n            }\n        }\n    }\n    \n    \n    map<char,int> out;\n    for (size_t i = 0; i < test.length(); i++) {\n        char c = test[i];\n        if (c != ' ' && count[static_cast<unsigned char>(c)] == max_count) {\n            out[c] = max_count;\n        }\n    }\n    \n    return out;\n}",
+        1.002,
+        0.999,
+        1.069,
+        0.996,
+        0.998,
+        35
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nmap<char,int> histogram(const string& test){\n    short count[256] = {0};  \n    short max_count = 0;\n    map<char,int> out;\n    \n    for (size_t i = 0; i < test.length(); i++) {\n        char c = test[i];\n        if (c != ' ') {\n            unsigned char uc = static_cast<unsigned char>(c);\n            count[uc]++;\n            if (count[uc] > max_count) {\n                max_count = count[uc];\n                out.clear();  \n                out[c] = max_count;  \n            } else if (count[uc] == max_count) {\n                out[c] = max_count;  \n            }\n        }\n    }\n    \n    return out;\n}",
+        0.981,
+        0.971,
+        1.04,
+        0.999,
+        0.97,
+        30
+    ]
+}

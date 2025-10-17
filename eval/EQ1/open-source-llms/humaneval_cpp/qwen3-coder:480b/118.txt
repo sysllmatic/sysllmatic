@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring get_closest_vowel(string word){\nstring out=\"\";\n    string vowels=\"AEIOUaeiou\";\n    for (int i=word.length()-2;i>=1;i-=1)\n        if (find(vowels.begin(),vowels.end(),word[i])!=vowels.end())\n            if (find(vowels.begin(),vowels.end(),word[i+1])==vowels.end())\n                if (find(vowels.begin(),vowels.end(),word[i-1])==vowels.end())\n                    return out+word[i];\n    return out;\n}",
+        4.994,
+        0.103,
+        19837380.4,
+        20480.0,
+        9.66,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<stdlib.h>\n\nstring get_closest_vowel(string word){\n    \n    static bool is_vowel[256] = {false};\n    static bool initialized = false;\n    \n    if (!initialized) {\n        \n        is_vowel['A'] = true;  is_vowel['E'] = true;  is_vowel['I'] = true;  is_vowel['O'] = true;  is_vowel['U'] = true;\n        is_vowel['a'] = true;  is_vowel['e'] = true;  is_vowel['i'] = true;  is_vowel['o'] = true;  is_vowel['u'] = true;\n        initialized = true;\n    }\n    \n    string out=\"\";\n    int len = word.length();\n    \n    \n    if (len < 3) return out;\n    \n    \n    for (int i = len - 2; i >= 1; i--) {\n        char current = word[i];\n        char next = word[i+1];\n        char prev = word[i-1];\n        \n        \n        if (is_vowel[current] && !is_vowel[next] && !is_vowel[prev]) {\n            return out + current;\n        }\n    }\n    return out;\n}",
+        1.018,
+        1.002,
+        3.438,
+        1.001,
+        1.005,
+        37
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<stdlib.h>\n\nstring get_closest_vowel(const string& word) {\n    \n    static bool is_vowel[256];\n    static bool initialized = false;\n    \n    if (!initialized) {\n        \n        is_vowel['A'] = true;  is_vowel['E'] = true;  is_vowel['I'] = true;  is_vowel['O'] = true;  is_vowel['U'] = true;\n        is_vowel['a'] = true;  is_vowel['e'] = true;  is_vowel['i'] = true;  is_vowel['o'] = true;  is_vowel['u'] = true;\n        initialized = true;\n    }\n    \n    short len = word.length();\n    \n    \n    if (len < 3) return \"\";\n    \n    \n    for (short i = len - 2; i >= 1; i--) {\n        \n        if (is_vowel[word[i]] && !is_vowel[word[i+1]] && !is_vowel[word[i-1]]) {\n            return string(1, word[i]);\n        }\n    }\n    return \"\";\n}",
+        1.018,
+        0.994,
+        3.614,
+        1.002,
+        0.998,
+        32
+    ]
+}

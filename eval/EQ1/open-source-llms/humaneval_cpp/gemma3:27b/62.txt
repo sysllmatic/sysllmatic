@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> derivative(vector<float> xs){\nvector<float> out={};\n    for (int i=1;i<xs.size();i++)\n        out.push_back(i*xs[i]);\n    return out;\n}",
+        4.861,
+        0.135,
+        7179187.4,
+        20788.0,
+        7.419,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<float> derivative(vector<float> xs){\n    vector<float> out(xs.size() - 1); \n    for (int i=1;i<xs.size();i++)\n        out[i-1] = i*xs[i];\n    return out;\n}\n",
+        1.024,
+        1.035,
+        1.157,
+        0.998,
+        1.032,
+        13
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<float> derivative(vector<float> xs){\n    vector<float> out(xs.size() - 1);\n    for (int i=1;i<xs.size();i++){\n        out[i-1] = i*xs[i];\n    }\n    return out;\n}\n",
+        1.014,
+        1.067,
+        1.175,
+        0.999,
+        1.064,
+        14
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fruit_distribution(string s,int n){\nstring num1=\"\",num2=\"\";\n    int is12;\n    is12=0;\n    for (int i=0;i<s.size();i++)\n        \n        if (s[i]>=48 and s[i]<=57)\n        {\n            if (is12==0) num1=num1+s[i];\n            if (is12==1) num2=num2+s[i];\n        }\n        else\n          if (is12==0 and num1.length()>0) is12=1;\n    return n-atoi(num1.c_str())-atoi(num2.c_str());\n\n}",
+        5.322,
+        0.123,
+        5143978.2,
+        20836.8,
+        8.133,
+        22
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint fruit_distribution(string s,int n){\n    string num1=\"\",num2=\"\";\n    int is12=0;\n    int n1=0,n2=0;\n    for (int i=0;i<s.size();i++){\n        if (s[i]>=48 and s[i]<=57){\n            if (is12==0) {\n                num1 += s[i];\n            } else {\n                num2 += s[i];\n            }\n        } else {\n            if (is12==0 && num1.length()>0) is12=1;\n        }\n    }\n    if (num1.length() > 0) n1 = stoi(num1);  \n    if (num2.length() > 0) n2 = stoi(num2);  \n    return n-n1-n2;\n}",
+        1.145,
+        0.954,
+        1.187,
+        1.003,
+        0.952,
+        26
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint fruit_distribution(string s,int n){\n    string num1=\"\",num2=\"\";\n    int is12=0;\n    int n1=0,n2=0;\n    for (int i=0;i<s.size();i++){\n        if (s[i]>=48 and s[i]<=57){\n            if (is12==0) {\n                num1 += s[i];\n            } else {\n                num2 += s[i];\n            }\n        } else {\n            if (is12==0 && !num1.empty()) is12=1;\n        }\n    }\n    if (!num1.empty()) n1 = stoi(num1);  \n    if (!num2.empty()) n2 = stoi(num2);  \n    return n-n1-n2;\n}",
+        1.075,
+        0.971,
+        1.2,
+        1.002,
+        0.97,
+        26
+    ]
+}

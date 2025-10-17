@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring int_to_mini_romank(int number){\nstring current=\"\";\n    vector<string> rep={\"m\",\"cm\",\"d\",\"cd\",\"c\",\"xc\",\"l\",\"xl\",\"x\",\"ix\",\"v\",\"iv\",\"i\"};\n    vector<int> num={1000,900,500,400,100,90,50,40,10,9,5,4,1};\n    int pos=0;\n    while(number>0)\n    {\n        while (number>=num[pos])\n        {\n            current=current+rep[pos];\n            number-=num[pos];\n        }\n        if (number>0) pos+=1;\n    }\n    return current;\n}",
+        4.9,
+        0.131,
+        4642362.0,
+        20987.2,
+        7.628,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring int_to_mini_romank(int number){\n    string current = \"\";\n    vector<string> rep = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    vector<int> num = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    int pos = 0;\n    while (number > 0) {\n        while (number >= num[pos]) {\n            current += rep[pos];\n            number -= num[pos];\n        }\n        if (number > 0) pos++;\n    }\n    return current;\n}\n",
+        1.008,
+        0.995,
+        0.912,
+        1.01,
+        0.994,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring int_to_mini_romank(int number){\n    string current;\n    current.reserve(4); \n    vector<string> rep = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n    vector<int> num = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n    int pos = 0;\n    while (number > 0) {\n        while (number >= num[pos]) {\n            current += rep[pos];\n            number -= num[pos];\n        }\n        if (number > 0) pos++;\n    }\n    return current;\n}",
+        1.014,
+        1.038,
+        0.911,
+        1.008,
+        1.037,
+        23
+    ]
+}

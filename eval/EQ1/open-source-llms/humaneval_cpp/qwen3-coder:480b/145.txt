@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> order_by_points(vector<int> nums){\nvector<int> sumdigit={};\n    for (int i=0;i<nums.size();i++)\n    {\n        string w=to_string(abs(nums[i]));\n        int sum=0;\n        for (int j=1;j<w.length();j++)\n            sum+=w[j]-48;\n        if (nums[i]>0) sum+=w[0]-48;\n        else sum-=w[0]-48;\n        sumdigit.push_back(sum);\n    }\n    int m;\n    for (int i=0;i<nums.size();i++)\n    for (int j=1;j<nums.size();j++)\n    if (sumdigit[j-1]>sumdigit[j])\n    {\n        m=sumdigit[j];sumdigit[j]=sumdigit[j-1];sumdigit[j-1]=m;\n        m=nums[j];nums[j]=nums[j-1];nums[j-1]=m;\n    }\n     \n    return nums;\n}",
+        173.529,
+        3.17,
+        14329250626.8,
+        20534.4,
+        0.315,
+        30
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> order_by_points(vector<int> nums){\n    \n    auto digit_sum = [](int num) -> int {\n        if (num == 0) return 0;\n        \n        int sum = 0;\n        int abs_num = abs(num);\n        bool is_negative = num < 0;\n        \n        \n        int temp = abs_num;\n        while (temp > 0) {\n            sum += temp % 10;\n            temp /= 10;\n        }\n        \n        \n        if (is_negative) {\n            while (abs_num >= 10) abs_num /= 10;\n            sum -= 2 * abs_num;\n        }\n        \n        return sum;\n    };\n    \n    \n    stable_sort(nums.begin(), nums.end(), [&](int a, int b) {\n        int sum_a = digit_sum(a);\n        int sum_b = digit_sum(b);\n        return sum_a < sum_b;\n    });\n    \n    return nums;\n}",
+        27.472,
+        23.809,
+        104.018,
+        1.004,
+        23.817,
+        42
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> order_by_points(vector<int> nums){\n    \n    vector<pair<int, int>> num_with_sums;\n    num_with_sums.reserve(nums.size());\n    \n    for (int num : nums) {\n        int sum = 0;\n        int abs_num = abs(num);\n        \n        \n        int temp = abs_num;\n        while (temp > 0) {\n            sum += temp % 10;\n            temp /= 10;\n        }\n        \n        \n        if (num < 0) {\n            \n            while (abs_num >= 10) abs_num /= 10;\n            sum -= 2 * abs_num;\n        }\n        \n        num_with_sums.emplace_back(sum, num);\n    }\n    \n    \n    sort(num_with_sums.begin(), num_with_sums.end(), [](const pair<int, int>& a, const pair<int, int>& b) {\n        if (a.first != b.first) {\n            return a.first < b.first;\n        }\n        \n        return false; \n    });\n    \n    \n    vector<int> result;\n    result.reserve(nums.size());\n    for (const auto& p : num_with_sums) {\n        result.push_back(p.second);\n    }\n    \n    return result;\n}",
+        30.819,
+        27.388,
+        218.763,
+        1.002,
+        27.388,
+        52
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\ndouble poly(vector<double> xs, double x){\n    double sum=0;\n    int i;\n    for (i=0;i<xs.size();i++)\n    {\n        sum+=xs[i]*pow(x,i);\n    }\n    return sum;\n}\n\ndouble find_zero(vector<double> xs){\ndouble ans=0;\n    double value;\n    value=poly(xs,ans);\n    while (abs(value)>1e-6)\n    {\n        double driv=0;\n        for (int i=1;i<xs.size();i++)\n        {\n            driv+=xs[i]*pow(ans,i-1)*i;\n        }\n        ans=ans-value/driv;\n        value=poly(xs,ans);\n    }\n    return ans;\n\n}",
+        5.384,
+        0.108,
+        11425999.0,
+        20538.4,
+        9.239,
+        33
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\ndouble poly(const vector<double>& xs, double x){\n    \n    \n    \n    if (xs.empty()) return 0;\n    \n    double result = xs[xs.size() - 1];\n    for (int i = xs.size() - 2; i >= 0; i--) {\n        result = result * x + xs[i];\n    }\n    return result;\n}\n\ndouble find_zero(const vector<double>& xs){\n    double ans = 0;\n    double value = poly(xs, ans);\n    \n    while (abs(value) > 1e-6) {\n        \n        if (xs.size() <= 1) break;  \n        \n        double p = xs[xs.size() - 1];\n        double dp = 0;\n        \n        \n        for (int i = xs.size() - 2; i >= 0; i--) {\n            dp = dp * ans + p;\n            p = p * ans + xs[i];\n        }\n        \n        \n        if (abs(dp) < 1e-12) break;  \n        ans = ans - p / dp;\n        value = p;  \n    }\n    return ans;\n}",
+        0.469,
+        0.963,
+        1.193,
+        1.0,
+        0.965,
+        44
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\ndouble poly(const vector<double>& xs, double x){\n    const size_t n = xs.size();\n    if (n == 0) return 0;\n    \n    double result = xs[n - 1];\n    for (size_t i = n - 1; i-- > 0; ) {\n        result = result * x + xs[i];\n    }\n    return result;\n}\n\ndouble find_zero(const vector<double>& xs){\n    const size_t n = xs.size();\n    if (n <= 1) return 0;  \n    \n    double ans = 0;\n    double value = poly(xs, ans);\n    \n    while (abs(value) > 1e-6) {\n        double p = xs[n - 1];\n        double dp = 0;\n        \n        \n        for (size_t i = n - 1; i-- > 0; ) {\n            dp = dp * ans + p;\n            p = p * ans + xs[i];\n        }\n        \n        \n        if (abs(dp) < 1e-12) break;  \n        ans = ans - p / dp;\n        value = p;  \n    }\n    return ans;\n}",
+        0.735,
+        1.017,
+        1.26,
+        0.997,
+        1.018,
+        42
+    ]
+}

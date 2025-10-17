@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint count_distinct_characters(string str){\nvector<char> distinct={};\n    transform(str.begin(),str.end(),str.begin(),::tolower);\n    for (int i=0;i<str.size();i++)\n    {\n        bool isin=false;\n        for (int j=0;j<distinct.size();j++)\n            if (distinct[j]==str[i])\n                isin=true;\n        if (isin==false) distinct.push_back(str[i]);\n\n    }\n    return distinct.size();\n}",
+        4.805,
+        0.142,
+        24299330.4,
+        20869.6,
+        7.046,
+        21
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include <unordered_set>  \nusing namespace std;\n#include<stdlib.h>\n\nint count_distinct_characters(string str) {\n    transform(str.begin(), str.end(), str.begin(), ::tolower);\n    unordered_set<char> seen;\n    for (char c : str) {\n        if (!seen.count(c)) {\n            seen.insert(c);\n        }\n    }\n    return seen.size();\n}\n",
+        0.941,
+        0.967,
+        0.651,
+        0.998,
+        0.966,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint count_distinct_characters(string str) {\n    const int MAX_CHAR = 256;\n    bool seen[MAX_CHAR] = {false};\n    transform(str.begin(), str.end(), str.begin(), ::tolower);\n    \n    for (char c : str) {\n        if (!seen[static_cast<unsigned char>(c)]) {\n            seen[static_cast<unsigned char>(c)] = true;\n        }\n    }\n\n    int count = 0;\n    for (int i = 0; i < MAX_CHAR; ++i) {\n        if (seen[i])\n            ++count;\n    }\n\n    return count;\n}\n",
+        0.954,
+        0.954,
+        1.824,
+        0.998,
+        0.952,
+        27
+    ]
+}

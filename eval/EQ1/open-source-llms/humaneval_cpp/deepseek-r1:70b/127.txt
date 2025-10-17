@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring intersection( vector<int> interval1,vector<int> interval2){\nint inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n    if (l<2) return \"NO\";\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}",
+        4.738,
+        0.125,
+        5115476.0,
+        20896.8,
+        7.985,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nbool isPrime(int n) {\n    if (n <= 1)\n        return false;\n    if (n <= 3)\n        return true;\n    if (n % 2 == 0 || n % 3 == 0)\n        return false;\n    int i;\n    for (i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0)\n            return false;\n    }\n    return true;\n}\n\nstring intersection(vector<int> interval1, vector<int> interval2) {\n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n    if (l < 2)\n        return \"NO\";\n    return isPrime(l) ? \"YES\" : \"NO\";\n}\n",
+        1.018,
+        0.985,
+        1.037,
+        1.003,
+        0.986,
+        31
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nbool isPrime(int n) {\n    if (n <= 1)\n        return false;\n    if (n <= 3)\n        return true;\n    if (n % 2 == 0 || n % 3 == 0)\n        return false;\n    int i;\n    for (i = 5; i * i <= n; i += 6) {\n        if (n % i == 0 || n % (i + 2) == 0)\n            return false;\n    }\n    return true;\n}\n\nstring intersection(vector<int> interval1, vector<int> interval2) {\n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    int l = inter2 - inter1;\n    if (l < 2)\n        return \"NO\";\n    return isPrime(l) ? \"YES\" : \"NO\";\n}\n",
+        1.0,
+        0.972,
+        0.99,
+        1.005,
+        0.973,
+        31
+    ]
+}

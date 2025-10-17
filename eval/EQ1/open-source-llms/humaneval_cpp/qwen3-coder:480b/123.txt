@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> get_odd_collatz(int n){\nvector<int> out={1};\n    while (n!=1)\n    {\n        if (n%2==1) {out.push_back(n); n=n*3+1;}\n        else n=n/2;\n    }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        4.875,
+        0.102,
+        5167796.0,
+        20540.0,
+        9.78,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> get_odd_collatz(int n){\n    vector<int> out = {1}; \n    \n    \n    while (n != 1) {\n        if (n & 1) { \n            out.push_back(n);\n            n = n * 3 + 1;\n        } else {\n            n = n >> 1; \n        }\n    }\n    \n    \n    if (out.size() > 1) {\n        sort(out.begin(), out.end());\n    }\n    \n    return out;\n}",
+        1.017,
+        1.024,
+        1.031,
+        1.0,
+        1.025,
+        26
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> get_odd_collatz(int n){\n    \n    int estimated_size = (int)(log2(n) * 2) + 10; \n    vector<int> out;\n    out.reserve(estimated_size);\n    out.push_back(1); \n    \n    int last_added = 1;\n    bool is_sorted = true;\n    \n    while (n != 1) {\n        if (n & 1) { \n            out.push_back(n);\n            if (n < last_added) {\n                is_sorted = false; \n            }\n            last_added = n;\n            n = n * 3 + 1;\n        } else {\n            n = n >> 1; \n        }\n    }\n    \n    \n    if (!is_sorted && out.size() > 1) {\n        sort(out.begin(), out.end());\n    }\n    \n    return out;\n}",
+        1.005,
+        1.015,
+        1.029,
+        1.004,
+        1.016,
+        36
+    ]
+}

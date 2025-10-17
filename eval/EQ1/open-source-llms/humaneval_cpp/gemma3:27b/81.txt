@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> numerical_letter_grade(vector<float> grades){\nvector<string> out={};\n    for (int i=0;i<grades.size();i++)\n    {\n        if (grades[i]>=3.9999) out.push_back(\"A+\");\n        if (grades[i]>3.7001 and grades[i]<3.9999) out.push_back(\"A\");\n        if (grades[i]>3.3001 and grades[i]<=3.7001) out.push_back(\"A-\");\n        if (grades[i]>3.0001 and grades[i]<=3.3001) out.push_back(\"B+\");\n        if (grades[i]>2.7001 and grades[i]<=3.0001) out.push_back(\"B\");\n        if (grades[i]>2.3001 and grades[i]<=2.7001) out.push_back(\"B-\");\n        if (grades[i]>2.0001 and grades[i]<=2.3001) out.push_back(\"C+\");\n        if (grades[i]>1.7001 and grades[i]<=2.0001) out.push_back(\"C\");\n        if (grades[i]>1.3001 and grades[i]<=1.7001) out.push_back(\"C-\");\n        if (grades[i]>1.0001 and grades[i]<=1.3001) out.push_back(\"D+\");\n        if (grades[i]>0.7001 and grades[i]<=1.0001) out.push_back(\"D\");\n        if (grades[i]>0.0001 and grades[i]<=0.7001) out.push_back(\"D-\");\n        if (grades[i]<=0.0001) out.push_back(\"E\");\n    }\n    return out;\n}",
+        4.978,
+        0.135,
+        34678225.8,
+        20895.2,
+        7.411,
+        27
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<string> numerical_letter_grade(vector<float> grades){\n    vector<string> out={};\n    for (int i=0;i<grades.size();i++) {\n        if (grades[i] >= 3.9999) out.push_back(\"A+\");\n        else if (grades[i] > 3.7001) out.push_back(\"A\");\n        else if (grades[i] > 3.3001) out.push_back(\"A-\");\n        else if (grades[i] > 3.0001) out.push_back(\"B+\");\n        else if (grades[i] > 2.7001) out.push_back(\"B\");\n        else if (grades[i] > 2.3001) out.push_back(\"B-\");\n        else if (grades[i] > 2.0001) out.push_back(\"C+\");\n        else if (grades[i] > 1.7001) out.push_back(\"C\");\n        else if (grades[i] > 1.3001) out.push_back(\"C-\");\n        else if (grades[i] > 1.0001) out.push_back(\"D+\");\n        else if (grades[i] > 0.7001) out.push_back(\"D\");\n        else if (grades[i] > 0.0001) out.push_back(\"D-\");\n        else out.push_back(\"E\");\n    }\n    return out;\n}\n",
+        0.988,
+        1.042,
+        1.065,
+        1.005,
+        1.04,
+        27
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<string> numerical_letter_grade(vector<float> grades){\n    vector<string> out;\n    out.reserve(grades.size());\n\n    vector<string> grades_array = {\"E\", \"D-\", \"D\", \"D+\", \"C-\", \"C\", \"C+\", \"B-\", \"B\", \"B+\", \"A-\", \"A\", \"A+\"};\n\n    for (int i=0;i<grades.size();i++) {\n        int grade_index;\n        if (grades[i] <= 0.0001) grade_index = 0;\n        else if (grades[i] > 0.0001 && grades[i] <= 0.7001) grade_index = 1;\n        else if (grades[i] > 0.7001 && grades[i] <= 1.0001) grade_index = 2;\n        else if (grades[i] > 1.0001 && grades[i] <= 1.3001) grade_index = 3;\n        else if (grades[i] > 1.3001 && grades[i] <= 1.7001) grade_index = 4;\n        else if (grades[i] > 1.7001 && grades[i] <= 2.0001) grade_index = 5;\n        else if (grades[i] > 2.0001 && grades[i] <= 2.3001) grade_index = 6;\n        else if (grades[i] > 2.3001 && grades[i] <= 2.7001) grade_index = 7;\n        else if (grades[i] > 2.7001 && grades[i] <= 3.0001) grade_index = 8;\n        else if (grades[i] > 3.0001 && grades[i] <= 3.3001) grade_index = 9;\n        else if (grades[i] > 3.3001 && grades[i] <= 3.7001) grade_index = 10;\n        else if (grades[i] > 3.7001 && grades[i] <= 3.9999) grade_index = 11;\n        else grade_index = 12;\n\n        out.push_back(grades_array[grade_index]);\n    }\n    return out;\n}",
+        1.018,
+        1.035,
+        2.014,
+        1.0,
+        1.033,
+        34
+    ]
+}

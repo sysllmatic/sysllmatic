@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint largest_prime_factor(int n){\nfor (int i=2;i*i<=n;i++)\n    while (n%i==0 and n>i)  n=n/i;\n    return n;\n}",
+        4.686,
+        0.133,
+        5018847.6,
+        20785.6,
+        7.537,
+        10
+    ],
+    "1": [
+        "#include <iostream>\n#include <cmath>\n\nlong long largest_prime_factor(long long n) {\n    long long i = 2;\n    while (i * i <= n) {\n        if (n % i) {\n            i += 1;\n        } else {\n            n /= i;\n        }\n    }\n    return n;\n}\n\n\n",
+        1.03,
+        0.971,
+        1.031,
+        0.991,
+        0.968,
+        16
+    ],
+    "2": [
+        "#include <iostream>\n#include <cmath>\n\nlong long largest_prime_factor(long long n) {\n    long long i = 2;\n    while (i * i <= n) {\n        if (n % i == 0) {\n            n /= i;\n        } else {\n            i += 1;\n        }\n    }\n    return n;\n}\n\n\n",
+        0.966,
+        1.039,
+        1.023,
+        0.998,
+        1.035,
+        16
+    ]
+}

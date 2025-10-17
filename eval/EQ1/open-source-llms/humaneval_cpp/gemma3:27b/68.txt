@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> pluck(vector<int> arr){\nvector<int> out={};\n    for (int i=0;i<arr.size();i++)\n    if (arr[i]%2==0 and (out.size()==0 or arr[i]<out[0]))\n        out={arr[i],i};\n    return out;\n}",
+        4.908,
+        0.127,
+        8171535.0,
+        20844.0,
+        7.836,
+        13
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <limits>\n\nusing namespace std;\n\nvector<int> pluck(vector<int> arr) {\n    pair<int, int> out = {-1, -1}; \n\n    for (int i = 0; i < arr.size(); ++i) {\n        if (arr[i] % 2 == 0) {\n            if (out.first == -1 || arr[i] < out.first) {\n                out = {arr[i], i};\n            }\n        }\n    }\n\n    vector<int> result;\n    if (out.first != -1) {\n        result.push_back(out.first);\n        result.push_back(out.second);\n    }\n    return result;\n}\n",
+        1.035,
+        0.94,
+        1.026,
+        0.992,
+        0.943,
+        25
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <limits>\n\nusing namespace std;\n\nvector<int> pluck(vector<int> arr) {\n    pair<int, int> out = {-1, -1};\n\n    if (arr.empty()) {\n        return {};\n    }\n\n    vector<int> result;\n    result.reserve(2); \n\n    for (int i = 0; i < arr.size(); ++i) {\n        if (arr[i] % 2 == 0) {\n            if (out.first == -1 || arr[i] < out.first) {\n                out = {arr[i], i};\n            }\n        }\n    }\n\n    if (out.first != -1) {\n        result.push_back(out.first);\n        result.push_back(out.second);\n    }\n    return result;\n}",
+        1.043,
+        0.97,
+        1.003,
+        1.001,
+        0.973,
+        31
+    ]
+}

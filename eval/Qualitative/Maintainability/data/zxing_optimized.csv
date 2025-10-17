@@ -1,0 +1,9 @@
+File,Total nloc,Avg.NLOC,AvgCCN,Avg.token,Fun Cnt,Warning cnt,Fun Rt,nloc Rt
+GlobalHistogramBinarizer.java,140,20.7,4.8,143.2,6,0,0.00,0.00
+HybridBinarizer.java,255,34.4,6.9,222.9,7,1,0.14,0.47
+BitArray.java,236,8.3,2.8,58.8,27,0,0.00,0.00
+Code93Reader.java,250,21.5,6.4,145.3,10,1,0.10,0.31
+Detector.java,296,29.4,6.3,197.0,9,0,0.00,0.00
+BitMatrix.java,390,12.2,3.7,85.4,31,2,0.06,0.28
+OneDReader.java,173,21.6,7.3,163.4,7,1,0.14,0.34
+Code39Reader.java,266,22.9,7.2,153.4,10,2,0.20,0.59

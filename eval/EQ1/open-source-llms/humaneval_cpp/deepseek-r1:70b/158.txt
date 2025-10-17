@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nstring find_max(vector<string> words){\nstring max=\"\";\n    int maxu=0;\n    for (int i=0;i<words.size();i++)\n    {\n        string unique=\"\";\n        for (int j=0;j<words[i].length();j++)\n            if (find(unique.begin(),unique.end(),words[i][j])==unique.end())\n                unique=unique+words[i][j];\n        if (unique.length()>maxu or (unique.length()==maxu and words[i]<max))\n        {\n            max=words[i];\n            maxu=unique.length();\n        }\n    }\n    return max;\n}",
+        4.781,
+        0.14,
+        26700946.2,
+        21035.2,
+        7.116,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\n\nstring find_max(vector<string> words) {\n    string max = \"\";\n    int maxu = 0;\n    for (int i = 0; i < words.size(); ++i) {\n        unordered_set<char> seen;\n        string unique;\n        for (char c : words[i]) {\n            if (seen.find(c) == seen.end()) {\n                seen.insert(c);\n                unique += c;\n            }\n        }\n        int current_unique = unique.length();\n        if (current_unique > maxu || (current_unique == maxu && words[i] < max)) {\n            max = words[i];\n            maxu = current_unique;\n        }\n    }\n    return max;\n}\n",
+        0.75,
+        1.028,
+        0.888,
+        1.008,
+        1.03,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<bitset>\nusing namespace std;\n\nstring find_max(vector<string> words) {\n    string max = \"\";\n    int maxu = 0;\n    for (const auto& word : words) {\n        \n        bitset<256> seen;\n        vector<char> unique_chars;\n\n        for (char c : word) {\n            if (!seen[c]) { \n                seen[c] = true;   \n                unique_chars.push_back(c);\n            }\n        }\n\n        int current_unique = unique_chars.size();\n        \n        if (current_unique > maxu || (current_unique == maxu && word < max)) {\n            max = word;\n            maxu = current_unique;\n        }\n    }\n    return max;\n}\n",
+        0.508,
+        1.056,
+        2.018,
+        1.006,
+        1.058,
+        31
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> split_words(string txt){\nint i;\n    string current=\"\";\n    vector<string> out={};\n    if (find(txt.begin(),txt.end(),' ')!=txt.end())\n    {\n        txt=txt+' ';\n        for (i=0;i<txt.length();i++)\n            if (txt[i]==' ') \n            {\n                if (current.length()>0)out.push_back(current); \n                current=\"\";\n            }\n            else current=current+txt[i];\n        return out;\n    }\n    if (find(txt.begin(),txt.end(),',')!=txt.end())\n    {\n        txt=txt+',';\n        for (i=0;i<txt.length();i++)\n            if (txt[i]==',') \n            {\n                if (current.length()>0)out.push_back(current); \n                current=\"\";\n            }\n            else current=current+txt[i];\n        return out;\n    }\n    int num=0;\n    for (i=0;i<txt.length();i++)\n        if (txt[i]>=97 and txt[i]<=122 and txt[i]%2==0)\n            num+=1;\n    return {to_string(num)};\n}",
+        14.011,
+        0.278,
+        801621820.6,
+        22066.4,
+        3.599,
+        41
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<string> split_words(string txt){\n    \n    char delimiter = ' ';\n    bool has_space = false;\n    bool has_comma = false;\n    \n    for (char c : txt) {\n        if (c == ' ') {\n            has_space = true;\n            break;\n        } else if (c == ',') {\n            has_comma = true;\n        }\n    }\n    \n    if (has_space) {\n        delimiter = ' ';\n    } else if (has_comma) {\n        delimiter = ',';\n    } else {\n        \n        int num = 0;\n        for (char c : txt) {\n            if (c >= 'a' && c <= 'z' && (c % 2 == 0)) {\n                num++;\n            }\n        }\n        return {to_string(num)};\n    }\n    \n    \n    vector<string> out;\n    out.reserve(txt.length() / 4); \n    string current;\n    current.reserve(32); \n    \n    \n    txt.push_back(delimiter);\n    \n    for (char c : txt) {\n        if (c == delimiter) {\n            if (!current.empty()) {\n                out.push_back(move(current));\n                current.clear();\n            }\n        } else {\n            current.push_back(c);\n        }\n    }\n    \n    return out;\n}",
+        1.042,
+        1.062,
+        1.085,
+        1.0,
+        1.06,
+        60
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<string> split_words(string txt){\n    const size_t len = txt.length();\n    char delimiter = '\\0';  \n    bool has_space = false;\n    bool has_comma = false;\n    \n    \n    for (size_t i = 0; i < len; ++i) {\n        char c = txt[i];\n        if (c == ' ') {\n            has_space = true;\n            delimiter = ' ';\n            break;\n        } else if (c == ',') {\n            has_comma = true;\n            delimiter = ',';\n        }\n    }\n    \n    \n    if (!has_space && !has_comma) {\n        int num = 0;\n        for (size_t i = 0; i < len; ++i) {\n            char c = txt[i];\n            if (c >= 'a' && c <= 'z' && (c % 2 == 0)) {\n                num++;\n            }\n        }\n        return {to_string(num)};\n    }\n    \n    \n    vector<string> out;\n    out.reserve(len / 2);  \n    size_t start = 0;\n    bool in_word = false;\n    \n    for (size_t i = 0; i <= len; ++i) {\n        char c = (i < len) ? txt[i] : delimiter;  \n        \n        if (c == delimiter) {\n            if (in_word) {\n                out.emplace_back(txt.substr(start, i - start));\n                in_word = false;\n            }\n        } else {\n            if (!in_word) {\n                start = i;\n                in_word = true;\n            }\n        }\n    }\n    \n    return out;\n}",
+        1.539,
+        1.505,
+        2.188,
+        0.999,
+        1.503,
+        63
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint is_bored(string S){\nbool isstart=true;\n    bool isi=false;\n    int sum=0;\n    for (int i=0;i<S.length();i++)\n    {\n        if (S[i]==' ' and isi) {isi=false; sum+=1;}\n        if (S[i]=='I' and isstart) {isi=true;  }\n        else isi=false;   \n        if (S[i]!=' ') { isstart=false;}\n        if (S[i]=='.' or S[i]=='?' or S[i]=='!') isstart=true;\n    }\n    return sum;\n}",
+        4.603,
+        0.135,
+        8306675.8,
+        20920.0,
+        7.419,
+        20
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint is_bored(string S){\n    bool isstart=true;\n    bool isi=false;\n    int sum=0;\n    for (int i=0;i<S.length();i++)\n    {\n        if (S[i]==' ' && isi) {isi=false; sum+=1;}\n        if (S[i]=='I' && isstart) {isi=true;  }\n        else isi=false;\n        if (S[i]!=' ') { isstart=false;}\n        if (S[i]=='.' || S[i]=='?' || S[i]=='!') isstart=true;\n    }\n    return sum;\n}\n",
+        0.893,
+        1.066,
+        0.917,
+        1.007,
+        1.063,
+        21
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint is_bored(string S){\n    bool isstart=true;\n    bool isi=false;\n    int sum=0;\n    for (int i=0;i<S.length();i++) {\n        char c = S[i];\n        if (c == ' ') {\n            if (isi) {\n                isi = false;\n                sum++;\n            }\n        }\n        if (c == 'I' && isstart) {\n            isi = true;\n        } else {\n            isi = false;\n        }\n        if (c != ' ') {\n            isstart = false;\n        }\n        if (c == '.' || c == '?' || c == '!') {\n            isstart = true;\n        }\n    }\n    return sum;\n}\n",
+        0.76,
+        1.029,
+        1.151,
+        1.0,
+        1.026,
+        33
+    ]
+}

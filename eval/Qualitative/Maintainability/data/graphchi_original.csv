@@ -1,0 +1,5 @@
+File,Total nloc,Avg.NLOC,AvgCCN,Avg.token,Fun Cnt,Warning cnt,Fun Rt,nloc Rt
+FloatConverter.java,17,4.7,1.0,60.3,3,0,0.00,0.00
+ChiPointer.java,9,4.0,1.0,22.0,1,0,0.00,0.00
+ChiVertex.java,205,6.9,2.0,41.4,24,0,0.00,0.00
+DataBlockManager.java,57,5.8,1.7,41.7,9,0,0.00,0.00

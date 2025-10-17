@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> odd_count(vector<string> lst){\nvector<string> out={};\n    for (int i=0;i<lst.size();i++)\n        {\n            int sum=0;\n            for (int j=0;j<lst[i].length();j++)\n                if (lst[i][j]>=48 and lst[i][j]<=57 and lst[i][j]%2==1)\n                sum+=1;\n            string s=\"the number of odd elements in the string i of the input.\";\n            string s2=\"\";\n            for (int j=0;j<s.length();j++)\n                if (s[j]=='i') s2=s2+to_string(sum);\n                else s2=s2+s[j];\n            out.push_back(s2);\n        }\n    return out;\n}",
+        6.256,
+        0.13,
+        123333153.8,
+        20466.4,
+        7.659,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<string> odd_count(vector<string> lst){\n    vector<string> out;\n    out.reserve(lst.size()); \n    \n    \n    const string template_str = \"the number of odd elements in the string i of the input.\";\n    \n    for (size_t i = 0; i < lst.size(); i++) {\n        int sum = 0;\n        \n        \n        for (size_t j = 0; j < lst[i].length(); j++) {\n            char c = lst[i][j];\n            if (c == '1' || c == '3' || c == '5' || c == '7' || c == '9') {\n                sum += 1;\n            }\n        }\n        \n        \n        string s2;\n        s2.reserve(template_str.length() + 10); \n        \n        for (size_t j = 0; j < template_str.length(); j++) {\n            if (template_str[j] == 'i') {\n                s2 += to_string(sum);\n            } else {\n                s2 += template_str[j];\n            }\n        }\n        \n        out.push_back(s2);\n    }\n    \n    return out;\n}",
+        1.203,
+        1.199,
+        3.519,
+        0.993,
+        1.203,
+        44
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<string> odd_count(vector<string> lst){\n    vector<string> out;\n    out.reserve(lst.size()); \n    \n    \n    bool is_odd_digit[256] = {false};\n    is_odd_digit['1'] = true;\n    is_odd_digit['3'] = true;\n    is_odd_digit['5'] = true;\n    is_odd_digit['7'] = true;\n    is_odd_digit['9'] = true;\n    \n    const string template_str = \"the number of odd elements in the string i of the input.\";\n    \n    for (size_t i = 0; i < lst.size(); i++) {\n        int sum = 0;\n        \n        \n        const string& current_str = lst[i];\n        for (size_t j = 0; j < current_str.length(); j++) {\n            if (is_odd_digit[static_cast<unsigned char>(current_str[j])]) {\n                sum++;\n            }\n        }\n        \n        \n        string count_str = to_string(sum);\n        string s2;\n        s2.reserve(template_str.length() + count_str.length() - 1); \n        \n        \n        for (size_t j = 0; j < template_str.length(); j++) {\n            if (template_str[j] == 'i') {\n                s2 += count_str;\n            } else {\n                s2 += template_str[j];\n            }\n        }\n        \n        out.push_back(s2);\n    }\n    \n    return out;\n}",
+        1.235,
+        1.238,
+        3.716,
+        0.997,
+        1.242,
+        53
+    ]
+}

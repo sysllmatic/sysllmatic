@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring intersection( vector<int> interval1,vector<int> interval2){\nint inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n    if (l<2) return \"NO\";\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}",
+        4.89,
+        0.128,
+        4783794.2,
+        20851.2,
+        7.826,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring intersection( vector<int> interval1,vector<int> interval2){\n    int inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n\n    if (l < 2) return \"NO\";\n\n    \n    bool is_prime[] = {false, false, true, true, false, true, false, true, false, false, false, true, false, true, false, false, false, true, false, true}; \n\n    if (l < sizeof(is_prime) / sizeof(is_prime[0]) && is_prime[l]){\n        return \"YES\";\n    } else {\n        \n        for (i=2;i*i<=l;i++)\n            if (l%i==0) return \"NO\";\n        return \"YES\";\n    }\n}\n",
+        1.08,
+        0.955,
+        0.942,
+        0.994,
+        0.953,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nstring intersection( vector<int> interval1,vector<int> interval2){\n    int inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n\n    if (l < 2) return \"NO\";\n\n    \n    bool is_prime[] = {false, false, true, true, false, true, false, true, false, false, false, true, false, true, false, false, false, true, false, true};\n\n    if (l < sizeof(is_prime) / sizeof(is_prime[0]) && is_prime[l]){\n        return \"YES\";\n    }\n\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}\n",
+        1.032,
+        0.938,
+        0.99,
+        1.001,
+        0.935,
+        27
+    ]
+}

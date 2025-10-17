@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint max_fill(vector<vector<int>> grid,int capacity){\nint out=0;\n    for (int i=0;i<grid.size();i++)\n    {\n        int sum=0;\n        for (int j=0;j<grid[i].size();j++)\n            sum+=grid[i][j];\n        if (sum>0)  out+=(sum-1)/capacity+1;\n    }\n    return out;\n}",
+        5.056,
+        0.133,
+        6841524.8,
+        20820.8,
+        7.492,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint max_fill(vector<vector<int>> grid,int capacity){\n    int out=0;\n    for (const auto& row : grid) {\n        int sum = 0;\n        for (int val : row) {\n            sum += val;\n        }\n        if (sum > 0) {\n            out += (sum - 1) / capacity + 1;\n        }\n    }\n    return out;\n}\n",
+        1.045,
+        1.08,
+        0.96,
+        1.001,
+        1.082,
+        20
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint max_fill(vector<vector<int>> grid,int capacity){\n    int out=0;\n    for (const auto& row : grid) {\n        int sum = 0;\n        for (int val : row) {\n            sum += val;\n        }\n        int increment = 0;\n        if (sum > 0) {\n            increment = (sum - 1) / capacity + 1;\n        }\n        out += increment;\n    }\n    return out;\n}\n",
+        1.01,
+        1.095,
+        0.947,
+        0.998,
+        1.097,
+        22
+    ]
+}

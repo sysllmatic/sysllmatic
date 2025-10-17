@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool check_if_last_char_is_a_letter(string txt){\nif (txt.length()==0) return false;\n    char chr=txt[txt.length()-1];\n    if (chr<65 or (chr>90 and chr<97) or chr>122) return false;\n    if (txt.length()==1) return true;\n    chr=txt[txt.length()-2];\n    if ((chr>=65 and chr<=90) or (chr>=97 and chr<=122)) return false;\n    return true;\n}",
+        4.929,
+        0.104,
+        4889039.6,
+        20549.6,
+        9.621,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nbool check_if_last_char_is_a_letter(string txt){\n    const size_t len = txt.length();\n    \n    \n    if (len == 0) return false;\n    \n    \n    const char last_char = txt[len - 1];\n    \n    \n    if (!((last_char >= 'A' && last_char <= 'Z') || (last_char >= 'a' && last_char <= 'z'))) {\n        return false;\n    }\n    \n    \n    if (len == 1) return true;\n    \n    \n    const char second_last_char = txt[len - 2];\n    if ((second_last_char >= 'A' && second_last_char <= 'Z') || \n        (second_last_char >= 'a' && second_last_char <= 'z')) {\n        return false;\n    }\n    \n    return true;\n}",
+        1.004,
+        0.995,
+        0.994,
+        1.008,
+        0.993,
+        33
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nbool check_if_last_char_is_a_letter(const string& txt){\n    const size_t len = txt.length();\n    \n    if (len == 0) return false;\n    \n    const char last_char = txt[len - 1];\n    \n    \n    if (!((last_char >= 'A' && last_char <= 'Z') || (last_char >= 'a' && last_char <= 'z'))) {\n        return false;\n    }\n    \n    \n    if (len == 1) return true;\n    \n    \n    const char second_last_char = txt[len - 2];\n    return !((second_last_char >= 'A' && second_last_char <= 'Z') || \n             (second_last_char >= 'a' && second_last_char <= 'z'));\n}",
+        0.996,
+        1.004,
+        1.032,
+        1.005,
+        1.002,
+        27
+    ]
+}

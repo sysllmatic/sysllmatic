@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='(') level+=1;\n        if (brackets[i]==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        4.721,
+        0.132,
+        7678030.4,
+        20977.6,
+        7.585,
+        17
+    ],
+    "1": [
+        "#include <iostream>\n#include <stack>\n#include <string>\n\nbool correct_bracketing(const std::string& brackets) {\n    std::stack<char> stack;\n    for (char bracket : brackets) {\n        if (bracket == '(') {\n            stack.push(bracket);\n        } else if (bracket == ')') {\n            if (stack.empty() || stack.top() != '(') {\n                return false;\n            }\n            stack.pop();\n        }\n    }\n    return stack.empty();\n}\n\n",
+        1.002,
+        1.003,
+        0.938,
+        1.007,
+        1.0,
+        19
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nbool correct_bracketing(const std::string& brackets) {\n    int count = 0;\n    for (char bracket : brackets) {\n        if (bracket == '(') {\n            count++;\n        } else if (bracket == ')') {\n            if (count == 0) {\n                return false;\n            }\n            count--;\n        }\n    }\n    return count == 0;\n}\n\n",
+        0.962,
+        1.142,
+        1.001,
+        1.006,
+        1.139,
+        18
+    ]
+}

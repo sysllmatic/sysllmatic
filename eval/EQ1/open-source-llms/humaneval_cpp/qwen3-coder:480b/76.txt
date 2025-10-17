@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_simple_power(int x,int n){\nint p=1,count=0;\n    while (p<=x and count<100)\n    {\n        if (p==x) return true;\n        p=p*n;count+=1;\n    }\n    return false;\n}",
+        4.797,
+        0.099,
+        2903619.6,
+        20502.4,
+        10.054,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_simple_power(int x,int n){\n    \n    if (x == 1) return true;  \n    if (n == 0) return false; \n    if (n == 1) return x == 1; \n    if (x <= 0 || n < 0) return false; \n    \n    \n    double log_result = log(x) / log(n);\n    int rounded_result = (int)(log_result + 0.5); \n    \n    \n    return abs(log_result - rounded_result) < 1e-9 && pow(n, rounded_result) == x;\n}",
+        1.026,
+        0.999,
+        1.013,
+        1.001,
+        1.002,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_simple_power(int x,int n){\n    \n    if (x == 1) return true;  \n    if (n <= 1) return (n == 1 && x == 1); \n    if (x <= 0) return false; \n    \n    \n    if (x <= 1000 && n <= 32) {\n        long long p = 1;\n        while (p < x) {\n            p *= n;\n        }\n        return p == x;\n    }\n    \n    \n    double log_result = log((double)x) / log((double)n);\n    int exp = (int)(log_result + 0.5); \n    \n    \n    long long result = 1;\n    long long base = n;\n    int exponent = exp;\n    \n    \n    while (exponent > 0) {\n        if (exponent & 1) {\n            result *= base;\n        }\n        base *= base;\n        exponent >>= 1;\n    }\n    \n    return result == x;\n}",
+        0.983,
+        0.965,
+        0.91,
+        0.998,
+        0.968,
+        40
+    ]
+}

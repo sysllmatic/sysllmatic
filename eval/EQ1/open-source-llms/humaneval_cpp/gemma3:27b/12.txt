@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring longest(vector<string> strings){\nstring out;\n    for (int i=0;i<strings.size();i++)\n    {\n        if (strings[i].length()>out.length()) out=strings[i];\n    }\n    return out;\n}",
+        10.931,
+        0.261,
+        500411365.4,
+        314280.0,
+        3.83,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring longest(const vector<string>& strings){\n    string out;\n    for (size_t i = 0; i < strings.size(); ++i)\n    {\n        if (strings[i].length() > out.length()) out = strings[i];\n    }\n    return out;\n}\n",
+        0.977,
+        1.016,
+        1.009,
+        1.0,
+        1.015,
+        16
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring longest(const vector<string>& strings){\n    if (strings.empty()) return \"\";\n\n    size_t longest_index = 0;\n    for (size_t i = 1; i < strings.size(); ++i) {\n        if (strings[i].length() > strings[longest_index].length()) {\n            longest_index = i;\n        }\n    }\n    return strings[longest_index];\n}\n",
+        0.978,
+        0.975,
+        1.032,
+        1.0,
+        0.975,
+        19
+    ]
+}

@@ -1,0 +1,653 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+PMD Core,net.sourceforge.pmd.cpd.internal,JavaCCTokenizer,60,0,2,0,14,0,5,0,4,0
+PMD Core,net.sourceforge.pmd.lang.metrics.internal,AbstractLanguageMetricsProvider,117,0,12,0,21,0,13,0,7,0
+PMD Core,net.sourceforge.pmd.benchmark,TimingReport,79,0,12,0,18,0,10,0,4,0
+PMD Core,net.sourceforge.pmd.benchmark,Benchmark,134,0,0,0,22,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.benchmark,StringBuilderCR,55,0,2,0,12,0,5,0,4,0
+PMD Core,net.sourceforge.pmd.benchmark,TextTimingReportRenderer,335,0,18,0,60,0,14,0,5,0
+PMD Core,net.sourceforge.pmd.benchmark,TextTimingReportRenderer.new Comparator() {...},18,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.benchmark,TimeTracker.TimedResult,67,0,0,0,14,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.benchmark,TimeTracker.TimerEntry,26,0,0,0,6,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.benchmark,TimeTracker.new TimedOperation() {...},0,5,0,0,0,3,0,3,0,3
+PMD Core,net.sourceforge.pmd.benchmark,TimeTracker.new ThreadLocal() {...},5,3,0,0,1,1,1,1,1,1
+PMD Core,net.sourceforge.pmd.benchmark,TimedOperationCategory,43,93,2,0,6,16,2,1,1,1
+PMD Core,net.sourceforge.pmd.benchmark,Benchmarker,407,0,44,0,86,0,32,0,10,0
+PMD Core,net.sourceforge.pmd.benchmark,TimeTracker,128,31,13,3,35,13,12,5,4,5
+PMD Core,net.sourceforge.pmd.benchmark,TextReport,515,0,27,0,85,0,20,0,5,0
+PMD Core,net.sourceforge.pmd.benchmark,BenchmarkResult,58,0,2,0,17,0,7,0,6,0
+PMD Core,net.sourceforge.pmd.benchmark,RuleDuration,33,0,4,0,9,0,4,0,2,0
+PMD Core,net.sourceforge.pmd.benchmark,TimeTracker.TimedOperationKey,90,0,12,0,20,0,10,0,4,0
+PMD Core,net.sourceforge.pmd.benchmark,TimeTracker.TimedOperationImpl,21,0,2,0,9,0,4,0,3,0
+PMD Core,net.sourceforge.pmd.dcd.graph,UsageGraphBuilder.MyClassVisitor,81,0,0,0,25,0,12,0,12,0
+PMD Core,net.sourceforge.pmd.dcd.graph,MemberNode,259,0,46,0,61,0,40,0,17,0
+PMD Core,net.sourceforge.pmd.dcd.graph,ClassNode,223,0,30,0,48,0,28,0,13,0
+PMD Core,net.sourceforge.pmd.dcd.graph,MethodNode,52,0,4,0,11,0,5,0,3,0
+PMD Core,net.sourceforge.pmd.dcd.graph,MemberNodeComparator,43,0,12,0,14,0,8,0,2,0
+PMD Core,net.sourceforge.pmd.dcd.graph,UsageGraphBuilder,142,0,10,0,29,0,14,0,9,0
+PMD Core,net.sourceforge.pmd.dcd.graph,NodeVisitorAdapter,127,0,10,0,28,0,18,0,13,0
+PMD Core,net.sourceforge.pmd.dcd.graph,ConstructorNode,80,0,8,0,19,0,10,0,6,0
+PMD Core,net.sourceforge.pmd.dcd.graph,UsageGraphBuilder.MyMethodVisitor,74,0,0,0,37,0,27,0,27,0
+PMD Core,net.sourceforge.pmd.dcd.graph,UsageGraph,197,0,22,0,43,0,22,0,11,0
+PMD Core,net.sourceforge.pmd.dcd.graph,ClassNodeComparator,43,0,8,0,8,0,6,0,2,0
+PMD Core,net.sourceforge.pmd.dcd.graph,FieldNode,42,0,4,0,9,0,5,0,3,0
+PMD Core,net.sourceforge.pmd.cache.internal,NoopFingerprinter,10,15,1,1,1,5,1,4,0,4
+PMD Core,net.sourceforge.pmd.cache.internal,ZipFileFingerprinter.new Comparator() {...},0,9,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.cache.internal,RawFileFingerprinter,1,52,1,1,0,13,1,4,0,4
+PMD Core,net.sourceforge.pmd.cache.internal,ZipFileFingerprinter,6,152,0,10,2,39,0,11,0,6
+PMD Core,net.sourceforge.pmd.cache.internal,ClasspathFingerprinter,11,97,1,7,3,18,1,7,0,4
+PMD Core,net.sourceforge.pmd.cpd.renderer,CPDRendererAdapter,0,14,0,0,0,5,0,2,0,2
+PMD Core,net.sourceforge.pmd.util.database,DBType,396,320,70,34,74,75,45,23,3,13
+PMD Core,net.sourceforge.pmd.util.database,DBMSMetadata,811,0,70,0,155,0,48,0,13,0
+PMD Core,net.sourceforge.pmd.util.database,SourceObject,189,0,20,0,44,0,23,0,13,0
+PMD Core,net.sourceforge.pmd.util.database,ResourceLoader,14,17,2,2,2,6,2,2,0,2
+PMD Core,net.sourceforge.pmd.util.database,ResourceResolver,20,11,2,2,5,3,2,2,0,2
+PMD Core,net.sourceforge.pmd.util.database,DBURI,54,695,8,48,15,137,12,49,4,29
+PMD Core,net.sourceforge.pmd.util.database,DBType.Property,100,0,0,0,17,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,ParseExceptionHandler,117,0,2,0,26,0,4,0,3,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,EvaluationResultsPanel,67,0,5,0,16,0,6,0,3,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,ASTPanel,113,0,7,0,27,0,8,0,4,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,XPathPanel,77,0,5,0,20,0,7,0,4,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,ASTPanel.new MouseAdapter() {...},43,0,2,0,7,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,MainFrame,489,0,18,0,101,0,15,0,6,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,SourceCodePanel,64,0,2,0,16,0,6,0,5,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,SourceCodePanel.new Runnable() {...},74,0,2,0,14,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui,EvaluationResultsPanel.new ListSelectionListener() {...},23,0,2,0,4,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.properties.constraints,NumericConstraints,0,25,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.constraints,ConstraintFactory,0,6,0,0,0,1,0,1,0,1
+PMD Core,net.sourceforge.pmd.properties.constraints,ConstraintFactory.1.new ConstraintFactory.Predicate() {...},0,28,0,4,0,6,0,4,0,2
+PMD Core,net.sourceforge.pmd.properties.constraints,NumericConstraints.new ConstraintFactory.Predicate() {...},0,10,0,2,0,2,0,3,0,2
+PMD Core,net.sourceforge.pmd.properties.constraints,NumericConstraints.new ConstraintFactory.Predicate() {...},0,25,0,4,0,2,0,4,0,2
+PMD Core,net.sourceforge.pmd.properties.constraints,ConstraintFactory.new PropertyConstraint() {...},0,60,0,2,0,7,0,6,0,5
+PMD Core,net.sourceforge.pmd.stat,DataPoint,0,51,0,2,0,16,0,9,0,8
+PMD Core,net.sourceforge.pmd.stat,Metric,0,66,0,0,0,23,0,8,0,8
+PMD Core,net.sourceforge.pmd.properties,TypeMultiProperty,23,43,1,1,4,9,4,7,3,7
+PMD Core,net.sourceforge.pmd.properties,PropertyBuilder.RegexPropertyBuilder,8,13,0,0,2,4,1,2,1,2
+PMD Core,net.sourceforge.pmd.properties,IntegerMultiProperty.IntegerMultiPBuilder,0,25,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,BooleanProperty,15,30,0,0,3,7,2,5,2,5
+PMD Core,net.sourceforge.pmd.properties,GenericMultiValuePropertyDescriptor,3,60,0,6,1,15,1,6,1,3
+PMD Core,net.sourceforge.pmd.properties,EnumeratedMultiProperty,20,144,1,11,4,29,3,15,2,10
+PMD Core,net.sourceforge.pmd.properties,MethodMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue.Packaged() {...},11,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.properties,LongProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue.Numeric() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,AbstractProperty,55,109,5,7,8,28,7,12,3,10
+PMD Core,net.sourceforge.pmd.properties,DoubleMultiProperty,10,38,0,0,2,8,1,6,1,6
+PMD Core,net.sourceforge.pmd.properties,DoubleProperty.DoublePBuilder,0,26,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,EnumeratedMultiProperty.EnumMultiPBuilder,33,0,0,0,7,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.properties,PropertyBuilder.GenericCollectionPropertyBuilder,15,82,0,0,3,21,2,6,2,6
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants,0,97,0,4,0,20,0,6,0,4
+PMD Core,net.sourceforge.pmd.properties,PropertyBuilder,43,71,6,8,8,22,7,11,1,10
+PMD Core,net.sourceforge.pmd.properties,AbstractSingleValueProperty,28,69,6,10,4,16,6,14,1,11
+PMD Core,net.sourceforge.pmd.properties,StringMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,PropertyBuilder.BaseSinglePropertyBuilder.new PropertyBuilder.GenericCollectionPropertyBuilder.Supplier() {...},0,10,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,IntegerProperty,0,39,0,0,0,8,0,6,0,6
+PMD Core,net.sourceforge.pmd.properties,FileProperty.FilePBuilder,20,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.properties,TypeMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue.Packaged() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,TypeProperty.TypePBuilder,0,22,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,BooleanProperty.BooleanPBuilder,0,21,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,GenericPropertyDescriptor,3,55,0,6,1,15,1,6,1,3
+PMD Core,net.sourceforge.pmd.properties,CharacterMultiProperty.CharacterMultiPBuilder,0,21,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,AbstractPackagedProperty,9,24,0,0,2,7,2,3,2,3
+PMD Core,net.sourceforge.pmd.properties,CharacterProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,BooleanProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,AbstractMultiPackagedProperty,17,27,3,1,5,8,4,3,2,3
+PMD Core,net.sourceforge.pmd.properties,IntegerProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue.Numeric() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,LongMultiProperty.LongMultiPBuilder,0,25,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,CharacterProperty.CharacterPBuilder,0,20,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,DoubleProperty,13,42,0,0,2,9,1,7,1,7
+PMD Core,net.sourceforge.pmd.properties,RegexProperty,0,25,0,0,0,6,0,5,0,5
+PMD Core,net.sourceforge.pmd.properties,MethodMultiProperty,27,44,0,0,6,10,4,7,4,7
+PMD Core,net.sourceforge.pmd.properties,LongProperty.LongPBuilder,0,26,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,AbstractNumericProperty,0,43,0,2,0,12,0,6,0,5
+PMD Core,net.sourceforge.pmd.properties,IntegerMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue.Numeric() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,AbstractPropertySource,120,183,10,18,22,43,14,20,7,13
+PMD Core,net.sourceforge.pmd.properties,LongProperty,13,37,0,0,3,8,1,6,1,6
+PMD Core,net.sourceforge.pmd.properties,DoubleMultiProperty.DoubleMultiPBuilder,0,25,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,AbstractMultiNumericProperty,0,51,0,2,0,12,0,6,0,5
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},29,128,7,13,10,30,7,7,0,4
+PMD Core,net.sourceforge.pmd.properties,IntegerMultiProperty,10,38,0,0,2,8,1,6,1,6
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,6,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},5,14,2,2,1,3,2,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,7,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,7,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,7,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,6,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},6,3,0,0,1,1,1,1,1,1
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,6,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,IntegerProperty.IntegerPBuilder,0,26,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,FloatProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue.Numeric() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,FileProperty,40,0,2,0,8,0,7,0,6,0
+PMD Core,net.sourceforge.pmd.properties,PropertyDescriptorField,2,124,1,3,1,21,1,6,0,5
+PMD Core,net.sourceforge.pmd.properties,RegexProperty.RegexPBuilder,0,25,0,0,0,4,0,3,0,3
+PMD Core,net.sourceforge.pmd.properties,TypeProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue.Packaged() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,TypeProperty,20,41,1,1,3,9,3,6,2,6
+PMD Core,net.sourceforge.pmd.properties,BooleanMultiProperty.BooleanMultiPBuilder,0,19,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,StringProperty,0,32,0,0,0,8,0,6,0,6
+PMD Core,net.sourceforge.pmd.properties,StringProperty.StringPBuilder,0,20,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,EnumeratedProperty.EnumPBuilder,0,33,0,0,0,7,0,4,0,4
+PMD Core,net.sourceforge.pmd.properties,MethodProperty.MethodPBuilder,22,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.properties,StringProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,AbstractMultiValueProperty,35,162,13,13,5,36,11,17,2,13
+PMD Core,net.sourceforge.pmd.properties,MethodProperty,24,33,0,0,4,8,3,5,3,5
+PMD Core,net.sourceforge.pmd.properties,FloatMultiProperty.FloatMultiPBuilder,0,25,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,MethodProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue.Packaged() {...},11,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.properties,DoubleMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue.Numeric() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,RegexProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,FileProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue() {...},11,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.properties,DoubleProperty.new PropertyDescriptorBuilderConversionWrapper.SingleValue.Numeric() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,FloatMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue.Numeric() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,CharacterMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,LongMultiProperty,10,37,0,0,2,8,1,6,1,6
+PMD Core,net.sourceforge.pmd.properties,StringMultiProperty,28,79,4,8,5,20,6,11,2,9
+PMD Core,net.sourceforge.pmd.properties,PropertyBuilder.GenericPropertyBuilder,0,6,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd.properties,FloatProperty.FloatPBuilder,0,26,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,CharacterMultiProperty,23,74,2,6,5,15,5,7,3,5
+PMD Core,net.sourceforge.pmd.properties,PropertyFactory,24,64,0,0,4,10,4,10,4,10
+PMD Core,net.sourceforge.pmd.properties,StringMultiProperty.StringMultiPBuilder,0,21,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,LongMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue.Numeric() {...},0,10,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,EnumeratedProperty,24,64,0,0,4,12,2,8,2,8
+PMD Core,net.sourceforge.pmd.properties,TypeMultiProperty.TypeMultiPBuilder,0,21,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,BooleanMultiProperty,14,30,0,0,3,7,2,5,2,5
+PMD Core,net.sourceforge.pmd.properties,BooleanMultiProperty.new PropertyDescriptorBuilderConversionWrapper.MultiValue() {...},0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,PropertyBuilder.BaseSinglePropertyBuilder,15,67,2,2,3,19,2,6,0,6
+PMD Core,net.sourceforge.pmd.properties,PropertyTypeId,80,209,15,3,15,35,18,4,10,3
+PMD Core,net.sourceforge.pmd.properties,CharacterProperty,15,32,0,0,3,8,2,6,2,6
+PMD Core,net.sourceforge.pmd.properties,FloatProperty,19,39,0,0,3,8,1,6,1,6
+PMD Core,net.sourceforge.pmd.properties,FloatMultiProperty,10,38,0,0,2,8,1,6,1,6
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,16,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,6,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},0,37,0,2,0,5,0,3,0,2
+PMD Core,net.sourceforge.pmd.properties,ValueParserConstants.new ValueParser() {...},8,18,1,3,3,7,1,3,0,2
+PMD Core,net.sourceforge.pmd.properties,MethodMultiProperty.MethodMultiPBuilder,21,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.lang.ast.impl.javacc,AbstractJjtreeNode,22,0,0,0,7,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.util.datasource.internal,LanguageAwareDataSource,0,26,0,0,0,9,0,5,0,5
+PMD Core,net.sourceforge.pmd.util.datasource.internal,PathDataSource,72,127,14,10,22,26,10,12,3,7
+PMD Core,net.sourceforge.pmd.util.datasource.internal,AbstractDataSource,0,4,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.ant,PMDTask,98,274,7,19,38,80,21,41,17,32
+PMD Core,net.sourceforge.pmd.ant,SourceLanguage,0,34,0,0,0,8,0,6,0,6
+PMD Core,net.sourceforge.pmd.ant,RuleSetWrapper,0,10,0,0,0,4,0,3,0,3
+PMD Core,net.sourceforge.pmd.ant,Formatter,163,225,15,19,44,61,17,19,6,13
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.MultiformatMessage,95,52,15,7,24,17,18,5,7,5
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.AssociatedRule,88,10,14,0,23,4,14,2,7,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ReportingDescriptor.ReportingDescriptorBuilder,57,53,0,0,5,15,3,8,3,8
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Location,125,13,22,0,31,5,19,2,8,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Message,169,16,30,0,40,6,25,2,10,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ArtifactLocation,169,16,30,0,40,6,25,2,10,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Result,247,32,46,0,54,12,35,4,12,4
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Component,213,35,38,0,49,8,31,3,12,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ToolConfigurationNotification.ToolConfigurationNotificationBuilder,17,21,0,0,1,7,1,4,1,4
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.PhysicalLocation,125,13,22,0,31,5,19,2,8,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.AssociatedRule.AssociatedRuleBuilder,12,14,0,0,1,5,1,3,1,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Invocation,182,16,30,0,41,6,26,2,11,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog,169,20,30,0,40,8,25,4,10,4
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ToolExecutionNotification.ToolExecutionNotificationBuilder,22,28,0,0,1,9,1,5,1,5
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.SarifLogBuilder,38,32,2,2,7,11,5,3,3,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLogBuilder,0,330,0,6,0,106,0,15,0,12
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Result.ResultBuilder,47,27,0,0,7,7,4,4,4,4
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Run.RunBuilder,52,63,7,6,9,18,8,7,3,5
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ToolExecutionNotification,182,16,30,0,41,6,26,2,11,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Message.MessageBuilder,32,18,0,0,5,5,3,3,3,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Component.ComponentBuilder,27,35,0,0,1,11,1,6,1,6
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Location.LocationBuilder,22,16,0,0,3,5,2,3,2,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.PhysicalLocation.PhysicalLocationBuilder,17,21,0,0,1,7,1,4,1,4
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ArtifactLocation.ArtifactLocationBuilder,32,18,0,0,5,5,3,3,3,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Exception.ExceptionBuilder,12,14,0,0,1,5,1,3,1,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Tool,81,10,14,0,22,4,13,2,6,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Tool.ToolBuilder,12,14,0,0,1,5,1,3,1,3
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Invocation.InvocationBuilder,22,28,0,0,1,9,1,5,1,5
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Region,213,19,38,0,49,7,31,2,12,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Exception,88,10,14,0,23,4,14,2,7,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Run,169,16,30,0,40,6,25,2,10,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.PropertyBag.PropertyBagBuilder,22,28,0,0,1,9,1,5,1,5
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ReportingDescriptor,255,165,50,20,46,50,44,13,10,12
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.Region.RegionBuilder,27,35,0,0,1,11,1,6,1,6
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.PropertyBag,106,79,21,9,22,24,20,7,5,7
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.ToolConfigurationNotification,135,13,22,0,32,5,20,2,9,2
+PMD Core,net.sourceforge.pmd.renderers.internal.sarif,SarifLog.MultiformatMessage.MultiformatMessageBuilder,38,0,0,0,8,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.lang.ast,AbstractNode,398,351,60,30,99,97,64,46,30,35
+PMD Core,net.sourceforge.pmd.lang.ast,AbstractTokenManager,37,0,2,0,11,0,7,0,6,0
+PMD Core,net.sourceforge.pmd.lang.ast,JavaCharStream,1304,0,99,0,257,0,97,0,39,0
+PMD Core,net.sourceforge.pmd.lang.ast,SimpleCharStream,1052,0,60,0,194,0,67,0,36,0
+PMD Core,net.sourceforge.pmd.lang.ast,AbstractNode.new Iterator() {...},5,32,0,2,1,4,1,4,1,3
+PMD Core,net.sourceforge.pmd.lang.ast,AbstractNode.new Iterable() {...},0,10,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang.ast,TokenMgrError,168,0,4,0,31,0,15,0,13,0
+PMD Core,net.sourceforge.pmd.lang.ast,ParseException,16,0,0,0,8,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.lang.ast,SourceCodePositioner,2,115,2,6,1,27,2,8,0,6
+PMD Core,net.sourceforge.pmd.cpd.token,AntlrTokenFilter,12,0,2,0,3,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.cpd.token,JavaCCTokenFilter,8,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd.token,AntlrToken,209,0,28,0,53,0,28,0,14,0
+PMD Core,net.sourceforge.pmd.properties.modules,TypePropertyModule,0,10,0,0,0,4,0,3,0,3
+PMD Core,net.sourceforge.pmd.properties.modules,MethodPropertyModule,2,146,1,9,0,33,1,13,0,9
+PMD Core,net.sourceforge.pmd.properties.modules,EnumeratedPropertyModule,5,64,1,5,1,16,1,10,0,8
+PMD Core,net.sourceforge.pmd.properties.modules,PackagedPropertyModule,47,221,6,30,8,45,8,19,2,7
+PMD Core,net.sourceforge.pmd.properties.modules,NumericPropertyModule,7,103,2,8,2,22,2,10,0,7
+PMD Core,net.sourceforge.pmd.util,ClassUtil,105,164,12,8,21,25,11,9,4,6
+PMD Core,net.sourceforge.pmd.util,EmptyIterator,15,0,0,0,5,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.util,IOUtil,79,350,13,27,28,84,10,33,3,20
+PMD Core,net.sourceforge.pmd.util,IOUtil.new InputStream() {...},0,103,1,9,0,26,1,8,0,4
+PMD Core,net.sourceforge.pmd.util,ResourceLoader,25,109,0,6,7,32,0,10,0,7
+PMD Core,net.sourceforge.pmd.util,StringUtil,745,358,137,57,174,85,102,32,22,11
+PMD Core,net.sourceforge.pmd.util,NumericConstants,0,10,0,0,0,3,0,1,0,1
+PMD Core,net.sourceforge.pmd.util,IOUtil.new OutputStream() {...},3,92,1,1,1,27,1,5,0,5
+PMD Core,net.sourceforge.pmd.util,FileIterable,43,0,2,0,15,0,4,0,3,0
+PMD Core,net.sourceforge.pmd.util,IOUtil.BomAwareInputStream,44,156,10,26,9,27,9,15,1,5
+PMD Core,net.sourceforge.pmd.util,FileUtil,245,25,24,2,48,7,17,2,4,2
+PMD Core,net.sourceforge.pmd.util,DataMap.SimpleDataKey,3,6,0,0,1,3,1,1,1,1
+PMD Core,net.sourceforge.pmd.util,FileFinder,9,54,4,4,3,12,3,4,0,3
+PMD Core,net.sourceforge.pmd.util,CollectionUtil,345,176,74,10,71,25,49,11,12,6
+PMD Core,net.sourceforge.pmd.util,ClasspathClassLoader,106,119,6,10,23,29,7,11,4,6
+PMD Core,net.sourceforge.pmd.util,DataMap,5,28,0,0,1,7,1,5,1,5
+PMD Core,net.sourceforge.pmd.util,FileFinder.new Comparator() {...},0,12,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.util,DateTimeUtil,4,79,1,13,1,19,1,7,0,1
+PMD Core,net.sourceforge.pmd.util,TypeMap,1,160,1,11,1,36,1,15,0,10
+PMD Core,net.sourceforge.pmd.util,CompoundIterator,0,69,0,10,0,19,0,10,0,5
+PMD Core,net.sourceforge.pmd.util,FileIterable.FileIterator,51,0,4,0,13,0,6,0,4,0
+PMD Core,net.sourceforge.pmd.util,IOUtil.new FilterOutputStream() {...},0,5,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.util,IOUtil.new PrivilegedAction() {...},0,6,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.util.viewer.model,ViewerModelEvent,27,0,0,0,10,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.util.viewer.model,SimpleNodeTreeNodeAdapter,85,0,4,0,22,0,13,0,11,0
+PMD Core,net.sourceforge.pmd.util.viewer.model,AttributeToolkit,29,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.viewer.model,ASTModel,85,0,8,0,22,0,14,0,10,0
+PMD Core,net.sourceforge.pmd.util.viewer.model,ViewerModel,200,0,10,0,43,0,17,0,12,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer,1187,80,49,1,264,20,55,4,30,4
+PMD Core,net.sourceforge.pmd.util.designer,Designer.ExceptionNode.new Enumeration() {...},36,0,4,0,4,0,5,0,3,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.DFAListener,92,0,6,0,19,0,5,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.TreeWidget,110,0,16,0,31,0,13,0,5,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.ASTSelectionListener,30,0,4,0,7,0,4,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,DFAPanel.DFACanvas,668,0,49,0,121,0,37,0,11,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.SymbolTableListener,179,0,12,0,35,0,8,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.ShowListener,35,0,0,0,9,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.ASTTreeNode.new Enumeration() {...},36,0,4,0,4,0,5,0,3,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.XPathListener,127,0,4,0,28,0,4,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.ASTListCellRenderer,82,0,6,0,19,0,5,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,CreateXMLRulePanel,398,0,4,0,99,0,5,0,3,0
+PMD Core,net.sourceforge.pmd.util.designer,DFAPanel,160,0,8,0,37,0,7,0,3,0
+PMD Core,net.sourceforge.pmd.util.designer,DFAPanel.ElementWrapper,13,0,0,0,5,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.util.designer,CodeEditorTextPane,134,0,14,0,26,0,12,0,5,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.XPathListener.new XPathRule() {...},13,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.ExceptionNode,104,0,12,0,22,0,16,0,10,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.ASTTreeNode,216,0,18,0,43,0,22,0,13,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.new AbstractAction() {...},22,0,2,0,7,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.CodeHighlightListener,23,0,4,0,6,0,4,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.new UndoableEditListener() {...},13,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.new AbstractAction() {...},22,0,2,0,7,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.new ActionListener() {...},10,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.new ActionListener() {...},10,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.new ActionListener() {...},10,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.designer,Designer.new ComponentAdapter() {...},23,0,4,0,5,0,4,0,2,0
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,IdGenerator,0,11,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,DocumentNode,20,69,2,5,5,16,6,10,4,7
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,AbstractNodeInfo,171,49,3,5,38,10,39,7,36,6
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,AttributeAxisIterator,41,0,2,0,11,0,4,0,3,0
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,AttributeNode,22,53,1,5,4,13,5,5,4,3
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,ElementNode,173,229,33,28,32,55,33,23,7,12
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,ElementNode.AttributeEnumeration,34,0,2,0,7,0,4,0,3,0
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,BaseNodeInfo,9,33,0,0,4,10,4,5,4,5
+PMD Core,net.sourceforge.pmd.cpd,CPDReport,0,51,0,4,0,12,0,6,0,4
+PMD Core,net.sourceforge.pmd.cpd,CPDConfiguration.new FilenameFilter() {...},13,31,1,1,2,4,1,2,0,2
+PMD Core,net.sourceforge.pmd.cpd,CPDConfiguration,272,355,27,19,76,103,43,42,21,41
+PMD Core,net.sourceforge.pmd.cpd,AnyLanguage,0,9,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd.cpd,GUI.LanguageConfig,10,0,0,0,5,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.cpd,SourceCode,4,72,0,6,1,18,1,7,1,4
+PMD Core,net.sourceforge.pmd.cpd,CSVWithLinecountPerFileRenderer,0,4,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd.cpd,Mark,51,85,13,5,15,22,8,18,1,16
+PMD Core,net.sourceforge.pmd.cpd,TokenEntry,18,219,10,20,3,56,9,25,0,19
+PMD Core,net.sourceforge.pmd.cpd,SimpleRenderer,50,116,5,7,12,30,4,9,1,6
+PMD Core,net.sourceforge.pmd.cpd,GUI.GoListener,15,0,0,0,4,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,CPDCommandLineInterface,278,228,18,22,47,50,20,12,6,6
+PMD Core,net.sourceforge.pmd.cpd,GUI.new ActionListener() {...},10,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new ActionListener() {...},10,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new ActionListener() {...},41,0,0,0,8,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new MouseAdapter() {...},23,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new ItemListener() {...},17,0,0,0,4,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new GUI.LanguageConfig() {...},15,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new ListSelectionListener() {...},10,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new ActionListener() {...},16,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new GUI.LanguageConfig() {...},78,0,8,0,18,0,12,0,8,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.BrowseListener,35,0,2,0,7,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,Match,44,131,0,6,7,32,5,17,5,14
+PMD Core,net.sourceforge.pmd.cpd,XMLRenderer,28,291,1,15,10,75,3,17,2,10
+PMD Core,net.sourceforge.pmd.cpd,CSVRenderer,26,129,0,12,9,30,3,10,3,4
+PMD Core,net.sourceforge.pmd.cpd,LanguageFactory,34,72,6,4,9,16,5,6,1,5
+PMD Core,net.sourceforge.pmd.cpd,GUI.SaveListener,111,0,8,0,24,0,7,0,3,0
+PMD Core,net.sourceforge.pmd.cpd,MatchAlgorithm,13,296,0,22,4,67,2,18,2,7
+PMD Core,net.sourceforge.pmd.cpd,AntlrTokenizer,80,0,2,0,18,0,6,0,5,0
+PMD Core,net.sourceforge.pmd.cpd,CPDConfiguration.LanguageConverter,2,12,2,2,1,3,2,2,0,2
+PMD Core,net.sourceforge.pmd.cpd,Match.new Comparator() {...},6,3,0,0,1,1,1,1,1,1
+PMD Core,net.sourceforge.pmd.cpd,Match.new Comparator() {...},16,3,4,0,5,1,3,1,1,1
+PMD Core,net.sourceforge.pmd.cpd,Match.new Comparator() {...},6,3,0,0,1,1,1,1,1,1
+PMD Core,net.sourceforge.pmd.cpd,Match.new Comparator() {...},6,3,0,0,1,1,1,1,1,1
+PMD Core,net.sourceforge.pmd.cpd,CPDNullListener,0,5,0,0,0,3,0,3,0,3
+PMD Core,net.sourceforge.pmd.cpd,GUI.GoListener.new Runnable() {...},41,0,0,0,8,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,TokenEntry.State,53,0,4,0,12,0,4,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.new GUI.SortingTableModel() {...},85,0,9,0,23,0,18,0,12,0
+PMD Core,net.sourceforge.pmd.cpd,VSRenderer,73,3,4,0,16,1,5,1,3,1
+PMD Core,net.sourceforge.pmd.cpd,AnyTokenizer,0,163,0,14,0,39,0,15,0,8
+PMD Core,net.sourceforge.pmd.cpd,GridBagHelper,114,0,0,0,28,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.ColumnSpec,30,0,0,0,10,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.cpd,GUI.AlignmentRenderer,26,0,0,0,6,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.cpd,Tokens,14,54,1,1,2,11,2,7,1,7
+PMD Core,net.sourceforge.pmd.cpd,SourceCode.FileCodeLoader,0,40,0,2,0,10,0,5,0,4
+PMD Core,net.sourceforge.pmd.cpd,MatchCollector,0,267,1,33,0,54,1,24,0,8
+PMD Core,net.sourceforge.pmd.cpd,ReportException,0,4,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd.cpd,GUI.CancelListener,3,0,0,0,2,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.cpd,CPD,210,332,13,13,45,69,15,17,5,14
+PMD Core,net.sourceforge.pmd.cpd,SourceCode.StringCodeLoader,0,23,0,0,0,8,0,4,0,4
+PMD Core,net.sourceforge.pmd.cpd,GUI,1648,0,60,0,324,0,57,0,25,0
+PMD Core,net.sourceforge.pmd.cpd,CPDTask.FormatAttribute,21,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.cpd,LanguageFactory.new LanguageServiceBase.NameExtractor() {...},0,8,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.cpd,LanguageFactory.new Comparator() {...},6,3,0,0,1,1,1,1,1,1
+PMD Core,net.sourceforge.pmd.cpd,AbstractTokenizer,326,0,56,0,68,0,37,0,9,0
+PMD Core,net.sourceforge.pmd.cpd,TokenEntry.new ThreadLocal() {...},0,7,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.cpd,TokenEntry.new ThreadLocal() {...},0,8,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.cpd,FileReporter,2,52,1,1,0,15,1,5,0,5
+PMD Core,net.sourceforge.pmd.cpd,GUI.SortingTableModel,6,0,0,0,1,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.cpd,CPD.StatusCode,3,32,0,0,1,7,1,2,1,2
+PMD Core,net.sourceforge.pmd.cpd,SourceCode.ReaderCodeLoader,20,0,0,0,8,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.cpd,SourceCode.CodeLoader,49,117,2,14,8,27,2,11,0,5
+PMD Core,net.sourceforge.pmd.cpd,CPDTask,172,306,14,16,44,74,23,14,10,12
+PMD Core,net.sourceforge.pmd.cpd,AbstractLanguage,6,31,0,0,2,11,2,5,2,5
+PMD Core,net.sourceforge.pmd.util.viewer.gui.menu,AttributesSubMenu,57,0,2,0,12,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui.menu,XPathFragmentAddingItem,20,0,0,0,7,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui.menu,SimpleNodeSubMenu,81,0,2,0,11,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.util.viewer.gui.menu,ASTNodePopupMenu,34,0,0,0,9,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.dcd.asm,TypeSignatureVisitor,277,0,25,0,97,0,45,0,27,0
+PMD Core,net.sourceforge.pmd.dcd.asm,PrintVisitor,45,0,2,0,15,0,7,0,6,0
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilderConversionWrapper,25,74,2,8,3,19,3,8,1,5
+PMD Core,net.sourceforge.pmd.properties.builders,MultiPackagedPropertyBuilder,0,15,0,2,0,5,0,3,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilderConversionWrapper.MultiValue.Numeric,0,31,0,0,0,7,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilderConversionWrapper.SingleValue,2,22,0,0,1,6,1,2,1,2
+PMD Core,net.sourceforge.pmd.properties.builders,SinglePackagedPropertyBuilder,11,15,2,2,3,5,2,3,1,2
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilderConversionWrapper.MultiValue,2,32,0,0,1,8,1,2,1,2
+PMD Core,net.sourceforge.pmd.properties.builders,SingleValuePropertyBuilder,0,9,0,0,0,4,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,SingleNumericPropertyBuilder,0,12,0,0,0,5,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,MultiValuePropertyBuilder,0,26,0,0,0,9,0,4,0,4
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilderConversionWrapper.SingleValue.Numeric,0,31,0,0,0,7,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilderConversionWrapper.SingleValue.Packaged,0,18,0,0,0,5,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilderConversionWrapper.MultiValue.Packaged,0,18,0,0,0,5,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,MultiNumericPropertyBuilder,0,15,0,0,0,6,0,2,0,2
+PMD Core,net.sourceforge.pmd.properties.builders,PropertyDescriptorBuilder,13,28,2,2,3,11,3,3,1,3
+PMD Core,net.sourceforge.pmd.lang.metrics,MetricKeyUtil,6,0,0,0,1,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.lang.metrics,AbstractMetricsFacade,24,0,0,0,5,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.lang.metrics,MetricOptions.MetricOptionsBuilder,56,0,8,0,15,0,8,0,4,0
+PMD Core,net.sourceforge.pmd.lang.metrics,AbstractMetricsComputer,21,0,0,0,4,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.lang.metrics,MetricKeyUtil.new MetricKey() {...},65,0,12,0,8,0,12,0,6,0
+PMD Core,net.sourceforge.pmd.lang.metrics,MetricOptions,131,0,11,0,34,0,17,0,11,0
+PMD Core,net.sourceforge.pmd.lang.metrics,ParameterizedMetricKey,81,0,6,0,14,0,9,0,6,0
+PMD Core,net.sourceforge.pmd.lang.metrics,BasicProjectMemoizer,84,0,4,0,18,0,6,0,4,0
+PMD Core,net.sourceforge.pmd.lang.metrics,ResultOption,21,0,0,0,4,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.lang.metrics,AbstractMetric,18,0,4,0,3,0,5,0,3,0
+PMD Core,net.sourceforge.pmd.lang.metrics,MetricsUtil,241,0,28,0,49,0,25,0,10,0
+PMD Core,net.sourceforge.pmd.lang.metrics,BasicMetricMemoizer,22,0,0,0,5,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.rules,RuleFactory,90,538,11,65,13,116,12,44,1,14
+PMD Core,net.sourceforge.pmd.rules,RuleBuilder,42,331,6,32,9,87,8,32,2,19
+PMD Core,net.sourceforge.pmd.lang,PlainTextLanguage.TextLvh,13,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.lang,AbstractParser,12,30,0,0,4,9,2,3,2,3
+PMD Core,net.sourceforge.pmd.lang,LanguageFilenameFilter,50,57,7,7,11,15,5,6,1,3
+PMD Core,net.sourceforge.pmd.lang,XPathHandler,5,0,0,0,1,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.lang,DataFlowHandler.new DataFlowHandler() {...},7,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.lang,ParserOptions,166,17,18,0,36,6,21,2,12,2
+PMD Core,net.sourceforge.pmd.lang,PlainTextLanguage,24,0,0,0,5,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.lang,PlainTextLanguage.TextLvh.new Parser() {...},30,0,0,0,8,0,6,0,6,0
+PMD Core,net.sourceforge.pmd.lang,PlainTextLanguage.TextLvh.new AbstractRuleViolationFactory() {...},19,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.lang,AbstractLanguageVersionHandler,16,16,0,0,8,6,8,6,8,6
+PMD Core,net.sourceforge.pmd.lang,LanguageRegistry.new LanguageServiceBase.NameExtractor() {...},0,6,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang,LanguageRegistry.new Comparator() {...},0,9,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang,VisitorStarter.new VisitorStarter() {...},0,4,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang,LanguageRegistry,24,252,8,28,6,61,8,23,1,12
+PMD Core,net.sourceforge.pmd.lang,PlainTextLanguage.PlainTextFile,51,0,0,0,13,0,7,0,7,0
+PMD Core,net.sourceforge.pmd.lang,LanguageVersion,71,75,6,2,7,14,7,7,3,7
+PMD Core,net.sourceforge.pmd.lang,LanguageVersionDiscoverer,10,87,2,4,2,27,4,10,2,9
+PMD Core,net.sourceforge.pmd.lang,BaseLanguageModule,95,202,12,18,14,49,13,24,4,18
+PMD Core,net.sourceforge.pmd.lang,DataFlowHandler,5,0,0,0,1,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.lang,VisitorStarter,0,5,0,0,0,1,0,1,0,1
+PMD Core,net.sourceforge.pmd.lang,ParserOptions.ParserOptionsProperties,30,6,4,0,10,1,6,1,4,1
+PMD Core,net.sourceforge.pmd.internal,DOMUtils,0,40,0,8,0,9,0,5,0,1
+PMD Core,net.sourceforge.pmd.internal,LanguageServiceBase,13,55,0,4,2,16,0,3,0,1
+PMD Core,net.sourceforge.pmd.lang.antlr,AntlrTokenManager.ErrorHandler,8,0,0,0,1,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.lang.antlr,AntlrTokenManager.ANTLRSyntaxError,17,0,0,0,6,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.lang.antlr,AntlrTokenManager,66,0,6,0,19,0,9,0,6,0
+PMD Core,net.sourceforge.pmd.util.log,MessageReporter.Level,9,42,4,2,4,9,4,3,0,2
+PMD Core,net.sourceforge.pmd.util.log,AntLogHandler,239,134,20,16,42,28,20,5,3,4
+PMD Core,net.sourceforge.pmd.util.log,ConsoleLogHandler,39,0,2,0,12,0,6,0,5,0
+PMD Core,net.sourceforge.pmd.util.log,PmdLogFormatter,0,7,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.util.log,ScopedLogHandlersManager,0,125,0,8,0,20,0,6,0,2
+PMD Core,net.sourceforge.pmd.util.treeexport,XmlTreeRenderer.XmlRenderingConfig,10,82,2,6,5,26,3,11,1,8
+PMD Core,net.sourceforge.pmd.util.treeexport,TreeRenderers,28,94,2,2,7,29,3,3,2,2
+PMD Core,net.sourceforge.pmd.util.treeexport,TextTreeRenderer.1.new AbstractPropertySource() {...},10,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.util.treeexport,TreeRendererDescriptorImpl,26,20,0,0,3,6,3,3,3,3
+PMD Core,net.sourceforge.pmd.util.treeexport,TreeRendererDescriptorImpl.PropertyBundle,5,20,0,2,2,6,2,2,2,1
+PMD Core,net.sourceforge.pmd.util.treeexport,TextTreeRenderer.Strings,32,0,0,0,8,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.util.treeexport,TreeRenderers.1.new XmlTreeRenderer.XmlRenderingConfig() {...},2,55,1,3,1,4,1,3,0,2
+PMD Core,net.sourceforge.pmd.util.treeexport,TreeExportCli,295,198,12,10,54,51,13,11,5,8
+PMD Core,net.sourceforge.pmd.util.treeexport,Io,0,20,0,0,0,6,0,2,0,2
+PMD Core,net.sourceforge.pmd.util.treeexport,TextTreeRenderer,150,5,16,0,28,1,15,1,7,1
+PMD Core,net.sourceforge.pmd.util.treeexport,TextTreeRenderer.new TreeRendererDescriptor() {...},33,29,0,0,6,12,3,2,3,2
+PMD Core,net.sourceforge.pmd.util.treeexport,TreeRenderers.new TreeRendererDescriptorImpl() {...},0,61,0,0,0,9,0,3,0,3
+PMD Core,net.sourceforge.pmd.util.treeexport,XmlTreeRenderer,0,251,1,17,0,53,1,21,0,13
+PMD Core,net.sourceforge.pmd.processor,MultiThreadProcessor,48,95,7,3,13,17,4,4,0,3
+PMD Core,net.sourceforge.pmd.processor,PmdRunnable,61,130,0,8,11,30,2,7,2,3
+PMD Core,net.sourceforge.pmd.processor,MonoThreadProcessor,34,0,2,0,10,0,4,0,3,0
+PMD Core,net.sourceforge.pmd.processor,AbstractPMDProcessor,26,185,1,11,5,42,2,13,1,8
+PMD Core,net.sourceforge.pmd.processor,PmdRunnable.ThreadContext,0,9,0,0,0,4,0,1,0,1
+PMD Core,net.sourceforge.pmd.processor,PmdThreadFactory,0,23,0,0,0,3,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang.dfa,VariableAccess,107,0,16,0,18,0,16,0,8,0
+PMD Core,net.sourceforge.pmd.lang.dfa,VariableAccessException,8,0,0,0,4,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.lang.dfa,SequenceChecker,530,0,32,0,117,0,21,0,5,0
+PMD Core,net.sourceforge.pmd.lang.dfa,NodeType,156,0,0,0,27,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.lang.dfa,AbstractDataFlowNode,248,0,14,0,57,0,23,0,16,0
+PMD Core,net.sourceforge.pmd.lang.dfa,SequenceChecker.Status,77,0,6,0,17,0,10,0,7,0
+PMD Core,net.sourceforge.pmd.lang.dfa,StackObject,31,0,0,0,7,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.lang.dfa,StartOrEndDataFlowNode,17,0,2,0,5,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.lang.dfa,Linker,1077,0,116,0,217,0,72,0,11,0
+PMD Core,net.sourceforge.pmd.lang.dfa,Structure,196,0,14,0,36,0,19,0,12,0
+PMD Core,net.sourceforge.pmd.lang.dfa,SequenceException,8,0,0,0,4,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.lang.dfa,LinkerException,8,0,0,0,4,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.lang.dfa.pathfinder,PathElement,22,0,2,0,8,0,4,0,3,0
+PMD Core,net.sourceforge.pmd.lang.dfa.pathfinder,DAAPathFinder,617,0,96,0,176,0,70,0,22,0
+PMD Core,net.sourceforge.pmd.lang.dfa.pathfinder,CurrentPath,116,0,10,0,27,0,18,0,13,0
+PMD Core,net.sourceforge.pmd.util.filter,FileExtensionFilter,6,77,6,10,0,17,5,6,0,3
+PMD Core,net.sourceforge.pmd.util.filter,Filters,107,95,16,6,20,16,13,8,4,6
+PMD Core,net.sourceforge.pmd.util.filter,RegexStringFilter,15,73,1,7,3,23,3,8,2,5
+PMD Core,net.sourceforge.pmd.util.filter,NotFilter,15,13,0,2,3,3,2,3,2,2
+PMD Core,net.sourceforge.pmd.util.filter,DirectoryFilter,2,8,0,0,1,2,1,2,1,2
+PMD Core,net.sourceforge.pmd.util.filter,Filters.new Filter() {...},18,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.util.filter,Filters.new FilenameFilter() {...},4,15,0,0,1,2,1,2,1,2
+PMD Core,net.sourceforge.pmd.util.filter,Filters.new Filter() {...},16,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.util.filter,Filters.new Filter() {...},4,19,0,0,1,4,1,2,1,2
+PMD Core,net.sourceforge.pmd.util.filter,OrFilter,2,30,0,4,1,11,1,5,1,3
+PMD Core,net.sourceforge.pmd.util.filter,AbstractCompoundFilter,58,22,4,0,12,8,5,3,3,3
+PMD Core,net.sourceforge.pmd.util.filter,AndFilter,32,0,4,0,12,0,6,0,4,0
+PMD Core,net.sourceforge.pmd.util.filter,AbstractDelegateFilter,19,6,0,0,7,3,5,1,5,1
+PMD Core,net.sourceforge.pmd.lang.symboltable,AbstractNameDeclaration,20,0,0,0,7,0,5,0,5,0
+PMD Core,net.sourceforge.pmd.lang.symboltable,ImageFinderFunction,32,0,2,0,11,0,5,0,4,0
+PMD Core,net.sourceforge.pmd.lang.symboltable,AbstractScope,155,0,18,0,38,0,18,0,9,0
+PMD Core,net.sourceforge.pmd.lang.symboltable,Applier,0,10,0,4,0,2,0,3,0,1
+PMD Core,net.sourceforge.pmd.renderers,CodeClimateIssue.Location,0,21,0,0,0,6,0,1,0,1
+PMD Core,net.sourceforge.pmd.renderers,TextColorRenderer,89,554,11,25,20,138,12,15,2,7
+PMD Core,net.sourceforge.pmd.renderers,CodeClimateIssue,0,6,0,0,0,3,0,1,0,1
+PMD Core,net.sourceforge.pmd.renderers,CodeClimateIssue.Location.Lines,0,6,0,0,0,1,0,1,0,1
+PMD Core,net.sourceforge.pmd.renderers,YAHTMLRenderer,14,501,3,27,3,117,4,19,1,7
+PMD Core,net.sourceforge.pmd.renderers,JsonRenderer,28,425,5,21,6,83,6,14,1,6
+PMD Core,net.sourceforge.pmd.renderers,CodeClimateRule.CodeClimateCategory,3,96,0,2,1,16,1,4,1,3
+PMD Core,net.sourceforge.pmd.renderers,CodeClimateRenderer,90,345,15,16,20,81,14,14,1,10
+PMD Core,net.sourceforge.pmd.renderers,TextPadRenderer,2,58,0,2,1,13,1,3,1,2
+PMD Core,net.sourceforge.pmd.renderers,CSVWriter,1,150,1,7,1,31,1,8,0,5
+PMD Core,net.sourceforge.pmd.renderers,XSLTRenderer,57,128,9,3,12,37,7,7,1,7
+PMD Core,net.sourceforge.pmd.renderers,SummaryHTMLRenderer,2,227,1,5,1,42,2,6,1,4
+PMD Core,net.sourceforge.pmd.renderers,ColumnDescriptor,0,12,0,0,0,5,0,1,0,1
+PMD Core,net.sourceforge.pmd.renderers,IDEAJRenderer,98,116,3,3,18,25,6,5,4,4
+PMD Core,net.sourceforge.pmd.renderers,XMLRenderer,95,431,8,22,23,104,8,19,2,10
+PMD Core,net.sourceforge.pmd.renderers,EmacsRenderer,2,55,0,2,1,13,1,4,1,3
+PMD Core,net.sourceforge.pmd.renderers,CodeClimateIssue.Content,0,9,0,0,0,3,0,1,0,1
+PMD Core,net.sourceforge.pmd.renderers,YAHTMLRenderer.ReportNode,28,65,0,2,2,18,1,10,1,9
+PMD Core,net.sourceforge.pmd.renderers,AbstractAccumulatingRenderer,0,17,0,0,0,7,0,4,0,4
+PMD Core,net.sourceforge.pmd.renderers,TextRenderer,47,141,3,7,8,28,3,6,1,3
+PMD Core,net.sourceforge.pmd.renderers,AbstractRenderer,8,62,0,0,3,26,1,13,1,13
+PMD Core,net.sourceforge.pmd.renderers,XMLRenderer.WrappedOutputStreamWriter,19,15,0,0,8,7,1,2,1,2
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer,144,247,5,9,8,28,6,11,3,7
+PMD Core,net.sourceforge.pmd.renderers,CodeClimateRule,0,34,0,0,0,7,0,1,0,1
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,10,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,10,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.renderers,IDEAJRenderer.SourcePath,59,0,6,0,10,0,5,0,2,0
+PMD Core,net.sourceforge.pmd.renderers,HTMLRenderer,46,765,12,42,4,148,13,28,1,13
+PMD Core,net.sourceforge.pmd.renderers,VBHTMLRenderer,21,326,7,23,6,78,8,14,1,6
+PMD Core,net.sourceforge.pmd.renderers,SarifRenderer,2,91,0,6,1,29,1,10,1,7
+PMD Core,net.sourceforge.pmd.renderers,RendererFactory,123,196,12,12,25,46,9,7,0,4
+PMD Core,net.sourceforge.pmd.renderers,EmptyRenderer,3,8,0,0,2,5,2,4,2,4
+PMD Core,net.sourceforge.pmd.renderers,AbstractIncrementingRenderer,0,71,0,8,0,19,0,9,0,5
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,12,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,12,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,10,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,12,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,9,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.renderers,CSVRenderer.new ColumnDescriptor.Accessor() {...},0,9,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.cli.internal,CliMessages,31,2,2,0,2,1,2,1,1,1
+PMD Core,net.sourceforge.pmd.lang.document,StringTextFile,32,62,6,0,9,14,7,5,4,5
+PMD Core,net.sourceforge.pmd.lang.document,FileCollector.new Comparator() {...},0,20,0,2,0,3,0,3,0,2
+PMD Core,net.sourceforge.pmd.lang.document,FileCollector.new Comparator() {...},0,12,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang.document,FileCollector.new SimpleFileVisitor() {...},0,19,1,1,0,4,1,2,0,2
+PMD Core,net.sourceforge.pmd.lang.document,NioTextFile,37,86,5,3,7,20,6,7,2,7
+PMD Core,net.sourceforge.pmd.lang.document,FileCollector,279,565,22,50,49,129,22,43,3,26
+PMD Core,net.sourceforge.pmd,PMDVersion,42,28,2,2,9,11,3,4,1,4
+PMD Core,net.sourceforge.pmd,RulesetsFactoryUtils,107,39,4,2,19,11,9,5,6,5
+PMD Core,net.sourceforge.pmd,PmdAnalysis,57,352,6,24,12,89,7,29,2,19
+PMD Core,net.sourceforge.pmd,PMD,404,219,28,22,92,52,34,11,13,7
+PMD Core,net.sourceforge.pmd,RuleChain,27,79,3,7,4,21,3,7,0,5
+PMD Core,net.sourceforge.pmd,RuleSetLoadException,4,5,0,0,2,2,1,1,1,1
+PMD Core,net.sourceforge.pmd,RuleSetWriter,356,415,46,26,82,105,38,20,8,14
+PMD Core,net.sourceforge.pmd,RuleViolationComparator,4,71,2,14,2,18,2,9,0,3
+PMD Core,net.sourceforge.pmd,Rule,0,17,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd,Report.ConfigurationError,0,15,0,0,0,6,0,3,0,3
+PMD Core,net.sourceforge.pmd,RuleSetFactoryCompatibility.RuleSetFilter,0,309,2,12,0,37,2,12,0,7
+PMD Core,net.sourceforge.pmd,PMD.new Comparator() {...},27,0,0,0,4,0,2,0,2,0
+PMD Core,net.sourceforge.pmd,Report.ReadableDuration,0,10,0,0,0,4,0,2,0,2
+PMD Core,net.sourceforge.pmd,Report.SuppressedViolation,7,21,2,0,1,8,2,4,1,4
+PMD Core,net.sourceforge.pmd,PMD.StatusCode,3,32,0,0,1,7,1,2,1,2
+PMD Core,net.sourceforge.pmd,RuleSetFactoryCompatibility,0,342,0,6,0,64,0,12,0,9
+PMD Core,net.sourceforge.pmd,Report.ProcessingError,6,49,0,0,2,11,0,5,0,5
+PMD Core,net.sourceforge.pmd,RuleSetFactory,292,993,32,124,46,215,30,78,7,23
+PMD Core,net.sourceforge.pmd,Report,56,591,8,36,7,124,11,48,5,32
+PMD Core,net.sourceforge.pmd,RuleSet,52,528,10,62,14,113,12,52,3,25
+PMD Core,net.sourceforge.pmd,RuleSetReference,0,42,0,0,0,15,0,6,0,6
+PMD Core,net.sourceforge.pmd,RuleSets,44,313,7,33,12,70,10,30,4,16
+PMD Core,net.sourceforge.pmd,RuleSetNotFoundException,5,4,0,0,2,2,1,1,1,1
+PMD Core,net.sourceforge.pmd,RuleContext,28,182,5,7,5,50,5,25,1,23
+PMD Core,net.sourceforge.pmd,PMDException,16,0,0,0,7,0,4,0,4,0
+PMD Core,net.sourceforge.pmd,RuleSet.RuleSetBuilder,118,483,14,46,24,104,12,42,2,22
+PMD Core,net.sourceforge.pmd,RuleSetReferenceId,4,593,7,95,0,127,7,62,0,18
+PMD Core,net.sourceforge.pmd,RuleViolation,0,3,0,0,0,1,0,1,0,1
+PMD Core,net.sourceforge.pmd,RuleSetLoader,198,232,16,10,35,51,14,18,4,15
+PMD Core,net.sourceforge.pmd,AbstractConfiguration,0,23,0,0,0,9,0,5,0,5
+PMD Core,net.sourceforge.pmd,RulePriority,3,69,0,0,1,15,1,5,1,5
+PMD Core,net.sourceforge.pmd,RuleSetLoader.new RuleSetReferenceId() {...},20,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd,SourceCodeProcessor,121,206,9,9,21,58,8,16,1,14
+PMD Core,net.sourceforge.pmd,PMDConfiguration,130,539,12,48,35,141,23,80,13,60
+PMD Core,net.sourceforge.pmd.lang.dfa.report,ReportVisitor,7,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.lang.dfa.report,ClassNode,12,9,2,0,3,4,2,2,1,2
+PMD Core,net.sourceforge.pmd.lang.dfa.report,AbstractReportNode,41,114,7,11,13,26,10,13,4,10
+PMD Core,net.sourceforge.pmd.lang.dfa.report,ReportTree,22,161,5,23,8,41,6,15,2,5
+PMD Core,net.sourceforge.pmd.lang.dfa.report,ViolationNode,2,58,1,13,1,12,1,9,0,3
+PMD Core,net.sourceforge.pmd.lang.dfa.report,ReportHTMLPrintVisitor,395,0,16,0,62,0,17,0,9,0
+PMD Core,net.sourceforge.pmd.lang.dfa.report,PackageNode,12,9,2,0,3,4,2,2,1,2
+PMD Core,net.sourceforge.pmd.lang.dfa.report,ReportTree.TreeIterator,6,84,2,14,2,21,3,10,1,4
+PMD Core,net.sourceforge.pmd.lang.rule.xpath.internal,ExpressionPrinter,92,0,2,0,17,0,7,0,6,0
+PMD Core,net.sourceforge.pmd.lang.rule.xpath.internal,DocumentSorter,30,5,10,0,10,1,6,1,1,1
+PMD Core,net.sourceforge.pmd.lang.rule.xpath.internal,RuleChainAnalyzer,9,227,8,36,2,54,8,22,0,8
+PMD Core,net.sourceforge.pmd.lang.rule.xpath.internal,SaxonExprVisitor,23,210,0,20,4,49,1,21,1,11
+PMD Core,net.sourceforge.pmd.lang.rule.xpath.internal,SplitUnions,0,47,1,5,0,9,1,5,0,3
+PMD Core,net.sourceforge.pmd.util.designerbindings,DesignerBindings.DefaultDesignerBindings,32,0,2,0,11,0,9,0,8,0
+PMD Core,net.sourceforge.pmd.util.designerbindings,DesignerBindings.AdditionalInfo,20,0,0,0,8,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.util.designerbindings,DesignerBindings.TreeIconId,33,0,0,0,6,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.cpd.token.internal,BaseTokenFilter.RemainingTokens.RemainingTokensIterator,4,85,1,7,0,18,1,6,0,3
+PMD Core,net.sourceforge.pmd.cpd.token.internal,BaseTokenFilter.RemainingTokens,0,14,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.cpd.token.internal,BaseTokenFilter,52,73,12,6,13,20,10,6,1,6
+PMD Core,net.sourceforge.pmd.internal.util,IteratorUtil.new Iterable() {...},11,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.internal.util,IteratorUtil.new Iterable() {...},9,0,0,0,2,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.internal.util,AssertionUtil,69,11,5,1,11,4,7,2,4,2
+PMD Core,net.sourceforge.pmd.internal.util,FileCollectionUtil,175,214,6,30,33,54,6,20,1,7
+PMD Core,net.sourceforge.pmd.internal.util,IteratorUtil.AbstractIterator.State,0,21,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd.internal.util,IteratorUtil.AbstractIterator,11,57,2,7,3,18,3,8,1,5
+PMD Core,net.sourceforge.pmd.internal.util,ShortFilenameUtil,3,60,3,9,1,11,3,5,0,2
+PMD Core,net.sourceforge.pmd.internal.util,IteratorUtil,45,0,4,0,14,0,7,0,5,0
+PMD Core,net.sourceforge.pmd.internal.util,IteratorUtil.2.new Iterator() {...},28,0,0,0,6,0,4,0,4,0
+PMD Core,net.sourceforge.pmd.lang.rule,RuleReference,86,433,39,65,19,102,34,59,5,36
+PMD Core,net.sourceforge.pmd.lang.rule,AbstractRuleChainVisitor,9,359,5,39,3,82,5,25,0,8
+PMD Core,net.sourceforge.pmd.lang.rule,ImportWrapper,278,0,34,0,50,0,29,0,12,0
+PMD Core,net.sourceforge.pmd.lang.rule,XPathRule,21,250,3,17,3,72,3,22,0,15
+PMD Core,net.sourceforge.pmd.lang.rule,ParametricRuleViolation,39,248,9,29,4,64,8,30,1,18
+PMD Core,net.sourceforge.pmd.lang.rule,AbstractDelegateRule,121,155,0,0,40,49,26,35,26,35
+PMD Core,net.sourceforge.pmd.lang.rule,MockRule,10,42,0,0,3,11,1,3,1,3
+PMD Core,net.sourceforge.pmd.lang.rule,AbstractRule,221,409,15,33,46,118,26,61,15,48
+PMD Core,net.sourceforge.pmd.lang.rule,AbstractRuleViolationFactory,19,37,1,3,5,8,2,5,1,4
+PMD Core,net.sourceforge.pmd.util.viewer,Viewer,6,0,0,0,3,0,1,0,1,0
+PMD Core,net.sourceforge.pmd.cli,PMDParameters.RulePriorityConverter,33,0,4,0,6,0,5,0,3,0
+PMD Core,net.sourceforge.pmd.cli,PmdParametersParseResult,6,325,9,17,1,70,9,16,0,12
+PMD Core,net.sourceforge.pmd.cli,PMDParameters,101,341,12,12,21,92,12,32,4,28
+PMD Core,net.sourceforge.pmd.cli,PMDParameters.StringToPathConverter,0,8,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.cli,PMDParameters.PathToRelativizeRootValidator,0,36,0,4,0,6,0,4,0,2
+PMD Core,net.sourceforge.pmd.cli,PMDParameters.PropertyConverter,5,31,1,1,1,8,1,2,0,2
+PMD Core,net.sourceforge.pmd.cli,PMDCommandLineInterface,61,347,3,13,19,48,8,16,5,11
+PMD Core,net.sourceforge.pmd.cli,PMDParameters.RulePriorityValidator,14,12,2,2,1,3,2,2,0,2
+PMD Core,net.sourceforge.pmd.lang.document.internal,LanguageDiscoverer,30,0,2,0,9,0,5,0,4,0
+PMD Core,net.sourceforge.pmd.util.log.internal,MessageReporterBase,49,103,3,13,14,27,9,14,6,9
+PMD Core,net.sourceforge.pmd.util.log.internal,SimpleMessageReporter,0,21,0,0,0,6,0,3,0,3
+PMD Core,net.sourceforge.pmd.util.log.internal,NoopReporter,3,3,0,0,2,1,2,1,2,1
+PMD Core,net.sourceforge.pmd.util.log.internal,MessageReporterScope,15,18,0,0,2,4,1,1,1,1
+PMD Core,net.sourceforge.pmd.lang.rule.stat,StatisticalRule,0,37,0,0,0,3,0,1,0,1
+PMD Core,net.sourceforge.pmd.lang.rule.stat,StatisticalRuleHelper,0,299,1,23,0,63,1,19,0,8
+PMD Core,net.sourceforge.pmd.cache,AbstractAnalysisCache.new SimpleFileVisitor() {...},0,21,1,1,0,4,1,2,0,2
+PMD Core,net.sourceforge.pmd.cache,AbstractAnalysisCache.new SimpleFileVisitor() {...},0,25,0,2,0,5,0,3,0,2
+PMD Core,net.sourceforge.pmd.cache,AbstractAnalysisCache,45,299,12,34,12,66,11,22,2,8
+PMD Core,net.sourceforge.pmd.cache,CachedRuleMapper,10,50,0,2,1,7,1,4,1,3
+PMD Core,net.sourceforge.pmd.cache,CachedRuleViolation,42,166,0,2,12,43,12,5,12,4
+PMD Core,net.sourceforge.pmd.cache,AnalysisResult,9,55,0,0,4,14,1,6,1,6
+PMD Core,net.sourceforge.pmd.cache,FileAnalysisCache,48,247,10,24,11,56,9,13,0,5
+PMD Core,net.sourceforge.pmd.cache,NoopAnalysisCache,4,8,0,0,3,5,3,5,3,5
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,AttributeAxisIterator.MethodWrapper,26,30,7,3,7,8,4,3,0,2
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,NodeIterator,42,54,9,7,12,16,9,7,3,5
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DocumentNavigator.new NodeIterator() {...},0,15,0,0,0,3,0,3,0,3
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DocumentNavigator.new NodeIterator() {...},15,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DocumentNavigator.new NodeIterator() {...},47,0,10,0,15,0,8,0,3,0
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DocumentNavigator.new NodeIterator() {...},15,0,0,0,3,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DocumentNavigator.new NodeIterator() {...},47,0,10,0,15,0,8,0,3,0
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DocumentNavigator,85,79,7,5,22,22,18,19,14,17
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,AbstractASTXPathHandler,6,24,0,0,3,3,3,2,3,2
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DocumentNavigator.ListFilteringAttributeIterator,8,52,1,9,2,16,2,8,1,4
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,AttributeAxisIterator,4,293,4,36,1,40,4,26,0,10
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,Attribute,75,122,13,15,13,34,11,15,3,9
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,DefaultASTXPathHandler,6,0,0,0,4,0,3,0,3,0
+PMD Core,net.sourceforge.pmd.util.datasource,ReaderDataSource,18,19,0,0,7,7,2,4,2,4
+PMD Core,net.sourceforge.pmd.util.datasource,FileDataSource,0,6,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd.util.datasource,ZipDataSource,149,0,24,0,39,0,19,0,7,0
+PMD Core,net.sourceforge.pmd.lang.rule.xpath,JaxenXPathRuleQuery.InitializationStatus,0,21,0,0,0,2,0,1,0,1
+PMD Core,net.sourceforge.pmd.lang.rule.xpath,JaxenXPathRuleQuery,48,344,13,37,13,90,12,24,0,11
+PMD Core,net.sourceforge.pmd.lang.rule.xpath,XPathVersion,0,66,0,2,0,13,0,5,0,4
+PMD Core,net.sourceforge.pmd.lang.rule.xpath,SaxonXPathRuleQuery,123,476,18,52,19,113,13,39,0,17
+PMD Core,net.sourceforge.pmd.lang.rule.xpath,AbstractXPathRuleQuery,16,27,1,1,2,10,1,5,0,5
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.internal,DeprecatedAttrLogger,2,45,1,3,1,9,1,7,0,6
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.internal,DeprecatedAttrLogger.Noop,0,6,0,0,0,2,0,2,0,2
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.internal,FileNameXPathFunction,45,22,3,1,10,5,5,2,3,2
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.internal,DeprecatedAttrLogger.AttrLoggerImpl,0,96,1,7,0,18,1,6,0,3
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.internal,DeprecatedAttrLogger.AdhocLoggerImpl,13,31,2,2,1,7,2,1,0,1
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.internal,ContextualizedNavigator,0,16,0,0,0,6,0,2,0,2
+PMD Core,net.sourceforge.pmd.document,RegionByOffsetImp,4,29,1,1,1,10,1,5,0,5
+PMD Core,net.sourceforge.pmd.document,DocumentOperationsApplierForNonOverlappingRegions,6,109,3,9,1,26,3,10,0,7
+PMD Core,net.sourceforge.pmd.document,InsertDocumentOperation,0,24,0,0,0,6,0,2,0,2
+PMD Core,net.sourceforge.pmd.document,RegionByLineImp,37,43,2,2,3,15,3,7,1,7
+PMD Core,net.sourceforge.pmd.document,DocumentOperation,0,15,0,0,0,4,0,2,0,2
+PMD Core,net.sourceforge.pmd.document,DeleteDocumentOperation,0,12,0,0,0,4,0,2,0,2
+PMD Core,net.sourceforge.pmd.document,DocumentOperationsApplierForNonOverlappingRegions.DocumentOperationNonOverlappingRegionsComparator,22,79,5,15,3,14,5,8,0,3
+PMD Core,net.sourceforge.pmd.document,DocumentFile,45,249,1,7,7,62,1,19,0,16
+PMD Core,net.sourceforge.pmd.document,ReplaceDocumentOperation,0,19,0,0,0,5,0,2,0,2
+PMD Core,net.sourceforge.pmd.dcd,DCD,264,0,14,0,50,0,11,0,4,0
+PMD Core,net.sourceforge.pmd.dcd,ClassLoaderUtil,288,0,30,0,58,0,27,0,12,0
+PMD Core,net.sourceforge.pmd.dcd,UsageNodeVisitor,335,0,68,0,70,0,43,0,9,0
+PMD Core,net.sourceforge.pmd.dcd,DumpNodeVisitor,210,0,12,0,34,0,20,0,14,0
+PMD Core,net.sourceforge.pmd.dcd,UsageNodeVisitor.Options,83,0,0,0,33,0,17,0,17,0
+PMD Core,net.sourceforge.pmd.dcd,DCD.new FilenameFilter() {...},16,0,2,0,4,0,3,0,2,0
+PMD Core,net.sourceforge.pmd.util.viewer.util,NLS,8,0,0,0,3,0,2,0,2,0
+PMD Core,net.sourceforge.pmd.ant.internal,PMDTaskImpl.new AbstractRenderer() {...},2,29,0,0,1,7,1,6,1,6
+PMD Core,net.sourceforge.pmd.ant.internal,PMDTaskImpl,120,417,17,23,17,81,14,13,0,7
+PMD Core,net.sourceforge.pmd.lang.xpath,MatchesFunction,32,52,5,5,7,12,4,5,1,3
+PMD Core,net.sourceforge.pmd.lang.xpath,Initializer,0,83,2,10,0,23,2,9,0,5
+PMD Core,net.sourceforge.pmd.lang.xpath,PMDFunctions,145,96,6,4,12,16,10,8,6,7
+PMD Core,net.sourceforge.pmd.lang.internal,DefaultRulechainVisitor,8,35,1,3,2,10,1,5,0,4

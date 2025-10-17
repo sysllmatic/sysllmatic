@@ -1,0 +1,10 @@
+File,Total nloc,Avg.NLOC,AvgCCN,Avg.token,Fun Cnt,Warning cnt,Fun Rt,nloc Rt
+XPathRule.java,135,5.9,1.6,32.2,14,0,0.00,0.00
+ElementNode.java,240,8.5,2.9,53.3,21,1,0.05,0.26
+IOUtil.java,362,8.0,2.2,49.6,40,0,0.00,0.00
+AttributeAxisIterator.java,122,7.7,2.8,50.5,11,0,0.00,0.00
+RuleSetFactoryCompatibility.java,180,8.0,1.7,75.4,19,0,0.00,0.00
+AbstractNode.java,447,5.4,1.7,29.7,64,0,0.00,0.00
+SaxonXPathRuleQuery.java,240,11.0,3.3,83.0,16,0,0.00,0.00
+AbstractRule.java,328,3.9,1.2,19.7,61,0,0.00,0.00
+RuleSetFactory.java,435,12.8,3.5,94.5,30,2,0.07,0.26

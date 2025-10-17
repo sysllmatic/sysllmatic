@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include <vector>\n#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint fib4(int n){\nvector<int> f(n + 1, 0);\n    f[0]=0;\n    f[1]=0;\n    f[2]=2;\n    f[3]=0;\n    for (int i=4;i<=n;i++)\n    {\n        f[i]=f[i-1]+f[i-2]+f[i-3]+f[i-4];\n    }\n    return f[n];\n}",
+        4.694,
+        0.136,
+        6749420.2,
+        20786.4,
+        7.354,
+        18
+    ],
+    "1": [
+        "#include <vector>\n#include<stdio.h>\nusing namespace std;\n\nint fib4(int n) {\n    if (n <= 3) {\n        return (n == 2) ? 2 : 0;\n    }\n    vector<int> f(5, 0);\n    f[2] = 2;\n    for (int i=4; i<=n; ++i) {\n        f[i] = f[i-1] + f[i-2] + f[i-3] + f[i-4];\n    }\n    return f[n];\n}\n",
+        1.056,
+        1.004,
+        1.033,
+        0.992,
+        1.003,
+        15
+    ],
+    "2": [
+        "#include <vector>\n#include<stdio.h>\nusing namespace std;\n\nint fib4(int n) {\n    if (n <= 3) {\n        return (n == 2) ? 2 : 0;\n    }\n    vector<int> f(n + 1, 0);\n    f[0] = 0;\n    f[1] = 0;\n    f[2] = 2;\n    f[3] = 0;\n    for (int i=4; i <= n; ++i) {\n        f[i] = f[i-1] + f[i-2] + f[i-3] + f[i-4];\n    }\n    return f[n];\n}\n",
+        1.04,
+        0.956,
+        0.997,
+        0.997,
+        0.955,
+        18
+    ]
+}

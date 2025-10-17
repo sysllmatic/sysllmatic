@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> rescale_to_unit(vector<float> numbers){\nfloat min=100000,max=-100000;\n    for (int i=0;i<numbers.size();i++)\n        {\n            if (numbers[i]<min) min=numbers[i];\n            if (numbers[i]>max) max=numbers[i];\n        }\n    for (int i=0;i<numbers.size();i++)\n        numbers[i]=(numbers[i]-min)/(max-min);\n    return numbers;\n}",
+        4.949,
+        0.103,
+        10757569.0,
+        20539.2,
+        9.673,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<float> rescale_to_unit(vector<float> numbers){\n    if (numbers.empty()) return numbers;\n    \n    \n    auto minmax = minmax_element(numbers.begin(), numbers.end());\n    float min_val = *minmax.first;\n    float max_val = *minmax.second;\n    \n    \n    float range = max_val - min_val;\n    if (range == 0.0f) {\n        \n        for (auto& num : numbers) {\n            num = 0.0f;\n        }\n    } else {\n        \n        for (auto& num : numbers) {\n            num = (num - min_val) / range;\n        }\n    }\n    \n    return move(numbers); \n}",
+        1.014,
+        1.008,
+        0.835,
+        1.004,
+        1.01,
+        31
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n#include<limits>\n\nvector<float> rescale_to_unit(vector<float> numbers){\n    if (numbers.empty()) return numbers;\n    \n    \n    float min_val = numeric_limits<float>::max();\n    float max_val = numeric_limits<float>::lowest();\n    \n    \n    for (const auto& num : numbers) {\n        if (num < min_val) min_val = num;\n        if (num > max_val) max_val = num;\n    }\n    \n    \n    float range = max_val - min_val;\n    \n    \n    if (range == 0.0f) {\n        \n        for (auto& num : numbers) {\n            num = 0.0f;\n        }\n    } else {\n        \n        for (auto& num : numbers) {\n            num = (num - min_val) / range;\n        }\n    }\n    \n    return move(numbers); \n}",
+        0.992,
+        1.001,
+        0.904,
+        0.999,
+        1.004,
+        39
+    ]
+}

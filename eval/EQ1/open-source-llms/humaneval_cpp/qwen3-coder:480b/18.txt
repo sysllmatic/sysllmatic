@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint how_many_times(string str,string substring){\nint out=0;\n    if (str.length()==0) return 0;\n    for (int i=0;i<=str.length()-substring.length();i++)\n    if (str.substr(i,substring.length())==substring)\n        out+=1;\n    return out;\n}",
+        5.109,
+        0.106,
+        11113709.4,
+        20460.8,
+        9.446,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint how_many_times(string str, string substring) {\n    int n = str.length();\n    int m = substring.length();\n    \n    \n    if (m == 0) return 0;\n    if (n < m) return 0;\n    \n    \n    int* lps = new int[m];\n    lps[0] = 0;\n    int len = 0;\n    int i = 1;\n    \n    while (i < m) {\n        if (substring[i] == substring[len]) {\n            len++;\n            lps[i] = len;\n            i++;\n        } else {\n            if (len != 0) {\n                len = lps[len - 1];\n            } else {\n                lps[i] = 0;\n                i++;\n            }\n        }\n    }\n    \n    \n    int count = 0;\n    i = 0; \n    int j = 0; \n    \n    while (i < n) {\n        if (substring[j] == str[i]) {\n            j++;\n            i++;\n        }\n        \n        if (j == m) {\n            count++;\n            j = lps[j - 1];\n        } else if (i < n && substring[j] != str[i]) {\n            if (j != 0) {\n                j = lps[j - 1];\n            } else {\n                i++;\n            }\n        }\n    }\n    \n    delete[] lps;\n    return count;\n}",
+        1.064,
+        1.075,
+        1.816,
+        1.003,
+        1.072,
+        62
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint how_many_times(string str, string substring) {\n    const int n = static_cast<int>(str.length());\n    const int m = static_cast<int>(substring.length());\n    \n    \n    if (m == 0) return 0;\n    if (n < m) return 0;\n    \n    \n    const int MAX_STACK_LPS = 1000;\n    int* lps_ptr;\n    int lps_stack[MAX_STACK_LPS];\n    int* lps;\n    \n    if (m <= MAX_STACK_LPS) {\n        lps = lps_stack;\n    } else {\n        lps_ptr = new int[m];\n        lps = lps_ptr;\n    }\n    \n    \n    lps[0] = 0;\n    int len = 0;\n    \n    for (int i = 1; i < m; ) {\n        if (substring[i] == substring[len]) {\n            lps[i++] = ++len;\n        } else {\n            if (len != 0) {\n                len = lps[len - 1];\n            } else {\n                lps[i++] = 0;\n            }\n        }\n    }\n    \n    \n    int count = 0;\n    int i = 0; \n    int j = 0; \n    \n    while (i <= n - m + j) {  \n        if (substring[j] == str[i]) {\n            j++;\n            i++;\n        }\n        \n        if (j == m) {\n            count++;\n            j = lps[j - 1];\n        } else if (i < n && substring[j] != str[i]) {\n            if (j != 0) {\n                j = lps[j - 1];\n            } else {\n                i++;\n            }\n        }\n    }\n    \n    \n    if (m > MAX_STACK_LPS) {\n        delete[] lps_ptr;\n    }\n    \n    return count;\n}",
+        1.036,
+        1.025,
+        1.874,
+        0.996,
+        1.022,
+        74
+    ]
+}

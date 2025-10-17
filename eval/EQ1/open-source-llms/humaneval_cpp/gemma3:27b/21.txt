@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> rescale_to_unit(vector<float> numbers){\nfloat min=100000,max=-100000;\n    for (int i=0;i<numbers.size();i++)\n        {\n            if (numbers[i]<min) min=numbers[i];\n            if (numbers[i]>max) max=numbers[i];\n        }\n    for (int i=0;i<numbers.size();i++)\n        numbers[i]=(numbers[i]-min)/(max-min);\n    return numbers;\n}",
+        4.696,
+        0.134,
+        11582291.8,
+        20812.0,
+        7.465,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<float> rescale_to_unit(vector<float> numbers){\n    float min = numbers[0];\n    float max = numbers[0];\n    size_t size = numbers.size();\n\n    for (size_t i = 1; i < size; ++i) {\n        if (numbers[i] < min) {\n            min = numbers[i];\n        }\n        if (numbers[i] > max) {\n            max = numbers[i];\n        }\n    }\n\n    if (max == min) {\n        return numbers; \n    }\n\n    for (size_t i = 0; i < size; ++i) {\n        numbers[i] = (numbers[i] - min) / (max - min);\n    }\n    return numbers;\n}",
+        0.959,
+        1.005,
+        1.082,
+        0.998,
+        1.003,
+        30
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n#include <omp.h>\n\nvector<float> rescale_to_unit(vector<float> numbers){\n    float min = numbers[0];\n    float max = numbers[0];\n    size_t size = numbers.size();\n\n    for (size_t i = 1; i < size; ++i) {\n        if (numbers[i] < min) {\n            min = numbers[i];\n        }\n        if (numbers[i] > max) {\n            max = numbers[i];\n        }\n    }\n\n    float epsilon = 1e-6; \n    if (max == min) {\n        return numbers; \n    }\n\n    \n    #pragma omp parallel for\n    for (size_t i = 0; i < size; ++i) {\n        numbers[i] = (numbers[i] - min) / (max - min + epsilon);\n    }\n\n    return numbers;\n}",
+        0.888,
+        1.051,
+        0.026,
+        0.998,
+        1.049,
+        35
+    ]
+}

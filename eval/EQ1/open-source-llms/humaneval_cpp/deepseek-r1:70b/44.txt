@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring change_base(int x,int base){\nstring out=\"\";\n    while (x>0)\n    {\n        out=to_string(x%base)+out;\n        x=x/base;\n    }\n    return out;\n}",
+        4.722,
+        0.127,
+        4536620.8,
+        21075.2,
+        7.863,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring change_base(int x, int base) {\n    string out;\n    if (x == 0) return \"0\";\n    \n    size_t length = log2(x) / log2(base) + 1;\n    out.reserve(length);\n\n    while (x > 0) {\n        char c = '0' + (x % base);\n        out += c;\n        x /= base;\n    }\n    reverse(out.begin(), out.end());\n    return out;\n}\n",
+        1.016,
+        0.904,
+        0.99,
+        1.008,
+        0.904,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring change_base(int x, int base) {\n    string out;\n    if (x == 0) return \"0\";\n    \n    size_t length = log2(x) / log2(base) + 1;\n    out.reserve(length);\n\n    while (x > 0) {\n        char c = '0' + (x % base);\n        out += c;\n        x /= base;\n    }\n    reverse(out.begin(), out.end());\n    return out;\n}\n",
+        1.02,
+        0.936,
+        0.9,
+        1.016,
+        0.937,
+        22
+    ]
+}

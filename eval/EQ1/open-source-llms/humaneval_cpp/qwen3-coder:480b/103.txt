@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring rounded_avg(int n,int m){\nif (n>m) return \"-1\";\n    int num=(m+n)/2;\n    string out=\"\";\n    while (num>0)\n    {\n        out=to_string(num%2)+out;\n        num=num/2;\n    }\n    return out;\n}",
+        4.986,
+        0.106,
+        4741708.2,
+        20440.0,
+        9.379,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n#include<bitset>\n\nstring rounded_avg(int n,int m){\n    if (n>m) return \"-1\";\n    int num=(m+n)/2;\n    if (num == 0) return \"0\";\n    return bitset<32>(num).to_string().erase(0, min(bitset<32>(num).to_string().find_first_not_of('0'), bitset<32>(num).to_string().size()-1));\n}",
+        1.024,
+        1.021,
+        1.013,
+        0.993,
+        1.025,
+        14
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring rounded_avg(int n,int m){\n    if (n>m) return \"-1\";\n    int num=(m+n)/2;\n    if (num == 0) return \"0\";\n    \n    string result = \"\";\n    while (num > 0) {\n        result = char((num & 1) + '0') + result;\n        num >>= 1;\n    }\n    return result;\n}",
+        1.017,
+        1.02,
+        1.01,
+        0.993,
+        1.025,
+        19
+    ]
+}

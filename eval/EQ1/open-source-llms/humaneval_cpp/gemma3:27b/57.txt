@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool monotonic(vector<float> l){\nint incr,decr;\n    incr=0;decr=0;\n    for (int i=1;i<l.size();i++)\n    {\n        if (l[i]>l[i-1]) incr=1;\n        if (l[i]<l[i-1]) decr=1;\n    }\n    if (incr+decr==2) return false;\n    return true;\n}",
+        5.145,
+        0.159,
+        38013402.2,
+        20723.2,
+        6.297,
+        17
+    ],
+    "1": [
+        "#include <vector>\n#include <iostream>\n\nbool monotonic(const std::vector<float>& l) {\n    if (l.size() <= 1) {\n        return true; \n    }\n\n    bool increasing = l[1] > l[0]; \n\n    for (size_t i = 1; i < l.size(); ++i) {\n        if (increasing) {\n            if (l[i] < l[i - 1]) {\n                return false; \n            }\n        } else {\n            if (l[i] > l[i - 1]) {\n                return false; \n            }\n        }\n    }\n\n    return true; \n}",
+        1.011,
+        0.984,
+        1.063,
+        0.994,
+        0.982,
+        24
+    ],
+    "2": [
+        "#include <vector>\n#include <iostream>\n\nbool monotonic(const std::vector<float>& l) {\n    if (l.size() <= 1) {\n        return true; \n    }\n\n    bool increasing = l[1] > l[0]; \n\n    for (size_t i = 1; i < l.size(); ++i) {\n        if (increasing) {\n            if (l[i] < l[i - 1]) {\n                return false; \n            }\n        } else {\n            if (l[i] > l[i - 1]) {\n                return false; \n            }\n        }\n    }\n\n    return true; \n}",
+        1.02,
+        1.159,
+        1.04,
+        0.994,
+        1.156,
+        24
+    ]
+}

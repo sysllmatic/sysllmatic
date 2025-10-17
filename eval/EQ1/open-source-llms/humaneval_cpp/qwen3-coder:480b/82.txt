@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool prime_length(string str){\nint l,i;\n    l=str.length();\n    if (l<2) return false;\n    for (i=2;i*i<=l;i++)\n    if (l%i==0) return false;\n    return true;\n}",
+        4.907,
+        0.104,
+        4997002.0,
+        20503.2,
+        9.619,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nconst int MAX_PRECOMPUTE = 1000;\nbool is_prime_cache[MAX_PRECOMPUTE];\nbool cache_initialized = false;\n\nvoid initialize_cache() {\n    if (cache_initialized) return;\n    \n    \n    for (int i = 0; i < MAX_PRECOMPUTE; i++) {\n        is_prime_cache[i] = true;\n    }\n    is_prime_cache[0] = false;\n    is_prime_cache[1] = false;\n    \n    for (int i = 2; i * i < MAX_PRECOMPUTE; i++) {\n        if (is_prime_cache[i]) {\n            for (int j = i * i; j < MAX_PRECOMPUTE; j += i) {\n                is_prime_cache[j] = false;\n            }\n        }\n    }\n    \n    cache_initialized = true;\n}\n\nbool prime_length(string str){\n    initialize_cache();\n    \n    int l = str.length();\n    if (l < 2) return false;\n    \n    \n    if (l < MAX_PRECOMPUTE) {\n        return is_prime_cache[l];\n    }\n    \n    \n    if (l % 2 == 0) return false; \n    \n    \n    for (int i = 3; i <= sqrt(l); i += 2) {\n        if (l % i == 0) return false;\n    }\n    \n    return true;\n}",
+        1.005,
+        1.027,
+        1.014,
+        1.001,
+        1.025,
+        53
+    ],
+    "2": [
+        "#include<string>\nusing namespace std;\n\nconst int MAX_PRECOMPUTE = 1000;\nbool is_prime_cache[MAX_PRECOMPUTE];\nbool cache_initialized = false;\n\nvoid initialize_cache() {\n    if (cache_initialized) return;\n    \n    \n    is_prime_cache[0] = false;\n    is_prime_cache[1] = false;\n    for (int i = 2; i < MAX_PRECOMPUTE; i++) {\n        is_prime_cache[i] = true;\n    }\n    \n    \n    for (int i = 2; i * i < MAX_PRECOMPUTE; i++) {\n        if (is_prime_cache[i]) {\n            for (int j = i * i; j < MAX_PRECOMPUTE; j += i) {\n                is_prime_cache[j] = false;\n            }\n        }\n    }\n    \n    cache_initialized = true;\n}\n\nbool prime_length(string str){\n    if (!cache_initialized) initialize_cache();\n    \n    int l = str.length();\n    if (l < 2) return false;\n    \n    \n    if (l < MAX_PRECOMPUTE) {\n        return is_prime_cache[l];\n    }\n    \n    \n    if (l % 2 == 0) return false; \n    \n    \n    for (int i = 3; i * i <= l; i += 2) {\n        if (l % i == 0) return false;\n    }\n    \n    return true;\n}",
+        0.994,
+        1.01,
+        1.113,
+        0.999,
+        1.008,
+        50
+    ]
+}

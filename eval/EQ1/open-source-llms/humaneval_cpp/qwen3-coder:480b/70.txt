@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> strange_sort_list(vector<int> lst){\nvector<int> out={};\n    sort(lst.begin(),lst.end());\n    int l=0,r=lst.size()-1;\n    while (l<r)\n    {\n        out.push_back(lst[l]);\n        l+=1;\n        out.push_back(lst[r]);\n        r-=1;\n    }\n    if (l==r) out.push_back(lst[l]);\n    return out;\n\n}",
+        5.318,
+        0.112,
+        39366292.8,
+        20482.4,
+        8.944,
+        21
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> strange_sort_list(vector<int> lst){\n    sort(lst.begin(), lst.end());\n    \n    vector<int> out;\n    out.reserve(lst.size()); \n    \n    int l = 0;\n    int r = lst.size() - 1;\n    \n    while (l < r) {\n        out.push_back(lst[l++]);\n        out.push_back(lst[r--]);\n    }\n    \n    if (l == r) \n        out.push_back(lst[l]);\n    \n    return out;\n}",
+        1.0,
+        1.007,
+        1.011,
+        1.005,
+        1.003,
+        26
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> strange_sort_list(const vector<int>& lst){\n    vector<int> sorted_lst = lst;  \n    sort(sorted_lst.begin(), sorted_lst.end());\n    \n    vector<int> out;\n    out.reserve(sorted_lst.size());\n    \n    vector<int>::const_iterator left_it = sorted_lst.begin();\n    vector<int>::const_iterator right_it = sorted_lst.end();\n    if (!sorted_lst.empty()) {\n        --right_it;  \n    }\n    \n    while (left_it < right_it) {\n        out.push_back(*left_it++);\n        out.push_back(*right_it--);\n    }\n    \n    if (left_it == right_it && !sorted_lst.empty())\n        out.push_back(*left_it);\n    \n    return out;\n}",
+        0.982,
+        0.959,
+        0.978,
+        0.996,
+        0.956,
+        30
+    ]
+}

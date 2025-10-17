@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> f(int n){\nint sum=0,prod=1;\n    vector<int> out={};\n    for (int i=1;i<=n;i++)\n    {\n        sum+=i;\n        prod*=i;\n        if (i%2==0) out.push_back(prod);\n        else out.push_back(sum);\n    } \n    return out;\n}",
+        4.915,
+        0.104,
+        5391884.6,
+        20580.8,
+        9.64,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> f(int n){\n    if (n <= 0) return {};\n    \n    vector<int> out(n);  \n    long long prod = 1;  \n    \n    for (int i = 1; i <= n; i++) {\n        int sum = i * (i + 1) / 2;  \n        prod *= i;  \n        \n        if (i % 2 == 0) \n            out[i-1] = (int)prod;  \n        else \n            out[i-1] = sum;\n    }\n    \n    return out;\n}",
+        1.018,
+        1.001,
+        1.035,
+        0.998,
+        0.997,
+        24
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> f(int n){\n    if (n <= 0) return {};\n    \n    vector<int> out(n);\n    int prod = 1;\n    \n    for (int i = 1; i <= n; i++) {\n        int sum = i * (i + 1) / 2;\n        prod *= i;\n        \n        if (i % 2 == 0) \n            out[i-1] = prod;\n        else \n            out[i-1] = sum;\n    }\n    \n    return out;\n}",
+        1.012,
+        1.028,
+        1.044,
+        1.003,
+        1.024,
+        24
+    ]
+}

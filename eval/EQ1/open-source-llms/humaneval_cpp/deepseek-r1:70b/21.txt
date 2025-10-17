@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> rescale_to_unit(vector<float> numbers){\nfloat min=100000,max=-100000;\n    for (int i=0;i<numbers.size();i++)\n        {\n            if (numbers[i]<min) min=numbers[i];\n            if (numbers[i]>max) max=numbers[i];\n        }\n    for (int i=0;i<numbers.size();i++)\n        numbers[i]=(numbers[i]-min)/(max-min);\n    return numbers;\n}",
+        6.11,
+        0.13,
+        11153396.6,
+        20937.6,
+        7.687,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<float> rescale_to_unit(vector<float> numbers){\n    if (numbers.empty()) return numbers; \n    float min_val = *std::min_element(numbers.begin(), numbers.end());\n    float max_val = *std::max_element(numbers.begin(), numbers.end());\n    if (min_val == max_val) {\n        std::fill(numbers.begin(), numbers.end(), 0.0f);\n        return numbers;\n    }\n    for (int i=0;i<numbers.size();i++){\n        numbers[i] = (numbers[i]-min_val)/(max_val - min_val);\n    }\n    return numbers;\n}\n",
+        1.305,
+        0.96,
+        0.78,
+        1.004,
+        0.959,
+        20
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<float> rescale_to_unit(vector<float> numbers){\n    if (numbers.empty()) return numbers; \n\n    float min_val = numbers[0];\n    float max_val = numbers[0];\n    \n    for (int i=0; i<numbers.size(); ++i) {\n        if (numbers[i] < min_val) min_val = numbers[i];\n        if (numbers[i] > max_val) max_val = numbers[i];\n    }\n\n    \n    if (min_val == max_val) {\n        std::fill(numbers.begin(), numbers.end(), 0.0f);\n        return numbers;\n    }\n\n    for (int i=0; i<numbers.size(); ++i) {\n        numbers[i] = (numbers[i] - min_val) / (max_val - min_val);\n    }\n\n    return numbers;\n}\n",
+        1.233,
+        1.027,
+        0.989,
+        1.002,
+        1.026,
+        30
+    ]
+}

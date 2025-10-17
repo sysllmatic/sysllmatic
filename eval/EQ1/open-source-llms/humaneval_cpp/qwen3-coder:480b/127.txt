@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nstring intersection( vector<int> interval1,vector<int> interval2){\nint inter1,inter2,l,i;\n    inter1=max(interval1[0],interval2[0]);\n    inter2=min(interval1[1],interval2[1]);\n    l=inter2-inter1;\n    if (l<2) return \"NO\";\n    for (i=2;i*i<=l;i++)\n        if (l%i==0) return \"NO\";\n    return \"YES\";\n}",
+        5.046,
+        0.111,
+        4941567.0,
+        20634.4,
+        8.962,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n\n\nconst int MAX_LENGTH = 1000000;  \nbool is_prime[MAX_LENGTH + 1];\nbool sieve_computed = false;\n\nvoid compute_sieve() {\n    if (sieve_computed) return;\n    \n    \n    for (int i = 0; i <= MAX_LENGTH; i++) {\n        is_prime[i] = true;\n    }\n    \n    is_prime[0] = is_prime[1] = false;\n    \n    for (int p = 2; p * p <= MAX_LENGTH; p++) {\n        if (is_prime[p]) {\n            for (int i = p * p; i <= MAX_LENGTH; i += p) {\n                is_prime[i] = false;\n            }\n        }\n    }\n    \n    sieve_computed = true;\n}\n\nstring intersection(vector<int> interval1, vector<int> interval2) {\n    \n    if (!sieve_computed) {\n        compute_sieve();\n    }\n    \n    \n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    \n    \n    int l = inter2 - inter1;\n    \n    \n    \n    bool valid_intersection = (l >= 2);\n    bool length_is_prime = valid_intersection && (l <= MAX_LENGTH) && is_prime[l];\n    \n    return length_is_prime ? \"YES\" : \"NO\";\n}",
+        0.989,
+        1.066,
+        0.174,
+        1.004,
+        1.07,
+        53
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<cstring>\nusing namespace std;\n\n\nconst int MAX_LENGTH = 1000000;\nconst int BIT_SIZE = (MAX_LENGTH + 1 + 7) / 8; \nunsigned char is_prime_bits[BIT_SIZE];\nbool sieve_computed = false;\n\n\n#define SET_BIT(arr, n) ((arr)[(n)/8] |= (1 << ((n)%8)))\n#define CLEAR_BIT(arr, n) ((arr)[(n)/8] &= ~(1 << ((n)%8)))\n#define CHECK_BIT(arr, n) (((arr)[(n)/8] >> ((n)%8)) & 1)\n\nvoid compute_sieve() {\n    if (sieve_computed) return;\n    \n    \n    memset(is_prime_bits, 0xFF, BIT_SIZE);\n    \n    \n    CLEAR_BIT(is_prime_bits, 0);\n    CLEAR_BIT(is_prime_bits, 1);\n    \n    \n    for (int p = 2; p * p <= MAX_LENGTH; p++) {\n        if (CHECK_BIT(is_prime_bits, p)) {  \n            \n            for (int i = p * p; i <= MAX_LENGTH; i += p) {\n                CLEAR_BIT(is_prime_bits, i);\n            }\n        }\n    }\n    \n    sieve_computed = true;\n}\n\n\nstring intersection(const vector<int>& interval1, const vector<int>& interval2) {\n    \n    if (!sieve_computed) {\n        compute_sieve();\n    }\n    \n    \n    int inter1 = max(interval1[0], interval2[0]);\n    int inter2 = min(interval1[1], interval2[1]);\n    \n    \n    int l = inter2 - inter1;\n    \n    \n    bool is_valid_length = (l >= 2) && (l <= MAX_LENGTH);\n    bool result = is_valid_length && CHECK_BIT(is_prime_bits, l);\n    \n    return result ? \"YES\" : \"NO\";\n}",
+        0.998,
+        1.046,
+        0.214,
+        1.01,
+        1.05,
+        62
+    ]
+}

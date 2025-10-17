@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring rounded_avg(int n,int m){\nif (n>m) return \"-1\";\n    int num=(m+n)/2;\n    string out=\"\";\n    while (num>0)\n    {\n        out=to_string(num%2)+out;\n        num=num/2;\n    }\n    return out;\n}",
+        4.73,
+        0.131,
+        4595062.2,
+        20999.2,
+        7.623,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    string out = \"\";\n    while (num > 0) {\n        out = to_string(num & 1) + out;\n        num >>= 1; \n    }\n    return out;\n}\n",
+        0.986,
+        1.012,
+        0.915,
+        1.01,
+        1.012,
+        17
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\nusing namespace std;\n\nstring rounded_avg(int n, int m) {\n    if (n > m) return \"-1\";\n    int num = (m + n) / 2;\n    char buffer[32]; \n    int index = 0;\n\n    while (num > 0) {\n        buffer[index++] = (num & 1) ? '1' : '0'; \n        num >>= 1;\n    }\n\n    buffer[index] = '\\0'; \n\n    \n    for (int i = 0; i < index / 2; ++i) {\n        char temp = buffer[i];\n        buffer[i] = buffer[index - 1 - i];\n        buffer[index - 1 - i] = temp;\n    }\n\n    return string(buffer); \n}\n",
+        0.909,
+        1.07,
+        0.956,
+        1.005,
+        1.07,
+        26
+    ]
+}

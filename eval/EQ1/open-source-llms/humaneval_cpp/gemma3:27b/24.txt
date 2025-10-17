@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint largest_divisor(int n){\nfor (int i=2;i*i<=n;i++)\n        if (n%i==0) return  n/i;\n    return 1;\n\n}",
+        4.641,
+        0.135,
+        2719513.8,
+        20783.2,
+        7.415,
+        11
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint largest_divisor(int n){\n    for (int i=2;i*i<=n;i++)\n        if (n%i==0) return  n/i;\n    return 1;\n\n}\n\n",
+        1.033,
+        1.0,
+        0.996,
+        0.994,
+        0.998,
+        13
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint largest_divisor(int n){\n    int sqrt_n = (int)sqrt(n);\n    for (int i=2;i<=sqrt_n;i++)\n        if (n%i==0) return  n/i;\n    return 1;\n\n}\n\n",
+        1.082,
+        1.068,
+        0.916,
+        1.0,
+        1.066,
+        14
+    ]
+}

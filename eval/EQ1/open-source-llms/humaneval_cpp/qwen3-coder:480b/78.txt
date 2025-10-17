@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint hex_key(string num){\nstring key=\"2357BD\";\n    int out=0;\n    for (int i=0;i<num.length();i++)\n    if (find(key.begin(),key.end(),num[i])!=key.end()) out+=1;\n    return out;\n}",
+        4.954,
+        0.104,
+        14634271.6,
+        20565.6,
+        9.593,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<stdlib.h>\n\nint hex_key(string num){\n    \n    static bool is_prime_hex[256] = {false};\n    static bool initialized = false;\n    \n    if (!initialized) {\n        is_prime_hex['2'] = true;\n        is_prime_hex['3'] = true;\n        is_prime_hex['5'] = true;\n        is_prime_hex['7'] = true;\n        is_prime_hex['B'] = true;\n        is_prime_hex['D'] = true;\n        initialized = true;\n    }\n    \n    int out = 0;\n    for (size_t i = 0; i < num.length(); i++) {\n        if (is_prime_hex[static_cast<unsigned char>(num[i])]) {\n            out += 1;\n        }\n    }\n    return out;\n}",
+        1.024,
+        1.044,
+        2.758,
+        1.002,
+        1.045,
+        29
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<stdlib.h>\n\nint hex_key(string num){\n    int out = 0;\n    for (size_t i = 0; i < num.length(); i++) {\n        char c = num[i];\n        switch (c) {\n            case '2':\n            case '3':\n            case '5':\n            case '7':\n            case 'B':\n            case 'D':\n                out += 1;\n                break;\n        }\n    }\n    return out;\n}",
+        1.027,
+        1.027,
+        2.713,
+        1.005,
+        1.028,
+        23
+    ]
+}

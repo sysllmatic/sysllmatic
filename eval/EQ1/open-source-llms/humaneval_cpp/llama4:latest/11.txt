@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring string_xor(string a,string b){\nstring output=\"\";\n    for (int i=0;(i<a.length() and i<b.length());i++)\n    {\n        if (i<a.length() and i<b.length())\n        {\n            if (a[i]== b[i]) \n            {\n                output+='0';\n            }  \n            else output+='1';\n        }\n        else\n        {\n            if (i>=a.length()) \n            {\n            output+=b[i];\n            }\n            else output+=a[i];\n        }\n    }\n    return output;\n}",
+        4.908,
+        0.135,
+        4731801.0,
+        20896.0,
+        7.417,
+        29
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nstd::string string_xor(const std::string& a, const std::string& b) {\n    std::string result;\n    size_t min_len = std::min(a.size(), b.size());\n    for (size_t i = 0; i < min_len; ++i) {\n        result += (a[i] == b[i]) ? '0' : '1';\n    }\n    return result;\n}\n\n",
+        1.035,
+        1.06,
+        0.908,
+        0.999,
+        1.057,
+        12
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nstd::string string_xor(const std::string& a, const std::string& b) {\n    std::string result;\n    size_t min_len = std::min(a.size(), b.size());\n    result.reserve(min_len);\n    for (size_t i = 0; i < min_len; ++i) {\n        result += (a[i] == b[i]) ? '0' : '1';\n    }\n    return result;\n}\n\n",
+        1.072,
+        0.955,
+        0.986,
+        1.005,
+        0.953,
+        13
+    ]
+}

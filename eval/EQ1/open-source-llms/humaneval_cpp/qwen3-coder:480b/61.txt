@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='(') level+=1;\n        if (brackets[i]==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        5.006,
+        0.106,
+        7267953.6,
+        20503.2,
+        9.459,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool correct_bracketing(string brackets) {\n    int level = 0;\n    size_t length = brackets.length();\n    \n    for (size_t i = 0; i < length; i++) {\n        \n        \n        int is_open = (brackets[i] == '(');\n        int is_close = (brackets[i] == ')');\n        level += is_open - is_close;  \n        \n        \n        \n        int underflow = (level < 0);\n        if (underflow) return false;\n    }\n    \n    \n    return (level == 0);\n}",
+        0.874,
+        1.026,
+        1.073,
+        1.004,
+        1.022,
+        27
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool correct_bracketing(const string& brackets) {\n    int level = 0;\n    const char* str = brackets.c_str();\n    const char* end = str + brackets.length();\n    \n    for (; str < end; ++str) {\n        level += (*str == '(') - (*str == ')');\n        if (__builtin_expect(level < 0, 0)) return false;\n    }\n    return level == 0;\n}",
+        0.786,
+        1.02,
+        1.138,
+        1.001,
+        1.015,
+        18
+    ]
+}

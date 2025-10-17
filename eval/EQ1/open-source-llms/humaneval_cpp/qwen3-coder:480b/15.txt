@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring string_sequence(int n){\nstring out=\"0\";\n    for (int i=1;i<=n;i++)\n    out=out+\" \"+to_string(i);\n    return out;\n}",
+        7.567,
+        0.152,
+        237059694.4,
+        20513.6,
+        6.561,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring string_sequence(int n){\n    \n    int total_size = 1; \n    for (int i = 1; i <= n; i++) {\n        total_size += 1 + to_string(i).length(); \n    }\n    \n    \n    string out;\n    out.reserve(total_size);\n    \n    \n    out = \"0\";\n    for (int i = 1; i <= n; i++) {\n        out.append(\" \");\n        out.append(to_string(i));\n    }\n    \n    return out;\n}",
+        1.512,
+        1.459,
+        16.257,
+        0.995,
+        1.461,
+        27
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring string_sequence(int n){\n    \n    \n    int estimated_size = 1 + n; \n    \n    \n    if (n >= 1000000) estimated_size += n * 7;  \n    else if (n >= 100000) estimated_size += n * 6;   \n    else if (n >= 10000) estimated_size += n * 5;    \n    else if (n >= 1000) estimated_size += n * 4;     \n    else if (n >= 100) estimated_size += n * 3;      \n    else if (n >= 10) estimated_size += n * 2;       \n    else estimated_size += n;                        \n    \n    string out;\n    out.reserve(estimated_size);\n    \n    \n    out = \"0\";\n    for (int i = 1; i <= n; i++) {\n        out += ' ';  \n        out += to_string(i);  \n    }\n    \n    return out;\n}",
+        1.548,
+        1.482,
+        23.334,
+        0.999,
+        1.484,
+        33
+    ]
+}

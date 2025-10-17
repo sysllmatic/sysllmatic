@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool correct_bracketing(string brackets){\nint level=0;\n    for (int i=0;i<brackets.length();i++)\n    {\n        if (brackets[i]=='(') level+=1;\n        if (brackets[i]==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        5.094,
+        0.125,
+        7758243.8,
+        20912.8,
+        8.021,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool correct_bracketing(string brackets){\n    int level=0;\n    for (int i=0;i<brackets.length();i++) {\n        char c = brackets[i];\n        if (c=='(') level+=1;\n        if (c==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        1.059,
+        0.977,
+        1.172,
+        1.002,
+        0.973,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool correct_bracketing(string brackets){\n    int level=0;\n    int len = brackets.length();\n    for (int i=0;i<len;i++) {\n        char c = brackets[i];\n        if (c=='(') level+=1;\n        if (c==')') level-=1;\n        if (level<0) return false;\n    }\n    if (level!=0) return false;\n    return true;\n}",
+        1.086,
+        0.897,
+        1.179,
+        1.006,
+        0.893,
+        19
+    ]
+}

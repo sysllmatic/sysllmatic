@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> odd_count(vector<string> lst){\nvector<string> out={};\n    for (int i=0;i<lst.size();i++)\n        {\n            int sum=0;\n            for (int j=0;j<lst[i].length();j++)\n                if (lst[i][j]>=48 and lst[i][j]<=57 and lst[i][j]%2==1)\n                sum+=1;\n            string s=\"the number of odd elements in the string i of the input.\";\n            string s2=\"\";\n            for (int j=0;j<s.length();j++)\n                if (s[j]=='i') s2=s2+to_string(sum);\n                else s2=s2+s[j];\n            out.push_back(s2);\n        }\n    return out;\n}",
+        6.589,
+        0.164,
+        124368722.4,
+        20880.0,
+        6.101,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<string> odd_count(vector<string> lst) {\n    vector<string> out = {};\n    for (const auto& s : lst) {\n        int sum = 0;\n        for (char c : s) {\n            if ((c >= '0' && c <= '9') && (c - '0') % 2 == 1)\n                sum++;\n        }\n        string result = \"the number of odd elements in the string i of the input.\";\n        size_t pos = 0;\n        while ((pos = result.find(\"i\", pos)) != string::npos) {\n            result.replace(pos, 1, to_string(sum));\n            pos += to_string(sum).length();\n        }\n        out.push_back(result);\n    }\n    return out;\n}\n",
+        1.304,
+        1.164,
+        4.669,
+        1.002,
+        1.162,
+        27
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> odd_count(const vector<string>& lst) {\n    vector<string> result;\n    const string template_str = \"the number of odd elements in the string i of the input.\";\n    for (const auto& s : lst) {\n        int count = 0;\n        for (char c : s) {\n            if ((c >= '0' && c <= '9') && (c - '0') % 2 == 1)\n                ++count;\n        }\n        string output = template_str;\n        size_t pos = 0;\n        while ((pos = output.find('i', pos)) != string::npos) {\n            output.replace(pos, 1, to_string(count));\n            pos += to_string(count).size();\n        }\n        result.push_back(output);\n    }\n    return result;\n}\n",
+        1.336,
+        1.204,
+        5.392,
+        1.001,
+        1.202,
+        23
+    ]
+}

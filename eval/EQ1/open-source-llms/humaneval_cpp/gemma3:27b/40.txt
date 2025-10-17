@@ -1,0 +1,20 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool triples_sum_to_zero(vector<int> l){\nfor (int i=0;i<l.size();i++)\n    for (int j=i+1;j<l.size();j++)\n    for (int k=j+1;k<l.size();k++)\n        if (l[i]+l[j]+l[k]==0) return true;\n    return false;\n}",
+        16.26,
+        0.346,
+        902887911.2,
+        20763.2,
+        2.889,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n\nbool triples_sum_to_zero(vector<int> l){\n    for (int i = 0; i < l.size(); ++i) {\n        unordered_set<int> seen;\n        for (int j = i + 1; j < l.size(); ++j) {\n            int complement = -l[i] - l[j];\n            if (seen.count(complement)) {\n                return true;\n            }\n            seen.insert(l[j]);\n        }\n    }\n    return false;\n}\n",
+        2.979,
+        2.711,
+        51.442,
+        0.996,
+        2.709,
+        19
+    ]
+}

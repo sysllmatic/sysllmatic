@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_happy(string s){\nif (s.length()<3) return false;\n    for (int i=2;i<s.length();i++)\n    if (s[i]==s[i-1] or s[i]==s[i-2]) return false;\n    return true;\n}",
+        4.797,
+        0.099,
+        5150881.4,
+        20574.4,
+        10.051,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool is_happy(const string& s){\n    const size_t len = s.length();\n    if (len < 3) return false;\n    \n    char c0 = s[0];\n    char c1 = s[1];\n    \n    for (size_t i = 2; i < len; i++) {\n        const char c2 = s[i];\n        if ((c2 == c1) | (c2 == c0)) return false;\n        c0 = c1;\n        c1 = c2;\n    }\n    return true;\n}",
+        0.998,
+        0.992,
+        1.051,
+        1.003,
+        0.995,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\ninline bool is_happy(const string& s){\n    const size_t len = s.length();\n    if (__builtin_expect(len < 3, 0)) return false;\n    \n    char c0 = s[0];\n    char c1 = s[1];\n    \n    for (size_t i = 2; i < len; i++) {\n        const char c2 = s[i];\n        if (__builtin_expect((c2 == c1) | (c2 == c0), 0)) return false;\n        c0 = c1;\n        c1 = c2;\n    }\n    return true;\n}",
+        1.002,
+        0.995,
+        1.028,
+        1.002,
+        0.998,
+        22
+    ]
+}

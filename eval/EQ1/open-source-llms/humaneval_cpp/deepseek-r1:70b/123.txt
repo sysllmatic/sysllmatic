@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> get_odd_collatz(int n){\nvector<int> out={1};\n    while (n!=1)\n    {\n        if (n%2==1) {out.push_back(n); n=n*3+1;}\n        else n=n/2;\n    }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        4.85,
+        0.135,
+        4770995.0,
+        20990.4,
+        7.383,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nvector<int> get_odd_collatz(int n) {\n    vector<int> out = {1};\n    while (n != 1) {\n        if (n % 2 == 1) {\n            out.push_back(n);\n            n = n * 3 + 1;\n        } else {\n            n /= 2;\n        }\n    }\n    sort(out.begin(), out.end());\n    return out;\n}\n",
+        1.006,
+        1.078,
+        0.971,
+        1.009,
+        1.08,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nvector<int> get_odd_collatz(int n) {\n    vector<int> out = {1};\n    \n    out.reserve(1000); \n    while (n != 1) {\n        if (n % 2 == 1) {\n            out.push_back(n);\n            n = n * 3 + 1;\n        } else {\n            n /= 2;\n        }\n    }\n    sort(out.begin(), out.end());\n    return out;\n}\n",
+        1.084,
+        1.014,
+        0.916,
+        1.005,
+        1.016,
+        21
+    ]
+}

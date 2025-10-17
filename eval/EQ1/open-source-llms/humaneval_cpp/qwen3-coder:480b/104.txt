@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> unique_digits(vector<int> x){\nvector<int> out={};\n    for (int i=0;i<x.size();i++)\n        {\n            int num=x[i];\n            bool u=true;\n            if (num==0) u=false;\n            while (num>0 and u)\n            {\n                if (num%2==0) u=false;\n                num=num/10;\n            }\n            if (u) out.push_back(x[i]);\n        }\n    sort(out.begin(),out.end());\n    return out;\n}",
+        4.887,
+        0.103,
+        5469750.8,
+        20549.6,
+        9.718,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<string>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> unique_digits(vector<int> x){\n    vector<int> out;\n    \n    out.reserve(x.size());\n    \n    for (int i=0; i<x.size(); i++) {\n        int num = x[i];\n        bool u = true;\n        \n        \n        if (num == 0) {\n            u = false;\n        } else {\n            \n            string num_str = to_string(abs(num)); \n            for (char c : num_str) {\n                int digit = c - '0';\n                \n                if ((digit & 1) == 0) {\n                    u = false;\n                    break;\n                }\n            }\n        }\n        \n        if (u) {\n            out.push_back(x[i]);\n        }\n    }\n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        0.992,
+        0.965,
+        1.026,
+        1.002,
+        0.963,
+        41
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> unique_digits(vector<int> x){\n    vector<int> out;\n    \n    \n    out.reserve(x.size());\n    \n    for (int i=0; i<x.size(); i++) {\n        int num = x[i];\n        bool u = true;\n        \n        \n        if (num == 0) {\n            u = false;\n        } else {\n            \n            int abs_num = abs(num);\n            \n            while (abs_num > 0 && u) {\n                int digit = abs_num % 10;\n                \n                if ((digit & 1) == 0) {\n                    u = false;\n                }\n                abs_num /= 10;\n            }\n        }\n        \n        if (u) {\n            out.push_back(x[i]);\n        }\n    }\n    \n    sort(out.begin(), out.end());\n    return out;\n}",
+        0.978,
+        0.978,
+        0.991,
+        1.0,
+        0.975,
+        42
+    ]
+}

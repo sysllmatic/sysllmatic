@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nstring file_name_check(string file_name){\nint numdigit=0,numdot=0;\n    if (file_name.length()<5) return \"No\";\n    char w=file_name[0];\n    if (w<65 or (w>90 and w<97) or w>122) return \"No\";\n    string last=file_name.substr(file_name.length()-4,4);\n    if (last!=\".txt\" and last!=\".exe\" and last!=\".dll\") return \"No\";\n    for (int i=0;i<file_name.length();i++)\n    {\n        if (file_name[i]>=48 and file_name[i]<=57) numdigit+=1;\n        if (file_name[i]=='.') numdot+=1;\n    }\n    if (numdigit>3 or numdot!=1) return \"No\";\n    return \"Yes\"; \n}",
+        4.868,
+        0.138,
+        6685297.6,
+        20860.8,
+        7.259,
+        21
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\n\nstring file_name_check(string file_name){\n    int numdigit=0,numdot=0;\n    if (file_name.length()<5) return \"No\";\n    char w=file_name[0];\n    if (w<65 or (w>90 and w<97) or w>122) return \"No\";\n    int len = file_name.length();\n    string last = file_name.substr(len-4,4);\n    if (last!=\".txt\" && last!=\".exe\" && last!=\".dll\") return \"No\";\n    for (int i=0;i<len;i++)\n    {\n        if (file_name[i]>=48 && file_name[i]<=57) numdigit+=1;\n        if (file_name[i]=='.') numdot+=1;\n    }\n    if (numdigit>3 or numdot!=1) return \"No\";\n    return \"Yes\";\n}\n",
+        0.975,
+        1.114,
+        1.035,
+        1.001,
+        1.11,
+        23
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring file_name_check(const string& file_name) {\n    if (file_name.length() < 5) return \"No\";\n    char w = file_name[0];\n    if (w < 65 || (w > 90 && w < 97) || w > 122) return \"No\";\n    string last = file_name.substr(file_name.length() - 4);\n    if (last != \".txt\" && last != \".exe\" && last != \".dll\") return \"No\";\n    int numdigit = 0, numdot = 0;\n    for (char c : file_name) {\n        if (isdigit(c)) {\n            numdigit++;\n            if (numdigit > 3) return \"No\";\n        }\n        if (c == '.') {\n            numdot++;\n            if (numdot > 1) return \"No\";\n        }\n    }\n    if (numdot != 1) return \"No\";\n    return \"Yes\";\n}",
+        1.049,
+        1.051,
+        1.195,
+        0.998,
+        1.048,
+        25
+    ]
+}

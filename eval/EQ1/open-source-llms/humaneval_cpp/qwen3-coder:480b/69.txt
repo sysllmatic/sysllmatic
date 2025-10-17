@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint search(vector<int> lst){\nvector<vector<int>> freq={};\n    int max=-1;\n    for (int i=0;i<lst.size();i++)\n    {\n        bool has=false;\n        for (int j=0;j<freq.size();j++)\n            if (lst[i]==freq[j][0]) \n            {\n            freq[j][1]+=1;\n            has=true;\n            if (freq[j][1]>=freq[j][0] and freq[j][0]>max) max=freq[j][0];\n            }\n        if (not(has)) \n        {\n        freq.push_back({lst[i],1});\n        if (max==-1 and lst[i]==1) max=1;\n        }\n    }\n    return max;\n}",
+        45.326,
+        0.84,
+        3459739730.6,
+        20488.0,
+        1.19,
+        27
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<unordered_map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint search(vector<int> lst){\n    unordered_map<int, int> freq;\n    int max_val = -1;\n    \n    for (int i = 0; i < lst.size(); i++) {\n        freq[lst[i]] += 1;\n        \n        if (freq[lst[i]] >= lst[i] && lst[i] > max_val) {\n            max_val = lst[i];\n        }\n        \n        \n        if (max_val == -1 && lst[i] == 1) {\n            max_val = 1;\n        }\n    }\n    \n    return max_val;\n}",
+        8.627,
+        7.567,
+        79.986,
+        0.999,
+        7.559,
+        27
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<unordered_map>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint search(const vector<int>& lst){\n    unordered_map<int, int> freq;\n    int max_val = -1;\n    const size_t sz = lst.size();\n    \n    for (size_t i = 0; i < sz; i++) {\n        const int current_val = lst[i];\n        const int current_freq = ++freq[current_val];\n        \n        if (current_freq >= current_val && current_val > max_val) {\n            max_val = current_val;\n        }\n        \n        \n        else if (max_val == -1 && current_val == 1) {\n            max_val = 1;\n        }\n    }\n    \n    return max_val;\n}",
+        7.557,
+        7.28,
+        111.944,
+        1.003,
+        7.273,
+        29
+    ]
+}

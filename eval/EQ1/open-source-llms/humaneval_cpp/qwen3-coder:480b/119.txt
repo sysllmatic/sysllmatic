@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring match_parens(vector<string> lst){\nstring l1=lst[0]+lst[1];\n    int i,count=0;\n    bool can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (count!=0) return \"No\";\n    if (can==true) return \"Yes\";\n    l1=lst[1]+lst[0];\n    can=true;\n    for (i=0;i<l1.length();i++)\n        {\n            if (l1[i]=='(') count+=1;\n            if (l1[i]==')') count-=1;\n            if (count<0) can=false;\n        }\n    if (can==true) return \"Yes\";\n    return \"No\";\n}",
+        4.913,
+        0.104,
+        6690715.0,
+        20570.4,
+        9.614,
+        30
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring match_parens(vector<string> lst){\n    \n    int count = 0;\n    const string& s1 = lst[0];\n    const string& s2 = lst[1];\n    \n    \n    for (size_t i = 0; i < s1.length(); i++) {\n        count += (s1[i] == '(') - (s1[i] == ')');\n        if (count < 0) goto check_second;\n    }\n    \n    \n    for (size_t i = 0; i < s2.length(); i++) {\n        count += (s2[i] == '(') - (s2[i] == ')');\n        if (count < 0) break;\n    }\n    \n    if (count == 0) return \"Yes\";\n    \n    \n    check_second:\n    count = 0;\n    \n    \n    for (size_t i = 0; i < s2.length(); i++) {\n        count += (s2[i] == '(') - (s2[i] == ')');\n        if (count < 0) return \"No\";\n    }\n    \n    \n    for (size_t i = 0; i < s1.length(); i++) {\n        count += (s1[i] == '(') - (s1[i] == ')');\n        if (count < 0) return \"No\";\n    }\n    \n    if (count == 0) return \"Yes\";\n    return \"No\";\n}",
+        1.007,
+        1.017,
+        1.058,
+        1.0,
+        1.015,
+        47
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstatic inline bool is_valid_order(const string& s1, const string& s2) {\n    int count = 0;\n    const size_t len1 = s1.length();\n    const size_t len2 = s2.length();\n    \n    for (size_t i = 0; i < len1; i++) {\n        count += (s1[i] == '(') - (s1[i] == ')');\n        if (count < 0) return false;\n    }\n    \n    for (size_t i = 0; i < len2; i++) {\n        count += (s2[i] == '(') - (s2[i] == ')');\n        if (count < 0) return false;\n    }\n    \n    return count == 0;\n}\n\nstring match_parens(vector<string> lst){\n    const string& s1 = lst[0];\n    const string& s2 = lst[1];\n    \n    if (is_valid_order(s1, s2)) return \"Yes\";\n    if (is_valid_order(s2, s1)) return \"Yes\";\n    return \"No\";\n}",
+        1.004,
+        1.03,
+        1.096,
+        1.002,
+        1.028,
+        34
+    ]
+}

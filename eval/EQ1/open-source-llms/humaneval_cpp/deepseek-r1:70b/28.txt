@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring concatenate(vector<string> strings){\nstring out=\"\";\n    for (int i=0;i<strings.size();i++)\n        out=out+strings[i];\n    return out;\n}",
+        5.406,
+        0.167,
+        70695297.8,
+        20743.2,
+        5.976,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring concatenate(vector<string> strings) {\n    size_t total_length = 0;\n    for (const auto& str : strings) {\n        total_length += str.size();\n    }\n    string out;\n    out.reserve(total_length);\n    for (size_t i=0; i<strings.size(); ++i) {\n        out += strings[i];\n    }\n    return out;\n}\n",
+        1.066,
+        1.18,
+        2.881,
+        0.986,
+        1.181,
+        20
+    ],
+    "2": [
+        "#include<string>\n#include<vector>\nusing namespace std;\n\nstring concatenate(const vector<string>& strings) {\n    size_t total_length = 0;\n    for (const auto& str : strings) {\n        total_length += str.size();\n    }\n    string out;\n    out.reserve(total_length);\n    for (size_t i=0; i<strings.size(); ++i) {\n        out += strings[i];\n    }\n    return out;\n}\n",
+        1.072,
+        1.259,
+        3.27,
+        0.995,
+        1.26,
+        16
+    ]
+}

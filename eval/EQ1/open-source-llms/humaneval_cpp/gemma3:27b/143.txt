@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring words_in_sentence(string sentence){\nstring out=\"\";\n    string current=\"\";\n    sentence=sentence+' ';\n\n    for (int i=0;i<sentence.size();i++)\n    if (sentence[i]!=' ') current=current+sentence[i];\n    else\n    {\n        bool isp=true;\n        int l=current.length();\n        if (l<2) isp=false;\n        for (int j=2;j*j<=l;j++)\n            if (l%j==0) isp=false;\n        if (isp) out=out+current+' ';\n        current=\"\";        \n    }\n    if (out.length()>0)\n        out.pop_back();\n    return out;\n}",
+        5.137,
+        0.13,
+        5176140.2,
+        20865.6,
+        7.681,
+        27
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<vector>\n#include<cmath>\nusing namespace std;\n\nstring words_in_sentence(string sentence){\n    vector<string> prime_words;\n    string current = \"\";\n    sentence += ' ';\n\n    for (int i = 0; i < sentence.size(); ++i) {\n        if (sentence[i] != ' ') {\n            current += sentence[i];\n        } else {\n            int len = current.length();\n            if (len >= 2) {\n                bool is_prime = true;\n                for (int j = 2; j * j <= len; ++j) {\n                    if (len % j == 0) {\n                        is_prime = false;\n                        break;\n                    }\n                }\n                if (is_prime) {\n                    prime_words.push_back(current);\n                }\n            }\n            current = \"\";\n        }\n    }\n\n    string out = \"\";\n    for (size_t i = 0; i < prime_words.size(); ++i) {\n        out += prime_words[i];\n        if (i < prime_words.size() - 1) {\n            out += ' ';\n        }\n    }\n    return out;\n}",
+        0.64,
+        0.958,
+        1.032,
+        1.001,
+        0.958,
+        41
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\n#include<vector>\n#include<cmath>\n#include<sstream>\nusing namespace std;\n\n\nconst vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};\n\nbool is_prime(int n) {\n    if (n <= 1) return false;\n    for (int p : primes) {\n        if (p >= n) break;\n        if (n % p == 0) return false;\n    }\n    return true;\n}\n\nstring words_in_sentence(string sentence) {\n    vector<string> prime_words;\n    string current = \"\";\n    sentence += ' ';\n\n    for (int i = 0; i < sentence.size(); ++i) {\n        if (sentence[i] != ' ') {\n            current += sentence[i];\n        } else {\n            int len = current.length();\n            if (len >= 2) {\n                if (is_prime(len)) {\n                    prime_words.push_back(current);\n                }\n            }\n            current = \"\";\n        }\n    }\n\n    stringstream ss;\n    for (size_t i = 0; i < prime_words.size(); ++i) {\n        ss << prime_words[i];\n        if (i < prime_words.size() - 1) {\n            ss << ' ';\n        }\n    }\n    return ss.str();\n}",
+        1.1,
+        0.92,
+        1.007,
+        1.005,
+        0.921,
+        47
+    ]
+}

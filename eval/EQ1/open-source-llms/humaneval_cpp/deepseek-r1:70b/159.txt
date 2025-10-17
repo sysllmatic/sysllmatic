@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> eat(int number,int need,int remaining){\nif (need>remaining) return {number+remaining, 0};\n    return {number+need,remaining-need};\n}",
+        6.55,
+        0.124,
+        4913931.2,
+        20988.0,
+        8.062,
+        10
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nvector<int> eat(int number, int need, int remaining) {\n    int used = min(need, remaining);\n    return {number + used, remaining - used};\n}\n",
+        0.755,
+        1.047,
+        1.001,
+        1.005,
+        1.046,
+        11
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nvector<int> eat(int number, int need, int remaining) {\n    \n    int used = (need < remaining) ? need : remaining;\n    return {number + used, remaining - used};\n}\n",
+        1.386,
+        0.93,
+        1.024,
+        1.005,
+        0.929,
+        12
+    ]
+}

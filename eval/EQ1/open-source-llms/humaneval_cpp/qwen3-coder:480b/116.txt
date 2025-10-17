@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_array(vector<int> arr){\nvector<int> bin={};\n    int m;\n\n    for (int i=0;i<arr.size();i++)\n    {\n        int b=0,n=abs(arr[i]);\n        while (n>0)\n        {\n            b+=n%2;n=n/2;\n        }\n        bin.push_back(b);\n    }\n    for (int i=0;i<arr.size();i++)\n    for (int j=1;j<arr.size();j++)\n    if (bin[j]<bin[j-1] or (bin[j]==bin[j-1] and arr[j]<arr[j-1]))\n    {\n        m=arr[j];arr[j]=arr[j-1];arr[j-1]=m;\n        m=bin[j];bin[j]=bin[j-1];bin[j-1]=m;\n    }\n    return arr;\n}",
+        303.042,
+        5.558,
+        25533244713.4,
+        20448.0,
+        0.18,
+        28
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> sort_array(vector<int> arr){\n    \n    vector<pair<int, int>> bit_value_pairs(arr.size());\n    \n    \n    for (int i = 0; i < arr.size(); i++) {\n        bit_value_pairs[i] = {__builtin_popcount(abs(arr[i])), arr[i]};\n    }\n    \n    \n    sort(bit_value_pairs.begin(), bit_value_pairs.end(), \n         [](const pair<int, int>& a, const pair<int, int>& b) {\n             if (a.first != b.first) {\n                 return a.first < b.first;  \n             }\n             return a.second < b.second;    \n         });\n    \n    \n    for (int i = 0; i < arr.size(); i++) {\n        arr[i] = bit_value_pairs[i].second;\n    }\n    \n    return arr;\n}",
+        56.68,
+        49.998,
+        461.31,
+        0.998,
+        49.911,
+        32
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> sort_array(vector<int> arr){\n    \n    sort(arr.begin(), arr.end(), \n         [](const int& a, const int& b) {\n             int bit_count_a = __builtin_popcount(abs(a));\n             int bit_count_b = __builtin_popcount(abs(b));\n             \n             if (bit_count_a != bit_count_b) {\n                 return bit_count_a < bit_count_b;  \n             }\n             return a < b;    \n         });\n    \n    return arr;\n}",
+        56.761,
+        49.102,
+        539.085,
+        0.998,
+        49.009,
+        22
+    ]
+}

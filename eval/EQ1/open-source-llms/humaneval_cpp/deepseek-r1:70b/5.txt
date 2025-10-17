@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> intersperse(vector<int> numbers, int delimeter){\nvector<int> out={};\n    if (numbers.size()>0) out.push_back(numbers[0]);\n    for (int i=1;i<numbers.size();i++)\n    {\n        out.push_back(delimeter);\n        out.push_back(numbers[i]);\n\n    }\n    return out;\n}",
+        5.205,
+        0.125,
+        11403412.2,
+        20749.6,
+        7.962,
+        17
+    ],
+    "1": [
+        "#include <vector>\nusing namespace std;\n\nvector<int> intersperse(const vector<int>& numbers, int delimeter) {\n    if (numbers.empty()) return {};\n    \n    \n    size_t total_elements = numbers.size() * 2 - 1;\n    vector<int> out;\n    out.reserve(total_elements);\n    \n    out.push_back(numbers[0]);\n    for (size_t i = 1; i < numbers.size(); ++i) {\n        out.push_back(delimeter);\n        out.push_back(numbers[i]);\n    }\n    return out;\n}",
+        1.036,
+        0.998,
+        1.064,
+        0.995,
+        1.001,
+        18
+    ],
+    "2": [
+        "#include <vector>\nusing namespace std;\n\nvector<int> intersperse(const vector<int>& numbers, int delimeter) {\n    if (numbers.empty()) return {};\n\n    size_t total_elements = numbers.size() * 2 -1;\n    vector<int> out;\n    out.reserve(total_elements);\n\n    out.push_back(numbers[0]);\n    for (size_t i = 1; i < numbers.size(); ++i) {\n        out.push_back(delimeter);\n        out.push_back(numbers[i]);\n    }\n    return out;\n}",
+        1.058,
+        0.952,
+        1.081,
+        0.997,
+        0.955,
+        17
+    ]
+}

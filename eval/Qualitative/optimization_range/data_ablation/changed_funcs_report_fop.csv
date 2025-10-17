@@ -1,0 +1,16 @@
+file_name,functions_compared,functions_changed
+AbstractPDFStream.java,20,6
+FOElementMapping.java,68,1
+FOUserAgent.java,80,6
+FopFactoryBuilder.java,100,67
+ImageHandlerRegistry.java,11,10
+InputHandler.java,14,7
+LayoutManagerMapping.java,37,7
+Main.java,9,7
+PDFDocumentHandler.java,32,4
+PDFNumber.java,9,4
+PDFStream.java,16,4
+PageSequenceLayoutManager.java,38,5
+Property.java,19,1
+RendererFactory.java,23,15
+AVERAGE,34.000000,10.285714

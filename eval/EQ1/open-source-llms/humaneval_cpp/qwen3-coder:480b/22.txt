@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<boost/any.hpp>\n#include<list>\ntypedef std::list<boost::any> list_any;\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> filter_integers(list_any values){\nlist_any::iterator it;\n    boost::any anyone;\n    vector<int> out;\n    for (it=values.begin();it!=values.end();it++)\n    {\n         anyone=*it;\n        if( anyone.type() == typeid(int) )\n           out.push_back(boost::any_cast<int>(*it));\n    }\n    return out;\n}",
+        5.79,
+        0.121,
+        80350764.6,
+        20392.0,
+        8.241,
+        22
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<boost/any.hpp>\n#include<list>\ntypedef std::list<boost::any> list_any;\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> filter_integers(list_any values){\n    vector<int> out;\n    \n    out.reserve(values.size() > 10 ? values.size()/2 : values.size());\n    \n    \n    for (const auto& anyone : values) {\n        if (anyone.type() == typeid(int)) {\n            out.push_back(boost::any_cast<int>(anyone));\n        }\n    }\n    \n    return out;\n}",
+        1.029,
+        1.051,
+        1.104,
+        0.998,
+        1.053,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<boost/any.hpp>\n#include<list>\ntypedef std::list<boost::any> list_any;\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> filter_integers(list_any values) noexcept {\n    vector<int> out;\n    \n    \n    if (values.size() > 0) {\n        out.reserve(min(values.size(), static_cast<size_t>(100)));\n    }\n    \n    \n    const std::type_info& int_type = typeid(int);\n    \n    for (const auto& anyone : values) {\n        if (anyone.type() == int_type) {\n            out.push_back(boost::any_cast<int>(anyone));\n        }\n    }\n    \n    return out;\n}",
+        1.02,
+        1.043,
+        1.111,
+        0.995,
+        1.045,
+        30
+    ]
+}

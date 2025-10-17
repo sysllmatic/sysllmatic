@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(vector<int> numbers){\nint sum=0,product=1;\n    for (int i=0;i<numbers.size();i++)\n    {\n        sum+=numbers[i];\n        product*=numbers[i];\n    }\n    return {sum,product};\n}",
+        4.934,
+        0.102,
+        7075525.0,
+        20434.4,
+        9.756,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(vector<int> numbers){\n    int sum1=0, sum2=0, product1=1, product2=1;\n    auto it = numbers.begin();\n    auto end = numbers.end();\n    \n    \n    for (; it != end && (it + 1) != end; it += 2)\n    {\n        sum1 += *it;\n        product1 *= *it;\n        sum2 += *(it + 1);\n        product2 *= *(it + 1);\n    }\n    \n    \n    if (it != end) {\n        sum1 += *it;\n        product1 *= *it;\n    }\n    \n    \n    int sum = sum1 + sum2;\n    int product = product1 * product2;\n    \n    return {sum, product};\n}",
+        1.013,
+        1.008,
+        0.811,
+        0.994,
+        1.011,
+        32
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> sum_product(const vector<int>& numbers){\n    int sum1=0, sum2=0, product1=1, product2=1;\n    size_t n = numbers.size();\n    \n    \n    for (size_t i = 0; i + 1 < n; i += 2)\n    {\n        sum1 += numbers[i];\n        product1 *= numbers[i];\n        sum2 += numbers[i + 1];\n        product2 *= numbers[i + 1];\n    }\n    \n    \n    if (n % 2 == 1) {\n        sum1 += numbers[n - 1];\n        product1 *= numbers[n - 1];\n    }\n    \n    \n    int sum = sum1 + sum2;\n    int product = product1 * product2;\n    \n    return {sum, product};\n}",
+        0.983,
+        0.973,
+        1.071,
+        0.997,
+        0.976,
+        31
+    ]
+}

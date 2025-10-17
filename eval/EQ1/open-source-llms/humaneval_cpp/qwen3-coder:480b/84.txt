@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring solve(int N){\nstring str,bi=\"\";\n    str=to_string(N);\n    int i,sum=0;\n    for (int i=0;i<str.length();i++)\n        sum+=str[i]-48;\n    while (sum>0)\n    {\n        bi=to_string(sum%2)+bi;\n        sum=sum/2;\n    }\n    return bi;\n}",
+        4.951,
+        0.104,
+        4689953.6,
+        20563.2,
+        9.621,
+        19
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring solve(int N){\n    \n    int sum = 0;\n    int temp = N;\n    \n    \n    if (temp < 0) temp = -temp;\n    \n    \n    while (temp > 0) {\n        sum += temp % 10;\n        temp /= 10;\n    }\n    \n    \n    if (N == 0) sum = 0;\n    \n    \n    if (sum == 0) return \"0\";\n    \n    string bi = \"\";\n    \n    \n    while (sum > 0) {\n        bi += (sum & 1) ? '1' : '0';\n        sum >>= 1;\n    }\n    \n    \n    reverse(bi.begin(), bi.end());\n    \n    return bi;\n}",
+        1.035,
+        1.05,
+        1.088,
+        1.005,
+        1.048,
+        39
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring solve(int N){\n    \n    int sum = 0;\n    int temp = N;\n    \n    \n    if (N == 0) {\n        sum = 0;\n    } else {\n        \n        while (temp != 0) {  \n            sum += abs(temp % 10);  \n            temp /= 10;\n        }\n    }\n    \n    \n    if (sum == 0) return \"0\";\n    \n    \n    int bits = 0;\n    int temp_sum = sum;\n    while (temp_sum > 0) {\n        bits++;\n        temp_sum >>= 1;\n    }\n    \n    \n    string bi(bits, '0');\n    \n    \n    int index = bits - 1;\n    while (sum > 0) {\n        bi[index--] = (sum & 1) ? '1' : '0';\n        sum >>= 1;\n    }\n    \n    return bi;\n}",
+        1.027,
+        1.037,
+        1.022,
+        1.006,
+        1.035,
+        45
+    ]
+}

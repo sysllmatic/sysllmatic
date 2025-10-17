@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint next_smallest(vector<int> lst){\nsort(lst.begin(),lst.end());\n    for (int i=1;i<lst.size();i++)\n        if (lst[i]!=lst[i-1]) return lst[i];\n    return -1;\n}",
+        4.881,
+        0.134,
+        5045429.4,
+        20772.0,
+        7.455,
+        12
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <limits>\n\nint next_smallest(std::vector<int> lst) {\n    if (lst.empty()) return -1;\n\n    int min_val = lst[0];\n    for (int val : lst) {\n        if (val < min_val) {\n            min_val = val;\n        }\n    }\n\n    int next_smallest_val = std::numeric_limits<int>::max();\n    for (int val : lst) {\n        if (val > min_val && val < next_smallest_val) {\n            next_smallest_val = val;\n        }\n    }\n\n    if (next_smallest_val == std::numeric_limits<int>::max()) {\n        return -1;\n    }\n    return next_smallest_val;\n}\n",
+        1.074,
+        0.966,
+        1.063,
+        0.993,
+        0.966,
+        27
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <vector>\n#include <algorithm>\n#include <limits>\n\nint next_smallest(std::vector<int> lst) {\n    if (lst.empty()) return -1;\n\n    int min_val = lst[0];\n    int next_smallest_val = std::numeric_limits<int>::max();\n\n    for (int val : lst) {\n        if (val < min_val) {\n            next_smallest_val = min_val;\n            min_val = val;\n        } else if (val > min_val && val < next_smallest_val) {\n            next_smallest_val = val;\n        }\n    }\n\n    if (next_smallest_val == std::numeric_limits<int>::max()) {\n        return -1;\n    }\n    return next_smallest_val;\n}",
+        0.787,
+        0.982,
+        1.069,
+        0.996,
+        0.982,
+        25
+    ]
+}

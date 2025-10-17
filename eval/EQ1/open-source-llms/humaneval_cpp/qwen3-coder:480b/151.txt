@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nlong long double_the_difference(vector<float> lst){\nlong long sum=0;\n    for (int i=0;i<lst.size();i++)\n    if (lst[i]-round(lst[i])<1e-4)\n    if (lst[i]>0 and (int)(round(lst[i]))%2==1) sum+=(int)(round(lst[i]))*(int)(round(lst[i]));\n    return sum;\n}",
+        5.017,
+        0.107,
+        12381657.6,
+        20557.6,
+        9.364,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nlong long double_the_difference(const vector<float>& lst) {\n    long long sum = 0;\n    const size_t size = lst.size();\n    \n    for (size_t i = 0; i < size; i++) {\n        const float val = lst[i];\n        const float rounded_val = round(val);\n        \n        \n        if (fabs(val - rounded_val) < 1e-4f) {\n            const int int_val = (int)rounded_val;\n            \n            \n            if (int_val > 0 && (int_val & 1)) {  \n                sum += (long long)int_val * int_val;  \n            }\n        }\n    }\n    \n    return sum;\n}",
+        1.035,
+        1.061,
+        1.27,
+        1.008,
+        1.057,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nlong long double_the_difference(const vector<float>& lst) {\n    long long sum = 0;\n    const size_t size = lst.size();\n    \n    \n    size_t i = 0;\n    for (; i + 3 < size; i += 4) {\n        \n        for (int j = 0; j < 4; j++) {\n            const float val = lst[i + j];\n            \n            \n            const float truncated = truncf(val);  \n            const float diff = fabsf(val - truncated);  \n            \n            if (diff < 1e-4f) {\n                const int int_val = (int)truncated;\n                \n                \n                if (int_val > 0 && (int_val & 1)) {\n                    sum += (long long)int_val * int_val;\n                }\n            }\n        }\n    }\n    \n    \n    for (; i < size; i++) {\n        const float val = lst[i];\n        const float truncated = truncf(val);\n        const float diff = fabsf(val - truncated);\n        \n        if (diff < 1e-4f) {\n            const int int_val = (int)truncated;\n            \n            if (int_val > 0 && (int_val & 1)) {\n                sum += (long long)int_val * int_val;\n            }\n        }\n    }\n    \n    return sum;\n}",
+        1.036,
+        1.058,
+        1.346,
+        1.005,
+        1.055,
+        50
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring filp_case(string str){\nstring out=\"\";\n    for (int i=0;i<str.length();i++)\n    {\n        char w=str[i];\n        if (w>=97 and w<=122) {w-=32;}\n        else\n            if (w>=65 and w<=90){ w+=32;}\n        out=out+w;\n    }\n    return out;\n}",
+        6.003,
+        0.152,
+        53850984.0,
+        20728.8,
+        6.566,
+        18
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n\nstd::string filp_case(const std::string& str) {\n    std::string out;\n    out.reserve(str.length()); \n\n    for (char c : str) {\n        if (c >= 'a' && c <= 'z') {\n            out += c - 32; \n        } else if (c >= 'A' && c <= 'Z') {\n            out += c + 32; \n        } else {\n            out += c; \n        }\n    }\n\n    return out;\n}\n\n\n",
+        1.195,
+        1.158,
+        7.472,
+        0.997,
+        1.159,
+        21
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nstd::string filp_case(const std::string& str) {\n    std::string out = str;\n    for (char& c : out) {\n        if (c >= 'a' && c <= 'z') {\n            c -= 32;\n        } else if (c >= 'A' && c <= 'Z') {\n            c += 32;\n        }\n    }\n    return out;\n}\n\n\n",
+        1.276,
+        1.21,
+        7.79,
+        0.994,
+        1.211,
+        16
+    ]
+}

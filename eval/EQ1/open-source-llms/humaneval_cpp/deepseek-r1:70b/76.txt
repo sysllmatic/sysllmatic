@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool is_simple_power(int x,int n){\nint p=1,count=0;\n    while (p<=x and count<100)\n    {\n        if (p==x) return true;\n        p=p*n;count+=1;\n    }\n    return false;\n}",
+        4.58,
+        0.135,
+        3129848.2,
+        20811.2,
+        7.422,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool is_simple_power(int x, int n) {\n    if (x == 1) return true;\n    int count = 0;\n    for (int p = 1; p <= x; p *= n) {\n        if (p == x)\n            return true;\n        ++count;\n        if (count >= 100)\n            break;\n    }\n    return false;\n}\n",
+        1.052,
+        1.023,
+        1.125,
+        1.004,
+        1.019,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool is_simple_power(int x, int n) {\n    if (x == 1) return true;\n    int count = 0;\n    for (int p = 1; p <= x; p *= n) {\n        if (p == x)\n            return true;\n        ++count;\n        if (count >= 100)\n            break;\n    }\n    return false;\n}\n",
+        1.06,
+        1.189,
+        1.082,
+        0.998,
+        1.184,
+        18
+    ]
+}

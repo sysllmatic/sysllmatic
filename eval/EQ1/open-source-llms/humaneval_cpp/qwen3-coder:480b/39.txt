@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint prime_fib(int n){\nint f1,f2,m;\n    f1=1;f2=2;\n    int count=0;\n    while (count<n)\n    {\n        f1=f1+f2;\n        m=f1;f1=f2;f2=m;\n        bool isprime=true;\n        for (int w=2;w*w<=f1;w++)\n            if (f1%w==0)\n            {\n             isprime=false; break;\n            }\n        if (isprime) count+=1;\n        if (count==n) return f1;\n    }\n\n}",
+        4.771,
+        0.097,
+        3233782.0,
+        20508.8,
+        10.294,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<stdlib.h>\n\n\nstatic const long long prime_fib_cache[] = {\n    2, 3, 5, 13, 89, 233, 1597, 28657, 514229, 433494437,\n    2971215073LL\n};\nstatic const int cache_size = sizeof(prime_fib_cache) / sizeof(prime_fib_cache[0]);\n\nlong long prime_fib(int n){\n    if (n <= 0) return -1; \n    \n    \n    if (n <= cache_size) {\n        return prime_fib_cache[n-1];\n    }\n    \n    \n    long long f1 = 1, f2 = 2;\n    int count = 0;\n    \n    \n    if (n == 1) return 2; \n    count = 1;\n    \n    while (count < n) {\n        long long temp = f1 + f2;\n        f1 = f2;\n        f2 = temp;\n        \n        \n        bool is_prime = true;\n        if (f1 <= 1) {\n            is_prime = false;\n        } else if (f1 <= 3) {\n            is_prime = true;\n        } else if (f1 % 2 == 0 || f1 % 3 == 0) {\n            is_prime = false;\n        } else {\n            for (long long i = 5; i * i <= f1; i += 6) {\n                if (f1 % i == 0 || f1 % (i + 2) == 0) {\n                    is_prime = false;\n                    break;\n                }\n            }\n        }\n        \n        if (is_prime) {\n            count++;\n            if (count == n) return f1;\n        }\n    }\n    \n    return f1;\n}",
+        0.861,
+        0.918,
+        0.986,
+        1.004,
+        0.918,
+        56
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<stdlib.h>\n#include<stdbool.h>\n\n\nstatic const long long prime_fib_cache[] = {\n    2LL, 3LL, 5LL, 13LL, 89LL, 233LL, 1597LL, 28657LL, 514229LL, 433494437LL,\n    2971215073LL\n};\nstatic const int cache_size = sizeof(prime_fib_cache) / sizeof(prime_fib_cache[0]);\n\n\nbool is_prime(long long num) {\n    if (num <= 1) return false;\n    if (num <= 3) return true;\n    if (num % 2 == 0 || num % 3 == 0) return false;\n    \n    \n    for (long long i = 5; i * i <= num; i += 6) {\n        if (num % i == 0 || num % (i + 2) == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nlong long prime_fib(int n){\n    if (n <= 0) return -1; \n    \n    \n    if (n <= cache_size) {\n        return prime_fib_cache[n-1];\n    }\n    \n    \n    \n    long long f1 = 1, f2 = 2;\n    int count = 0;\n    \n    \n    \n    count = cache_size;\n    \n    \n    while (count < n) {\n        long long next = f1 + f2;\n        f1 = f2;\n        f2 = next;\n        \n        if (is_prime(f1)) {\n            count++;\n            if (count == n) return f1;\n        }\n    }\n    \n    return f1;\n}",
+        1.035,
+        0.912,
+        1.173,
+        0.999,
+        0.912,
+        57
+    ]
+}

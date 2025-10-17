@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<string> filter_by_substring(vector<string> strings, string substring){\nvector<string> out;\n    for (int i=0;i<strings.size();i++)\n    {\n        if (strings[i].find(substring)!=strings[i].npos)\n        out.push_back(strings[i]);\n    }\n    return out;\n}",
+        4.872,
+        0.137,
+        15975082.2,
+        20844.0,
+        7.269,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nvector<string> filter_by_substring(vector<string> strings, string substring){\n    vector<string> out;\n    for (int i=0;i<strings.size();i++){\n        if (strings[i].length() >= substring.length()) {\n            if (strings[i].find(substring)!=string::npos)\n                out.push_back(strings[i]);\n        }\n    }\n    return out;\n}",
+        1.02,
+        1.06,
+        1.002,
+        1.001,
+        1.063,
+        15
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nvector<string> filter_by_substring(vector<string> strings, string substring){\n    vector<string> out;\n    out.reserve(strings.size() / 10); \n    for (int i=0;i<strings.size();i++){\n        if (strings[i].length() >= substring.length()) {\n            if (strings[i].find(substring)!=string::npos)\n                out.emplace_back(strings[i]);\n        }\n    }\n    return out;\n}",
+        1.027,
+        1.047,
+        0.969,
+        0.998,
+        1.05,
+        16
+    ]
+}

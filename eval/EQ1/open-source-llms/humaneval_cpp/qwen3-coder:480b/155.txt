@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> even_odd_count(long long num){\nstring w=to_string(abs(num));\n    int n1=0,n2=0;\n    for (int i=0;i<w.length();i++)\n    if (w[i]%2==1) n1+=1;\n    else n2+=1;\n    return {n2,n1};\n}",
+        4.964,
+        0.106,
+        4676507.0,
+        20445.6,
+        9.381,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> even_odd_count(long long num){\n    \n    num = abs(num);\n    \n    \n    if (num == 0) {\n        return {1, 0}; \n    }\n    \n    int even_count = 0;\n    int odd_count = 0;\n    \n    \n    while (num > 0) {\n        int digit = num % 10;\n        if (digit & 1) {  \n            odd_count++;\n        } else {\n            even_count++;\n        }\n        num /= 10;\n    }\n    \n    return {even_count, odd_count};\n}",
+        1.045,
+        1.086,
+        1.0,
+        0.998,
+        1.091,
+        32
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> even_odd_count(long long num){\n    \n    num = abs(num);\n    \n    \n    if (num == 0) {\n        return {1, 0}; \n    }\n    \n    int even_count = 0;\n    int odd_count = 0;\n    \n    \n    while (num > 0) {\n        int digit = num % 10;\n        \n        \n        \n        odd_count += digit & 1;\n        even_count += (digit & 1) ^ 1;  \n        num /= 10;\n    }\n    \n    return {even_count, odd_count};\n}",
+        1.051,
+        1.107,
+        1.006,
+        0.995,
+        1.111,
+        32
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring solve(string s){\nint nletter=0;\n    string out=\"\";\n    for (int i=0;i<s.length();i++)\n    {\n        char w=s[i];\n        if (w>=65 and w<=90) w=w+32;\n        else if (w>=97 and w<=122) w=w-32;\n        else nletter+=1;\n        out=out+w;\n    }\n    if (nletter==s.length())\n    {\n        string p(s.rbegin(),s.rend());\n        return p;\n    }\n    else return out;\n}",
+        5.48,
+        0.144,
+        59233415.0,
+        20863.2,
+        6.914,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n\nstring solve(string s) {\n    string out = \"\";\n    int nletter = 0;\n    for (int i = 0; i < s.length(); ++i) {\n        char w = s[i];\n        if (w >= 'A' && w <= 'Z') {\n            w = w + 32;\n        } else if (w >= 'a' && w <= 'z') {\n            w = w - 32;\n        } else {\n            nletter++;\n        }\n        out += w;\n    }\n\n    if (nletter == s.length()) {\n        reverse(out.begin(), out.end());\n        return out;\n    } else {\n        return out;\n    }\n}\n",
+        0.931,
+        1.105,
+        9.017,
+        1.0,
+        1.108,
+        27
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\nusing namespace std;\n\nstring solve(string s) {\n    string out;\n    out.reserve(s.length());\n    bool all_non_alpha = true;\n    for (int i = 0; i < s.length(); ++i) {\n        char w = s[i];\n        if (w >= 'A' && w <= 'Z') {\n            out += (char)(w + 32);\n            all_non_alpha = false;\n        } else if (w >= 'a' && w <= 'z') {\n            out += (char)(w - 32);\n            all_non_alpha = false;\n        } else {\n            out += w;\n        }\n    }\n\n    if (all_non_alpha) {\n        reverse(out.begin(), out.end());\n    }\n\n    return out;\n}",
+        1.139,
+        1.121,
+        9.514,
+        1.001,
+        1.124,
+        28
+    ]
+}

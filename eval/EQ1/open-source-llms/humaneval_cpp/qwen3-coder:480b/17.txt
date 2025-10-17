@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> parse_music(string music_string){\nstring current=\"\";\n    vector<int> out={};\n    if (music_string.length()>0)\n        music_string=music_string+' ';\n    for (int i=0;i<music_string.length();i++)\n    {\n        if (music_string[i]==' ')\n        {\n            if (current==\"o\") out.push_back(4);\n            if (current==\"o|\") out.push_back(2);\n            if (current==\".|\") out.push_back(1);\n            current=\"\";\n        }\n        else current+=music_string[i];\n    }\n    return out;\n}",
+        5.005,
+        0.105,
+        10860273.6,
+        20528.0,
+        9.546,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> parse_music(string music_string){\n    vector<int> out;\n    int len = music_string.length();\n    \n    for (int i = 0; i < len; i++) {\n        char c = music_string[i];\n        \n        if (c == 'o') {\n            \n            if (i + 1 < len && music_string[i + 1] == '|') {\n                out.push_back(2);  \n                i++;  \n            } else {\n                out.push_back(4);  \n            }\n        } else if (c == '.') {\n            \n            if (i + 1 < len && music_string[i + 1] == '|') {\n                out.push_back(1);  \n                i++;  \n            }\n        }\n        \n    }\n    \n    return out;\n}",
+        0.996,
+        1.003,
+        1.549,
+        1.003,
+        1.0,
+        35
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> parse_music(string music_string){\n    int len = music_string.length();\n    vector<int> out;\n    \n    \n    \n    if (len > 0) {\n        out.reserve(len / 2 + 1);\n    }\n    \n    for (int i = 0; i < len; i++) {\n        char c = music_string[i];\n        \n        switch (c) {\n            case 'o':\n                if (i + 1 < len && music_string[i + 1] == '|') {\n                    out.push_back(2);\n                    i++;  \n                } else {\n                    out.push_back(4);\n                }\n                break;\n            case '.':\n                if (i + 1 < len && music_string[i + 1] == '|') {\n                    out.push_back(1);\n                    i++;  \n                }\n                break;\n            default:\n                \n                break;\n        }\n    }\n    \n    return out;\n}",
+        1.0,
+        1.051,
+        1.531,
+        0.997,
+        1.047,
+        44
+    ]
+}

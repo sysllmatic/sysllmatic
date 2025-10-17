@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> filter_by_prefix(vector<string> strings, string prefix){\nvector<string> out={};\n    for (int i=0;i<strings.size();i++)\n        if (strings[i].substr(0,prefix.length())==prefix) out.push_back(strings[i]);\n    return out;\n}",
+        10.204,
+        0.23,
+        433148528.6,
+        214800.0,
+        4.342,
+        13
+    ],
+    "1": [
+        "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> filter_by_prefix(const vector<string>& strings, const string& prefix) {\n    vector<string> result;\n    size_t prefix_len = prefix.length();\n    for (const auto& str : strings) {\n        if (str.length() >= prefix_len && str.substr(0, prefix_len) == prefix) {\n            result.push_back(str);\n        }\n    }\n    return result;\n}\n",
+        1.26,
+        1.128,
+        1.771,
+        1.814,
+        1.128,
+        14
+    ],
+    "2": [
+        "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> filter_by_prefix(const vector<string>& strings, const string& prefix) {\n    vector<string> result;\n    size_t prefix_len = prefix.length();\n    for (const auto& str : strings) {\n        if (str.length() < prefix_len) continue;\n        bool match = true;\n        for (size_t i = 0; i < prefix_len && match; ++i) {\n            if (prefix[i] != str[i]) {\n                match = false;\n                break;\n            }\n        }\n        if (match) result.push_back(str);\n        else continue;\n    }\n    return result;\n}\n",
+        0.728,
+        0.696,
+        0.586,
+        1.814,
+        0.697,
+        21
+    ]
+}

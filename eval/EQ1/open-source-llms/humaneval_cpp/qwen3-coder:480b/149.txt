@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nvector<string> sorted_list_sum(vector<string> lst){\nvector<string> out={};\n    for (int i=0;i<lst.size();i++)\n    if (lst[i].length()%2==0) out.push_back(lst[i]);\n    string mid;\n    sort(out.begin(),out.end());\n    for (int i=0;i<out.size();i++)\n    for (int j=1;j<out.size();j++)\n    if (out[j].length()<out[j-1].length())\n    {\n        mid=out[j];out[j]=out[j-1];out[j-1]=mid;\n    }\n    return out;\n}",
+        164.969,
+        2.993,
+        13554506988.8,
+        311892.8,
+        0.334,
+        21
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\n\nvector<string> sorted_list_sum(vector<string> lst){\n    vector<string> out;\n    \n    out.reserve(lst.size());\n    \n    \n    for (const auto& str : lst) {\n        if (str.length() % 2 == 0) {\n            out.push_back(str);\n        }\n    }\n    \n    \n    stable_sort(out.begin(), out.end(), [](const string& a, const string& b) {\n        if (a.length() != b.length()) {\n            return a.length() < b.length();\n        }\n        return a < b;\n    });\n    \n    return out;\n}",
+        11.932,
+        11.386,
+        18.448,
+        1.0,
+        11.383,
+        30
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\n\nvector<string> sorted_list_sum(vector<string> lst){\n    \n    size_t count = 0;\n    for (const auto& str : lst) {\n        if (str.length() % 2 == 0) count++;\n    }\n    \n    vector<string> out;\n    out.reserve(count); \n    \n    \n    for (const auto& str : lst) {\n        if (str.length() % 2 == 0) {\n            out.push_back(str);\n        }\n    }\n    \n    \n    stable_sort(out.begin(), out.end(), [](const string& a, const string& b) {\n        size_t len_a = a.length();\n        size_t len_b = b.length();\n        if (len_a != len_b) {\n            return len_a < len_b;\n        }\n        return a < b;\n    });\n    \n    return out;\n}",
+        12.644,
+        11.251,
+        18.8,
+        1.0,
+        11.246,
+        37
+    ]
+}

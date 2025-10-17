@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> remove_duplicates(vector<int> numbers){\nvector<int> out={};\n    vector<int> has1={};\n    vector<int> has2={};\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (find(has2.begin(),has2.end(),numbers[i])!=has2.end()) continue;\n        if (find(has1.begin(),has1.end(),numbers[i])!=has1.end())\n        {\n\n            has2.push_back(numbers[i]);\n        }\n        else has1.push_back(numbers[i]);\n    }\n    for (int i=0;i<numbers.size();i++)\n    if (find(has2.begin(),has2.end(),numbers[i])==has2.end())\n        out.push_back(numbers[i]);\n    return out;\n\n\n}",
+        62.46,
+        1.23,
+        4981738092.8,
+        20888.8,
+        0.813,
+        27
+    ],
+    "1": [
+        "#include <vector>\n#include <unordered_set>\nusing namespace std;\n\nvector<int> remove_duplicates(vector<int> numbers) {\n    vector<int> out;\n    unordered_set<int> seen_once;\n    unordered_set<int> seen_twice;\n\n    for (int num : numbers) {\n        if (seen_twice.find(num) != seen_twice.end()) {\n            continue;\n        }\n        if (seen_once.find(num) != seen_once.end()) {\n            seen_twice.insert(num);\n        } else {\n            seen_once.insert(num);\n        }\n    }\n\n    for (int num : numbers) {\n        if (seen_twice.find(num) == seen_twice.end()) {\n            out.push_back(num);\n        }\n    }\n\n    return out;\n}\n",
+        11.511,
+        7.448,
+        68.382,
+        1.005,
+        7.441,
+        28
+    ],
+    "2": [
+        "#include <vector>\n#include <unordered_set>\n#include <bitset>\n#include <algorithm>\nusing namespace std;\n\nvector<int> remove_duplicates(vector<int> numbers) {\n    vector<int> out;\n    if (numbers.empty()) return out;\n\n    \n    int max_val = *max_element(numbers.begin(), numbers.end());\n    std::bitset<1000000> seen_once;  \n    std::bitset<1000000> seen_twice;\n\n    for (int num : numbers) {\n        if (seen_twice[num]) continue;\n        if (seen_once[num]) {\n            seen_twice[num] = true;\n        } else {\n            seen_once[num] = true;\n        }\n    }\n\n    for (int num : numbers) {\n        if (!seen_twice[num]) {\n            out.push_back(num);\n        }\n    }\n\n    return out;\n}\n",
+        11.168,
+        8.563,
+        205.132,
+        1.003,
+        8.553,
+        32
+    ]
+}

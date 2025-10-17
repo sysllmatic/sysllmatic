@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add(vector<int> lst){\nint sum=0;\n    for (int i=0;i*2+1<lst.size();i++)\n        if (lst[i*2+1]%2==0) sum+=lst[i*2+1];\n    return sum;\n}",
+        4.801,
+        0.101,
+        4406554.4,
+        20525.6,
+        9.878,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint add(vector<int> lst){\n    int sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0;\n    size_t size = lst.size();\n    size_t i;\n    \n    \n    for (i = 0; i*2+7 < size; i+=4) {\n        int val1 = lst[i*2+1];\n        int val2 = lst[(i+1)*2+1];\n        int val3 = lst[(i+2)*2+1];\n        int val4 = lst[(i+3)*2+1];\n        \n        \n        sum1 += (val1 % 2 == 0) ? val1 : 0;\n        sum2 += (val2 % 2 == 0) ? val2 : 0;\n        sum3 += (val3 % 2 == 0) ? val3 : 0;\n        sum4 += (val4 % 2 == 0) ? val4 : 0;\n    }\n    \n    \n    for (; i*2+1 < size; i++) {\n        int val = lst[i*2+1];\n        if (val % 2 == 0) sum1 += val;\n    }\n    \n    return sum1 + sum2 + sum3 + sum4;\n}",
+        0.949,
+        0.931,
+        0.936,
+        0.996,
+        0.931,
+        34
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint add(const vector<int>& lst){\n    int sum = 0;\n    size_t size = lst.size();\n    \n    \n    for (size_t i = 1; i < size; i += 2) {\n        \n        \n        \n        sum += lst[i] * (1 - (lst[i] & 1));\n    }\n    \n    return sum;\n}",
+        0.983,
+        1.01,
+        0.952,
+        1.003,
+        1.01,
+        21
+    ]
+}

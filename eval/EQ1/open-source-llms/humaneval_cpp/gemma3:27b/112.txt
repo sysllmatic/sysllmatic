@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\nstring n=\"\";\n    for (int i=0;i<s.length();i++)\n    if (find(c.begin(),c.end(),s[i])==c.end())\n        n=n+s[i]; \n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"};\n}",
+        15.821,
+        0.34,
+        897691387.4,
+        20840.8,
+        2.936,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\n    string n=\"\";\n    n.reserve(s.length()); \n    for (int i=0;i<s.length();i++)\n        if (find(c.begin(),c.end(),s[i])==c.end())\n            n+=s[i]; \n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"}; \n}",
+        2.613,
+        2.421,
+        18.119,
+        0.995,
+        2.423,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\nvector<string> reverse_delete(string s,string c){\n    string n=\"\";\n    n.reserve(s.length());\n    unordered_set<char> char_set(c.begin(), c.end()); \n    for (int i=0;i<s.length();i++)\n        if (char_set.find(s[i]) == char_set.end())\n            n+=s[i];\n    if (n.length()==0) return {n,\"True\"};\n    string w(n.rbegin(),n.rend());\n    if (w==n) return {n,\"True\"};\n    return {n,\"False\"}; \n}",
+        3.054,
+        2.207,
+        15.634,
+        0.996,
+        2.209,
+        20
+    ]
+}

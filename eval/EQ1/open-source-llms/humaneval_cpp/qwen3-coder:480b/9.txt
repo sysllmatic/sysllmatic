@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> rolling_max(vector<int> numbers){\nvector<int> out;\n    int max=0;\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (numbers[i]>max) max=numbers[i];\n        out.push_back(max);\n    }\n    return out;\n}",
+        4.957,
+        0.103,
+        9064983.8,
+        20472.8,
+        9.708,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> rolling_max(vector<int> numbers){\n    if (numbers.empty()) return {};\n    \n    vector<int> out;\n    out.reserve(numbers.size());  \n    \n    int max_val = numbers[0];  \n    out.push_back(max_val);\n    \n    for (size_t i = 1; i < numbers.size(); i++) {\n        max_val = std::max(max_val, numbers[i]);  \n        out.push_back(max_val);\n    }\n    \n    return out;\n}",
+        0.996,
+        0.988,
+        1.067,
+        0.997,
+        0.986,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> rolling_max(const vector<int>& numbers){\n    if (numbers.empty()) return {};\n    \n    vector<int> out(numbers.size());  \n    \n    int max_val = numbers[0];\n    out[0] = max_val;\n    \n    for (size_t i = 1; i < numbers.size(); i++) {\n        max_val = std::max(max_val, numbers[i]);\n        out[i] = max_val;\n    }\n    \n    return out;\n}",
+        1.004,
+        0.999,
+        1.208,
+        0.998,
+        0.998,
+        21
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool check_if_last_char_is_a_letter(string txt){\nif (txt.length()==0) return false;\n    char chr=txt[txt.length()-1];\n    if (chr<65 or (chr>90 and chr<97) or chr>122) return false;\n    if (txt.length()==1) return true;\n    chr=txt[txt.length()-2];\n    if ((chr>=65 and chr<=90) or (chr>=97 and chr<=122)) return false;\n    return true;\n}",
+        4.722,
+        0.136,
+        4629243.6,
+        20852.8,
+        7.348,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nbool check_if_last_char_is_a_letter(const string& txt) {\n    if (txt.empty()) return false;\n    char last = txt.back();\n    if ((last < 65 || (last >90 && last <97)) || last>122)\n        return false;\n    if (txt.length() ==1) return true;\n    char second_last = txt[txt.length()-2];\n    if ((second_last >=65 && second_last <=90) || (second_last >=97 && second_last <=122))\n        return false;\n    return true;\n}\n",
+        1.05,
+        1.021,
+        1.0,
+        1.001,
+        1.02,
+        18
+    ],
+    "2": [
+        "#include <string>   \n#include <cctype>    \nusing namespace std;  \n\nbool check_if_last_char_is_a_letter(const string& txt) {\n    if (txt.empty()) return false;\n    char last = txt.back();\n    if (!std::isalpha(last))\n        return false;\n    if (txt.length() == 1)\n        return true;\n    char second_last = txt[txt.length()-2];\n    if (std::isalpha(second_last))\n        return false;\n    return true;\n}\n",
+        1.067,
+        1.059,
+        0.948,
+        0.993,
+        1.058,
+        16
+    ]
+}

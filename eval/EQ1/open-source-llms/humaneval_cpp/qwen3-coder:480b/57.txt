@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool monotonic(vector<float> l){\nint incr,decr;\n    incr=0;decr=0;\n    for (int i=1;i<l.size();i++)\n    {\n        if (l[i]>l[i-1]) incr=1;\n        if (l[i]<l[i-1]) decr=1;\n    }\n    if (incr+decr==2) return false;\n    return true;\n}",
+        5.333,
+        0.111,
+        38604549.2,
+        20472.0,
+        9.006,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool monotonic(vector<float> l){\n    if (l.size() <= 1) return true;\n    \n    bool incr = false, decr = false;\n    \n    for (int i = 1; i < l.size(); i++) {\n        float curr = l[i];\n        float prev = l[i-1];\n        \n        if (curr > prev) {\n            incr = true;\n            if (decr) return false; \n        }\n        else if (curr < prev) {\n            decr = true;\n            if (incr) return false; \n        }\n    }\n    \n    return true;\n}",
+        1.011,
+        1.016,
+        1.049,
+        0.999,
+        1.015,
+        28
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool monotonic(const vector<float>& l){\n    const size_t size = l.size();\n    if (size <= 1) return true;\n    \n    bool incr = false, decr = false;\n    \n    for (size_t i = 1; i < size; i++) {\n        const float curr = l[i];\n        const float prev = l[i-1];\n        \n        if (curr > prev) {\n            if (decr) return false;\n            incr = true;\n        }\n        else if (curr < prev) {\n            if (incr) return false;\n            decr = true;\n        }\n    }\n    \n    return true;\n}",
+        1.011,
+        1.015,
+        1.063,
+        0.994,
+        1.014,
+        29
+    ]
+}

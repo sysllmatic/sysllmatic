@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool below_zero(vector<int> operations){\nint num=0;\n    for (int i=0;i<operations.size();i++)\n    {\n        num+=operations[i];\n        if (num<0) return true;\n    }\n    return false;\n}",
+        4.657,
+        0.094,
+        7310464.0,
+        20427.2,
+        10.604,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nbool below_zero(vector<int> operations){\n    int num1 = 0, num2 = 0, num3 = 0, num4 = 0;  \n    size_t i = 0;\n    size_t sz = operations.size();\n    \n    \n    for (; i + 3 < sz; i += 4)\n    {\n        \n        num1 += operations[i];\n        num2 += operations[i+1];\n        num3 += operations[i+2];\n        num4 += operations[i+3];\n        \n        \n        if (num1 < 0 || (num1 + num2) < 0 || (num1 + num2 + num3) < 0 || (num1 + num2 + num3 + num4) < 0)\n            return true;\n    }\n    \n    \n    for (; i < sz; i++)\n    {\n        num1 += operations[i];\n        if (num1 < 0) return true;\n    }\n    \n    return false;\n}",
+        0.837,
+        0.903,
+        1.04,
+        0.995,
+        0.905,
+        35
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nbool below_zero(const vector<int>& operations){\n    int num = 0;\n    for (vector<int>::const_iterator it = operations.begin(); it != operations.end(); ++it)\n    {\n        num += *it;\n        if (num < 0) return true;\n    }\n    return false;\n}",
+        0.929,
+        0.888,
+        0.839,
+        0.997,
+        0.889,
+        16
+    ]
+}

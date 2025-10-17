@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_third(vector<int> l){\nvector<int> third={};\n    int i;\n    for (i=0;i*3<l.size();i++)\n        third.push_back(l[i*3]);\n    \n    sort(third.begin(),third.end());\n\n    vector<int> out={};\n    for (i=0;i<l.size();i++)\n    {\n        if (i%3==0) {out.push_back(third[i/3]);}\n        else out.push_back(l[i]);\n    }\n    return out;\n\n}",
+        8.733,
+        0.111,
+        21783350.0,
+        20501.6,
+        8.98,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> sort_third(vector<int> l){\n    \n    int third_count = (l.size() + 2) / 3;  \n    vector<int> third;\n    third.reserve(third_count);\n    \n    \n    for (int i = 0; i < l.size(); i += 3)\n        third.push_back(l[i]);\n    \n    \n    if (third.size() <= 1) {\n        \n    } else if (third.size() == 2) {\n        if (third[0] > third[1]) {\n            swap(third[0], third[1]);\n        }\n    } else {\n        \n        for (int i = 1; i < third.size(); i++) {\n            int key = third[i];\n            int j = i - 1;\n            while (j >= 0 && third[j] > key) {\n                third[j + 1] = third[j];\n                j--;\n            }\n            third[j + 1] = key;\n        }\n    }\n    \n    \n    int third_index = 0;\n    for (int i = 0; i < l.size(); i += 3) {\n        l[i] = third[third_index++];\n    }\n    \n    return l;\n}",
+        1.067,
+        0.679,
+        0.087,
+        1.002,
+        0.681,
+        45
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> sort_third(vector<int> l){\n    \n    int third_count = (l.size() + 2) / 3;  \n    vector<int> third;\n    third.reserve(third_count);\n    \n    \n    for (int i = 0; i < l.size(); i += 3)\n        third.push_back(l[i]);\n    \n    \n    sort(third.begin(), third.end());\n    \n    \n    int third_index = 0;\n    for (int i = 0; i < l.size(); i += 3) {\n        l[i] = third[third_index++];\n    }\n    \n    return l;\n}",
+        1.732,
+        1.077,
+        1.134,
+        1.0,
+        1.079,
+        28
+    ]
+}

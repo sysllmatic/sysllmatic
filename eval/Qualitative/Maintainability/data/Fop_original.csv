@@ -1,0 +1,19 @@
+File,Total nloc,Avg.NLOC,AvgCCN,Avg.token,Fun Cnt,Warning cnt,Fun Rt,nloc Rt
+FopFactoryBuilder.java,411,3.4,1.0,13.6,99,0,0.00,0.00
+DelegatingContentHandler.java,158,4.3,1.5,23.3,32,0,0.00,0.00
+FlowLayoutManager.java,301,12.3,3.0,79.7,22,0,0.00,0.00
+PDFStream.java,118,6.6,1.6,35.0,16,0,0.00,0.00
+FOText.java,535,8.3,2.6,43.2,56,1,0.02,0.15
+InputHandler.java,200,12.4,3.0,78.1,13,0,0.00,0.00
+FOEventHandler.java,198,2.1,1.0,7.4,75,0,0.00,0.00
+ElementListUtils.java,137,10.0,3.7,70.8,13,1,0.08,0.40
+FOElementMapping.java,420,4.2,1.0,35.1,68,0,0.00,0.00
+CondLengthProperty.java,111,5.8,1.9,30.1,16,0,0.00,0.00
+UnicodeBidiAlgorithm.java,648,18.8,6.8,126.6,34,4,0.12,0.37
+RendererFactory.java,335,14.7,4.0,84.9,21,0,0.00,0.00
+LayoutManagerMapping.java,345,6.0,1.4,45.9,36,0,0.00,0.00
+NCnameProperty.java,43,4.6,1.4,19.7,7,0,0.00,0.00
+PDFMetadata.java,174,18.1,4.2,139.1,8,1,0.12,0.53
+FObj.java,618,8.7,3.2,49.0,66,1,0.02,0.04
+Main.java,141,16.0,3.5,107.0,8,0,0.00,0.00
+PDFNumber.java,47,4.7,1.6,26.7,9,0,0.00,0.00

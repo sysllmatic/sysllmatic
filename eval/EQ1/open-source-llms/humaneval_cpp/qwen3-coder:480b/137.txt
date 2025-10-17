@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\n#include<boost/any.hpp>\nusing namespace std;\n#include<stdlib.h>\nboost::any compare_one(boost::any a,boost::any b){\ndouble  numa,numb;\n    boost::any out;\n   \n    if (a.type()==typeid(string))\n    {\n        string s;\n        s=boost::any_cast<string>(a);\n        if (find(s.begin(),s.end(),',')!=s.end())\n            for (int i=0;i<s.length();i++)\n                if (s[i]==',') s=s.substr(0,i)+'.'+s.substr(i+1);\n        numa=atof(s.c_str());\n        \n    }\n    else \n    {\n        if (a.type()==typeid(int)) numa=boost::any_cast<int>(a);\n        if (a.type()==typeid(double)) numa=boost::any_cast<double>(a);\n    }\n    if (b.type()==typeid(string))\n    {\n        string s;\n        s=boost::any_cast<string>(b);\n        if (find(s.begin(),s.end(),',')!=s.end())\n            for (int i=0;i<s.length();i++)\n                if (s[i]==',') s=s.substr(0,i)+'.'+s.substr(i+1);\n        numb=atof(s.c_str());\n    }\n    else \n    {\n        if (b.type()==typeid(int)) numb=boost::any_cast<int>(b);\n        if (b.type()==typeid(double)) numb=boost::any_cast<double>(b);\n    }\n\n    if (numa==numb) return string(\"None\");\n    if (numa<numb) return b;\n    if (numa>numb) return a;\n}",
+        4.904,
+        0.104,
+        4944342.0,
+        20606.4,
+        9.627,
+        45
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\n#include<boost/any.hpp>\nusing namespace std;\n#include<stdlib.h>\n\ndouble convert_to_double(const boost::any& value) {\n    if (value.type() == typeid(string)) {\n        string s = boost::any_cast<string>(value);\n        size_t pos = s.find(',');\n        if (pos != string::npos) {\n            s[pos] = '.';\n        }\n        return atof(s.c_str());\n    } else if (value.type() == typeid(int)) {\n        return boost::any_cast<int>(value);\n    } else if (value.type() == typeid(double)) {\n        return boost::any_cast<double>(value);\n    }\n    return 0.0; \n}\n\nboost::any compare_one(boost::any a, boost::any b) {\n    double numa = convert_to_double(a);\n    double numb = convert_to_double(b);\n    \n    if (numa == numb) return string(\"None\");\n    return (numa < numb) ? b : a;\n}",
+        0.993,
+        0.995,
+        1.04,
+        1.006,
+        0.993,
+        31
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\n#include<boost/any.hpp>\nusing namespace std;\n#include<stdlib.h>\n\n\nvoid process_string(string& s) {\n    std::replace(s.begin(), s.end(), ',', '.');\n}\n\n\ndouble convert_to_double(const boost::any& value) {\n    const std::type_info& type = value.type();\n    \n    if (type == typeid(string)) {\n        string s = boost::any_cast<string>(value);\n        process_string(s);  \n        return atof(s.c_str());\n    } else if (type == typeid(int)) {\n        return static_cast<double>(boost::any_cast<int>(value));\n    } else if (type == typeid(double)) {\n        return boost::any_cast<double>(value);\n    }\n    return 0.0; \n}\n\nboost::any compare_one(boost::any a, boost::any b) {\n    double numa = convert_to_double(a);\n    double numb = convert_to_double(b);\n    \n    if (numa == numb) return string(\"None\");\n    return (numa < numb) ? b : a;\n}",
+        1.011,
+        1.011,
+        1.043,
+        1.007,
+        1.008,
+        36
+    ]
+}

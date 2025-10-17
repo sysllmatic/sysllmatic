@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring fix_spaces(string text){\nstring out=\"\";\n    int spacelen=0;\n    for (int i=0;i<text.length();i++)\n    if (text[i]==' ') spacelen+=1;\n    else\n    {\n        if (spacelen==1) out=out+'_';\n        if (spacelen==2) out=out+\"__\";\n        if (spacelen>2) out=out+'-';\n        spacelen=0;\n        out=out+text[i];\n    }\n    if (spacelen==1) out=out+'_';\n    if (spacelen==2) out=out+\"__\";\n    if (spacelen>2) out=out+'-';\n    return out;\n}",
+        7.496,
+        0.151,
+        229809864.6,
+        20516.8,
+        6.623,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring fix_spaces(string text){\n    \n    int out_size = 0;\n    int spacelen = 0;\n    \n    for (int i = 0; i < text.length(); i++) {\n        if (text[i] == ' ') {\n            spacelen++;\n        } else {\n            \n            if (spacelen > 0) {\n                if (spacelen == 1) out_size += 1;        \n                else if (spacelen == 2) out_size += 2;   \n                else out_size += 1;                      \n                spacelen = 0;\n            }\n            out_size++;  \n        }\n    }\n    \n    \n    if (spacelen > 0) {\n        if (spacelen == 1) out_size += 1;        \n        else if (spacelen == 2) out_size += 2;   \n        else out_size += 1;                      \n    }\n    \n    \n    string out;\n    out.reserve(out_size);  \n    spacelen = 0;\n    \n    for (int i = 0; i < text.length(); i++) {\n        if (text[i] == ' ') {\n            spacelen++;\n        } else {\n            \n            switch(spacelen) {\n                case 1:  out += '_'; break;\n                case 2:  out += \"__\"; break;\n                default: \n                    if (spacelen > 2) out += '-';\n                    break;\n            }\n            spacelen = 0;\n            out += text[i];\n        }\n    }\n    \n    \n    switch(spacelen) {\n        case 1:  out += '_'; break;\n        case 2:  out += \"__\"; break;\n        default:\n            if (spacelen > 2) out += '-';\n            break;\n    }\n    \n    return out;\n}",
+        1.511,
+        1.438,
+        25.982,
+        0.998,
+        1.435,
+        67
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nstring fix_spaces(string text){\n    \n    \n    size_t estimated_size = text.length() * 2;\n    string out;\n    out.reserve(estimated_size);  \n    \n    int spacelen = 0;\n    \n    for (int i = 0; i < text.length(); i++) {\n        if (text[i] == ' ') {\n            spacelen++;\n        } else {\n            \n            if (spacelen > 0) {\n                if (spacelen == 1) {\n                    out += '_';\n                } else if (spacelen == 2) {\n                    out += '_';\n                    out += '_';\n                } else { \n                    out += '-';\n                }\n                spacelen = 0;\n            }\n            out += text[i];\n        }\n    }\n    \n    \n    if (spacelen > 0) {\n        if (spacelen == 1) {\n            out += '_';\n        } else if (spacelen == 2) {\n            out += '_';\n            out += '_';\n        } else { \n            out += '-';\n        }\n    }\n    \n    return out;\n}",
+        1.548,
+        1.523,
+        31.181,
+        1.0,
+        1.521,
+        50
+    ]
+}

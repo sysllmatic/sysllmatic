@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add_elements(vector<int> arr,int k){\nint sum=0;\n    for (int i=0;i<k;i++)\n        if( arr[i]>=-99 and arr[i]<=99)\n            sum+=arr[i];\n    return sum;\n}",
+        8.396,
+        0.217,
+        276868096.4,
+        20828.0,
+        4.615,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint add_elements(vector<int> arr,int k){\n    int sum=0;\n    for (int i=0;i<k;i++){\n        if( arr[i]>=-99 and arr[i]<=99)\n            sum+=arr[i];\n    }\n    return sum;\n}\n",
+        1.007,
+        0.971,
+        1.001,
+        0.996,
+        0.969,
+        15
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint add_elements(vector<int> arr,int k){\n    int sum=0;\n    for (int i=0;i<k;i++){\n        if( arr[i]>=-99 and arr[i]<=99)\n            sum += arr[i];\n    }\n    return sum;\n}\n",
+        1.029,
+        0.96,
+        0.998,
+        0.994,
+        0.957,
+        15
+    ]
+}

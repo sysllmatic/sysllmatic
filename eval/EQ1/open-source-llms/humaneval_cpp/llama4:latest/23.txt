@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint strlen(string str){\nreturn str.length();\n}",
+        4.828,
+        0.13,
+        5139857.0,
+        20899.2,
+        7.698,
+        9
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string.h>\n\n\n",
+        1.07,
+        0.937,
+        0.966,
+        0.994,
+        0.935,
+        4
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string.h>\n\n\n",
+        1.077,
+        0.953,
+        0.986,
+        0.997,
+        0.951,
+        4
+    ]
+}

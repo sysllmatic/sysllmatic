@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<string> words_string(string s){\nstring current=\"\";\n    vector<string> out={};\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n     if (s[i]==' ' or s[i]==',')\n     {\n        if (current.length()>0)\n        {\n            out.push_back(current);\n            current=\"\";\n        }\n     }\n     else current=current+s[i];\n     return out;\n}",
+        5.528,
+        0.116,
+        53221568.0,
+        20549.6,
+        8.619,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<string> words_string(string s){\n    vector<string> out;\n    \n    out.reserve(s.length() / 4 + 1); \n    \n    int start = 0;\n    bool in_word = false;\n    \n    for (int i = 0; i <= s.length(); i++) {\n        char c = (i < s.length()) ? s[i] : ' '; \n        \n        if (c == ' ' || c == ',' || i == s.length()) {\n            if (in_word) {\n                \n                out.push_back(s.substr(start, i - start));\n                in_word = false;\n            }\n        } else {\n            if (!in_word) {\n                start = i;  \n                in_word = true;\n            }\n        }\n    }\n    \n    return out;\n}",
+        1.084,
+        1.107,
+        2.181,
+        1.002,
+        1.105,
+        35
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<string> words_string(string s){\n    vector<string> out;\n    \n    out.reserve(s.length() / 5 + 2);\n    \n    \n    bool is_delim[256] = {false};\n    is_delim[' '] = true;\n    is_delim[','] = true;\n    is_delim['\\0'] = true;  \n    \n    int start = 0;\n    int word_length = 0;\n    \n    for (int i = 0; i <= s.length(); i++) {\n        char c = (i < s.length()) ? s[i] : '\\0';\n        \n        if (is_delim[static_cast<unsigned char>(c)]) {\n            if (word_length > 0) {\n                \n                out.emplace_back(s.substr(start, word_length));\n                word_length = 0;\n            }\n        } else {\n            if (word_length == 0) {\n                start = i;  \n            }\n            word_length++;\n        }\n    }\n    \n    return out;\n}",
+        1.076,
+        1.068,
+        2.431,
+        1.0,
+        1.066,
+        41
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> sort_third(vector<int> l){\nvector<int> third={};\n    int i;\n    for (i=0;i*3<l.size();i++)\n        third.push_back(l[i*3]);\n    \n    sort(third.begin(),third.end());\n\n    vector<int> out={};\n    for (i=0;i<l.size();i++)\n    {\n        if (i%3==0) {out.push_back(third[i/3]);}\n        else out.push_back(l[i]);\n    }\n    return out;\n\n}",
+        4.949,
+        0.133,
+        21603188.6,
+        20771.2,
+        7.537,
+        23
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nvector<int> sort_third(vector<int> l) {\n    int n = l.size();\n    \n    \n    vector<int> third_elements;\n    for (int i = 0; i < n; i += 3) {\n        third_elements.push_back(l[i]);\n    }\n    \n    sort(third_elements.begin(), third_elements.end());\n\n    \n    int k = 0;\n    for (int i = 0; i < n; i += 3) {\n        l[i] = third_elements[k++];\n    }\n\n    return l;\n}\n",
+        0.991,
+        0.947,
+        1.129,
+        0.993,
+        0.944,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nvector<int> sort_third(vector<int> l) {\n    int n = l.size();\n    vector<int> third_indices;\n    for (int i = 0; i < n; i += 3) {\n        third_indices.push_back(i);\n    }\n    \n    sort(third_indices.begin(), third_indices.end(), [&](int a, int b) {\n        return l[a] < l[b];\n    });\n\n    vector<int> sorted_third_elements;\n    for (int index : third_indices) {\n        sorted_third_elements.push_back(l[index]);\n    }\n\n    int k = 0;\n    for (int i = 0; i < n; i += 3) {\n        l[i] = sorted_third_elements[k++];\n    }\n\n    return l;\n}\n",
+        1.036,
+        0.945,
+        0.893,
+        1.002,
+        0.941,
+        29
+    ]
+}

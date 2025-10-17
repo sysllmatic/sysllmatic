@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> rolling_max(vector<int> numbers){\nvector<int> out;\n    int max=0;\n    for (int i=0;i<numbers.size();i++)\n    {\n        if (numbers[i]>max) max=numbers[i];\n        out.push_back(max);\n    }\n    return out;\n}",
+        5.433,
+        0.124,
+        9339897.8,
+        20760.8,
+        8.04,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nvector<int> rolling_max(vector<int> numbers) {\n    vector<int> out;\n    int max = 0;\n    \n    out.reserve(numbers.size());\n    for (int i=0; i<numbers.size(); ++i)\n    { \n        if (numbers[i] > max) max = numbers[i];\n        out.push_back(max);\n    }\n    return out;\n}\n",
+        1.13,
+        0.978,
+        1.051,
+        0.998,
+        0.98,
+        19
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\nvector<int> rolling_max(vector<int> numbers) {\n    vector<int> out;\n    int max = 0;\n    \n    out.reserve(numbers.size());\n    for (int i=0; i<numbers.size(); ++i)\n    { \n        if (numbers[i] > max) max = numbers[i];\n        out.emplace_back(max);\n    }\n    return out;\n}\n",
+        1.144,
+        0.911,
+        0.974,
+        0.994,
+        0.913,
+        19
+    ]
+}

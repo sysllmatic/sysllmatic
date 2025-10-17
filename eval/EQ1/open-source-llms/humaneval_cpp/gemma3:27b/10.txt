@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool is_palindrome(string str){\n    string s(str.rbegin(),str.rend());\n    return s==str;\n}\nstring make_palindrome(string str){\nint i;\n   for (i=0;i<str.length();i++)\n   {\n        string rstr=str.substr(i);\n        if (is_palindrome(rstr))\n        {\n            string nstr;\n            nstr=str.substr(0,i);\n            string n2str(nstr.rbegin(),nstr.rend());\n            return str+n2str;\n        }\n   }\n   string n2str(str.rbegin(),str.rend());\n   return str+n2str;\n}",
+        4.737,
+        0.13,
+        4684801.0,
+        20848.8,
+        7.711,
+        26
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nbool is_palindrome(const string& str) {\n    int left = 0;\n    int right = str.length() - 1;\n    while (left < right) {\n        if (str[left] != str[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    return true;\n}\n\nstring make_palindrome(const string& str) {\n    for (int i = 0; i < str.length(); ++i) {\n        string suffix = str.substr(i);\n        if (is_palindrome(suffix)) {\n            string prefix = str.substr(0, i);\n            string reversed_prefix = prefix;\n            reverse(reversed_prefix.begin(), reversed_prefix.end());\n            return str + reversed_prefix;\n        }\n    }\n    string reversed_str = str;\n    reverse(reversed_str.begin(), reversed_str.end());\n    return str + reversed_str;\n}",
+        0.969,
+        0.978,
+        1.016,
+        1.004,
+        0.974,
+        33
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <algorithm>\n\nusing namespace std;\n\nbool is_palindrome(const string& str) {\n    int left = 0;\n    int right = str.length() - 1;\n    while (left < right) {\n        if (str[left] != str[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    return true;\n}\n\nstring make_palindrome(const string& str) {\n    for (int i = 0; i < str.length(); ++i) {\n        if (is_palindrome(str.substr(i))) {\n            string prefix = str.substr(0, i);\n            string result = str;\n            for (int j = prefix.length() - 1; j >= 0; --j) {\n                result += prefix[j];\n            }\n            return result;\n        }\n    }\n    string reversed_str = str;\n    reverse(reversed_str.begin(), reversed_str.end());\n    return str + reversed_str;\n}",
+        0.986,
+        1.067,
+        0.981,
+        0.995,
+        1.063,
+        34
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> pluck(vector<int> arr){\nvector<int> out={};\n    for (int i=0;i<arr.size();i++)\n    if (arr[i]%2==0 and (out.size()==0 or arr[i]<out[0]))\n        out={arr[i],i};\n    return out;\n}",
+        5.026,
+        0.108,
+        8281722.6,
+        20494.4,
+        9.244,
+        13
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> pluck(vector<int> arr){\n    int min_val = 0;\n    int min_index = -1;\n    \n    for (int i = 0; i < arr.size(); i++) {\n        if (arr[i] % 2 == 0) {  \n            if (min_index == -1 || arr[i] < min_val) {  \n                min_val = arr[i];\n                min_index = i;\n            }\n        }\n    }\n    \n    if (min_index == -1) {\n        return vector<int>{};  \n    } else {\n        return vector<int>{min_val, min_index};\n    }\n}",
+        1.02,
+        1.042,
+        1.147,
+        0.995,
+        1.042,
+        25
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> pluck(const vector<int>& arr){\n    int min_val = 0;\n    int min_index = -1;\n    const size_t arr_size = arr.size();\n    \n    for (size_t i = 0; i < arr_size; i++) {\n        const int current_val = arr[i];\n        if ((current_val & 1) == 0) {  \n            if (min_index == -1 || current_val < min_val) {\n                min_val = current_val;\n                min_index = static_cast<int>(i);\n            }\n        }\n    }\n    \n    if (min_index == -1) {\n        return vector<int>{};\n    } else {\n        vector<int> result;\n        result.reserve(2);  \n        result.push_back(min_val);\n        result.push_back(min_index);\n        return result;\n    }\n}",
+        1.025,
+        1.045,
+        1.231,
+        0.999,
+        1.045,
+        31
+    ]
+}

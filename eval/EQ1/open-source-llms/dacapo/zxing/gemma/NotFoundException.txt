@@ -1,0 +1,11 @@
+{
+    "0": [
+        "\n\npackage com.google.zxing;\n\n\npublic final class NotFoundException extends ReaderException {\n\n  private static final NotFoundException INSTANCE = new NotFoundException();\n  static {\n    INSTANCE.setStackTrace(NO_TRACE); \n  }\n\n  private NotFoundException() {\n    \n  }\n\n  public static NotFoundException getNotFoundInstance() {\n    return isStackTrace ? new NotFoundException() : INSTANCE;\n  }\n\n}",
+    ],
+    "1": [
+        "package com.google.zxing;\n\n\npublic final class NotFoundException extends ReaderException {\n\n  private static final NotFoundException INSTANCE = new NotFoundException();\n\n  private NotFoundException() {\n\n  }\n\n  public static NotFoundException getNotFoundInstance() {\n    if (isStackTrace) {\n      NotFoundException exception = new NotFoundException();\n      exception.setStackTrace(NO_TRACE);\n      return exception;\n    }\n    return INSTANCE;\n  }\n\n}\n",
+    ],
+    "2": [
+        "package com.google.zxing;\n\n\npublic final class NotFoundException extends ReaderException {\n\n  private static final NotFoundException INSTANCE = new NotFoundException();\n\n  static {\n    if (isStackTrace) {\n      INSTANCE.setStackTrace(NO_TRACE);\n    }\n  }\n\n  private NotFoundException() {\n\n  }\n\n  public static NotFoundException getNotFoundInstance() {\n    return INSTANCE;\n  }\n\n}\n",
+    ]
+}

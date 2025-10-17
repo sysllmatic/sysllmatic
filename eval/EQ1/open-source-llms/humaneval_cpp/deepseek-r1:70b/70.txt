@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<int> strange_sort_list(vector<int> lst){\nvector<int> out={};\n    sort(lst.begin(),lst.end());\n    int l=0,r=lst.size()-1;\n    while (l<r)\n    {\n        out.push_back(lst[l]);\n        l+=1;\n        out.push_back(lst[r]);\n        r-=1;\n    }\n    if (l==r) out.push_back(lst[l]);\n    return out;\n\n}",
+        7.123,
+        0.14,
+        39426784.8,
+        20827.2,
+        7.125,
+        21
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> strange_sort_list(vector<int> lst) {\n    vector<int> out;\n    sort(lst.begin(), lst.end());\n    int l = 0, r = lst.size() - 1;\n    \n    out.reserve(lst.size());\n    while (l < r) {\n        out.push_back(lst[l]);\n        l += 1;\n        out.push_back(lst[r]);\n        r -= 1;\n    }\n    if (l == r) {\n        out.push_back(lst[l]);\n    }\n    return out;\n}\n",
+        1.39,
+        0.993,
+        1.007,
+        0.996,
+        0.994,
+        24
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<int> strange_sort_list(const vector<int>& lst) {\n    vector<int> out;\n    const int n = lst.size();\n    if (n == 0) return out;\n    \n    \n    vector<int> sorted(lst);\n    sort(sorted.begin(), sorted.end());\n    \n    \n    out.reserve(n);\n    \n    \n    const int mid = n / 2;\n    \n    \n    for (int i = 0; i < mid; ++i) {\n        out.push_back(sorted[i]);\n        out.push_back(sorted[n - 1 - i]);\n    }\n    \n    if (n % 2 != 0) {\n        out.push_back(sorted[mid]);\n    }\n\n    return out;\n}\n",
+        1.407,
+        1.033,
+        0.984,
+        0.998,
+        1.034,
+        34
+    ]
+}

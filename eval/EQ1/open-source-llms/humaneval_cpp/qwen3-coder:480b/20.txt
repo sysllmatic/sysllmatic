@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> find_closest_elements(vector<float> numbers){\nvector<float> out={};\n    for (int i=0;i<numbers.size();i++)\n    for (int j=i+1;j<numbers.size();j++)\n        if (out.size()==0 or abs(numbers[i]-numbers[j])<abs(out[0]-out[1]))\n            out={numbers[i],numbers[j]};\n    if (out[0]>out[1])\n        out={out[1],out[0]};\n    return out;\n}",
+        42.46,
+        0.803,
+        3235608470.2,
+        20527.2,
+        1.246,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<stdlib.h>\nusing namespace std;\n\nvector<float> find_closest_elements(vector<float> numbers) {\n    \n    if (numbers.size() < 2) {\n        return {};\n    }\n    \n    \n    sort(numbers.begin(), numbers.end());\n    \n    \n    float min_diff = abs(numbers[1] - numbers[0]);\n    float first = numbers[0];\n    float second = numbers[1];\n    \n    \n    for (size_t i = 1; i < numbers.size() - 1; i++) {\n        float diff = abs(numbers[i+1] - numbers[i]);\n        if (diff < min_diff) {\n            min_diff = diff;\n            first = numbers[i];\n            second = numbers[i+1];\n        }\n    }\n    \n    \n    float min_val = min(first, second);\n    float max_val = max(first, second);\n    \n    return {min_val, max_val};\n}",
+        8.272,
+        7.381,
+        167.957,
+        1.002,
+        7.366,
+        37
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<stdlib.h>\nusing namespace std;\n\nvector<float> find_closest_elements(const vector<float>& numbers) {\n    size_t n = numbers.size();\n    \n    if (n < 2) {\n        return {};\n    }\n    \n    \n    vector<float> sorted_numbers = numbers;\n    sort(sorted_numbers.begin(), sorted_numbers.end());\n    \n    \n    float min_diff = sorted_numbers[1] - sorted_numbers[0];  \n    size_t best_i = 0;\n    \n    \n    for (size_t i = 1; i < n - 1; i++) {\n        float diff = sorted_numbers[i+1] - sorted_numbers[i];  \n        if (diff < min_diff) {\n            min_diff = diff;\n            best_i = i;\n        }\n    }\n    \n    \n    return {sorted_numbers[best_i], sorted_numbers[best_i+1]};\n}",
+        8.245,
+        7.413,
+        169.908,
+        0.999,
+        7.398,
+        34
+    ]
+}

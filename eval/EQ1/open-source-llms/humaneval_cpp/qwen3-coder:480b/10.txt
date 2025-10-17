@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool is_palindrome(string str){\n    string s(str.rbegin(),str.rend());\n    return s==str;\n}\nstring make_palindrome(string str){\nint i;\n   for (i=0;i<str.length();i++)\n   {\n        string rstr=str.substr(i);\n        if (is_palindrome(rstr))\n        {\n            string nstr;\n            nstr=str.substr(0,i);\n            string n2str(nstr.rbegin(),nstr.rend());\n            return str+n2str;\n        }\n   }\n   string n2str(str.rbegin(),str.rend());\n   return str+n2str;\n}",
+        4.866,
+        0.101,
+        4784170.0,
+        20591.2,
+        9.927,
+        26
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\n\nbool is_palindrome(const string& str) {\n    int left = 0;\n    int right = str.length() - 1;\n    while (left < right) {\n        if (str[left] != str[right]) {\n            return false;\n        }\n        left++;\n        right--;\n    }\n    return true;\n}\n\n\nstring make_palindrome(string str) {\n    int n = str.length();\n    \n    for (int i = 0; i < n; ++i) {\n        \n        if (is_palindrome(str.substr(i))) {\n            \n            string prefix = str.substr(0, i);\n            string suffix(prefix.rbegin(), prefix.rend());\n            return str + suffix;\n        }\n    }\n    \n    \n    \n    string reversed(str.rbegin(), str.rend());\n    return str + reversed;\n}\n",
+        0.972,
+        0.967,
+        0.972,
+        1.005,
+        0.963,
+        40
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\n\n\nbool is_palindrome(const string& str, int start, int end) {\n    while (start < end) {\n        if (str[start] != str[end]) {\n            return false;\n        }\n        start++;\n        end--;\n    }\n    return true;\n}\n\n\nstring make_palindrome(string str) {\n    int n = str.length();\n    \n    \n    for (int i = 0; i < n; ++i) {\n        \n        if (is_palindrome(str, i, n - 1)) {\n            \n            \n            for (int j = i - 1; j >= 0; --j) {\n                str += str[j];\n            }\n            return str;\n        }\n    }\n    \n    \n    \n    for (int j = n - 1; j >= 0; --j) {\n        str += str[j];\n    }\n    return str;\n}\n",
+        0.979,
+        0.959,
+        0.999,
+        1.005,
+        0.955,
+        43
+    ]
+}

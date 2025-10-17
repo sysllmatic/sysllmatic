@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint next_smallest(vector<int> lst){\nsort(lst.begin(),lst.end());\n    for (int i=1;i<lst.size();i++)\n        if (lst[i]!=lst[i-1]) return lst[i];\n    return -1;\n}",
+        4.774,
+        0.102,
+        4421201.6,
+        20425.6,
+        9.798,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n#include<climits>\n\nint next_smallest(vector<int> lst){\n    if (lst.size() < 2) return -1;\n    \n    int first_min = INT_MAX;\n    int second_min = INT_MAX;\n    bool found_second = false;\n    \n    for (int i = 0; i < lst.size(); i++) {\n        if (lst[i] < first_min) {\n            if (first_min != INT_MAX) {\n                second_min = first_min;\n                found_second = true;\n            }\n            first_min = lst[i];\n        } else if (lst[i] < second_min && lst[i] > first_min) {\n            second_min = lst[i];\n            found_second = true;\n        }\n    }\n    \n    return found_second ? second_min : -1;\n}",
+        0.989,
+        1.028,
+        0.97,
+        0.997,
+        1.027,
+        30
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<limits>\nusing namespace std;\n#include<stdlib.h>\n\nint next_smallest(const vector<int>& lst){\n    if (lst.size() < 2) return -1;\n    \n    int first_min = numeric_limits<int>::max();\n    int second_min = numeric_limits<int>::max();\n    \n    for (size_t i = 0; i < lst.size(); ++i) {\n        if (lst[i] < first_min) {\n            second_min = first_min;\n            first_min = lst[i];\n        } else if (lst[i] < second_min && lst[i] > first_min) {\n            second_min = lst[i];\n        }\n    }\n    \n    return (second_min != numeric_limits<int>::max()) ? second_min : -1;\n}",
+        0.98,
+        1.006,
+        0.923,
+        0.995,
+        1.005,
+        25
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint digits(int n){\nint prod=1,has=0;\n    string s=to_string(n);\n    for (int i=0;i<s.length();i++)\n        if (s[i]%2==1) \n        {\n            has=1;\n            prod=prod*(s[i]-48);\n        }\n    if (has==0) return 0;\n    return prod;\n}",
+        4.938,
+        0.104,
+        4298230.2,
+        20483.2,
+        9.623,
+        18
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint digits(int n){\n    int prod = 0;  \n    while (n > 0) {\n        int digit = n % 10;  \n        if (digit & 1) {     \n            prod = (prod == 0) ? digit : prod * digit;  \n        }\n        n /= 10;  \n    }\n    return prod;  \n}",
+        1.005,
+        1.01,
+        0.884,
+        1.001,
+        1.008,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint digits(int n) {\n    int prod = 0;\n    \n    while (n > 0) {\n        int digit = n % 10;\n        if (digit & 1) { \n            prod = digit; \n            n /= 10; \n            \n            \n            while (n > 0) {\n                digit = n % 10;\n                if (digit & 1) {\n                    prod *= digit;\n                }\n                n /= 10;\n            }\n            return prod; \n        }\n        n /= 10;\n    }\n    return prod; \n}",
+        1.016,
+        1.026,
+        0.952,
+        0.997,
+        1.024,
+        30
+    ]
+}

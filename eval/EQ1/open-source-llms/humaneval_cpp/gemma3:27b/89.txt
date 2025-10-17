@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nstring encrypt(string s){\nstring out;\n    int i;\n    for (i=0;i<s.length();i++)\n    {\n        int w=((int)s[i]+4-(int)'a')%26+(int)'a';   \n        out=out+(char)w;\n    }\n    return out;\n}",
+        5.1,
+        0.131,
+        47233463.0,
+        20758.4,
+        7.612,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring encrypt(string s){\n    string out;\n    out.reserve(s.length()); \n    int i;\n    for (i=0;i<s.length();i++){\n        int w=((int)s[i]+4-(int)'a');\n        if (w >= 26) {\n            w -= 26;\n        }\n        out += (char)(w + (int)'a');\n    }\n    return out;\n}\n",
+        1.106,
+        0.915,
+        7.248,
+        0.998,
+        0.917,
+        20
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nstring encrypt(string s){\n    string out;\n    out.reserve(s.length());\n    int i;\n    for (i=0;i<s.length();i++){\n        int w = ((int)s[i] + 4 - (int)'a') % 26;\n        out += (char)(w + (int)'a');\n    }\n    return out;\n}\n",
+        1.074,
+        0.992,
+        7.418,
+        0.998,
+        0.993,
+        17
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "0": [
+        "package edu.cmu.graphchi.engine.auxdata;\n\n\n\n\npublic class VertexDegree {\n    public int inDegree;\n    public int outDegree;\n\n    public VertexDegree(int inDegree, int outDegree) {\n        this.inDegree = inDegree;\n        this.outDegree = outDegree;\n    }\n\n    public String toString() {\n        return inDegree + \",\" + outDegree;\n    }\n}\n",
+    ],
+    "1": [
+        "package edu.cmu.graphchi.engine.auxdata;\n\n\n\npublic class VertexDegree {\n    public int inDegree;\n    public int outDegree;\n\n    public VertexDegree(int inDegree, int outDegree) {\n        this.inDegree = inDegree;\n        this.outDegree = outDegree;\n    }\n\n    public String toString() {\n        return inDegree + \",\" + outDegree;\n    }\n}\n",
+    ],
+    "2": [
+        "package edu.cmu.graphchi.engine.auxdata;\n\n\npublic class VertexDegree {\n    public int inDegree;\n    public int outDegree;\n\n    public VertexDegree(int inDegree, int outDegree) {\n        this.inDegree = inDegree;\n        this.outDegree = outDegree;\n    }\n\n    public String toString() {\n        return String.format(\"%d,%d\", inDegree, outDegree);\n    }\n}\n",
+    ]
+}

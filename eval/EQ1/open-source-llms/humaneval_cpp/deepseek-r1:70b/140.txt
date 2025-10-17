@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nstring fix_spaces(string text){\nstring out=\"\";\n    int spacelen=0;\n    for (int i=0;i<text.length();i++)\n    if (text[i]==' ') spacelen+=1;\n    else\n    {\n        if (spacelen==1) out=out+'_';\n        if (spacelen==2) out=out+\"__\";\n        if (spacelen>2) out=out+'-';\n        spacelen=0;\n        out=out+text[i];\n    }\n    if (spacelen==1) out=out+'_';\n    if (spacelen==2) out=out+\"__\";\n    if (spacelen>2) out=out+'-';\n    return out;\n}",
+        7.694,
+        0.191,
+        230059205.2,
+        20952.8,
+        5.228,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n\nstring fix_spaces(string text) {\n    string out;\n    out.reserve(text.length() + text.length()/2); \n    int spacelen = 0;\n    for (int i=0; i<text.length(); ++i) {\n        if (text[i] == ' ') {\n            spacelen += 1;\n        } else {\n            if (spacelen > 0) {\n                \n                if (spacelen == 1) {\n                    out += '_';\n                } else if (spacelen == 2) {\n                    out.append(\"__\");\n                } else {\n                    out += '-';\n                }\n                spacelen = 0;\n            }\n            out += text[i];\n        }\n    }\n    \n    if (spacelen > 0) {\n\tif (spacelen == 1) {\n\t    out += '_';\n\t} else if (spacelen == 2) {\n\t    out.append(\"__\");\n\t} else {\n\t    out += '-';\n\t}\n    }\n    return out;\n}",
+        1.675,
+        1.478,
+        29.594,
+        1.001,
+        1.478,
+        38
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n\nstring fix_spaces(string text) {\n    string out;\n    out.reserve(text.length() + text.length()/2); \n    int spacelen = 0;\n    for (int i=0; i<text.length(); ++i) {\n        if (text[i] == ' ') {\n            spacelen += 1;\n        } else {\n            if (spacelen > 0) {\n                \n                if (spacelen == 1) out += '_';\n                else if (spacelen == 2) out.append(\"__\");\n                else out += '-';\n                spacelen = 0;\n            }\n            out += text[i];\n        }\n    }\n\n    \n    if (spacelen > 0) {\n        if (spacelen == 1) out += '_';\n        else if (spacelen == 2) out.append(\"__\");\n        else out += '-';\n    }\n    return out;\n}",
+        1.702,
+        1.358,
+        30.401,
+        0.999,
+        1.358,
+        31
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool has_close_elements(vector<float> numbers, float threshold){\nint i,j;\n    \n    for (i=0;i<numbers.size();i++)\n    for (j=i+1;j<numbers.size();j++)\n    if (abs(numbers[i]-numbers[j])<threshold)\n    return true;\n\n    return false;\n}",
+        16.236,
+        0.349,
+        891426131.8,
+        20898.4,
+        2.861,
+        16
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nbool has_close_elements(vector<float> numbers, float threshold) {\n    \n    sort(numbers.begin(), numbers.end());\n    \n    for (int i = 0; i < numbers.size() - 1; ++i) {\n        if (abs(numbers[i + 1] - numbers[i]) < threshold) {\n            return true;\n        }\n    }\n    return false;\n}\n",
+        3.215,
+        2.603,
+        62.836,
+        1.004,
+        2.604,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<math.h>\n#include<algorithm>\n#include<stdlib.h>\n\nusing std::vector;\n\nbool has_close_elements(const vector<float>& numbers, float threshold) {\n    if (numbers.size() < 2) return false;\n    \n    vector<float> sorted = numbers;\n    sort(sorted.begin(), sorted.end());\n    \n    for (size_t i = 0; i < sorted.size() - 1; ++i) {\n        if (abs(sorted[i + 1] - sorted[i]) < threshold) {\n            return true;\n        }\n    }\n    return false;\n}\n",
+        3.252,
+        2.608,
+        63.043,
+        1.003,
+        2.609,
+        21
+    ]
+}

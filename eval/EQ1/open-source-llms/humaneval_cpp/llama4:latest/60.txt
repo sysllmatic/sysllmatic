@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint sum_to_n(int n){\nreturn n*(n+1)/2;\n}",
+        4.573,
+        0.14,
+        5277595.0,
+        20760.8,
+        7.156,
+        8
+    ],
+    "1": [
+        "#include <iostream>\n\nint sum_to_n(int n) {\n    return n * (n + 1) / 2;\n}\n\n",
+        1.01,
+        1.05,
+        1.111,
+        0.999,
+        1.047,
+        6
+    ],
+    "2": [
+        "#include <iostream>\n\n\nint sum_to_n(int number) {\n    \n    if (number <= 0) {\n        throw std::invalid_argument(\"Input must be a positive integer.\");\n    }\n    \n    return number * (number + 1) / 2;\n}\n\n",
+        0.93,
+        1.083,
+        1.086,
+        0.996,
+        1.08,
+        12
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint count_upper(string s){\nstring uvowel=\"AEIOU\";\n    int count=0;\n    for (int i=0;i*2<s.length();i++)\n    if (find(uvowel.begin(),uvowel.end(),s[i*2])!=uvowel.end())\n        count+=1;\n    return count;\n}",
+        4.777,
+        0.126,
+        5666988.2,
+        20884.8,
+        7.921,
+        14
+    ],
+    "1": [
+        "#include <iostream>\n#include <string>\n#include <set>\n\nint count_upper(const std::string& s) {\n    std::set<char> uvowel = {'A', 'E', 'I', 'O', 'U'};\n    int count = 0;\n    for (size_t i = 0; i < s.length(); i += 2) {\n        if (uvowel.count(s[i])) {\n            count++;\n        }\n    }\n    return count;\n}\n\n\n",
+        0.962,
+        1.026,
+        1.084,
+        0.998,
+        1.027,
+        16
+    ],
+    "2": [
+        "#include <iostream>\n#include <string>\n\nint count_upper(const std::string& s) {\n    char vowels[] = {'A', 'E', 'I', 'O', 'U'};  \n    int count = 0;\n    for (size_t i = 0; i < s.length(); i += 2) {\n        bool isVowel = false;\n        for (int j = 0; j < 5; ++j) {\n            if (s[i] == vowels[j]) {\n                isVowel = true;\n                break;\n            }\n        }\n        if (isVowel) {\n            count++;\n        }\n    }\n    return count;\n}",
+        1.005,
+        0.907,
+        1.024,
+        0.999,
+        0.907,
+        20
+    ]
+}

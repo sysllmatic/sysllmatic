@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint max_fill(vector<vector<int>> grid,int capacity){\nint out=0;\n    for (int i=0;i<grid.size();i++)\n    {\n        int sum=0;\n        for (int j=0;j<grid[i].size();j++)\n            sum+=grid[i][j];\n        if (sum>0)  out+=(sum-1)/capacity+1;\n    }\n    return out;\n}",
+        4.925,
+        0.133,
+        7500301.2,
+        20948.0,
+        7.524,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<numeric>\nusing namespace std;\n\nint max_fill(vector<vector<int>> grid, int capacity) {\n    int out = 0;\n    for (const auto& row : grid) {\n        int sum = accumulate(row.begin(), row.end(), 0);\n        if (sum > 0)\n            out += ((sum - 1) / capacity) + 1;\n    }\n    return out;\n}\n",
+        0.994,
+        1.073,
+        1.037,
+        1.002,
+        1.071,
+        16
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\n#include<numeric>\nusing namespace std;\n\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC target(\"avx2\")\n#pragma GCC loop unroll_threshold 1000000\n\nint max_fill(vector<vector<int>> grid, int capacity) {\n    int out = 0;\n    #pragma omp parallel for reduction(+:out)\n    for (const auto& row : grid) {\n        int sum = accumulate(row.begin(), row.end(), 0);\n        if (sum > 0)\n            out += ((sum - 1) / capacity) + 1;\n    }\n    return out;\n}\n",
+        1.045,
+        1.006,
+        0.123,
+        1.002,
+        1.004,
+        21
+    ]
+}

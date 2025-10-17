@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\nstring find_max(vector<string> words){\nstring max=\"\";\n    int maxu=0;\n    for (int i=0;i<words.size();i++)\n    {\n        string unique=\"\";\n        for (int j=0;j<words[i].length();j++)\n            if (find(unique.begin(),unique.end(),words[i][j])==unique.end())\n                unique=unique+words[i][j];\n        if (unique.length()>maxu or (unique.length()==maxu and words[i]<max))\n        {\n            max=words[i];\n            maxu=unique.length();\n        }\n    }\n    return max;\n}",
+        5.139,
+        0.107,
+        26652467.4,
+        20508.0,
+        9.291,
+        24
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\n\nstring find_max(vector<string> words){\n    string max=\"\";\n    int maxu=0;\n    \n    for (int i=0;i<words.size();i++) {\n        bool seen[256] = {false}; \n        int unique_count = 0;\n        \n        \n        for (int j=0; j<words[i].length(); j++) {\n            unsigned char c = words[i][j];\n            if (!seen[c]) {\n                seen[c] = true;\n                unique_count++;\n            }\n        }\n        \n        \n        if (unique_count > maxu || (unique_count == maxu && words[i] < max)) {\n            max = words[i];\n            maxu = unique_count;\n        }\n    }\n    return max;\n}",
+        1.037,
+        1.03,
+        3.404,
+        1.001,
+        1.034,
+        33
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<math.h>\n#include<stdlib.h>\n\nstring find_max(const vector<string>& words){\n    string max=\"\";\n    int maxu=0;\n    \n    for (int i=0; i<words.size(); i++) {\n        \n        if (words[i].length() < maxu) {\n            continue;\n        }\n        \n        bool seen[256] = {false}; \n        int unique_count = 0;\n        \n        \n        for (int j=0; j<words[i].length(); j++) {\n            unsigned char c = words[i][j];\n            if (!seen[c]) {\n                seen[c] = true;\n                unique_count++;\n            }\n        }\n        \n        \n        if (unique_count > maxu || (unique_count == maxu && (max.empty() || words[i] < max))) {\n            max = words[i];\n            maxu = unique_count;\n        }\n    }\n    return max;\n}",
+        1.03,
+        1.013,
+        3.415,
+        0.997,
+        1.017,
+        38
+    ]
+}

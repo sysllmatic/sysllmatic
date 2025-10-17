@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint add(vector<int> lst){\nint sum=0;\n    for (int i=0;i*2+1<lst.size();i++)\n        if (lst[i*2+1]%2==0) sum+=lst[i*2+1];\n    return sum;\n}",
+        4.67,
+        0.131,
+        4941741.8,
+        20849.6,
+        7.622,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint add(const vector<int>& lst) {\n    int sum = 0;\n    for (size_t i = 0; ; ) { \n        const size_t idx = i * 2 + 1; \n        if (idx >= lst.size()) break; \n        \n        if (lst[idx] % 2 == 0) {\n            sum += lst[idx];\n        }\n        ++i;\n    }\n    return sum;\n}\n",
+        1.022,
+        1.006,
+        0.995,
+        1.0,
+        1.006,
+        20
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint add(const vector<int>& lst) {\n    int sum = 0;\n    for (size_t i = 0; ; ) { \n        const size_t idx = i * 2 + 1; \n        if (idx >= lst.size()) break; \n        \n        if (lst[idx] % 2 == 0) {\n            sum += lst[idx];\n        }\n        ++i;\n    }\n    return sum;\n}\n",
+        1.027,
+        0.988,
+        1.058,
+        0.995,
+        0.988,
+        20
+    ]
+}

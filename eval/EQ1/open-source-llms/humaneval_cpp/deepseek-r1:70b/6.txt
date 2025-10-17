@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nvector<int> parse_nested_parens(string paren_string){\nvector<int> all_levels;\n    string current_paren;\n    int level=0,max_level=0;\n    char chr;\n    int i;\n    for (i=0;i<paren_string.length();i++)\n    {\n        chr=paren_string[i];\n        if (chr=='(')\n        {\n        level+=1;\n        if (level>max_level) max_level=level;\n        current_paren+=chr;\n        }\n        if (chr==')')\n        {\n            level-=1;\n            current_paren+=chr;\n            if (level==0){\n                all_levels.push_back(max_level);\n                current_paren=\"\";\n                max_level=0;\n            }\n        }\n    }\n    return all_levels;\n}",
+        5.024,
+        0.145,
+        38590403.2,
+        20822.4,
+        6.903,
+        35
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nvector<int> parse_nested_parens(string paren_string) {\n    vector<int> all_levels;\n    int level = 0;\n    int max_level = 0;\n    for (char c : paren_string) {\n        if (c == '(') {\n            level++;\n            if (level > max_level) max_level = level;\n        } else if (c == ')') {\n            if (level-- == 1) { \n                all_levels.push_back(max_level);\n                max_level = 0;\n            }\n        }\n    }\n    return all_levels;\n}\n",
+        1.028,
+        1.053,
+        0.84,
+        0.991,
+        1.051,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<vector>\n#include<string>\nusing namespace std;\n\nvector<int> parse_nested_parens(string paren_string) {\n    vector<int> all_levels;\n    if (paren_string.empty()) return all_levels; \n    int level = 0;\n    int max_level = 0;\n    for (char c : paren_string) {\n        if (c == '(') {\n            level++;\n            if (level > max_level) max_level = level;\n        } else if (c == ')') {\n            if (--level == 0) { \n                all_levels.push_back(max_level);\n                max_level = 0;\n            }\n        }\n    }\n    return all_levels;\n}\n",
+        1.017,
+        1.031,
+        0.855,
+        0.997,
+        1.029,
+        23
+    ]
+}

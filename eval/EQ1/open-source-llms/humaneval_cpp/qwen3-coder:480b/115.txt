@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint max_fill(vector<vector<int>> grid,int capacity){\nint out=0;\n    for (int i=0;i<grid.size();i++)\n    {\n        int sum=0;\n        for (int j=0;j<grid[i].size();j++)\n            sum+=grid[i][j];\n        if (sum>0)  out+=(sum-1)/capacity+1;\n    }\n    return out;\n}",
+        4.938,
+        0.105,
+        7095620.2,
+        20477.6,
+        9.543,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint max_fill(vector<vector<int>> grid,int capacity){\n    int out = 0;\n    const size_t grid_size = grid.size();\n    \n    for (size_t i = 0; i < grid_size; i++) {\n        int sum = 0;\n        const size_t row_size = grid[i].size();\n        \n        for (size_t j = 0; j < row_size; j++) {\n            sum += grid[i][j];\n        }\n        \n        \n        \n        out += (sum + capacity - 1) / capacity;\n    }\n    \n    return out;\n}",
+        1.008,
+        1.025,
+        1.178,
+        0.996,
+        1.021,
+        26
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint max_fill(vector<vector<int>> grid,int capacity){\n    if (capacity == 1) {\n        \n        int out = 0;\n        for (const auto& row : grid) {\n            for (int val : row) {\n                out += val;\n            }\n        }\n        return out;\n    }\n    \n    int out = 0;\n    \n    \n    bool is_power_of_2 = (capacity & (capacity - 1)) == 0;\n    int shift_amount = 0;\n    if (is_power_of_2) {\n        \n        while ((1 << shift_amount) < capacity) shift_amount++;\n    }\n    \n    for (const auto& row : grid) {\n        int sum = 0;\n        \n        \n        size_t i = 0;\n        size_t size = row.size();\n        for (; i + 3 < size; i += 4) {\n            sum += row[i] + row[i+1] + row[i+2] + row[i+3];\n        }\n        \n        \n        for (; i < size; i++) {\n            sum += row[i];\n        }\n        \n        if (sum > 0) {\n            if (is_power_of_2) {\n                \n                out += (sum + capacity - 1) >> shift_amount;\n            } else {\n                \n                out += (sum + capacity - 1) / capacity;\n            }\n        }\n    }\n    \n    return out;\n}",
+        0.997,
+        1.002,
+        1.014,
+        0.996,
+        0.999,
+        57
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> select_words(string s,int n){\nstring vowels=\"aeiouAEIOU\";\n    string current=\"\";\n    vector<string> out={};\n    int numc=0;\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n        if (s[i]==' ')\n        {\n            if (numc==n) out.push_back(current);\n            current=\"\";\n            numc=0;\n        }\n        else\n        {\n            current=current+s[i];\n            if ((s[i]>=65 and s[i]<=90) or (s[i]>=97 and s[i]<=122))\n            if (find(vowels.begin(),vowels.end(),s[i])==vowels.end())\n                numc+=1;\n        }\n    return out;\n}",
+        5.475,
+        0.158,
+        76012011.0,
+        20880.8,
+        6.333,
+        29
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<unordered_set>\nusing namespace std;\n#include<stdlib.h>\n\nvector<string> select_words(string s, int n) {\n    unordered_set<char> vowels = {'a','e','i','o','u','A','E','I','O','U'};\n    string current;\n    vector<string> out;\n    int numc = 0;\n    \n    \n    current.reserve(s.length() / 2);\n    out.reserve(10); \n    s += ' '; \n    \n    for (char c : s) {\n        if (c == ' ') {\n            if (numc == n) {\n                out.push_back(current);\n                current.clear();\n            } else {\n                current.clear();\n            }\n            numc = 0;\n        } else {\n            \n            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {\n                if (vowels.find(c) == vowels.end()) {\n                    numc++;\n                }\n                current += c;\n        } else {\n                \n                if (current.empty() || !isspace(c)) {\n                    s.insert(s.find(c), 1, ' ');\n                    s.erase(s.find(c), 1);\n                }\n            }\n        }\n    }\n    return out;\n}\n",
+        1.113,
+        1.22,
+        2.964,
+        1.001,
+        1.218,
+        47
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<string> select_words(string s, int n) {\n    \n    const char vowels[26] = {\n        'a','e','i','o','u','A','E','I','O','U'\n    };\n    string current;\n    vector<string> out;\n    int numc = 0;\n    \n    \n    current.reserve(s.length() / 2);\n    out.reserve(10);\n    s += ' '; \n    \n    if (n < 0) {\n        return out; \n    }\n\n    for (char c : s) {\n        if (c == ' ') {\n            if (numc == n) {\n                out.push_back(current);\n                current.clear();\n            } else {\n                current.clear();\n            }\n            numc = 0;\n        } else {\n            \n            bool isLetter = (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');\n            \n            if (!isLetter) {\n                \n                s.insert(s.find(c), 1, ' ');\n                s.erase(s.find(c), 1);\n            } else {\n                bool isVowel = false;\n                for (const char v : vowels) {\n                    if (c == v) {\n                        isVowel = true;\n                        break;\n                    }\n                }\n                \n                if (!isVowel) {\n                    numc++;\n                }\n                current += c;\n            }\n        }\n    }\n\n    return out;\n}\n",
+        1.15,
+        1.135,
+        5.035,
+        1.001,
+        1.132,
+        62
+    ]
+}

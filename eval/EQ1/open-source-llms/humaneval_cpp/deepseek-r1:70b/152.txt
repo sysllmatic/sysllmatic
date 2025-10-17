@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> compare(vector<int> game,vector<int> guess){\nvector<int> out;\n    for (int i=0;i<game.size();i++)\n    out.push_back(abs(game[i]-guess[i]));\n    return out;\n}",
+        4.683,
+        0.134,
+        14893500.6,
+        20920.8,
+        7.433,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n\nvector<int> compare(vector<int> game,vector<int> guess) {\n    vector<int> out;\n    out.reserve(game.size()); \n    for (size_t i = 0; i < game.size(); ++i) {\n        int diff = game[i] - guess[i];\n        if (diff < 0) {\n            diff = -diff;\n        }\n        out.push_back(diff);\n    }\n    return out;\n}\n",
+        1.012,
+        1.065,
+        1.137,
+        0.999,
+        1.068,
+        17
+    ],
+    "2": [
+        "#include<vector>\n\nusing namespace std; \n\nvector<int> compare(const vector<int>& game, const vector<int>& guess) {\n    vector<int> out;\n    out.reserve(game.size());\n    for (size_t i = 0; i < game.size(); ++i) {\n        int diff = game[i] - guess[i];\n        if (diff < 0) {\n            diff = -diff;\n        }\n        out.push_back(diff);\n    }\n    return out;\n}\n",
+        0.946,
+        0.95,
+        1.212,
+        0.998,
+        0.952,
+        16
+    ]
+}

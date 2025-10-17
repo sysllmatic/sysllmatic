@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> total_match(vector<string> lst1,vector<string> lst2){\nint num1,num2,i;\n    num1=0;num2=0;\n    for (i=0;i<lst1.size();i++)\n        num1+=lst1[i].length();\n    for (i=0;i<lst2.size();i++)\n        num2+=lst2[i].length();\n    if (num1>num2) return lst2;\n    return lst1;\n}",
+        6.704,
+        0.138,
+        169512484.2,
+        65368.8,
+        7.235,
+        17
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\n#include<numeric>  \nusing namespace std;\n#include<stdlib.h>\n\nvector<string> total_match(vector<string> lst1,vector<string> lst2){\n    \n    const size_t num1 = accumulate(lst1.begin(), lst1.end(), size_t(0),\n                                  [](size_t sum, const string& s) { return sum + s.length(); });\n    \n    const size_t num2 = accumulate(lst2.begin(), lst2.end(), size_t(0),\n                                  [](size_t sum, const string& s) { return sum + s.length(); });\n    \n    \n    return (num1 > num2) ? lst2 : lst1;\n}",
+        0.933,
+        0.924,
+        0.851,
+        0.927,
+        0.924,
+        20
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nvector<string> total_match(const vector<string>& lst1, const vector<string>& lst2){\n    size_t num1 = 0, num2 = 0;\n    \n    for (size_t i = 0; i < lst1.size(); i++)\n        num1 += lst1[i].length();\n    \n    for (size_t i = 0; i < lst2.size(); i++)\n        num2 += lst2[i].length();\n    \n    return (num1 > num2) ? lst2 : lst1;\n}",
+        1.042,
+        1.033,
+        1.249,
+        1.083,
+        1.033,
+        19
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> derivative(vector<float> xs){\nvector<float> out={};\n    for (int i=1;i<xs.size();i++)\n        out.push_back(i*xs[i]);\n    return out;\n}",
+        5.275,
+        0.101,
+        6894675.6,
+        20616.0,
+        9.926,
+        12
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> derivative(vector<float> xs){\n    \n    vector<float> out(xs.size() - 1);\n    for (int i = 1; i < xs.size(); i++)\n        out[i-1] = i * xs[i];\n    return out;\n}",
+        1.064,
+        0.96,
+        1.082,
+        1.005,
+        0.956,
+        13
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<float> derivative(const vector<float>& xs){\n    if (xs.size() <= 1) return {};\n    vector<float> out(xs.size() - 1);\n    for (size_t i = 1; i < xs.size(); i++)\n        out[i-1] = static_cast<float>(i) * xs[i];\n    return out;\n}",
+        1.103,
+        1.031,
+        1.144,
+        1.011,
+        1.027,
+        13
+    ]
+}

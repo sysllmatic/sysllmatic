@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool cycpattern_check(string a,string b){\nfor (int i=0;i<b.size();i++)\n    {\n        string rotate=b.substr(i)+b.substr(0,i);\n        if (a.find(rotate)!=string::npos) return true;\n    }\n    return false;\n\n}",
+        4.437,
+        0.131,
+        5435019.0,
+        20786.4,
+        7.601,
+        15
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n\nbool cycpattern_check(string a, string b) {\n    for (int i = 0; i < b.size(); ++i) {\n        size_t pos = a.find(b.substr(i) + b.substr(0, i));\n        if (pos != string::npos) {\n            return true;\n        }\n    }\n    return false;\n}\n",
+        0.94,
+        0.976,
+        1.05,
+        0.998,
+        0.979,
+        13
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<string>\nusing namespace std;\n\nbool cycpattern_check(string a, string b) {\n    for (int i = 0; i < b.size(); ++i) {\n        size_t pos = a.find(b.substr(i) + b.substr(0, i));\n        if (pos != string::npos) {\n            return true;\n        }\n    }\n    return false;\n}\n",
+        0.928,
+        0.972,
+        1.06,
+        0.999,
+        0.975,
+        13
+    ]
+}

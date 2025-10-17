@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nfloat truncate_number(float number){\nreturn number-int(number);\n}",
+        4.745,
+        0.096,
+        3156522.8,
+        20540.8,
+        10.391,
+        8
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nfloat truncate_number(float number) {\n    \n    return number - trunc(number);\n}",
+        0.976,
+        0.946,
+        1.102,
+        0.997,
+        0.947,
+        10
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\ninline float truncate_number(float number) {\n    \n    \n    if (number >= 0.0f) {\n        return number - (float)((int)number);\n    } else {\n        \n        \n        int intPart = (int)number;\n        if ((float)intPart != number) {\n            return number - (float)intPart;\n        } else {\n            return 0.0f;\n        }\n    }\n}",
+        0.997,
+        0.963,
+        1.145,
+        1.0,
+        0.964,
+        22
+    ]
+}

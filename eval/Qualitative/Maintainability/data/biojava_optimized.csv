@@ -1,0 +1,11 @@
+File,Total nloc,Avg.NLOC,AvgCCN,Avg.token,Fun Cnt,Warning cnt,Fun Rt,nloc Rt
+AminoAcidCompound.java,80,9.3,2.3,47.1,7,0,0.00,0.00
+AbstractSequence.java,424,5.3,1.7,32.5,68,0,0.00,0.00
+PeptidePropertiesImpl.java,491,11.4,3.6,104.7,36,0,0.00,0.00
+Utils.java,91,11.0,4.0,88.1,7,0,0.00,0.00
+AminoAcidCompoundSet.java,168,8.5,2.1,68.0,17,0,0.00,0.00
+SequenceMixin.java,221,7.9,2.6,59.5,25,0,0.00,0.00
+CommandPrompt.java,295,39.4,10.6,427.1,7,1,0.14,0.20
+ProteinSequence.java,118,11.4,2.6,90.4,8,0,0.00,0.00
+GenericFastaHeaderParser.java,113,23.0,8.8,248.2,4,1,0.25,0.64
+FastaReader.java,122,19.4,6.4,154.6,5,1,0.20,0.70

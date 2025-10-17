@@ -1,0 +1,32 @@
+{
+    "0": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        for (long count = 0; count < Num_samples; count++) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n\n            if (x * x + y * y <= 1.0)\n                under_curve++;\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}\n",
+        826.351,
+        17.216,
+        77389642955.2,
+        44204.0,
+        0.058,
+        1112.97,
+        26
+    ],
+    "1": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        for (long count = 0; count < Num_samples; count++) {\n            double x = R.nextDouble();\n            double y = R.nextDouble();\n\n            if (x * x + y * y <= 1.0)\n                under_curve++;\n        }\n\n        return ((double) under_curve / Num_samples) * 4.0;\n    }\n}\n",
+        0.993,
+        1.003,
+        1.0025645450258023,
+        0.9967529539099846,
+        1.0041379310344827,
+        1.0018239485341025,
+        25
+    ],
+    "2": [
+        "package jnt.scimark2;\n\npublic class MonteCarloOptimized {\n    final static int SEED = 113;\n\n    public static void main(String[] args) {\n        int cycles = 1073741824;\n        double result = integrate(cycles);\n        System.out.println(result);\n    } \n\n    public static double integrate(long Num_samples) {\n        Random R = new Random(SEED);\n        long under_curve = 0;\n        final double invSamples = 4.0 / Num_samples;\n        for (long count = 0; count < Num_samples; ) {\n            \n            int i = 0;\n            while (i < 16 && count < Num_samples) {\n                final double x = R.nextDouble();\n                final double y = R.nextDouble();\n                \n                \n                under_curve += (x * x + y * y <= 1.0) ? 1 : 0;\n                count++;\n                i++;\n            }\n        }\n\n        return invSamples * under_curve;\n    }\n}\n",
+        0.988,
+        0.998,
+        0.9968886271624713,
+        0.9975627369561293,
+        0.9991724137931033,
+        0.999748420891848,
+        32
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nint skjkasdkd(vector<int> lst){\nint largest=0;\n    for (int i=0;i<lst.size();i++)\n        if (lst[i]>largest)\n        {\n            bool prime=true;\n            for (int j=2;j*j<=lst[i];j++)\n                if (lst[i]%j==0) prime=false;\n            if (prime) largest=lst[i];\n        }\n    int sum=0;\n    string s;\n    s=to_string(largest);\n    for (int i=0;i<s.length();i++)\n        sum+=s[i]-48;\n    return sum;\n}\n#undef NDEBUG\n#include<assert.h>",
+        158.723,
+        3.014,
+        12977224015.8,
+        20878.4,
+        0.332,
+        26
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nint skjkasdkd(vector<int> lst){\n    int largest = 0;\n    for (int i = 0; i < lst.size(); i++) {\n        if (lst[i] > largest) {\n            bool prime = true;\n            for (int j = 2; j * j <= lst[i]; j++) {\n                if (lst[i] % j == 0) {\n                    prime = false;\n                    break;\n                }\n            }\n            if (prime) {\n                largest = lst[i];\n            }\n        }\n    }\n    int sum = 0;\n    int temp = largest;\n    while (temp > 0) {\n        sum += temp % 10;\n        temp /= 10;\n    }\n    return sum;\n}\n\n#undef NDEBUG\n#include<assert.h>\n",
+        1.096,
+        1.099,
+        1.109,
+        0.995,
+        1.098,
+        35
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nconst int MAX_PRIME = 1000; \nvector<bool> is_prime(MAX_PRIME + 1, true);\n\nvoid precompute_primes() {\n    is_prime[0] = is_prime[1] = false;\n    for (int p = 2; p * p <= MAX_PRIME; ++p) {\n        if (is_prime[p]) {\n            for (int i = p * p; i <= MAX_PRIME; i += p) {\n                is_prime[i] = false;\n            }\n        }\n    }\n}\n\nint skjkasdkd(vector<int> lst) {\n    precompute_primes(); \n    int largest = 0;\n    for (int i = 0; i < lst.size(); i++) {\n        if (lst[i] > largest) {\n            bool prime = true;\n            if (lst[i] > MAX_PRIME) {\n                \n                for (int j = 2; j * j <= lst[i]; ++j) {\n                    if (lst[i] % j == 0) {\n                        prime = false;\n                        break;\n                    }\n                }\n            } else {\n                if (!is_prime[lst[i]]) {\n                    prime = false;\n                }\n            }\n            if (prime) {\n                largest = lst[i];\n            }\n        }\n    }\n    int sum = 0;\n    int temp = largest;\n    while (temp > 0) {\n        sum += temp % 10;\n        temp /= 10;\n    }\n    return sum;\n}\n\n#undef NDEBUG\n#include<assert.h>\n",
+        1.062,
+        1.068,
+        1.073,
+        0.999,
+        1.067,
+        57
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint sum_squares(vector<int> lst){\nint sum=0;\n    for (int i=0;i<lst.size();i++)\n        if (i%3==0) sum+=lst[i]*lst[i];\n        else if (i%4==0) sum+=lst[i]*lst[i]*lst[i];\n        else sum+=lst[i];\n    return sum;\n}",
+        4.967,
+        0.103,
+        13849326.0,
+        20440.8,
+        9.715,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint sum_squares(vector<int> lst){\n    int sum0 = 0, sum1 = 0, sum2 = 0, sum3 = 0; \n    int sum4 = 0, sum5 = 0, sum6 = 0, sum7 = 0;\n    int sum8 = 0, sum9 = 0, sum10 = 0, sum11 = 0;\n    size_t i = 0;\n    size_t sz = lst.size();\n    \n    \n    for (; i + 11 < sz; i += 12) {\n        int v0 = lst[i], v1 = lst[i+1], v2 = lst[i+2], v3 = lst[i+3];\n        int v4 = lst[i+4], v5 = lst[i+5], v6 = lst[i+6], v7 = lst[i+7];\n        int v8 = lst[i+8], v9 = lst[i+9], v10 = lst[i+10], v11 = lst[i+11];\n        \n        \n        if (i % 3 == 0) sum0 += v0 * v0;\n        else if (i % 4 == 0) sum0 += v0 * v0 * v0;\n        else sum0 += v0;\n        \n        if ((i+1) % 3 == 0) sum1 += v1 * v1;\n        else if ((i+1) % 4 == 0) sum1 += v1 * v1 * v1;\n        else sum1 += v1;\n        \n        if ((i+2) % 3 == 0) sum2 += v2 * v2;\n        else if ((i+2) % 4 == 0) sum2 += v2 * v2 * v2;\n        else sum2 += v2;\n        \n        if ((i+3) % 3 == 0) sum3 += v3 * v3;\n        else if ((i+3) % 4 == 0) sum3 += v3 * v3 * v3;\n        else sum3 += v3;\n        \n        if ((i+4) % 3 == 0) sum4 += v4 * v4;\n        else if ((i+4) % 4 == 0) sum4 += v4 * v4 * v4;\n        else sum4 += v4;\n        \n        if ((i+5) % 3 == 0) sum5 += v5 * v5;\n        else if ((i+5) % 4 == 0) sum5 += v5 * v5 * v5;\n        else sum5 += v5;\n        \n        if ((i+6) % 3 == 0) sum6 += v6 * v6;\n        else if ((i+6) % 4 == 0) sum6 += v6 * v6 * v6;\n        else sum6 += v6;\n        \n        if ((i+7) % 3 == 0) sum7 += v7 * v7;\n        else if ((i+7) % 4 == 0) sum7 += v7 * v7 * v7;\n        else sum7 += v7;\n        \n        if ((i+8) % 3 == 0) sum8 += v8 * v8;\n        else if ((i+8) % 4 == 0) sum8 += v8 * v8 * v8;\n        else sum8 += v8;\n        \n        if ((i+9) % 3 == 0) sum9 += v9 * v9;\n        else if ((i+9) % 4 == 0) sum9 += v9 * v9 * v9;\n        else sum9 += v9;\n        \n        if ((i+10) % 3 == 0) sum10 += v10 * v10;\n        else if ((i+10) % 4 == 0) sum10 += v10 * v10 * v10;\n        else sum10 += v10;\n        \n        if ((i+11) % 3 == 0) sum11 += v11 * v11;\n        else if ((i+11) % 4 == 0) sum11 += v11 * v11 * v11;\n        else sum11 += v11;\n    }\n    \n    \n    for (; i < sz; i++) {\n        int val = lst[i];\n        if (i % 3 == 0) sum0 += val * val;\n        else if (i % 4 == 0) sum1 += val * val * val;\n        else sum2 += val;\n    }\n    \n    return sum0 + sum1 + sum2 + sum3 + sum4 + sum5 + sum6 + sum7 + sum8 + sum9 + sum10 + sum11;\n}",
+        0.991,
+        0.982,
+        1.045,
+        0.998,
+        0.981,
+        80
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint sum_squares(vector<int> lst){\n    size_t sz = lst.size();\n    int sum0 = 0, sum1 = 0, sum2 = 0, sum3 = 0;\n    int sum4 = 0, sum5 = 0, sum6 = 0, sum7 = 0;\n    size_t i = 0;\n    \n    \n    for (; i + 7 < sz; i += 8) {\n        \n        int v0 = lst[i], v1 = lst[i+1], v2 = lst[i+2], v3 = lst[i+3];\n        int v4 = lst[i+4], v5 = lst[i+5], v6 = lst[i+6], v7 = lst[i+7];\n        \n        \n        if (i % 3 == 0) sum0 += v0 * v0;\n        else if (i % 4 == 0) sum0 += v0 * v0 * v0;\n        else sum0 += v0;\n        \n        if ((i+1) % 3 == 0) sum1 += v1 * v1;\n        else if ((i+1) % 4 == 0) sum1 += v1 * v1 * v1;\n        else sum1 += v1;\n        \n        if ((i+2) % 3 == 0) sum2 += v2 * v2;\n        else if ((i+2) % 4 == 0) sum2 += v2 * v2 * v2;\n        else sum2 += v2;\n        \n        if ((i+3) % 3 == 0) sum3 += v3 * v3;\n        else if ((i+3) % 4 == 0) sum3 += v3 * v3 * v3;\n        else sum3 += v3;\n        \n        if ((i+4) % 3 == 0) sum4 += v4 * v4;\n        else if ((i+4) % 4 == 0) sum4 += v4 * v4 * v4;\n        else sum4 += v4;\n        \n        if ((i+5) % 3 == 0) sum5 += v5 * v5;\n        else if ((i+5) % 4 == 0) sum5 += v5 * v5 * v5;\n        else sum5 += v5;\n        \n        if ((i+6) % 3 == 0) sum6 += v6 * v6;\n        else if ((i+6) % 4 == 0) sum6 += v6 * v6 * v6;\n        else sum6 += v6;\n        \n        if ((i+7) % 3 == 0) sum7 += v7 * v7;\n        else if ((i+7) % 4 == 0) sum7 += v7 * v7 * v7;\n        else sum7 += v7;\n    }\n    \n    \n    for (; i < sz; i++) {\n        int val = lst[i];\n        if (i % 3 == 0) sum0 += val * val;\n        else if (i % 4 == 0) sum1 += val * val * val;\n        else sum2 += val;\n    }\n    \n    return sum0 + sum1 + sum2 + sum3 + sum4 + sum5 + sum6 + sum7;\n}",
+        0.998,
+        0.997,
+        1.033,
+        0.999,
+        0.995,
+        63
+    ]
+}

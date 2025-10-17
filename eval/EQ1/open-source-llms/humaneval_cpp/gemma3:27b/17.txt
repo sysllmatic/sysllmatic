@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nvector<int> parse_music(string music_string){\nstring current=\"\";\n    vector<int> out={};\n    if (music_string.length()>0)\n        music_string=music_string+' ';\n    for (int i=0;i<music_string.length();i++)\n    {\n        if (music_string[i]==' ')\n        {\n            if (current==\"o\") out.push_back(4);\n            if (current==\"o|\") out.push_back(2);\n            if (current==\".|\") out.push_back(1);\n            current=\"\";\n        }\n        else current+=music_string[i];\n    }\n    return out;\n}",
+        4.715,
+        0.135,
+        10957738.6,
+        20932.0,
+        7.416,
+        25
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\nvector<int> parse_music(string music_string){\n    string current=\"\";\n    vector<int> out;\n    \n    out.reserve(music_string.length());\n\n    if (music_string.length()>0)\n        music_string=music_string+' ';\n\n    for (int i=0;i<music_string.length();i++)\n    {\n        if (music_string[i]==' ')\n        {\n            if (current==\"o\") out.push_back(4);\n            if (current==\"o|\") out.push_back(2);\n            if (current==\".|\") out.push_back(1);\n            current=\"\";\n        }\n        else current+=music_string[i];\n    }\n    return out;\n}",
+        0.941,
+        1.085,
+        1.017,
+        1.002,
+        1.083,
+        30
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\n#include <string>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\nvector<int> parse_music(string music_string) {\n    vector<int> out;\n    out.reserve(music_string.length());\n\n    if (music_string.length() > 0)\n        music_string += ' '; \n\n    char current[3] = {0}; \n    int current_len = 0;\n\n    for (int i = 0; i < music_string.length(); ++i) {\n        if (music_string[i] == ' ') {\n            if (current_len == 1 && current[0] == 'o') out.push_back(4);\n            if (current_len == 2 && current[0] == 'o' && current[1] == '|') out.push_back(2);\n            if (current_len == 2 && current[0] == '.' && current[1] == '|') out.push_back(1);\n            current[0] = 0; \n            current_len = 0;\n        } else {\n            current[current_len] = music_string[i];\n            current_len++;\n            current[current_len] = 0; \n        }\n    }\n    return out;\n}",
+        0.988,
+        1.023,
+        1.462,
+        0.996,
+        1.021,
+        33
+    ]
+}

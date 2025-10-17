@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\ndouble poly(vector<double> xs, double x){\n    double sum=0;\n    int i;\n    for (i=0;i<xs.size();i++)\n    {\n        sum+=xs[i]*pow(x,i);\n    }\n    return sum;\n}\n\ndouble find_zero(vector<double> xs){\ndouble ans=0;\n    double value;\n    value=poly(xs,ans);\n    while (abs(value)>1e-6)\n    {\n        double driv=0;\n        for (int i=1;i<xs.size();i++)\n        {\n            driv+=xs[i]*pow(ans,i-1)*i;\n        }\n        ans=ans-value/driv;\n        value=poly(xs,ans);\n    }\n    return ans;\n\n}",
+        4.767,
+        0.13,
+        11489504.2,
+        20876.0,
+        7.703,
+        33
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\n\ndouble poly(vector<double> xs, double x){\n    double sum = 0.0;\n    for (int i = xs.size() - 1; i >= 0; --i) {\n        sum = sum * x + xs[i];\n    }\n    return sum;\n}\n\ndouble find_zero(vector<double> xs){\n    double ans = 0.0;\n    double value;\n    value = poly(xs, ans);\n    while (abs(value) > 1e-6) {\n        double driv = 0.0;\n        for (int i = 1; i < xs.size(); ++i) {\n            driv += i * xs[i] * pow(ans, i - 1);\n        }\n        if (driv == 0.0) {\n            \n            return ans; \n        }\n        ans = ans - value / driv;\n        value = poly(xs, ans);\n    }\n    return ans;\n}\n",
+        0.987,
+        0.956,
+        1.299,
+        0.999,
+        0.953,
+        33
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <math.h>\n#include <vector>\nusing namespace std;\n#include <algorithm>\n#include <stdlib.h>\n\ndouble poly(vector<double> xs, double x) {\n    double sum = 0.0;\n    for (int i = xs.size() - 1; i >= 0; --i) {\n        sum = sum * x + xs[i];\n    }\n    return sum;\n}\n\ndouble find_zero(vector<double> xs) {\n    double ans = 0.0;\n    double value;\n    value = poly(xs, ans);\n    while (abs(value) > 1e-6) {\n        double driv = 0.0;\n        for (int i = 1; i < xs.size(); ++i) {\n            double power = 1.0;\n            for (int j = 0; j < i - 1; ++j) {\n                power *= ans;\n            }\n            driv += i * xs[i] * power;\n        }\n        double epsilon = 1e-9; \n        if (abs(driv) < epsilon) {\n            return ans; \n        }\n        ans = ans - value / driv;\n        value = poly(xs, ans);\n    }\n    return ans;\n}\n",
+        0.313,
+        0.365,
+        0.013,
+        1.001,
+        0.365,
+        37
+    ]
+}

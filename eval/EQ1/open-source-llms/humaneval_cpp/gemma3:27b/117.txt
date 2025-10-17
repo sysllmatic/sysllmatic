@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nvector<string> select_words(string s,int n){\nstring vowels=\"aeiouAEIOU\";\n    string current=\"\";\n    vector<string> out={};\n    int numc=0;\n    s=s+' ';\n    for (int i=0;i<s.length();i++)\n        if (s[i]==' ')\n        {\n            if (numc==n) out.push_back(current);\n            current=\"\";\n            numc=0;\n        }\n        else\n        {\n            current=current+s[i];\n            if ((s[i]>=65 and s[i]<=90) or (s[i]>=97 and s[i]<=122))\n            if (find(vowels.begin(),vowels.end(),s[i])==vowels.end())\n                numc+=1;\n        }\n    return out;\n}",
+        5.818,
+        0.165,
+        76081183.4,
+        20888.8,
+        6.067,
+        29
+    ],
+    "1": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\n#include <algorithm>\n#include <sstream>\n#include <cctype>\n\nusing namespace std;\n\nvector<string> select_words(string s, int n) {\n    string vowels = \"aeiouAEIOU\";\n    vector<string> out;\n    stringstream current_word;\n    int num_consonants = 0;\n\n    s += ' '; \n\n    for (int i = 0; i < s.length(); ++i) {\n        if (s[i] == ' ') {\n            if (num_consonants == n) {\n                out.push_back(current_word.str());\n            }\n            current_word.str(\"\"); \n            num_consonants = 0;\n        } else {\n            if (isalpha(s[i])) {\n                bool is_vowel = (vowels.find(s[i]) != string::npos);\n                if (!is_vowel) {\n                    num_consonants++;\n                }\n                current_word << s[i];\n            }\n        }\n    }\n\n    return out;\n}",
+        1.237,
+        1.186,
+        7.927,
+        1.01,
+        1.184,
+        37
+    ],
+    "2": [
+        "#include <stdio.h>\n#include <string>\n#include <vector>\n#include <algorithm>\n#include <unordered_set>\n\nusing namespace std;\n\nvector<string> select_words(string s, int n) {\n    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};\n    vector<string> out;\n    string current_word;\n    int num_consonants = 0;\n\n    s += ' ';\n\n    out.reserve(s.length() / 10); \n\n    for (int i = 0; i < s.length(); ++i) {\n        if (s[i] == ' ') {\n            if (num_consonants == n) {\n                out.push_back(current_word);\n            }\n            current_word = \"\";\n            num_consonants = 0;\n        } else {\n            if (isalpha(s[i])) {\n                if (vowels.find(s[i]) == vowels.end()) {\n                    num_consonants++;\n                }\n                current_word += s[i];\n            }\n        }\n    }\n\n    return out;\n}",
+        1.176,
+        1.247,
+        2.91,
+        1.005,
+        1.244,
+        37
+    ]
+}

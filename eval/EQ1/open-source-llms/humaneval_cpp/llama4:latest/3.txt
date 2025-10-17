@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<vector>\nusing namespace std;\n#include<algorithm>\n#include<math.h>\n#include<stdlib.h>\nbool below_zero(vector<int> operations){\nint num=0;\n    for (int i=0;i<operations.size();i++)\n    {\n        num+=operations[i];\n        if (num<0) return true;\n    }\n    return false;\n}",
+        5.007,
+        0.126,
+        7587733.0,
+        20831.2,
+        7.955,
+        15
+    ],
+    "1": [
+        "#include <vector>\n\nbool below_zero(const std::vector<int>& operations) {\n    int num = 0;\n    for (int operation : operations) {\n        num += operation;\n        if (num < 0) {\n            return true;\n        }\n    }\n    return false;\n}",
+        1.107,
+        1.011,
+        1.023,
+        0.995,
+        1.008,
+        12
+    ],
+    "2": [
+        "#include <vector>\n\nbool below_zero(const std::vector<int>& operations) {\n    int cumulative_sum = 0;\n    for (int operation : operations) {\n        cumulative_sum += operation;\n        if (cumulative_sum < 0) {\n            return true;\n        }\n    }\n    return false;\n}",
+        1.088,
+        0.96,
+        0.954,
+        0.995,
+        0.957,
+        12
+    ]
+}

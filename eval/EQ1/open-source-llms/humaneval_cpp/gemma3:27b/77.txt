@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\nusing namespace std;\n#include<algorithm>\n#include<stdlib.h>\nbool iscuber(int a){\nfor (int i=0;i*i*i<=abs(a);i++)\n        if (i*i*i==abs(a)) return true;\n    return false;\n}",
+        4.791,
+        0.121,
+        2854295.8,
+        20845.6,
+        8.262,
+        10
+    ],
+    "1": [
+        "#include <iostream>\n#include <cmath>\n\nusing namespace std;\n\nbool iscuber(int a) {\n    if (a == 0) return true;\n\n    long long low = 1, high = abs((long long)a);\n\n    while (low <= high) {\n        long long mid = low + (high - low) / 2;\n        long long cube = mid * mid * mid;\n\n        if (cube == abs((long long)a)) {\n            return true;\n        } else if (cube < abs((long long)a)) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n\n    return false;\n}\n\n",
+        1.036,
+        0.907,
+        0.56,
+        0.997,
+        0.906,
+        26
+    ],
+    "2": [
+        "#include <iostream>\n#include <cmath>\n\nusing namespace std;\n\nbool iscuber(int a) {\n    if (a == 0) return true;\n\n    long long abs_a = abs((long long)a);\n    long long low = 1, high = abs_a;\n\n    while (low <= high) {\n        long long mid = low + (high - low) / 2;\n        long long cube = mid * mid * mid;\n\n        if (cube == abs_a) {\n            return true;\n        } else if (cube < abs_a) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n\n    return false;\n}",
+        0.857,
+        0.984,
+        0.578,
+        0.999,
+        0.983,
+        26
+    ]
+}

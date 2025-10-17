@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_sorted(vector<int> lst){\nfor (int i=1;i<lst.size();i++)\n    {\n        if (lst[i]<lst[i-1]) return false;\n        if (i>=2 and lst[i]==lst[i-1] and lst[i]==lst[i-2]) return false;\n    }\n    return true;\n}",
+        4.963,
+        0.106,
+        5427701.0,
+        20506.4,
+        9.393,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_sorted(vector<int> lst){\n    if (lst.size() < 2) return true;\n    \n    for (int i=1; i<lst.size(); i++) {\n        \n        if (lst[i] < lst[i-1]) return false;\n        \n        \n        if (i >= 2 && lst[i] == lst[i-1] && lst[i-1] == lst[i-2]) return false;\n    }\n    return true;\n}",
+        1.029,
+        1.058,
+        0.93,
+        1.003,
+        1.061,
+        18
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nbool is_sorted(vector<int> lst){\n    const size_t size = lst.size();\n    if (size < 2) return true;\n    \n    \n    if (lst[1] < lst[0]) return false;\n    \n    \n    for (size_t i = 2; i < size; i++) {\n        const int current = lst[i];\n        const int prev1 = lst[i-1];\n        const int prev2 = lst[i-2];\n        \n        \n        if (current < prev1) return false;\n        \n        \n        if (current == prev1 && prev1 == prev2) return false;\n    }\n    return true;\n}",
+        1.017,
+        1.042,
+        0.946,
+        1.004,
+        1.045,
+        27
+    ]
+}

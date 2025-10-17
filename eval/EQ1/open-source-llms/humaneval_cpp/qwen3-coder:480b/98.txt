@@ -1,0 +1,29 @@
+{
+    "0": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\nint count_upper(string s){\nstring uvowel=\"AEIOU\";\n    int count=0;\n    for (int i=0;i*2<s.length();i++)\n    if (find(uvowel.begin(),uvowel.end(),s[i*2])!=uvowel.end())\n        count+=1;\n    return count;\n}",
+        4.808,
+        0.099,
+        5239941.2,
+        20515.2,
+        10.073,
+        14
+    ],
+    "1": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint count_upper(string s){\n    \n    int count = 0;\n    int len = s.length();\n    \n    \n    for (int i = 0; i < len; i += 2) {\n        char c = s[i];\n        if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {\n            count++;\n        }\n    }\n    \n    return count;\n}",
+        0.991,
+        0.97,
+        1.004,
+        1.0,
+        0.971,
+        22
+    ],
+    "2": [
+        "#include<stdio.h>\n#include<math.h>\n#include<string>\n#include<algorithm>\nusing namespace std;\n#include<stdlib.h>\n\nint count_upper(string s){\n    \n    bool is_vowel[256] = {false};\n    is_vowel['A'] = true;\n    is_vowel['E'] = true;\n    is_vowel['I'] = true;\n    is_vowel['O'] = true;\n    is_vowel['U'] = true;\n    \n    int count = 0;\n    size_t len = s.length();\n    \n    \n    size_t i = 0;\n    for (; i + 6 < len; i += 8) {\n        count += is_vowel[static_cast<unsigned char>(s[i])] +\n                 is_vowel[static_cast<unsigned char>(s[i+2])] +\n                 is_vowel[static_cast<unsigned char>(s[i+4])] +\n                 is_vowel[static_cast<unsigned char>(s[i+6])];\n    }\n    \n    \n    for (; i < len; i += 2) {\n        count += is_vowel[static_cast<unsigned char>(s[i])];\n    }\n    \n    return count;\n}",
+        0.996,
+        0.974,
+        1.056,
+        1.001,
+        0.975,
+        35
+    ]
+}
