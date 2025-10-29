@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import json
 import sys
-from agent import LLMAgent
+from llm.agent import LLMAgent
 from utils import Logger
 import sys
 from jinja2 import Environment, FileSystemLoader

@@ -62,14 +62,14 @@ This artifact requires a machine with the following capabilities to support RAPL
 5. **Run the main script from the project root (`/sysllmatic`)**
     Run HumanEval_CPP benchmark
     ```bash
-    make run ARGS="--benchmark HumanEval --llm gpt-4o --self_optimization_step 2 --num_programs 2"
+   python3 src/main.py --benchmark HumanEval --llm gpt-4o --self_optimization_step 2 --num_programs 2
     ```
     Run SciMark benchmark
     ```bash
-    make run ARGS="--benchmark SciMark --llm gpt-4o --self_optimization_step 2"
+    python3 src/main.py --benchmark SciMark --llm gpt-4o --self_optimization_step 2
     ```
     Run Dacapo benchmark
     Prebuild the target application following the Dacapobench official instruction, then run:
     ```bash
-    make run ARGS="--benchmark Dacapobench --llm gpt-4o --self_optimization_step 2 --application_name biojava"
+    python3 src/main.py --benchmark Dacapobench --llm gpt-4.1 --self_optimization_step 2 --application_name biojava
     ```

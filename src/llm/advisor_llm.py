@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from utils import Logger
-from scripts.read_pattern_cat import get_patterns
+from read_pattern_cat import get_patterns
 import json
 import sys
 import os

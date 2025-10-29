@@ -42,7 +42,8 @@ class LLMAgent:
                 )
                 content = response.choices[0].message.content
             else:
-                response = self.client.chat(model=self.model, messages=self.memory, temperature=0.7, format=response_format.model_json_schema())
+                schema = response_format.model_json_schema()
+                response = self.client.chat(model=self.model, messages=self.memory, format=schema, options={"temperature": 0.7, "num_ctx": 32768})
                 content = response.message.content
         except Exception as e:
             logger.error(f"Error when generating response: {e}")

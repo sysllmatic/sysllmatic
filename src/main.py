@@ -4,14 +4,14 @@ import os
 import sys
 from utils import Logger
 import argparse
-from agent import LLMAgent
+from llm.agent import LLMAgent
 from status import Status
 from llm.generator_llm import llm_optimize, handle_error
 from llm.evaluator_llm import evaluator_llm
 from llm.advisor_llm import filter_patterns
-from scimark_benchmark import get_valid_scimark_programs, SciMarkBenchmark
-from dacapo_benchmark import get_valid_dacapo_classes, DaCapoBenchmark
-from humaneval_benchmark import get_valid_humaneval_programs, HumanEvalBenchmark
+from benchmarks.scimark_benchmark import get_valid_scimark_programs, SciMarkBenchmark
+from benchmarks.dacapo.dacapo_benchmark import get_valid_dacapo_classes, DaCapoBenchmark
+from benchmarks.humaneval_benchmark import get_valid_humaneval_programs, HumanEvalBenchmark
 from collections import defaultdict
 import glob
 import time
@@ -25,7 +25,7 @@ logger = Logger("logs", sys.argv[2]).logger
 def parse_arguments():
     parser = argparse.ArgumentParser(description="LLM-Code-Optimization")
     parser.add_argument("--benchmark", type=str, default="HumanEval", choices=["SciMark", "Dacapobench", "HumanEval"], help="dataset used for experiment")
-    parser.add_argument("--llm", type=str, default="gpt-4.1", choices=["gpt-4.1", "gpt-4o", "gpt-4o-mini", "o3-mini", "deepseek-r1:32b","deepseek-r1:70b", "qwen2.5:72b", "llama3.3:70b", "codellama:latest"], help="llm used for inference")
+    parser.add_argument("--llm", type=str, default="gpt-4.1", choices=["llama4:128x17b", "qwen3-coder:480b", "llama4:latest", "gemma3:27b","gpt-oss:120b","gpt-4.1", "gpt-4o", "gpt-4o-mini", "deepseek-r1:32b","deepseek-r1:70b", "qwen2.5:72b", "llama3.3:70b", "codellama:latest"], help="llm used for inference")
     parser.add_argument("--self_optimization_step", type=int, default=2, help="number of LLM optimization step")
     parser.add_argument("--num_programs", type=int, default=5, help="For HumanEval only, number of programs from the benchmark to test")
     parser.add_argument("--application_name", type=str, default="fop", choices=["biojava", "fop", "graphchi", "pmd"], help="For Dacapobench only, name of the application from the benchmark to test")
@@ -154,6 +154,10 @@ def master_script(benchmark, num_programs, application_name, model, self_optimiz
         last_optimized_code = original_code
         num_success_iteration = 0
         total_failure = 0
+        
+        if last_optimized_code is None:
+            results[folder_name] = "Unable to find original code"
+            continue
 
         # filter optimization patterns for most applicable
         ast = benchmark_obj.pre_process(last_optimized_code)
@@ -161,6 +165,9 @@ def master_script(benchmark, num_programs, application_name, model, self_optimiz
         top_k_patterns = filter_patterns(llm_assistant=advisor, code=original_code, ast=None, flame_report=None)
 
         while True:
+            if last_optimized_code is None:
+                last_optimized_code = last_working_optimized_code
+                
             if total_failure == 2:
                 logger.error("Unable to produce functional equivalent programs.")
                 if benchmark == "Dacapobench":
@@ -267,11 +274,8 @@ def main():
     if benchmark == "Dacapobench":
         end_time = time.time()
         elapsed_time = end_time - start_time
-        num_steps = LLMAgent.get_global_counter()
         logger.info(f"Total time taken: {elapsed_time:.2f} seconds")
-        logger.info(f"Total steps taken: {num_steps}")
         with open(f"{USER_PREFIX}/results/{benchmark}/system_{application_name}.txt", "w") as f:
-            f.write(f"Total steps taken: {num_steps}\n")
             f.write(f"Total time taken: {elapsed_time:.2f} seconds\n")
 if __name__ == "__main__":
     main()

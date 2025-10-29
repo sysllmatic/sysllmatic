@@ -9,10 +9,26 @@ load_dotenv()
 USER_PREFIX = os.getenv('USER_PREFIX')
 logger = Logger("logs", sys.argv[2]).logger
 
+def _set_java_home():
+    java_home = "/usr/lib/jvm/java-11-openjdk-amd64"
+    os.environ["JAVA_HOME"] = java_home
+    os.environ["PATH"] = f"{java_home}/bin:" + os.environ["PATH"]
+    
+def _set_java_home_scimark():
+    java_home = "/usr/lib/jvm/java-17-openjdk-amd64"
+    os.environ["JAVA_HOME"] = java_home
+    os.environ["PATH"] = f"{java_home}/bin:" + os.environ["PATH"]
+
 def get_hotspots(benchmark_name, application_name, top_K):
     """Run the Java application with async-profiler. Need to manually run ant build command first."""
     try:        
         logger.info(f"Running application {application_name} with async-profiler...")
+        
+        if benchmark_name == "Dacapo":
+            _set_java_home()
+        
+        if benchmark_name == "SciMark":
+            _set_java_home_scimark()
         
         prof_lib = os.path.join(
             USER_PREFIX, "async-profiler", "build", "lib", "libasyncProfiler.so"

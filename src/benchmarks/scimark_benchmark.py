@@ -1,4 +1,4 @@
-from benchmark import Benchmark
+from benchmarks.benchmark import Benchmark
 from dotenv import load_dotenv
 import os
 import subprocess
@@ -87,9 +87,7 @@ class SciMarkBenchmark(Benchmark):
         
         mflops = mflops.split("make")[0]
 
-        measure = self._run_rapl(optimized=False)
-        if not measure:
-            return False
+        self._run_rapl(optimized=False)
 
         avg_energy, avg_latency, avg_cpu_cycles, avg_memory, throughput = self._compute_avg()
 
@@ -252,31 +250,30 @@ class SciMarkBenchmark(Benchmark):
         try:
             optimized_output_float = float(optimized_output)
         except ValueError:
+            self.runtime_error = f"Cannot parse output: {optimized_output}"
             logger.error(f"Cannot convert optimized output to float: {optimized_output}")
             return False
         
         expect_test_output_float = float(self.expect_test_output)
         
-        if self.program == "FFT":
-            EPS = 1.0e-10
-        elif self.program == "LU":
-            EPS = 1.0e-12
-        elif self.program == "MonteCarlo":
-            EPS = math.pi
-        elif self.program == "SOR":
-            EPS = 0.003
-        elif self.program == "SparseCompRow":
-            EPS = 1.0e-10
+        
+        eps = {
+            "FFT": 1e-10,
+            "LU": 1e-12,
+            "MonteCarlo": math.pi,
+            "SOR": 0.003,
+            "SparseCompRow": 1e-10
+        }[self.program]
         
         if self.program == "MonteCarlo":
-            if abs(optimized_output_float - EPS) <= 0.05:
+            if abs(optimized_output_float - eps) <= 0.05:
                 logger.info(f"Output is within EPS threshold. Original output: {expect_test_output_float}, Optimized output: {optimized_output_float}")
                 return True
             else:
                 logger.error(f"Original program output: {self.expect_test_output}, Optimized program output: {optimized_output}")
                 self.runtime_error = f"Original program output: {self.expect_test_output}, Optimized program output: {optimized_output}"
                 return False
-        elif abs(optimized_output_float) <= EPS:
+        elif abs(optimized_output_float) <= eps:
             logger.info(f"Output is within EPS threshold. Original output: {expect_test_output_float}, Optimized output: {optimized_output_float}")
             return True
         else:
@@ -450,8 +447,8 @@ class SciMarkBenchmark(Benchmark):
         prof_lib = os.path.join(
             USER_PREFIX, "async-profiler", "build", "lib", "libasyncProfiler.so"
         )
-        
-        # 2) CPU profile
+         
+        # CPU profile
         cpu_cmd = [
             "java",
             "-cp", ".",
@@ -470,11 +467,12 @@ class SciMarkBenchmark(Benchmark):
             )
         except subprocess.CalledProcessError as e:
             logger.error(f"CPU profile failed:\n{e.stderr}")
-            raise
+            return
         
         # clean up Flamegraph file
         os.remove(f"{self.program}Flamegraph.java")
 
+        # read them back
         with open("cpu_profile.txt", "r") as f:
             cpu_profile = f.read()
 
@@ -483,46 +481,23 @@ class SciMarkBenchmark(Benchmark):
         
         return cpu_profile
 
-    def dynamic_analysis(self, code):
-        logger.info(f"Generating async-profiler profiles")
-        return super().dynamic_analysis(code)
-
 def get_valid_scimark_programs():
-    valid_programs = [
-        "FFT",
-        "LU",
-        "MonteCarlo",
-        "SOR",
-        "SparseCompRow"
-    ]
-    
-    transformed_data = []
-    
-    for program in valid_programs:
-        # compile
-        os.chdir(f"{USER_PREFIX}/benchmark_scimark/{program}")
-        
-        command = f"cp {USER_PREFIX}/benchmark_scimark/{program}/{program}OptimizedOriginal {USER_PREFIX}/benchmark_scimark/{program}/{program}Optimized.java"
-        subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    
-        try: 
-            compile_result = subprocess.run(
-                ["make", "compile"], 
-                check=True,
-                capture_output=True,
-                text=True,
-                timeout=120
-            )
-        except subprocess.CalledProcessError as e:
-            logger.error(f"Original code compile failed: {e}\n")
+    programs = ["FFT", "LU", "MonteCarlo", "SOR", "SparseCompRow"]
+    results = []
+    for prog in programs:
+        os.chdir(f"{USER_PREFIX}/benchmark_scimark/{prog}")
+        subprocess.run(f"cp {prog}OptimizedOriginal {prog}Optimized.java", shell=True)
+        try:
+            subprocess.run(["make", "compile"], check=True, capture_output=True, text=True, timeout=120)
+        except subprocess.CalledProcessError:
             continue
-        
-        hotspot = get_hotspots("SciMark", program, 1)
+
+        hotspot = get_hotspots("SciMark", prog, 1)
         method_name = hotspot[0][0]
         parts = method_name.split('/')
         test_class, test_method = parts[-1].split('.')  # Split the last part into class and method
         logger.info(f"Method name: {test_method}")
         
-        transformed_data.append((program, test_method))
-    logger.info(f"Valid programs and method: {transformed_data}")   
-    return transformed_data
+        results.append((prog, test_method))
+    logger.info(f"Valid programs and method: {results}")   
+    return results

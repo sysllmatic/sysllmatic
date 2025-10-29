@@ -46,7 +46,11 @@ def llm_optimize(code, llm_assistant, evaluator_feedback=None, ast=None, flame_r
     logger.info(f"Generator prompt: {prompt}")
 
     llm_assistant.add_to_memory("user", prompt)
-    llm_assistant.generate_response(OptimizationReasoning)
+    return_code = llm_assistant.generate_response(OptimizationReasoning)
+    
+    if return_code == -1:
+        logger.error("Error in llm completion")
+        return
 
     response = llm_assistant.get_last_msg()
     logger.info(response)
@@ -81,7 +85,11 @@ def handle_error(error_message, llm_assistant):
     logger.info(f"llm_optimize: Generator LLM Handling Error ....")
     
     llm_assistant.add_to_memory("user", error_prompt)
-    llm_assistant.generate_response(ErrorReasoning)
+    return_code = llm_assistant.generate_response(ErrorReasoning)
+    
+    if return_code == -1:
+        logger.error("Error in llm completion")
+        return
     response = llm_assistant.get_last_msg()
 
     try:
