@@ -8,11 +8,11 @@
 #include <sys/resource.h>
 #include <stdlib.h>
 
-#define WARMUP_RUNS 2
+#define WARMUP_RUNS 10
 
 int main(int argc, char **argv) {
     char command[500] = "", language[500] = "", test[500] = "", path[500] = "";
-    int ntimes = 5;
+    int ntimes = 20;
     int core = 0;
     int i = 0;
 
@@ -23,15 +23,14 @@ int main(int argc, char **argv) {
     FILE *fp;
 
     // Run command
-    strcat(command, argv[1]);
+    snprintf(command, sizeof(command), "%s", argv[1]);
+
     // Language name
-    strcpy(language, argv[2]);
+    snprintf(language, sizeof(language), "%s", argv[2]);
     // Path to language .csv file
-    strcpy(path, "../../src/runtime_logs/");
-    strcat(language, ".csv");
-    strcat(path, language);
+    snprintf(path, sizeof(path), "/home/hpeng/E2COOL/src/runtime_logs/%s.csv", language);
     // Test name
-    strcpy(test, argv[3]);
+    snprintf(test, sizeof(test), "%s", argv[3]);
 
     fp = fopen(path, "a");
 
@@ -102,11 +101,11 @@ int main(int argc, char **argv) {
     // Calculate total time and throughput
     double total_time = (total_end_time.tv_sec - total_start_time.tv_sec) +
                         (total_end_time.tv_nsec - total_start_time.tv_nsec) / 1.0e9;
-    double throughput = ntimes / total_time;
 
-    // Log throughput
-    fprintf(fp, "Throughput (executions per second), %f\n", throughput);
+    // double throughput = ntimes / total_time;
 
+    // // Log throughput
+    // fprintf(fp, "Throughput (executions per second), %f\n", throughput);
     fclose(fp);
     fflush(stdout);
 

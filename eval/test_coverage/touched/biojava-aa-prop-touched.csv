@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+biojava-aa-prop,org.biojava.nbio.aaproperties,Utils,8,172,4,26,1,31,5,19,1,8
+biojava-aa-prop,org.biojava.nbio.aaproperties,PeptidePropertiesImpl,28,2187,15,114,8,278,15,90,0,34
+biojava-aa-prop,org.biojava.nbio.aaproperties,CommandPrompt,235,882,26,66,63,161,27,46,3,7

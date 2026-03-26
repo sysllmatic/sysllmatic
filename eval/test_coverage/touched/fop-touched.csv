@@ -1,0 +1,19 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Apache FOP Core,org.apache.fop.cli,InputHandler,231,168,22,10,52,55,21,10,5,10
+Apache FOP Core,org.apache.fop.cli,Main,334,0,38,0,81,0,25,0,6,0
+Apache FOP Core,org.apache.fop.fo.expr,NCnameProperty,4,54,2,2,2,16,2,9,0,9
+Apache FOP Core,org.apache.fop.fo,FOEventHandler,7,98,0,0,6,75,6,69,6,69
+Apache FOP Core,org.apache.fop.fo,FOText,168,692,71,74,59,183,72,66,9,40
+Apache FOP Core,org.apache.fop.fo,FOElementMapping,4,462,1,1,2,71,3,3,2,3
+Apache FOP Core,org.apache.fop.fo,FObj,195,924,57,157,30,229,50,111,2,52
+Apache FOP Core,org.apache.fop.apps,FopFactoryBuilder,13,181,0,2,4,57,2,29,2,28
+Apache FOP Core,org.apache.fop.layoutmgr,FlowLayoutManager,304,425,39,61,72,121,28,45,5,18
+Apache FOP Core,org.apache.fop.layoutmgr,ElementListUtils,19,347,14,76,4,83,13,44,1,11
+Apache FOP Core,org.apache.fop.layoutmgr,LayoutManagerMapping,54,318,4,6,6,61,4,13,0,12
+Apache FOP Core,org.apache.fop.complexscripts.bidi,UnicodeBidiAlgorithm,373,1267,68,264,67,298,59,152,6,28
+Apache FOP Core,org.apache.fop.util,DelegatingContentHandler,90,183,7,13,29,52,22,21,15,18
+Apache FOP Core,org.apache.fop.fo.properties,CondLengthProperty,59,227,19,37,11,52,20,23,3,12
+Apache FOP Core,org.apache.fop.render,RendererFactory,301,449,24,64,59,116,25,43,5,19
+Apache FOP Core,org.apache.fop.pdf,PDFMetadata,45,372,8,42,10,117,9,24,1,7
+Apache FOP Core,org.apache.fop.pdf,PDFStream,39,217,2,8,17,61,4,19,2,16
+Apache FOP Core,org.apache.fop.pdf,PDFNumber,24,120,8,10,5,33,9,10,1,9

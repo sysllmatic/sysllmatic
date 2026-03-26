@@ -1,0 +1,22 @@
+app=fop
+timestamp=20260217_223110
+jar=/home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d.jar
+cmd=java -server -XX:+UseSuperWord -XX:+TieredCompilation -XX:TieredStopAtLevel=4 -XX:MaxInlineSize=100 -XX:FreqInlineSize=100 -Xms2g -Xmx2g  -jar /home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d.jar fop
+runtime_log=/home/hpeng/E2COOL/src/runtime_logs/java.csv
+raw_out_csv=/home/hpeng/E2COOL/variance/raw_fop_20260217_223110.csv
+workload_num=55
+throughput_ops_per_s=22.023975299511044
+
+Means (headline):
+energy_mean=225.284216
+latency_mean=2.497279
+cpu_mean=41598608654.599998
+memory_mean=424412.800000
+
+Descriptive statistics (per-iteration):
+metric            n           mean            std            min            p25         median            p75            max        CV%
+--------------------------------------------------------------------------------------------------------------------------------------------
+energy           20     225.284216       2.361703     220.898804     224.212402     225.371796     226.136551     232.305847     1.0483
+latency          20       2.497279       0.019247       2.456950       2.484843       2.494055       2.505863       2.534880     0.7707
+cpu              20 41598608654.599998 264468821.991458 41108145280.000000 41433136801.500000 41574795163.500000 41768604313.000000 42060758349.000000     0.6358
+memory           20  424412.800000    6750.954471  412632.000000  419249.000000  423724.000000  427640.000000  437684.000000     1.5907

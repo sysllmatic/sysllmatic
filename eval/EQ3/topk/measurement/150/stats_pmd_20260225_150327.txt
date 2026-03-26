@@ -1,0 +1,16 @@
+app=pmd
+timestamp=20260225_150327
+jar=/home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar
+cmd=java -jar /home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar --no-validation pmd
+runtime_log=/home/hpeng/E2COOL/src/runtime_logs/java.csv
+raw_out_csv=/home/hpeng/E2COOL/variance/raw_pmd_20260225_150327.csv
+
+throughput_ops_per_s=128.997833
+
+Descriptive statistics (per-iteration):
+metric          n           mean            std            min            p25         median            p75            max        CV%
+------------------------------------------------------------------------------------------------------------------------------------------
+energy         20     683.762970      67.395795     620.566956     645.040848     652.367035     695.835205     820.791382     9.8566
+latency        20       4.658993       0.410598       4.269730       4.408920       4.462535       4.743705       5.435320     8.8130
+cpu            20 316444939989.799988 60310869428.796196 269632955343.000000 280384103168.750000 286884838325.500000 332133398799.500000 438296166510.000000    19.0589
+memory         20 2525917.000000  307104.872837 2045124.000000 2203244.000000 2639556.000000 2713676.000000 2970728.000000    12.1582

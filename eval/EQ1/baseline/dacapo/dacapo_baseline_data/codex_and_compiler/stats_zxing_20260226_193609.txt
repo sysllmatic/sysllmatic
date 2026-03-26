@@ -1,0 +1,22 @@
+app=zxing
+timestamp=20260226_193609
+jar=/home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar
+cmd=java -server -XX:+UseSuperWord -XX:+TieredCompilation -XX:TieredStopAtLevel=4 -XX:MaxInlineSize=100 -XX:FreqInlineSize=100 -Xms2g -Xmx2g  -jar /home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar --no-validation zxing
+runtime_log=/home/hpeng/E2COOL/src/runtime_logs/java.csv
+raw_out_csv=/home/hpeng/E2COOL/variance/raw_zxing_20260226_193609.csv
+workload_num=1254
+throughput_ops_per_s=468.68062293410514
+
+Means (headline):
+energy_mean=381.475540
+latency_mean=2.675596
+cpu_mean=244594807503.649994
+memory_mean=1407024.000000
+
+Descriptive statistics (per-iteration):
+metric            n           mean            std            min            p25         median            p75            max        CV%
+--------------------------------------------------------------------------------------------------------------------------------------------
+energy           20     381.475540      11.185844     356.685852     375.279160     382.390656     389.048141     396.244263     2.9323
+latency          20       2.675596       0.081668       2.503760       2.632332       2.689415       2.726150       2.792440     3.0523
+cpu              20 244594807503.649994 9969232707.205774 222769611734.000000 239625560142.750000 245410173779.000000 252122081883.750000 258221885333.000000     4.0758
+memory           20 1407024.000000   62995.682017 1275216.000000 1382815.000000 1403708.000000 1440956.000000 1580132.000000     4.4772

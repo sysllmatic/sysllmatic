@@ -1,0 +1,36 @@
+hpeng@tokyo:~/E2COOL/eval/test_coverage$ python3 coverage.py touched/zxing-touched.scv 
+=== Overall Coverage ===
+INSTRUCTION:  95.85%  (6346/6621)
+BRANCH     :  85.75%  (704/821)
+LINE       :  94.72%  (1220/1288)
+METHOD     :  96.36%  (106/110)
+hpeng@tokyo:~/E2COOL/eval/test_coverage$ python3 coverage.py touched/pmd-touched.csv 
+=== Overall Coverage ===
+INSTRUCTION:  73.80%  (3693/5004)
+BRANCH     :  66.48%  (353/531)
+LINE       :  75.80%  (858/1132)
+METHOD     :  75.30%  (189/251)
+hpeng@tokyo:~/E2COOL/eval/test_coverage$ python3 coverage.py touched/graphchi-touched.csv 
+=== Overall Coverage ===
+INSTRUCTION:  59.92%  (423/706)
+BRANCH     :  26.00%  (13/50)
+LINE       :  62.75%  (96/153)
+METHOD     :  67.65%  (23/34)
+hpeng@tokyo:~/E2COOL/eval/test_coverage$ python3 coverage.py touched/fop-touched.csv 
+=== Overall Coverage ===
+INSTRUCTION:  74.18%  (6504/8768)
+BRANCH     :  68.29%  (827/1211)
+LINE       :  76.50%  (1680/2196)
+METHOD     :  83.56%  (361/432)
+hpeng@tokyo:~/E2COOL/eval/test_coverage$ python3 coverage.py touched/biojava-aa-prop-touched.csv 
+=== Overall Coverage ===
+INSTRUCTION:  92.28%  (3241/3512)
+BRANCH     :  82.07%  (206/251)
+LINE       :  86.72%  (470/542)
+METHOD     :  92.45%  (49/53)
+hpeng@tokyo:~/E2COOL/eval/test_coverage$ python3 coverage.py touched/biojava-core-touched.csv 
+=== Overall Coverage ===
+INSTRUCTION:  78.96%  (2425/3071)
+BRANCH     :  70.33%  (173/246)
+LINE       :  76.48%  (478/625)
+METHOD     :  77.78%  (98/126)

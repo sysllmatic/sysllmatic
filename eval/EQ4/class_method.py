@@ -14,12 +14,12 @@ x = np.arange(len(categories))
 fig, ax = plt.subplots(figsize=(10, 6))
 
 # Plot correctness as base
-ax.bar(x - 0.2, [method_correct]*len(x), width=0.4, label='Correctness (Function)', color='lightgray')
-ax.bar(x + 0.2, [class_correct]*len(x), width=0.4, label='Correctness (Class)', color='darkgray')
+ax.bar(x - 0.2, [method_correct]*len(x), width=0.4, label='Correctness (Function-Level)', color='lightgray')
+ax.bar(x + 0.2, [class_correct]*len(x), width=0.4, label='Correctness (Class-Level)', color='darkgray')
 
 # Plot performance metrics stacked on top of correctness
-ax.bar(x - 0.2, method_values, width=0.4, bottom=[method_correct]*len(x), label='Function-Level', alpha=0.7, color='lightblue')
-ax.bar(x + 0.2, class_values, width=0.4, bottom=[class_correct]*len(x), label='Class-Level', alpha=1, color='skyblue')
+ax.bar(x - 0.2, method_values, width=0.4, bottom=[method_correct]*len(x), label='Relative Improvement (Function-Level)', alpha=0.7, color='lightblue')
+ax.bar(x + 0.2, class_values, width=0.4, bottom=[class_correct]*len(x), label='Relative Improvement (Class-Level)', alpha=1, color='skyblue')
 
 # Formatting
 ax.set_ylabel('Value (Correctness + Metric)', fontsize=16)

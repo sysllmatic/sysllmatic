@@ -1,5 +1,5 @@
 # break_even_plots.py
-# Compute & plot break-even runs for BioJava and PMD under multiple energy models.
+# Compute & plot break-even runs for BioJava and ZXing under multiple energy models.
 
 import math
 import matplotlib.pyplot as plt
@@ -7,16 +7,16 @@ import matplotlib.pyplot as plt
 # ---------------------------
 # Inputs
 # ---------------------------
-apps = ["BioJava", "PMD"]
+apps = ["BioJava", "ZXing"]
 
 # Energy model inputs
-baseline_energy_J = [460.373, 709.224]        # Joules per run (before optimization)
-improvement_factor_energy = [2.23, 1.16]      # energy speedup factor
-num_queries = [54, 65]                        # number of LLM queries used to optimize each app
+baseline_energy_J = [481.940060, 603.993466]       # Joules per run (before optimization)
+improvement_factor_energy = [2.151935437, 1.045950152]      # energy speedup factor
+num_queries = [54, 60]                        # number of LLM queries used to optimize each app
 
 # Latency model inputs
-baseline_latency_s = [9.597, 5.268076]        # seconds per run (before optimization)
-improvement_factor_latency = [3.437320917, 1.109657334]
+baseline_latency_s = [9.367834, 4.258019]        # seconds per run (before optimization)
+improvement_factor_latency = [3.617558445, 1.062438573]
 total_time_cost_s = [47*60, 45*60]            # one-time optimization time cost in seconds
 
 # ---------------------------
@@ -25,7 +25,7 @@ total_time_cost_s = [47*60, 45*60]            # one-time optimization time cost 
 energy_models_Wh_per_query = {
     "0.24 Wh/q": 0.24,
     "0.30 Wh/q": 0.30,
-    "3.0 Wh/q":  3.0,
+    "3.00 Wh/q":  3.00,
     "4.32 Wh/q": 4.32,
 }
 
@@ -65,7 +65,7 @@ x = range(len(apps))
 bar_width = 0.2
 offsets = [-1.5*bar_width, -0.5*bar_width, 0.5*bar_width, 1.5*bar_width]
 
-model_order = ["0.24 Wh/q", "0.30 Wh/q", "3.0 Wh/q", "4.32 Wh/q"]
+model_order = ["0.24 Wh/q", "0.30 Wh/q", "3.00 Wh/q", "4.32 Wh/q"]
 
 for i, label in enumerate(model_order):
     vals = break_even_energy[label]
@@ -82,7 +82,7 @@ plt.ylabel("Break-even runs (energy, log scale)")
 plt.title("Break-even Runs vs. Energy Model per LLM Query")
 plt.legend()
 plt.tight_layout()
-plt.savefig("break_even_energy_biojava_pmd.png", dpi=200)
+plt.savefig("break_even_energy_biojava_ZXing.png", dpi=200)
 plt.close()
 
 # ---------------------------
@@ -92,7 +92,7 @@ print("Energy savings per run (J):", [f"{v:.3f}" for v in savings_per_run_J])
 print("Break-even runs (energy):")
 for label in model_order:
     vals = break_even_energy[label]
-    print(f"  {label}: BioJava={vals[0]:.2f}, PMD={vals[1]:.2f}")
+    print(f"  {label}: BioJava={vals[0]:.2f}, ZXing={vals[1]:.2f}")
 
 print("\nBreak-even runs (latency):")
-print(f"  BioJava={break_even_latency[0]:.2f}, PMD={break_even_latency[1]:.2f}")
+print(f"  BioJava={break_even_latency[0]:.2f}, ZXing={break_even_latency[1]:.2f}")

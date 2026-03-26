@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+PMD Core,net.sourceforge.pmd.lang.ast,AbstractNode,398,351,60,30,99,97,64,46,30,35
+PMD Core,net.sourceforge.pmd.util,IOUtil,79,350,13,27,28,84,10,33,3,20
+PMD Core,net.sourceforge.pmd.lang.ast.xpath.saxon,ElementNode,173,229,33,28,32,55,33,23,7,12
+PMD Core,net.sourceforge.pmd,RuleSetFactoryCompatibility,0,342,0,6,0,64,0,12,0,9
+PMD Core,net.sourceforge.pmd,RuleSetFactory,292,993,32,124,46,215,30,78,7,23
+PMD Core,net.sourceforge.pmd.lang.rule,XPathRule,21,250,3,17,3,72,3,22,0,15
+PMD Core,net.sourceforge.pmd.lang.rule,AbstractRule,221,409,15,33,46,118,26,61,15,48
+PMD Core,net.sourceforge.pmd.lang.ast.xpath,AttributeAxisIterator,4,293,4,36,1,40,4,26,0,10
+PMD Core,net.sourceforge.pmd.lang.rule.xpath,SaxonXPathRuleQuery,123,476,18,52,19,113,13,39,0,17

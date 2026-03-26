@@ -9,7 +9,7 @@ metrics = ['Correct', 'Latency', 'Memory', 'CPU', 'Throughput', 'Energy']
 data = {
     "SciMark":   [1.00, 1.55, 0.98, 1.52, 1.39, 1.51],
     "HumanEval": [0.8841, 1.69, 1.01, 10.40, 0.0, 2.04],  # Throughput was missing; use 0
-    "DaCapoBench": [1.00, 1.502282584, 1.072521978, 0.9587131078, 1.75863573, 1.275898828]
+    "DaCapoBench": [1.00, 1.541738815, 1.018194798, 0.9325196914, 1.541738731, 1.238532961]
 }
 
 # Filter out 'Correct' (index 0)

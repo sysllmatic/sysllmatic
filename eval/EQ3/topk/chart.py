@@ -3,13 +3,33 @@ import matplotlib.pyplot as plt
 
 # Create the dataset
 data = {
-    "app": ["ZXing", "ZXing", "ZXing", "Pmd", "Pmd", "Pmd", "Fop", "Fop", "Fop"],
+    "app": ["ZXing", "ZXing", "ZXing", "PMD", "PMD", "PMD", "Fop", "Fop", "Fop"],
     "k": [50, 100, 150, 50, 100, 150, 50, 100, 150],
-    "energy": [-2, -8.591847141, 2.752033435, 16, 0.605586665, -0.8986027373, 3, -12.18784854, -2.879265427],
-    "latency": [5, -9.063685366, 5.853761623, 11, 2.951424472, -0.611122482, 2, 8.764348322, -2.440538217],
-    "cpu": [7, -7.733971862, 3.246179599, 26, 6.354401886, -0.3541298901, 4, -7.208556753, -2.573035051],
-    "memory": [4, -1.901997458, 7.392423529, 0, -6.472735143, -7.191639829, 0, 0.858876906, -0.3715122527],
-    "throughput": [-1, -9.065349268, 5.867760672, 12, 2.951304726, -0.5983454166, 7, 3.321698384, -2.440538217],
+    "energy": [
+        4.595015227, -6.539661008, -1.817004741,
+        2.439387656, -4.259107534, 1.924575851,
+        0.5337539988, 0.1916595344, -3.060452459
+    ],
+    "latency": [
+        6.243857259, -5.829383886, -1.987146935,
+        2.250380938, -4.035354369, 2.030309983,
+        0.9004087439, 0.02626960355, -2.665650233
+    ],
+    "cpu": [
+        16.5753511, -6.468481244, -3.322495344,
+        2.710692932, -8.549528369, 5.840066251,
+        1.753908135, -0.9380959101, -1.355386429
+    ],
+    "memory": [
+        1.840302138, -2.646372196, 6.827345383,
+        4.688015769, -2.311096793, -0.06335916818,
+        -1.50096817, 2.022635896, 1.910732321
+    ],
+    "throughput": [
+        6.24384457, -5.829383913, -1.987135618,
+        2.250369023, -4.035353971, 2.030321232,
+        0.9003911993, 0.0262866281, -2.665649924
+    ],
 }
 
 df = pd.DataFrame(data)
@@ -28,8 +48,10 @@ fig, axes = plt.subplots(1, 3, figsize=(18, 6), sharey=True)
 for ax, app in zip(axes, df_cum["app"].unique()):
     subset = df_cum[df_cum["app"] == app]
     for metric in metrics:
-        ax.plot(subset["k"], subset[metric], marker="o", label=metric)
-    ax.set_title(app.capitalize(), fontsize=18)
+        # Make throughput markers smaller
+        markersize = 4 if metric == "throughput" else 8
+        ax.plot(subset["k"], subset[metric], marker="o", label=metric, alpha=0.7, markersize=markersize)
+    ax.set_title(app, fontsize=18)
     ax.set_xlabel("k")
     ax.set_xlabel("Top-K Hotspots", fontsize=17)
     ax.tick_params(axis="both", labelsize=15)
@@ -42,5 +64,5 @@ fig.legend(metrics, loc="lower center", ncol=len(metrics), fontsize=15)
 fig.suptitle("Cumulative Performance Improvement by Varying Top-K Hotspots", fontsize=21)
 
 plt.tight_layout(rect=[0, 0.05, 1, 0.95])  # make space for legend
-plt.savefig("metrics_line_chart.png", dpi=300, bbox_inches="tight")
+plt.savefig("metrics_line_chart_new.png", dpi=300, bbox_inches="tight")
 plt.show()

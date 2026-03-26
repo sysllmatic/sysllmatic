@@ -1,0 +1,22 @@
+app=graphchi
+timestamp=20260221_120114
+jar=/home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar
+cmd=java -server -XX:+UseSuperWord -XX:+TieredCompilation -XX:TieredStopAtLevel=4 -XX:MaxInlineSize=100 -XX:FreqInlineSize=100 -Xms2g -Xmx2g  -jar /home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar --no-validation graphchi
+runtime_log=/home/hpeng/E2COOL/src/runtime_logs/java.csv
+raw_out_csv=/home/hpeng/E2COOL/variance/raw_graphchi_20260221_120114.csv
+workload_num=1000000
+throughput_ops_per_s=58486.8173638003
+
+Means (headline):
+energy_mean=1084.886926
+latency_mean=17.097870
+cpu_mean=263900426576.149994
+memory_mean=1805881.200000
+
+Descriptive statistics (per-iteration):
+metric            n           mean            std            min            p25         median            p75            max        CV%
+--------------------------------------------------------------------------------------------------------------------------------------------
+energy           20    1084.886926      13.974501    1060.015503    1073.602234    1087.371490    1096.391327    1103.366333     1.2881
+latency          20      17.097870       0.109572      16.810700      17.047775      17.128300      17.153550      17.305000     0.6408
+cpu              20 263900426576.149994 9524483042.412045 248566051773.000000 255973271690.000000 262066197193.500000 272560088775.750000 280737887607.000000     3.6091
+memory           20 1805881.200000    2535.262420 1800236.000000 1805219.000000 1806590.000000 1807640.000000 1808776.000000     0.1404

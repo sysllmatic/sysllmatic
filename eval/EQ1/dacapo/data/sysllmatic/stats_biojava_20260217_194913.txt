@@ -1,0 +1,16 @@
+app=biojava
+timestamp=20260217_194913
+jar=/home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar
+cmd=java -jar /home/hpeng/E2COOL/benchmark_dacapo/benchmarks/dacapo-evaluation-git-4e3de06d-dirty.jar --no-validation biojava
+runtime_log=/home/hpeng/E2COOL/src/runtime_logs/java.csv
+raw_out_csv=/home/hpeng/E2COOL/variance/raw_biojava_20260217_194913.csv
+
+throughput_ops_per_s=1096.331172
+
+Descriptive statistics (per-iteration):
+metric          n           mean            std            min            p25         median            p75            max        CV%
+------------------------------------------------------------------------------------------------------------------------------------------
+energy         20     223.956561       7.886419     209.885254     218.906509     222.798676     228.701828     236.096680     3.5214
+latency        20       2.589546       0.050384       2.509550       2.558333       2.581590       2.617030       2.694820     1.9457
+cpu            20 100478322329.199997 6600447538.080465 91923034141.000000 95372125885.500000 99425036203.500000 103176849233.000000 116878677907.000000     6.5690
+memory         20 1834503.000000   51739.220166 1771172.000000 1793181.000000 1826788.000000 1858783.000000 1973492.000000     2.8203

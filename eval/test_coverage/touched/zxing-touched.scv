@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+ZXing Core,com.google.zxing.pdf417.detector,Detector,20,869,5,85,7,167,5,49,0,9
+ZXing Core,com.google.zxing.oned,Code93Reader,15,880,21,90,7,147,21,45,0,9
+ZXing Core,com.google.zxing.oned,Code39Reader,81,840,31,96,18,145,22,53,0,10
+ZXing Core,com.google.zxing.oned,OneDReader,19,483,9,83,5,103,10,44,1,7
+ZXing Core,com.google.zxing.common,HybridBinarizer,3,825,1,81,1,173,1,47,0,7
+ZXing Core,com.google.zxing.common,BitMatrix,72,1285,28,145,14,256,30,89,2,29
+ZXing Core,com.google.zxing.common,BitArray,42,777,16,84,12,142,16,62,0,28
+ZXing Core,com.google.zxing.common,GlobalHistogramBinarizer,23,387,6,40,4,87,5,26,1,7
